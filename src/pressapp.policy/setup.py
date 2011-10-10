@@ -25,6 +25,8 @@ setup(name='pressapp.policy',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Products.CMFPlone',
+          'pressapp.sitetheme',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
