@@ -4,7 +4,7 @@
         expression="not:request/HTTP_X_THEME_ENABLED | nothing"
         id="public.css" />
     
-    <stylesheet title="" authenticated="False" cachable="True"
+    <stylesheet title="" authenticated="False" cacheable="True"
         compression="safe" conditionalcomment="" cookable="True" enabled="on"
         expression="request/HTTP_X_THEME_ENABLED | nothing"
         id="++theme++pressapp.sitetheme/css/styles.css" media="" rel="stylesheet"
