@@ -1,55 +1,26 @@
-import unittest
+import unittest2 as unittest
+from optilux.policy.testing import PRESSAPP_POLICY_INTEGRATION_TESTING
 
-#from zope.testing import doctestunit
-#from zope.component import testing
-from Testing import ZopeTestCase as ztc
+from Products.CMFCore.utils import getToolByName
 
-from Products.Five import fiveconfigure
-from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import PloneSite
-ptc.setupPloneSite()
-
-import pressapp.policy
-
-
-class TestCase(ptc.PloneTestCase):
-
-    class layer(PloneSite):
-
-        @classmethod
-        def setUp(cls):
-            fiveconfigure.debug_mode = True
-            ztc.installPackage(pressapp.policy)
-            fiveconfigure.debug_mode = False
-
-        @classmethod
-        def tearDown(cls):
-            pass
-
-
-def test_suite():
-    return unittest.TestSuite([
-
-        # Unit tests
-        #doctestunit.DocFileSuite(
-        #    'README.txt', package='pressapp.policy',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-        #doctestunit.DocTestSuite(
-        #    module='pressapp.policy.mymodule',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-
-        # Integration tests that use PloneTestCase
-        #ztc.ZopeDocFileSuite(
-        #    'README.txt', package='pressapp.policy',
-        #    test_class=TestCase),
-
-        #ztc.FunctionalDocFileSuite(
-        #    'browser.txt', package='pressapp.policy',
-        #    test_class=TestCase),
-
-        ])
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+class TestSetup(unittest.TestCase):
+    
+    layer = PRESSAPP_POLICY_INTEGRATION_TESTING
+    
+    def test_portal_title(self):
+        portal = self.layer['portal']
+        self.assertEqual("Optilux Cinemas", portal.getProperty('title'))
+    
+    def test_portal_description(self):
+        portal = self.layer['portal']
+        self.assertEqual("Welcome to Optilux Cinemas", portal.getProperty('description'))
+    
+    #def test_role_added(self):
+    #    portal = self.layer['portal']
+    #    self.assertTrue("StaffMember" in portal.validRoles())
+    #
+    #def test_workflow_installed(self):
+    #    portal = self.layer['portal']
+    #    workflow = getToolByName(portal, 'portal_workflow')
+    #    
+    #    self.assertTrue('pressapp_sitecontent_workflow' in workflow)
