@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="pressapp.policy">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="pressapp.policy"
+      directory="profiles/default"
+      description="Installs the pressapp.policy package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  
+  <genericsetup:registerProfile
+        name="initial"
+        title="pressapp.policy"
+        directory="profiles/initial"
+        description="Initial intallation profile for the pressapp.policy package"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+  
+</configure>
