@@ -1338,6 +1338,24 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
+.editbar-inner {
+  background-color: #ddd;
+  padding: 18px;
+  background-color: #bfbfbf;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#dddddd), to(#bfbfbf));
+  background-image: -moz-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: -ms-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bfbfbf));
+  background-image: -webkit-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: -o-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: linear-gradient(top, #dddddd, #bfbfbf);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#bfbfbf', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #808080;
+}
 .topbar div > ul, .nav {
   display: block;
   float: left;
@@ -1896,6 +1914,85 @@ footer {
 button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
+}
+.editbtn {
+  cursor: pointer;
+  display: block;
+  float: left;
+  position: relative;
+  background-color: #dadada;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f3f3f3), color-stop(25%, #f3f3f3), to(#dadada));
+  background-image: -webkit-linear-gradient(#f3f3f3, #f3f3f3 25%, #dadada);
+  background-image: -moz-linear-gradient(top, #f3f3f3, #f3f3f3 25%, #dadada);
+  background-image: -ms-linear-gradient(#f3f3f3, #f3f3f3 25%, #dadada);
+  background-image: -o-linear-gradient(#f3f3f3, #f3f3f3 25%, #dadada);
+  background-image: linear-gradient(#f3f3f3, #f3f3f3 25%, #dadada);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3', endColorstr='#dadada', GradientType=0);
+  padding: 5px 14px 6px;
+  text-shadow: 0 1px 0px rgba(255, 255, 255, 0.75);
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 18px;
+  line-height: normal;
+  border: 1px solid #808080;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  /* @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow); */
+
+  margin-right: 10px;
+}
+.editbtn:hover {
+  background-position: 0 0px;
+  color: #333;
+  border-color: #000000;
+  text-decoration: none;
+}
+.editbtn:focus {
+  outline: 1px dotted #666;
+}
+.editbtn.left {
+  color: #404040;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+  margin-right: 0;
+}
+.editbtn.middle {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-left: solid 1px #f3f3f3;
+  margin: 0;
+  border-left: solid 1px rgba(255, 255, 255, 0);
+}
+.editbtn.middle:hover {
+  border-left: solid 1px #000000;
+}
+.editbtn.right:hover {
+  border-left: solid 1px #000000;
+}
+.editbtn.right {
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-left-radius: 0;
+  border-left: solid 1px #f3f3f3;
+  border-left: solid 1px rgba(255, 255, 255, 0);
+}
+.editbtn.llllarge {
+  font-size: 15px;
+  line-height: normal;
+  padding: 9px 14px 9px;
 }
 .close {
   float: right;
