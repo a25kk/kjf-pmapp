@@ -181,7 +181,7 @@ textarea {
  * Basic and global styles for generating a grid system, structural layout, and page templates
  * ------------------------------------------------------------------------------------------- */
 html, body {
-  background-color: #f5f5f5;
+  background-color: #BFBFBF;
 }
 body {
   margin: 0;
@@ -1723,18 +1723,22 @@ a.menu:after, .dropdown-toggle:after {
   line-height: 27px;
 }
 footer {
-  padding: 17px;
-  border-top: 1px solid #bfbfbf;
-  background-color: #f5f5f5;
+  background-color: #ddd;
+  padding: 18px;
+  background-color: #bfbfbf;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#e6e6e6), to(#f5f5f5));
-  background-image: -moz-linear-gradient(top, #e6e6e6, #f5f5f5);
-  background-image: -ms-linear-gradient(top, #e6e6e6, #f5f5f5);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e6e6e6), color-stop(100%, #f5f5f5));
-  background-image: -webkit-linear-gradient(top, #e6e6e6, #f5f5f5);
-  background-image: -o-linear-gradient(top, #e6e6e6, #f5f5f5);
-  background-image: linear-gradient(top, #e6e6e6, #f5f5f5);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#f5f5f5', GradientType=0);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#dddddd), to(#bfbfbf));
+  background-image: -moz-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: -ms-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bfbfbf));
+  background-image: -webkit-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: -o-linear-gradient(top, #dddddd, #bfbfbf);
+  background-image: linear-gradient(top, #dddddd, #bfbfbf);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#bfbfbf', GradientType=0);
+  /*@shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);*/
+
+  border-top: 1px solid #808080;
 }
 .page-header {
   margin-bottom: 17px;
@@ -2475,7 +2479,7 @@ img.image-left {
 /* @group Content Area */
 #content-wrapper {
   background: #ffffff;
-  padding-top: 18px;
+  padding: 18px 0px;
 }
 #content {
   line-height: 1.5em;
