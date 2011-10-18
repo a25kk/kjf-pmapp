@@ -27,6 +27,7 @@ setup(name='pressapp.policy',
           'setuptools',
           'Products.CMFPlone',
           'pressapp.sitetheme',
+          'pressapp.memberprofiles',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
