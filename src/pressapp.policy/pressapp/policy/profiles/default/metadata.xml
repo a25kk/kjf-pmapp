@@ -2,6 +2,7 @@
 <metadata>
   <version>1</version>
   <dependencies>
+    <dependency>profile-pressapp.presscontent:default</dependency>
     <dependency>profile-pressapp.sitetheme:default</dependency>
     <dependency>profile-pressapp.memberprofiles:default</dependency>
   </dependencies>
