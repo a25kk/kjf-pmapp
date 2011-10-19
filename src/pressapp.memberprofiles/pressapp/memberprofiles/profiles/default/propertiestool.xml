@@ -6,7 +6,7 @@
     <element value="fullname" />
     <element value="email" />
     <element value="organization" />
-    <element value="url" />
+    <element value="home_page" />
     <element value="location" />
     <element value="presslink" />
   </property>
