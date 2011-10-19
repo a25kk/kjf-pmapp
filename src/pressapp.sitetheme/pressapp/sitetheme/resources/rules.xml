@@ -15,6 +15,7 @@
       </xsl:element>
     </xsl:template>
     
+    <theme href="frontpage.html" css:if-content="body.portaltype-plone-site" />
     <!-- The default theme, used for standard Plone web pages -->
     <theme href="theme.html" css:if-content="#visual-portal-wrapper" />
     
@@ -56,7 +57,10 @@
         
         <!-- Logo (link target) -->
         <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
-
+        
+        <replace css:content-children="#content" css:theme-children="#frontpage-content"
+            css:if-content="body.portaltype-plone-site" />
+        
         <!-- Document Content -->
         <replace css:content-children="#content" css:theme-children="#document-content" />
         <before css:content="#edit-bar" css:theme="#document-content" />

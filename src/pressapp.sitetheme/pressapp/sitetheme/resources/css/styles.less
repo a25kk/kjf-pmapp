@@ -26,7 +26,7 @@
 @import "patterns.less";
 
 
-// Custom styles added for brevity - shoul dbe re-factored as custom.less file maybe
+// Custom styles added for brevity - should be re-factored as custom.less file maybe
 
 img.image-left {
     float: left;
@@ -41,12 +41,25 @@ img.image-left {
     padding: @baseline 0px;
 }
 
+#frontpage-content {
+    width: @siteWidth / 2;
+    margin: 4em auto;
+}
 
 #content {
     line-height: 1.5em;
     clear: both;
     font-size: 80%;
     margin: 1em 0.25em 2em 0.25em;
+}
+
+#login-forgotten-password {
+    clear: both;
+    margin-top: @baseline * 2;
+    .alert-message.block-message;
+    .discreet {
+        #font > .sans-serif(normal, 80%, @baseline);
+    }
 }
 
 /* Special case of #content - TinyMCE */

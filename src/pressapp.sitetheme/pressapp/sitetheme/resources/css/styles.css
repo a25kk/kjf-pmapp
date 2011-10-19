@@ -891,7 +891,7 @@ textarea[readonly] {
   border-color: #ddd;
   cursor: not-allowed;
 }
-.actions {
+.actions, .formControls {
   background: #f5f5f5;
   margin-top: 18px;
   margin-bottom: 18px;
@@ -901,13 +901,13 @@ textarea[readonly] {
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
-.actions .secondary-action {
+.actions .secondary-action, .formControls .secondary-action {
   float: right;
 }
-.actions .secondary-action a {
+.actions .secondary-action a, .formControls .secondary-action a {
   line-height: 30px;
 }
-.actions .secondary-action a:hover {
+.actions .secondary-action a:hover, .formControls .secondary-action a:hover {
   text-decoration: underline;
 }
 .help-inline, .help-block {
@@ -1074,6 +1074,12 @@ textarea[readonly] {
 .form-stacked .actions {
   margin-left: -20px;
   padding-left: 20px;
+}
+.field {
+  margin-bottom: 18px;
+}
+.field label {
+  margin-right: 10px;
 }
 /*
  * Tables.less
@@ -1919,7 +1925,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-.editbtn {
+.editbtn, input.context {
   cursor: pointer;
   display: block;
   float: left;
@@ -1950,16 +1956,16 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
   margin-right: 10px;
 }
-.editbtn:hover {
+.editbtn:hover, input.context:hover {
   background-position: 0 0px;
   color: #333;
   border-color: #000000;
   text-decoration: none;
 }
-.editbtn:focus {
+.editbtn:focus, input.context:focus {
   outline: 1px dotted #666;
 }
-.editbtn.left {
+.editbtn.left, input.context.left {
   color: #404040;
   -webkit-border-top-right-radius: 0;
   -moz-border-radius-topright: 0;
@@ -1969,7 +1975,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border-bottom-right-radius: 0;
   margin-right: 0;
 }
-.editbtn.middle {
+.editbtn.middle, input.context.middle {
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -1977,13 +1983,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin: 0;
   border-left: solid 1px rgba(255, 255, 255, 0);
 }
-.editbtn.middle:hover {
+.editbtn.middle:hover, input.context.middle:hover {
   border-left: solid 1px #000000;
 }
-.editbtn.right:hover {
+.editbtn.right:hover, input.context.right:hover {
   border-left: solid 1px #000000;
 }
-.editbtn.right {
+.editbtn.right, input.context.right {
   -webkit-border-top-left-radius: 0;
   -moz-border-radius-topleft: 0;
   border-top-left-radius: 0;
@@ -1993,16 +1999,16 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border-left: solid 1px #f3f3f3;
   border-left: solid 1px rgba(255, 255, 255, 0);
 }
-.editbtn.small {
+.editbtn.small, input.context.small {
   font-size: 13px;
   line-height: normal;
 }
-.editbtn.large {
+.editbtn.large, input.context.large {
   font-size: 15px;
   line-height: normal;
   padding: 9px 14px 9px;
 }
-.editbtn.mini {
+.editbtn.mini, input.context.mini {
   font-size: 10px;
   line-height: normal;
 }
@@ -2489,11 +2495,61 @@ img.image-left {
   background: #ffffff;
   padding: 18px 0px;
 }
+#frontpage-content {
+  width: 470px;
+  margin: 4em auto;
+}
 #content {
   line-height: 1.5em;
   clear: both;
   font-size: 80%;
   margin: 1em 0.25em 2em 0.25em;
+}
+#login-forgotten-password {
+  clear: both;
+  margin-top: 36px;
+  background-image: none;
+  background-color: #fdf5d9;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  padding: 14px;
+  border-color: #fceec1;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#login-forgotten-password ul, #login-forgotten-password p {
+  margin-right: 30px;
+}
+#login-forgotten-password ul {
+  margin-bottom: 0;
+}
+#login-forgotten-password li {
+  color: #404040;
+}
+#login-forgotten-password .alert-actions {
+  margin-top: 5px;
+}
+#login-forgotten-password.error, #login-forgotten-password.success, #login-forgotten-password.info {
+  color: #404040;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+#login-forgotten-password.error {
+  background-color: #fddfde;
+  border-color: #fbc7c6;
+}
+#login-forgotten-password.success {
+  background-color: #d1eed1;
+  border-color: #bfe7bf;
+}
+#login-forgotten-password.info {
+  background-color: #ddf4fb;
+  border-color: #c6edf9;
+}
+#login-forgotten-password .discreet {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 80%;
+  font-weight: normal;
+  line-height: 18px;
 }
 /* Special case of #content - TinyMCE */
 body#content {
