@@ -3,7 +3,7 @@ from zope import schema
 from plone.app.users.userdataschema import IUserDataSchemaProvider
 from plone.app.users.userdataschema import IUserDataSchema
 
-from pressapp.memberprofiles import _
+from pressapp.memberprofiles import MessageFactory as _
 
 class UserDataSchemaProvider(object):
     implements(IUserDataSchemaProvider)

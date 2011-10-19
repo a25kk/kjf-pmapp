@@ -5,7 +5,7 @@
     <adapter
         provides=".userschema.IEnhancedUserDataSchema"
         for="Products.CMFCore.interfaces.ISiteRoot"
-        factory=".adapter.EnhancedUerDataPanelAdapter"
+        factory=".adapter.EnhancedUserDataPanelAdapter"
         />
     
 </configure>
