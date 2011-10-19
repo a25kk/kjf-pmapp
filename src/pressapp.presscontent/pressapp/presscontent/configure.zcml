@@ -25,6 +25,11 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-  <!-- -*- extra stuff goes here -*- -->
+  <genericsetup:importStep
+        name="pressapp.presscontent-various"
+        title="Additional PressApp press content setup handlers"
+        description="PressApp press content configuration"
+        handler="pressapp.presscontent.setuphandlers.importVarious"
+        />
 
 </configure>
