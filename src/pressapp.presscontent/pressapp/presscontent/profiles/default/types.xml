@@ -8,4 +8,8 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="pressapp.presscontent.pressinvitation" meta_type="Dexterity FTI" />
+  <object name="pressapp.presscontent.pressrelease" meta_type="Dexterity FTI" />
+  <object name="pressapp.presscontent.pressroom" meta_type="Dexterity FTI" />
+  <object name="pressapp.presscontent.presscenter" meta_type="Dexterity FTI" />
 </object>
