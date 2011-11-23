@@ -12,6 +12,10 @@
      expression="request/HTTP_X_THEME_ENABLED | nothing"
      id="++theme++pressapp.sitetheme/js/jquery.chosen.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
+      conditionalcomment="" cookable="True" enabled="True"
+      expression="request/HTTP_X_THEME_ENABLED | nothing"
+      id="++theme++pressapp.sitetheme/js/bootstrap.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
      conditionalcomment="" cookable="True" enabled="True"
      expression="request/HTTP_X_THEME_ENABLED | nothing"
      id="++theme++pressapp.sitetheme/js/pressapp.js" inline="False"/>

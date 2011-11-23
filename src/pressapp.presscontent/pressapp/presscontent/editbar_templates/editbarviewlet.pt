@@ -1,0 +1,20 @@
+<div class="editbar" id="editbar">
+    <div class="editbar-inner"
+        tal:define="context_url viewlet/context_url">
+        <div class="container-fluid">
+            <div class="container">
+                <a class="editbtn flarge left"
+                    tal:attributes="href python:context_url+'/@@edit'">Edit</a>
+                <a class="editbtn flarge middle">View</a>
+                <a class="editbtn flarge middle">Delete</a>
+                <a class="editbtn flarge right">Action</a>
+                <a class="editbtn flarge standalone"
+                    tal:attributes="href python:context_url+'/@@pr-dashboard'">
+                    Press Releases</a>
+                <a class="editbtn flarge standalone"
+                    tal:attributes="href python:context_url+'/@@pi-dashboard'">
+                    Press Invitations</a>
+            </div>
+        </div>
+    </div>
+</div>
