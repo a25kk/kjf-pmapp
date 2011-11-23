@@ -4,7 +4,11 @@ from plone.directives import dexterity, form
 from zope import schema
 from Acquisition import aq_inner
 from z3c.form import group, field
+from Products.CMFCore.utils import getToolByName
 from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
+from plone.app.contentlisting.interfaces import IContentListing
+
+from pressapp.presscontent.pressrelease import IPressRelease
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -21,10 +25,15 @@ class View(grok.View):
     grok.name('view')
     
     def update(self):
-        self.has_pressrooms = len(self.contained_pressrooms()) > 0
-        self.pressrooms = self.contained_pressrooms()
-    
-    def contained_pressrooms(self):
         context = aq_inner(self.context)
-        items = context.items()
+        self.has_releases = len(self.contained_pressreleases()) > 0
+        self.pressreleases = self.contained_pressreleases()
+    
+    def contained_pressreleases(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=IPressRelease.__identifier__,
+                          path='/'.join(context.getPhysicalPath()))
+        items = IContentListing(results)
         return items
+    

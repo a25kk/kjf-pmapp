@@ -7,22 +7,37 @@
       i18n:domain="pressapp.presscontent">
 <body>
 
-<metal:main fill-slot="content-core">
-  <metal:content-core define-macro="content-core">
-
-    <h2>
-        Rendered from 
-        pressroom_templates/<span tal:replace="template/id" />
-    </h2>
-
-
-    <div tal:content="context/Title">Title inserted here</div>
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
     
-    <p class="highlight">Press Room default view</p>
+     <div class="box">
+        <h1>Arbeitsplatz <span tal:replace="context/Title" />!</h1>
+        <p class="visualClear">Lorem ipsum dolor sit amet.</p>
+      </div>
     
-    <tal:block tal:condition="view/has_pressrooms">
-    <section tal:define="pressrooms view/pressrooms">
-        <div tal:repeat="item pressrooms">
+      <div class="container">
+        <div class="row">
+          <div class="cell position-0 width-1:3">
+            <div class="box">
+            <h2>Press Releases</h2>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div>
+          </div>
+          <div class="cell position-1:3 width-1:3">
+            <h2>Press Invitations</h2>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="cell position-2:3 width-1:3">
+            <h2>Schedule</h2>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
+        </div>
+        <div class="visualClear"><!-- --></div>
+      </div>
+    
+    <tal:block tal:condition="view/has_releases">
+    <section tal:define="items view/pressreleases">
+        <div tal:repeat="item items">
             <h2 tal:content="item/Title" />
         </div>
     </section>
