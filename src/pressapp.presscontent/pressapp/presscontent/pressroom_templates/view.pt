@@ -20,6 +20,14 @@
     
     <p class="highlight">Press Room default view</p>
     
+    <tal:block tal:condition="view/has_pressrooms">
+    <section tal:define="pressrooms view/pressrooms">
+        <div tal:repeat="item pressrooms">
+            <h2 tal:content="item/Title" />
+        </div>
+    </section>
+    </tal:block>
+    
   </metal:content-core>
 </metal:main>
 

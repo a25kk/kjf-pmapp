@@ -85,4 +85,4 @@ def importVarious(context):
     if context.readDataFile('pressapp.presscontent-various.txt') is None:
         return
     portal = context.getSite()
-    addPressPortalContent(portal)
+    #addPressPortalContent(portal)
