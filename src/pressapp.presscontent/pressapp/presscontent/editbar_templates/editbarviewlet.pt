@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="container">
                 <a class="editbtn flarge left"
-                    tal:attributes="href python:context_url+'/@@edit'">Edit</a>
+                    tal:attributes="href python:context_url+'/@@-dashboard'">Edit</a>
                 <a class="editbtn flarge middle">View</a>
                 <a class="editbtn flarge middle">Delete</a>
                 <a class="editbtn flarge right">Action</a>
