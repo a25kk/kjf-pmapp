@@ -14,5 +14,17 @@ $(document).ready(function() {
     $(document).bind('loadInsideOverlay', function(e){
         $('select.chosen-select', $(this)).chosen();
     });
+    $(function() {
+        $('a[rel=twipsy]').twipsy({
+            live:true
+        });
+    });
+    var statusURL = $("#status-placeholder a").attr("href");
+    if (statusURL) {
+        $('#status-placeholder').load(statusURL);
+        var refreshId = setInterval(function() {
+            $('#status-placeholder').fadeOut('slow').load(statusURL).fadeIn('slow');
+        }, 9000);
+    }
 });
 })(jQuery);

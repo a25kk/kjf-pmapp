@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+    
+        <h1>Versandplaner: <span tal:replace="context/Title" />!</h1>
+        <p class="visualClear">
+            In diesem Bereich k&ouml;nnen Sie den Versand von Pressmitteilungen und
+            Presseeinladungen terminieren und durchf&uuml;hren.</p>
+
+      <div class="container">
+          <div class="box">
+
+                  <h2>Geplante Vorg&auml;nge</h2>
+                  <table class="zebra-striped">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Status</th>
+                              <th>Typ</th>
+                              <th>Titel</th>
+                              <th>Termin</th>
+                              <th>Aktionen</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>1.</td>
+                              <td><span class="label info">Neu</span></td>
+                              <td><a href="#">PressRelease</a></td>
+                              <td>Lorem ipsum dolor sit amet</td>
+                              <td>20.09.2011</td>
+                              <td><a class="editbtn mini left">Edit</a>
+                                <a class="editbtn mini middle">View</a>
+                                <a class="editbtn mini right">Send</a>
+                               </td>
+                          </tr>
+                          <tr>
+                              <td colspan="6">
+                                  <div class="alert-message block-message warning">
+                                     <a class="close" href="#">×</a>
+                                     <p><strong>Hinweis:</strong>
+                                         Im Augenblick liegen keine weiteren Termine vor.</p>
+                                   </div>
+                              </td>
+                      </tbody>
+                  </table>
+                  
+         </div>
+      </div>
+              
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

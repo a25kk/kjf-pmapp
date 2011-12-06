@@ -9,6 +9,7 @@ from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from plone.app.contentlisting.interfaces import IContentListing
 
 from pressapp.presscontent.pressrelease import IPressRelease
+from pressapp.presscontent.pressinvitation import IPressInvitation
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -36,4 +37,37 @@ class View(grok.View):
                           path='/'.join(context.getPhysicalPath()))
         items = IContentListing(results)
         return items
+
+class DashboardReleases(grok.View):
+    grok.context(IPressRoom)
+    grok.require('zope2.View')
+    grok.name('dashboard-releases')
     
+    def update(self):
+        context = aq_inner(self.context)
+        self.has_pressreleases = len(self.contained_pressreleases()) > 0
+    
+    def contained_pressreleases(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=IPressRelease.__identifier__,
+                          path='/'.join(context.getPhysicalPath()))
+        items = IContentListing(results)
+        return items
+
+class DashboardInvitations(grok.View):
+    grok.context(IPressRoom)
+    grok.require('zope2.View')
+    grok.name('dashboard-invitations')
+
+    def update(self):
+        context = aq_inner(self.context)
+        self.has_pressinvitations = len(self.contained_pressinvitations()) > 0
+
+    def contained_pressinvitations(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=IPressInvitation.__identifier__,
+                          path='/'.join(context.getPhysicalPath()))
+        items = IContentListing(results)
+        return items

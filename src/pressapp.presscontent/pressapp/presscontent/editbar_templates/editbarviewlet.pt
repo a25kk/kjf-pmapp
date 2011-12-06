@@ -13,7 +13,7 @@
                     tal:attributes="href python:context_url+'/@@dashboard-invitations'">
                     Press Invitations</a>
                 <a class="editbtn flarge right"
-                    tal:attributes="href python:context_url+'/@@schedule'">
+                    tal:attributes="href python:context_url+'/@@dashboard-schedule'">
                     Schedule</a>
             </div>
         </div>

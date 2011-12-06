@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+    
+        <h1>Pressemiteilungen bearbeiten <span tal:replace="context/Title" />!</h1>
+        <p class="visualClear">in diesem Bereich finden Sie eine &Uuml;bersicht &uuml;ber Ihre
+        bereits angelegten Pressemitteilungen.</p>
+
+      <div class="container">
+          <div class="box">
+                  <p class="pull-right">
+                      <a class="editbtn mini standalone disabled"
+                        data-placement="below" rel='twipsy' title="Not implemented yet.">
+                          Neu anlegen</a>
+                  </p>
+                  <h2>Pressemitteilungen</h2>
+                  <table class="zebra-striped" tal:condition="view/has_pressinvitations">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Pressemitteilung</th>
+                              <th>Status</th>
+                              <th>Aktionen</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tal:block tal:repeat="item view/contained_pressinvitations">
+                          <tr tal:define="counter repeat/item/number">
+                              <td tal:content="counter">1.</td>
+                              <td><a href="#" tal:content="item/Title"
+                                    tal:attributes="href item/getURL">
+                                    PR Title</a></td>
+                              <td><span class="label info">Neu</span></td>
+                              <td><a class="editbtn mini left">Edit</a>
+                                <a class="editbtn mini right">View</a>
+                               </td>
+                          </tr>
+                          </tal:block>
+                      </tbody>
+                  </table>
+                  
+                   <div class="alert-message block-message info"
+                        tal:condition="not:view/has_pressinvitations">
+                        <a class="close" href="#">×</a>
+                        <p><strong>Hinweis:</strong>
+                            Im Augenblick liegen keine Presseeinladungen vor.</p>
+                   </div>
+         </div>
+      </div>
+              
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

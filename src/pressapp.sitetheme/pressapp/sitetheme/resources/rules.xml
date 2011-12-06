@@ -69,6 +69,9 @@
         <replace css:content="#editbar" css:theme="#editbar"
             css:if-content="#editbar" />
         
+        <replace css:content-children="#member-infobox" css:theme-children="#member-box"
+            css:if-content="#user-name" />
+        
         <!-- Document Content -->
         <replace css:content-children="#content" css:theme-children="#document-content" />
         <!--<before css:content="#edit-bar" css:theme="#document-content" />-->

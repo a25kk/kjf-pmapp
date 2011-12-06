@@ -19,7 +19,7 @@
               <div class="cell position-0 width-1:2">
                   <p class="pull-right">
                       <a class="editbtn mini standalone disabled"
-                        data-placement="below" rel="twipsy" title="Not implemented yet.">
+                        data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">
                           Neu anlegen</a>
                   </p>
                   <h2>Pressemitteilungen</h2>
@@ -37,8 +37,8 @@
                               <td>1.</td>
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label info">Neu</span></td>
-                              <td><a class="editbtn mini left">Edit</a>
-                                <a class="editbtn mini right">View</a>
+                              <td><a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                                </td>
                           </tr>
                           <tr>
@@ -46,8 +46,8 @@
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label important">Fehler</span></td>
                               <td>
-                                  <a class="editbtn mini left">Edit</a>
-                                  <a class="editbtn mini right">View</a>
+                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                               </td>
                           </tr>
                           <tr>
@@ -55,8 +55,8 @@
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label warning">Wartend</span></td>
                               <td>
-                                  <a class="editbtn mini left">Edit</a>
-                                  <a class="editbtn mini right">View</a>
+                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                               </td>
                           </tr>
                           <tr>
@@ -64,15 +64,16 @@
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label success">Versand</span></td>
                               <td>
-                                  <a class="editbtn mini left">Edit</a>
-                                  <a class="editbtn mini right">View</a>
+                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                               </td>
                           </tr>
                       </tbody>
                   </table>
               </div>
               <div class="cell position-1:2 width-1:2">
-                  <p class="pull-right"><a class="editbtn mini standalone">Neu anlegen</a></p>
+                  <p class="pull-right"><a class="editbtn mini standalone disabled"
+                      data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Neu anlegen</a></p>
                   <h2>Presseeinladungen</h2>
                   <table class="zebra-striped">
                       <thead>
@@ -88,8 +89,8 @@
                               <td>1.</td>
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label info">Neu</span></td>
-                              <td><a class="editbtn mini left">Edit</a>
-                                <a class="editbtn mini right">View</a>
+                              <td><a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                                </td>
                           </tr>
                           <tr>
@@ -97,8 +98,8 @@
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label important">Fehler</span></td>
                               <td>
-                                  <a class="editbtn mini left">Edit</a>
-                                  <a class="editbtn mini right">View</a>
+                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                               </td>
                           </tr>
                           <tr>
@@ -106,8 +107,8 @@
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label warning">Wartend</span></td>
                               <td>
-                                  <a class="editbtn mini left">Edit</a>
-                                  <a class="editbtn mini right">View</a>
+                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                               </td>
                           </tr>
                           <tr>
@@ -115,8 +116,8 @@
                               <td><a href="#">Lorem ipsum dolor sit amet</a></td>
                               <td><span class="label success">Versand</span></td>
                               <td>
-                                  <a class="editbtn mini left">Edit</a>
-                                  <a class="editbtn mini right">View</a>
+                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
+                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
                               </td>
                           </tr>
                       </tbody>
