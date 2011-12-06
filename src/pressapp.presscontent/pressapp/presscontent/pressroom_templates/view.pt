@@ -17,7 +17,11 @@
           <div class="box">
           <div class="row">
               <div class="cell position-0 width-1:2">
-                  <p class="pull-right"><a class="editbtn mini standalone">Neu anlegen</a></p>
+                  <p class="pull-right">
+                      <a class="editbtn mini standalone disabled"
+                        data-placement="below" rel="twipsy" title="Not implemented yet.">
+                          Neu anlegen</a>
+                  </p>
                   <h2>Pressemitteilungen</h2>
                   <table class="zebra-striped">
                       <thead>
