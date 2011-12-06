@@ -10,9 +10,9 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
     
-        <h1>Pressemiteilungen bearbeiten <span tal:replace="context/Title" />!</h1>
-        <p class="visualClear">in diesem Bereich finden Sie eine &Uuml;bersicht &uuml;ber Ihre
-        bereits angelegten Pressemitteilungen.</p>
+        <h1>Presseeinladungen: <span tal:replace="context/Title" />!</h1>
+        <p class="visualClear">In diesem Bereich finden Sie eine &Uuml;bersicht &uuml;ber Ihre
+        bereits angelegten Presseeinladungen.</p>
 
       <div class="container">
           <div class="box">
@@ -21,12 +21,12 @@
                         data-placement="below" rel='twipsy' title="Not implemented yet.">
                           Neu anlegen</a>
                   </p>
-                  <h2>Pressemitteilungen</h2>
+                  <h2>Presseeinladungen</h2>
                   <table class="zebra-striped" tal:condition="view/has_pressinvitations">
                       <thead>
                           <tr>
                               <th>#</th>
-                              <th>Pressemitteilung</th>
+                              <th>Presseeinladung</th>
                               <th>Status</th>
                               <th>Aktionen</th>
                           </tr>
