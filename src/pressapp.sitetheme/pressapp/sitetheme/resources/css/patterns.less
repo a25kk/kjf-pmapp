@@ -648,7 +648,22 @@ input.context {
   &:focus {
     outline: 1px dotted #666;
   }
-
+  &.disabled {
+      cursor: default;
+      background-image: none;
+      .reset-filter();
+      .opacity(65);
+      .box-shadow(none);
+    }
+    &[disabled] {
+      // disabled pseudo can't be included with .disabled
+      // def because IE8 and below will drop it ;_;
+      cursor: default;
+      background-image: none;
+      .reset-filter();
+      .opacity(65);
+      .box-shadow(none);
+    }
   // Primary Button Type
   &.left {
     color: @grayDark;

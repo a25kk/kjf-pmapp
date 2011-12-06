@@ -1972,6 +1972,30 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .editbtn:focus, input.context:focus {
   outline: 1px dotted #666;
 }
+.editbtn.disabled, input.context.disabled {
+  cursor: default;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: alpha(opacity=65);
+  -khtml-opacity: 0.65;
+  -moz-opacity: 0.65;
+  opacity: 0.65;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.editbtn[disabled], input.context[disabled] {
+  cursor: default;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: alpha(opacity=65);
+  -khtml-opacity: 0.65;
+  -moz-opacity: 0.65;
+  opacity: 0.65;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 .editbtn.left, input.context.left {
   color: #404040;
   -webkit-border-top-right-radius: 0;

@@ -14,7 +14,11 @@
  <javascript authenticated="False" cacheable="True" compression="safe"
       conditionalcomment="" cookable="True" enabled="True"
       expression="request/HTTP_X_THEME_ENABLED | nothing"
-      id="++theme++pressapp.sitetheme/js/bootstrap.js" inline="False"/>
+      id="++theme++pressapp.sitetheme/js/bootstrap-dropdown.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="safe"
+      conditionalcomment="" cookable="True" enabled="True"
+      expression="request/HTTP_X_THEME_ENABLED | nothing"
+      id="++theme++pressapp.sitetheme/js/bootstrap-twipsy.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
      conditionalcomment="" cookable="True" enabled="True"
      expression="request/HTTP_X_THEME_ENABLED | nothing"
