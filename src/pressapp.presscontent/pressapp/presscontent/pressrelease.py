@@ -1,3 +1,4 @@
+from Acquisition import aq_inner
 from five import grok
 from plone.directives import dexterity, form
 
@@ -7,6 +8,8 @@ from z3c.form import group, field
 
 from plone.app.textfield import RichText
 from plone.namedfile.field import NamedBlobFile
+
+from plone.app.layout.viewlets.interfaces import IAboveContent
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -56,3 +59,14 @@ class View(grok.View):
     grok.context(IPressRelease)
     grok.require('zope2.View')
     grok.name('view')
+
+
+class PressReleaseActions(grok.Viewlet):
+    grok.name('pressapp.membercontent.PressReleaseActions')
+    grok.context(IPressRelease)
+    grok.require('zope2.View')
+    grok.viewletmanager(IAboveContent)
+
+    def update(self):
+        context = aq_inner(self.context)
+        self.context_url = context.absolute_url()

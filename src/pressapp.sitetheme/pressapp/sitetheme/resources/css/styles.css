@@ -2893,6 +2893,9 @@ div.listingBar a:hover {
 .field input[type="text"][name$=".title"], input#title {
   width: 100%;
 }
+.richtext-field > html, .richtext-field > body, .richtext-field > iframe {
+  background: #ffffff;
+}
 /* @group Overlay windows */
 /* styling for overlays (popups) */
 div.overlay {
@@ -2930,7 +2933,7 @@ div.overlaybg div.close, div.overlay div.close {
   overflow-y: auto;
 }
 .pb-ajax, .pb-image, .overlay iframe {
-  background-color: #fff;
+  background-color: #fff !important;
   border: 1px solid #999;
   white-space: normal;
   box-shadow: 0 0 3em 0.5em #666;
