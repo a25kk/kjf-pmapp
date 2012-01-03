@@ -1,0 +1,7 @@
+<object name="portal_javascripts">
+    
+ <!-- Add custom javascripts to the registry for overlays -->
+ <javascript cacheable="True" compression="safe"
+     cookable="True" enabled="True"
+     id="++resource++pressapp.overlays/overlayhelpers.js" inline="False"/>
+</object>
