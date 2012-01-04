@@ -4,8 +4,8 @@
         <div class="container-fluid">
             <div class="container">
                 <a class="editbtn flarge standalone"
-                    tal:attributes="href context_url">
-                    Dashboard</a>
+                    tal:attributes="href viewlet/homefolder_url">
+                    Arbeitsplatz</a>
                 <a class="editbtn flarge left"
                     tal:attributes="href python:context_url+'/view'">
                     Anzeigen</a>

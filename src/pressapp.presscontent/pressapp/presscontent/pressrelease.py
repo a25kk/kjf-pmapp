@@ -8,6 +8,7 @@ from z3c.form import group, field
 
 from plone.app.textfield import RichText
 from plone.namedfile.field import NamedBlobFile
+from Products.CMFCore.utils import getToolByName
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
 
@@ -70,3 +71,10 @@ class PressReleaseActions(grok.Viewlet):
     def update(self):
         context = aq_inner(self.context)
         self.context_url = context.absolute_url()
+
+    def homefolder_url(self):
+        context = aq_inner(self.context)
+        mtool = getToolByName(context, 'portal_membership')
+        member = mtool.getAuthenticatedMember()
+        home_folder = member.getHomeFolder().absolute_url()
+        return home_folder
