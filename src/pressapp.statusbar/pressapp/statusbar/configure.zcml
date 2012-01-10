@@ -2,27 +2,21 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
-    xmlns:cmf="http://namespaces.zope.org/cmf"
-    xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="pressapp.memberprofiles">
+    xmlns:grok="http://namespaces.zope.org/grok"
+    i18n_domain="pressapp.statusbar">
 
   <five:registerPackage package="." initialize=".initialize" />
-  
-  <!-- Include configuration for dependencies listed in setup.py -->
   <includeDependencies package="." />
-
-  <!-- Grok the package to initialise schema interfaces and content classes -->
   <grok:grok package="." />
-  
+
   <genericsetup:registerProfile
       name="default"
-      title="pressapp.memberprofiles"
+      title="pressapp.statusbar"
       directory="profiles/default"
-      description="Installs the pressapp.memberprofiles package"
+      description="Installs the pressapp.statusbar package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  
-  <cmf:registerDirectory name="pressapp.memberprofiles" />
+  <!-- -*- extra stuff goes here -*- -->
   
 </configure>

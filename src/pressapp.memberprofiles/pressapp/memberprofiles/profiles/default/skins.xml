@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object name="portal_skins" meta_type="Plone Skin Tool">
+    <object name="pressapp.memberprofiles"
+        meta_type="Filesystem Directory View"
+        directory="pressapp.memberprofiles:skins/pressapp.memberprofiles" />
+    <skin-path name="*">
+        <layer name="pressapp.memberprofiles" insert-after="custom" />
+    </skin-path>
+</object>

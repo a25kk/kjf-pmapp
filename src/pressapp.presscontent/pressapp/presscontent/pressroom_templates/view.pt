@@ -25,13 +25,14 @@
                     sp&auml;ter k&ouml;nnte.</p>
             </div>
       
-      <div class="container">
+      <div class="container"
+        tal:define="context_url context/absolute_url">
           <div class="box">
           <div class="row">
               <div class="cell position-0 width-1:2">
                   <p class="pull-right">
-                      <a class="editbtn mini standalone disabled"
-                        data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">
+                      <a class="editbtn mini standalone popoverForm"
+                        tal:attributes="href python:context_url+'/@@add-press-release'">
                           Neu anlegen</a>
                   </p>
                   <h2>Pressemitteilungen <small>Beispiel</small></h2>
@@ -44,49 +45,45 @@
                               <th>Aktionen</th>
                           </tr>
                       </thead>
-                      <tbody>
-                          <tr>
-                              <td>1.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label info">Neu</span></td>
-                              <td><a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
-                               </td>
-                          </tr>
-                          <tr>
-                              <td>2.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label important">Fehler</span></td>
-                              <td>
-                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>3.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label warning">Wartend</span></td>
-                              <td>
-                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>4.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label success">Versand</span></td>
-                              <td>
-                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
-                              </td>
-                          </tr>
+                      <tbody tal:condition="view/has_releases">
+                          <tal:block tal:repeat="item view/pressreleases">
+                            <tr tal:define="rowcount repeat/item/number;">
+                                <td tal:content="rowcount">1</td>
+                                <td><a href="" tal:attributes="href item/getURL"
+                                        tal:content="item/Title" /></td>
+                                <td tal:define="state item/review_state">
+                                    <span class="label info"
+                                        i18n:translate=""
+                                        tal:content="state">State</span>
+                                </td>
+                                <td tal:define="item_url item/getURL">
+                                    <a class="editbtn mini left popoverForm"
+                                        tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
+                                    <a class="editbtn mini right"
+                                        tal:attributes="href python:item_url+'/view'">Anzeigen</a>
+                                </td>
+                            </tr>
+                          </tal:block>
+                      </tbody>
+                      <tbody tal:condition="not:view/has_releases">
+                            <tr>
+                                <td colspan="4">
+                                    <div class="alert-message block-message error">
+                                          <a class="close" href="#">×</a>
+                                          <p><strong i18n:translate="">
+                                              No press releases available!</strong></p>
+                                    </div>
+                                </td>
+                            </tr>
                       </tbody>
                   </table>
               </div>
               <div class="cell position-1:2 width-1:2">
-                  <p class="pull-right"><a class="editbtn mini standalone disabled"
-                      data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Neu anlegen</a></p>
-                  <h2>Presseeinladungen <small>Beispiel</small></h2>
+                  <p class="pull-right">
+                      <a class="editbtn mini standalone popoverForm"
+                        tal:attributes="href python:context_url+'/@@add-press-invitation'">
+                        Neu anlegen</a></p>
+                  <h2>Presseeinladungen</h2>
                   <table class="zebra-striped">
                       <thead>
                           <tr>
@@ -96,40 +93,34 @@
                               <th>Aktionen</th>
                           </tr>
                       </thead>
-                      <tbody>
+                      <tbody tal:condition="view/has_invitations">
+                            <tal:block tal:repeat="item view/contained_invitations">
+                              <tr tal:define="rowcount repeat/item/number;">
+                                  <td tal:content="rowcount">1</td>
+                                  <td><a href="" tal:attributes="href item/getURL"
+                                          tal:content="item/Title" /></td>
+                                  <td tal:define="state item/review_state">
+                                      <span class="label info"
+                                          i18n:translate=""
+                                          tal:content="state">State</span>
+                                  </td>
+                                  <td tal:define="item_url item/getURL">
+                                      <a class="editbtn mini left"
+                                          tal:attributes="href python:item_url+'/edit'">Edit</a>
+                                      <a class="editbtn mini right"
+                                          tal:attributes="href python:item_url+'/view'">View</a>
+                                  </td>
+                              </tr>
+                            </tal:block>
+                      </tbody>
+                      <tbody tal:condition="not:view/has_invitations">
                           <tr>
-                              <td>1.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label info">Neu</span></td>
-                              <td><a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
-                               </td>
-                          </tr>
-                          <tr>
-                              <td>2.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label important">Fehler</span></td>
-                              <td>
-                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>3.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label warning">Wartend</span></td>
-                              <td>
-                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>4.</td>
-                              <td><a href="#">Lorem ipsum dolor sit amet</a></td>
-                              <td><span class="label success">Versand</span></td>
-                              <td>
-                                  <a class="editbtn mini left" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">Edit</a>
-                                  <a class="editbtn mini right" data-placement='below' rel='twipsy' title="Diese Funktion ist noch nicht implementiert">View</a>
+                              <td colspan="4">
+                                  <div class="alert-message block-message error">
+                                        <a class="close" href="#">×</a>
+                                        <p><strong i18n:translate="">
+                                            No press invitations available!</strong></p>
+                                  </div>
                               </td>
                           </tr>
                       </tbody>
@@ -140,14 +131,6 @@
           <div class="visualClear"><!-- --></div>
           </div>
       </div>
-    
-    <tal:block tal:condition="view/has_releases">
-    <section tal:define="items view/pressreleases">
-        <div tal:repeat="item items">
-            <h2 tal:content="item/Title" />
-        </div>
-    </section>
-    </tal:block>
     
   </metal:content-core>
 </metal:main>

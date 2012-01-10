@@ -3,9 +3,9 @@ import os
 
 version = '1.0'
 
-setup(name='pressapp.policy',
+setup(name='pressapp.overlays',
       version=version,
-      description="Core policy package for the press release application.",
+      description="Basic setup for overlays",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -26,11 +26,7 @@ setup(name='pressapp.policy',
       install_requires=[
           'setuptools',
           'Products.CMFPlone',
-          'pressapp.overlays',
-          'pressapp.presscontent',
-          'pressapp.sitetheme',
-          'pressapp.memberprofiles',
-          'pressapp.statusbar',
+          'five.grok'
           # -*- Extra requirements: -*-
       ],
       entry_points="""

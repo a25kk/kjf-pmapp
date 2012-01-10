@@ -416,6 +416,12 @@ input#title {
     width: 100%;
 }
 
+.richtext-field > html,
+.richtext-field > body,
+.richtext-field > iframe {
+    background: @white;
+}
+
 /* @group Overlay windows */
 
 /* styling for overlays (popups) */
@@ -458,7 +464,7 @@ div.overlay div.close {
 }
 
 .pb-ajax, .pb-image, .overlay iframe {
-    background-color: #fff;
+    background-color: #fff !important;
     border: 1px solid #999;
     white-space: normal;
     box-shadow: 0 0 3em 0.5em #666;
