@@ -24,7 +24,7 @@ $(document).ready(function() {
         $('#status-placeholder').load(statusURL);
         var refreshId = setInterval(function() {
             $('#status-placeholder').fadeOut('slow').load(statusURL).fadeIn('slow');
-        }, 9000);
+        }, 10000);
     }
 });
 })(jQuery);

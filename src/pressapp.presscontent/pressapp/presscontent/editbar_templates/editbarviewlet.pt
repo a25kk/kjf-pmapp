@@ -3,18 +3,18 @@
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
             <div class="container">
-                <a class="editbtn flarge standalone"
+                <a class="editbtn flarge standalone active"
                     tal:attributes="href context_url">
-                    Dashboard</a>
+                    Arbeitsplatz</a>
                 <a class="editbtn flarge left"
                     tal:attributes="href python:context_url+'/@@dashboard-releases'">
-                    Press Releases</a>
+                    Pressemitteilungen</a>
                 <a class="editbtn flarge middle"
                     tal:attributes="href python:context_url+'/@@dashboard-invitations'">
-                    Press Invitations</a>
+                    Presseeinladungen</a>
                 <a class="editbtn flarge right"
                     tal:attributes="href python:context_url+'/@@dashboard-schedule'">
-                    Schedule</a>
+                    Versand</a>
             </div>
         </div>
     </div>

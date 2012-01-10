@@ -648,6 +648,11 @@ input.context {
   &:focus {
     outline: 1px dotted #666;
   }
+  &:active,
+  &.active {
+      @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+      .box-shadow(@shadow);
+    }
   &.disabled {
       cursor: default;
       background-image: none;
@@ -733,12 +738,14 @@ input.context {
 // ------------
 
 // Base alert styles
-.alert-message {
+.alert-message,
+.portalMessage {
   position: relative;
   padding: 7px 15px;
   margin-bottom: @baseline;
   color: @grayDark;
-  .gradientBar(#fceec1, #eedc94); // warning by default
+  //.gradientBar(#fceec1, #eedc94); // warning by default
+  background-color: lighten(#fceec1, 5%);
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   border-width: 1px;
   border-style: solid;
@@ -757,6 +764,9 @@ input.context {
   p {
     margin-bottom: 0;
   }
+  dd {
+        margin-left: 0px;
+    }
   div {
     margin-top: 5px;
     margin-bottom: 2px;

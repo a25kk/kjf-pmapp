@@ -12,7 +12,9 @@
     
         <h3>Status</h3>
     
-    <div id="content-core">
+    <div id="content-core"
+        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    portal context/@@plone_portal_state/portal;">
         <div tal:condition="not:view/has_modifications"
             class="alert-message block-message error">
               <a class="close" href="#">×</a>
@@ -20,11 +22,21 @@
               <p>There are no changes recorded since your last login.</p>
         </div>
         <tal:block tal:condition="view/has_modifications">
-            <div tal:repeat="item view/modified_content">
-                <p>Changed <span tal:replace="item/Title" />
-                   on <span tal:content="item/modified">Modification Date</span>
-                </p>
-            </div>
+            <table>
+                <tbody>
+                    <tr tal:repeat="item view/modified_content">
+                        <td><span tal:define="modified item/modified"
+                                tal:content="python:toLocalizedTime(modified, long_format=1)">Modification Date</span>
+                        </td>
+                        <td tal:define="portal_types portal/portal_types;
+                                        type item/portal_type">
+                            <span i18n:translate=""
+                                tal:replace="python: portal_types.getTypeInfo(type).Title()" />
+                            <span tal:replace="item/Title" /> angepasst
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </tal:block>
     </div>
     

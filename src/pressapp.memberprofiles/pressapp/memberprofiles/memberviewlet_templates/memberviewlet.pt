@@ -38,7 +38,7 @@
                     tal:attributes="href memberinfo/presslink"
                     tal:content="memberinfo/presslink">http://beispiel.tld</a></p>
             <p><a class="btn" href="#"
-                tal:attributes="href python:portal_url+'/personal-information'">Edit Profile &raquo;</a></p>
+                tal:attributes="href python:portal_url+'/personal-information'">Profil bearbeiten &raquo;</a></p>
         </div>
         
         <div class="container">
