@@ -1,0 +1,17 @@
+pressapp.channelmanagement Installation
+---------------------------------------
+
+To install pressapp.channelmanagement using zc.buildout and the plone.recipe.zope2instance
+recipe to manage your project, you can do this:
+
+* Add ``pressapp.channelmanagement`` to the list of eggs to install, e.g.:
+
+    [buildout]
+    ...
+    eggs =
+        ...
+        pressapp.channelmanagement
+       
+* Re-run buildout, e.g. with:
+
+    $ ./bin/buildout
