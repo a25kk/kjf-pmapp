@@ -28,14 +28,6 @@ class ISubscriber(form.Schema, IImageScaleTraversable):
     A single recipient/subscriber object
     """
 
-# Custom content-type class; objects created for this content type will
-# be instances of this class. Use this class to add content-type specific
-# methods and properties. Put methods that are mainly useful for rendering
-# in separate view classes.
-
-class Subscriber(dexterity.Item):
-    grok.implements(ISubscriber)
-
 
 class View(grok.View):
     grok.context(ISubscriber)

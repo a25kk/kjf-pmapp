@@ -29,10 +29,6 @@ class IChannel(form.Schema, IImageScaleTraversable):
     """
 
 
-class Channel(dexterity.Container):
-    grok.implements(IChannel)
-
-
 class View(grok.View):
     grok.context(IChannel)
     grok.require('zope2.View')
