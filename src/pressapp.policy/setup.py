@@ -26,10 +26,11 @@ setup(name='pressapp.policy',
       install_requires=[
           'setuptools',
           'Products.CMFPlone',
+          'pressapp.channelmanagement',
+          'pressapp.memberprofiles',
           'pressapp.overlays',
           'pressapp.presscontent',
           'pressapp.sitetheme',
-          'pressapp.memberprofiles',
           'pressapp.statusbar',
           # -*- Extra requirements: -*-
       ],
