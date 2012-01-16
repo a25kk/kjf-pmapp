@@ -23,7 +23,7 @@ $(document).ready(function() {
     if (statusURL) {
         $('#status-placeholder').load(statusURL);
         var refreshId = setInterval(function() {
-            $('#status-placeholder').fadeOut('slow').load(statusURL).fadeIn('slow');
+            $('#status-placeholder').load(statusURL).fadeIn('slow');
         }, 10000);
     }
 });

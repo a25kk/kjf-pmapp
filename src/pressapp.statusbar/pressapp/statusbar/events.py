@@ -2,9 +2,12 @@ from five import grok
 from Acquisition import aq_parent
 from DateTime import DateTime
 from AccessControl import getSecurityManager
+from zope.interface import Interface
 from zope.component import getUtility
+from zope.app.component.hooks import getSite
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from Products.PlonePAS.events import IUserLoggedInEvent
 
 from Products.CMFCore.interfaces import IContentish
 
@@ -25,3 +28,11 @@ def trackEditActivity(obj, event):
     username = getSecurityManager().getUser().getId()
     activities.add_activity(DateTime(), u"edited", username,
                             obj, aq_parent(obj))
+
+
+@grok.subscribe(Interface, IUserLoggedInEvent)
+def userLoggedInActivity(self, event):
+    site = getSite()
+    activities = getUtility(IRecentActivity, name=u"RecentActivity")
+    username = getSecurityManager().getUser().getId()
+    activities.add_activity(DateTime(), u"logged in", username, site, site)

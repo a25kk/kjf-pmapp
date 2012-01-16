@@ -14,19 +14,14 @@
     
     <div id="content-core">
     <section tal:condition="view/has_activities">
-    <tal:block tal:repeat="activity view/recent_activities">
+    <tal:block tal:repeat="activity view/my_activities">
         <div tal:define="username activity/user">
-            <div class="pull-left"
-                tal:define="portrait_url python:view.user_portrait(username);">
-                <img width="50"
-                    tal:attributes="src portrait_url;
-                                    alt username" />
-            </div>
-                
-            <p><span tal:replace="username" />
-               <span tal:replace="activity/action" />
-               <span tal:replace="python:activity['obj'].title" /><br />
-               at <span tal:replace="python:activity['parent'].title" />
+            <p tal:define="action activity/action">
+                <span tal:replace="activity/action" />
+                <tal:isaction tal:condition="python:action != 'logged in'">
+                <span tal:replace="python:activity['obj'].title" /><br />
+                </tal:isaction>
+                at <span tal:replace="python:activity['parent'].title" />
             </p><p>
                <small i18n:translate="">
                    <span i18n:name="days" tal:content="activity/time/days" /> days,
