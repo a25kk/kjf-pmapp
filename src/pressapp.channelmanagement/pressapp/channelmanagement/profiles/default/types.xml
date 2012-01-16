@@ -8,4 +8,7 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="pressapp.channelmanagement.subscriber" meta_type="Dexterity FTI" />
+  <object name="pressapp.channelmanagement.channelmanager" meta_type="Dexterity FTI" />
+  <object name="pressapp.channelmanagement.channel" meta_type="Dexterity FTI" />
 </object>
