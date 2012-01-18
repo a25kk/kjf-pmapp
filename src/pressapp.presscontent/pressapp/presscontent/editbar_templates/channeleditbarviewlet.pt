@@ -1,0 +1,29 @@
+<div class="editbar" id="editbar">
+    <div class="editbar-inner"
+        tal:define="context_url viewlet/context_url;
+                    parent_url viewlet/parent_url;
+                    home_url viewlet/my_workspace">
+        <div class="container-fluid">
+            <div class="container">
+                <a class="editbtn flarge left"
+                    tal:attributes="href parent_url">
+                    Presse Center</a>
+                <a class="editbtn flarge middle"
+                    tal:attributes="href home_url">
+                    Arbeitsplatz</a>
+                <a class="editbtn flarge right active"
+                    tal:attributes="href context_url">
+                    Adressverwaltung</a>
+                <a class="editbtn flarge left"
+                    tal:attributes="href python:home_url+'/@@dashboard-releases'">
+                    Pressemitteilungen</a>
+                <a class="editbtn flarge middle"
+                    tal:attributes="href python:home_url+'/@@dashboard-invitations'">
+                    Presseeinladungen</a>
+                <a class="editbtn flarge right"
+                    tal:attributes="href python:home_url+'/@@dashboard-schedule'">
+                    Versand</a>
+            </div>
+        </div>
+    </div>
+</div>
