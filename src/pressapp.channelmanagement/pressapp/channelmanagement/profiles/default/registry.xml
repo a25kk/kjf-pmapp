@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registry>
+    <record name="pressapp.channelmanagement.availableChannels">
+        <field type="plone.registry.field.Tuple">
+            <title>Available Channels</title>
+            <value_type type="plone.registry.field.TextLine" />
+        </field>
+        <value>
+            <element>Aichach</element>
+            <element>Augustkollekte</element>
+            <element>Augsburg</element>
+            <element>Augsburg Innenstadt</element>
+        </value>
+    </record>
+</registry>
