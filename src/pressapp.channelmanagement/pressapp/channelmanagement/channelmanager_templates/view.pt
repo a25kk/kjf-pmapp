@@ -7,10 +7,71 @@
       i18n:domain="pressapp.channelmanagement">
 <body>
 
-<metal:main fill-slot="content-core">
-  <metal:content-core define-macro="content-core">
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
 
-    <div tal:content="context/Title">Title inserted here</div>
+    <div class="container">
+        <h1 class="documentFirstHeading" tal:content="context/Title" />
+        
+        <section tal:define="context_url context/absolute_url;
+                             Batch python:modules['Products.CMFPlone'].Batch;
+                             b_size python:2;b_start python:0;b_start request/b_start | b_start;">
+            <div class="box">
+                <p class="pull-right" tal:condition="view/has_channels">
+                      <a class="editbtn mini standalone popoverForm"
+                        tal:define="channel view/active_channel;
+                                    channel_url channel/getURL;"
+                        tal:attributes="href python:channel_url+'/@@add-press-release'">
+                          Neuen Kontakt anlegen</a>
+                </p>
+                <h2>Kontakte <small>Liste aller Kontaktadressen</small></h2>
+                  <table class="bordered-table zebra-striped">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>E-Mail-Adresse</th>
+                              <th>Kontaktname</th>
+                              <th>Aktionen</th>
+                          </tr>
+                      </thead>
+                      <tbody tal:condition="view/has_subscribers">
+                          <tal:subscribers tal:define="items view/subscribers;
+                                                       batch python:Batch(items, b_size, int(b_start), orphan=1)">
+                          <tal:block tal:repeat="item batch">
+                            <tr tal:define="rowcount repeat/item/number;">
+                                <td tal:content="rowcount">1</td>
+                                <td>
+                                    <span tal:content="item/email" />
+                                </td>
+                                <td>
+                                    <span tal:content="item/Title" />
+                                </td>
+                                <td tal:define="item_url item/getURL">
+                                    <a class="editbtn mini standalone popoverForm"
+                                        tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
+                                </td>
+                            </tr>
+                          </tal:block>
+                          <div metal:use-macro="context/batch_macros/macros/navigation" />
+                          </tal:subscribers>
+                      </tbody>
+                      <tbody tal:condition="not:view/has_subscribers">
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="3">
+                                    <div class="alert-message block-message error">
+                                          <a class="close" href="#">×</a>
+                                          <p><strong i18n:translate="">
+                                              There are no subscribers yet</strong></p>
+                                    </div>
+                                </td>
+                            </tr>
+                      </tbody>
+                  </table>
+            </div>
+        </section>
+        
+    </div>
     
   </metal:content-core>
 </metal:main>

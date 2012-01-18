@@ -23,7 +23,7 @@ class ChannelSource(object):
         self.key = 'pressapp.channelmanagement.availableChannels'
         self.channel_list = self.getChannelList()
         self.vocab = SimpleVocabulary.fromItems(
-            [(x, x) for x in self.cahnnel_list])
+            [(x, x) for x in self.channel_list])
 
     def __contains__(self, term):
         return self.vocab.__contains__(term)
@@ -50,8 +50,7 @@ class ChannelSource(object):
         terms = []
         if registry:
             for value in registry.get(self.key, ()):
-                terms.append(SimpleVocabulary.createTerm(
-                    value, value.encode('utf-8'), value))
+                terms.append(value)
         return terms
 
 
