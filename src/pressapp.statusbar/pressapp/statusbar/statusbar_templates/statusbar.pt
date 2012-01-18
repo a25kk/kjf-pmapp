@@ -12,9 +12,10 @@
     
         <h3>Status Bar <small>Recent Activities</small></h3>
     
+    <div class="container">
     <div id="content-core">
-    <section tal:condition="view/has_activities">
-    <tal:block tal:repeat="activity view/recent_activities">
+    <section tal:condition="view/has_activities" class="box">
+    <tal:block tal:repeat="activity python:view.recent_activities(25)">
         <div tal:define="username activity/user">
             <div class="pull-left"
                 tal:define="portrait_url python:view.user_portrait(username);">
@@ -36,6 +37,7 @@
                </small>
              </p>
         </div>
+        <div class="visualClear">&nbsp;</div>
     </tal:block>
     </section>
     
@@ -48,7 +50,7 @@
     </div>
 
     </div>
-    
+    </div>
   </metal:content-core>
 </metal:main>
 

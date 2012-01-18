@@ -13,11 +13,14 @@ class StatusBar(grok.View):
     grok.name('activity-bar')
 
     def update(self):
-        self.has_activities = len(self.recent_activities()) > 0
+        self.has_activities = len(self.recent_activities(10)) > 0
 
-    def recent_activities(self):
+    def recent_activities(self, number):
         activities = queryUtility(IRecentActivity, name=u"RecentActivity")
-        recent = activities.get_recent_activity(5)
+        if number:
+            recent = activities.get_recent_activity(number)
+        else:
+            recent = activities.get_recent_activities(10)
         recentlist = []
         if recent:
             for action in recent:
