@@ -7,10 +7,72 @@
       i18n:domain="pressapp.channelmanagement">
 <body>
 
-<metal:main fill-slot="content-core">
-  <metal:content-core define-macro="content-core">
-  
-    <div tal:content="context/Title">Title inserted here</div>
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+    
+    <p class="pull-right">
+          <a class="editbtn mini standalone"
+            tal:define="context_url context/absolute_url;"
+            tal:attributes="href python:context_url+'/edit'">
+              Bearbeiten</a>
+    </p>
+    
+    <h1 class="documentFirstHeading">Kontaktinformationen
+        <small tal:content="context/Title" /></h1>
+    
+    <div class="row">
+        <div class="cell position-0 width-1:2">
+        <section class="box">
+            <table class="xbordered-table">
+                <thead>
+                    <tr>
+                        <th colspan="2"><h3>Kontaktdetails</h3></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kontaktname:</td>
+                        <td tal:content="context/Title">Name</td>
+                    </tr>
+                    <tr>
+                        <td>E-Mail-Adresse:</td>
+                        <td tal:content="context/email">Name</td>
+                    </tr>
+                    <tr>
+                        <td>Kontaktperson:</td>
+                        <td tal:content="context/contact">Name</td>
+                    </tr>
+                    <tr>
+                        <td>Telefon:</td>
+                        <td tal:content="context/phone">Name</td>
+                    </tr>
+                    <tr>
+                        <td>Mobil:</td>
+                        <td tal:content="context/mobile">Name</td>
+                    </tr>
+                    <tr>
+                        <td>Fax:</td>
+                        <td tal:content="context/fax">Name</td>
+                    </tr>
+                    <tr>
+                        <td>Kommentar:</td>
+                        <td tal:content="context/comment">Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        </div>
+        <div class="cell position-1:2 width-1:2">
+            <div class="box">
+                <h3>Verteiler:</h3>
+                <ul tal:define="channels context/channel">
+                    <li tal:repeat="channel channels">
+                        <span tal:replace="channel" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     
   </metal:content-core>
 </metal:main>

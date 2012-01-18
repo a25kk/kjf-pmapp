@@ -15,7 +15,7 @@
         
         <section tal:define="context_url context/absolute_url;
                              Batch python:modules['Products.CMFPlone'].Batch;
-                             b_size python:2;b_start python:0;b_start request/b_start | b_start;">
+                             b_size python:25;b_start python:0;b_start request/b_start | b_start;">
             <div class="box">
                 <p class="pull-right" tal:condition="view/has_channels">
                       <a class="editbtn mini standalone popoverForm"
@@ -47,7 +47,7 @@
                                     <span tal:content="item/Title" />
                                 </td>
                                 <td tal:define="item_url item/getURL">
-                                    <a class="editbtn mini standalone popoverForm"
+                                    <a class="editbtn mini standalone"
                                         tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
                                 </td>
                             </tr>
