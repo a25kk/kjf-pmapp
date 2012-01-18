@@ -49,3 +49,15 @@ class View(grok.View):
                           sort_on='sortable_title')
         subscribers = IContentListing(results)
         return subscribers
+
+    def channel_names(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        channels = catalog.uniqueValuesFor('channel')
+        names = []
+        for channel in channels:
+            info = {}
+            info['channel'] = channel
+            info['count'] = len(catalog.searchResults(channel=[channel]))
+            names.append(info)
+        return names

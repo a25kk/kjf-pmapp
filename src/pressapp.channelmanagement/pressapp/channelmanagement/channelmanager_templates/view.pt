@@ -11,7 +11,62 @@
   <metal:content-core define-macro="main">
 
     <div class="container">
-        <h1 class="documentFirstHeading" tal:content="context/Title" />
+        <div class="row">
+            <div class="cell position-0 width-1:2">
+                <h1 class="documentFirstHeading" tal:content="context/Title" />
+                <div class="well">
+                    <form name="searchform" id="searchGadget_form" 
+                          action="search"
+                          tal:attributes="action string:/search;
+                                          id string:search_form">
+
+                        <div class="LSBox">
+                        <label class="hiddenStructure"
+                            for="searchGadget"
+                               i18n:translate="text_search">Search Subscriber</label>
+
+                        <input name="SearchableText"
+                               type="text"
+                               size="18"
+                               value=""
+                               title="..."
+                               accesskey="4"
+                               i18n:attributes="title title_search_site;"
+                               tal:attributes="value request/form/SearchableText|nothing;
+                                               id string:searchGadget"
+                               class="searchField inputLabel" />
+
+                        <input class="searchButton btn mini"
+                               type="submit"
+                               value="Search"
+                               i18n:attributes="value label_search;" />
+
+                        <div class="LSResult" id="LSResult" style=""><div class="LSShadow" id="LSShadow"></div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="cell position-1:2 width-1:2">
+                <div class="box" tal:define="channel_list view/channel_names">
+                    <h3>Verteiler</h3>
+                    <table class="condensed-table">
+                        <thead>
+                            <tr>
+                                <th>Verteiler</th>
+                                <th>Anzahl Kontakte</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr tal:repeat="item channel_list">
+                                <td tal:content="item/channel">Channel</td>
+                                <td tal:content="item/count">Subscriber Count</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="visualClear"><!-- --></div>
         
         <section tal:define="context_url context/absolute_url;
                              Batch python:modules['Products.CMFPlone'].Batch;
@@ -24,7 +79,7 @@
                         tal:attributes="href python:channel_url+'/@@add-press-release'">
                           Neuen Kontakt anlegen</a>
                 </p>
-                <h2>Kontakte <small>Liste aller Kontaktadressen</small></h2>
+                <h3>Kontakte <small>Liste aller Kontaktadressen</small></h3>
                   <table class="bordered-table zebra-striped">
                       <thead>
                           <tr>

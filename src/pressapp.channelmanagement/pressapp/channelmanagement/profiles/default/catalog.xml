@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object name="portal_catalog">
+    <index name="channel" meta_type="KeywordIndex">
+        <indexed_attr value="channel" />
+    </index>
+    <column value="channel" />
+</object>
