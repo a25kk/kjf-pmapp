@@ -859,6 +859,31 @@ input.context {
   }
 }
 
+.listingBar {
+    margin: 1em 0;
+    border: 1px solid #ddd;
+    border: 0px solid rgba(0,0,0,.15);
+    .next {
+        display: inline-block;
+        float:right;
+    }
+    .previous {
+        display: inline-block;
+    }
+    a {
+        display:inline-block;
+        padding: 0.25em 0.5em;
+        border:0.1em solid #ccc;
+        .border-radius(4px);
+        .box-shadow(0 1px 2px rgba(0,0,0,.05));
+        text-decoration: none;
+      }
+      a:hover,
+      .active a {
+        background-color: lighten(@black, 45%);
+      }
+}
+
 
 // WELLS
 // -----
