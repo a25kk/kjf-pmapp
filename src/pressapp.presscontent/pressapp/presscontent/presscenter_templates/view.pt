@@ -7,17 +7,83 @@
       i18n:domain="pressapp.presscontent">
 <body>
 
-<metal:main fill-slot="content-core">
-  <metal:content-core define-macro="content-core"
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main"
         tal:define="memberinfo context/portal_membership/getMemberInfo;
                     member context/@@plone_portal_state/member;
                     name python:memberinfo['fullname'] or member.getId() or member.getId();
-                    portal_url context/portal_url">
-
-    <div tal:content="context/Title">Title inserted here</div>
+                    portal_url context/portal_url;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    context_url context/absolute_url">
     
-    <p class="highlight">Default view for a Press Center</p>
+    <div class="container">
+        <div class="row">
+            <div class="cell position-0 width-2:3">
+                <h1 class="documentFirstHeading" tal:content="context/Title" />
+                <p class="documentDescription" tal:content="context/Description" />
+            </div>
+            <div class="cell position-2:3 width-1:3">
+                <div class="box">
+                    <h3>Adressverwaltung</h3>
+                    <p>Verwaltungs- und Bearbeitungsoberfl&auml;che f&uuml;r
+                       das Adressbuch und die Verteilerlisten</p>
+                    <a href="" class="btn standalone"
+                        tal:attributes="href python:context_url+'/adressverwaltung'">
+                        Adressverwaltung anzeigen</a>
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <div class="container">
+        <section tal:condition="view/has_pressrooms">
+            <div class="box">
+                <a href="" class="pull-right btn standalone popoverLink"
+                    tal:attributes="href python:context_url+'/@@activity-bar?ajax_load=1'">
+                    Aktivit&auml;tsanzeige</a>
+                <h2>Presser&auml;ume <small>Liste der Benutzerkonten/Presser&auml;ume</small></h2>
+                  <table class="bordered-table zebra-striped">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Pressestelle</th>
+                              <th>Zuletzt angemeldet</th>
+                              <th>Aktionen</th>
+                          </tr>
+                      </thead>
+                      <tbody tal:condition="view/has_pressrooms">
+                          <tal:block tal:repeat="item view/pressrooms">
+                            <tr tal:define="rowcount repeat/item/number;">
+                                <td tal:content="rowcount">1</td>
+                                <td><a href="" tal:attributes="href item/getURL"
+                                        tal:content="item/Title" /></td>
+                                <td tal:define="owner item/Creator;
+                                                login_time python:view.memberinfo(owner)">
+                                    <span tal:replace="python:toLocalizedTime(login_time)" /> &mdash;
+                                    <span tal:replace="python:toLocalizedTime(login_time, time_only=1)" /> Uhr
+                                </td>
+                                <td tal:define="item_url item/getURL">
+                                    <a class="editbtn mini standalone"
+                                        tal:attributes="href python:item_url+'/view'">Anzeigen</a>
+                                </td>
+                            </tr>
+                          </tal:block>
+                      </tbody>
+                      <tbody tal:condition="not:view/has_pressrooms">
+                            <tr>
+                                <td colspan="4">
+                                    <div class="alert-message block-message error">
+                                          <a class="close" href="#">×</a>
+                                          <p><strong i18n:translate="">
+                                              No pressrooms available!</strong></p>
+                                    </div>
+                                </td>
+                            </tr>
+                      </tbody>
+                  </table>
+            </div>
+        </section>
+    </div>
   </metal:content-core>
 </metal:main>
 
