@@ -1,0 +1,99 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-01-19 16:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: pressapp.channelmanagement\n"
+
+#: ./../profiles/default/types/pressapp.channelmanagement.subscriber.xml
+msgid "A single recipient/subscriber object"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channel.xml
+msgid "A specific channel holding subscriber objects"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channelmanager.xml
+msgid "Central managing unit for subscriber channels"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channel.xml
+#: ./../subscriber.py:102
+msgid "Channel"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channelmanager.xml
+msgid "ChannelManager"
+msgstr ""
+
+#: ./../subscriber.py:98
+msgid "Channels"
+msgstr ""
+
+#: ./../subscriber.py:93
+msgid "Comment"
+msgstr ""
+
+#: ./../subscriber.py:77
+msgid "Contact Person"
+msgstr ""
+
+#: ./../subscriber.py:69
+msgid "Contact Title"
+msgstr ""
+
+#: ./../subscriber.py:73
+msgid "Email"
+msgstr ""
+
+#: ./../subscriber.py:89
+msgid "Fax"
+msgstr ""
+
+#: ./../subscriber.py:85
+msgid "Mobile Phone"
+msgstr ""
+
+#: ./../subscriber.py:81
+msgid "Phone"
+msgstr ""
+
+#: ./../subscriber.py:99
+msgid "Please select the channels this recipient is subscribed to."
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.channelmanagement.subscriber.xml
+msgid "Subscriber"
+msgstr ""
+
+#: ./../channelmanager_templates/view.pt:121
+msgid "There are no subscribers yet"
+msgstr ""
+
+#. Default: "Search"
+#: ./../channelmanager_templates/view.pt:41
+msgid "label_search"
+msgstr ""
+
+#. Default: "Search Subscriber"
+#: ./../channelmanager_templates/view.pt:26
+msgid "text_search"
+msgstr ""
+
+#. Default: "..."
+#: ./../channelmanager_templates/view.pt:30
+msgid "title_search_site"
+msgstr ""
+

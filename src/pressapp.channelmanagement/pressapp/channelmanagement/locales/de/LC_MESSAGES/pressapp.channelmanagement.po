@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2012-01-10 17:19+0000\n"
+"PO-Revision-Date: 2012-01-19 17:34+0100\n"
+"Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
+"Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: utf-8 latin1\n"
+
+#: ./../profiles/default/types/pressapp.channelmanagement.subscriber.xml
+msgid "A single recipient/subscriber object"
+msgstr "Ein Kontakt/Empfänger"
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channel.xml
+msgid "A specific channel holding subscriber objects"
+msgstr "Eine Kontaktliste, die Abonnenten/Kontaktadressen beinhaltet"
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channelmanager.xml
+msgid "Central managing unit for subscriber channels"
+msgstr "Zentrale Verwaltungseinheit für Verteilerlisten."
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channel.xml
+#: ./../subscriber.py:102
+msgid "Channel"
+msgstr "Verteiler"
+
+#: ./../profiles/default/types/pressapp.channelmanagement.channelmanager.xml
+msgid "ChannelManager"
+msgstr "Adressverwaltung"
+
+#: ./../subscriber.py:98
+msgid "Channels"
+msgstr "Verteiler"
+
+#: ./../subscriber.py:93
+msgid "Comment"
+msgstr "Kommentare"
+
+#: ./../subscriber.py:77
+msgid "Contact Person"
+msgstr "Kontaktperson"
+
+#: ./../subscriber.py:69
+msgid "Contact Title"
+msgstr "Kontakt Titel"
+
+#: ./../subscriber.py:73
+msgid "Email"
+msgstr "E-Mail-Adresse"
+
+#: ./../subscriber.py:89
+msgid "Fax"
+msgstr "Fax"
+
+#: ./../subscriber.py:85
+msgid "Mobile Phone"
+msgstr "Mobil"
+
+#: ./../subscriber.py:81
+msgid "Phone"
+msgstr "Telefon"
+
+#: ./../subscriber.py:99
+msgid "Please select the channels this recipient is subscribed to."
+msgstr "Bitte wählen Sie die Verteilerlisten, in denen dieser Kontakt gelistet werden soll, durch Eingabe in das Suchfeld."
+
+#: ./../profiles/default/types/pressapp.channelmanagement.subscriber.xml
+msgid "Subscriber"
+msgstr "Abbonent/Kontakt"
+
+#: ./../channelmanager_templates/view.pt:121
+msgid "There are no subscribers yet"
+msgstr "Es wurden noch keine Kontakte angelegt."
+
+#. Default: "Search"
+#: ./../channelmanager_templates/view.pt:41
+msgid "label_search"
+msgstr "Suche"
+
+#. Default: "Search Subscriber"
+#: ./../channelmanager_templates/view.pt:26
+msgid "text_search"
+msgstr "Suchbegriff"
+
+#. Default: "..."
+#: ./../channelmanager_templates/view.pt:30
+msgid "title_search_site"
+msgstr "Suchen"
+
