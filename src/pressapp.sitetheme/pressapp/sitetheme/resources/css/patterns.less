@@ -342,13 +342,15 @@ a.menu:after,
 }
 
 // Basic Tabs
-.tabs {
-  float: left;
+.tabs,
+.formTabs {
+  //float: left;
   width: 100%;
   border-bottom: 1px solid #ddd;
   > li {
     position: relative; // For the dropdowns mostly
     top: 1px;
+    display: inline-block;
     > a {
       padding: 0 15px;
       margin-right: 2px;
@@ -361,7 +363,8 @@ a.menu:after,
         border-color: #eee #eee #ddd;
       }
     }
-    &.active > a {
+    &.active > a,
+    a.selected {
       color: @gray;
       background-color: @white;
       border: 1px solid #ddd;

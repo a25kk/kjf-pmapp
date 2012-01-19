@@ -936,7 +936,7 @@ textarea[readonly] {
   background: #f5f5f5;
   margin-top: 18px;
   margin-bottom: 18px;
-  padding: 17px 20px 18px 150px;
+  padding: 17px 20px 54px 150px;
   border-top: 1px solid #ddd;
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
@@ -950,6 +950,10 @@ textarea[readonly] {
 }
 .actions .secondary-action a:hover, .formControls .secondary-action a:hover {
   text-decoration: underline;
+}
+.querySelectSearch .formControls {
+  padding: 0px;
+  background: transparent;
 }
 .help-inline, .help-block {
   font-size: 11px;
@@ -1697,16 +1701,16 @@ a.menu:after, .dropdown-toggle:after {
 .tabs > li > a, .pills > li > a {
   display: block;
 }
-.tabs {
-  float: left;
+.tabs, .formTabs {
   width: 100%;
   border-bottom: 1px solid #ddd;
 }
-.tabs > li {
+.tabs > li, .formTabs > li {
   position: relative;
   top: 1px;
+  display: inline-block;
 }
-.tabs > li > a {
+.tabs > li > a, .formTabs > li > a {
   padding: 0 15px;
   margin-right: 2px;
   line-height: 36px;
@@ -1715,33 +1719,48 @@ a.menu:after, .dropdown-toggle:after {
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
-.tabs > li > a:hover {
+.tabs > li > a:hover, .formTabs > li > a:hover {
   text-decoration: none;
   background-color: #eee;
   border-color: #eee #eee #ddd;
 }
-.tabs > li.active > a {
+.tabs > li.active > a,
+.formTabs > li.active > a,
+.tabs > li a.selected,
+.formTabs > li a.selected {
   color: #808080;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
-.tabs .menu-dropdown, .tabs .dropdown-menu {
+.tabs .menu-dropdown,
+.formTabs .menu-dropdown,
+.tabs .dropdown-menu,
+.formTabs .dropdown-menu {
   top: 35px;
   border-width: 1px;
   -webkit-border-radius: 0 6px 6px 6px;
   -moz-border-radius: 0 6px 6px 6px;
   border-radius: 0 6px 6px 6px;
 }
-.tabs a.menu:after, .tabs .dropdown-toggle:after {
+.tabs a.menu:after,
+.formTabs a.menu:after,
+.tabs .dropdown-toggle:after,
+.formTabs .dropdown-toggle:after {
   border-top-color: #999;
   margin-top: 15px;
   margin-left: 5px;
 }
-.tabs li.open.menu .menu, .tabs .open.dropdown .dropdown-toggle {
+.tabs li.open.menu .menu,
+.formTabs li.open.menu .menu,
+.tabs .open.dropdown .dropdown-toggle,
+.formTabs .open.dropdown .dropdown-toggle {
   border-color: #999;
 }
-.tabs li.open a.menu:after, .tabs .dropdown.open .dropdown-toggle:after {
+.tabs li.open a.menu:after,
+.formTabs li.open a.menu:after,
+.tabs .dropdown.open .dropdown-toggle:after,
+.formTabs .dropdown.open .dropdown-toggle:after {
   border-top-color: #555;
 }
 .tab-content {
