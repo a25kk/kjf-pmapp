@@ -1,0 +1,193 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-01-19 16:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
+"Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: pressapp.presscontent\n"
+
+#: ./../addinvitation.py:65
+msgid "A new press invitation was successfully added"
+msgstr ""
+
+#: ./../addrelease.py:65
+msgid "A new press release was successfully added"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.pressinvitation.xml
+msgid "A press invitation."
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.pressrelease.xml
+msgid "A press release content type."
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.pressroom.xml
+msgid "A single press room that will be the workspace for members."
+msgstr ""
+
+#: ./../addrelease.py:34
+msgid "Add new press release"
+msgstr ""
+
+#: ./../addinvitation.py:34
+msgid "Add press invitation"
+msgstr ""
+
+#: ./../pressrelease.py:47
+msgid "Attachment"
+msgstr ""
+
+#: ./../pressrelease.py:53
+msgid "Attachment Caption"
+msgstr ""
+
+#: ./../addinvitation.py:41
+msgid "Create press invitation"
+msgstr ""
+
+#: ./../addrelease.py:41
+msgid "Create press release"
+msgstr ""
+
+#: ./../pressinvitation.py:33
+msgid "End Date"
+msgstr ""
+
+#: ./../pressrelease.py:54
+msgid "Enter optional caption describing the attachment"
+msgstr ""
+
+#: ./../pressrelease.py:24
+msgid "Enter optional kicker / teaser line."
+msgstr ""
+
+#: ./../addinvitation.py:20
+msgid "Enter the title of the press invitation."
+msgstr ""
+
+#: ./../addrelease.py:20
+msgid "Enter the title of the press release."
+msgstr ""
+
+#: ./../pressinvitation.py:37
+msgid "Event Location"
+msgstr ""
+
+#: ./../pressrelease_templates/view.pt:33
+msgid "Hinweis:"
+msgstr ""
+
+#: ./../pressrelease.py:23
+msgid "Kicker"
+msgstr ""
+
+#: ./../pressrelease.py:37
+msgid "Location"
+msgstr ""
+
+#: ./../pressroom_templates/view.pt:121
+msgid "No press invitations available!"
+msgstr ""
+
+#: ./../pressroom_templates/view.pt:73
+msgid "No press releases available!"
+msgstr ""
+
+#: ./../presscenter_templates/view.pt:77
+msgid "No pressrooms available!"
+msgstr ""
+
+#: ./../pressinvitation.py:47
+#: ./../pressrelease.py:59
+msgid "Optional summary that is useful as a preview text in email clients that support this feature."
+msgstr ""
+
+#: ./../pressrelease.py:33
+msgid "Please enter an optional subtitle here."
+msgstr ""
+
+#: ./../pressinvitation.py:42
+msgid "Please select if the event is public."
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.presscenter.xml
+msgid "Press center that will act as the global members folder."
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.presscenter.xml
+msgid "PressCenter"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.pressinvitation.xml
+msgid "PressInvitation"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.pressrelease.xml
+msgid "PressRelease"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.pressroom.xml
+msgid "PressRoom"
+msgstr ""
+
+#: ./../pressrelease.py:38
+msgid "Provide a location for this press release that will be prepended to the main body text."
+msgstr ""
+
+#: ./../pressinvitation.py:41
+msgid "Public Event"
+msgstr ""
+
+#: ./../pressinvitation.py:29
+msgid "Start Date"
+msgstr ""
+
+#: ./../pressrelease.py:32
+msgid "Subtitle"
+msgstr ""
+
+#: ./../pressinvitation.py:46
+#: ./../pressrelease.py:58
+msgid "Summary"
+msgstr ""
+
+#: ./../pressinvitation.py:25
+#: ./../pressrelease.py:43
+msgid "Text"
+msgstr ""
+
+#: ./../addinvitation.py:53
+msgid "The creation of a new press invitation has been cancelled."
+msgstr ""
+
+#: ./../addrelease.py:53
+msgid "The creation of a new press release has been cancelled."
+msgstr ""
+
+#: ./../addinvitation.py:19
+#: ./../addrelease.py:19
+#: ./../pressinvitation.py:21
+msgid "Title"
+msgstr ""
+
+#: ./../pressrelease.py:48
+msgid "Upload an attachment for this press release. The attachment can be an image, file or video."
+msgstr ""
+
+#: ./../addinvitation.py:49
+#: ./../addrelease.py:49
+msgid "cancel"
+msgstr ""
+
