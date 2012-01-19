@@ -42,10 +42,10 @@
                 </tbody>
             </table>
             
-            <p tal:define="event_type context/public">
-                <span tal:condition="python:event_type == True">
+            <p tal:define="closed context/closed">
+                <span tal:condition="python:closed == False">
                     Diese Veranstaltung ist &ouml;ffentlich.</span>
-                <span tal:condition="python:event_type == False">
+                <span tal:condition="python:closed == True">
                     Diese Veranstaltung ist nur f&uuml;r geladene G&auml;ste</span>
             </p>
             

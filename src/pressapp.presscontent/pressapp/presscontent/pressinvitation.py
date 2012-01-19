@@ -37,8 +37,8 @@ class IPressInvitation(form.Schema):
         title=_(u"Event Location"),
         required=True,
     )
-    public = schema.Bool(
-        title=_(u"Public Event"),
+    closed = schema.Bool(
+        title=_(u"Closed Event"),
         description=_(u"Please select if the event is public."),
         required=False,
     )

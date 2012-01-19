@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-01-10 17:19+0000\n"
-"PO-Revision-Date: 2012-01-19 17:23+0100\n"
+"POT-Creation-Date: 2012-01-19 16:44+0000\n"
+"PO-Revision-Date: 2012-01-19 17:44+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,10 @@ msgstr "Dateianhang"
 #: ./../pressrelease.py:53
 msgid "Attachment Caption"
 msgstr "Bildunterschrift Dateianhang"
+
+#: ./../pressinvitation.py:41
+msgid "Closed Event"
+msgstr "Geschlossene Veranstaltung"
 
 #: ./../addinvitation.py:41
 msgid "Create press invitation"
@@ -142,10 +146,6 @@ msgstr "Pressestelle"
 #: ./../pressrelease.py:38
 msgid "Provide a location for this press release that will be prepended to the main body text."
 msgstr "Bitte geben Sie für diese Pressemitteilung einen Ort an, der dem Text vorangestellt wird."
-
-#: ./../pressinvitation.py:41
-msgid "Public Event"
-msgstr "Geschlossene Veranstaltung"
 
 #: ./../pressinvitation.py:29
 msgid "Start Date"

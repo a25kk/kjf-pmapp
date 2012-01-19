@@ -4,16 +4,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-01-19 16:01+0000\n"
+"POT-Creation-Date: 2012-01-19 16:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
-"Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: de\n"
-"Language-Name: German\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: pressapp.presscontent\n"
 
@@ -51,6 +51,10 @@ msgstr ""
 
 #: ./../pressrelease.py:53
 msgid "Attachment Caption"
+msgstr ""
+
+#: ./../pressinvitation.py:41
+msgid "Closed Event"
 msgstr ""
 
 #: ./../addinvitation.py:41
@@ -144,10 +148,6 @@ msgstr ""
 
 #: ./../pressrelease.py:38
 msgid "Provide a location for this press release that will be prepended to the main body text."
-msgstr ""
-
-#: ./../pressinvitation.py:41
-msgid "Public Event"
 msgstr ""
 
 #: ./../pressinvitation.py:29
