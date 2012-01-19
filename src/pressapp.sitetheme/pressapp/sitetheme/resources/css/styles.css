@@ -2279,7 +2279,8 @@ input.context.active {
   text-decoration: none;
 }
 .listingBar a:hover, .listingBar .active a {
-  background-color: #737373;
+  background-color: #bfbfbf;
+  color: #ffffff;
 }
 .well {
   background-color: #f5f5f5;
@@ -2938,27 +2939,31 @@ table.grid td, table.grid th {
 #foldercontents-order-column {
   padding: 0;
 }
-div.listingBar {
-  font-size: 80%;
-  margin: 1em 0;
+/*div.listingBar {
+    font-size: 80%;
+    margin: 1em 0;
 }
+
 div.listingBar .next {
-  display: inline-block;
-  float: right;
+    display: inline-block;
+    float: right;
 }
+
 div.listingBar .previous {
-  display: inline-block;
+    display: inline-block;
 }
+
 div.listingBar a {
-  display: inline-block;
-  padding: 0.25em 0.5em;
-  border: 0.1em solid #ccc;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    border: 0.1em solid #ccc;
 }
+
 div.listingBar a:hover {
-  color: White;
-  background-color: #329fd7;
-  border-color: #329fd7;
-}
+    color: White;
+    background-color: #329fd7;
+    border-color: #329fd7;
+}*/
 /* @end */
 /* Emulates the styling from the h1 tag */
 #content .field input[type="text"][name$=".title"], #archetypes-fieldname-title input {
@@ -2985,6 +2990,100 @@ div.listingBar a:hover {
 .richtext-field > html, .richtext-field > body, .richtext-field > iframe {
   background: #ffffff;
 }
+/* @group Search results page */
+fieldset#search-field {
+  border: none !important;
+  text-align: center;
+}
+input.searchPage {
+  font-size: 200% !important;
+}
+#rss-subscription {
+  float: left;
+  line-height: 3em;
+}
+#search-results-bar .actionMenuContent {
+  margin-top: 1em;
+  padding: 0;
+}
+#search-filter {
+  background: #ddd;
+  margin: 0;
+  padding: 0;
+}
+#content #search-filter fieldset {
+  border: none !important;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+#content #search-filter legend {
+  background: transparent;
+  font-size: 1.1em;
+  padding: 0.5em 0.9em;
+  font-weight: bold;
+}
+#search-filter .field {
+  background: #eee;
+  padding: 1em 1.5em;
+  margin: 0;
+}
+#search-filter .field label {
+  font-weight: normal;
+}
+#search-filter .formControls {
+  text-align: center;
+}
+#search-results-wrapper {
+  margin-top: 1em;
+}
+form.searchPage h1.documentFirstHeading {
+  font-weight: normal;
+  letter-spacing: 0;
+  float: left;
+  margin-right: 0.8em;
+}
+form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
+  background: transparent !important;
+}
+#search-results-bar > * {
+  float: left;
+}
+#searchResultsSort {
+  float: right;
+}
+#search-results-bar {
+  position: relative;
+  z-index: 1;
+  float: left;
+  width: 100%;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  padding: 1em 0;
+}
+#search-results-bar dl.actionMenu {
+  margin-bottom: 0;
+}
+#search-results-bar dd.actionMenuContent {
+  margin-left: 0;
+  padding-left: 0;
+}
+#search-results-bar dt.actionMenuHeader a {
+  border-bottom: none;
+}
+#search-results-bar dt.actionMenuHeader a::after {
+  content: " ▼";
+}
+#search-results {
+  padding: 1em;
+}
+.searchResults {
+  margin-top: 0;
+}
+#ajax-search-res {
+  display: none;
+}
+/* @end */
 /* @group Overlay windows */
 /* styling for overlays (popups) */
 div.overlay {
