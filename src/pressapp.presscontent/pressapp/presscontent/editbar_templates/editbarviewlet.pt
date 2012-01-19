@@ -15,6 +15,11 @@
                 <a class="editbtn flarge right"
                     tal:attributes="href python:context_url+'/@@dashboard-schedule'">
                     Versand</a>
+                <a class="editbtn flarge standalone"
+                    tal:condition="viewlet/is_administrator"
+                    tal:attributes="href viewlet/parent_url">
+                    Administration</a>
+                
             </div>
         </div>
     </div>

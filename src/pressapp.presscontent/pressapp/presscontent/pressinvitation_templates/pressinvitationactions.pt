@@ -1,0 +1,21 @@
+<div class="editbar" id="editbar">
+    <div class="editbar-inner"
+        tal:define="context_url viewlet/context_url">
+        <div class="container-fluid">
+            <div class="container">
+                <a class="editbtn flarge standalone"
+                    tal:attributes="href viewlet/homefolder_url">
+                    Arbeitsplatz</a>
+                <a class="editbtn flarge left"
+                    tal:attributes="href python:context_url+'/view'">
+                    Anzeigen</a>
+                <a class="editbtn flarge middle"
+                    tal:attributes="href python:context_url+'/edit'">
+                    Bearbeiten</a>
+                <a class="editbtn flarge right popoverLink"
+                    tal:attributes="href python:context_url+'/delete_confirmation'">
+                    Entfernen</a>
+            </div>
+        </div>
+    </div>
+</div>

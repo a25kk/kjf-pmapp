@@ -54,6 +54,12 @@ class IPressRelease(form.Schema):
         description=_(u"Enter optional caption describing the attachment"),
         required=True,
     )
+    description = schema.Text(
+        title=_(u"Summary"),
+        description=_(u"Optional summary that is useful as a preview text "
+                      u"in email clients that support this feature."),
+        required=False,
+    )
 
 
 class View(grok.View):

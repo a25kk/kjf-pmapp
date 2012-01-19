@@ -1,6 +1,7 @@
 from five import grok
 from Acquisition import aq_inner
 from Acquisition import aq_parent
+from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from pressapp.presscontent.presscenter import IPressCenter
@@ -17,6 +18,12 @@ class EditBarViewlet(grok.Viewlet):
     def update(self):
         context = aq_inner(self.context)
         self.context_url = context.absolute_url()
+        self.parent_url = aq_parent(context).absolute_url()
+
+    def is_administrator(self):
+        context = aq_inner(self.context)
+        return bool(getSecurityManager().checkPermission(
+                    'Portlets: manage own portlets', context))
 
 
 class PressCenterEditBarViewlet(grok.Viewlet):

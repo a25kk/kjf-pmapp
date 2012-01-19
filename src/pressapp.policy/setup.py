@@ -30,6 +30,7 @@ setup(name='pressapp.policy',
           'pressapp.memberprofiles',
           'pressapp.overlays',
           'pressapp.presscontent',
+          'pressapp.search',
           'pressapp.sitetheme',
           'pressapp.statusbar',
           # -*- Extra requirements: -*-
