@@ -28,6 +28,7 @@ setup(name='pressapp.channelmanagement',
           'setuptools',
           'plone.app.dexterity',
           'plone.namedfile [blobs]',
+          'collective.js.datatables',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

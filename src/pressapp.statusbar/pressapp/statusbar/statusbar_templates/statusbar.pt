@@ -10,7 +10,7 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
     
-        <h3>Status Bar <small>Recent Activities</small></h3>
+        <h3>Status <small>letzte Aktivit&auml;ten</small></h3>
     
     <div class="container">
     <div id="content-core">
