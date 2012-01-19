@@ -10,14 +10,16 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-    <div class="container">
+    <div class="container"
+        tal:define="portal_state context/@@plone_portal_state;
+                    portal_url portal_state/portal_url">
         <div class="row">
             <div class="cell position-0 width-1:2">
                 <h1 class="documentFirstHeading" tal:content="context/Title" />
                 <div class="well">
                     <form name="searchform" id="searchGadget_form" 
                           action="search"
-                          tal:attributes="action string:/search;
+                          tal:attributes="action string:${portal_url}/search;
                                           id string:search_form">
 
                         <div class="LSBox">
