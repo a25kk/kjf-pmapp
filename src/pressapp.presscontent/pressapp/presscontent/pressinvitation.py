@@ -1,3 +1,4 @@
+import datetime
 from Acquisition import aq_inner
 from five import grok
 from plone.directives import dexterity, form
@@ -48,6 +49,16 @@ class IPressInvitation(form.Schema):
                       u"in email clients that support this feature."),
         required=False,
     )
+
+
+@form.default_value(field=IPressInvitation['start'])
+def startDefaultValue(data):
+    return datetime.datetime.today() + datetime.timedelta(7)
+
+
+@form.default_value(field=IPressInvitation['end'])
+def endDefaultValue(data):
+    return datetime.datetime.today() + datetime.timedelta(10)
 
 
 class View(grok.View):
