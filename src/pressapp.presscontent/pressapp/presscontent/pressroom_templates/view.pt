@@ -11,18 +11,15 @@
   <metal:content-core define-macro="main">
     
         <h1>Arbeitsplatz <span tal:replace="context/Title" />!</h1>
-        <p class="visualClear">Die zentrale Arbeitsumgebung bietet Ihnen eine
-            &Uuml;bersicht &uuml;ber alle relevanten Informationen der Applikation.</p>
       
             <div class="alert-message block-message warning"
                 data-alert="alert">
                 <a class="close" href="#">×</a>
                 <p><strong>Hinweis:</strong>
-                    Im Augenblick liegen noch keine Pressemitteilungen oder
-                    Presseinladungen aus dem System vor. In K&uuml;rze werden die Eingabemasken f&uuml;r
-                    die editierbaren Inhaltstypen freigeschalten. Bis dahin finden Sie hier einen
-                    Entwurf in Form von Beispielauflistungen, wie diese &Uuml;bersichtseite aussehen
-                    sp&auml;ter k&ouml;nnte.</p>
+                    Die momentane Version der Applikation f&uuml;r Pressemitteilungen
+                    beinhaltet alle relevanten Funktionen. Im n&auml;chsten Schritt
+                    werden die Bearbeitungsoberfl&auml;chen noch optimiert.
+                </p>
             </div>
       
       <div class="container"
@@ -35,8 +32,8 @@
                         tal:attributes="href python:context_url+'/@@add-press-release'">
                           Neu anlegen</a>
                   </p>
-                  <h2>Pressemitteilungen <small>Beispiel</small></h2>
-                  <table class="bordered-table zebra-striped">
+                  <h2>Pressemitteilungen</h2>
+                  <table class="xbordered-table zebra-striped">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -84,7 +81,7 @@
                         tal:attributes="href python:context_url+'/@@add-press-invitation'">
                         Neu anlegen</a></p>
                   <h2>Presseeinladungen</h2>
-                  <table class="zebra-striped">
+                  <table class="xbordered-table zebra-striped">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -106,9 +103,9 @@
                                   </td>
                                   <td tal:define="item_url item/getURL">
                                       <a class="editbtn mini left"
-                                          tal:attributes="href python:item_url+'/edit'">Edit</a>
+                                          tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
                                       <a class="editbtn mini right"
-                                          tal:attributes="href python:item_url+'/view'">View</a>
+                                          tal:attributes="href python:item_url+'/view'">Anzeigen</a>
                                   </td>
                               </tr>
                             </tal:block>

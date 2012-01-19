@@ -13,12 +13,14 @@ from Products.CMFCore.interfaces import IContentish
 
 from pressapp.statusbar.recentactivity import IRecentActivity
 
+from pressapp.statusbar import MessageFactory as _
+
 
 @grok.subscribe(IContentish, IObjectAddedEvent)
 def trackAddActivity(obj, event):
     activities = getUtility(IRecentActivity, name=u"RecentActivity")
     username = getSecurityManager().getUser().getId()
-    activities.add_activity(DateTime(), u"added", username,
+    activities.add_activity(DateTime(), _(u"added"), username,
                             obj, aq_parent(obj))
 
 
@@ -26,7 +28,7 @@ def trackAddActivity(obj, event):
 def trackEditActivity(obj, event):
     activities = getUtility(IRecentActivity, name=u"RecentActivity")
     username = getSecurityManager().getUser().getId()
-    activities.add_activity(DateTime(), u"edited", username,
+    activities.add_activity(DateTime(), _(u"edited"), username,
                             obj, aq_parent(obj))
 
 
@@ -35,4 +37,4 @@ def userLoggedInActivity(self, event):
     site = getSite()
     activities = getUtility(IRecentActivity, name=u"RecentActivity")
     username = getSecurityManager().getUser().getId()
-    activities.add_activity(DateTime(), u"logged in", username, site, site)
+    activities.add_activity(DateTime(), _(u"logged in"), username, site, site)

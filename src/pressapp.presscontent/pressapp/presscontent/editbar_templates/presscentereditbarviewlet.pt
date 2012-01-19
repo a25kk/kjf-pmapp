@@ -11,7 +11,7 @@
                     tal:attributes="href home_url">
                     Arbeitsplatz</a>
                 <a class="editbtn flarge right"
-                    tal:attributes="href python:context_url+'/adressverwaltung'">
+                    tal:attributes="href python:context_url+'/kontakte'">
                     Adressverwaltung</a>
                 <a class="editbtn flarge left"
                     tal:attributes="href python:home_url+'/@@dashboard-releases'">

@@ -28,7 +28,7 @@
                     <p>Verwaltungs- und Bearbeitungsoberfl&auml;che f&uuml;r
                        das Adressbuch und die Verteilerlisten</p>
                     <a href="" class="btn standalone"
-                        tal:attributes="href python:context_url+'/adressverwaltung'">
+                        tal:attributes="href python:context_url+'/kontakte'">
                         Adressverwaltung anzeigen</a>
                 </div>
             </div>

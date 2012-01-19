@@ -3,12 +3,16 @@ from five import grok
 from zope.interface import Interface
 from BTrees.OOBTree import OOBTree
 
+from pressapp.statusbar import MessageFactory as _
+
 
 class IRecentActivity(Interface):
     """ Utility storing recent activity for a status bar/stream
     """
+
     def get_recent_activity(items=None):
         """ Call recent activity """
+
 
 class RecentActivityUtility(object):
     """ Utility for recent activities """

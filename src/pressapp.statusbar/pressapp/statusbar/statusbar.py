@@ -6,6 +6,8 @@ from Products.CMFCore.interfaces import IContentish
 
 from pressapp.statusbar.recentactivity import IRecentActivity
 
+from pressapp.statusbar import MessageFactory as _
+
 
 class StatusBar(grok.View):
     grok.context(IContentish)

@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2012-01-19 22:55+0000\n"
+"PO-Revision-Date: 2012-01-19 23:57+0100\n"
+"Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
+"Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: pressapp.statusbar\n"
+
+#: ./../statusbar_templates/memberstatusbar.pt:32
+#: ./../statusbar_templates/statusbar.pt:35
+msgid "${days} days, ${hours} hours, and ${minutes} minutes ago"
+msgstr "vor ${days} Tagen, ${hours} Stunden und ${minutes} Minuten"
+
+#: ./../statusbar_templates/memberstatusbar.pt:26
+msgid "${what}<br /> at ${where} ${how}"
+msgstr "${what}<br /> in ${where} ${how}"
+
+#: ./../events.py:23
+msgid "added"
+msgstr "angelegt"
+
+#: ./../events.py:31
+msgid "edited"
+msgstr "bearbeitet"
+
+#: ./../events.py:40
+msgid "logged in"
+msgstr "angemeldet"
+
