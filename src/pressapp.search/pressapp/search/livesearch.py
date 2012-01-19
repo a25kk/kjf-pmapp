@@ -10,7 +10,7 @@ from Products.CMFCore.interfaces import IContentish
 class LiveSearch(grok.View):
     grok.context(IContentish)
     grok.require('zope2.View')
-    grok.name('live-search')
+    grok.name('livesearch_reply')
 
     def update(self):
         self.catalog = getToolByName(self.context, 'portal_catalog')

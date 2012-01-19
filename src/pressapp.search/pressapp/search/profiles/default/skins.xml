@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_name="Plone Skins Tool">
+
+ <object name="pressapp.search"
+    meta_type="Filesystem Directory View"
+    directory="pressapp.search:skins/pressapp.search"/>
+
+ <skin-path name="*">
+  <layer name="pressapp.search"
+     insert-after="custom"/>
+ </skin-path>
+
+</object>
