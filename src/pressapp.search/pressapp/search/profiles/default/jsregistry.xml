@@ -1,0 +1,9 @@
+<object name="portal_javascripts">
+ <javascript cacheacble="True" compression="safe"
+    cookable="True" enabled="False"
+    id="livesearch.js" />
+ <!-- Add custom javascripts to the registry for live search reply -->
+ <javascript cacheable="True" compression="safe"
+     cookable="True" enabled="True"
+     id="++resource++pressapp.search/livesearch.js" inline="False"/>
+</object>

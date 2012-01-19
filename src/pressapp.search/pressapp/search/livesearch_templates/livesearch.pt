@@ -1,0 +1,50 @@
+<tal:domain i18n:domain="plone"
+            tal:define="results view/get_results">
+    <fieldset class="livesearchContainer" tal:condition="not:results">
+    <legend id="livesearchLegend"
+            i18n:translate="legend_livesearch">LiveSearch &#8595;</legend>
+        <div class="LSIEFix">
+            <div id="LSNothingFound"
+                 i18n:translate="label_no_results_found">
+                 No matching results found.
+            </div>
+            <div class="LSRow">
+                <a href="search_form" style="font-weight:normal"
+                    i18n:translate="label_advanced_search">
+                    Advanced Search&#8230;
+                </a>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="livesearchContainer" tal:condition="results">
+        <legend id="livesearchLegend"
+                i18n:translate="legend_livesearch">
+            LiveSearch &#8595;
+        </legend>
+        <div class="LSIEFix">
+            <ul class="LSTable">
+                <li class="LSRow" tal:repeat="result results">
+                    <img tal:define="icon python:view.get_icon(result)"
+                         tal:omit-tag="python:icon.url is None or icon.description is None"
+                         tal:attributes="src icon/url;
+                                         alt icon/description;
+                                         with icon/width;
+                                         height icon/height"/>
+                    <a tal:attributes="href python:view.get_url(result);
+                                      title python:view.get_title(result);"
+                        tal:content="python:view.get_display_title(result)">Title</a>
+                    <span class="discreet" tal:attributes="dir view/read_direction"
+                          tal:content="result/data_record_normalized_score_">Score</span>
+                    <div class="LSDescr" tal:content="python:view.get_description(result)">Description</div>
+                </li>
+                <li class="LSRow">
+                <a href="search_form" style="font-weight:normal" i18n:translate="label_advanced_search">Advanced Search&#8230;</a>
+                </li>
+                <li class="LSRow" tal:condition="python:len(results) > request.get('limit', 10)">
+                    <a tal:attributes="href view/searchterm/searchterm" style="font-weight:normal" i18n:translate="label_show_all">Show all&#8230;</a>
+                </li>
+            </ul>
+        </div>
+    </fieldset>
+</tal:domain>
