@@ -726,6 +726,39 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   box-shadow: none;
   outline: 1px dotted #666;
 }
+/* Emulates the styling from the h1 tag */
+#content .field input[type="text"][name$=".title"], #archetypes-fieldname-title input {
+  font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
+  line-height: 125%;
+  color: Black;
+  letter-spacing: -0.05em;
+  margin: inherit -0.05em;
+  font-size: 2em;
+  /* 26px equiv */
+
+  font-weight: bold;
+}
+/* Emulates styling from the description's view */
+#content .field textarea[name$=".description"], #archetypes-fieldname-description textarea#description {
+  font-family: Arial, FreeSans, sans-serif;
+  color: #666666;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.field input[type="text"][name$=".title"], input#title {
+  width: 100%;
+}
+.ArchetypesCalendarWidget select,
+.plone_jscalendar select,
+.ArchetypesCalendarWidget input,
+.plone_jscalendar input,
+.ArchetypesCalendarWidget input.datetime-widget,
+.plone_jscalendar input.datetime-widget {
+  width: auto;
+}
+.datetime-widget {
+  width: auto;
+}
 form div.clearfix.error {
   background: #fae5e3;
   padding: 10px 0;
@@ -1988,7 +2021,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-.editbtn, input.context {
+.editbtn, input.context, input.standalone {
   cursor: pointer;
   display: block;
   float: left;
@@ -2019,24 +2052,26 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
   margin-right: 10px;
 }
-.editbtn:hover, input.context:hover {
+.editbtn:hover, input.context:hover, input.standalone:hover {
   background-position: 0 0px;
   color: #333;
   border-color: #000000;
   text-decoration: none;
 }
-.editbtn:focus, input.context:focus {
+.editbtn:focus, input.context:focus, input.standalone:focus {
   outline: 1px dotted #666;
 }
 .editbtn:active,
 input.context:active,
+input.standalone:active,
 .editbtn.active,
-input.context.active {
+input.context.active,
+input.standalone.active {
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.editbtn.disabled, input.context.disabled {
+.editbtn.disabled, input.context.disabled, input.standalone.disabled {
   cursor: default;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -2048,7 +2083,7 @@ input.context.active {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.editbtn[disabled], input.context[disabled] {
+.editbtn[disabled], input.context[disabled], input.standalone[disabled] {
   cursor: default;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -2060,7 +2095,7 @@ input.context.active {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.editbtn.left, input.context.left {
+.editbtn.left, input.context.left, input.standalone.left {
   color: #404040;
   -webkit-border-top-right-radius: 0;
   -moz-border-radius-topright: 0;
@@ -2070,7 +2105,7 @@ input.context.active {
   border-bottom-right-radius: 0;
   margin-right: 0;
 }
-.editbtn.middle, input.context.middle {
+.editbtn.middle, input.context.middle, input.standalone.middle {
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -2078,13 +2113,13 @@ input.context.active {
   margin: 0;
   border-left: solid 1px rgba(255, 255, 255, 0);
 }
-.editbtn.middle:hover, input.context.middle:hover {
+.editbtn.middle:hover, input.context.middle:hover, input.standalone.middle:hover {
   border-left: solid 1px #000000;
 }
-.editbtn.right:hover, input.context.right:hover {
+.editbtn.right:hover, input.context.right:hover, input.standalone.right:hover {
   border-left: solid 1px #000000;
 }
-.editbtn.right, input.context.right {
+.editbtn.right, input.context.right, input.standalone.right {
   -webkit-border-top-left-radius: 0;
   -moz-border-radius-topleft: 0;
   border-top-left-radius: 0;
@@ -2094,16 +2129,16 @@ input.context.active {
   border-left: solid 1px #f3f3f3;
   border-left: solid 1px rgba(255, 255, 255, 0);
 }
-.editbtn.small, input.context.small {
+.editbtn.small, input.context.small, input.standalone.small {
   font-size: 13px;
   line-height: normal;
 }
-.editbtn.large, input.context.large {
+.editbtn.large, input.context.large, input.standalone.large {
   font-size: 15px;
   line-height: normal;
   padding: 9px 14px 9px;
 }
-.editbtn.mini, input.context.mini {
+.editbtn.mini, input.context.mini, input.standalone.mini {
   font-size: 10px;
   line-height: normal;
 }
@@ -2693,7 +2728,9 @@ img.image-left {
 }
 /* Special case of #content - TinyMCE */
 body#content {
-  margin: 1em;
+  margin: 0em;
+  height: 100%;
+  background: white;
 }
 #content h1 {
   margin-top: 0.5em;

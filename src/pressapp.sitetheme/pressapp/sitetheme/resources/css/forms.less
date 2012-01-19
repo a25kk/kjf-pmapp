@@ -159,6 +159,45 @@ select:focus {
   outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
 }
 
+/* Emulates the styling from the h1 tag */
+#content .field input[type="text"][name$=".title"],
+#archetypes-fieldname-title input {
+    font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
+    line-height: 125%;
+    color: Black;
+    letter-spacing: -0.05em;
+    margin: inherit -0.05em;
+    font-size: 2em; /* 26px equiv */
+    font-weight: bold;
+}
+
+/* Emulates styling from the description's view */
+#content .field textarea[name$=".description"],
+#archetypes-fieldname-description textarea#description {
+    font-family: Arial,FreeSans,sans-serif;
+    color:#666666;
+    font-size:1.25em;
+    font-weight: bold;
+}
+
+.field input[type="text"][name$=".title"],
+input#title {
+    width: 100%;
+}
+
+.ArchetypesCalendarWidget,
+.plone_jscalendar {
+    select,
+    input,
+    input.datetime-widget {
+        width: auto;
+    }
+}
+.datetime-widget {
+    width: auto;
+}
+
+
 // Error styles
 form div.clearfix.error {
   background: lighten(@red, 57%);
