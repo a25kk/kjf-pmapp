@@ -78,7 +78,7 @@
                       <a class="editbtn mini standalone popoverForm"
                         tal:define="channel view/active_channel;
                                     channel_url channel/getURL;"
-                        tal:attributes="href python:channel_url+'/@@add-press-release'">
+                        tal:attributes="href python:channel_url+'/++add++pressapp.channelmanager.subscriber'">
                           Neuen Kontakt anlegen</a>
                 </p>
                 <h3>Kontakte <small>Liste aller Kontaktadressen</small></h3>
