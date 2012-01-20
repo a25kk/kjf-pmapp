@@ -32,7 +32,7 @@
                                         tal:attributes="action python:context_url+'/@@channel-information'">
                                         <input href="" class="editbtn small pull-right"
                                             type="submit" value="Anzeigen" />
-                                        <input name="channelname" id="channelname" type="text"
+                                        <input name="channeltrigger" id="channeltrigger" type="text"
                                             class="large uneditable-input"
                                             value="Kontakte" />
                                         <input name="channelname" id="channelname" type="hidden"
