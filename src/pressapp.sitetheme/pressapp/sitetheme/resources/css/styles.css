@@ -2033,6 +2033,10 @@ footer {
   padding: 7px 9px 7px;
   font-size: 11px;
 }
+.btn.mini {
+  font-size: 10px;
+  line-height: normal;
+}
 :root .alert-message, :root .btn {
   border-radius: 0 \0;
 }
@@ -2113,6 +2117,9 @@ input.standalone.active {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+.editbtn.pull-right, input.context.pull-right, input.standalone.pull-right {
+  float: right;
 }
 .editbtn.left, input.context.left, input.standalone.left {
   color: #404040;
@@ -2371,6 +2378,36 @@ input.standalone.active {
 .box blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
+}
+.tile {
+  background-color: #f5f5f5;
+  margin-bottom: 10px;
+  padding: 5px;
+  min-height: 20px;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.tile.stats strong {
+  float: left;
+  height: 20px;
+  width: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1em;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.tile.stats p {
+  margin-top: 0.5em;
+}
+.tile.stats form {
+  margin-bottom: 0px;
 }
 .modal-backdrop {
   background-color: #000000;

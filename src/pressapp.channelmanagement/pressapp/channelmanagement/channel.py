@@ -1,4 +1,5 @@
 from five import grok
+from Acquisition import aq_inner
 from plone.directives import dexterity, form
 
 from zope import schema
@@ -17,6 +18,10 @@ from plone.app.textfield import RichText
 
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
+from Products.CMFCore.utils import getToolByName
+
+from plone.app.contentlisting.interfaces import IContentListing
+from pressapp.channelmanagement.subscriber import ISubscriber
 
 from pressapp.channelmanagement import MessageFactory as _
 
@@ -33,3 +38,14 @@ class View(grok.View):
     grok.context(IChannel)
     grok.require('zope2.View')
     grok.name('view')
+
+    def update(self):
+        self.has_subscribers = len(self.subscribers()) > 0
+
+    def subscribers(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=ISubscriber.__identifier__,
+                          sort_on='sortable_title')
+        subscribers = IContentListing(results)
+        return subscribers

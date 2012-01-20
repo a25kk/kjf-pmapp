@@ -26,5 +26,11 @@ $(document).ready(function() {
             $('#status-placeholder').load(statusURL).fadeIn('slow');
         }, 10000);
     }
+    var current, toggleBoxes = $('.details').hide();
+    $('a.show-details').click(function() {
+        current = $(this).next('div.details');
+        $('.details').not(current).slideUp('slow');
+        current.toggle('slow');
+    });
 });
 })(jQuery);

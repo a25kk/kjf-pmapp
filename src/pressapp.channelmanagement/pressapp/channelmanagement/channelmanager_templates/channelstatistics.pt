@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.channelmanagement">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <div class="container"
+        tal:define="portal_state context/@@plone_portal_state;
+                    portal_url portal_state/portal_url;
+                    context_url context/absolute_url;">
+        
+        <h1 class="documentFirstHeading">Verteilerverwaltung</h1>
+        
+        <div class="row">
+            <div class="cell position-0 width-2:3">
+                <section tal:define="items view/statistic_data">
+                    <tal:block tal:repeat="item items">
+                        <div class="box">
+                            <h5 class="pull-left" tal:content="item/name">Test</h5>
+                            <a class="editbtn mini info show-details pull-right">
+                                Details einblenden</a>
+                            <div class="xbox details visualClear">
+                                <div class="tile stats">
+                                    <strong tal:content="item/subscriber" />
+                                    <form class="xpull-right"
+                                        tal:attributes="action python:context_url+'/@@channel-information'">
+                                        <input href="" class="editbtn small pull-right"
+                                            type="submit" value="Anzeigen" />
+                                        <input name="channelname" id="channelname" type="text"
+                                            class="large uneditable-input"
+                                            value="Kontakte" />
+                                        <input name="channelname" id="channelname" type="hidden"
+                                            class="large uneditable-input"
+                                            tal:attributes="value item/name" />
+                                    </form>
+                                </div>
+                                <div class="tile stats">
+                                    <strong tal:content="item/pr_count" />
+                                    <p>Pressemitteilungen</p>
+                                </div>
+                                <div class="tile stats">
+                                    <strong tal:content="item/pi_count" />
+                                    <p>Presseeinladungen</p>
+                                </div>
+                            </div>
+                        </div>
+                    </tal:block>
+                </section>
+            </div>
+            <div class="cell position-2:3 width-1:3">
+                <div class="box">
+                    <h3>Verwaltung</h3>
+                </div>
+            </div>
+        </div>
+        <div class="visualClear"><!-- --></div>
+        
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

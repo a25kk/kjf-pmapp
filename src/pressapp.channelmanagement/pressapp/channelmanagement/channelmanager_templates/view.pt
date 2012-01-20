@@ -12,7 +12,8 @@
 
     <div class="container"
         tal:define="portal_state context/@@plone_portal_state;
-                    portal_url portal_state/portal_url">
+                    portal_url portal_state/portal_url;
+                    context_url context/absolute_url;">
         <div class="row">
             <div class="cell position-0 width-1:2">
                 <h1 class="documentFirstHeading" tal:content="context/Title" />
@@ -38,7 +39,7 @@
                                                id string:searchGadget"
                                class="searchField inputLabel" />
 
-                        <input class="searchButton btn mini"
+                        <input class="searchButton btn primary small"
                                type="submit"
                                value="Search"
                                i18n:attributes="value label_search;" />
@@ -47,86 +48,50 @@
                         </div>
                     </form>
                 </div>
+                <div class="tile stats">
+                    <strong tal:content="view/channel_counter" />
+                    <p class="pull-right">
+                        <a href="" class="editbtn mini standalone info"
+                            tal:attributes="href python:context_url+'/@@channel-statistics'">
+                            Anzeigen</a>
+                    </p>
+                    <h5>Verteiler</h5>
+                </div>
+                <div class="tile stats">
+                    <strong tal:content="view/subscriber_count" />
+                    <p class="pull-right"
+                        tal:define="channel view/active_channel;
+                                    channel_url channel/getURL;">
+                        <a class="editbtn mini standalone"
+                            tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
+                              Neuen Kontakt anlegen</a>
+                        <a class="editbtn mini standalone"
+                            tal:attributes="href channel_url">Anzeigen</a>
+                    </p>
+                    <h5>Kontakte</h5>
+                </div>
             </div>
             <div class="cell position-1:2 width-1:2">
                 <div class="box" tal:define="channel_list view/channel_names">
-                    <h3>Verteiler</h3>
-                    <table class="condensed-table">
-                        <thead>
-                            <tr>
-                                <th>Verteiler</th>
-                                <th>Anzahl Kontakte</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr tal:repeat="item channel_list">
-                                <td tal:content="item/channel">Channel</td>
-                                <td tal:content="item/count">Subscriber Count</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3>Verteiler <small>Statistiken</small></h3>
+                    <tal:block tal:repeat="item channel_list">
+                        <div class="tile stats">
+                            <strong tal:content="item/count" />
+                            <form class="xpull-right"
+                                tal:attributes="action python:context_url+'/@@channel-information'">
+                                <input href="" class="btn primary small pull-right"
+                                    type="submit" value="Anzeigen" />
+                                        <input name="channelname" id="channelname" type="text"
+                                            class="large uneditable-input"
+                                            tal:attributes="value item/channel" />
+                            </form>
+                            <!--<p tal:content="item/channel" />-->
+                        </div>
+                    </tal:block>
                 </div>
             </div>
         </div>
         <div class="visualClear"><!-- --></div>
-        
-        <section tal:define="context_url context/absolute_url;
-                             Batch python:modules['Products.CMFPlone'].Batch;
-                             b_size python:25;b_start python:0;b_start request/b_start | b_start;">
-            <div class="box">
-                <p class="pull-right" tal:condition="view/has_channels">
-                      <a class="editbtn mini standalone popoverForm"
-                        tal:define="channel view/active_channel;
-                                    channel_url channel/getURL;"
-                        tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
-                          Neuen Kontakt anlegen</a>
-                </p>
-                <h3>Kontakte <small>Liste aller Kontaktadressen</small></h3>
-                  <table class="bordered-table zebra-striped">
-                      <thead>
-                          <tr>
-                              <th>#</th>
-                              <th>E-Mail-Adresse</th>
-                              <th>Kontaktname</th>
-                              <th>Aktionen</th>
-                          </tr>
-                      </thead>
-                      <tbody tal:condition="view/has_subscribers">
-                          <tal:subscribers tal:define="items view/subscribers;
-                                                       batch python:Batch(items, b_size, int(b_start), orphan=1)">
-                          <tal:block tal:repeat="item batch">
-                            <tr tal:define="rowcount repeat/item/number;">
-                                <td tal:content="rowcount">1</td>
-                                <td>
-                                    <span tal:content="item/email" />
-                                </td>
-                                <td>
-                                    <span tal:content="item/Title" />
-                                </td>
-                                <td tal:define="item_url item/getURL">
-                                    <a class="editbtn mini standalone"
-                                        tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
-                                </td>
-                            </tr>
-                          </tal:block>
-                          <div metal:use-macro="context/batch_macros/macros/navigation" />
-                          </tal:subscribers>
-                      </tbody>
-                      <tbody tal:condition="not:view/has_subscribers">
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colspan="3">
-                                    <div class="alert-message block-message error">
-                                          <a class="close" href="#">×</a>
-                                          <p><strong i18n:translate="">
-                                              There are no subscribers yet</strong></p>
-                                    </div>
-                                </td>
-                            </tr>
-                      </tbody>
-                  </table>
-            </div>
-        </section>
         
     </div>
     

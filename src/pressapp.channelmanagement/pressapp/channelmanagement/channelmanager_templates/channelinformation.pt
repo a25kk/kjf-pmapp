@@ -1,0 +1,133 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.channelmanagement">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <div class="container"
+        tal:define="portal_state context/@@plone_portal_state;
+                    portal_url portal_state/portal_url;
+                    context_url context/absolute_url;">
+        
+        <p class="pull-right">
+            <a href="" class="editbtn mini standalone"
+                tal:attributes="href context_url">&Uuml;bersicht </a>
+        </p>
+        
+        <h1 class="documentFirstHeading">Verteilerinformationen
+            <small tal:content="view/channelname" /></h1>
+
+        <div class="row">
+            <div class="cell position-0 width-1:2">
+                <div class="well">
+                    <form name="searchform" id="searchGadget_form" 
+                          action="search"
+                          tal:attributes="action string:${portal_url}/search;
+                                          id string:search_form">
+
+                        <div class="LSBox">
+                        <label class="hiddenStructure"
+                            for="searchGadget"
+                               i18n:translate="text_search">Search Subscriber</label>
+
+                        <input name="SearchableText"
+                               type="text"
+                               size="18"
+                               value=""
+                               title="..."
+                               accesskey="4"
+                               i18n:attributes="title title_search_site;"
+                               tal:attributes="value request/form/SearchableText|nothing;
+                                               id string:searchGadget"
+                               class="searchField inputLabel" />
+
+                        <input class="searchButton btn mini"
+                               type="submit"
+                               value="Search"
+                               i18n:attributes="value label_search;" />
+
+                        <div class="LSResult" id="LSResult" style=""><div class="LSShadow" id="LSShadow"></div></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="cell position-1:2 width-1:2">
+                <div class="box" tal:define="stats view/usage_statistics">
+                    <h3>Statistik Verwendung</h3>
+                        <div class="tile stats">
+                            <strong tal:content="stats/pr" />
+                            <p>Pressemitteilungen</p>
+                        </div>
+                        <div class="tile stats">
+                            <strong tal:content="stats/pi" />
+                            <p>Presseeinladungen</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="visualClear"><!-- --></div>
+        
+        <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                             b_size python:25;b_start python:0;b_start request/b_start | b_start;">
+            <div class="box">
+                <h3>Kontakte <small tal:content="view/channelname">Channel Name</small></h3>
+                  <table class="bordered-table zebra-striped">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>E-Mail-Adresse</th>
+                              <th>Kontaktname</th>
+                              <th>Aktionen</th>
+                          </tr>
+                      </thead>
+                      <tbody tal:condition="view/has_info">
+                          <tal:subscribers tal:define="items view/channel_info;
+                                                       batch python:Batch(items, b_size, int(b_start), orphan=1)">
+                          <tal:block tal:repeat="item batch">
+                            <tr tal:define="rowcount repeat/item/number;">
+                                <td tal:content="rowcount">1</td>
+                                <td>
+                                    <span tal:content="item/email" />
+                                </td>
+                                <td>
+                                    <span tal:content="item/Title" />
+                                </td>
+                                <td tal:define="item_url item/getURL">
+                                    <a class="editbtn mini standalone"
+                                        tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
+                                </td>
+                            </tr>
+                          </tal:block>
+                          <div metal:use-macro="context/batch_macros/macros/navigation" />
+                          </tal:subscribers>
+                      </tbody>
+                      <tbody tal:condition="not:view/has_info">
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="3">
+                                    <div class="alert-message block-message error">
+                                          <a class="close" href="#">×</a>
+                                          <p><strong i18n:translate="">
+                                              There are no subscribers yet</strong></p>
+                                    </div>
+                                </td>
+                            </tr>
+                      </tbody>
+                  </table>
+            </div>
+        </section>
+        
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

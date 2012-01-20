@@ -6,8 +6,10 @@ from zope.interface import invariant, Invalid
 
 from z3c.form import group, field
 from plone.formwidget.autocomplete import AutocompleteMultiFieldWidget
-
+from Products.CMFCore.utils import getToolByName
 from pressapp.channelmanagement.vocabulary import ChannelSourceBinder
+
+from plone.app.layout.viewlets.interfaces import IAboveContent
 
 from pressapp.channelmanagement import MessageFactory as _
 
@@ -60,3 +62,21 @@ class View(grok.View):
     grok.context(ISubscriber)
     grok.require('zope2.View')
     grok.name('view')
+
+
+class SubscriberActions(grok.Viewlet):
+    grok.name('pressapp.membercontent.SubscriberActions')
+    grok.context(ISubscriber)
+    grok.require('zope2.View')
+    grok.viewletmanager(IAboveContent)
+
+    def update(self):
+        context = aq_inner(self.context)
+        self.context_url = context.absolute_url()
+
+    def homefolder_url(self):
+        context = aq_inner(self.context)
+        mtool = getToolByName(context, 'portal_membership')
+        member = mtool.getAuthenticatedMember()
+        home_folder = member.getHomeFolder().absolute_url()
+        return home_folder

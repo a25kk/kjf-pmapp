@@ -1,5 +1,5 @@
 from five import grok
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_parent
 from plone.directives import dexterity, form
 
 from zope import schema
@@ -7,6 +7,9 @@ from z3c.form import group, field
 
 from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
+from pressapp.presscontent.pressrelease import IPressRelease
+from pressapp.presscontent.pressinvitation import IPressInvitation
+
 from pressapp.channelmanagement.channel import IChannel
 from pressapp.channelmanagement.subscriber import ISubscriber
 
@@ -27,6 +30,7 @@ class View(grok.View):
     def update(self):
         self.has_channels = len(self.channels()) > 0
         self.has_subscribers = len(self.subscribers()) > 0
+        self.subscriber_count = len(self.subscribers())
 
     def active_channel(self):
         channels = self.channels()
@@ -50,6 +54,9 @@ class View(grok.View):
         subscribers = IContentListing(results)
         return subscribers
 
+    def channel_counter(self):
+        return len(self.channel_names())
+
     def channel_names(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
@@ -61,3 +68,65 @@ class View(grok.View):
             info['count'] = len(catalog.searchResults(channel=[channel]))
             names.append(info)
         return names
+
+
+class ChannelInformation(grok.View):
+    grok.context(IChannelManager)
+    grok.require('cmf.ReviewPortalContent')
+    grok.name('channel-information')
+
+    def update(self):
+        context = aq_inner(self.context)
+        self.channelname = self.request.get('channelname', '')
+        self.has_info = len(self.channel_info()) > 0
+        self.parent_url = aq_parent(context).absolute_url()
+
+    def channel_info(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=ISubscriber.__identifier__,
+                          channel=[self.channelname],
+                          sort_on='sortable_title')
+        subscribers = IContentListing(results)
+        return subscribers
+
+    def usage_statistics(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        stats={}
+        prs = catalog(object_provides=IPressRelease.__identifier__,
+                      channel=[self.channelname])
+        stats['pr'] = len(prs)
+        pis = prs = catalog(object_provides=IPressRelease.__identifier__,
+                            channel=[self.channelname])
+        stats['pi'] = len(pis)
+        return stats
+              
+
+class ChannelStatistics(grok.View):
+    grok.context(IChannelManager)
+    grok.require('cmf.ReviewPortalContent')
+    grok.name('channel-statistics')
+
+    def update(self):
+        self.has_data = len(self.statistic_data()) > 0
+
+    def statistic_data(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        channels = catalog.uniqueValuesFor('channel')
+        stats = []
+        for channel in channels:
+            channel_info = {}
+            prs = catalog(object_provides=IPressRelease.__identifier__,
+                          channel=[channel])
+            pis = catalog(object_provides=IPressInvitation.__identifier__,
+                          channel=[channel])
+            subs = catalog(object_provides=ISubscriber.__identifier__,
+                           channel=[channel])
+            channel_info['name'] = channel
+            channel_info['pr_count'] = len(prs)
+            channel_info['pi_count'] = len(pis)
+            channel_info['subscriber'] = len(subs)
+            stats.append(channel_info)
+        return stats
