@@ -41,7 +41,8 @@
                 <a href="" class="pull-right btn standalone popoverLink"
                     tal:attributes="href python:context_url+'/@@activity-bar?ajax_load=1'">
                     Aktivit&auml;tsanzeige</a>
-                <h2>Presser&auml;ume <small>Liste der Benutzerkonten/Presser&auml;ume</small></h2>
+
+                <h2>Benutzer <small>Liste der Benutzerkonten/Presser&auml;ume</small></h2>
                   <table class="bordered-table zebra-striped">
                       <thead>
                           <tr>

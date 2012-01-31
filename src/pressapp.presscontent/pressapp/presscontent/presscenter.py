@@ -18,6 +18,10 @@ class IPressCenter(form.Schema):
     """
     Press center that will act as the global members folder.
     """
+    mailtemplate = schema.SourceText(
+        title=_(u"E-Mail Template"),
+        required=False,
+    )
 
 
 class View(grok.View):

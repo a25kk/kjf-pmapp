@@ -28,7 +28,7 @@
           <div class="row">
               <div class="cell position-0 width-1:2">
                   <p class="pull-right">
-                      <a class="editbtn mini standalone popoverForm"
+                      <a class="editbtn mini standalone"
                         tal:attributes="href python:context_url+'/@@add-press-release'">
                           Neu anlegen</a>
                   </p>
@@ -54,7 +54,7 @@
                                         tal:content="state">State</span>
                                 </td>
                                 <td tal:define="item_url item/getURL">
-                                    <a class="editbtn mini left popoverForm"
+                                    <a class="editbtn mini left"
                                         tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
                                     <a class="editbtn mini right"
                                         tal:attributes="href python:item_url+'/view'">Anzeigen</a>

@@ -68,6 +68,12 @@ class View(grok.View):
     grok.name('view')
 
 
+class Preview(grok.View):
+    grok.context(IPressRelease)
+    grok.require('zope2.View')
+    grok.name('pressrelease-preview')
+
+
 class PressReleaseActions(grok.Viewlet):
     grok.name('pressapp.membercontent.PressReleaseActions')
     grok.context(IPressRelease)
