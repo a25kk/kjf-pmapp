@@ -21,16 +21,16 @@
     <link rel="stylesheet" href="css/decogrid16.css" type="text/css" media="screen" />
     <link href="css/styles.less" rel="stylesheet/less" type="text/css" />
     <script type="text/javascript" src="js/modernizr.js"></script>
-    <script type="text/javascript" src="js/less-1.1.3.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
-    <script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/all/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="js/less-1.2.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+    <script type="text/javascript" src="http://cdn.jquerytools.org/1.2.6/all/jquery.tools.min.js"></script>
 
   </head>
 
   <body>
 
-    <div class="topbar">
-      <div class="topbar-inner">
+    <div class="navbar">
+      <div class="navbar-inner">
         <div class="container-fluid">
           <a class="brand" href="#" id="logo">KJF PressApp</a>
           <ul class="nav">
@@ -38,7 +38,6 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <p class="pull-right">Logged in as <a href="#">username</a></p>
         </div>
       </div>
     </div>
@@ -46,23 +45,27 @@
     <div class="editbar" id="editbar">
         <div class="editbar-inner">
             <div class="container-fluid">
-                <div class="container">
-                    <a class="editbtn flarge left">Edit</a>
-                    <a class="editbtn flarge middle">View</a>
-                    <a class="editbtn flarge middle">Delete</a>
-                    <a class="editbtn flarge right">Action</a>
-                    <a class="editbtn flarge standalone">Standalone Action</a>
+                <div class="container btn-toolbar">
+                    <div class="btn-group">
+                    <a class="btn btn-large">Edit</a>
+                    <a class="btn btn-large">View</a>
+                    <a class="btn btn-large">Delete</a>
+                    <a class="btn btn-large">Action</a>
+                    </div>
+                    <div class="btn-group">
+                    <a class="btn btn-large">Standalone Action</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container" id="content-wrapper">
+    <div class="container-fluid" id="content-wrapper">
         <div class="row">
             <div class="cell position-0 width-3:4">
                 <div class="content" id="disabled-document-content">
                     
-                    <div class="alert-message block-message error">
+                    <div class="alert alert-error">
                           <a class="close" href="#">×</a>
                           <p><strong>This is the last warning!</strong>
                               Go away - I need to explode...</p>
@@ -80,10 +83,10 @@
                   </div>
                   
                   
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="cell position-0 width-2:3">
-                            <table class="zebra-striped">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>#</th>

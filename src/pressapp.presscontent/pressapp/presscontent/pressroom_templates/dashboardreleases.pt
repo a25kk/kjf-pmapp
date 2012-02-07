@@ -14,16 +14,17 @@
         <p class="visualClear">in diesem Bereich finden Sie eine &Uuml;bersicht &uuml;ber Ihre
         bereits angelegten Pressemitteilungen.</p>
 
-      <div class="container"
+      <div class="container-fluid"
             tal:define="context_url context/absolute_url">
           <div class="box">
                   <p class="pull-right">
-                      <a class="editbtn mini standalone popoverForm"
+                      <a class="btn"
                           tal:attributes="href python:context_url+'/@@add-press-release'">
+                            <i class="icon-plus-sign" />
                             Neu anlegen</a>
                   </p>
                   <h2>Pressemitteilungen</h2>
-                  <table class="zebra-striped" tal:condition="view/has_pressreleases">
+                  <table class="table table-striped" tal:condition="view/has_pressreleases">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -41,17 +42,23 @@
                                     PR Title</a></td>
                               <td><span class="label info">Neu</span></td>
                               <td tal:define="item_url item/getURL">
-                                  <a class="editbtn mini left popoverForm"
-                                      tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
-                                  <a class="editbtn mini right"
-                                      tal:attributes="href python:item_url+'/view'">Anzeigen</a>
+                                  <div class="btn-group">
+                                    <a class="btn btn-small"
+                                        tal:attributes="href python:item_url+'/edit'">
+                                        <i class="icon-edit" />
+                                        Bearbeiten</a>
+                                    <a class="btn btn-small"
+                                        tal:attributes="href python:item_url+'/view'">
+                                        <i class="icon-eye-open" />
+                                        Anzeigen</a>
+                                  </div>
                                </td>
                           </tr>
                           </tal:block>
                       </tbody>
                   </table>
                   
-                   <div class="alert-message block-message info"
+                   <div class="alert alert-block"
                         tal:condition="not:view/has_pressreleases">
                         <a class="close" href="#">×</a>
                         <p><strong>Hinweis:</strong>

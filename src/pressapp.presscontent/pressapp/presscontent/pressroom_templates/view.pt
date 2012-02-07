@@ -12,28 +12,30 @@
     
         <h1>Arbeitsplatz <span tal:replace="context/Title" />!</h1>
       
-            <div class="alert-message block-message warning"
+            <div class="alert alert-warning"
                 data-alert="alert">
                 <a class="close" href="#">×</a>
-                <p><strong>Hinweis:</strong>
+                <h4 class="alert-heading">Hinweis:</h4>
+                <p>
                     Die momentane Version der Applikation f&uuml;r Pressemitteilungen
                     beinhaltet alle relevanten Funktionen. Im n&auml;chsten Schritt
                     werden die Bearbeitungsoberfl&auml;chen noch optimiert.
                 </p>
             </div>
       
-      <div class="container"
+      <div class="container-fluid"
         tal:define="context_url context/absolute_url">
           <div class="box">
           <div class="row">
               <div class="cell position-0 width-1:2">
                   <p class="pull-right">
-                      <a class="editbtn mini standalone"
+                      <a class="btn btn-small"
                         tal:attributes="href python:context_url+'/@@add-press-release'">
+                            <i class="icon-plus-sign" />
                           Neu anlegen</a>
                   </p>
                   <h2>Pressemitteilungen</h2>
-                  <table class="xbordered-table zebra-striped">
+                  <table class="table table-striped">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -54,10 +56,16 @@
                                         tal:content="state">State</span>
                                 </td>
                                 <td tal:define="item_url item/getURL">
-                                    <a class="editbtn mini left"
-                                        tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
-                                    <a class="editbtn mini right"
-                                        tal:attributes="href python:item_url+'/view'">Anzeigen</a>
+                                    <div class="btn-group">
+                                    <a class="btn btn-small"
+                                        tal:attributes="href python:item_url+'/edit'">
+                                        <i class="icon-edit" />
+                                        Bearbeiten</a>
+                                    <a class="btn btn-small"
+                                        tal:attributes="href python:item_url+'/view'">
+                                        <i class="icon-eye-open" />
+                                        Anzeigen</a>
+                                    </div>
                                 </td>
                             </tr>
                           </tal:block>
@@ -65,7 +73,7 @@
                       <tbody tal:condition="not:view/has_releases">
                             <tr>
                                 <td colspan="4">
-                                    <div class="alert-message block-message error">
+                                    <div class="alert alert-block alert-error">
                                           <a class="close" href="#">×</a>
                                           <p><strong i18n:translate="">
                                               No press releases available!</strong></p>
@@ -77,11 +85,12 @@
               </div>
               <div class="cell position-1:2 width-1:2">
                   <p class="pull-right">
-                      <a class="editbtn mini standalone popoverForm"
+                      <a class="btn btn-small"
                         tal:attributes="href python:context_url+'/@@add-press-invitation'">
+                        <i class="icon-plus-sign" />
                         Neu anlegen</a></p>
                   <h2>Presseeinladungen</h2>
-                  <table class="xbordered-table zebra-striped">
+                  <table class="table table-striped">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -102,10 +111,16 @@
                                           tal:content="state">State</span>
                                   </td>
                                   <td tal:define="item_url item/getURL">
-                                      <a class="editbtn mini left"
-                                          tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
-                                      <a class="editbtn mini right"
-                                          tal:attributes="href python:item_url+'/view'">Anzeigen</a>
+                                      <div class="btn-group">
+                                      <a class="btn btn-small"
+                                          tal:attributes="href python:item_url+'/edit'">
+                                          <i class="icon-edit" />
+                                          Bearbeiten</a>
+                                      <a class="btn btn-small"
+                                          tal:attributes="href python:item_url+'/view'">
+                                          <i class="icon-eye-open" />
+                                          Anzeigen</a>
+                                      </div>
                                   </td>
                               </tr>
                             </tal:block>
@@ -113,7 +128,7 @@
                       <tbody tal:condition="not:view/has_invitations">
                           <tr>
                               <td colspan="4">
-                                  <div class="alert-message block-message error">
+                                  <div class="alert alert-block alert-error">
                                         <a class="close" href="#">×</a>
                                         <p><strong i18n:translate="">
                                             No press invitations available!</strong></p>

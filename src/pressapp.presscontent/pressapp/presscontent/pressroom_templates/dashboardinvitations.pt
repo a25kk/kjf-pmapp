@@ -14,15 +14,16 @@
         <p class="visualClear">In diesem Bereich finden Sie eine &Uuml;bersicht &uuml;ber Ihre
         bereits angelegten Presseeinladungen.</p>
 
-      <div class="container">
+      <div class="container-fluid">
           <div class="box">
                   <p class="pull-right">
-                      <a class="editbtn mini standalone disabled"
-                        data-placement="below" rel='twipsy' title="Not implemented yet.">
-                          Neu anlegen</a>
+                      <a class="btn">
+                        <i class="icon-plus-sign" />
+                          Neu anlegen
+                      </a>
                   </p>
                   <h2>Presseeinladungen</h2>
-                  <table class="zebra-striped" tal:condition="view/has_pressinvitations">
+                  <table class="table table-striped" tal:condition="view/has_pressinvitations">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -39,8 +40,16 @@
                                     tal:attributes="href item/getURL">
                                     PR Title</a></td>
                               <td><span class="label info">Neu</span></td>
-                              <td><a class="editbtn mini left">Edit</a>
-                                <a class="editbtn mini right">View</a>
+                              <td>
+                                  <div class="btn-group">
+                                      <a class="btn btn-small">
+                                          <i class="icon-edit" />
+                                          Bearbeiten
+                                          </a>
+                                      <a class="btn btn-small">
+                                          <i class="icon-eye-open" />
+                                          Anzeigen</a>
+                                  </div>
                                </td>
                           </tr>
                           </tal:block>

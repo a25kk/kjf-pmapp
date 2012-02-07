@@ -29,41 +29,43 @@
 
   <body>
 
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="container-fluid">
-          <a class="brand" href="#" id="logo">KJF PressApp</a>
-          <ul class="nav">
-            <li><a href="#">Startseite</a></li>
-            <li><a href="#about">Hilfe</a></li>
-          </ul>
-          <p class="pull-right">
-              Angemeldet als <a href="#" id="user-name">username</a>
-          </p>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <a class="brand" href="#" id="logo">KJF PressApp</a>
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <div class="editbar" id="editbar">
-        <div class="editbar-inner">
-            <div class="container-fluid">
-                <div class="container">
-                    <a class="editbtn flarge left">Edit</a>
-                    <a class="editbtn flarge middle">View</a>
-                    <a class="editbtn flarge middle">Delete</a>
-                    <a class="editbtn flarge right">Action</a>
-                    <a class="editbtn flarge standalone">Standalone Action</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container" id="content-wrapper">
+      <div class="editbar" id="editbar">
+          <div class="editbar-inner">
+              <div class="container-fluid">
+                  <div class="container btn-toolbar">
+                      <div class="btn-group">
+                      <a class="btn btn-large">Edit</a>
+                      <a class="btn btn-large">View</a>
+                      <a class="btn btn-large">Delete</a>
+                      <a class="btn btn-large">Action</a>
+                      </div>
+                      <div class="btn-group">
+                      <a class="btn btn-large">Standalone Action</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <div class="container-fluid" id="content-wrapper">
         <div class="row">
             <div class="cell position-0 width-3:4">
                 <div class="content" id="document-content">
                     
-                    <div class="alert-message block-message error">
+                    <div class="alert alert-rror">
                           <a class="close" href="#">×</a>
                           <p><strong>This is the last warning!</strong>
                               Go away - I need to explode...</p>

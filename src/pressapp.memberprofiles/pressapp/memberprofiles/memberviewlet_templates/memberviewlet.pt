@@ -1,4 +1,4 @@
-<div id="member-information-box" class="container">
+<div id="member-information-box" class="container-fluid">
     <div id="member-infobox">
         <tal:block tal:define="memberinfo viewlet/memberdetails;
                                portal_url context/@@plone_portal_state/navigation_root_url;
@@ -24,7 +24,7 @@
         </div>
         <div class="visualClear"><!-- --></div>
 
-        <div class="container">
+        <div class="container-fluid">
             <p><strong>Einrichtung:</strong>
                 <span tal:content="memberinfo/organization">Beispiel e.V.</span></p>
             <p><strong>Ort:</strong>
@@ -37,14 +37,21 @@
                 <a href="#"
                     tal:attributes="href memberinfo/presslink"
                     tal:content="memberinfo/presslink">http://beispiel.tld</a></p>
-            <p><a class="btn" href="#"
-                tal:attributes="href python:portal_url+'/personal-information'">Profil bearbeiten &raquo;</a>
-                <a href="" class="btn"
-                    tal:attributes="href python:portal_url+'/logout'">Abmelden</a>
-            </p>
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <a class="btn" href="#"
+                    tal:attributes="href python:portal_url+'/personal-information'">
+                    <i class="icon-cog" />
+                    Profil bearbeiten</a>
+                    <a href="" class="btn"
+                        tal:attributes="href python:portal_url+'/logout'">
+                        <i class="icon-ban-circle" />
+                        Abmelden</a>
+                </div>
+            </div>
         </div>
         
-        <div class="container">
+        <div class="container-fluid">
             <div id="status-placeholder">
                 <p class="loading-indicator">
                     <img tal:attributes="src string:${context/@@plone_portal_state/portal_url}/spinner.gif" />
