@@ -57,10 +57,14 @@
           <span tal:replace="python:toLocalizedTime(modified)" />,
           <span tal:replace="python:toLocalizedTime(modified, time_only=1)" /><br />
           <a href=""
-            class="btn popoverForm"
+            class="btn"
             tal:attributes="href string:${context/absolute_url}/edit">
             <i class="icon-edit" />
-              Bearbeiten</a>
+              Bearbeiten</a><br />
+        <a href="" class="btn btn-info"
+            tal:attributes="href string:${context/absolute_url}/@@pressrelease-preview">
+            <i class="icon-eye-open icon-white" />
+            Vorschau</a>
   </div>
   </div>
   </section>

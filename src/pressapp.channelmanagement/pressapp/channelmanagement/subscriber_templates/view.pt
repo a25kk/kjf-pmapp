@@ -11,9 +11,10 @@
   <metal:content-core define-macro="main">
     
     <p class="pull-right">
-          <a class="editbtn mini standalone"
+          <a class="btn btn-large"
             tal:define="context_url context/absolute_url;"
             tal:attributes="href python:context_url+'/edit'">
+            <i class="icon-edit" />
               Bearbeiten</a>
     </p>
     
@@ -23,7 +24,7 @@
     <div class="row">
         <div class="cell position-0 width-1:2">
         <section class="box">
-            <table class="xbordered-table">
+            <table class="table table-condensed">
                 <thead>
                     <tr>
                         <th colspan="2"><h3>Kontaktdetails</h3></th>

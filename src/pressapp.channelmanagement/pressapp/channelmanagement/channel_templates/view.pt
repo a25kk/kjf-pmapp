@@ -17,13 +17,14 @@
                          b_size python:25;b_start python:0;b_start request/b_start | b_start;">
         <div class="box">
             <p class="pull-right">
-                  <a class="editbtn mini standalone popoverForm"
+                  <a class="btn btn-small popoverForm"
                     tal:define="context_url context/absolute_url;"
                     tal:attributes="href python:context_url+'/++add++pressapp.channelmanagement.subscriber'">
+                    <i class="icon-plus-sign" />
                       Neuen Kontakt anlegen</a>
             </p>
             <h3>Kontakte <small>Liste aller Kontaktadressen</small></h3>
-              <table class="zebra-striped">
+              <table class="table">
                   <thead>
                       <tr>
                           <th>#</th>
@@ -45,8 +46,10 @@
                                 <span tal:content="item/Title" />
                             </td>
                             <td tal:define="item_url item/getURL">
-                                <a class="editbtn mini standalone"
-                                    tal:attributes="href python:item_url+'/edit'">Bearbeiten</a>
+                                <a class="btn btn-small"
+                                    tal:attributes="href python:item_url+'/edit'">
+                                    <i class="icon-edit" />
+                                    Bearbeiten</a>
                             </td>
                         </tr>
                       </tal:block>
@@ -57,7 +60,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td colspan="3">
-                                <div class="alert-message block-message error">
+                                <div class="alert alert-block alert-error">
                                       <a class="close" href="#">×</a>
                                       <p><strong i18n:translate="">
                                           There are no subscribers yet</strong></p>

@@ -355,6 +355,7 @@
 	</style>
 </head>
 <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    <p><a href="" tal:attributes="href string:${context/absolute_url}">Zur Bearbeitungsoberfl&auml;che</a></p>
 	<center>
     	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable">
         	<tr>

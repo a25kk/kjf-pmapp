@@ -51,22 +51,26 @@
                 <div class="tile stats">
                     <strong tal:content="view/channel_counter" />
                     <p class="pull-right">
-                        <a href="" class="editbtn mini standalone info"
+                        <a href="" class="btn"
                             tal:attributes="href python:context_url+'/@@channel-statistics'">
+                            <i class="icon-eye-open" />
                             Anzeigen</a>
                     </p>
                     <h5>Verteiler</h5>
                 </div>
                 <div class="tile stats">
                     <strong tal:content="view/subscriber_count" />
-                    <p class="pull-right"
+                    <p class="pull-right btn-group"
                         tal:define="channel view/active_channel;
                                     channel_url channel/getURL;">
-                        <a class="editbtn mini standalone"
+                        <a class="btn btn-small"
                             tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
+                            <i class="icon-plus-sign" />
                               Neuen Kontakt anlegen</a>
-                        <a class="editbtn mini standalone"
-                            tal:attributes="href channel_url">Anzeigen</a>
+                        <a class="btn btn-small"
+                            tal:attributes="href channel_url">
+                            <i class="icon-eye-open" />
+                            Anzeigen</a>
                     </p>
                     <h5>Kontakte</h5>
                 </div>
@@ -79,7 +83,7 @@
                             <strong tal:content="item/count" />
                             <form class="xpull-right"
                                 tal:attributes="action python:context_url+'/@@channel-information'">
-                                <input href="" class="btn primary small pull-right"
+                                <input href="" class="btn btn-primary btn-small pull-right"
                                     type="submit" value="Anzeigen" />
                                         <input name="channelname" id="channelname" type="text"
                                             class="large uneditable-input"

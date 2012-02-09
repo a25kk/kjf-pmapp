@@ -16,7 +16,7 @@
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                     context_url context/absolute_url">
     
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="cell position-0 width-2:3">
                 <h1 class="documentFirstHeading" tal:content="context/Title" />
@@ -27,23 +27,26 @@
                     <h3>Adressverwaltung</h3>
                     <p>Verwaltungs- und Bearbeitungsoberfl&auml;che f&uuml;r
                        das Adressbuch und die Verteilerlisten</p>
-                    <a href="" class="btn standalone"
+                    <a href="" class="btn"
                         tal:attributes="href python:context_url+'/kontakte'">
+                        <i class="icon-list-alt" />
                         Adressverwaltung anzeigen</a>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="container">
+    <div class="container-fluid">
         <section tal:condition="view/has_pressrooms">
             <div class="box">
-                <a href="" class="pull-right btn standalone popoverLink"
+                <a href="" class="pull-right btn btn-small popoverLink"
                     tal:attributes="href python:context_url+'/@@activity-bar?ajax_load=1'">
+                    <i class="icon-signal" />
                     Aktivit&auml;tsanzeige</a>
-
-                <h2>Benutzer <small>Liste der Benutzerkonten/Presser&auml;ume</small></h2>
-                  <table class="bordered-table zebra-striped">
+                <div class="page-header">
+                    <h2>Benutzer <small>Liste der Benutzerkonten/Presser&auml;ume</small></h2>
+                </div>
+                  <table class="table table-condensed">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -64,8 +67,10 @@
                                     <span tal:replace="python:toLocalizedTime(login_time, time_only=1)" /> Uhr
                                 </td>
                                 <td tal:define="item_url item/getURL">
-                                    <a class="editbtn mini standalone"
-                                        tal:attributes="href python:item_url+'/view'">Anzeigen</a>
+                                    <a class="btn btn-small"
+                                        tal:attributes="href python:item_url+'/view'">
+                                        <i class="icon-eye-open" />
+                                        Anzeigen</a>
                                 </td>
                             </tr>
                           </tal:block>
@@ -73,7 +78,7 @@
                       <tbody tal:condition="not:view/has_pressrooms">
                             <tr>
                                 <td colspan="4">
-                                    <div class="alert-message block-message error">
+                                    <div class="alert alert-block alert-error">
                                           <a class="close" href="#">×</a>
                                           <p><strong i18n:translate="">
                                               No pressrooms available!</strong></p>

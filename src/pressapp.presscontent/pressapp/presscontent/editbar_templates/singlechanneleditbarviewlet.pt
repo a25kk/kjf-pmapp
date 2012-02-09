@@ -3,27 +3,37 @@
         tal:define="context_url viewlet/context_url;
                     parent_url viewlet/parent_url;
                     home_url viewlet/my_workspace">
-        <div class="container-fluid">
-            <div class="container">
-                <a class="editbtn flarge left"
-                    tal:attributes="href parent_url">
-                    Presse Center</a>
-                <a class="editbtn flarge middle"
-                    tal:attributes="href home_url">
-                    Arbeitsplatz</a>
-                <a class="editbtn flarge right active"
-                    tal:attributes="href context_url">
-                    Adressverwaltung</a>
-                <a class="editbtn flarge left"
-                    tal:attributes="href python:home_url+'/@@dashboard-releases'">
-                    Pressemitteilungen</a>
-                <a class="editbtn flarge middle"
-                    tal:attributes="href python:home_url+'/@@dashboard-invitations'">
-                    Presseeinladungen</a>
-                <a class="editbtn flarge right"
-                    tal:attributes="href python:home_url+'/@@dashboard-schedule'">
-                    Versand</a>
-            </div>
-        </div>
+                    <div class="container-fluid">
+                        <div class="container btn-toolbar">
+                            <div class="btn-group">
+                                <a class="btn btn-large"
+                                    tal:attributes="href context_url">
+                                    <i class="icon-align-justify" />
+                                    Presse Center</a>
+                                <a class="btn btn-large"
+                                    tal:attributes="href home_url">
+                                    <i class="icon-home" />
+                                    Arbeitsplatz</a>
+                                <a class="btn btn-large"
+                                    tal:attributes="href python:context_url+'/kontakte'">
+                                    <i class="icon-list-alt" />
+                                    Adressverwaltung</a>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-large"
+                                    tal:attributes="href python:home_url+'/@@dashboard-releases'">
+                                    <i class="icon-file" />
+                                    Pressemitteilungen</a>
+                                <a class="btn btn-large"
+                                    tal:attributes="href python:home_url+'/@@dashboard-invitations'">
+                                    <i class="icon-calendar" />
+                                    Presseeinladungen</a>
+                                <a class="btn btn-large"
+                                    tal:attributes="href python:home_url+'/@@dashboard-schedule'">
+                                    <i class="icon-share-alt" />
+                                    Versand</a>
+                            </div>
+                        </div>
+                    </div>
     </div>
 </div>

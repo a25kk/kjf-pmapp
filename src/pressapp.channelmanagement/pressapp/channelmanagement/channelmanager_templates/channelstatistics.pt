@@ -23,14 +23,16 @@
                     <tal:block tal:repeat="item items">
                         <div class="box">
                             <h5 class="pull-left" tal:content="item/name">Test</h5>
-                            <a class="editbtn mini info show-details pull-right">
+                            <a class="btn  btn-small btn-info show-details pull-right">
+                                <i class="icon-arrow-down icon-white" />
                                 Details einblenden</a>
                             <div class="xbox details visualClear">
+                                <div class="visualClear">&nbsp;</div>
                                 <div class="tile stats">
                                     <strong tal:content="item/subscriber" />
                                     <form class="xpull-right"
                                         tal:attributes="action python:context_url+'/@@channel-information'">
-                                        <input href="" class="editbtn small pull-right"
+                                        <input href="" class="btn btn-small pull-right"
                                             type="submit" value="Anzeigen" />
                                         <input name="channeltrigger" id="channeltrigger" type="text"
                                             class="large uneditable-input"
