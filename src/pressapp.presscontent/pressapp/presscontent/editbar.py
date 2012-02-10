@@ -24,7 +24,7 @@ class EditBarViewlet(grok.Viewlet):
     def is_administrator(self):
         context = aq_inner(self.context)
         return bool(getSecurityManager().checkPermission(
-                    'Portlets: manage own portlets', context))
+                    'Portlets: Manage own portlets', context))
 
 
 class PressCenterEditBarViewlet(grok.Viewlet):

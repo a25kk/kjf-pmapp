@@ -61,6 +61,8 @@
         <replace css:content-children="#content" css:theme-children="#frontpage-content"
             css:if-content="body.portaltype-plone-site" />
         
+        <replace css:content="#navbar" css:theme="#nav-bar" />
+        
         <after css:content="#portal-personaltools a" css:theme-children="#site-actions"
             css:if-content="#anon-personalbar" />
         <replace css:content="#user-name" css:theme="#user-name"

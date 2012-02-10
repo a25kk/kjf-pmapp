@@ -1,0 +1,71 @@
+<div class="navbar navbar-fixed-top" id="navbar">
+    <div class="navbar-inner"
+        tal:define="context_url viewlet/context_url;
+                    portal_url viewlet/portal_url">
+        <div class="container-fluid">
+            <a href="" class="brand"
+                tal:attributes="href portal_url">
+                KJF Pressestelle</a>
+            <div class="nav-collapse" tal:condition="not:viewlet/anonymous">
+                <ul class="nav"
+                    tal:define="home_folder viewlet/home_url">
+                    <li class="dropdown">
+                        <a href="/" class="dropdown-toggle"
+                            tal:attributes="href home_folder">
+                            <i class="icon-home icon-white" />
+                            Arbeitsplatz
+                            <b class="caret" />
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href=""
+                                    tal:attributes="href python:home_folder+'/@@dashboard-releases'">
+                                <i class="icon-file" />
+                                Pressemitteilungen</a>
+                            </li>
+                            <li><a href=""
+                                    tal:attributes="href python:home_folder+'/@@dashboard-invitations'">
+                                <i class="icon-calendar" />
+                                Presseeinladungen
+                                </a>
+                            </li>
+                            <li class="divider" />
+                            <li><a href=""
+                                    tal:attributes="href python:home_folder+'/@@dashboard-schedule'">
+                                <i class="icon-share-alt" />
+                                    Statistik
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown" tal:condition="viewlet/is_administrator">
+                        <a href="/" class="dropdown-toggle"
+                            tal:attributes="href python:portal_url+'/press-center'">
+                            <i class="icon-cog icon-white" />
+                            Administration
+                            <b class="caret" />
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">
+                                <i class="icon-align-justify" />
+                                Einstellungen
+                                </a>
+                            </li>
+                            <li><a href="">
+                                <i class="icon-list-alt" />
+                                Addressverwaltung
+                                </a>
+                            </li>
+                            <li class="divider" />
+                            <li><a href="">
+                                <i class="icon-user" />
+                                Redakteure
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

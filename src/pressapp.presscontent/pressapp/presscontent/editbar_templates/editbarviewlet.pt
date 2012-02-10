@@ -2,13 +2,7 @@
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
-            <div class="container btn-toolbar">
-                <div class="btn-group">
-                    <a class="btn btn-large"
-                        tal:attributes="href context_url">
-                        <i class="icon-home" />
-                        Arbeitsplatz</a>
-                </div>
+            <div class="container-fluid btn-toolbar">
                 <div class="btn-group">
                     <a class="btn btn-large"
                         tal:attributes="href python:context_url+'/@@dashboard-releases'">
@@ -23,14 +17,6 @@
                         <i class="icon-share-alt" />
                         Versand</a>
                 </div>
-                <div class="btn-group">
-                    <a class="btn btn-large"
-                        tal:condition="viewlet/is_administrator"
-                        tal:attributes="href viewlet/parent_url">
-                        <i class="icon-cog" />
-                        Administration</a>
-                </div>
-                
             </div>
         </div>
     </div>
