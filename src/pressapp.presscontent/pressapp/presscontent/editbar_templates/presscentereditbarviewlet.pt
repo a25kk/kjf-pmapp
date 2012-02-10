@@ -3,20 +3,24 @@
         tal:define="context_url viewlet/context_url;
                     home_url viewlet/my_workspace">
         <div class="container-fluid">
-            <div class="container btn-toolbar">
+            <div class="container-fluid btn-toolbar">
                 <div class="btn-group">
                     <a class="btn btn-large"
                         tal:attributes="href context_url">
                         <i class="icon-align-justify" />
                         Presse Center</a>
                     <a class="btn btn-large"
-                        tal:attributes="href home_url">
-                        <i class="icon-home" />
-                        Arbeitsplatz</a>
+                        tal:attributes="href python:context_url+'/@@settings'">
+                        <i class="icon-cog" />
+                        Einstellungen</a>
                     <a class="btn btn-large"
                         tal:attributes="href python:context_url+'/kontakte'">
                         <i class="icon-list-alt" />
                         Adressverwaltung</a>
+                    <a class="btn btn-large"
+                        tal:attributes="href home_url">
+                        <i class="icon-home" />
+                        Arbeitsplatz</a>
                 </div>
                 <div class="btn-group">
                     <a class="btn btn-large"

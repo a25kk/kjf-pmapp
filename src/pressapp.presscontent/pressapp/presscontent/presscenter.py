@@ -18,6 +18,21 @@ class IPressCenter(form.Schema):
     """
     Press center that will act as the global members folder.
     """
+    email = schema.TextLine(
+        title=_(u"Sender E-Mail-Address"),
+        description=_(u"Please enter default send from E-mail address"),
+        required=True,
+    )
+    name = schema.TextLine(
+        title=_("Sender Name"),
+        description=_(u"Provide a default sender name to be included"),
+        required= True,
+    )
+    testEmail = schema.TextLine(
+        title=_(u"E-Mail Address for Tests"),
+        description=_(u"Default email address used in test despatches"),
+        required=True,
+    )
     mailtemplate = schema.SourceText(
         title=_(u"E-Mail Template"),
         required=False,
@@ -53,3 +68,12 @@ class View(grok.View):
     def can_edit(self):
         return bool(getSecurityManager().checkPermission(
                     'Portlets: Manage own portlets', self.context))
+
+
+class Settings(grok.View):
+    grok.context(IPressCenter)
+    grok.require('zope2.View')
+    grok.name('settings')
+
+    def updates(self):
+        pass
