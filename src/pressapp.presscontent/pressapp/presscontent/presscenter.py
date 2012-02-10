@@ -70,10 +70,10 @@ class View(grok.View):
                     'Portlets: Manage own portlets', self.context))
 
 
-class Settings(grok.View):
+class PressCenterSettings(grok.View):
     grok.context(IPressCenter)
     grok.require('zope2.View')
-    grok.name('settings')
+    grok.name('global-settings')
 
     def updates(self):
         pass

@@ -10,7 +10,7 @@
                         <i class="icon-align-justify" />
                         Presse Center</a>
                     <a class="btn btn-large"
-                        tal:attributes="href python:context_url+'/@@settings'">
+                        tal:attributes="href python:context_url+'/@@global-settings'">
                         <i class="icon-cog" />
                         Einstellungen</a>
                     <a class="btn btn-large"
