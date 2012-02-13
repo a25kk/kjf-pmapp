@@ -2,9 +2,9 @@
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
-            <div class="container btn-toolbar">
+            <div class="btn-toolbar">
                 <div class="btn-group">
-                    <a class="btn btn-large"
+                    <a class="btn btn-large btn-info"
                         tal:attributes="href viewlet/homefolder_url">
                         <i class="icon-home" />
                         Arbeitsplatz</a>

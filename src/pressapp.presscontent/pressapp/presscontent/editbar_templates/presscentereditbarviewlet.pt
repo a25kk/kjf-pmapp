@@ -12,10 +12,6 @@
                 </div>
                 <div class="btn-group">
                     <a class="btn btn-large"
-                        tal:attributes="href python:context_url+'/@@global-settings'">
-                        <i class="icon-align-justify" />
-                        Einstellungen</a>
-                    <a class="btn btn-large"
                         tal:attributes="href python:context_url+'/kontakte'">
                         <i class="icon-list-alt" />
                         Adressen</a>
@@ -23,10 +19,14 @@
                         tal:attributes="href python:context_url+'/@@workspaces'">
                         <i class="icon-user" />
                         Redakteure</a>
+                    <a class="btn btn-large"
+                        tal:attributes="href python:context_url+'/@@global-settings'">
+                        <i class="icon-align-justify" />
+                        Einstellungen</a>
                 </div>
                 <div class="btn-group">
                     <a class="btn btn-large"
-                        tal:attributes="href context_url">
+                        tal:attributes="href context_url+'/kontakte/@@channel-statistics">
                         <i class="icon-signal" />
                         Statistiken</a>
                 </div>

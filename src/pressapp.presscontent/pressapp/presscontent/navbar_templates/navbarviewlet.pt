@@ -54,9 +54,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href=""
-                                tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
-                                <i class="icon-align-justify" />
-                                Einstellungen
+                                tal:attributes="href python:portal_url+'/presscenter/'">
+                                <i class="icon-list" />
+                                &Uuml;bersicht
                                 </a>
                             </li>
                             <li><a href=""
@@ -65,11 +65,17 @@
                                 Addressen
                                 </a>
                             </li>
-                            <li class="divider" />
                             <li><a href=""
                                     tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
                                 <i class="icon-user" />
                                 Redakteure
+                                </a>
+                            </li>
+                            <li class="divider" />
+                            <li><a href=""
+                                tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
+                                <i class="icon-align-justify" />
+                                    Einstellungen
                                 </a>
                             </li>
                         </ul>
