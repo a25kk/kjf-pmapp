@@ -17,6 +17,11 @@ $(document).ready(function() {
     $(function() {
         $('a[rel=twipsy]').tooltip();
     });
+    $(function() {
+        $('a[rel=loading-indicator]').click(function() {
+            $(this).button('loading');
+        });
+    });
     var statusURL = $("#status-placeholder a").attr("href");
     if (statusURL) {
         $('#status-placeholder').load(statusURL);

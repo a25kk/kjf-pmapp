@@ -2,22 +2,27 @@
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
-            <div class="container">
-                <a class="editbtn flarge standalone"
-                    tal:attributes="href viewlet/homefolder_url">
-                    Arbeitsplatz</a>
-                <a class="editbtn flarge left"
-                    tal:attributes="href python:context_url+'/view'">
-                    Anzeigen</a>
-                <a class="editbtn flarge middle"
-                    tal:attributes="href python:context_url+'/edit'">
-                    Bearbeiten</a>
-                <a class="editbtn flarge right popoverLink"
-                    tal:attributes="href python:context_url+'/delete_confirmation'">
-                    Entfernen</a>
-                <a class="editbtn flarge standalone"
-                    tal:attributes="href python:context_url+'/@@example.datatables'">
-                    Kontakte</a>
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <a class="btn btn-large btn-info"
+                        tal:attributes="href viewlet/homefolder_url">
+                        <i class="icon-home icon-white" />
+                        Arbeitsplatz</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-large"
+                        tal:attributes="href python:context_url+'/view'">
+                        <i class="icon-eye-open" />
+                        Anzeigen</a>
+                    <a class="btn btn-large"
+                        tal:attributes="href python:context_url+'/edit'">
+                        <i class="icon-edit" />
+                        Bearbeiten</a>
+                    <a class="btn btn-large popoverLink"
+                        tal:attributes="href python:context_url+'/delete_confirmation'">
+                        <i class="icon-remove-sign" />
+                        Entfernen</a>
+                </div>
             </div>
         </div>
     </div>

@@ -19,39 +19,36 @@
     <div class="container-fluid">
         
         <div class="page-header">
+            <p class="pull-right">
+                <a href="">
+                    <i class="icon-align-justify" />
+                    Einstellungen</a>
+                <a href="">
+                    <i class="icon-signal" />
+                    Statistik</a>
+                <a href="" class="popoverLink"
+                    tal:attributes="href python:context_url+'/@@activity-bar?ajax_load=1'">
+                    <i class="icon-random" />
+                    Aktivit&auml;tsanzeige</a>
+            </p>
             <h1>Administration
                 <small>Grobale Einstellungen, &Uuml;bersicht Redakteure und Adressen</small></h1>
         </div>
-        
+
         <div class="row-fluid">
-            <div class="span4">
-                <div class="well">
-                    <h2>Adressen
-                        <small><a href=""
-                            tal:attributes="href python:context_url+'/kontakte'">
-                            bearbeiten</a></small>
-                    </h2>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="box">
-                    <h2>Statistiken
-                        <small><a href=""
-                            tal:attributes="href python:context_url">
-                            anzeigen</a></small>
-                    </h2>
-                </div>
+        <div class="span6">
+            <div class="box">
+                <a class="btn btn-primary pull-right"
+                    tal:attributes="href python:context_url+'/kontakte'">
+                    <i class="icon-list-alt icon-white" />
+                    Bearbeiten</a>
+                <h2><i class="icon-list-alt" /> Adressen
+                </h2>
             </div>
         </div>
-    </div>
-    
-    <div class="container-fluid">
+        <div class="span6">
         <section tal:condition="view/has_pressrooms">
             <div class="box">
-                <a href="" class="pull-right btn btn-small popoverLink"
-                    tal:attributes="href python:context_url+'/@@activity-bar?ajax_load=1'">
-                    <i class="icon-signal" />
-                    Aktivit&auml;tsanzeige</a>
                 <div class="page-header">
                     <h2>Redakteure <small>Liste der Benutzerkonten/Presser&auml;ume</small></h2>
                 </div>
@@ -98,6 +95,8 @@
                   </table>
             </div>
         </section>
+        </div>
+        </div>
     </div>
   </metal:content-core>
 </metal:main>

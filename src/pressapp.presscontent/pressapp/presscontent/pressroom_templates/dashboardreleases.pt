@@ -18,7 +18,9 @@
           <div class="box">
                   <p class="pull-right">
                       <a class="btn btn-primary"
-                          tal:attributes="href python:context_url+'/+++add++pressapp.presscontent.pressrelease'">
+                        rel="loading-indicator"
+                        data-loading-text="Wird geladen..."
+                          tal:attributes="href python:context_url+'/++add++pressapp.presscontent.pressrelease'">
                             <i class="icon-plus-sign icon-white" />
                             Neu anlegen</a>
                   </p>
