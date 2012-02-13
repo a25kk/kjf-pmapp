@@ -9,18 +9,17 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-    
-        <h1>Pressemiteilungen bearbeiten <span tal:replace="context/Title" />!</h1>
-        <p class="visualClear">in diesem Bereich finden Sie eine &Uuml;bersicht &uuml;ber Ihre
-        bereits angelegten Pressemitteilungen.</p>
+        <div class="page-header">
+        <h1>Pressemitteilungen bearbeiten <small tal:content="context/Title" /></h1>
+        </div>
 
       <div class="container-fluid"
             tal:define="context_url context/absolute_url">
           <div class="box">
                   <p class="pull-right">
-                      <a class="btn"
-                          tal:attributes="href python:context_url+'/@@add-press-release'">
-                            <i class="icon-plus-sign" />
+                      <a class="btn btn-primary"
+                          tal:attributes="href python:context_url+'/+++add++pressapp.presscontent.pressrelease'">
+                            <i class="icon-plus-sign icon-white" />
                             Neu anlegen</a>
                   </p>
                   <h2>Pressemitteilungen</h2>

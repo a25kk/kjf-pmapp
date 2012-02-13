@@ -15,9 +15,7 @@ $(document).ready(function() {
         $('select.chosen-select', $(this)).chosen();
     });
     $(function() {
-        $('a[rel=twipsy]').twipsy({
-            live:true
-        });
+        $('a[rel=twipsy]').tooltip();
     });
     var statusURL = $("#status-placeholder a").attr("href");
     if (statusURL) {

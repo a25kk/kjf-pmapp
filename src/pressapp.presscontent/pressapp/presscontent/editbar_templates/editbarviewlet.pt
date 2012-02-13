@@ -1,8 +1,16 @@
 <div class="editbar" id="editbar">
     <div class="editbar-inner"
-        tal:define="context_url viewlet/context_url">
+        tal:define="context_url viewlet/context_url;
+                    context_state context/@@plone_context_state">
         <div class="container-fluid">
             <div class="container-fluid btn-toolbar">
+                <div class="btn-group">
+                    <a href="" tal:attributes="href context_state/canonical_object_url"
+                        class="btn btn-large btn-info">
+                        <i class="icon-home icon-white" />
+                        Arbeitsplatz
+                    </a>
+                </div>
                 <div class="btn-group">
                     <a class="btn btn-large"
                         tal:attributes="href python:context_url+'/@@dashboard-releases'">
@@ -12,10 +20,12 @@
                         tal:attributes="href python:context_url+'/@@dashboard-invitations'">
                         <i class="icon-calendar" />
                         Presseeinladungen</a>
+                </div>
+                <div class="btn-group">
                     <a class="btn btn-large"
                         tal:attributes="href python:context_url+'/@@dashboard-schedule'">
                         <i class="icon-share-alt" />
-                        Versand</a>
+                        Statistik</a>
                 </div>
             </div>
         </div>

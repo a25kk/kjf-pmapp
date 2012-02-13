@@ -9,14 +9,20 @@
             <div class="nav-collapse" tal:condition="not:viewlet/anonymous">
                 <ul class="nav"
                     tal:define="home_folder viewlet/home_url">
-                    <li class="dropdown">
+                    <li class="dropdown" id="main-menu">
                         <a href="/" class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            data-traget="#main-menu"
                             tal:attributes="href home_folder">
                             <i class="icon-home icon-white" />
                             Arbeitsplatz
                             <b class="caret" />
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a href="" tal:attributes="href home_folder">
+                                <i class="icon-list" />
+                                &Uuml;bersicht</a>
+                            </li>
                             <li><a href=""
                                     tal:attributes="href python:home_folder+'/@@dashboard-releases'">
                                 <i class="icon-file" />
@@ -40,24 +46,28 @@
                     <li class="divider-vertical"></li>
                     <li class="dropdown" tal:condition="viewlet/is_administrator">
                         <a href="/" class="dropdown-toggle"
+                            data-toggle="dropdown"
                             tal:attributes="href python:portal_url+'/press-center'">
                             <i class="icon-cog icon-white" />
                             Administration
                             <b class="caret" />
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="">
+                            <li><a href=""
+                                tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
                                 <i class="icon-align-justify" />
                                 Einstellungen
                                 </a>
                             </li>
-                            <li><a href="">
+                            <li><a href=""
+                                    tal:attributes="href python:portal_url+'/presscenter/kontakte'">
                                 <i class="icon-list-alt" />
-                                Addressverwaltung
+                                Addressen
                                 </a>
                             </li>
                             <li class="divider" />
-                            <li><a href="">
+                            <li><a href=""
+                                    tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
                                 <i class="icon-user" />
                                 Redakteure
                                 </a>

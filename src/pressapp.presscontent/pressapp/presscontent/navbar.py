@@ -33,5 +33,6 @@ class NavBarViewlet(grok.Viewlet):
         context = aq_inner(self.context)
         mtool = getToolByName(context, 'portal_membership')
         member = mtool.getAuthenticatedMember()
-        home_url = member.getHomeFolder().absolute_url()
-        return home_url
+        if member:
+            home_url = member.getHomeFolder().absolute_url()
+            return home_url
