@@ -26,7 +26,7 @@
                 </div>
                 <div class="btn-group">
                     <a class="btn btn-large"
-                        tal:attributes="href context_url+'/kontakte/@@channel-statistics">
+                        tal:attributes="href context_url+'/kontakte/@@channel-statistics'">
                         <i class="icon-signal" />
                         Statistiken</a>
                 </div>
