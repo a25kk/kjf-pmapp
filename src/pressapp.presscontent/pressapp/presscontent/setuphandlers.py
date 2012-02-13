@@ -68,7 +68,7 @@ def addPressPortalContent(p):
     
     if 'presse-center' not in existing:
         item = createContentInContainer(p, 'pressapp.presscontent.presscenter',
-                             id="presse-center",
+                             id="presscenter",
                              title=u"Presse Center")
         if base_language != 'en':
             item.setLanguage(language)
