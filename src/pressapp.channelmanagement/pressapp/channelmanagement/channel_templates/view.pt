@@ -9,20 +9,22 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-  <div class="container">
-      
-    <h1 class="documentFirstHeading" tal:content="context/Title">Title inserted here</h1>
+  <div class="container-fluid">
+    
+    <div class="page-heeader">
+        <p class="pull-right">
+              <a class="btn btn-small btn-primary popoverForm"
+                tal:define="context_url context/absolute_url;"
+                tal:attributes="href python:context_url+'/++add++pressapp.channelmanagement.subscriber'">
+                <i class="icon-plus-sign icon-white" />
+                  Neuen Kontakt anlegen</a>
+        </p>
+        <h1 class="documentFirstHeading" tal:content="context/Title">Title inserted here</h1>
+    </div>
     
     <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
                          b_size python:25;b_start python:0;b_start request/b_start | b_start;">
         <div class="box">
-            <p class="pull-right">
-                  <a class="btn btn-small popoverForm"
-                    tal:define="context_url context/absolute_url;"
-                    tal:attributes="href python:context_url+'/++add++pressapp.channelmanagement.subscriber'">
-                    <i class="icon-plus-sign" />
-                      Neuen Kontakt anlegen</a>
-            </p>
             <h3>Kontakte <small>Liste aller Kontaktadressen</small></h3>
               <table class="table">
                   <thead>

@@ -11,7 +11,7 @@
   <metal:content-core define-macro="main">
     
     <p class="pull-right">
-          <a class="btn btn-large"
+          <a
             tal:define="context_url context/absolute_url;"
             tal:attributes="href python:context_url+'/edit'">
             <i class="icon-edit" />

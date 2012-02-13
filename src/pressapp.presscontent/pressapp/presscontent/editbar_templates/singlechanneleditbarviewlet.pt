@@ -1,39 +1,36 @@
 <div class="editbar" id="editbar">
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url;
-                    parent_url viewlet/parent_url;
                     home_url viewlet/my_workspace">
-                    <div class="container-fluid">
-                        <div class="container btn-toolbar">
-                            <div class="btn-group">
-                                <a class="btn btn-large"
-                                    tal:attributes="href context_url">
-                                    <i class="icon-align-justify" />
-                                    Presse Center</a>
-                                <a class="btn btn-large"
-                                    tal:attributes="href home_url">
-                                    <i class="icon-home" />
-                                    Arbeitsplatz</a>
-                                <a class="btn btn-large"
-                                    tal:attributes="href python:context_url+'/kontakte'">
-                                    <i class="icon-list-alt" />
-                                    Adressverwaltung</a>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn btn-large"
-                                    tal:attributes="href python:home_url+'/@@dashboard-releases'">
-                                    <i class="icon-file" />
-                                    Pressemitteilungen</a>
-                                <a class="btn btn-large"
-                                    tal:attributes="href python:home_url+'/@@dashboard-invitations'">
-                                    <i class="icon-calendar" />
-                                    Presseeinladungen</a>
-                                <a class="btn btn-large"
-                                    tal:attributes="href python:home_url+'/@@dashboard-schedule'">
-                                    <i class="icon-share-alt" />
-                                    Versand</a>
-                            </div>
-                        </div>
-                    </div>
+        <div class="container-fluid">
+            <div class="container-fluid btn-toolbar">
+                <div class="btn-group">
+                    <a class="btn btn-large btn-info"
+                        tal:attributes="href context_url">
+                        <i class="icon-cog icon-white" />
+                        Administration</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-large"
+                        tal:attributes="href python:context_url+'/@@global-settings'">
+                        <i class="icon-align-justify" />
+                        Einstellungen</a>
+                    <a class="btn btn-large"
+                        tal:attributes="href python:context_url+'/kontakte'">
+                        <i class="icon-list-alt" />
+                        Adressen</a>
+                    <a class="btn btn-large"
+                        tal:attributes="href python:context_url+'/@@workspaces'">
+                        <i class="icon-user" />
+                        Redakteure</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-large"
+                        tal:attributes="href context_url">
+                        <i class="icon-signal" />
+                        Statistiken</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
