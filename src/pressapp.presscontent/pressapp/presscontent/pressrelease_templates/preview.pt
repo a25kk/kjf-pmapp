@@ -369,7 +369,8 @@
                                 <table border="0" cellpadding="10" cellspacing="0" width="100%">
                                 	<tr>
                                     	<td valign="top">
-                                        	<div mc:edit="std_preheader_content">
+                                        	<div mc:edit="std_preheader_content"
+                                        	    tal:content="context/Description">
                                             	 Use this area to offer a short teaser of your email's content. Text here will show in the preview area of some email clients.
                                             </div>
                                         </td>
@@ -427,11 +428,9 @@
                                                             <h3 class="h3" tal:content="context/kicker">Dachzeile</h3>
                                                         	<h2 class="h2" tal:content="context/Title">Titel</h2>
                                                         	<h4 class="h4" tal:content="context/subtitle">Subtitel</h4>
-                                                            <strong><span tal:replace="context/location" /> (kjf)</strong> Customize your template by clicking on the style editor tabs up above. Set your fonts, colors, and styles. After setting your styling is all done you can click here in this area, delete the text, and start adding your own awesome content!
-                                                            <br />
-                                                            <br />
-
-                                                            After you enter your content, highlight the text you want to style and select the options you set in the style editor in the "styles" drop down box. Want to <a href="http://www.mailchimp.com/kb/article/im-using-the-style-designer-and-i-cant-get-my-formatting-to-change" target="_blank">get rid of styling on a bit of text</a>, but having trouble doing it? Just use the "remove formatting" button to strip the text of any formatting and reset your style.
+                                                            <strong><span tal:replace="context/location" /> (kjf)</strong>
+                                                            <span tal:condition="context/text"
+                                                                    tal:content="structure context/text/output" />
                                                             <br />
                                                             <br />
                                                             Mit freundlichen Gr&uuml;&szlig;en<br />

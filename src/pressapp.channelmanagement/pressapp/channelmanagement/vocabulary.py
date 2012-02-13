@@ -2,6 +2,7 @@ from five import grok
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.component import queryUtility
+from Products.CMFPlone.utils import safe_unicode
 from z3c.formwidget.query.interfaces import IQuerySource
 from plone.registry.interfaces import IRegistry
 
@@ -14,7 +15,7 @@ class ChannelSource(object):
         self.key = 'pressapp.channelmanagement.availableChannels'
         self.channel_list = self.getChannelList()
         self.vocab = SimpleVocabulary.fromItems(
-            [(x, x) for x in self.channel_list])
+            [(safe_unicode(x), safe_unicode(x)) for x in self.channel_list])
 
     def __contains__(self, term):
         return self.vocab.__contains__(term)
@@ -41,7 +42,7 @@ class ChannelSource(object):
         terms = []
         if registry:
             for value in registry.get(self.key, ()):
-                terms.append(value)
+                terms.append(safe_unicode(value))
         return terms
 
 
