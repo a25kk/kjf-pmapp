@@ -14,8 +14,7 @@ class ChannelSource(object):
         self.context = context
         self.key = 'pressapp.channelmanagement.availableChannels'
         self.channel_list = self.getChannelList()
-        self.vocab = SimpleVocabulary.fromItems(
-            [(safe_unicode(x), safe_unicode(x)) for x in self.channel_list])
+        self.vocab = self.createVocabulary(self.channel_list)
 
     def __contains__(self, term):
         return self.vocab.__contains__(term)
@@ -42,8 +41,14 @@ class ChannelSource(object):
         terms = []
         if registry:
             for value in registry.get(self.key, ()):
-                terms.append(safe_unicode(value))
+                terms.append(value)
         return terms
+
+    def createVocabulary(self, channel_list):
+        terms = []
+        for value in channel_list:
+            terms.append(SimpleVocabulary.createTerm(value, value.encode('utf-8'), value))
+        return SimpleVocabulary(terms)
 
 
 class ChannelSourceBinder(object):
