@@ -35,5 +35,6 @@ $(document).ready(function() {
         $('.details').not(current).slideUp('slow');
         current.toggle('slow');
     });
+    $('#recipient-table').dataTable();
 });
 })(jQuery);

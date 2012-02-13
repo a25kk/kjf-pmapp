@@ -14,7 +14,7 @@
     class="container-fluid">
 
   <div class="row-fluid">
-  <div class="box span7">
+  <div class="box span8">
     <h6 tal:condition="context/kicker"
         tal:content="context/kicker" />
     <h1 class="documentFirstHeading" tal:content="context/Title">Title inserted here</h1>
@@ -52,7 +52,7 @@
     
   </div>
   
-  <div class="well span4" tal:define="modified context/modified">
+  <div class="well span3" tal:define="modified context/modified">
       <ul class="nav nav-list">
           <li class="nav-header">Pressemitteilung</li>
           <li>Zuletzt ver&auml;ndert:
@@ -64,17 +64,20 @@
               <i class="icon-edit" />
                 Bearbeiten</a>
           </li>
-          <li class="nav-header">Versand</li>
           <li><a href=""
                 tal:attributes="href string:${context/absolute_url}/@@pressrelease-preview">
                 <i class="icon-eye-open" />
                 E-Mail Vorschau</a>
           </li>
-          <li><a href=""
-                  tal:attributes="href string:${context/absolute_url}/@@prepare-release">
-                  <i class="icon-list-alt" />
-                  Verteilerauswahl</a>
-          </li>
+          <li tal:condition="context/channel"
+            class="nav-header">Zugewiesene Verteiler</li>
+           <li tal:repeat="channel context/channel">
+               <span tal:replace="channel" /></li>
+           <li><a href=""
+                    tal:attributes="href string:${context/absolute_url}/@@select-channel">
+                    <i class="icon-edit" />
+                    Verteiler bearbeiten</a>
+            </li>
       </ul>
   </div>
   </div>

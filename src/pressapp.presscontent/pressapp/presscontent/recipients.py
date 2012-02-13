@@ -1,11 +1,8 @@
-from zope.interface import alsoProvides, implements
-from zope.component import adapts
+from zope.interface import alsoProvides
 from zope import schema
 from plone.directives import form
-from plone.dexterity.interfaces import IDexterityContent
 from plone.autoform.interfaces import IFormFieldProvider
 
-from plone.formwidget.autocomplete import AutocompleteMultiFieldWidget
 from pressapp.channelmanagement.vocabulary import ChannelSourceBinder
 
 from pressapp.presscontent import MessageFactory as _
@@ -20,15 +17,14 @@ class IRecipients(form.Schema):
         label=u"Recipients",
         fields=['channel', 'recipients'],
     )
-    form.widget(channel=AutocompleteMultiFieldWidget)
     channel = schema.List(
         title=_(u"Channels"),
         description=_(u"Please select the channels this content should be "
                       u"dispatched to."),
-        value_type=schema.Choice(
+        value_type=schema.TextLine(
             title=_(u"Channel"),
-            source=ChannelSourceBinder(),
-        )
+        ),
+        required=False,
     )
     recipients = schema.List(
         title=_(u"Recipient List"),
