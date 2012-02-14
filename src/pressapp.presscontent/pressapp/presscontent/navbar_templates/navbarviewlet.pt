@@ -34,7 +34,6 @@
                                 Presseeinladungen
                                 </a>
                             </li>
-                            <li class="divider" />
                             <li><a href=""
                                     tal:attributes="href python:home_folder+'/@@dashboard-schedule'">
                                 <i class="icon-share-alt" />
@@ -71,7 +70,6 @@
                                 Redakteure
                                 </a>
                             </li>
-                            <li class="divider" />
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
                                 <i class="icon-align-justify" />

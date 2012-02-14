@@ -46,12 +46,15 @@
                                     PR Title</a></td>
                               <td><span class="label info">Neu</span></td>
                               <td>
-                                  <div class="btn-group">
-                                      <a class="btn btn-small">
+                                  <div class="btn-group"
+                                    tal:define="item_url item/getURL">
+                                      <a class="btn btn-small"
+                                        tal:attributes="href python:item_url+'/edit'">
                                           <i class="icon-edit" />
                                           Bearbeiten
                                           </a>
-                                      <a class="btn btn-small">
+                                      <a class="btn btn-small"
+                                        tal:attributes="href item_url">
                                           <i class="icon-eye-open" />
                                           Anzeigen</a>
                                   </div>

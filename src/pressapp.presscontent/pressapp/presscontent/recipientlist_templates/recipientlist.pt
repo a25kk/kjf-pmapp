@@ -10,11 +10,31 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
+  <style type="text/css" title="currentStyle">
+      @import "++resource++jquery.datatables/media/css/jquery.dataTables.css";
+  </style>
+  
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
     class="container-fluid">
         
         <div class="page-header">
-            <h1>Adressen <small>Zugewiesene Empfänger</small></h1>
+            <h1>Adressen <small>Zugewiesene Empf&auml;nger</small></h1>
+        </div>
+        
+        <div class="ro-fluid">
+            <div class="span6">
+                <div class="alert alert-block alert-info">
+                    <h4 class="alert-heading">Information</h4>
+                    <p>Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
+                        auf eine Tabellenzeile und verwenden Sie den Button
+                        <strong>Adresse entfernen</strong>, um diesen zu l&ouml;schen</p>
+                </div>
+            </div>
+            <div class="span4">
+                <a href="javascript:void(0)" id="delete"
+                    class="btn btn-large btn-danger">
+                    Adresse entfernen</a>
+            </div>
         </div>
         
         <table tal:condition="view/has_subscribers"
@@ -32,6 +52,13 @@
                 </tr>
             </tbody>
         </table>
+        
+        
+        <div class="visualClear">&nbsp;</div>
+            <div class="form-actions">
+                <a href="" class="btn btn-large btn-primary">
+                    Liste speichern</a>
+            </div>
         
   </section>
   </metal:content-core>

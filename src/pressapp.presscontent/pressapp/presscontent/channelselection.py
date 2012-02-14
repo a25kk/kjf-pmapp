@@ -88,6 +88,7 @@ class ChannelSelectionForm(form.SchemaEditForm):
         modified(context)
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
-            _(u"A new press release was successfully added"),
+            _(u"A channel was successfully selected"),
             type='info')
-        return self.request.response.redirect(context.absolute_url())
+        return self.request.response.redirect(
+                    context.absolute_url()+'/@@recipient-list')

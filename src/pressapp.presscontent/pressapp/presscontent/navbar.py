@@ -22,7 +22,7 @@ class NavBarViewlet(grok.Viewlet):
         self.anonymous = self.portal_state.anonymous()
         self.portal_url = self.portal_state.portal_url
         self.context_url = context.absolute_url()
-        #self.parent_url = aq_parent(context).absolute_url()
+        self.parent_url = aq_parent(context).absolute_url()
 
     def is_administrator(self):
         context = aq_inner(self.context)
