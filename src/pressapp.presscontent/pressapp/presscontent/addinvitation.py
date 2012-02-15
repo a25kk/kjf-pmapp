@@ -6,6 +6,7 @@ from zope.lifecycleevent import modified
 from plone.directives import form
 from z3c.form import button
 from plone.dexterity.utils import createContentInContainer
+from plone.app.textfield import RichText
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressroom import IPressRoom
@@ -19,6 +20,33 @@ class IPressInvitationAdd(form.Schema):
         title=_(u"Title"),
         description=_(u"Enter the title of the press invitation."),
         required=True,
+    )
+    text = RichText(
+        title=_(u"Text"),
+        required=True,
+    )
+    start = schema.Datetime(
+        title=_(u"Start Date"),
+        required=True,
+    )
+    end = schema.Datetime(
+        title=_(u"End Date"),
+        required=True,
+    )
+    location = schema.TextLine(
+        title=_(u"Event Location"),
+        required=True,
+    )
+    closed = schema.Bool(
+        title=_(u"Closed Event"),
+        description=_(u"Please select if the event is public."),
+        required=False,
+    )
+    description = schema.Text(
+        title=_(u"Summary"),
+        description=_(u"Optional summary that is useful as a preview text "
+                      u"in email clients that support this feature."),
+        required=False,
     )
 
 
@@ -35,8 +63,8 @@ class PressInvitationAddForm(form.SchemaEditForm):
 
     def updateActions(self):
         super(PressInvitationAddForm, self).updateActions()
-        self.actions['save'].addClass("btn rgd large")
-        self.actions['cancel'].addClass("btn large")
+        self.actions['save'].addClass("btn btn-large")
+        self.actions['cancel'].addClass("btn btn-large")
 
     @button.buttonAndHandler(_(u"Create press invitation"), name="save")
     def handleApply(self, action):
@@ -61,6 +89,7 @@ class PressInvitationAddForm(form.SchemaEditForm):
             'pressapp.presscontent.pressinvitation',
             checkConstraints=True, **data)
         modified(item)
+        item.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
             _(u"A new press invitation was successfully added"),
             type='info')

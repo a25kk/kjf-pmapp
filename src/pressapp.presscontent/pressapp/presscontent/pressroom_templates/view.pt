@@ -89,7 +89,7 @@
                             <a class="btn btn-primary btn-small"
                                 rel="loading-indicator"
                                 data-loading-text="Wird geladen..."
-                              tal:attributes="href python:context_url+'/++add++pressapp.presscontent.pressinvitation'">
+                              tal:attributes="href python:context_url+'/@@add-press-invitation'">
                               <i class="icon-plus-sign icon-white" />
                               Neu anlegen</a></p>
                       <h2><a href=""
