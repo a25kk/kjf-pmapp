@@ -12,6 +12,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.PlonePAS.utils import cleanId
 from Products.PlonePAS.utils import scale_image
 from OFS.Image import Image
+from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
 
 from pressapp.presscontent.pressroom import IPressRoom
@@ -31,7 +32,7 @@ class IMemberInformation(form.Schema):
         description=_(u"Please enter location"),
         required=True,
     )
-    organisation = schema.TextLine(
+    organization = schema.TextLine(
         title=_(u"Organisation"),
         description=_(u"Enter your organisation's name"),
         required=True,
@@ -49,7 +50,7 @@ class IMemberInformation(form.Schema):
     portrait = NamedBlobImage(
         title=_(u"Portrait"),
         description=_(u"Upload a personal portrait or company logo"),
-        required=True,
+        required=False,
     )
 
 
@@ -90,11 +91,12 @@ class MemberInformationForm(form.SchemaEditForm):
         mtool = getToolByName(context, 'portal_membership')
         member = mtool.getAuthenticatedMember()
         data = {}
-        data['fullname'] = member.getProperty('fullname', '')
-        data['location'] = member.getProperty('location', '')
-        data['home_page'] = member.getProperty('home_page', '')
-        data['organisation'] = member.getProperty('organisation', '')
-        data['presslink'] = member.getProperty('presslink', '')
+        data['fullname'] = safe_unicode(member.getProperty('fullname', ''))
+        data['location'] = safe_unicode(member.getProperty('location', ''))
+        data['home_page'] = safe_unicode(member.getProperty('home_page', ''))
+        data['organization'] = safe_unicode(member.getProperty('organization',
+                                                               ''))
+        data['presslink'] = safe_unicode(member.getProperty('presslink', ''))
         return data
 
     def applyChanges(self, data):
@@ -103,8 +105,10 @@ class MemberInformationForm(form.SchemaEditForm):
         member = mtool.getAuthenticatedMember()
         member.setMemberProperties({
             'fullname': data['fullname'],
-            'location': data['location']
-        })
+            'location': data['location'],
+            'home_page': data['home_page'],
+            'organization': data['organization'],
+            'presslink': data['presslink']})
         image_file = data['portrait']
         if image_file:
             portrait = StringIO(image_file.data)
