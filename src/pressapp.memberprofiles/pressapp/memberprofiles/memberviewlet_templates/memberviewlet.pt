@@ -22,7 +22,7 @@
                         class="image-left" />
             </div>
         </div>
-        <div class="visualClear"><!-- --></div>
+        <div class="visualClear">&nbsp;</div>
 
         <div class="container-fluid">
             <p><strong>Einrichtung:</strong>
@@ -40,13 +40,15 @@
             <div class="btn-toolbar">
                 <div class="btn-group">
                     <a class="btn" href="#"
-                    tal:attributes="href python:portal_url+'/personal-information'">
+                    tal:attributes="href python:context_url+'/@@member-information'">
                     <i class="icon-cog" />
-                    Profil bearbeiten</a>
-                    <a href="" class="btn"
-                        tal:attributes="href python:portal_url+'/logout'">
-                        <i class="icon-ban-circle" />
-                        Abmelden</a>
+                    Profildaten bearbeiten</a>
+                </div>
+                <div class="btn-group">
+                <a href="" class="btn"
+                    tal:attributes="href python:portal_url+'/logout'">
+                    <i class="icon-ban-circle" />
+                    Abmelden</a>
                 </div>
             </div>
         </div>

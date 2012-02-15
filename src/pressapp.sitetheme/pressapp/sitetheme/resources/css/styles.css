@@ -1734,7 +1734,7 @@ table .span12 {
 .btn:first-child, input.context:first-child {
   *margin-left: 0;
 }
-.btn:hover {
+.btn:hover, input.context:hover {
   color: #333333;
   text-decoration: none;
   background-color: #e6e6e6;

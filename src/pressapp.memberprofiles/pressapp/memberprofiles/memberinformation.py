@@ -1,4 +1,4 @@
-import StringIO
+from StringIO import StringIO
 from five import grok
 from Acquisition import aq_inner
 from zope import schema
@@ -9,6 +9,9 @@ from z3c.form import button
 from plone.app.textfield import RichText
 from plone.namedfile.field import NamedBlobImage
 from Products.CMFCore.utils import getToolByName
+from Products.PlonePAS.utils import cleanId
+from Products.PlonePAS.utils import scale_image
+from OFS.Image import Image
 from Products.statusmessages.interfaces import IStatusMessage
 
 from pressapp.presscontent.pressroom import IPressRoom
@@ -28,6 +31,21 @@ class IMemberInformation(form.Schema):
         description=_(u"Please enter location"),
         required=True,
     )
+    organisation = schema.TextLine(
+        title=_(u"Organisation"),
+        description=_(u"Enter your organisation's name"),
+        required=True,
+    )
+    home_page = schema.TextLine(
+        title=_(u"Homepage"),
+        description=_(u"Enter URL of your company's homepage"),
+        required=False,
+    )
+    presslink = schema.TextLine(
+        title=_(u"Press Link"),
+        description=_(u"Enter direct press link."),
+        required=True,
+    )
     portrait = NamedBlobImage(
         title=_(u"Portrait"),
         description=_(u"Upload a personal portrait or company logo"),
@@ -41,15 +59,15 @@ class MemberInformationForm(form.SchemaEditForm):
     grok.name('member-information')
 
     schema = IMemberInformation
-    ignoreContext = True
+    ignoreContext = False
     css_class = 'overlayForm'
 
     label = _(u"Update member information")
 
     def updateActions(self):
         super(MemberInformationForm, self).updateActions()
-        self.actions['save'].addClass("btn rgd large")
-        self.actions['cancel'].addClass("btn large")
+        self.actions['save'].addClass("btn btn-primary")
+        self.actions['cancel'].addClass("btn")
 
     @button.buttonAndHandler(_(u"Update"), name="save")
     def handleApply(self, action):
@@ -67,6 +85,18 @@ class MemberInformationForm(form.SchemaEditForm):
             type='info')
         return self.request.response.redirect(context.absolute_url())
 
+    def getContent(self):
+        context = aq_inner(self.context)
+        mtool = getToolByName(context, 'portal_membership')
+        member = mtool.getAuthenticatedMember()
+        data = {}
+        data['fullname'] = member.getProperty('fullname', '')
+        data['location'] = member.getProperty('location', '')
+        data['home_page'] = member.getProperty('home_page', '')
+        data['organisation'] = member.getProperty('organisation', '')
+        data['presslink'] = member.getProperty('presslink', '')
+        return data
+
     def applyChanges(self, data):
         context = aq_inner(self.context)
         mtool = getToolByName(context, 'portal_membership')
@@ -78,9 +108,11 @@ class MemberInformationForm(form.SchemaEditForm):
         image_file = data['portrait']
         if image_file:
             portrait = StringIO(image_file.data)
-            portrait.filename = image_file.filename
-            mtool.changeMemberPortrait(portrait, member.getId())
+            scaled, mimetype = scale_image(portrait)
+            portrait = Image(id=cleanId(member.getId()), file=scaled, title='')
+            mdata = getToolByName(context, 'portal_memberdata')
+            mdata._setPortrait(portrait, cleanId(member.getId()))
         IStatusMessage(self.request).addStatusMessage(
-            _(u"member information has been updated successfully."),
+            _(u"Member information has been updated successfully."),
             type='info')
         return self.request.response.redirect(context.absolute_url())
