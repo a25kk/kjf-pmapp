@@ -37,6 +37,8 @@
             </div>
         </div>
         
+        <form tal:attributes="action request/URL" method="post"
+            id="recipient-cleanup-form">
         <table tal:condition="view/has_subscribers"
             class="table table-condensed table-striped" id="recipient-table">
             <thead>
@@ -48,18 +50,26 @@
             <tbody>
                 <tr tal:repeat="item view/subscriber_listing">
                     <td tal:content="item/name">Name</td>
-                    <td tal:content="item/email">E-Mail</td>
+                    <td tal:define="counter repeat/item/number;">
+                        <span tal:content="item/email">E-Mail</span>
+                        <input type="text"
+                            tal:attributes="id string:recipient-${counter};
+                                            name string:recipient-${counter};
+                                            value string:${item/email}, ${item/name};" />
+                    </td>
                 </tr>
             </tbody>
         </table>
         
-        
         <div class="visualClear">&nbsp;</div>
             <div class="form-actions">
-                <a href="" class="btn btn-large btn-primary">
-                    Liste speichern</a>
+                <input type="submit"
+                    value="Liste speichern"
+                    name="form.button.Submit"
+                    id="submit-button"
+                    class="btn btn-large btn-primary" />
             </div>
-        
+        </form>
   </section>
   </metal:content-core>
 </metal:main>

@@ -55,6 +55,10 @@ $(document).ready(function() {
                 var anSelected = fnGetSelected( oTable );
                 oTable.fnDeleteRow( anSelected[0] );
             } );
+            $('#recipient-cleanup-form').submit(function() {
+                var sData = $('input', oTable.fnGetNodes()).serialize();
+                $('input', otable.fnGetNodes()).appendTo('#recipient-cleanup-form');
+            });
             /* Init the table */
             oTable = $('#recipient-table').dataTable( );
         });

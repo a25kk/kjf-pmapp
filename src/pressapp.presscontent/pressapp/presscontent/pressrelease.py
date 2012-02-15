@@ -11,6 +11,7 @@ from plone.namedfile.field import NamedBlobFile
 from Products.CMFCore.utils import getToolByName
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
+from pressapp.presscontent.interfaces import IPressContent
 
 from pressapp.presscontent import MessageFactory as _
 

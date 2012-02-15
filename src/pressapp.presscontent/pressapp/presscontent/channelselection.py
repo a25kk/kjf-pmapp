@@ -12,6 +12,7 @@ from pressapp.channelmanagement.vocabulary import ChannelSourceBinder
 from Products.statusmessages.interfaces import IStatusMessage
 
 from plone.dexterity.interfaces import IDexterityFTI
+from pressapp.presscontent.interfaces import IPressContent
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
 
@@ -33,7 +34,7 @@ class IChannelSelection(form.Schema):
 
 
 class ChannelSelectionForm(form.SchemaEditForm):
-    grok.context(IPressRelease)
+    grok.context(IPressContent)
     grok.require('cmf.AddPortalContent')
     grok.name('select-channel')
 
@@ -67,7 +68,11 @@ class ChannelSelectionForm(form.SchemaEditForm):
     def getContent(self):
         context = aq_inner(self.context)
         data = {}
-        data['channel'] = context.channel
+        try:
+            channelinfo = context.channel
+        except:
+            channelinfo = getattr(context, 'channel', '')
+        data['channel'] = channelinfo
         return data
 
     def applyChanges(self, data):
@@ -75,7 +80,7 @@ class ChannelSelectionForm(form.SchemaEditForm):
         if IPressRelease.providedBy(context):
             fti_name = 'pressapp.presscontent.pressrelease'
         if IPressInvitation.providedBy(context):
-            fti_name= 'pressapp.presscontent.pressinvitation'
+            fti_name = 'pressapp.presscontent.pressinvitation'
         fti = getUtility(IDexterityFTI, name=fti_name)
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
@@ -85,6 +90,7 @@ class ChannelSelectionForm(form.SchemaEditForm):
                 setattr(context, key, new_value)
             except KeyError:
                 continue
+        setattr(context, 'channel', data['channel'])
         modified(context)
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
