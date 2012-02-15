@@ -38,5 +38,10 @@
       provides=".recipients.IRecipients"
       for="plone.dexterity.interfaces.IDexterityContent"
       />
+  <plone:behavior
+      title="Press Content Marker"
+      provides="pressapp.presscontent.interfaces.IPressContent"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      />
 
 </configure>

@@ -35,6 +35,39 @@ $(document).ready(function() {
         $('.details').not(current).slideUp('slow');
         current.toggle('slow');
     });
-    $('#recipient-table').dataTable();
+    //$('#recipient-table').dataTable();
+    
+    if ($('body').hasClass('template-recipient-list')) {
+        var oTable;
+        $(function() {
+            /* Add a click handler to the rows - this could be used as a callback */
+            $("#recipient-table tbody tr").click( function( e ) {
+                if ( $(this).hasClass('row_selected') ) {
+                    $(this).removeClass('row_selected');
+                }
+                else {
+                    oTable.$('tr.row_selected').removeClass('row_selected');
+                    $(this).addClass('row_selected');
+                }
+            });
+            /* Add a click handler for the delete row */
+            $('#delete').click( function() {
+                var anSelected = fnGetSelected( oTable );
+                oTable.fnDeleteRow( anSelected[0] );
+            } );
+            $('#recipient-cleanup-form').submit(function() {
+                var sData = $('input', oTable.fnGetNodes()).serialize();
+                $('input', otable.fnGetNodes()).appendTo('#recipient-cleanup-form');
+            });
+            /* Init the table */
+            oTable = $('#recipient-table').dataTable( );
+        });
+        /* Get the rows which are currently selected */
+        function fnGetSelected( oTableLocal )
+        {
+            return oTableLocal.$('tr.row_selected');
+        }
+    };
+    
 });
 })(jQuery);

@@ -3,9 +3,9 @@ import os
 
 version = '1.0'
 
-setup(name='pressapp.policy',
+setup(name='pressapp.dispatcher',
       version=version,
-      description="Core policy package for the press release application.",
+      description="Compose and dispatch email from pressrelease and pressinvitation content.",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -25,15 +25,7 @@ setup(name='pressapp.policy',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.CMFPlone',
-          'pressapp.channelmanagement',
-          'pressapp.dispatcher',
-          'pressapp.memberprofiles',
-          'pressapp.overlays',
-          'pressapp.presscontent',
-          'pressapp.search',
-          'pressapp.sitetheme',
-          'pressapp.statusbar',
+          'five.grok',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

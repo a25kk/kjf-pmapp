@@ -66,6 +66,22 @@ class View(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
+    def has_channel_info(self):
+        context = aq_inner(self.context)
+        channelinfo = False
+        channel = getattr(context, 'channel', None)
+        if channel is not None:
+            channelinfo = True
+        return channelinfo
+
+    def has_recipients_info(self):
+        context = aq_inner(self.context)
+        info = False
+        recipients = getattr(context, 'recipients', None)
+        if recipients is not None:
+            info = True
+        return info
+
 
 class PressInvitationActions(grok.Viewlet):
     grok.name('pressapp.membercontent.PressReleaseActions')

@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+  
+  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+    class="container-fluid">
+    
+    <div class="page-header">
+        <h1>Versand vorbereiten</h1>
+    </div>
+    
+    <div class="box">
+        <h2>Zusammenfassung</h2>
+        <div class="box" tal:condition="view/has_recipients">
+        <h3>Empf&auml;nger: <span tal:content="view/recipient_count">Count</span></h3>
+        <a class="btn  btn-small btn-info show-details">
+            <i class="icon-arrow-down icon-white" />
+            Adressen anzeigen</a>
+        <div class="xbox details visualClear">
+            <div class="visualClear">&nbsp;</div>
+            <div class="tile stats">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>E-Mail-Adresse</th>
+                            <th>Titel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tal:block tal:repeat="item view/recipient_list">
+                        <tr tal:define="item_details python:view.reformat_recipients(item)">
+                            <td tal:content="python:item_details[0]" />
+                            <td tal:content="python:item_details[1]" />
+                        </tr>
+                        </tal:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <div class="visualClear">&nbsp;</div>
+    <div class="form-actions">
+        <a href="" class="btn btn-large btn-primary">
+            Jetzt versenden</a>
+    </div>
+    
+  </section>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

@@ -1734,7 +1734,7 @@ table .span12 {
 .btn:first-child, input.context:first-child {
   *margin-left: 0;
 }
-.btn:hover {
+.btn:hover, input.context:hover {
   color: #333333;
   text-decoration: none;
   background-color: #e6e6e6;
@@ -3296,14 +3296,14 @@ img.image-left {
   background: #fff;
   padding: 18px 0px 80px 0px;
 }
-#frontpage-content {
-  margin: 4em auto;
-}
 #content {
   line-height: 1.5em;
   clear: both;
   font-size: 80%;
   margin: 1em 0.25em 2em 0.25em;
+}
+#login_form label {
+  width: 70px;
 }
 #login-forgotten-password {
   clear: both;
@@ -3578,7 +3578,7 @@ table.grid td, table.grid th {
   border: 1px solid #e7e7e7;
   padding: 0.5em;
 }
-.dragindicator {
+.dragindicator, tr.row_selected {
   outline: 2px solid #FFD700;
 }
 #foldercontents-order-column {

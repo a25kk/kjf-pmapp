@@ -4,6 +4,7 @@ from five import grok
 from Products.CMFCore.utils import getToolByName
 
 from Products.CMFCore.interfaces import IContentish
+from Products.statusmessages.interfaces import IStatusMessage
 from plone.app.contentlisting.interfaces import IContentListing
 from pressapp.channelmanagement.subscriber import ISubscriber
 from pressapp.presscontent import MessageFactory as _
@@ -16,11 +17,24 @@ class RecipientList(grok.View):
 
     def update(self):
         self.has_subscribers = len(self.subscriber_listing()) > 0
+        form = self.request.form
+        self.errors = {}
+        if 'form.button.Submit' in self.request:
+            context = aq_inner(self.context)
+            data = []
+            for value in form:
+                data.append(form[value])
+            setattr(context, 'recipients', data[2:])
+            context.reindexObject(idxs='modified')
+            context_url = context.absolute_url()
+            IStatusMessage(self.request).addStatusMessage(
+            _(u"Recipient list updated"), type='info')
+            return self.request.response.redirect(context_url)
 
     def subscriber_listing(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        channels = context.channel
+        channels = getattr(context, 'channel', '')
         subscribers = []
         for channelname in channels:
             results = catalog(object_provides=ISubscriber.__identifier__,

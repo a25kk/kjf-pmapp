@@ -11,6 +11,7 @@ from plone.namedfile.field import NamedBlobFile
 from Products.CMFCore.utils import getToolByName
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
+from pressapp.presscontent.interfaces import IPressContent
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -66,6 +67,18 @@ class View(grok.View):
     grok.context(IPressRelease)
     grok.require('zope2.View')
     grok.name('view')
+
+    def has_channel_info(self):
+        context = aq_inner(self.context)
+        channel = getattr(context, 'channel', None)
+        if channel:
+            return True
+
+    def has_recipients_info(self):
+        context = aq_inner(self.context)
+        recipients = getattr(context, 'recipients', None)
+        if recipients:
+            return True
 
 
 class Preview(grok.View):
