@@ -46,7 +46,6 @@
                         <i class="icon-share" />
                         Versand planen</a>
                 </div>
-                <p tal:content="has_channels" />
             </div>
             <h1>Presseeinladung</h1>
         </div>

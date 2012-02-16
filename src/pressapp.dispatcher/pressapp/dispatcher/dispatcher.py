@@ -39,6 +39,10 @@ class Dispatcher(grok.View):
     def render(self):
         return ''
 
+    def _getRecievers(self):
+        context = aq_inner(self.context)
+        return ''
+
     def _render_output_html(self):
         """ Return rendered newsletter
             with header+body+footer (raw html).

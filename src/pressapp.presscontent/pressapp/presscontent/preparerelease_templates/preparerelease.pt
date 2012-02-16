@@ -10,10 +10,29 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       context_url context/absolute_url"
     class="container-fluid">
     
     <div class="page-header">
+        <div class="btn-toolbar pull-right"
+            tal:define="context_url context/absolute_url;">
+            <div class="btn-group">
+                <a href="" class="btn"
+                    tal:attributes="href python:context_url+'/@@select-channel'">
+                    <i class="icon-list-alt" />
+                    Verteiler w&auml;hlen</a>
+                <a href="" class="btn"
+                    tal:attributes="href python:context_url+'/@@recipient-list'">
+                    <i class="icon-edit" />
+                    Empf&auml;nger bereinigen</a>
+                <a href="" class="btn"
+                    tal:attributes="href python:context_url+'/@@prepare-release'">
+                    <i class="icon-share" />
+                    Versand planen</a>
+            </div>
+        </div>
+        
         <h1>Versand vorbereiten</h1>
     </div>
     
@@ -50,7 +69,11 @@
     
     <div class="visualClear">&nbsp;</div>
     <div class="form-actions">
-        <a href="" class="btn btn-large btn-primary">
+        <a href="" class="btn btn-xlarge btn-success"
+            rel="loading-indicator"
+            data-loading-text="Ihre Nachricht wird verschickt..."
+            tal:attributes="href python:context_url+'/@@dispatch'">
+            <i class="icon-share-alt icon-white" />
             Jetzt versenden</a>
     </div>
     
