@@ -41,13 +41,14 @@ class ChannelSource(object):
         terms = []
         if registry:
             for value in registry.get(self.key, ()):
-                terms.append(value)
+                term = safe_unicode(value)
+                terms.append(term)
         return terms
 
     def createVocabulary(self, channel_list):
         terms = []
         for value in channel_list:
-            terms.append(SimpleVocabulary.createTerm(value, value.encode('utf-8'), value))
+            terms.append(SimpleVocabulary.createTerm(value.encode('utf-8'), value.encode('utf-8'), value))
         return SimpleVocabulary(terms)
 
 
