@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import string
 import StringIO
 import csv
 from logging import getLogger
@@ -98,13 +99,15 @@ class SubscriberImportForm(form.SchemaForm):
                 'phone': phone,
                 'mobile': mobile,
                 'comment': comment,
-                'channel': channel}
-            import pdb; pdb.set_trace( )
-            logger.info('Processing user: %s' % name)
-            subscriber = createContentInContainer(context,
-                            'pressapp.channelmanagement.subscriber',
-                            checkConstraints=True, **data)
-            modified(subscriber)
+                'channel': string.split(channel, ', ')}
+            if not email:
+                logger.info('E-mail missing: invalid record for %s' % name)
+            else:
+                logger.info('Processing user: %s' % name)
+                subscriber = createContentInContainer(context,
+                                'pressapp.channelmanagement.subscriber',
+                                checkConstraints=True, **data)
+                modified(subscriber)
             processed_records += 1
         return processed_records
 
@@ -120,7 +123,8 @@ class SubscriberImportForm(form.SchemaForm):
         if index is None:
             raise RuntimeError(
                 "Uploaded file does not have the column:" + name)
-        return row[index].decode("utf-8")
+        record = quote_chars(row[index]).decode('utf-8')
+        return record
 
     def is_ascii(self, s):
         for c in s:
