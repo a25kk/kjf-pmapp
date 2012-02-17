@@ -12,4 +12,16 @@
             <element>Augsburg Innenstadt</element>
         </value>
     </record>
+    <record name="pressapp.channelmanagement.channelList">
+        <field type="plone.registry.field.Dict">
+            <title>Channel List</title>
+            <key_type type="plone.registry.field.TextLine" />
+            <value_type type="plone.registry.field.TextLine" />
+        </field>
+        <value>
+            <element key="aichach">Aichach</element>
+            <element key="allgauu-regional">Allgäu Regional</element>
+            <element key="augsburg-landkreis-sued">Augsburg Landkreis Süd</element>
+        </value>
+    </record>
 </registry>

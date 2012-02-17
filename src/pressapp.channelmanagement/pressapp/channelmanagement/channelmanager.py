@@ -3,11 +3,12 @@ from Acquisition import aq_inner, aq_parent
 from plone.directives import dexterity, form
 
 from zope import schema
-from zope.schema.interfaces import IContextSourceBinder
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from z3c.form import group, field
 
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode
 from plone.app.contentlisting.interfaces import IContentListing
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
@@ -142,13 +143,19 @@ class ChannelStatistics(grok.View):
         return stats
 
 
-@grok.provider(IContextSourceBinder)
-def possibleChannels(self):
-    channels = self.channels
-    terms = []
-    if channels:
-        for channel in channels:
-            terms.append(SimpleVocabulary.createTerm(channel,
-                                                     str(channel),
-                                                     channel))
-    return SimpleVocabulary(terms)
+class possibleChannelsVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        terms = []
+        channels = context.channels
+        if channels:
+            for channel in channels:
+                terms.append(SimpleVocabulary.createTerm(
+                             channel.encode('utf-8'),
+                             channel.encode('utf-8'),
+                             channel.encode('utf-8')))
+        return SimpleVocabulary(terms)
+
+grok.global_utility(possibleChannelsVocabulary,
+                    name=u"pressapp.channelmanagement.possibleChannels")

@@ -1,6 +1,7 @@
 from five import grok
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm
 from zope.component import queryUtility
 from Products.CMFPlone.utils import safe_unicode
 from z3c.formwidget.query.interfaces import IQuerySource
@@ -12,7 +13,7 @@ class ChannelSource(object):
 
     def __init__(self, context):
         self.context = context
-        self.key = 'pressapp.channelmanagement.availableChannels'
+        self.key = 'pressapp.channelmanagement.channelList'
         self.channel_list = self.getChannelList()
         self.vocab = self.createVocabulary(self.channel_list)
 
@@ -33,22 +34,26 @@ class ChannelSource(object):
 
     def search(self, query_string):
         q = query_string.lower()
-        return [self.getTerm(kw)
-                for kw in self.channel_list if q in kw.lower()]
+        return [self.getTerm(kw['name'])
+                for kw in self.channel_list if q in kw['name'].lower()]
 
     def getChannelList(self):
         registry = queryUtility(IRegistry)
         terms = []
         if registry:
-            for value in registry.get(self.key, ()):
-                term = safe_unicode(value)
+            records = registry[self.key]
+            for item in records:
+                term = {}
+                term['name'] = item
+                term['title'] = records[item]
                 terms.append(term)
         return terms
 
     def createVocabulary(self, channel_list):
         terms = []
         for value in channel_list:
-            terms.append(SimpleVocabulary.createTerm(value.encode('utf-8'), value.encode('utf-8'), value))
+            terms.append(SimpleTerm(value=value['name'],
+                title=value['title'].encode('utf-8')))
         return SimpleVocabulary(terms)
 
 
