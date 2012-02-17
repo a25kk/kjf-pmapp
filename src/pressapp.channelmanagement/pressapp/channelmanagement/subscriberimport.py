@@ -6,12 +6,14 @@ import csv
 from logging import getLogger
 from five import grok
 from zope.lifecycleevent import modified
+from zope.component import getUtility
 
 from plone.directives import form
 from z3c.form import button
 from Acquisition import aq_inner
 from plone.namedfile import field as namedfile
 from plone.dexterity.utils import createContentInContainer
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.channelmanagement.channel import IChannel
@@ -91,6 +93,7 @@ class SubscriberImportForm(form.SchemaForm):
             mobile = self.getSpecificRecord(header, row, name=u"mobile")
             comment = self.getSpecificRecord(header, row, name=u'comment')
             channel = self.getSpecificRecord(header, row, name=u'channel')
+            clean_channels = self.cleanupChannelNames(channel)
             data = {
                 'title': name,
                 'email': email,
@@ -99,7 +102,7 @@ class SubscriberImportForm(form.SchemaForm):
                 'phone': phone,
                 'mobile': mobile,
                 'comment': comment,
-                'channel': string.split(channel, ', ')}
+                'channel': clean_channels}
             if not email:
                 logger.info('E-mail missing: invalid record for %s' % name)
             else:
@@ -125,6 +128,14 @@ class SubscriberImportForm(form.SchemaForm):
                 "Uploaded file does not have the column:" + name)
         record = quote_chars(row[index]).decode('utf-8')
         return record
+
+    def cleanupChannelNames(self, channels):
+        normalizer = getUtility(IIDNormalizer)
+        cleaned_channels = []
+        for entry in string.split(channels, ', '):
+            channelname = normalizer.normalize(entry)
+            cleaned_channels.append(channelname)
+        return cleaned_channels
 
     def is_ascii(self, s):
         for c in s:
