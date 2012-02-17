@@ -3,7 +3,6 @@ from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from zope.component import queryUtility
-from Products.CMFPlone.utils import safe_unicode
 from z3c.formwidget.query.interfaces import IQuerySource
 from plone.registry.interfaces import IRegistry
 
