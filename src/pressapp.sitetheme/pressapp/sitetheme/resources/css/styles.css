@@ -3595,31 +3595,30 @@ table.grid td, table.grid th {
 #foldercontents-order-column {
   padding: 0;
 }
-/*div.listingBar {
-    font-size: 80%;
-    margin: 1em 0;
+.portalMessage dd {
+  margin-left: 0px;
 }
-
+div.listingBar {
+  font-size: 80%;
+  margin: 1em 0;
+}
 div.listingBar .next {
-    display: inline-block;
-    float: right;
+  display: inline-block;
+  float: right;
 }
-
 div.listingBar .previous {
-    display: inline-block;
+  display: inline-block;
 }
-
 div.listingBar a {
-    display: inline-block;
-    padding: 0.25em 0.5em;
-    border: 0.1em solid #ccc;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  border: 0.1em solid #ccc;
 }
-
 div.listingBar a:hover {
-    color: White;
-    background-color: #329fd7;
-    border-color: #329fd7;
-}*/
+  color: White;
+  background-color: #329fd7;
+  border-color: #329fd7;
+}
 /* @end */
 /* Emulates the styling from the h1 tag */
 #content .field input[type="text"][name$=".title"], #archetypes-fieldname-title input {

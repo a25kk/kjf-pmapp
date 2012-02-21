@@ -14,7 +14,7 @@ from Products.PlonePAS.utils import scale_image
 from OFS.Image import Image
 from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
-
+from Products.CMFCore.interfaces import IContentish
 from pressapp.presscontent.pressroom import IPressRoom
 
 from pressapp.memberprofiles import MessageFactory as _
@@ -55,7 +55,7 @@ class IMemberInformation(form.Schema):
 
 
 class MemberInformationForm(form.SchemaEditForm):
-    grok.context(IPressRoom)
+    grok.context(IContentish)
     grok.require('cmf.AddPortalContent')
     grok.name('member-information')
 

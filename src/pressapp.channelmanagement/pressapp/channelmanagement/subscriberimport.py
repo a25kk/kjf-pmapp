@@ -3,6 +3,7 @@
 import string
 import StringIO
 import csv
+import transaction
 from logging import getLogger
 from five import grok
 from zope.lifecycleevent import modified
@@ -84,6 +85,7 @@ class SubscriberImportForm(form.SchemaForm):
         reader = csv.reader(io, delimiter=';', dialect="excel", quotechar='"')
         header = reader.next()
         processed_records = 0
+        transaction_threshold = 50
         for row in reader:
             name = self.getSpecificRecord(header, row, name=u'title')
             email = self.getSpecificRecord(header, row, name=u'email')
@@ -112,6 +114,8 @@ class SubscriberImportForm(form.SchemaForm):
                                 checkConstraints=True, **data)
                 modified(subscriber)
             processed_records += 1
+            if processed_records % transaction_threshold == 0:
+                transaction.commit()
         return processed_records
 
     def getSpecificRecord(self, header, row, name):
