@@ -21,6 +21,7 @@
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
      <element value="pressapp.presscontent.recipients.IRecipients" />
+     <element value="pressapp.presscontent.interfaces.IPressContent" />
    </property>
 
   <!-- View information -->
