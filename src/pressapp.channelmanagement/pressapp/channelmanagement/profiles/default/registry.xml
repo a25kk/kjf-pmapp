@@ -19,63 +19,63 @@
             <value_type type="plone.registry.field.TextLine" />
         </field>
         <value>
-            <element key"aichach">Aichach</element>
-            <element key"allgau-regional">Allgäu Regional</element>
-            <element key"augsburg-ejv">Augsburg EJV</element>
-            <element key"augsburg-innenstadt">Augsburg Innenstadt</element>
-            <element key"augsburg-landkreis-sud"> Augsburg Landkreis Süd</element>
-            <element key"augsburg-landkreis-west">Augsburg Landkreis West</element>
-            <element key"augsburg-univiertel">Augsburg Univiertel</element>
-            <element key"augustkollekte">Augustkollekte</element>
-            <element key"ausbildung">Ausbildung</element>
-            <element key"bistum-regional">Bistum Regional</element>
-            <element key"boulevard">Boulevard</element>
-            <element key"br-tv">BR TV</element>
-            <element key"buchloe">Buchloe</element>
-            <element key"buhl">Bühl</element>
-            <element key"bundesweite-medien">Bundesweite Medien</element>
-            <element key"dillingen">Dillingen</element>
-            <element key"donauworth">Donauwörth</element>
-            <element key"durrlauingen">Dürrlauingen</element>
-            <element key"familien">Familien</element>
-            <element key"fussen">Füssen</element>
-            <element key"gunzburg">Günzburg</element>
-            <element key"illertissen">Illertissen</element>
-            <element key"interner-test">Interner Test</element>
-            <element key"josefinum">Josefinum</element>
-            <element key"kaufbeuren">Kaufbeuren</element>
-            <element key"kempten">Kempten</element>
-            <element key"kinderzentrum">Kinderzentrum</element>
-            <element key"kirchlich">Kirchlich</element>
-            <element key"kissing">Kissing</element>
-            <element key"konigsbrunn">Königsbrunn</element>
-            <element key"kreativkombinat">Kreativkombinat</element>
-            <element key"krumbach">Krumbach</element>
-            <element key"landsberg">Landsberg</element>
-            <element key"langweid">Langweid</element>
-            <element key"lindau">Lindau</element>
-            <element key"marktoberdorf">Marktoberdorf</element>
-            <element key"medizin">Medizin</element>
-            <element key"memmingen">Memmingen</element>
-            <element key"mindelheim">Mindelheim</element>
-            <element key"multiplikatoren">Multiplikatoren</element>
-            <element key"murnau">Murnau</element>
-            <element key"nachrichtenagenturen">Nachrichtenagenturen</element>
-            <element key"neu-ulm">Neu-Ulm</element>
-            <element key"nordlingen">Nördlingen</element>
-            <element key"oberjoch">Oberjoch</element>
-            <element key"politik">Politik</element>
-            <element key"regionalradios-via-suv">Regionalradios via SUV</element>
-            <element key"rehakliniken">Rehakliniken</element>
-            <element key"scheidegg">Scheidegg</element>
-            <element key"schongau">Schongau</element>
-            <element key"skywalk">Skywalk</element>
-            <element key"sonthofen">Sonthofen</element>
-            <element key"soziale-arbeit">Soziale Arbeit</element>
-            <element key"sozialpolitik">Sozialpolitik</element>
-            <element key"uberregionale-medien">Überregionale Medien</element>
-            <element key"weilheim">Weilheim</element>
-            <element key"wirtschaft-regional">Wirtschaft Regional</element>
+            <element key="aichach">Aichach</element>
+            <element key="allgau-regional">Allgäu Regional</element>
+            <element key="augsburg-ejv">Augsburg EJV</element>
+            <element key="augsburg-innenstadt">Augsburg Innenstadt</element>
+            <element key="augsburg-landkreis-sud"> Augsburg Landkreis Süd</element>
+            <element key="augsburg-landkreis-west">Augsburg Landkreis West</element>
+            <element key="augsburg-univiertel">Augsburg Univiertel</element>
+            <element key="augustkollekte">Augustkollekte</element>
+            <element key="ausbildung">Ausbildung</element>
+            <element key="bistum-regional">Bistum Regional</element>
+            <element key="boulevard">Boulevard</element>
+            <element key="br-tv">BR TV</element>
+            <element key="buchloe">Buchloe</element>
+            <element key="buhl">Bühl</element>
+            <element key="bundesweite-medien">Bundesweite Medien</element>
+            <element key="dillingen">Dillingen</element>
+            <element key="donauworth">Donauwörth</element>
+            <element key="durrlauingen">Dürrlauingen</element>
+            <element key="familien">Familien</element>
+            <element key="fussen">Füssen</element>
+            <element key="gunzburg">Günzburg</element>
+            <element key="illertissen">Illertissen</element>
+            <element key="interner-test">Interner Test</element>
+            <element key="josefinum">Josefinum</element>
+            <element key="kaufbeuren">Kaufbeuren</element>
+            <element key="kempten">Kempten</element>
+            <element key="kinderzentrum">Kinderzentrum</element>
+            <element key="kirchlich">Kirchlich</element>
+            <element key="kissing">Kissing</element>
+            <element key="konigsbrunn">Königsbrunn</element>
+            <element key="kreativkombinat">Kreativkombinat</element>
+            <element key="krumbach">Krumbach</element>
+            <element key="landsberg">Landsberg</element>
+            <element key="langweid">Langweid</element>
+            <element key="lindau">Lindau</element>
+            <element key="marktoberdorf">Marktoberdorf</element>
+            <element key="medizin">Medizin</element>
+            <element key="memmingen">Memmingen</element>
+            <element key="mindelheim">Mindelheim</element>
+            <element key="multiplikatoren">Multiplikatoren</element>
+            <element key="murnau">Murnau</element>
+            <element key="nachrichtenagenturen">Nachrichtenagenturen</element>
+            <element key="neu-ulm">Neu-Ulm</element>
+            <element key="nordlingen">Nördlingen</element>
+            <element key="oberjoch">Oberjoch</element>
+            <element key="politik">Politik</element>
+            <element key="regionalradios-via-suv">Regionalradios via SUV</element>
+            <element key="rehakliniken">Rehakliniken</element>
+            <element key="scheidegg">Scheidegg</element>
+            <element key="schongau">Schongau</element>
+            <element key="skywalk">Skywalk</element>
+            <element key="sonthofen">Sonthofen</element>
+            <element key="soziale-arbeit">Soziale Arbeit</element>
+            <element key="sozialpolitik">Sozialpolitik</element>
+            <element key="uberregionale-medien">Überregionale Medien</element>
+            <element key="weilheim">Weilheim</element>
+            <element key="wirtschaft-regional">Wirtschaft Regional</element>
         </value>
     </record>
 </registry>
