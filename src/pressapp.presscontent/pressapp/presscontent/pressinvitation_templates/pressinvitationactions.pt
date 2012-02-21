@@ -15,7 +15,7 @@
                         <i class="icon-eye-open" />
                         Anzeigen</a>
                     <a class="btn btn-large"
-                        tal:attributes="href python:context_url+'/edit'">
+                        tal:attributes="href python:context_url+'/@@edit-press-invitation'">
                         <i class="icon-edit" />
                         Bearbeiten</a>
                     <a class="btn btn-large popoverLink"
