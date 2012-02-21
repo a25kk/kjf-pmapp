@@ -59,19 +59,26 @@
             <h2><i class="icon-list-alt" /> Verteiler</h2>
             <div class="box" tal:define="channel_list view/channel_names">
                 <h3>Verteiler <small>Statistiken</small></h3>
-                <tal:block tal:repeat="item channel_list">
-                    <div class="tile stats">
-                        <strong tal:content="item/count" />
-                        <form class="xpull-right"
-                            tal:attributes="action python:context_url+'/@@channel-information'">
-                            <input href="" class="btn btn-small pull-right"
-                                type="submit" value="Anzeigen" />
-                                    <input name="channelname" id="channelname" type="text"
-                                        class="large uneditable-input"
-                                        tal:attributes="value item/channel" />
-                        </form>
-                    </div>
-                </tal:block>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Verteiler</th>
+                            <th>Adressen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tal:repeat="item channel_list">
+                            <td><a href=""
+                                    tal:attributes="href python:context_url+'/@@channel-information'"
+                                    tal:content="item/channel">
+                                    Anzeigen</a>
+                            </td>
+                            <td>
+                                <strong tal:content="item/count" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="span4">

@@ -3737,6 +3737,9 @@ table.grid td, table.grid th {
 #foldercontents-order-column {
   padding: 0;
 }
+.portalMessage dd {
+  margin-left: 0px;
+}
 /*div.listingBar {
     font-size: 80%;
     margin: 1em 0;

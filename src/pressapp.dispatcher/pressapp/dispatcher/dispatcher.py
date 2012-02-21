@@ -195,3 +195,9 @@ class Dispatcher(grok.View):
         props = portal.portal_properties.site_properties
         charset = props.getProperty("default_charset")
         return safe_unicode(string).encode(charset)
+
+
+class DispatchSuccess(grok.View):
+    grok.context(IContentish)
+    grok.require('zope2.View')
+    grok.name('dispatch-success')
