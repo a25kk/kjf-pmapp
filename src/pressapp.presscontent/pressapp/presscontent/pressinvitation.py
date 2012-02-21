@@ -83,6 +83,12 @@ class View(grok.View):
         return info
 
 
+class Preview(grok.View):
+    grok.context(IPressInvitation)
+    grok.require('zope2.View')
+    grok.name('pressinvitation-preview')
+
+
 class PressInvitationActions(grok.Viewlet):
     grok.name('pressapp.membercontent.PressReleaseActions')
     grok.context(IPressInvitation)

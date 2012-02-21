@@ -72,9 +72,15 @@
         <a href="" class="btn btn-xlarge btn-success"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
-            tal:attributes="href python:context_url+'/@@dispatch'">
+            tal:attributes="href python:context_url+'/@@dispatcher?type=send_now'">
             <i class="icon-share-alt icon-white" />
             Jetzt versenden</a>
+        <a href="" class="btn btn-large btn-warning"
+            rel="loading-indicator"
+            data-loading-text="Ihre Nachricht wird verschickt..."
+            tal:attributes="href python:context_url+'/@@dispatcher?type=test'">
+            <i class="icon-share-alt icon-white" />
+            Testversand durchf&uuml;hren</a>
     </div>
     
   </section>
