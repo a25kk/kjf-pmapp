@@ -52,7 +52,7 @@
                     <td tal:content="item/name">Name</td>
                     <td tal:define="counter repeat/item/number;">
                         <span tal:content="item/email">E-Mail</span>
-                        <input type="text"
+                        <input type="hidden"
                             tal:attributes="id string:recipient-${counter};
                                             name string:recipient-${counter};
                                             value string:${item/email}, ${item/name};" />
