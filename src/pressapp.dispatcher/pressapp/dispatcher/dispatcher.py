@@ -11,6 +11,9 @@ from email.Header import Header
 
 from datetime import datetime
 from Acquisition import aq_inner
+from AccessControl import getSecurityManager
+from AccessControl.SecurityManagement import newSecurityManager
+from AccessControl.SecurityManagement import setSecurityManager
 from five import grok
 from zope.site.hooks import getSite
 from Products.CMFPlone.utils import safe_unicode
@@ -73,7 +76,7 @@ class Dispatcher(grok.View):
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             recipient_name = self.safe_portal_encoding(recipient['name'])
             personal_text = text.replace('[[SUBSCRIBER]]',
-                safe_unicode(recipient_name))
+                str(recipient_name))
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
             outer['From'] = self.default_data['sender']
@@ -95,8 +98,13 @@ class Dispatcher(grok.View):
                         o = reference_tool.lookupObject(uuid)
                         if o and urlparts:
                             o = o.restrictedTraverse(urlparts[0])
+                    if "@@images" in image_url:
+                        image_url = image_url[:image_url.index('@@images')]
+                        o = context.restrictedTraverse(
+                                urllib.unquote(image_url))
                     else:
-                        o = self.restrictedTraverse(urllib.unquote(image_url))
+                        o = context.restrictedTraverse(
+                                urllib.unquote(image_url))
                 except Exception, e:
                     log.error('Could not resolve the image \"%s\": %s'
                                 % (image_url, e))
@@ -121,10 +129,17 @@ class Dispatcher(grok.View):
                 send_error_counter += 1
         log.info("Dipatched to %s recipients with %s errors." % (send_counter,
             send_error_counter))
-        if not hasattr(self.request, 'test'):
+        if self.request.get('type') != 'test':
             wftool = getToolByName(context, 'portal_workflow')
             if wftool.getInfoFor(context, 'review_state') == 'private':
-                wftool.doActionFor(context, 'publish')
+                owner = context.getWrappedOwner()
+                sm = getSecurityManager()
+                # create a new context, as the owner of the folder
+                newSecurityManager(self.request, owner)
+                try:
+                    wftool.doActionFor(context, 'publish')
+                finally:
+                    setSecurityManager(sm)
 
     def _getRecievers(self, type):
         context = aq_inner(self.context)
@@ -140,7 +155,7 @@ class Dispatcher(grok.View):
                 recipient = {}
                 recipient_email, recipient_name = address.split(',')
                 recipient['mail'] = recipient_email
-                recipient['name'] = recipient_name
+                recipient['name'] = safe_unicode(recipient_name)
                 recipients.append(recipient)
         return recipients
 
@@ -178,7 +193,11 @@ class Dispatcher(grok.View):
     def _compose_email_content(self, template, data):
         for value in data:
             token = '[[PC_' + value.upper() + ']]'
-            template = template.replace(str(token), str(data[value]))
+            try:
+                new_value = self.safe_portal_encoding(data[value])
+            except AttributeError:
+                new_value = str(data[value])
+            template = template.replace(str(token), new_value)
         return template
 
     def _render_output_html(self):
