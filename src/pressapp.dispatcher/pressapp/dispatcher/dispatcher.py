@@ -135,7 +135,6 @@ class Dispatcher(grok.View):
         else:
             recievers = getattr(context, 'recipients', '')
         recipients = []
-        import pdb;pdb.set_trace()
         if recievers:
             for address in recievers:
                 recipient = {}
@@ -146,10 +145,14 @@ class Dispatcher(grok.View):
         return recipients
 
     def _getPressCenterData(self):
+        context = aq_inner(self.context)
         portal = getSite()
         presscenter = portal['presscenter']
         data = {}
-        data['template'] = presscenter.mailtemplate
+        if IPressInvitation.providedBy(context):
+            data['template'] = presscenter.mailtemplate_pi
+        else:
+            data['template'] = presscenter.mailtemplate
         data['sender'] = presscenter.name
         data['email'] = presscenter.email
         return data
