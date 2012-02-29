@@ -24,6 +24,8 @@ from Products.CMFCore.interfaces import IContentish
 
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
 
+from plone.uuid.interfaces import IUUID
+
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
 from pressapp.dispatcher import MessageFactory as _
@@ -162,7 +164,7 @@ class Dispatcher(grok.View):
         data['summary'] = context.Description()
         data['location'] = context.location
         data['text'] = context.text.output
-        data['url'] = context.absolute_url()
+        data['url'] = self._contruct_webview_link()
         data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
             data['kicker'] = context.kicker
@@ -224,6 +226,14 @@ class Dispatcher(grok.View):
         text = textout.getvalue()
         del textout, formtext, parser, anchorlist
         return text
+
+    def _contruct_webview_link(self):
+        context = aq_inner(self.context)
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        uuid = IUUID(context, None)
+        url = portal_url + '/@@pressitem-view?uid=' + uuid
+        return url
 
     def safe_portal_encoding(self, string):
         portal = getSite()

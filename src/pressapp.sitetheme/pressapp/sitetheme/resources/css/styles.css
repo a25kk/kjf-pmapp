@@ -3439,6 +3439,15 @@ a.thumbnail:hover {
   float: left;
   padding: 10px;
 }
+#logo {
+  background: url(../images/logo.png) no-repeat 0px 0px transparent;
+  margin: 0px;
+  width: 180px;
+  height: 108px;
+  display: block;
+  text-indent: -9999px;
+  overflow: hidden;
+}
 img.image-left {
   float: left;
   display: block;

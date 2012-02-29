@@ -1,14 +1,15 @@
 import datetime
 from Acquisition import aq_inner
 from five import grok
-from plone.directives import dexterity, form
+from plone.directives import form
 
 from zope import schema
+from zope.site.hooks import getSite
 
-from z3c.form import group, field
 from plone.app.textfield import RichText
 from Products.CMFCore.utils import getToolByName
 
+from plone.uuid.interfaces import IUUID
 from plone.app.layout.viewlets.interfaces import IAboveContent
 
 from pressapp.presscontent import MessageFactory as _
@@ -81,6 +82,16 @@ class View(grok.View):
         if recipients is not None:
             info = True
         return info
+
+    def constructPreviewURL(self):
+        context = aq_inner(self.context)
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        uuid = IUUID(context, None)
+        url = portal_url + '/@@pressitem-view?uid=' + uuid
+        return url
+
+
 
 
 class Preview(grok.View):
