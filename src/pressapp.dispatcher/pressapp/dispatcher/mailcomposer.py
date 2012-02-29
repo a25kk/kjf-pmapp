@@ -29,7 +29,6 @@ class IDispatch(interface.Interface):
 
         If this method raises an exception, an 'error' is assumed.
         """
-        
 
 def create_html_mail(subject, html, text=None, from_addr=None, to_addr=None,
                      headers=None, encoding='UTF-8'):

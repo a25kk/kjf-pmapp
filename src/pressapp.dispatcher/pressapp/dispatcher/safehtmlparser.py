@@ -21,8 +21,6 @@ class SafeHTMLParser(HTMLParser.HTMLParser):
         """
         """
         self.html += "<%s" % tag
-
-
         for attr in attrs:
             if attr[0] == "href":
                 try:

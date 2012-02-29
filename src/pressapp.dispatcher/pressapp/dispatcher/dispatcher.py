@@ -12,16 +12,12 @@ from email.Header import Header
 from Acquisition import aq_inner
 from five import grok
 from zope.site.hooks import getSite
-from zope.component import queryUtility
-from zope.component import getUtility
 from Products.CMFPlone.utils import safe_unicode
 
 import logging
 log = logging.getLogger("pressapp.dispatcher")
 
 from Products.CMFCore.utils import getToolByName
-from Products.MailHost.interfaces import IMailHost
-from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.interfaces import IContentish
 
@@ -44,7 +40,8 @@ class Dispatcher(grok.View):
             self.status = self.send()
             IStatusMessage(self.request).addStatusMessage(
             _(u"Your request has been dispatched"), type='info')
-            return self.request.response.redirect(context.absolute_url()+'/@@dispatch-success')
+            return self.request.response.redirect(
+                context.absolute_url() + '/@@dispatch-success')
 
     def send(self):
         context = aq_inner(self.context)
