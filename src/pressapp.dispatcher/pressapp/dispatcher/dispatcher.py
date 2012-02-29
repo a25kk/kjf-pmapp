@@ -39,10 +39,10 @@ class Dispatcher(grok.View):
 
     def update(self):
         context = aq_inner(self.context)
-        self.recipients = self._getRecievers()
         self.default_data = self._getPressCenterData()
-        send_now = self.request.get('type', '')
-        if send_now:
+        send_type = self.request.get('type', '')
+        if send_type:
+            self.recipients = self._getRecievers(send_type)
             self.status = self.send()
             IStatusMessage(self.request).addStatusMessage(
             _(u"Your request has been dispatched"), type='info')
@@ -126,10 +126,16 @@ class Dispatcher(grok.View):
             if wftool.getInfoFor(context, 'review_state') == 'private':
                 wftool.doActionFor(context, 'publish')
 
-    def _getRecievers(self):
+    def _getRecievers(self, type):
         context = aq_inner(self.context)
-        recievers = getattr(context, 'recipients', '')
+        if type == 'test':
+            portal = getSite()
+            presscenter = portal['presscenter']
+            recievers = presscenter.testRecipients
+        else:
+            recievers = getattr(context, 'recipients', '')
         recipients = []
+        import pdb;pdb.set_trace()
         if recievers:
             for address in recievers:
                 recipient = {}

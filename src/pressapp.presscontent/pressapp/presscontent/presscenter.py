@@ -35,7 +35,11 @@ class IPressCenter(form.Schema):
     )
     testRecipients = schema.List(
         title=_(u"Test Recipients"),
-        description=_(u"A list of test recipients - one address per line."),
+        description=_(u"A list of test recipients - one address per line "
+                      u"comma seperated in the format: E-mail, Name"),
+        value_type=schema.TextLine(
+            title=_(u"Recipient"),
+        ),
         required=False,
     )
     mailtemplate = schema.SourceText(
