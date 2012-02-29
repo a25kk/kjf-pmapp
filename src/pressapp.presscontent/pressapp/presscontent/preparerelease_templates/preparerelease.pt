@@ -55,6 +55,7 @@
                     </thead>
                     <tbody>
                         <tal:block tal:repeat="item view/recipient_list">
+                            <pre tal:replace="item" />
                         <tr tal:define="item_details python:view.reformat_recipients(item)">
                             <td tal:content="python:item_details[0]" />
                             <td tal:content="python:item_details[1]" />

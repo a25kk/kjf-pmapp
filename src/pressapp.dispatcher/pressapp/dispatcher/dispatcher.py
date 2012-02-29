@@ -27,6 +27,8 @@ from Products.CMFCore.interfaces import IContentish
 
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
 
+from pressapp.presscontent.pressrelease import IPressRelease
+from pressapp.presscontent.pressinvitation import IPressInvitation
 from pressapp.dispatcher import MessageFactory as _
 
 
@@ -44,7 +46,8 @@ class Dispatcher(grok.View):
             self.status = self.send()
             IStatusMessage(self.request).addStatusMessage(
             _(u"Your request has been dispatched"), type='info')
-            return self.request.response.redirect(context.absolute_url()+'/@@dispatch-success')
+            return self.request.response.redirect(
+                    context.absolute_url() + '/@@dispatch-success')
 
     def send(self):
         context = aq_inner(self.context)
@@ -61,9 +64,11 @@ class Dispatcher(grok.View):
         output_html = self._render_output_html()
         rendered_email = self._exchange_relative_urls(output_html)
         #text = context.restrictedTraverse('@@pressinvitation-preview')()
-        text = rendered_email['html']
+        text_html = rendered_email['html']
         plain_text = rendered_email['plain']
         image_urls = rendered_email['images']
+        context_content = self._dynamic_content()
+        text = self._compose_email_content(text_html, context_content)
         for recipient in recipients:
             outer = MIMEMultipart('alternative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
@@ -135,7 +140,6 @@ class Dispatcher(grok.View):
         return recipients
 
     def _getPressCenterData(self):
-        context = aq_inner(self.context)
         portal = getSite()
         presscenter = portal['presscenter']
         data = {}
@@ -144,13 +148,36 @@ class Dispatcher(grok.View):
         data['email'] = presscenter.email
         return data
 
+    def _dynamic_content(self):
+        context = aq_inner(self.context)
+        data = {}
+        data['title'] = context.Title()
+        data['summary'] = context.Description()
+        data['location'] = context.location
+        data['text'] = context.text.output
+        data['url'] = context.absolute_url()
+        if IPressRelease.providedBy(context):
+            data['kicker'] = context.kicker
+            data['subtitle'] = context.subtitle
+        if IPressInvitation.providedBy(context):
+            data['start'] = self.localize(context.start)
+            data['end'] = self.localize(context.end)
+            data['closed'] = context.closed
+        return data
+
+    def _compose_email_content(self, template, data):
+        for value in data:
+            token = '[[PC_' + value.upper() + ']]'
+            template = template.replace(str(token), str(data[value]))
+        return template
+
     def _render_output_html(self):
         """ Return rendered newsletter
             with header+body+footer (raw html).
         """
         default_data = self.default_data
-        props = getToolByName(self, "portal_properties").site_properties
-        charset = props.getProperty("default_charset")
+        #props = getToolByName(self, "portal_properties").site_properties
+        #charset = props.getProperty("default_charset")
         # get out_template from ENL object and render it in context of issue
         out_template = default_data['template']
         #output_html = self.safe_portal_encoding(out_template)
@@ -195,6 +222,17 @@ class Dispatcher(grok.View):
         props = portal.portal_properties.site_properties
         charset = props.getProperty("default_charset")
         return safe_unicode(string).encode(charset)
+
+    def localize(self, time):
+        return self._time_localizer()(time.isoformat(),
+                                      long_format=True,
+                                      context=self.context,
+                                      domain='plonelocales')
+
+    def _time_localizer(self):
+        translation_service = getToolByName(self.context,
+                                            'translation_service')
+        return translation_service.ulocalized_time
 
 
 class DispatchSuccess(grok.View):

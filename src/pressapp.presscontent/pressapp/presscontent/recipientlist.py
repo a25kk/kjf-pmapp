@@ -21,10 +21,12 @@ class RecipientList(grok.View):
         self.errors = {}
         if 'form.button.Submit' in self.request:
             context = aq_inner(self.context)
+            filter_values = ('recipient-table_length', 'form.button.Submit')
             data = []
             for value in form:
-                data.append(form[value])
-            setattr(context, 'recipients', data[2:])
+                if value not in filter_values:
+                    data.append(form[value])
+            setattr(context, 'recipients', data)
             context.reindexObject(idxs='modified')
             context_url = context.absolute_url()
             IStatusMessage(self.request).addStatusMessage(
