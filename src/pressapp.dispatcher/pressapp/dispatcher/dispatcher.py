@@ -44,7 +44,7 @@ class Dispatcher(grok.View):
             IStatusMessage(self.request).addStatusMessage(
             _(u"Your request has been dispatched"), type='info')
             return self.request.response.redirect(
-                    context.absolute_url() + '/@@dispatch-success')
+                context.absolute_url() + '/@@dispatch-success')
 
     def send(self):
         context = aq_inner(self.context)
