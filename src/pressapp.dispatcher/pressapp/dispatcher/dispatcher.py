@@ -9,6 +9,7 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEImage import MIMEImage
 from email.Header import Header
 
+from datetime import datetime
 from Acquisition import aq_inner
 from five import grok
 from zope.site.hooks import getSite
@@ -162,12 +163,13 @@ class Dispatcher(grok.View):
         data['location'] = context.location
         data['text'] = context.text.output
         data['url'] = context.absolute_url()
+        data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
             data['kicker'] = context.kicker
             data['subtitle'] = context.subtitle
         if IPressInvitation.providedBy(context):
-            data['start'] = self.localize(context.start)
-            data['end'] = self.localize(context.end)
+            data['start'] = self.localize(context.start, longformat=True)
+            data['end'] = self.localize(context.end, longformat=True)
             data['closed'] = context.closed
         return data
 
@@ -229,9 +231,9 @@ class Dispatcher(grok.View):
         charset = props.getProperty("default_charset")
         return safe_unicode(string).encode(charset)
 
-    def localize(self, time):
+    def localize(self, time, longformat):
         return self._time_localizer()(time.isoformat(),
-                                      long_format=True,
+                                      long_format=longformat,
                                       context=self.context,
                                       domain='plonelocales')
 
