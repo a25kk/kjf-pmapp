@@ -12,16 +12,12 @@ from email.Header import Header
 from Acquisition import aq_inner
 from five import grok
 from zope.site.hooks import getSite
-from zope.component import queryUtility
-from zope.component import getUtility
 from Products.CMFPlone.utils import safe_unicode
 
 import logging
 log = logging.getLogger("pressapp.dispatcher")
 
 from Products.CMFCore.utils import getToolByName
-from Products.MailHost.interfaces import IMailHost
-from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.interfaces import IContentish
 
@@ -73,9 +69,10 @@ class Dispatcher(grok.View):
             outer = MIMEMultipart('alternative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             recipient_name = self.safe_portal_encoding(recipient['name'])
-            personal_text = text.replace('[[SUBSCRIBER]]', str(recipient_name))
+            personal_text = text.replace('[[SUBSCRIBER]]',
+                safe_unicode(recipient_name))
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
-                                                     str(recipient_name))
+                str(recipient_name))
             outer['From'] = self.default_data['sender']
             outer['Subject'] = subject_header
             outer.epilogue = ''
@@ -189,8 +186,8 @@ class Dispatcher(grok.View):
         #charset = props.getProperty("default_charset")
         # get out_template from ENL object and render it in context of issue
         out_template = default_data['template']
-        #output_html = self.safe_portal_encoding(out_template)
-        return out_template
+        output_html = self.safe_portal_encoding(out_template)
+        return output_html
 
     def _exchange_relative_urls(self, output_html):
         """ exchange relative URLs and
