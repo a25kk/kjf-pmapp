@@ -26,15 +26,24 @@ class IPressCenter(form.Schema):
     name = schema.TextLine(
         title=_("Sender Name"),
         description=_(u"Provide a default sender name to be included"),
-        required= True,
+        required=True,
     )
     testEmail = schema.TextLine(
         title=_(u"E-Mail Address for Tests"),
         description=_(u"Default email address used in test despatches"),
         required=True,
     )
+    testRecipients = schema.List(
+        title=_(u"Test Recipients"),
+        description=_(u"A list of test recipients - one address per line."),
+        required=False,
+    )
     mailtemplate = schema.SourceText(
-        title=_(u"E-Mail Template"),
+        title=_(u"E-Mail Template Press Release"),
+        required=False,
+    )
+    mailtemplate_pi = schema.SourceText(
+        title=_(u"E-Mail Template Press Invitation"),
         required=False,
     )
 
