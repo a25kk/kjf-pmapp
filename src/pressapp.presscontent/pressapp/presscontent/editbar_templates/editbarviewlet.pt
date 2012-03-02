@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <ul class="breadcrumb pull-left">
                 <li>
-                    <i class="icon-home icon-white" />
+                    <i class="icon-home" />
                     <span class="divider">/<span>
                 </li>
                 <li><a href="">Arbeitsplatz</a></li>

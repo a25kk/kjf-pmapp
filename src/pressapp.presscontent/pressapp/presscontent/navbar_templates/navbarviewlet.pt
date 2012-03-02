@@ -3,13 +3,13 @@
         tal:define="context_url viewlet/context_url;
                     portal_url viewlet/portal_url">
         <div class="container-fluid">
-            <a href="" class="brand"
+            <a href="" class="brand pull-right"
                 tal:attributes="href portal_url">
                 KJF Pressestelle</a>
             <div class="nav-collapse" tal:condition="not:viewlet/anonymous">
                 <ul class="nav"
                     tal:define="home_folder viewlet/home_url">
-                    <li class="dropdown" id="main-menu">
+                    <li id="main-menu">
                         <a href="/"
                             data-traget="#main-menu"
                             tal:attributes="href home_folder">

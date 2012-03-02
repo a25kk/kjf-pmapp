@@ -93,12 +93,13 @@ class GlobalSettingsForm(form.SchemaEditForm):
 
     def getContent(self):
         context = aq_inner(self.context)
+        fti = getUtility(IDexterityFTI,
+                         name='pressapp.presscontent.presscenter')
+        schema = fti.lookupSchema()
+        fields = getFieldsInOrder(schema)
         data = {}
-        try:
-            channelinfo = context.channel
-        except:
-            channelinfo = getattr(context, 'channel', '')
-        data['channel'] = channelinfo
+        for key, value in fields:
+            data[key] = getattr(context, key, value)
         return data
 
     def applyChanges(self, data):
