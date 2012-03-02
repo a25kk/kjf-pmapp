@@ -22,12 +22,73 @@
         </div>
         
         <section>
-            <h2>Versand Enstellungen</h2>
-            <div class="box">
-                <a class="btn btn-large btn-primary"
-                    tal:attributes="href python:context_url+'/edit'">
+          <a class="btn btn-primary pull-right"
+                    tal:attributes="href python:context_url+'/@@update-settings'">
+                    <i class="icon-edit icon-white" />
                     Bearbeiten</a>
-            </div>
+            <h2>Versand Einstellungen</h2>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td><strong>Absenderadresse:</strong></td>
+                    <td tal:content="context/email">E-Mail</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Absendername:</strong></td>
+                    <td tal:content="context/name" />
+                  </tr>
+                  <tr>
+                    <td><strong>Standard Testempf&auml;nger:</strong></td>
+                    <td tal:content="context/testEmail" />
+                  </tr>
+                  <tr>
+                    <td><strong>Liste Testempf&auml;nger:</strong></td>
+                    <td>
+                      <tal:block tal:repeat="item context/testRecipients">
+                        <span tal:replace="item" /><br />
+                      </tal:block>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="btn-group pull-right">
+                <a href="" class="btn btn-primary dropdown-toggle"
+                  data-toggle="dropdown">
+                  <i class="icon-pencil icon-white" />
+                  Bearbeiten
+                  <span class="caret"></span>
+                </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="">
+                        <i class="icon-edit" />
+                        Template Pressemitteilung</a></li>
+                    <li><a href="">
+                        <i class="icon-edit" />
+                        Template Presseeinladung</a></li>
+                  </ul>
+              </div>
+              <h2>E-Mail Templates <small>Versandvorlagen</small></h2>
+              <div class="tile">
+                <h4>Pressemitteilung</h4>
+                <a class="btn  btn-small btn-info show-details pull-right">
+                    <i class="icon-arrow-down icon-white" />
+                    Details einblenden</a>
+                    <div class="xbox details visualClear">
+                        <div class="visualClear">&nbsp;</div>
+                        <pre tal:content="context/mailtemplate" />
+                    </div>
+              </div>
+              <div class="tile">
+                <h4>Presseeinladung</h4>
+                <a class="btn  btn-small btn-info show-details pull-right">
+                    <i class="icon-arrow-down icon-white" />
+                    Details einblenden</a>
+                    <div class="xbox details visualClear">
+                        <div class="visualClear">&nbsp;</div>
+                        <pre tal:content="context/mailtemplate_pi" />
+                    </div>
+              </div>
         </section>
         
     </div>
