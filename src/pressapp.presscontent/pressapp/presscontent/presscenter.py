@@ -1,13 +1,12 @@
 from five import grok
-from plone.directives import dexterity, form
+from plone.directives import form
 from Acquisition import aq_inner
 from zope import schema
 from AccessControl import getSecurityManager
 from plone.memoize.instance import memoize
 
-from z3c.form import group, field
-from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from Products.CMFCore.utils import getToolByName
+from plone.app.contentlisting.interfaces import IContentListing
 
 from pressapp.presscontent.pressroom import IPressRoom
 
@@ -90,3 +89,22 @@ class PressCenterSettings(grok.View):
 
     def updates(self):
         pass
+
+
+class Workspaces(grok.View):
+    grok.context(IPressCenter)
+    grok.require('zope2.View')
+    grok.name('workspaces')
+
+    def update(self):
+        self.has_workspaces = len(self.workspaces()) > 0
+
+    def workspaces(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=IPressRoom.__identifier__,
+                         path=dict(query='/'.join(context.getPhysicalPath()),
+                                   depth=1),
+                         sort_on='sortable_title')
+        spaces = IContentListing(results)
+        return spaces

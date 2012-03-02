@@ -3667,6 +3667,11 @@ dl.portlet {
   margin: 0 0 0.5em 1em;
 }
 /* @end */
+/* Custom styles for source text fields */
+.sourcetext-field {
+  width: 100%;
+  min-height: 400px;
+}
 /* @group Data tables */
 table.listing, table.plain {
   border-spacing: 0;
