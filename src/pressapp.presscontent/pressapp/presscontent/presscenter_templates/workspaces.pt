@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main"
+        tal:define="memberinfo context/portal_membership/getMemberInfo;
+                    member context/@@plone_portal_state/member;
+                    name python:memberinfo['fullname'] or member.getId() or member.getId();
+                    portal_url context/portal_url;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    context_url context/absolute_url">
+    
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Benutzerkonten</h1>
+        </div>
+        
+        <section>
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>Benutzerkonto</th>
+                    <th>Aktionen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tal:block tal:condition="view/has_workspaces">
+                    <tr tal:repeat="item view/workspaces">
+                      <td><strong tal:content="item/Title">
+                        Title</strong></td>
+                      <td><a href="" tal:attributes="href item/getURL">
+                          Anzeigen</a></td>
+                    </tr>
+                  </tal:block>
+                  <tr tal:condition="not:view/has_workspaces">
+                    <td>
+                      <div class="alert alert-block alert-error">
+                        <h4 class="alert-heading">Hinweis</h4>
+                        Leider konnten keine Benutzerkonten gefunden werden
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </section>
+        
+    </div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
