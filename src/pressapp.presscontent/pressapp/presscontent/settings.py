@@ -225,9 +225,9 @@ class UpdateTemplatePIForm(form.SchemaEditForm):
 
     def applyChanges(self, data):
         context = aq_inner(self.context)
-        new_template = data['mailtemplate']
+        new_template = data['mailtemplate_pi']
         if new_template:
-            setattr(context, 'mailtemplate', new_template)
+            setattr(context, 'mailtemplate_pi', new_template)
         modified(context)
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
