@@ -10,15 +10,14 @@
                 <ul class="nav"
                     tal:define="home_folder viewlet/home_url">
                     <li class="dropdown" id="main-menu">
-                        <a href="/" class="dropdown-toggle"
-                            data-toggle="dropdown"
+                        <a href="/"
                             data-traget="#main-menu"
                             tal:attributes="href home_folder">
                             <i class="icon-home icon-white" />
                             Arbeitsplatz
-                            <b class="caret" />
+                            <!--<b class="caret" />-->
                         </a>
-                        <ul class="dropdown-menu">
+                        <!-- <ul class="dropdown-menu">
                             <li><a href="" tal:attributes="href home_folder">
                                 <i class="icon-list" />
                                 &Uuml;bersicht</a>
@@ -40,7 +39,7 @@
                                     Statistik
                                 </a>
                             </li>
-                        </ul>
+                        </ul>-->
                     </li>
                     <li class="divider-vertical"></li>
                     <li><a href=""

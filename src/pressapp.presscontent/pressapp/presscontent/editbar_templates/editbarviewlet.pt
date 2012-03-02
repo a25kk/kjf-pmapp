@@ -3,7 +3,31 @@
         tal:define="context_url viewlet/context_url;
                     context_state context/@@plone_context_state">
         <div class="container-fluid">
+            <ul class="breadcrumb pull-left">
+                <li>
+                    <i class="icon-home" />
+                    <span class="divider">/<span>
+                </li>
+                <li><a href="">Arbeitsplatz</a></li>
+            </ul>
             <div class="container-fluid btn-toolbar">
+                <div class="btn-group">
+                    <a href="" class="btn btn-large btn-success dropdown-toggle"
+                        data-toggle="dropdown">
+                        <i class="icon-plus icon-white" />
+                        Neu Inhalte hinzuf&uuml;gen</a>
+                    <ul class="dropdown-menu">
+                        <li><a href=""
+                                tal:attributes="href python:context_url + '/@@add-press-release'">
+                            <i class="icon-plus-sign" />
+                            Pressmitteilung</a></li>
+                        <li class="divider"></li>
+                        <li><a href=""
+                                tal:attributes="href python:context_url + '/@@add-press-invitation'">
+                            <i class="icon-plus-sign" />
+                            Presseeinladung</a></li>
+                    </ul>
+                </div>
                 <div class="btn-group">
                     <a href="" tal:attributes="href context_state/canonical_object_url"
                         class="btn btn-large btn-info">
