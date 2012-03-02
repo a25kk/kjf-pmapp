@@ -60,17 +60,18 @@
                   <span class="caret"></span>
                 </a>
                   <ul class="dropdown-menu">
-                    <li><a href="">
+                    <li><a href=""
+                          tal:attributes="href python:context_url + '/@@update-pr-template'">
                         <i class="icon-edit" />
                         Template Pressemitteilung</a></li>
-                    <li><a href="">
+                    <li><a href=""
+                          tal:attributes="href python:context_url + '/@@update-pi-template'">
                         <i class="icon-edit" />
                         Template Presseeinladung</a></li>
                   </ul>
               </div>
               <h2>E-Mail Templates <small>Versandvorlagen</small></h2>
               <div class="tile">
-                <h4>Pressemitteilung</h4>
                 <a class="btn  btn-small btn-info show-details pull-right">
                     <i class="icon-arrow-down icon-white" />
                     Details einblenden</a>
@@ -78,9 +79,9 @@
                         <div class="visualClear">&nbsp;</div>
                         <pre tal:content="context/mailtemplate" />
                     </div>
+              <h4>Pressemitteilung</h4>
               </div>
               <div class="tile">
-                <h4>Presseeinladung</h4>
                 <a class="btn  btn-small btn-info show-details pull-right">
                     <i class="icon-arrow-down icon-white" />
                     Details einblenden</a>
@@ -88,6 +89,7 @@
                         <div class="visualClear">&nbsp;</div>
                         <pre tal:content="context/mailtemplate_pi" />
                     </div>
+              <h4>Presseeinladung</h4>
               </div>
         </section>
         
