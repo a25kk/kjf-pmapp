@@ -71,6 +71,7 @@ class Dispatcher(grok.View):
         image_urls = rendered_email['images']
         context_content = self._dynamic_content()
         text = self._compose_email_content(text_html, context_content)
+        plain_text = self._compose_email_content(plain_text, context_content)
         for recipient in recipients:
             outer = MIMEMultipart('alternative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
