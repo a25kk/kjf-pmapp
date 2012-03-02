@@ -3,9 +3,11 @@ from Acquisition import aq_inner, aq_parent
 from plone.directives import form
 
 from zope import schema
+from zope.component import queryUtility
 
 from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
+from plone.registry.interfaces import IRegistry
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
 
@@ -38,6 +40,7 @@ class View(grok.View):
         self.has_channels = len(self.channels()) > 0
         self.has_subscribers = len(self.subscribers()) > 0
         self.subscriber_count = len(self.subscribers())
+        self.key = 'pressapp.channelmanagement.channelList'
 
     def active_channel(self):
         channels = self.channels()
@@ -66,12 +69,20 @@ class View(grok.View):
 
     def channel_names(self):
         context = aq_inner(self.context)
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry[self.key]
         catalog = getToolByName(context, 'portal_catalog')
         channels = catalog.uniqueValuesFor('channel')
         names = []
         for channel in channels:
             info = {}
             info['channel'] = channel
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            info['channelname'] = channelname
             info['count'] = len(catalog.searchResults(channel=[channel]))
             names.append(info)
         return names
@@ -100,7 +111,7 @@ class ChannelInformation(grok.View):
     def usage_statistics(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        stats={}
+        stats = {}
         prs = catalog(object_provides=IPressRelease.__identifier__,
                       channel=[self.channelname])
         stats['pr'] = len(prs)

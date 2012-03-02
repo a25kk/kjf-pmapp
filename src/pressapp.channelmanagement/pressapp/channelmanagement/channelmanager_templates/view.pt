@@ -70,7 +70,7 @@
                         <tr tal:repeat="item channel_list">
                             <td><a href=""
                                     tal:attributes="href python:context_url+'/@@channel-information'"
-                                    tal:content="item/channel">
+                                    tal:content="item/channelname">
                                     Anzeigen</a>
                             </td>
                             <td>
