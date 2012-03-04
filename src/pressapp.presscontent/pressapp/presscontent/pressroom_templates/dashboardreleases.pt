@@ -20,7 +20,7 @@
                       <a class="btn btn-primary"
                         rel="loading-indicator"
                         data-loading-text="Wird geladen..."
-                          tal:attributes="href python:context_url+'/++add++pressapp.presscontent.pressrelease'">
+                          tal:attributes="href python:context_url+'/@@add-press-release'">
                             <i class="icon-plus-sign icon-white" />
                             Neu anlegen</a>
                   </p>
@@ -45,7 +45,7 @@
                               <td tal:define="item_url item/getURL">
                                   <div class="btn-group">
                                     <a class="btn btn-small"
-                                        tal:attributes="href python:item_url+'/edit'">
+                                        tal:attributes="href python:item_url+'/@@edit-press-release'">
                                         <i class="icon-edit" />
                                         Bearbeiten</a>
                                     <a class="btn btn-small"

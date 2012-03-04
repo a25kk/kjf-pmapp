@@ -11,14 +11,14 @@
                 <li><a href="">Arbeitsplatz</a></li>
             </ul>
             <div class="container-fluid btn-toolbar">
-                <div class="btn-group">
+                <!--<div class="btn-group">
                     <a href="" tal:attributes="href context_state/canonical_object_url"
                         class="btn btn-large btn-info">
                         <i class="icon-home icon-white" />
                         Arbeitsplatz
                     </a>
                 </div>
-                <!--<div class="btn-group">
+                <div class="btn-group">
                     <a class="btn btn-large"
                         tal:attributes="href python:context_url+'/@@dashboard-releases'">
                         <i class="icon-file" />
@@ -30,7 +30,7 @@
                 </div>-->
                 <div class="btn-group">
                     <a class="btn btn-large"
-                        tal:attributes="href python:context_url+'/@@dashboard-schedule'">
+                        tal:attributes="href python:context_url+'/@@dashboard-statistics'">
                         <i class="icon-share-alt" />
                         Statistik</a>
                 </div>
@@ -38,17 +38,17 @@
                     <a href="" class="btn btn-large dropdown-toggle"
                         data-toggle="dropdown">
                         <i class="icon-plus" />
-                        Neu Inhalte hinzuf&uuml;gen</a>
+                        Inhalte hinzuf&uuml;gen</a>
                     <ul class="dropdown-menu">
                         <li><a href=""
                                 tal:attributes="href python:context_url + '/@@add-press-release'">
-                            <i class="icon-plus-sign" />
-                            Pressmitteilung</a></li>
+                            <i class="icon-file" />
+                                Pressmitteilung</a></li>
                         <li class="divider"></li>
                         <li><a href=""
                                 tal:attributes="href python:context_url + '/@@add-press-invitation'">
-                            <i class="icon-plus-sign" />
-                            Presseeinladung</a></li>
+                            <i class="icon-calendar" />
+                                Presseeinladung</a></li>
                     </ul>
                 </div>
             </div>

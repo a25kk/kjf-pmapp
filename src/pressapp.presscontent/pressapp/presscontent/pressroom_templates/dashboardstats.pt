@@ -15,56 +15,55 @@
                 Presseeinladungen</small>
             </h1>
         </div>
-        <p class="visualClear">
-            In diesem Bereich k&ouml;nnen Sie den Versand von Pressmitteilungen und
-            Presseeinladungen terminieren und durchf&uuml;hren.</p>
 
-      <div class="container-fluid">
+      <div class="container-fluid"
+          tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                      b_size python:25;b_start python:0;b_start request/b_start | b_start;">
           <div class="box">
-
-                  <table class="table table-striped"
-                    tal:condition="view/has_content">
-                      <thead>
-                          <tr>
-                              <th>#</th>
-                              <th>Typ</th>
-                              <th>Titel</th>
-                              <th>Termin</th>
-                              <th>Aktionen</th>
-                          </tr>
-                      </thead>
-                      <tbody tal:define="items view/published_presscontent">
-                          <tr tal:repeat="item items">
-                              <td>1.</td>
-                              <td><span class="label info">Neu</span></td>
-                              <td><a href="#">PressRelease</a></td>
-                              <td>Lorem ipsum dolor sit amet</td>
-                              <td>20.09.2011</td>
-                              <td>
-                                  <div class="btn-group">
-                                      <a class="btn btn-small">
-                                          <i class="icon-edit" />
-                                          Bearbeiten</a>
-                                      <a class="btn btn-small">
-                                          <i class="icon-eye-open" />
-                                          Anzeigen</a>
-                                      <a class="btn btn-small">
-                                          <i class="icon-share-alt" />
-                                          Senden</a>
-                                   </div>
-                               </td>
-                          </tr>
-                          <tr>
-                              <td colspan="6">
-                                  <div class="alert alert-block alert-warning">
-                                     <a class="close" href="#">×</a>
-                                     <p><strong>Hinweis:</strong>
-                                         Im Augenblick liegen keine weiteren Termine vor.</p>
-                                   </div>
-                              </td>
-                      </tbody>
-                  </table>
-                  
+            <table class="table table-striped"
+              tal:condition="view/has_content">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Typ</th>
+                        <th>Titel</th>
+                        <th>Termin</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody tal:define="items view/published_presscontent;
+                                   batch python:Batch(items, b_size, int(b_start), orphan=1)">
+                  <tal:block tal:repeat="item items">
+                    <tr>
+                        <td>1.</td>
+                        <td><span class="label info">Neu</span></td>
+                        <td><a href="#">PressRelease</a></td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>20.09.2011</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-small">
+                                    <i class="icon-edit" />
+                                    Bearbeiten</a>
+                                <a class="btn btn-small">
+                                    <i class="icon-eye-open" />
+                                    Anzeigen</a>
+                                <a class="btn btn-small">
+                                    <i class="icon-share-alt" />
+                                    Senden</a>
+                             </div>
+                         </td>
+                    </tr>
+                    <div metal:use-macro="context/batch_macros/macros/navigation" />
+                  </tal:block>
+                </tbody>
+            </table> 
+            <div class="alert alert-block alert-info"
+              tal:condition="not:view/has_content">
+              <h4 class="alert-heading">Info</h4>
+              Im Augenblick sind keine Informationen zu Presseinhalten
+              vorhanden
+            </div>     
          </div>
       </div>
               
