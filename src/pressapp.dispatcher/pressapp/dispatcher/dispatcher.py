@@ -71,6 +71,9 @@ class Dispatcher(grok.View):
         image_urls = rendered_email['images']
         context_content = self._dynamic_content()
         text = self._compose_email_content(text_html, context_content)
+        css_file = self.default_data['stylesheet']
+        plain_text = plain_text.replace('[[PC_CSS]]', '')
+        text = text.replace('[[PC_CSS]]', str(css_file))
         for recipient in recipients:
             outer = MIMEMultipart('alternative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
@@ -168,6 +171,7 @@ class Dispatcher(grok.View):
             data['template'] = presscenter.mailtemplate_pi
         else:
             data['template'] = presscenter.mailtemplate
+        data['stylesheet'] = presscenter.stylesheet
         data['sender'] = presscenter.name
         data['email'] = presscenter.email
         return data
@@ -179,7 +183,7 @@ class Dispatcher(grok.View):
         data['summary'] = context.Description()
         data['location'] = context.location
         data['text'] = context.text.output
-        data['url'] = self._contruct_webview_link()
+        data['url'] = self._construct_webview_link()
         data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
             data['kicker'] = context.kicker
@@ -246,7 +250,7 @@ class Dispatcher(grok.View):
         del textout, formtext, parser, anchorlist
         return text
 
-    def _contruct_webview_link(self):
+    def _construct_webview_link(self):
         context = aq_inner(self.context)
         portal = getSite()
         portal_url = portal.absolute_url()
