@@ -63,17 +63,16 @@ class Dispatcher(grok.View):
         send_counter = 0
         send_error_counter = 0
         recipients = self.recipients
-        output_html = self._render_output_html()
+        context_content = self._dynamic_content()
+        output_file = self._render_output_html()
+        output_html = self._compose_email_content(output_file, context_content)
         rendered_email = self._exchange_relative_urls(output_html)
-        #text = context.restrictedTraverse('@@pressinvitation-preview')()
         text_html = rendered_email['html']
         plain_text = rendered_email['plain']
         image_urls = rendered_email['images']
-        context_content = self._dynamic_content()
-        text = self._compose_email_content(text_html, context_content)
         css_file = self.default_data['stylesheet']
         plain_text = plain_text.replace('[[PC_CSS]]', '')
-        text = text.replace('[[PC_CSS]]', str(css_file))
+        text = text_html.replace('[[PC_CSS]]', str(css_file))
         for recipient in recipients:
             recipient_name = self.safe_portal_encoding(recipient['name'])
             personal_text = text.replace('[[SUBSCRIBER]]',
@@ -83,7 +82,7 @@ class Dispatcher(grok.View):
 
             outer = MIMEMultipart('relative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
-            outer['From'] = self.default_data['sender']
+            outer['From'] = self.default_data['email']
             outer['Subject'] = subject_header
             outer.epilogue = ''
             outer.preamble = 'This is a multi-part message in MIME format.'
@@ -216,9 +215,6 @@ class Dispatcher(grok.View):
             with header+body+footer (raw html).
         """
         default_data = self.default_data
-        #props = getToolByName(self, "portal_properties").site_properties
-        #charset = props.getProperty("default_charset")
-        # get out_template from ENL object and render it in context of issue
         out_template = default_data['template']
         output_html = self.safe_portal_encoding(out_template)
         return output_html
