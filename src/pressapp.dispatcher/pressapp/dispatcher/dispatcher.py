@@ -75,21 +75,28 @@ class Dispatcher(grok.View):
         plain_text = plain_text.replace('[[PC_CSS]]', '')
         text = text.replace('[[PC_CSS]]', str(css_file))
         for recipient in recipients:
-            outer = MIMEMultipart('alternative')
-            outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             recipient_name = self.safe_portal_encoding(recipient['name'])
             personal_text = text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
+
+            outer = MIMEMultipart('relative')
+            outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             outer['From'] = self.default_data['sender']
             outer['Subject'] = subject_header
             outer.epilogue = ''
-            text_part = MIMEMultipart('related')
+            outer.preamble = 'This is a multi-part message in MIME format.'
+            #alternatives = MIMEMultipart('alternative')
+            text_part = MIMEMultipart('alternative')
             text_part.attach(MIMEText(personal_text_plain, 'plain', charset))
-            html_part = MIMEMultipart('related')
+            html_part = MIMEMultipart('alternative')
             html_text = MIMEText(personal_text, 'html', charset)
             html_part.attach(html_text)
+            #alternatives.attach(MIMEText(personal_text_plain,
+            #    'plain', charset))
+            #alternatives.attach(MIMEText(personal_text, 'html', charset))
+            #outer.attach(alternatives)
             image_number = 0
             reference_tool = getToolByName(context, 'reference_catalog')
             for image_url in image_urls:
