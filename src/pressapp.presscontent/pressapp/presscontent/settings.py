@@ -257,7 +257,7 @@ class UpdateStylesheetForm(form.SchemaEditForm):
     label = _(u"Update used CSS file for E-Mails")
 
     def updateActions(self):
-        super(UpdateTemplatePIForm, self).updateActions()
+        super(UpdateStylesheetForm, self).updateActions()
         self.actions['save'].addClass("btn")
         self.actions['cancel'].addClass("btn")
 
