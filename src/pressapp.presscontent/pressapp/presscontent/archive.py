@@ -73,6 +73,12 @@ class PressItemView(grok.View):
         if IPressRelease.providedBy(context):
             data['kicker'] = context.kicker
             data['subtitle'] = context.subtitle
+            if context.attachment:
+                url = context.absolute_url()
+                filename = context.attachment.filename
+                data['file_url'] = url + '/@@download/attachment/' + filename
+                data['file_name'] = filename
+                data['file_caption'] = context.caption
         if IPressInvitation.providedBy(context):
             if context.schedule:
                 data['schedule'] = context.schedule.output
