@@ -39,6 +39,16 @@ class IPressInvitation(form.Schema):
         title=_(u"Event Location"),
         required=True,
     )
+    schedule = RichText(
+        title=_(u"Schedule"),
+        description=_(u"Enter optional schedule information."),
+        required=False,
+    )
+    travel = schema.Text(
+        title=_(u"Travel information"),
+        description=_(u"Enter optional travel information."),
+        required=False,
+    )
     closed = schema.Bool(
         title=_(u"Closed Event"),
         description=_(u"Please select if the event is public."),

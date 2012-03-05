@@ -88,16 +88,8 @@ class Dispatcher(grok.View):
             outer.preamble = 'This is a multi-part message in MIME format.'
             alternatives = MIMEMultipart('alternative')
             outer.attach(alternatives)
-            #text_part = MIMEMultipart('alternative')
-            #text_part.attach(MIMEText(personal_text_plain, 'plain', charset))
             text_part = MIMEText(personal_text_plain, 'plain', charset)
-            #html_part = MIMEMultipart('alternative')
             html_text = MIMEText(personal_text, 'html', charset)
-            #html_part.attach(html_text)
-            #alternatives.attach(MIMEText(personal_text_plain,
-            #    'plain', charset))
-            #alternatives.attach(MIMEText(personal_text, 'html', charset))
-            #outer.attach(alternatives)
             image_number = 0
             reference_tool = getToolByName(context, 'reference_catalog')
             for image_url in image_urls:
@@ -205,7 +197,7 @@ class Dispatcher(grok.View):
                 data['closed'] = _(u"Admittance for invited guests only")
         if memberinfo:
             data['org'] = memberinfo['organization']
-            data['press'] = memberinfo['presslink']
+            data['link'] = memberinfo['home_page']
         return data
 
     def _compose_email_content(self, template, data):
