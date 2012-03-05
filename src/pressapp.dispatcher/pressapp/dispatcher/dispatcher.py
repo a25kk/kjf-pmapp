@@ -88,11 +88,12 @@ class Dispatcher(grok.View):
             outer.preamble = 'This is a multi-part message in MIME format.'
             alternatives = MIMEMultipart('alternative')
             outer.attach(alternatives)
-            text_part = MIMEMultipart('alternative')
-            text_part.attach(MIMEText(personal_text_plain, 'plain', charset))
-            html_part = MIMEMultipart('alternative')
+            #text_part = MIMEMultipart('alternative')
+            #text_part.attach(MIMEText(personal_text_plain, 'plain', charset))
+            text_part = MIMEText(personal_text_plain, 'plain', charset)
+            #html_part = MIMEMultipart('alternative')
             html_text = MIMEText(personal_text, 'html', charset)
-            html_part.attach(html_text)
+            #html_part.attach(html_text)
             #alternatives.attach(MIMEText(personal_text_plain,
             #    'plain', charset))
             #alternatives.attach(MIMEText(personal_text, 'html', charset))
@@ -127,9 +128,9 @@ class Dispatcher(grok.View):
                         image = MIMEImage(o.GET())
                     image["Content-ID"] = "<image_%s>" % image_number
                     image_number += 1
-                    html_part.attach(image)
+                    alternatives.attach(image)
             alternatives.attach(text_part)
-            alternatives.attach(html_part)
+            alternatives.attach(html_text)
             try:
                 mailhost.send(outer.as_string())
                 log.info("Sent newsletter to \"%s\"" % recipient['mail'])
@@ -185,6 +186,7 @@ class Dispatcher(grok.View):
 
     def _dynamic_content(self):
         context = aq_inner(self.context)
+        memberinfo = self.memberdata()
         data = {}
         data['title'] = context.Title()
         data['summary'] = context.Description()
@@ -198,7 +200,12 @@ class Dispatcher(grok.View):
         if IPressInvitation.providedBy(context):
             data['start'] = self.localize(context.start, longformat=True)
             data['end'] = self.localize(context.end, longformat=True)
-            data['closed'] = context.closed
+            closed = context.closed
+            if closed == True:
+                data['closed'] = _(u"Admittance for invited guests only")
+        if memberinfo:
+            data['org'] = memberinfo['organization']
+            data['press'] = memberinfo['presslink']
         return data
 
     def _compose_email_content(self, template, data):
@@ -261,6 +268,15 @@ class Dispatcher(grok.View):
         uuid = IUUID(context, None)
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
+
+    def memberdata(self):
+        context = aq_inner(self.context)
+        mtool = getToolByName(context, 'portal_membership')
+        member = mtool.getAuthenticatedMember()
+        memberinfo = {}
+        memberinfo['organization'] = member.getProperty('organization', '')
+        memberinfo['presslink'] = member.getProperty('presslink', '')
+        return memberinfo
 
     def safe_portal_encoding(self, string):
         portal = getSite()
