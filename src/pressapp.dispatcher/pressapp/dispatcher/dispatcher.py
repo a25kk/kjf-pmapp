@@ -204,8 +204,8 @@ class Dispatcher(grok.View):
             if closed == True:
                 data['closed'] = _(u"Admittance for invited guests only")
         if memberinfo:
-            data['org'] = memberinfo['organization']
-            data['link'] = memberinfo['home_page']
+            data['org'] = memberinfo['org']
+            data['link'] = memberinfo['link']
         return data
 
     def _compose_email_content(self, template, data):
@@ -274,8 +274,8 @@ class Dispatcher(grok.View):
         mtool = getToolByName(context, 'portal_membership')
         member = mtool.getAuthenticatedMember()
         memberinfo = {}
-        memberinfo['organization'] = member.getProperty('organization', '')
-        memberinfo['presslink'] = member.getProperty('presslink', '')
+        memberinfo['org'] = member.getProperty('organization', '')
+        memberinfo['link'] = member.getProperty('home_page', '')
         return memberinfo
 
     def safe_portal_encoding(self, string):
