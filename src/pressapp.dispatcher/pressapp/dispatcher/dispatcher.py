@@ -203,6 +203,8 @@ class Dispatcher(grok.View):
             closed = context.closed
             if closed == True:
                 data['closed'] = _(u"Admittance for invited guests only")
+            else:
+                data['closed'] = ''
         if memberinfo:
             data['org'] = memberinfo['org']
             data['link'] = memberinfo['link']

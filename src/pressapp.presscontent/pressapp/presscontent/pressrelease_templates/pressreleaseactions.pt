@@ -3,8 +3,8 @@
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
             <div class="btn-toolbar">
-                <div class="btn-group">
-                    <a class="btn btn-large btn-info"
+                <div class="btn-group locator">
+                    <a class="btn btn-large btn-inverse"
                         tal:attributes="href viewlet/homefolder_url">
                         <i class="icon-home" />
                         Arbeitsplatz</a>
