@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="btn-toolbar">
                 <div class="btn-group">
-                    <a class="btn btn-large btn-info"
+                    <a class="btn btn-large btn-inverse"
                         tal:attributes="href viewlet/homefolder_url">
                         <i class="icon-home icon-white" />
                         Arbeitsplatz</a>

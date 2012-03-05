@@ -8,7 +8,6 @@ from z3c.form import button
 from plone.dexterity.utils import createContentInContainer
 from plone.app.textfield import RichText
 from Products.statusmessages.interfaces import IStatusMessage
-from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressroom import IPressRoom
 
 from pressapp.presscontent import MessageFactory as _
@@ -93,4 +92,4 @@ class PressInvitationAddForm(form.SchemaEditForm):
         IStatusMessage(self.request).addStatusMessage(
             _(u"A new press invitation was successfully added"),
             type='info')
-        return self.request.response.redirect(item.absolute_url() + '/edit')
+        return self.request.response.redirect(item.absolute_url())

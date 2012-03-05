@@ -86,7 +86,8 @@ class Dispatcher(grok.View):
             outer['Subject'] = subject_header
             outer.epilogue = ''
             outer.preamble = 'This is a multi-part message in MIME format.'
-            #alternatives = MIMEMultipart('alternative')
+            alternatives = MIMEMultipart('alternative')
+            outer.attach(alternatives)
             text_part = MIMEMultipart('alternative')
             text_part.attach(MIMEText(personal_text_plain, 'plain', charset))
             html_part = MIMEMultipart('alternative')
@@ -127,8 +128,8 @@ class Dispatcher(grok.View):
                     image["Content-ID"] = "<image_%s>" % image_number
                     image_number += 1
                     html_part.attach(image)
-            outer.attach(text_part)
-            outer.attach(html_part)
+            alternatives.attach(text_part)
+            alternatives.attach(html_part)
             try:
                 mailhost.send(outer.as_string())
                 log.info("Sent newsletter to \"%s\"" % recipient['mail'])
