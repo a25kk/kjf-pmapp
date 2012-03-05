@@ -16,6 +16,7 @@ from AccessControl.SecurityManagement import newSecurityManager
 from AccessControl.SecurityManagement import setSecurityManager
 from five import grok
 from zope.site.hooks import getSite
+from zope.component import getMultiAdapter
 from Products.CMFPlone.utils import safe_unicode
 
 import logging
@@ -189,6 +190,13 @@ class Dispatcher(grok.View):
         if IPressRelease.providedBy(context):
             data['kicker'] = context.kicker
             data['subtitle'] = context.subtitle
+            if context.image:
+                url = context.absolute_url()
+                filename = context.image.filename
+                data['file_url'] = url + '/@@download/attachment/' + filename
+                data['file_name'] = filename
+                data['image_tag'] = self.getImageTag(context)
+                data['file_caption'] = context.caption
         if IPressInvitation.providedBy(context):
             if context.schedule:
                 data['schedule'] = context.schedule.output
@@ -259,7 +267,7 @@ class Dispatcher(grok.View):
             counter += 1
             anchorlist += "[%d] %s\n" % (counter, item)
         #text = textout.getvalue() + anchorlist
-        text = textout.getvalue()
+        text = textout.getvalue() + anchorlist
         del textout, formtext, parser, anchorlist
         return text
 
@@ -279,6 +287,15 @@ class Dispatcher(grok.View):
         memberinfo['org'] = member.getProperty('organization', '')
         memberinfo['link'] = member.getProperty('home_page', '')
         return memberinfo
+
+    def getImageTag(self, item):
+        obj = item
+        scales = getMultiAdapter((obj, self.request), name='images')
+        scale = scales.scale('image', scale='preview')
+        imageTag = None
+        if scale is not None:
+            imageTag = scale.tag()
+        return imageTag
 
     def safe_portal_encoding(self, string):
         portal = getSite()

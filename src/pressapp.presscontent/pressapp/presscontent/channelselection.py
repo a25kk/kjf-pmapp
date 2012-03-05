@@ -97,4 +97,4 @@ class ChannelSelectionForm(form.SchemaEditForm):
             _(u"A channel was successfully selected"),
             type='info')
         return self.request.response.redirect(
-                    context.absolute_url()+'/@@recipient-list')
+                    context.absolute_url() + '/@@recipient-list')
