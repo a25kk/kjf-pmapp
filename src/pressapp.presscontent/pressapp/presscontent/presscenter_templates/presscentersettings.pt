@@ -68,9 +68,23 @@
                           tal:attributes="href python:context_url + '/@@update-pi-template'">
                         <i class="icon-edit" />
                         Template Presseeinladung</a></li>
+                    <li><a href=""
+                          tal:attributes="href python:context_url + '/@@update-stylesheet'">
+                        <i class="icon-edit" />
+                        CSS Vorlage</a></li>
                   </ul>
               </div>
-              <h2>E-Mail Templates <small>Versandvorlagen</small></h2>
+              <h2>E-Mail Templates / CSS Vorgaben <small>Versandvorlagen</small></h2>
+              <div class="tile">
+                <a class="btn  btn-small btn-info show-details pull-right">
+                    <i class="icon-arrow-down icon-white" />
+                    Details einblenden</a>
+                    <div class="xbox details visualClear">
+                        <div class="visualClear">&nbsp;</div>
+                        <pre tal:content="context/stylesheet" />
+                    </div>
+              <h4>CSS / Stylesheet</h4>
+              </div>
               <div class="tile">
                 <a class="btn  btn-small btn-info show-details pull-right">
                     <i class="icon-arrow-down icon-white" />

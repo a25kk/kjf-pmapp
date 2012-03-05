@@ -56,7 +56,7 @@
                     </li>
                     <li class="divider-vertical"></li>
                     <li><a href=""
-                            tal:attributes="href python:home_folder+'/@@dashboard-schedule'">
+                            tal:attributes="href python:home_folder+'/@@dashboard-statistics'">
                         <i class="icon-share-alt icon-white" />
                             Statistik
                         </a>

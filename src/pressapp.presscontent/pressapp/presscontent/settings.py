@@ -59,6 +59,14 @@ class IUpdateTemplatePI(form.Schema):
     )
 
 
+class IUpdateStylesheet(form.Schema):
+
+    stylesheet = schema.Text(
+        title=_(u"Stylesheet for HTML E-Mails"),
+        required=True,
+    )
+
+
 class GlobalSettingsForm(form.SchemaEditForm):
     grok.context(IPressCenter)
     grok.require('cmf.AddPortalContent')
@@ -232,6 +240,63 @@ class UpdateTemplatePIForm(form.SchemaEditForm):
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
             _(u"Global settings successfully updated"),
+            type='info')
+        return self.request.response.redirect(
+                    context.absolute_url() + '/@@global-settings')
+
+
+class UpdateStylesheetForm(form.SchemaEditForm):
+    grok.context(IPressCenter)
+    grok.require('cmf.AddPortalContent')
+    grok.name('update-stylesheet')
+
+    schema = IUpdateStylesheet
+    ignoreContext = False
+    css_class = 'overlayForm'
+
+    label = _(u"Update used CSS file for E-Mails")
+
+    def updateActions(self):
+        super(UpdateStylesheetForm, self).updateActions()
+        self.actions['save'].addClass("btn")
+        self.actions['cancel'].addClass("btn")
+
+    @button.buttonAndHandler(_(u"Save"), name="save")
+    def handleApply(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        self.applyChanges(data)
+
+    @button.buttonAndHandler(_(u"cancel"))
+    def handleCancel(self, action):
+        context = aq_inner(self.context)
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"Update of CSS has been cancelled"),
+            type='info')
+        return self.request.response.redirect(
+                context.absolute_url() + '/@@global-settings')
+
+    def getContent(self):
+        context = aq_inner(self.context)
+        data = {}
+        try:
+            css = context.stylesheet
+        except:
+            css = getattr(context, 'stylesheet', '')
+        data['stylesheet'] = css
+        return data
+
+    def applyChanges(self, data):
+        context = aq_inner(self.context)
+        new_css = data['stylesheet']
+        if new_css:
+            setattr(context, 'stylesheet', new_css)
+        modified(context)
+        context.reindexObject(idxs='modified')
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"Global CSS settings successfully updated"),
             type='info')
         return self.request.response.redirect(
                     context.absolute_url() + '/@@global-settings')

@@ -63,31 +63,39 @@ class Dispatcher(grok.View):
         send_counter = 0
         send_error_counter = 0
         recipients = self.recipients
-        output_html = self._render_output_html()
+        context_content = self._dynamic_content()
+        output_file = self._render_output_html()
+        output_html = self._compose_email_content(output_file, context_content)
         rendered_email = self._exchange_relative_urls(output_html)
-        #text = context.restrictedTraverse('@@pressinvitation-preview')()
         text_html = rendered_email['html']
         plain_text = rendered_email['plain']
         image_urls = rendered_email['images']
-        context_content = self._dynamic_content()
-        text = self._compose_email_content(text_html, context_content)
-        plain_text = self._compose_email_content(plain_text, context_content)
+        css_file = self.default_data['stylesheet']
+        plain_text = plain_text.replace('[[PC_CSS]]', '')
+        text = text_html.replace('[[PC_CSS]]', str(css_file))
         for recipient in recipients:
-            outer = MIMEMultipart('alternative')
-            outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             recipient_name = self.safe_portal_encoding(recipient['name'])
             personal_text = text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
-            outer['From'] = self.default_data['sender']
+
+            outer = MIMEMultipart('relative')
+            outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
+            outer['From'] = self.default_data['email']
             outer['Subject'] = subject_header
             outer.epilogue = ''
-            text_part = MIMEMultipart('related')
+            outer.preamble = 'This is a multi-part message in MIME format.'
+            #alternatives = MIMEMultipart('alternative')
+            text_part = MIMEMultipart('alternative')
             text_part.attach(MIMEText(personal_text_plain, 'plain', charset))
-            html_part = MIMEMultipart('related')
+            html_part = MIMEMultipart('alternative')
             html_text = MIMEText(personal_text, 'html', charset)
             html_part.attach(html_text)
+            #alternatives.attach(MIMEText(personal_text_plain,
+            #    'plain', charset))
+            #alternatives.attach(MIMEText(personal_text, 'html', charset))
+            #outer.attach(alternatives)
             image_number = 0
             reference_tool = getToolByName(context, 'reference_catalog')
             for image_url in image_urls:
@@ -169,6 +177,7 @@ class Dispatcher(grok.View):
             data['template'] = presscenter.mailtemplate_pi
         else:
             data['template'] = presscenter.mailtemplate
+        data['stylesheet'] = presscenter.stylesheet
         data['sender'] = presscenter.name
         data['email'] = presscenter.email
         return data
@@ -180,7 +189,7 @@ class Dispatcher(grok.View):
         data['summary'] = context.Description()
         data['location'] = context.location
         data['text'] = context.text.output
-        data['url'] = self._contruct_webview_link()
+        data['url'] = self._construct_webview_link()
         data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
             data['kicker'] = context.kicker
@@ -206,9 +215,6 @@ class Dispatcher(grok.View):
             with header+body+footer (raw html).
         """
         default_data = self.default_data
-        #props = getToolByName(self, "portal_properties").site_properties
-        #charset = props.getProperty("default_charset")
-        # get out_template from ENL object and render it in context of issue
         out_template = default_data['template']
         output_html = self.safe_portal_encoding(out_template)
         return output_html
@@ -247,7 +253,7 @@ class Dispatcher(grok.View):
         del textout, formtext, parser, anchorlist
         return text
 
-    def _contruct_webview_link(self):
+    def _construct_webview_link(self):
         context = aq_inner(self.context)
         portal = getSite()
         portal_url = portal.absolute_url()

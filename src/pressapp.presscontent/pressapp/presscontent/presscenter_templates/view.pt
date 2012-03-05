@@ -20,10 +20,12 @@
         
         <div class="page-header">
             <p class="pull-right">
-                <a href="">
+                <a href=""
+                  tal:attributes="href python:context_url + '/@@global-settings'">
                     <i class="icon-align-justify" />
                     Einstellungen</a>
-                <a href="">
+                <a href=""
+                    tal:attributes="href python:portal_url + '/presscenter/kontakte/@@channel-statistics'">
                     <i class="icon-signal" />
                     Statistik</a>
                 <a href="" class="popoverLink"

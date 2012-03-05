@@ -30,25 +30,25 @@
                 </div>-->
                 <div class="btn-group">
                     <a class="btn btn-large"
-                        tal:attributes="href python:context_url+'/@@dashboard-schedule'">
+                        tal:attributes="href python:context_url+'/@@dashboard-statistics'">
                         <i class="icon-share-alt" />
                         Statistik</a>
                 </div>
                 <div class="btn-group">
-                    <a href="" class="btn btn-large btn-success dropdown-toggle"
+                    <a href="" class="btn btn-large dropdown-toggle"
                         data-toggle="dropdown">
-                        <i class="icon-plus icon-white" />
-                        Neu Inhalte hinzuf&uuml;gen</a>
+                        <i class="icon-plus" />
+                        Inhalte hinzuf&uuml;gen</a>
                     <ul class="dropdown-menu">
                         <li><a href=""
                                 tal:attributes="href python:context_url + '/@@add-press-release'">
-                            <i class="icon-plus-sign" />
-                            Pressmitteilung</a></li>
+                            <i class="icon-file" />
+                                Pressmitteilung</a></li>
                         <li class="divider"></li>
                         <li><a href=""
                                 tal:attributes="href python:context_url + '/@@add-press-invitation'">
-                            <i class="icon-plus-sign" />
-                            Presseeinladung</a></li>
+                            <i class="icon-calendar" />
+                                Presseeinladung</a></li>
                     </ul>
                 </div>
             </div>

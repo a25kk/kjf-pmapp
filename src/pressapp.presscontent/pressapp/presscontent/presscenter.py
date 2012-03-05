@@ -41,6 +41,11 @@ class IPressCenter(form.Schema):
         ),
         required=False,
     )
+    stylesheet = schema.Text(
+        title=_(u"Stylesheet"),
+        description=_(u"CSS used for the HTML Email"),
+        required=False,
+    )
     mailtemplate = schema.SourceText(
         title=_(u"E-Mail Template Press Release"),
         required=False,
