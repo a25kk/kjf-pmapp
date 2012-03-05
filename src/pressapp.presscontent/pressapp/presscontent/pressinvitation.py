@@ -102,8 +102,6 @@ class View(grok.View):
         return url
 
 
-
-
 class Preview(grok.View):
     grok.context(IPressInvitation)
     grok.require('zope2.View')

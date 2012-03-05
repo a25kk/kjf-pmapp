@@ -112,12 +112,12 @@
                     <i class="icon-eye-open" />
                     E-Mail Vorschau</a>
               </li>
-                        <li>
-            <a href=""
-                tal:attributes="href view/constructPreviewURL">
-                <i class="icon-eye-open" />
-                Browser Vorschau</a>
-          </li>
+              <li>
+                <a href=""
+                  tal:attributes="href view/constructPreviewURL">
+                  <i class="icon-eye-open" />
+                  Browser Vorschau</a>
+              </li>
               <li class="nav-header">Zugewiesene Verteiler</li>
                <li tal:condition="view/has_channel_info" 
                    tal:repeat="channel context/channel">

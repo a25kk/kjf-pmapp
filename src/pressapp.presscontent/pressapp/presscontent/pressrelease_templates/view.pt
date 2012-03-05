@@ -65,6 +65,10 @@
     <div tal:condition="context/text"
         tal:content="structure context/text/output" />
     
+    <div>
+      <h3>Bild</h3>
+    </div>
+
     <div class="xwell" tal:condition="context/attachment">
         <h3>Attachments</h3>
         <div tal:define="filename context/attachment/filename;">
@@ -97,6 +101,12 @@
                 tal:attributes="href string:${context/absolute_url}/@@pressrelease-preview">
                 <i class="icon-eye-open" />
                 E-Mail Vorschau</a>
+          </li>
+          <li>
+                <a href=""
+                  tal:attributes="href view/constructPreviewURL">
+                  <i class="icon-eye-open" />
+                  Browser Vorschau</a>
           </li>
           <li class="nav-header">Zugewiesene Verteiler</li>
            <li tal:condition="view/has_channel_info" 
