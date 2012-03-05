@@ -59,7 +59,12 @@
             
             <div tal:condition="context/text"
                 tal:content="structure context/text/output" />
-            
+            <div tal:condition="context/schedule">
+              <h4>Geplanter Ablauf:</h4>
+              <div tal:content="structure context/schedule/output" />
+            </div>
+            <div tal:condition="context/travel"
+              tal:content="context/travel" />
         </div>
         <div class="cell position-2:3 width-1:3">
         <div class="box">
@@ -103,7 +108,7 @@
                 <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
               </li>
               <li><a href=""
-                  tal:attributes="href string:${context/absolute_url}/@@edit-prpess-invitation">
+                  tal:attributes="href string:${context/absolute_url}/@@edit-press-invitation">
                   <i class="icon-edit" />
                     Bearbeiten</a>
               </li>

@@ -3478,7 +3478,7 @@ a.thumbnail:hover {
 }
 .editbar-inner .locator {
   float: left;
-  padding: 10px;
+  padding-left: 19px;
 }
 #logo {
   background: url(../images/logo.png) no-repeat 0px 0px transparent;
