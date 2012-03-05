@@ -6,8 +6,9 @@
                                login memberinfo/login_time;
                                last_login memberinfo/last_login_time;
                                toLocalizedTime nocall:context/@@plone/toLocalizedTime">
-        <div class="row">
-            <div class="cell position-0 width-2:3">
+        <div class="container-fluid">
+            <div class="row-fluid">
+            <div class="span8">
                 <h3 tal:content="memberinfo/name">Karl R&uuml;diger Bern Schnackselberger</h3>
                 <p><strong>Login:</strong>
                     <span tal:replace="python:toLocalizedTime(login)" />,
@@ -15,12 +16,19 @@
                 <br />
                     <span class="discreet">(zuletzt online: <span tal:replace="python:toLocalizedTime(last_login)" />)</span>
                 </p>
+                <div class="btn-group">
+                <a href="" class="btn btn-danger"
+                    tal:attributes="href python:portal_url+'/logout'">
+                    <i class="icon-ban-circle icon-white" />
+                    Abmelden</a>
+                </div>
             </div>
-            <div class="cell position-2:3 width-1:3">
+            <div class="span4">
                 <img src="" alt="Member"
                         tal:replace="structure memberinfo/portrait"
                         class="image-left" />
             </div>
+        </div>
         </div>
         <div class="visualClear">&nbsp;</div>
 
@@ -43,12 +51,6 @@
                     tal:attributes="href python:context_url+'/@@member-information'">
                     <i class="icon-cog" />
                     Profildaten bearbeiten</a>
-                </div>
-                <div class="btn-group">
-                <a href="" class="btn"
-                    tal:attributes="href python:portal_url+'/logout'">
-                    <i class="icon-ban-circle" />
-                    Abmelden</a>
                 </div>
             </div>
         </div>

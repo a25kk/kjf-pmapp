@@ -6,10 +6,9 @@ from zope.lifecycleevent import modified
 from plone.directives import form
 from z3c.form import button
 from plone.app.textfield import RichText
-from plone.namedfile.field import NamedBlobFile
+from plone.namedfile.field import NamedBlobImage
 from plone.dexterity.utils import createContentInContainer
 from Products.statusmessages.interfaces import IStatusMessage
-from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressroom import IPressRoom
 
 from pressapp.presscontent import MessageFactory as _
@@ -41,10 +40,11 @@ class IPressReleaseAdd(form.Schema):
         title=_(u"Text"),
         required=True,
     )
-    attachment = NamedBlobFile(
-        title=_(u"Attachment"),
-        description=_(u"Upload an attachment for this press release. The "
-                      u"attachment can be an image, file or video."),
+    image = NamedBlobImage(
+        title=_(u"Image Attachment"),
+        description=_(u"Upload an image for this press release. The "
+                      u"image should be already optimized since sending "
+                      u"a large image file via E-mail is not recommended"),
         required=True,
     )
     caption = schema.TextLine(

@@ -67,11 +67,15 @@
     
     <div>
       <h3>Bild</h3>
+      <img tal:define="scale context/@@images"
+          tal:replace="structure python: scale.scale('image',
+                       scale='preview').tag()" />
+      <p><small tal:content="context/caption" /></p>
     </div>
 
-    <div class="xwell" tal:condition="context/attachment">
+    <div class="xwell" tal:condition="context/image">
         <h3>Attachments</h3>
-        <div tal:define="filename context/attachment/filename;">
+        <div tal:define="filename context/image/filename;">
             <p><strong tal:content="filename" />:
                 <a href=""
                     class="btn"

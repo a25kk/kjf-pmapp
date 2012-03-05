@@ -6,7 +6,8 @@ from zope import schema
 
 from zope.app.component.hooks import getSite
 from plone.app.textfield import RichText
-from plone.namedfile.field import NamedBlobFile
+from plone.namedfile.interfaces import IImageScaleTraversable
+from plone.namedfile.field import NamedBlobImage
 from Products.CMFCore.utils import getToolByName
 
 from plone.uuid.interfaces import IUUID
@@ -15,7 +16,7 @@ from plone.app.layout.viewlets.interfaces import IAboveContent
 from pressapp.presscontent import MessageFactory as _
 
 
-class IPressRelease(form.Schema):
+class IPressRelease(form.Schema, IImageScaleTraversable):
     """
     A press release content type.
     """
@@ -43,15 +44,16 @@ class IPressRelease(form.Schema):
         title=_(u"Text"),
         required=True,
     )
-    attachment = NamedBlobFile(
-        title=_(u"Attachment"),
-        description=_(u"Upload an attachment for this press release. The "
-                      u"attachment can be an image, file or video."),
+    image = NamedBlobImage(
+        title=_(u"Image Attachment"),
+        description=_(u"Upload an image for this press release. The "
+                      u"image should be already optimized since sending "
+                      u"a large image file via E-mail is not recommended"),
         required=True,
     )
     caption = schema.TextLine(
-        title=_(u"Attachment Caption"),
-        description=_(u"Enter optional caption describing the attachment"),
+        title=_(u"Image Attachment Caption"),
+        description=_(u"Enter optional caption describing the image"),
         required=True,
     )
     description = schema.Text(

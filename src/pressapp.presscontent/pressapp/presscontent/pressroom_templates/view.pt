@@ -56,7 +56,7 @@
                                 <td tal:define="item_url item/getURL">
                                     <div class="btn-group">
                                     <a class="btn btn-small"
-                                        tal:attributes="href python:item_url+'/edit'">
+                                        tal:attributes="href python:item_url+'/@@edit-press-release'">
                                         <i class="icon-edit" />
                                         Bearbeiten</a>
                                     <a class="btn btn-small"
@@ -119,7 +119,7 @@
                                   <td tal:define="item_url item/getURL">
                                       <div class="btn-group">
                                       <a class="btn btn-small"
-                                          tal:attributes="href python:item_url+'/edit'">
+                                          tal:attributes="href python:item_url+'/@@edit-press-invitation'">
                                           <i class="icon-edit" />
                                           Bearbeiten</a>
                                       <a class="btn btn-small"
