@@ -10,7 +10,9 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       portal_state context/@@portal_state;
+                       portal_url portal_state/portal_url"
     class="container-fluid">
         
         <div class="page-header">
@@ -18,8 +20,12 @@
         </div>
         
         <div class="alert alert-block alert-success">
-            <h4 class="alert-heading">Herzlichen Glückwunsch</h4>
+            <h4 class="alert-heading">Herzlichen Gl&uuml;ckwunsch</h4>
             <p><em tal:replace="context/Title" /> wurde erfolgreich versandt</p>
+            <a href="" class="btn btn-success"
+              tal:attributes="href portal_url">
+              <i class="icon-home icon-white" />
+              Zum Arbeitsplatz</a>
         </div>
         
   </section>
