@@ -190,6 +190,8 @@ class Dispatcher(grok.View):
             data['kicker'] = context.kicker
             data['subtitle'] = context.subtitle
         if IPressInvitation.providedBy(context):
+            data['schedule'] = context.schedule.output
+            data['travel'] = context.travel
             data['start'] = self.localize(context.start, longformat=True)
             data['end'] = self.localize(context.end, longformat=True)
             closed = context.closed
