@@ -49,6 +49,11 @@ class IPressInvitation(form.Schema):
         description=_(u"Enter optional travel information."),
         required=False,
     )
+    directions = schema.URI(
+        title=_(u"Directions Link"),
+        description=_(u"Enter link to Google Map for directions"),
+        required=False,
+    )
     closed = schema.Bool(
         title=_(u"Closed Event"),
         description=_(u"Please select if the event is public."),

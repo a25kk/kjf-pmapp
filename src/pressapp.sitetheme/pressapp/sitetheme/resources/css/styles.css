@@ -94,6 +94,9 @@ textarea {
   overflow: auto;
   vertical-align: top;
 }
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -102,6 +105,7 @@ body {
   color: #333333;
   background-color: #ffffff;
   padding-top: 40px;
+  height: 100%;
 }
 a {
   color: #0088cc;
@@ -3518,6 +3522,15 @@ img.image-left {
   font-weight: 80%;
   line-height: 18px;
 }
+#outer-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -120px;
+}
+#push {
+  height: 80px;
+}
 footer {
   background: #ddd;
   padding: 18px;
@@ -3531,11 +3544,7 @@ footer {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#999999', GradientType=0);
   border-top: 1px solid #555555;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
+  height: 76px;
 }
 /* Special case of #content - TinyMCE */
 body#content {

@@ -77,7 +77,7 @@
     <div tal:condition="context/text"
         tal:content="structure context/text/output" />
     
-    <div>
+    <div tal:condition="context/image">
       <h3>Bild</h3>
       <img tal:define="scale context/@@images"
           tal:replace="structure python: scale.scale('image',
@@ -95,6 +95,10 @@
                     <i class="icon-download" />
                     Download</a>
         </div>
+        <a href="" class="btn btn-info"
+            tal:define="context_url context/absolute_url"
+            tal:attributes="href python:context_url + '/createObject?type_name=File'">
+          Weitere Dateien hinzuf&uuml;gen</a>
     </div>
     </div>
   </div>

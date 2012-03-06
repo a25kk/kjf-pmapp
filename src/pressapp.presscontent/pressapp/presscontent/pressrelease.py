@@ -11,6 +11,7 @@ from plone.namedfile.field import NamedBlobImage
 from Products.CMFCore.utils import getToolByName
 
 from plone.uuid.interfaces import IUUID
+from plone.app.layout.globals.interfaces import IViewView
 from plone.app.layout.viewlets.interfaces import IAboveContent
 
 from pressapp.presscontent import MessageFactory as _
@@ -66,6 +67,7 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
 
 class View(grok.View):
     grok.context(IPressRelease)
+    grok.implements(IViewView)
     grok.require('zope2.View')
     grok.name('view')
 

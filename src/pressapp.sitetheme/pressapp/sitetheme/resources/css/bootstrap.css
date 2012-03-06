@@ -94,6 +94,9 @@ textarea {
   overflow: auto;
   vertical-align: top;
 }
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -102,6 +105,7 @@ body {
   color: #333333;
   background-color: #ffffff;
   padding-top: 40px;
+  height: 100%;
 }
 a {
   color: #0088cc;
