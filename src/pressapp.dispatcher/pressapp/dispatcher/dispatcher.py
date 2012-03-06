@@ -81,7 +81,7 @@ class Dispatcher(grok.View):
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
 
-            outer = MIMEMultipart('relative')
+            outer = MIMEMultipart('related')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             outer['From'] = self.default_data['email']
             outer['Subject'] = subject_header

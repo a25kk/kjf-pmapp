@@ -6,8 +6,9 @@
                 <div class="btn-group locator">
                     <a class="btn btn-large btn-inverse"
                         tal:attributes="href viewlet/homefolder_url">
-                        <i class="icon-home" />
-                        Arbeitsplatz</a>
+                        <i class="icon-home icon-white" />
+                        Arbeitsplatz
+                    </a>
                 </div>
                 <div class="btn-group">
                     <a class="btn btn-large"
