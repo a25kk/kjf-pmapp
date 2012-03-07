@@ -13,30 +13,55 @@
     <div class="container-fluid"
         tal:define="portal_state context/@@plone_portal_state;
                     portal_url portal_state/portal_url;
-                    context_url context/absolute_url;">
+                    context_url context/absolute_url;
+                    channel view/active_channel;
+                    channel_url channel/getURL">
     
     <div class="page-header">
+        <a class="btn btn-small btn-primary pull-right"
+                tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
+                <i class="icon-plus-sign icon-white" />
+                  Neuen Kontakt anlegen</a>
         <h1>Administration: Adressen</h1>
     </div>
-    
+
     <div class="row-fluid">
-        <div class="span6"
-          tal:define="channel view/active_channel;
-                              channel_url channel/getURL">
-            <a class="btn btn-small pull-right"
-                tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
-                <i class="icon-plus-sign" />
-                  Neuen Kontakt anlegen</a>
+        <div class="span8">
+          <div class="page-header">
             <h2><span tal:content="view/subscriber_count" />
                 <a href=""
+                  rel="twipsy"
+                  data-original-title="Zur &Uuml;bersicht aller Adressen"
                   tal:attributes="href channel_url">
                   Adressen</a>
             </h2>
-            <a class="btn btn-small"
-                tal:attributes="href channel_url">
-                <i class="icon-eye-open" />
-                Anzeigen</a>
-            <div class="box">
+          </div>
+            <section tal:condition="view/has_subscribers">
+              <table class="table table-condensed table-striped table-bordered"
+                  id="table-contacts"
+                  tal:define="items view/subscribers">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>E-Mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tal:repeat="item items">
+                            <td>
+                              <a href=""
+                                  tal:attributes="href item/getURL"
+                                  tal:content="item/Title">
+                                  Anzeigen</a>
+                            </td>
+                            <td>
+                                <span tal:replace="item/email" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <!--<div class="box">
               <h3><i class="icon-search" />
               Sofortsuche</h3>
                 <form name="searchform" id="searchGadget_form" 
@@ -64,35 +89,24 @@
                     <div class="LSResult" id="LSResult" style=""><div class="LSShadow" id="LSShadow"></div></div>
                     </div>
                 </form>
-            </div>
+            </div>-->
         </div>
-        <div class="span6">
+        <div class="span4">
+          <div class="page-header">
             <h2><span
                   tal:content="view/channel_counter" />
               <a href=""
+                rel="twipsy"
+                data-original-title="Zur &Uuml;bersicht aller Verteiler"
                 tal:attributes="href python:context_url+'/@@channel-statistics'">
               Verteiler</a></h2>
-            <div class="tile stats">
-                  <h4><span
-                      class="label label-info"
-                      tal:content="view/channel_counter" />
-                   Verteiler</h4>
-                    <p class="btn-group"
-                        tal:define="channel view/active_channel;
-                                    channel_url channel/getURL;">
-                        <a class="btn btn-small"
-                            tal:attributes="href python:context_url+'/@@channel-statistics'">
-                            <i class="icon-eye-open" />
-                            Anzeigen</a>
-                    </p>
-                </div>
-            <div class="box" tal:define="channel_list view/channel_names">
-                <h3>Verteiler <small>&Uuml;bersicht</small></h3>
-                <table class="table table-condensed">
+          </div>
+            <div tal:define="channel_list view/channel_names">
+                <table class="table table-condensed xtable-bordered" id="xtable-channels">
                     <thead>
                         <tr>
                             <th>Verteiler</th>
-                            <th>Adressen</th>
+                            <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,7 +118,7 @@
                                   Anzeigen</a>
                             </td>
                             <td>
-                                <strong class="label" tal:content="item/count" />
+                                <span class="label label-info" tal:content="item/count" />
                             </td>
                         </tr>
                     </tbody>

@@ -25,8 +25,8 @@
     <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
                          b_size python:50;b_start python:0;b_start request/b_start | b_start;">
         <div class="xbox">
-            <h3>Kontakte <small>Liste aller Kontaktadressen</small></h3>
-              <table class="table table-condensed table-striped listing">
+              <table class="table table-condensed table-striped"
+                id="table-contacts">
                   <thead>
                       <tr>
                           <th>#</th>
@@ -38,7 +38,7 @@
                   <tbody tal:condition="view/has_subscribers">
                       <tal:subscribers tal:define="items view/subscribers;
                                                    batch python:Batch(items, b_size, int(b_start), orphan=1)">
-                      <tal:block tal:repeat="item batch">
+                      <tal:block tal:repeat="item items">
                         <tr tal:define="rowcount repeat/item/number;">
                             <td tal:content="rowcount">1</td>
                             <td>
@@ -48,14 +48,14 @@
                                 <span tal:content="item/Title" />
                             </td>
                             <td tal:define="item_url item/getURL">
-                                <a class="btn btn-mini"
+                                <a class="btn btn-small"
                                     tal:attributes="href python:item_url+'/edit'">
                                     <i class="icon-edit" />
                                     Bearbeiten</a>
                             </td>
                         </tr>
                       </tal:block>
-                      <div metal:use-macro="context/batch_macros/macros/navigation" />
+                      <!--<div metal:use-macro="context/batch_macros/macros/navigation" />-->
                       </tal:subscribers>
                   </tbody>
                   <tbody tal:condition="not:view/has_subscribers">

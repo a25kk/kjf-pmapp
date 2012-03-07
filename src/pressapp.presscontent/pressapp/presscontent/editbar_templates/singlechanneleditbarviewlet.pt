@@ -6,8 +6,8 @@
         <div class="container-fluid">
             <div class="container-fluid btn-toolbar">
                 <div class="btn-group">
-                    <a class="btn btn-large btn-info"
-                        tal:attributes="href context_url">
+                    <a class="btn btn-large btn-inverse"
+                        tal:attributes="href python:portal_url+'/presscenter/'">
                         <i class="icon-cog icon-white" />
                         Administration</a>
                 </div>
