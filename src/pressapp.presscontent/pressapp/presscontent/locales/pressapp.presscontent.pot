@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-03-05 15:42+0000\n"
+"POT-Creation-Date: 2012-03-07 12:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: pressapp.presscontent\n"
 
-#: ./../channelselection.py:97
+#: ./../channelselection.py:105
 msgid "A channel was successfully selected"
 msgstr ""
 
@@ -58,19 +58,12 @@ msgstr ""
 msgid "Add press invitation"
 msgstr ""
 
-#: ./../archive.py:95
+#: ./../archive.py:97
 msgid "Admittance for invited guests only"
 msgstr ""
 
-#: ./../addrelease.py:45
-#: ./../editrelease.py:47
-#: ./../pressrelease.py:47
-msgid "Attachment"
-msgstr ""
-
 #: ./../addrelease.py:51
-#: ./../editrelease.py:53
-#: ./../pressrelease.py:53
+#: ./../editrelease.py:54
 msgid "Attachment Caption"
 msgstr ""
 
@@ -78,19 +71,18 @@ msgstr ""
 msgid "CSS used for the HTML Email"
 msgstr ""
 
-#: ./../channelselection.py:30
+#: ./../channelselection.py:38
 #: ./../recipients.py:25
 msgid "Channel"
 msgstr ""
 
-#: ./../channelselection.py:26
 #: ./../recipients.py:21
 msgid "Channels"
 msgstr ""
 
 #: ./../addinvitation.py:50
 #: ./../editinvitation.py:53
-#: ./../pressinvitation.py:53
+#: ./../pressinvitation.py:58
 msgid "Closed Event"
 msgstr ""
 
@@ -105,6 +97,10 @@ msgstr ""
 #: ./../presscenter.py:32
 #: ./../settings.py:32
 msgid "Default email address used in test despatches"
+msgstr ""
+
+#: ./../pressinvitation.py:53
+msgid "Directions Link"
 msgstr ""
 
 #: ./../presscenter.py:31
@@ -124,11 +120,11 @@ msgstr ""
 msgid "Edit press invitation"
 msgstr ""
 
-#: ./../editrelease.py:74
+#: ./../editrelease.py:75
 msgid "Edit press release"
 msgstr ""
 
-#: ./../editrelease.py:93
+#: ./../editrelease.py:94
 msgid "Editing has been cancelled."
 msgstr ""
 
@@ -142,15 +138,22 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
+#: ./../pressinvitation.py:54
+msgid "Enter link to Google Map for directions"
+msgstr ""
+
 #: ./../addrelease.py:52
-#: ./../editrelease.py:54
-#: ./../pressrelease.py:54
+#: ./../editrelease.py:55
 msgid "Enter optional caption describing the attachment"
 msgstr ""
 
-#: ./../addrelease.py:22
+#: ./../pressrelease.py:57
+msgid "Enter optional caption describing the image"
+msgstr ""
+
+#: ./../addrelease.py:21
 #: ./../editrelease.py:24
-#: ./../pressrelease.py:24
+#: ./../pressrelease.py:26
 msgid "Enter optional kicker / teaser line."
 msgstr ""
 
@@ -185,19 +188,29 @@ msgstr ""
 msgid "Global settings successfully updated"
 msgstr ""
 
-#: ./../pressrelease_templates/view.pt:54
+#: ./../pressrelease_templates/view.pt:66
 msgid "Hinweis:"
 msgstr ""
 
-#: ./../addrelease.py:21
+#: ./../addrelease.py:44
+#: ./../editrelease.py:47
+#: ./../pressrelease.py:49
+msgid "Image Attachment"
+msgstr ""
+
+#: ./../pressrelease.py:56
+msgid "Image Attachment Caption"
+msgstr ""
+
+#: ./../addrelease.py:20
 #: ./../editrelease.py:23
-#: ./../pressrelease.py:23
+#: ./../pressrelease.py:25
 msgid "Kicker"
 msgstr ""
 
-#: ./../addrelease.py:35
+#: ./../addrelease.py:34
 #: ./../editrelease.py:37
-#: ./../pressrelease.py:37
+#: ./../pressrelease.py:39
 msgid "Location"
 msgstr ""
 
@@ -219,9 +232,9 @@ msgstr ""
 msgid "Optional summary that is useful as a preview text in email clients that support this feature."
 msgstr ""
 
-#: ./../addrelease.py:31
+#: ./../addrelease.py:30
 #: ./../editrelease.py:33
-#: ./../pressrelease.py:33
+#: ./../pressrelease.py:35
 msgid "Please enter an optional subtitle here."
 msgstr ""
 
@@ -232,16 +245,12 @@ msgstr ""
 
 #: ./../addinvitation.py:51
 #: ./../editinvitation.py:54
-#: ./../pressinvitation.py:54
+#: ./../pressinvitation.py:59
 msgid "Please select if the event is public."
 msgstr ""
 
 #: ./../recipients.py:22
 msgid "Please select the channels this content should be dispatched to."
-msgstr ""
-
-#: ./../channelselection.py:27
-msgid "Please select the channels this recipient is subscribed to."
 msgstr ""
 
 #: ./../settings.py:57
@@ -281,9 +290,9 @@ msgstr ""
 msgid "Provide a default sender name to be included"
 msgstr ""
 
-#: ./../addrelease.py:36
+#: ./../addrelease.py:35
 #: ./../editrelease.py:38
-#: ./../pressrelease.py:38
+#: ./../pressrelease.py:40
 msgid "Provide a location for this press release that will be prepended to the main body text."
 msgstr ""
 
@@ -305,12 +314,12 @@ msgid "Recipient list updated"
 msgstr ""
 
 #: ./../editinvitation.py:81
-#: ./../editrelease.py:81
+#: ./../editrelease.py:82
 #: ./../settings.py:150
 msgid "Save"
 msgstr ""
 
-#: ./../channelselection.py:52
+#: ./../channelselection.py:60
 msgid "Save Selection"
 msgstr ""
 
@@ -324,11 +333,19 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-#: ./../channelselection.py:45
+#: ./../channelselection.py:36
+msgid "Select the appropriate channels"
+msgstr ""
+
+#: ./../channelselection.py:53
 msgid "Select the channel for dispatch"
 msgstr ""
 
-#: ./../channelselection.py:64
+#: ./../channelselection.py:35
+msgid "Selected Channels"
+msgstr ""
+
+#: ./../channelselection.py:72
 msgid "Selection of dispatch channel has been cancelled."
 msgstr ""
 
@@ -356,9 +373,9 @@ msgstr ""
 msgid "Stylesheet for HTML E-Mails"
 msgstr ""
 
-#: ./../addrelease.py:30
+#: ./../addrelease.py:29
 #: ./../editrelease.py:32
-#: ./../pressrelease.py:32
+#: ./../pressrelease.py:34
 msgid "Subtitle"
 msgstr ""
 
@@ -374,7 +391,7 @@ msgid "Test Recipients"
 msgstr ""
 
 #: ./../addinvitation.py:24
-#: ./../addrelease.py:41
+#: ./../addrelease.py:40
 #: ./../editinvitation.py:27
 msgid "Text"
 msgstr ""
@@ -387,16 +404,16 @@ msgstr ""
 msgid "The creation of a new press release has been cancelled."
 msgstr ""
 
-#: ./../editrelease.py:126
+#: ./../editrelease.py:127
 msgid "The press release was successfully updated"
 msgstr ""
 
-#: ./../archive.py:45
+#: ./../archive.py:46
 msgid "The requested item was not found"
 msgstr ""
 
 #: ./../addinvitation.py:19
-#: ./../addrelease.py:26
+#: ./../addrelease.py:25
 #: ./../editinvitation.py:22
 msgid "Title"
 msgstr ""
@@ -439,15 +456,15 @@ msgstr ""
 msgid "Update used CSS file for E-Mails"
 msgstr ""
 
-#: ./../addrelease.py:46
+#: ./../addrelease.py:45
 #: ./../editrelease.py:48
-#: ./../pressrelease.py:48
-msgid "Upload an attachment for this press release. The attachment can be an image, file or video."
+#: ./../pressrelease.py:50
+msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr ""
 
 #: ./../addinvitation.py:86
 #: ./../addrelease.py:87
-#: ./../channelselection.py:60
+#: ./../channelselection.py:68
 msgid "cancel"
 msgstr ""
 

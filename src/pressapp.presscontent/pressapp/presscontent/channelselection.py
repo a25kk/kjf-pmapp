@@ -21,25 +21,17 @@ from pressapp.presscontent import MessageFactory as _
 
 class IChannelSelection(form.Schema):
 
-    form.widget(channel=AutocompleteMultiFieldWidget)
-    channel = schema.List(
-        title=_(u"Channels"),
-        description=_(u"Please select the channels this recipient "
-                      u"is subscribed to."),
-        value_type=schema.Choice(
-            title=_(u"Channel"),
-            source=ChannelSourceBinder(),
-        )
-    )
-    selected = schema.List(
-        title=_(u"Selected Channels"),
-        description=_(u"Select the appropriate channels"),
-        value_type=schema.Choice(
-            title=_(u"Channel"),
-            vocabulary='pressapp.channelmanagement.channellisting',
-        )
-    )
-    selected2 = schema.FrozenSet(
+    #form.widget(channel=AutocompleteMultiFieldWidget)
+    #channel = schema.List(
+    #    title=_(u"Channels"),
+    #    description=_(u"Please select the channels this recipient "
+    #                  u"is subscribed to."),
+    #    value_type=schema.Choice(
+    #        title=_(u"Channel"),
+    #        source=ChannelSourceBinder(),
+    #    )
+    #)
+    channel = schema.Set(
         title=_(u"Selected Channels"),
         description=_(u"Select the appropriate channels"),
         value_type=schema.Choice(
@@ -89,8 +81,6 @@ class ChannelSelectionForm(form.SchemaEditForm):
         except:
             channelinfo = getattr(context, 'channel', '')
         data['channel'] = channelinfo
-        data['selected'] = channelinfo
-        data['selected2'] = channelinfo
         return data
 
     def applyChanges(self, data):
@@ -108,7 +98,7 @@ class ChannelSelectionForm(form.SchemaEditForm):
                 setattr(context, key, new_value)
             except KeyError:
                 continue
-        setattr(context, 'channel', data['channel'])
+        setattr(context, 'channel', list(data['channel']))
         modified(context)
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(

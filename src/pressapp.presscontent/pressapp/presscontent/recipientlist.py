@@ -45,7 +45,7 @@ class RecipientList(grok.View):
             for item in results:
                 info = {}
                 info['name'] = item.Title
-                info['email'] = item.email
+                info['email'] = item.getObject().email
                 if info not in subscribers:
                     subscribers.append(info)
         return subscribers
