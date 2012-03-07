@@ -112,8 +112,7 @@ $.extend( $.fn.dataTableExt.oPagination, {
                     sClass = (j==oPaging.iPage+1) ? 'class="active"' : '';
                     $('<li '+sClass+'><a href="#">'+j+'</a></li>')
                         .insertBefore( $('li:last', an[i])[0] )
-                        .bind('click', function (e) {
-                            e.preventDefault();
+                        .bind('click', function () {
                             oSettings._iDisplayStart = (parseInt($('a', this).text(),10)-1) * oPaging.iLength;
                             fnDraw( oSettings );
                         } );
