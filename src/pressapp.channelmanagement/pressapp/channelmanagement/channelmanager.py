@@ -123,7 +123,7 @@ class ChannelInformation(grok.View):
         prs = catalog(object_provides=IPressRelease.__identifier__,
                       channel=[self.channelname])
         stats['pr'] = len(prs)
-        pis = prs = catalog(object_provides=IPressRelease.__identifier__,
+        pis = prs = catalog(object_provides=IPressInvitation.__identifier__,
                             channel=[self.channelname])
         stats['pi'] = len(pis)
         return stats

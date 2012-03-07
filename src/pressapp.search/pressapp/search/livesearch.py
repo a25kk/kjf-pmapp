@@ -18,7 +18,7 @@ class LiveSearch(grok.View):
         self.plone_view = self.context.restrictedTraverse('@@plone')
         props = getToolByName(self.context, 'portal_properties')
         self.site_props = getattr(props, 'site_properties', None)
-        self.searchterm = None # this will be set by the get_results method
+        self.searchterm = None  # this will be set by the get_results method
         self.useViewActions = self.site_props and self.site_props.getProperty(
                                 'typesUseViewActionInListings', []) or []
         self.MAX_TITLE = 29
@@ -50,7 +50,7 @@ class LiveSearch(grok.View):
                 query_string = query_string.replace(char, ' ')
 
             anded_parts = " AND ".join(query_string.split())
-            anded_parts = self.quote_bad_chars(anded_parts)+'*'
+            anded_parts = self.quote_bad_chars(anded_parts) + '*'
             self.searchterm = make_query({'searchterm': anded_parts})
 
             query = {}
@@ -70,7 +70,7 @@ class LiveSearch(grok.View):
         url = result.getURL()
         if result.portal_type in self.useViewActions:
             url += '/view'
-        return self.searchterm and url + '?'+self.searchterm or url
+        return self.searchterm and url + '?' + self.searchterm or url
 
     def get_title(self, result):
         """Returns the title for the result"""

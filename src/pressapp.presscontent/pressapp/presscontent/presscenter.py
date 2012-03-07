@@ -8,6 +8,7 @@ from plone.memoize.instance import memoize
 from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
 
+from pressapp.channelmanagement.subscriber import ISubscriber
 from pressapp.presscontent.pressroom import IPressRoom
 
 from pressapp.presscontent import MessageFactory as _
@@ -85,6 +86,16 @@ class View(grok.View):
     def can_edit(self):
         return bool(getSecurityManager().checkPermission(
                     'Portlets: Manage own portlets', self.context))
+
+    def statistics(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=ISubscriber.__identifier__,)
+        channels = catalog.uniqueValuesFor('channel')
+        stats = {}
+        stats['recipients'] = len(results)
+        stats['channels'] = len(channels)
+        return stats
 
 
 class PressCenterSettings(grok.View):

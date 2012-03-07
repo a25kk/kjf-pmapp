@@ -61,35 +61,6 @@
                     </tbody>
                 </table>
             </section>
-            <!--<div class="box">
-              <h3><i class="icon-search" />
-              Sofortsuche</h3>
-                <form name="searchform" id="searchGadget_form" 
-                      action="search"
-                      tal:attributes="action string:${portal_url}/search;
-                                      id string:search_form">
-
-                    <div class="LSBox">
-                    <input name="SearchableText"
-                           type="text"
-                           size="18"
-                           value=""
-                           title="..."
-                           accesskey="4"
-                           i18n:attributes="title title_search_site;"
-                           tal:attributes="value request/form/SearchableText|nothing;
-                                           id string:searchGadget"
-                           class="searchField inputLabel" />
-
-                    <input class="searchButton btn primary small"
-                           type="submit"
-                           value="Search"
-                           i18n:attributes="value label_search;" />
-
-                    <div class="LSResult" id="LSResult" style=""><div class="LSShadow" id="LSShadow"></div></div>
-                    </div>
-                </form>
-            </div>-->
         </div>
         <div class="span4">
           <div class="page-header">
