@@ -14,6 +14,7 @@ $(document).ready(function() {
     $(document).bind('loadInsideOverlay', function(e){
         $('select.chosen-select', $(this)).chosen();
     });
+    $('#form-widgets-selected2').chosen()
     $(function() {
         $('a[rel=twipsy]').tooltip();
     });

@@ -1,4 +1,5 @@
 from five import grok
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
@@ -61,3 +62,21 @@ class ChannelSourceBinder(object):
 
     def __call__(self, context):
         return ChannelSource(context)
+
+
+class ChannelVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        registry = queryUtility(IRegistry)
+        terms = []
+        if registry is not None:
+            records = registry['pressapp.channelmanagement.channelList']
+            for channel in records:
+                # create a term - the arguments are the value, the token, and
+                # the title (optional)
+                terms.append(SimpleTerm(
+                    value=channel, title=records[channel].encode('utf-8')))
+        return SimpleVocabulary(terms)
+grok.global_utility(ChannelVocabulary,
+    name=u"pressapp.channelmanagement.channellisting")

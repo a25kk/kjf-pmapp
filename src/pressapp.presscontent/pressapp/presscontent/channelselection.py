@@ -31,6 +31,22 @@ class IChannelSelection(form.Schema):
             source=ChannelSourceBinder(),
         )
     )
+    selected = schema.List(
+        title=_(u"Selected Channels"),
+        description=_(u"Select the appropriate channels"),
+        value_type=schema.Choice(
+            title=_(u"Channel"),
+            vocabulary='pressapp.channelmanagement.channellisting',
+        )
+    )
+    selected2 = schema.FrozenSet(
+        title=_(u"Selected Channels"),
+        description=_(u"Select the appropriate channels"),
+        value_type=schema.Choice(
+            title=_(u"Channel"),
+            vocabulary='pressapp.channelmanagement.channellisting',
+        )
+    )
 
 
 class ChannelSelectionForm(form.SchemaEditForm):
@@ -73,6 +89,8 @@ class ChannelSelectionForm(form.SchemaEditForm):
         except:
             channelinfo = getattr(context, 'channel', '')
         data['channel'] = channelinfo
+        data['selected'] = channelinfo
+        data['selected2'] = channelinfo
         return data
 
     def applyChanges(self, data):
