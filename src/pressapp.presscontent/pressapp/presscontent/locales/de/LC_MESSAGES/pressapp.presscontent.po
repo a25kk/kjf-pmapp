@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "POT-Creation-Date: 2012-03-07 12:12+0000\n"
-"PO-Revision-Date: 2012-03-05 16:51+0100\n"
+"PO-Revision-Date: 2012-03-07 13:51+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: ./../channelselection.py:105
 msgid "A channel was successfully selected"
-msgstr "Der Verteiler wurde erfolgreich entfernt"
+msgstr "Presseverteiler wurden erfolgreich ausgewählt"
 
 #: ./../recipients.py:31
 msgid "A customized channel/recipient list used for this single press content. Note: If you don't require any changes, it is faster to just keep the channels."
@@ -98,7 +98,7 @@ msgstr "Standard E-Mail-Adresse die in den E-Mail HEADER Zeilen verwendet wird"
 
 #: ./../pressinvitation.py:53
 msgid "Directions Link"
-msgstr ""
+msgstr "Link Anfahrtsbeschreibung"
 
 #: ./../presscenter.py:31
 #: ./../settings.py:31
@@ -137,7 +137,7 @@ msgstr "Veranstaltungsende"
 
 #: ./../pressinvitation.py:54
 msgid "Enter link to Google Map for directions"
-msgstr ""
+msgstr "Geben Sie hier einen Link zu einer Anfahrtsbeschreibung (z.B. bei Google Maps) ein."
 
 #: ./../addrelease.py:52
 #: ./../editrelease.py:55
@@ -146,7 +146,7 @@ msgstr "Optionale Bildunterschrift, die den Dateianhang genauer bezeichnet."
 
 #: ./../pressrelease.py:57
 msgid "Enter optional caption describing the image"
-msgstr ""
+msgstr "Tragen Sie hier eine optionale Bildunterschrift ein."
 
 #: ./../addrelease.py:21
 #: ./../editrelease.py:24
@@ -183,7 +183,7 @@ msgstr "Die globalen Einstellungen für das verwendete CSS wurden aktualisiert."
 
 #: ./../settings.py:128
 msgid "Global settings successfully updated"
-msgstr ""
+msgstr "Einstellungen wurden erfolgreich aktualisiert"
 
 #: ./../pressrelease_templates/view.pt:66
 msgid "Hinweis:"
@@ -193,11 +193,11 @@ msgstr "Hinweis:"
 #: ./../editrelease.py:47
 #: ./../pressrelease.py:49
 msgid "Image Attachment"
-msgstr ""
+msgstr "Bildanhang"
 
 #: ./../pressrelease.py:56
 msgid "Image Attachment Caption"
-msgstr ""
+msgstr "Bildunterschrift zum Bildanhang"
 
 #: ./../addrelease.py:20
 #: ./../editrelease.py:23
@@ -238,7 +238,7 @@ msgstr "Bitte tragen Sie hier einen optionalen Subtitel ein."
 #: ./../presscenter.py:22
 #: ./../settings.py:22
 msgid "Please enter default send from E-mail address"
-msgstr ""
+msgstr "Geben Sie hier eine Standard E-Mail-Adresse als Absenderadresse fpr Presseinhalte ein."
 
 #: ./../addinvitation.py:51
 #: ./../editinvitation.py:54
@@ -248,15 +248,15 @@ msgstr "Bitte wählen Sie, ob diese Veranstaltung nur für geladene Gäste ist."
 
 #: ./../recipients.py:22
 msgid "Please select the channels this content should be dispatched to."
-msgstr ""
+msgstr "Wählen Sie aus der Liste die Verteiler für den Versand. Hinweis: Sie haben im nächsten SChritt die Möglichkeit eine Übersicht aller Empfänger einzusehen und zu bearbeiten."
 
 #: ./../settings.py:57
 msgid "Press Invitation E-Mail Template"
-msgstr ""
+msgstr "E-Mail-Vorlage: Presseeinladungen"
 
 #: ./../settings.py:49
 msgid "Press Release E-Mail Template"
-msgstr ""
+msgstr "E-Mail-Vorlage: Pressemitteilungen"
 
 #: ./../profiles/default/types/pressapp.presscontent.presscenter.xml
 msgid "Press center that will act as the global members folder."
@@ -264,7 +264,7 @@ msgstr "Presse Center: dieser Ordner ist die zentrale Adminsitrationseinheit."
 
 #: ./../editinvitation.py:126
 msgid "Press invitation was successfully updated"
-msgstr ""
+msgstr "Die Presseeinladung wurde erfolgreich aktualisiert"
 
 #: ./../profiles/default/types/pressapp.presscontent.presscenter.xml
 msgid "PressCenter"
@@ -285,7 +285,7 @@ msgstr "Pressestelle"
 #: ./../presscenter.py:27
 #: ./../settings.py:27
 msgid "Provide a default sender name to be included"
-msgstr ""
+msgstr "Bitte tragen Sie eienne Standard Absendernamen für Presseinhalte ein."
 
 #: ./../addrelease.py:35
 #: ./../editrelease.py:38
@@ -296,65 +296,65 @@ msgstr "Bitte geben Sie für diese Pressemitteilung einen Ort an, der dem Text v
 #: ./../presscenter.py:40
 #: ./../settings.py:40
 msgid "Recipient"
-msgstr ""
+msgstr "Empfänger"
 
 #: ./../recipients.py:36
 msgid "Recipient Details"
-msgstr ""
+msgstr "Details zum Empfänger"
 
 #: ./../recipients.py:30
 msgid "Recipient List"
-msgstr ""
+msgstr "Liste Empfänger"
 
 #: ./../recipientlist.py:33
 msgid "Recipient list updated"
-msgstr ""
+msgstr "Die Liste der Empfänger für diesen Presseinhalt wurde aktualisiert"
 
 #: ./../editinvitation.py:81
 #: ./../editrelease.py:82
 #: ./../settings.py:150
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: ./../channelselection.py:60
 msgid "Save Selection"
-msgstr ""
+msgstr "Auswahl speichern"
 
 #: ./../settings.py:86
 msgid "Save Settings"
-msgstr ""
+msgstr "Einstellungen speichern"
 
 #: ./../addinvitation.py:40
 #: ./../editinvitation.py:43
 #: ./../pressinvitation.py:43
 msgid "Schedule"
-msgstr ""
+msgstr "Versandplanung"
 
 #: ./../channelselection.py:36
 msgid "Select the appropriate channels"
-msgstr ""
+msgstr "Bitte wählen Sie die zutreffenden Verteiler aus der Liste"
 
 #: ./../channelselection.py:53
 msgid "Select the channel for dispatch"
-msgstr ""
+msgstr "Verteilerauswhal für den Versand"
 
 #: ./../channelselection.py:35
 msgid "Selected Channels"
-msgstr ""
+msgstr "Ausgewählte und zugewiesene Verteiler"
 
 #: ./../channelselection.py:72
 msgid "Selection of dispatch channel has been cancelled."
-msgstr ""
+msgstr "Die Auswahl der Verteilerlsiten wurde abgebrochen."
 
 #: ./../presscenter.py:21
 #: ./../settings.py:21
 msgid "Sender E-Mail-Address"
-msgstr ""
+msgstr "ABsender E-Mail-Adresse"
 
 #: ./../presscenter.py:26
 #: ./../settings.py:26
 msgid "Sender Name"
-msgstr ""
+msgstr "Absendername"
 
 #: ./../addinvitation.py:28
 #: ./../editinvitation.py:31
@@ -364,11 +364,11 @@ msgstr "Veranstaltungsbeginn"
 
 #: ./../presscenter.py:45
 msgid "Stylesheet"
-msgstr ""
+msgstr "Stylesheet / Designvorgaben"
 
 #: ./../settings.py:65
 msgid "Stylesheet for HTML E-Mails"
-msgstr ""
+msgstr "Designvorlage für den Versand von E-Mails im HTML Format. Hinweis: Die Unterstützung für CSS ist in E-Mail-Programmen unterschiedlich valide. Die vorliegenden CSS-Angaben entsprechen dem Standard, der von allen Programmen weitestgehend unterstützt wird."
 
 #: ./../addrelease.py:29
 #: ./../editrelease.py:32
@@ -385,7 +385,7 @@ msgstr "Zusammenfassung"
 #: ./../presscenter.py:36
 #: ./../settings.py:36
 msgid "Test Recipients"
-msgstr ""
+msgstr "Empfänger für den Testversand"
 
 #: ./../addinvitation.py:24
 #: ./../addrelease.py:40
@@ -403,11 +403,11 @@ msgstr "Die Erstellung einer neuen Pressemitteilung wurde abgebrochen."
 
 #: ./../editrelease.py:127
 msgid "The press release was successfully updated"
-msgstr ""
+msgstr "Die Pressemitteilung wurde erfolgreich aktualisiert"
 
 #: ./../archive.py:46
 msgid "The requested item was not found"
-msgstr ""
+msgstr "Das gewünschte Objekt konnte nicht gefunden werden."
 
 #: ./../addinvitation.py:19
 #: ./../addrelease.py:25
@@ -419,45 +419,45 @@ msgstr "Titel"
 #: ./../editinvitation.py:48
 #: ./../pressinvitation.py:48
 msgid "Travel information"
-msgstr ""
+msgstr "Anreiseinformationen"
 
 #: ./../settings.py:79
 msgid "Update default settings"
-msgstr ""
+msgstr "Aktualisieren Sie die Standardeinstellungen"
 
 #: ./../settings.py:276
 msgid "Update of CSS has been cancelled"
-msgstr ""
+msgstr "Der Vorgang wurde abgebrochen und alle Änderungen an den Designvorgaben verworfen."
 
 #: ./../settings.py:98
 msgid "Update of global settings has been cancelled"
-msgstr ""
+msgstr "Die Änderung der Standardeinstellungen wurde abgebrochen."
 
 #: ./../settings.py:219
 msgid "Update of press invitation template has been cancelled"
-msgstr ""
+msgstr "Die Aktualisierung der E-Mail-Vorlage für Presseeinladungen wurde abgebrochen."
 
 #: ./../settings.py:162
 msgid "Update of press release template has been cancelled"
-msgstr ""
+msgstr "Die Aktualisierung der E-Mail-Vorlage für Pressemitteilungen wurde abgebrochen."
 
 #: ./../settings.py:200
 msgid "Update press invitation template"
-msgstr ""
+msgstr "E-Mail-Vorlage für Pressemitteilungen anktualisieren"
 
 #: ./../settings.py:143
 msgid "Update press release template"
-msgstr ""
+msgstr "E-Mail-Vorlage für Pressemitteilungen aktualisieren"
 
 #: ./../settings.py:257
 msgid "Update used CSS file for E-Mails"
-msgstr ""
+msgstr "Design-Vorlage für E-Mails im HTML-Format anpassen"
 
 #: ./../addrelease.py:45
 #: ./../editrelease.py:48
 #: ./../pressrelease.py:50
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
-msgstr ""
+msgstr "Laden Sie ein Bild zu dieser Pressemittelung hoch. Das Bild sollte bereit optimiert und verkleinert sein, da E-Mails nicht für den Versand grosser Dateimengen vorgesehen sind."
 
 #: ./../addinvitation.py:86
 #: ./../addrelease.py:87

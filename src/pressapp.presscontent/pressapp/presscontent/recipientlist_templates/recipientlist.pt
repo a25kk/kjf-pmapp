@@ -10,9 +10,9 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <style type="text/css" title="currentStyle">
+  <!--<style type="text/css" title="currentStyle">
       @import "++resource++jquery.datatables/media/css/jquery.dataTables.css";
-  </style>
+  </style>-->
   
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
     class="container-fluid">
@@ -21,26 +21,28 @@
             <h1>Adressen <small>Zugewiesene Empf&auml;nger</small></h1>
         </div>
         
-        <div class="ro-fluid">
+        <div class="row-fluid">
             <div class="span6">
                 <div class="alert alert-block alert-info">
                     <h4 class="alert-heading">Information</h4>
                     <p>Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
-                        auf eine Tabellenzeile und verwenden Sie den Button
-                        <strong>Adresse entfernen</strong>, um diesen zu l&ouml;schen</p>
+                        auf eine Tabellenzeile, um diese zu markieren. Verwenden Sie den Button
+                        <strong>Adresse entfernen</strong>, um diese Zeile zu l&ouml;schen</p>
                 </div>
             </div>
-            <div class="span4">
+            <div class="span6">
                 <a href="javascript:void(0)" id="delete"
-                    class="btn btn-large btn-danger">
+                    class="btn btn-xlarge btn-danger">
+                    <i class="icon-remove icon-white" />
                     Adresse entfernen</a>
             </div>
         </div>
-        
+
         <form tal:attributes="action request/URL" method="post"
             id="recipient-cleanup-form">
         <table tal:condition="view/has_subscribers"
-            class="table table-condensed table-striped" id="recipient-table">
+            class="table table-condensed table-striped table-bordered"
+            id="recipient-table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -68,6 +70,9 @@
                     name="form.button.Submit"
                     id="submit-button"
                     class="btn btn-large btn-primary" />
+                <a href="" class="btn btn-large btn-danger"
+                  tal:attributes="href context/absolute_url">
+                  Abbrechen</a>
             </div>
         </form>
   </section>
