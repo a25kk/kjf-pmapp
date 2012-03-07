@@ -20,39 +20,31 @@
     </div>
     
     <div class="row-fluid">
-        <div class="span6">
-            <h2><i class="icon-list-alt" />
-                Adressen</h2>
-                    <div class="tile stats">
-                      <h4><span class="label label-info"
-                          tal:content="view/subscriber_count" />
-                        Kontakte</h4>
-                        <p class="xpull-right btn-group"
-                            tal:define="channel view/active_channel;
-                                        channel_url channel/getURL;">
-                            <a class="btn btn-small"
-                                tal:attributes="href channel_url">
-                                <i class="icon-eye-open" />
-                                Anzeigen</a>
-                            <a class="btn btn-small"
-                                tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
-                                <i class="icon-plus-sign" />
-                                  Neuen Kontakt anlegen</a>
-                        </p>
-                    </div>
-          <h3><i class="icon-search" />
+        <div class="span6"
+          tal:define="channel view/active_channel;
+                              channel_url channel/getURL">
+            <a class="btn btn-small pull-right"
+                tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
+                <i class="icon-plus-sign" />
+                  Neuen Kontakt anlegen</a>
+            <h2><span tal:content="view/subscriber_count" />
+                <a href=""
+                  tal:attributes="href channel_url">
+                  Adressen</a>
+            </h2>
+            <a class="btn btn-small"
+                tal:attributes="href channel_url">
+                <i class="icon-eye-open" />
+                Anzeigen</a>
+            <div class="box">
+              <h3><i class="icon-search" />
               Sofortsuche</h3>
-            <div class="well">
                 <form name="searchform" id="searchGadget_form" 
                       action="search"
                       tal:attributes="action string:${portal_url}/search;
                                       id string:search_form">
 
                     <div class="LSBox">
-                    <label class="hiddenStructure hidden"
-                        for="searchGadget"
-                           i18n:translate="text_search">Search Subscriber</label>
-
                     <input name="SearchableText"
                            type="text"
                            size="18"
@@ -75,7 +67,11 @@
             </div>
         </div>
         <div class="span6">
-            <h2><i class="icon-list-alt" /> Verteiler</h2>
+            <h2><span
+                  tal:content="view/channel_counter" />
+              <a href=""
+                tal:attributes="href python:context_url+'/@@channel-statistics'">
+              Verteiler</a></h2>
             <div class="tile stats">
                   <h4><span
                       class="label label-info"
