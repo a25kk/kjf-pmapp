@@ -118,11 +118,6 @@
                   <i class="icon-edit" />
                     Bearbeiten</a>
               </li>
-              <li><a href=""
-                    tal:attributes="href string:${context/absolute_url}/@@pressinvitation-preview">
-                    <i class="icon-eye-open" />
-                    E-Mail Vorschau</a>
-              </li>
               <li>
                 <a href=""
                   tal:attributes="href view/constructPreviewURL">

@@ -10,18 +10,21 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-    <div class="container"
+    <div class="container-fluid"
         tal:define="portal_state context/@@plone_portal_state;
                     portal_url portal_state/portal_url;
                     context_url context/absolute_url;">
         
-        <h1 class="documentFirstHeading">Verteilerverwaltung</h1>
+        <div class="page-header">
+            <h1>Statistiken
+                <small>Verteiler und Kontakte</small>
+            </h1>
+        </div>
         
-        <div class="row">
-            <div class="cell position-0 width-2:3">
+        <div class="row-fluid">
                 <section tal:define="items view/statistic_data">
                     <tal:block tal:repeat="item items">
-                        <div class="box">
+                        <div class="span5 box pull-left">
                             <h5 class="pull-left" tal:content="item/name">Test</h5>
                             <a class="btn  btn-small btn-info show-details pull-right">
                                 <i class="icon-arrow-down icon-white" />
@@ -54,12 +57,6 @@
                         </div>
                     </tal:block>
                 </section>
-            </div>
-            <div class="cell position-2:3 width-1:3">
-                <div class="box">
-                    <h3>Verwaltung</h3>
-                </div>
-            </div>
         </div>
         <div class="visualClear"><!-- --></div>
         

@@ -15,6 +15,7 @@ from plone.uuid.interfaces import IUUID
 
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
+
 from pressapp.presscontent import MessageFactory as _
 
 
@@ -72,7 +73,7 @@ class PressItemView(grok.View):
         data['url'] = self._construct_webview_link(context)
         data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
-            data['kicker'] = context.kicker
+            data['kicker'] = getattr(context, 'kicker', '')
             data['subtitle'] = context.subtitle
             if context.image:
                 url = context.absolute_url()
@@ -95,6 +96,8 @@ class PressItemView(grok.View):
             closed = context.closed
             if closed == True:
                 data['closed'] = _(u"Admittance for invited guests only")
+            else:
+                data['closed'] = ''
         if memberinfo:
             data['org'] = memberinfo['org']
             data['link'] = memberinfo['link']

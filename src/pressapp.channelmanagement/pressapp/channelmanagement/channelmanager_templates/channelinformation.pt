@@ -10,21 +10,23 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-    <div class="container"
+    <div class="container-fluid"
         tal:define="portal_state context/@@plone_portal_state;
                     portal_url portal_state/portal_url;
                     context_url context/absolute_url;">
         
         <p class="pull-right">
-            <a href="" class="editbtn mini standalone"
+            <a href=""
                 tal:attributes="href context_url">&Uuml;bersicht </a>
         </p>
         
-        <h1 class="documentFirstHeading">Verteilerinformationen
-            <small tal:content="view/channelname" /></h1>
+        <div class="page-header">
+          <h1 class="documentFirstHeading">Verteilerinformationen
+              <small tal:content="view/channelname" /></h1>
+        </div>
 
-        <div class="row">
-            <div class="cell position-0 width-1:2">
+        <div class="row-fluid">
+            <div class="span6">
                 <div class="well">
                     <form name="searchform" id="searchGadget_form" 
                           action="search"
@@ -57,7 +59,7 @@
                     </form>
                 </div>
             </div>
-            <div class="cell position-1:2 width-1:2">
+            <div class="span6">
                 <div class="box" tal:define="stats view/usage_statistics">
                     <h3>Statistik Verwendung</h3>
                         <div class="tile stats">
@@ -77,7 +79,7 @@
                              b_size python:25;b_start python:0;b_start request/b_start | b_start;">
             <div class="box">
                 <h3>Kontakte <small tal:content="view/channelname">Channel Name</small></h3>
-                  <table class="table table-bordered table-striped">
+                  <table class="table table-condensed table-striped">
                       <thead>
                           <tr>
                               <th>#</th>

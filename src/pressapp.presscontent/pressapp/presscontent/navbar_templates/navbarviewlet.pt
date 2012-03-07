@@ -80,7 +80,7 @@
                             <li><a href=""
                                     tal:attributes="href python:portal_url+'/presscenter/kontakte'">
                                 <i class="icon-list-alt" />
-                                Addressen
+                                Adressen
                                 </a>
                             </li>
                             <li><a href=""

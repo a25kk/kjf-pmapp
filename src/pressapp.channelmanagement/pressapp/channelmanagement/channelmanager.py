@@ -102,8 +102,16 @@ class ChannelInformation(grok.View):
     def channel_info(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
+        for value in records:
+            if records[value] == self.channelname:
+                channel = value
+            else:
+                channel = self.channelname
         results = catalog(object_provides=ISubscriber.__identifier__,
-                          channel=[self.channelname],
+                          channel=channel,
                           sort_on='sortable_title')
         subscribers = IContentListing(results)
         return subscribers
@@ -133,6 +141,9 @@ class ChannelStatistics(grok.View):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
         channels = catalog.uniqueValuesFor('channel')
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
         stats = []
         for channel in channels:
             channel_info = {}
@@ -142,7 +153,12 @@ class ChannelStatistics(grok.View):
                           channel=[channel])
             subs = catalog(object_provides=ISubscriber.__identifier__,
                            channel=[channel])
-            channel_info['name'] = channel
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            channel_info['name'] = channelname
+            channel_info['channel'] = channel
             channel_info['pr_count'] = len(prs)
             channel_info['pi_count'] = len(pis)
             channel_info['subscriber'] = len(subs)

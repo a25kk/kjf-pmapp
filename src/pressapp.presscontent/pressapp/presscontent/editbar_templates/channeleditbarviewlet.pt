@@ -6,16 +6,12 @@
         <div class="container-fluid">
             <div class="container-fluid btn-toolbar">
                 <div class="btn-group">
-                    <a class="btn btn-large btn-info"
+                    <a class="btn btn-large btn-inverse"
                         tal:attributes="href python:portal_url + '/presscenter'">
                         <i class="icon-cog icon-white" />
                         Administration</a>
                 </div>
                 <div class="btn-group">
-                    <a class="btn btn-large"
-                        tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
-                        <i class="icon-align-justify" />
-                        Einstellungen</a>
                     <a class="btn btn-large"
                         tal:attributes="href python:portal_url+'/presscenter/kontakte'">
                         <i class="icon-list-alt" />
@@ -24,6 +20,10 @@
                         tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
                         <i class="icon-user" />
                         Redakteure</a>
+                    <a class="btn btn-large"
+                        tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
+                        <i class="icon-align-justify" />
+                        Einstellungen</a>
                 </div>
                 <div class="btn-group">
                     <a class="btn btn-large"
