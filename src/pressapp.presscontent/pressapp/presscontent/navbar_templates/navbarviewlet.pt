@@ -1,7 +1,8 @@
 <div class="navbar navbar-fixed-top" id="navbar">
     <div class="navbar-inner"
         tal:define="context_url viewlet/context_url;
-                    portal_url viewlet/portal_url">
+                    portal_url viewlet/portal_url;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime">
         <div class="container-fluid">
             <a href="" class="brand pull-right"
                 tal:attributes="href portal_url">
@@ -15,7 +16,8 @@
             </a>
             <div class="nav-collapse" tal:condition="not:viewlet/anonymous">
                 <ul class="nav"
-                    tal:define="home_folder viewlet/home_url">
+                    tal:define="memberinfo viewlet/memberinfo;
+                                home_folder memberinfo/home_url">
                     <li id="main-menu">
                         <a href="/"
                             data-traget="#main-menu"
@@ -81,29 +83,46 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav pull-right"
-                    tal:define="home_folder viewlet/home_url">
+                <ul class="nav nav-user pull-right"
+                    tal:define="memberinfo viewlet/memberinfo;
+                                home_folder memberinfo/home_url">
+                    <li class="divider-vertical"></li>
                     <li class="dropdown active">
                         <a href=""
                             tal:attributes="href home_folder"
                             class="dropdown-toggle"
                             data-toggle="dropdown">
                             <i class="icon-user icon-white" />
-                            John Doe
+                            <span tal:content="memberinfo/username">John Doe</span>
                             <b class="caret" />
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu nav-list">
+                            <li class="nav-header">
+                                Kontoeinstellungen</li>
+                            <li tal:define="login memberinfo/login_time">
+                                <img tal:replace="structure memberinfo/portrait" /><br />
+                                <strong tal:content="memberinfo/organization" /><br />
+                                <span tal:replace="memberinfo/location" /><br />
+                                <span tal:replace="memberinfo/home_page" />
+                            </li>
+                            <li class="divider"></li>
+                            <li tal:define="login memberinfo/login_time">
+                                Angemeldet:<br />
+                                <small>
+                                <span tal:replace="python:toLocalizedTime(login)" />,
+                                <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr</small>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href=""
+                                tal:attributes="href python:home_folder + '/@@member-information'">
+                                <i class="icon-cog" />
+                                Profil bearbeiten</a>
+                            </li>
                             <li><a href=""
                                 tal:attributes="href home_folder">
                                 <i class="icon-home" />
                                 Mein Arbeitsplatz</a>
                             </li>
-                            <li><a href=""
-                                tal:attributes="href python:home_folder + '/@@member-information'">
-                                <i class="icon-cog" />
-                                Kontoeinstellungen</a>
-                            </li>
-                            <li class="divider"></li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">
                                 <i class="icon-remove-sign" />

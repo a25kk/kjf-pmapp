@@ -29,10 +29,24 @@ class NavBarViewlet(grok.Viewlet):
         return bool(getSecurityManager().checkPermission(
                     'Portlets: Manage own portlets', context))
 
-    def home_url(self):
+    def memberinfo(self):
         context = aq_inner(self.context)
         mtool = getToolByName(context, 'portal_membership')
         member = mtool.getAuthenticatedMember()
         if member:
-            home_url = member.getHomeFolder().absolute_url()
-            return home_url
+            info = {}
+            info['home_url'] = member.getHomeFolder().absolute_url()
+            fullname = member.getProperty('fullname', None)
+            if fullname:
+                info['username'] = fullname
+            else:
+                info['username'] = member.getId()
+            info['location'] = member.getProperty('location', '')
+            info['organization'] = member.getProperty('organization', '')
+            info['home_page'] = member.getProperty('home_page', '')
+            info['presslink'] = member.getProperty('presslink', '')
+            info['portrait'] = mtool.getPersonalPortrait(id=member.getId())
+            info['login_time'] = member.getProperty('login_time', '2011/01/01')
+            info['last_login_time'] = member.getProperty('last_login_time',
+                                                         '2011/01/01')
+            return info
