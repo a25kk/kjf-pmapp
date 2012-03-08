@@ -5,7 +5,24 @@
                                context_url viewlet/context_url;
                                login memberinfo/login_time;
                                last_login memberinfo/last_login_time;
-                               toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+                               toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                               must_edit viewlet/must_edit">
+        <tal:block tal:condition="python:must_edit == True">
+                <div class="alert alert-block alert-danger">
+                    <h4 class="alert-heading">Warnung:</h4>
+                    Sie haben noch keine Profildaten hinterlegt. Diese sind f&uuml;r
+                    den Versand von Presseinhalten zwingend erforderlich
+                    <div class="btn-toolbar">
+                <div class="btn-group">
+                    <a class="btn btn-inverse" href="#"
+                    tal:attributes="href python:context_url+'/@@member-information'">
+                    <i class="icon-cog icon-white" />
+                    Profildaten bearbeiten</a>
+                </div>
+            </div>
+                </div>
+                
+            </tal:block>
         <div class="container-fluid">
             <div class="row-fluid">
             <div class="span8">
@@ -33,6 +50,7 @@
         <div class="visualClear">&nbsp;</div>
 
         <div class="container-fluid">
+            <tal:block tal:condition="python:must_edit == False">
             <p><strong>Einrichtung:</strong>
                 <span tal:content="memberinfo/organization">Beispiel e.V.</span></p>
             <p><strong>Ort:</strong>
@@ -53,9 +71,10 @@
                     Profildaten bearbeiten</a>
                 </div>
             </div>
+            </tal:block>
         </div>
         
-        <div class="container-fluid">
+        <!--<div class="container-fluid">
             <div id="status-placeholder">
                 <p class="loading-indicator">
                     <img tal:attributes="src string:${context/@@plone_portal_state/portal_url}/spinner.gif" />
@@ -65,7 +84,7 @@
                     tal:attributes="href string:${context/absolute_url}/@@my-activities?ajax_load=1" />
 
             </div>
-        </div>
+        </div>-->
         </tal:block>
     </div>
 </div>
