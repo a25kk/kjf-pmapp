@@ -63,6 +63,7 @@ class ChannelEditBarViewlet(grok.Viewlet):
         home_url = member.getHomeFolder().absolute_url()
         return home_url
 
+
 class SingleChannelEditBarViewlet(grok.Viewlet):
     grok.name('pressapp.membercontent.SingleChannelEditBarViewlet')
     grok.context(IChannel)

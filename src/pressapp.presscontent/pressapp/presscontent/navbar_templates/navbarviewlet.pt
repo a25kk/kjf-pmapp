@@ -6,6 +6,13 @@
             <a href="" class="brand pull-right"
                 tal:attributes="href portal_url">
                 KJF Pressestelle</a>
+            <a class="btn btn-navbar"
+                data-toggle="collapse"
+                data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
             <div class="nav-collapse" tal:condition="not:viewlet/anonymous">
                 <ul class="nav"
                     tal:define="home_folder viewlet/home_url">
@@ -15,31 +22,7 @@
                             tal:attributes="href home_folder">
                             <i class="icon-home icon-white" />
                             Arbeitsplatz
-                            <!--<b class="caret" />-->
                         </a>
-                        <!-- <ul class="dropdown-menu">
-                            <li><a href="" tal:attributes="href home_folder">
-                                <i class="icon-list" />
-                                &Uuml;bersicht</a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:home_folder+'/@@dashboard-releases'">
-                                <i class="icon-file" />
-                                Pressemitteilungen</a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:home_folder+'/@@dashboard-invitations'">
-                                <i class="icon-calendar" />
-                                Presseeinladungen
-                                </a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:home_folder+'/@@dashboard-schedule'">
-                                <i class="icon-share-alt" />
-                                    Statistik
-                                </a>
-                            </li>
-                        </ul>-->
                     </li>
                     <li class="divider-vertical"></li>
                     <li><a href=""
@@ -94,6 +77,37 @@
                                 <i class="icon-align-justify" />
                                     Einstellungen
                                 </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav pull-right"
+                    tal:define="home_folder viewlet/home_url">
+                    <li class="dropdown active">
+                        <a href=""
+                            tal:attributes="href home_folder"
+                            class="dropdown-toggle"
+                            data-toggle="dropdown">
+                            <i class="icon-user icon-white" />
+                            John Doe
+                            <b class="caret" />
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href=""
+                                tal:attributes="href home_folder">
+                                <i class="icon-home" />
+                                Mein Arbeitsplatz</a>
+                            </li>
+                            <li><a href=""
+                                tal:attributes="href python:home_folder + '/@@member-information'">
+                                <i class="icon-cog" />
+                                Kontoeinstellungen</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href=""
+                                tal:attributes="href python:portal_url + '/logout'">
+                                <i class="icon-remove-sign" />
+                                Abmelden</a>
                             </li>
                         </ul>
                     </li>
