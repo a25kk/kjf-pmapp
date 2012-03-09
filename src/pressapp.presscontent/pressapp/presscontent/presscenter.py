@@ -124,3 +124,16 @@ class Workspaces(grok.View):
                          sort_on='sortable_title')
         spaces = IContentListing(results)
         return spaces
+
+    def memberdetails(self, member_id):
+        context = aq_inner(self.context)
+        mtool = getToolByName(context, 'portal_membership')
+        info = {}
+        member = mtool.getMemberById(member_id)
+        info['fullname'] = member.getProperty('fullname', '')
+        info['organization'] = member.getProperty('organization', '')
+        info['home_page'] = member.getProperty('home_page', '')
+        info['location'] = member.getProperty('location', '')
+        info['last_login_time'] = member.getProperty('last_login_time',
+                                                         '2011/01/01')
+        return info

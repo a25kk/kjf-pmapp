@@ -3,14 +3,7 @@
         tal:define="context_url viewlet/context_url;
                     context_state context/@@plone_context_state">
         <div class="container-fluid">
-            <!--<ul class="breadcrumb pull-left">
-                <li>
-                    <i class="icon-home" />
-                    <span class="divider">/<span>
-                </li>
-                <li><a href="">Arbeitsplatz</a></li>
-            </ul>-->
-            <div class="container-fluid btn-toolbar">
+            <div class="btn-toolbar container-fluid">
                 <div class="btn-group">
                     <a href="" tal:attributes="href context_state/canonical_object_url"
                         class="btn btn-large btn-inverse">
@@ -18,16 +11,6 @@
                         Arbeitsplatz
                     </a>
                 </div>
-                <!--<div class="btn-group">
-                    <a class="btn btn-large"
-                        tal:attributes="href python:context_url+'/@@dashboard-releases'">
-                        <i class="icon-file" />
-                        Pressemitteilungen</a>
-                    <a class="btn btn-large"
-                        tal:attributes="href python:context_url+'/@@dashboard-invitations'">
-                        <i class="icon-calendar" />
-                        Presseeinladungen</a>
-                </div>-->
                 <div class="btn-group">
                     <a class="btn btn-large"
                         tal:attributes="href python:context_url+'/@@dashboard-statistics'">

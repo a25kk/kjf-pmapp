@@ -1,45 +1,30 @@
 <div class="navbar navbar-fixed-top" id="navbar">
     <div class="navbar-inner"
         tal:define="context_url viewlet/context_url;
-                    portal_url viewlet/portal_url">
+                    portal_url viewlet/portal_url;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime">
         <div class="container-fluid">
             <a href="" class="brand pull-right"
                 tal:attributes="href portal_url">
                 KJF Pressestelle</a>
+            <a class="btn btn-navbar"
+                data-toggle="collapse"
+                data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
             <div class="nav-collapse" tal:condition="not:viewlet/anonymous">
                 <ul class="nav"
-                    tal:define="home_folder viewlet/home_url">
+                    tal:define="memberinfo viewlet/memberinfo;
+                                home_folder memberinfo/home_url">
                     <li id="main-menu">
                         <a href="/"
                             data-traget="#main-menu"
                             tal:attributes="href home_folder">
                             <i class="icon-home icon-white" />
                             Arbeitsplatz
-                            <!--<b class="caret" />-->
                         </a>
-                        <!-- <ul class="dropdown-menu">
-                            <li><a href="" tal:attributes="href home_folder">
-                                <i class="icon-list" />
-                                &Uuml;bersicht</a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:home_folder+'/@@dashboard-releases'">
-                                <i class="icon-file" />
-                                Pressemitteilungen</a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:home_folder+'/@@dashboard-invitations'">
-                                <i class="icon-calendar" />
-                                Presseeinladungen
-                                </a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:home_folder+'/@@dashboard-schedule'">
-                                <i class="icon-share-alt" />
-                                    Statistik
-                                </a>
-                            </li>
-                        </ul>-->
                     </li>
                     <li class="divider-vertical"></li>
                     <li><a href=""
@@ -94,6 +79,54 @@
                                 <i class="icon-align-justify" />
                                     Einstellungen
                                 </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-user pull-right"
+                    tal:define="memberinfo viewlet/memberinfo;
+                                home_folder memberinfo/home_url">
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown active">
+                        <a href=""
+                            tal:attributes="href home_folder"
+                            class="dropdown-toggle"
+                            data-toggle="dropdown">
+                            <i class="icon-user icon-white" />
+                            <span tal:content="memberinfo/username">John Doe</span>
+                            <b class="caret" />
+                        </a>
+                        <ul class="dropdown-menu nav-list">
+                            <li class="nav-header">
+                                Kontoeinstellungen</li>
+                            <li tal:define="login memberinfo/login_time">
+                                <img tal:replace="structure memberinfo/portrait" /><br />
+                                <strong tal:content="memberinfo/organization" /><br />
+                                <span tal:replace="memberinfo/location" /><br />
+                                <span tal:replace="memberinfo/home_page" />
+                            </li>
+                            <li class="divider"></li>
+                            <li tal:define="login memberinfo/login_time">
+                                Angemeldet:<br />
+                                <small>
+                                <span tal:replace="python:toLocalizedTime(login)" />,
+                                <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr</small>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href=""
+                                tal:attributes="href python:home_folder + '/@@member-information'">
+                                <i class="icon-cog" />
+                                Profil bearbeiten</a>
+                            </li>
+                            <li><a href=""
+                                tal:attributes="href home_folder">
+                                <i class="icon-home" />
+                                Mein Arbeitsplatz</a>
+                            </li>
+                            <li><a href=""
+                                tal:attributes="href python:portal_url + '/logout'">
+                                <i class="icon-remove-sign" />
+                                Abmelden</a>
                             </li>
                         </ul>
                     </li>

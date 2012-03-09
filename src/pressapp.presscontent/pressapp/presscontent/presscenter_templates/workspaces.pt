@@ -26,16 +26,33 @@
                 <thead>
                   <tr>
                     <th>Benutzerkonto</th>
+                    <th>Organisation</th>
+                    <th>Ort</th>
+                    <th>URL</th>
+                    <th>Zuletzt angemeldet</th>
                     <th>Aktionen</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tal:block tal:condition="view/has_workspaces">
                     <tr tal:repeat="item view/workspaces">
-                      <td><strong tal:content="item/Title">
-                        Title</strong></td>
+                      <tal:block tal:define="member_id item/Creator;
+                                             memberinfo python:view.memberdetails(member_id);">
+                      <td><a href=""
+                            tal:attributes="href item/getURL">
+                            <strong tal:content="item/Title">
+                            Title</strong></a>
+                      </td>
+                      <td tal:content="memberinfo/organization"></td>
+                      <td tal:content="memberinfo/location"></td>
+                      <td tal:content="memberinfo/home_page"></td>
+                      <td tal:define="login memberinfo/last_login_time">
+                        <span tal:replace="python:toLocalizedTime(login)" />,
+                        <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr
+                      </td>
                       <td><a href="" tal:attributes="href item/getURL">
                           Anzeigen</a></td>
+                      </tal:block>
                     </tr>
                   </tal:block>
                   <tr tal:condition="not:view/has_workspaces">
