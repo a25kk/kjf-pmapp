@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="body">
+  <metal:content-core define-macro="body">
+  <div id="content">
+    <div id="archive-view" class="box">
+    <div class="page-header">
+        <h1>Archiv
+            <small>Liste aller Pressemitteilungen und Presseeinladungen</small>
+        </h1>
+    </div>
+    <section id="archive-listing" tal:condition="view/has_items">
+        <tal:block tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                               items view/press_content;
+                               Batch python:modules['Products.CMFPlone'].Batch;
+                               b_size python:30; b_start python:0;
+                               b_start request/b_start|b_start;
+                               batch python:Batch(items, b_size, int(b_start), orphan=1);">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Titel</th>
+                        <th>Datum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tal:block tal:repeat="item batch">
+                    <tr tal:define="item_uid item/UID;
+                                    type item/portal_type">
+                        <td>
+                            <span tal:condition="python:type == 'pressapp.presscontent.pressrelease'"
+                                rel="twipsy"
+                                data-original-title="Pressemitteilung"
+                                class="badge badge-info">PM</span>
+                            <span tal:condition="python:type == 'pressapp.presscontent.pressinvitation'"
+                                rel="twipsy"
+                                data-original-title="Presseeinladung"
+                                class="badge badge-warning">PE</span>
+                        </td>
+                        <td>
+                            <h4><a href=""
+                                tal:attributes="href python:portal_url + '/@@pressitem-view?uid=' + item_uid"
+                                tal:content="item/Title">
+                                PC Title
+                            </a><br />
+                            <small class="discreet" tal:content="item/Description" />
+                            </h4>
+                        </td>
+                        <td tal:define="effective_date item/effective">
+                            <span tal:content="python:toLocalizedTime(effective_date)"
+                                class="label label-inverse">
+                            </span>
+                        </td>
+                    </tr>
+                    </tal:block>
+                </tbody>
+            </table>
+        </tal:block>
+    </section>
+
+    <div tal:condition="not:view/has_items"
+        class="alert alert-block alert-warning">
+        <h4 class="alert-heding">Information:</h4>
+        <p>Leider liegen im Augenblick keine aktuellen
+           Pressemitteilungen oder Presseeinladungen vor</p>
+        <p>F&uuml;r weiter Informationen wenden Sie sich bitte am
+           presse@kjf-augsburg.de</p>
+    </div>
+    </div>
+  </div>
+  </metal:content-core>
+</metal:main>
+</body>
+</html>
