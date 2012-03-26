@@ -67,7 +67,7 @@
               tal:content="context/travel" />
             <div tal:condition="context/directions">
               <a href="href context/directions">
-                Angahrtsbeschreibung (Karte)</a>
+                Anfahrtsbeschreibung (Karte)</a>
               <strong>Link: </strong>
               <pre tal:content="context/directions" />
             </div>

@@ -89,7 +89,7 @@
                                   Anzeigen</a>
                             </td>
                             <td>
-                                <span class="label label-info" tal:content="item/count" />
+                                <span class="badge badge-info" tal:content="item/count" />
                             </td>
                         </tr>
                     </tbody>

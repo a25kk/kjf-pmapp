@@ -73,12 +73,12 @@
             </div>
             <tal:block tal:define="stats view/statistics">
               <div class="tile stats">
-                <h4><span class="label label-info" tal:content="stats/channels" />
+                <h4><span class="badge badge-info" tal:content="stats/channels" />
                   Verteiler
                 </h4>
               </div>
               <div class="tile stats">
-                <h4><span class="label label-info" tal:content="stats/recipients" />
+                <h4><span class="badge badge-info" tal:content="stats/recipients" />
                   Adressen 
                 </h4>
               </div>

@@ -11,12 +11,32 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
 
+from plone.app.contentlisting.interfaces import IContentListing
 from plone.uuid.interfaces import IUUID
 
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
+from pressapp.presscontent.interfaces import IPressContent
 
 from pressapp.presscontent import MessageFactory as _
+
+
+class ArchiveView(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('zope2.View')
+    grok.name('press-archive')
+
+    def update(self):
+        self.has_items = len(self.press_content()) > 0
+
+    def press_content(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=IPressContent.__identifier__,
+                          review_state='published',
+                          sort_on='effective')
+        resultlist = IContentListing(results)
+        return resultlist
 
 
 class PressItemView(grok.View):
@@ -150,7 +170,7 @@ class PressItemView(grok.View):
     def getImageTag(self, item):
         obj = item
         scales = getMultiAdapter((obj, self.request), name='images')
-        scale = scales.scale('image', scale='preview')
+        scale = scales.scale('image', scale='thumb')
         imageTag = None
         if scale is not None:
             imageTag = scale.tag()

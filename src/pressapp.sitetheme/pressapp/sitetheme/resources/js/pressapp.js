@@ -19,6 +19,7 @@ $(document).ready(function() {
     $('#form-widgets-channel').chosen();
     $(function() {
         $('a[rel=twipsy]').tooltip();
+        $('span[rel=twipsy]').tooltip();
     });
     $(function() {
         $('a[rel=loading-indicator]').click(function() {
