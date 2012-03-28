@@ -6,7 +6,7 @@ from zope.component import getUtility
 
 from plone.directives import form
 from z3c.form import button
-from plone.namedfile.field import NamedBlobFile
+from plone.namedfile.field import NamedBlobImage
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.presscontent.pressroom import IPressRelease
@@ -14,7 +14,7 @@ from pressapp.presscontent.pressroom import IPressRelease
 from pressapp.presscontent import MessageFactory as _
 
 
-class IFileAttachmentAdd(form.Schema):
+class IImageAttachmentAdd(form.Schema):
 
     title = schema.TextLine(
         title=_(u"Title"),
@@ -25,31 +25,32 @@ class IFileAttachmentAdd(form.Schema):
         description=_(u"A short description used as caption"),
         required=False,
     )
-    attachment = NamedBlobFile(
-        title=_(u"File Attachment"),
+    attachment = NamedBlobImage(
+        title=_(u"Image Attachment"),
         description=_(u"Upload a file attachment for this press release. The "
-                      u"file will be available for download from the e-mail"),
+                      u"file will be available for download from the e-mail "
+                      u"and provided as a thumbnail preview"),
         required=True,
     )
 
 
-class FileAttachmentAddForm(form.SchemaEditForm):
+class ImageAttachmentAddForm(form.SchemaEditForm):
     grok.context(IPressRelease)
     grok.require('cmf.AddPortalContent')
-    grok.name('add-file-attachment')
+    grok.name('add-image-attachment')
 
-    schema = IFileAttachmentAdd
+    schema = IImageAttachmentAdd
     ignoreContext = True
     css_class = 'overlayForm'
 
     label = _(u"Add new file attachment")
 
     def updateActions(self):
-        super(FileAttachmentAddForm, self).updateActions()
+        super(ImageAttachmentAddForm, self).updateActions()
         self.actions['save'].addClass("btn")
         self.actions['cancel'].addClass("btn")
 
-    @button.buttonAndHandler(_(u"Create file attachment"), name="save")
+    @button.buttonAndHandler(_(u"Create image attachment"), name="save")
     def handleApply(self, action):
         data, errors = self.extractData()
         if errors:
@@ -61,7 +62,7 @@ class FileAttachmentAddForm(form.SchemaEditForm):
     def handleCancel(self, action):
         context = aq_inner(self.context)
         IStatusMessage(self.request).addStatusMessage(
-            _(u"The creation of a new attachment has been cancelled."),
+            _(u"The creation of a new image attachment has been cancelled."),
             type='info')
         return self.request.response.redirect(context.absolute_url())
 
@@ -70,15 +71,15 @@ class FileAttachmentAddForm(form.SchemaEditForm):
         assert IPressRelease.providedBy(context)
         new_title = data['title']
         new_id = getUtility(IIDNormalizer).normalize(new_title)
-        item = context.invokeFactory(type_name='File',
+        item = context.invokeFactory(type_name='Image',
                                      id=new_id,
                                      title=new_title)
         item_obj = context[item]
         attachment = data['attachment'].data
-        item_obj.setFile(attachment)
+        item_obj.setImage(attachment)
         modified(item_obj)
         item_obj.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
-            _(u"A new attachment was successfully added"),
+            _(u"A new image attachment was successfully been added"),
             type='info')
         return self.request.response.redirect(context.absolute_url() + '/view')

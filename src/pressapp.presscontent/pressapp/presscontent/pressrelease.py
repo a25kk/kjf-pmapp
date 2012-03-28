@@ -10,6 +10,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedBlobImage
 from Products.CMFCore.utils import getToolByName
 
+from plone.app.contentlisting.interfaces import IContentListing
 from plone.uuid.interfaces import IUUID
 from plone.app.layout.globals.interfaces import IViewView
 from plone.app.layout.viewlets.interfaces import IAboveContent
@@ -71,6 +72,9 @@ class View(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
+    def update(self):
+        self.has_files = len(self.contained_attachments()) > 0
+
     def has_channel_info(self):
         context = aq_inner(self.context)
         channel = getattr(context, 'channel', None)
@@ -90,6 +94,15 @@ class View(grok.View):
         uuid = IUUID(context, None)
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
+
+    def contained_attachments(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        items = catalog(portal_type=['File', 'Image'],
+                        path=dict(query='/'.join(context.getPhysicalPath()),
+                                  depth=1))
+        results = IContentListing(items)
+        return results
 
 
 class Preview(grok.View):
