@@ -1,0 +1,30 @@
+<tal:block tal:define="items view/getAttachments">
+    <table stlye="width:100%">
+    <tal:items tal:repeat="item items">
+        <tr tal:define="type item/portal_type">
+          <td><a href="" tal:attributes="href item/getURL">
+            <strong tal:content="item/Title" /></a>
+          </td>
+          <td tal:define="item_obj item/getObject">
+            <img tal:condition="python:type == 'Image'"
+                class="thumbnail" 
+                tal:define="scale item_obj/@@images"
+                tal:replace="structure python: scale.scale('image',
+                             scale='tile').tag()" />
+          </td>
+          <td>
+          <tal:file tal:condition="python:type == 'File'">
+            <a href=""
+                tal:attributes="href string:${item/getURL}/at_download/file">
+                Download</a>
+          </tal:file>
+          <tal:image tal:condition="python:type == 'Image'">
+            <a href=""
+                tal:attributes="href string:${item/getURL}/at_download/image">
+                Download</a>
+          </tal:image>
+          </td>
+        </tr>
+    </tal:items>
+    </table>
+</tal:block>

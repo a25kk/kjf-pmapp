@@ -8,6 +8,7 @@ from plone.app.uuid.utils import uuidToObject
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
 
@@ -102,6 +103,7 @@ class PressItemView(grok.View):
                 data['file_name'] = filename
                 data['image_tag'] = self.getImageTag(context)
                 data['file_caption'] = context.caption
+            data['attachments'] = self.getAttachments()
         if IPressInvitation.providedBy(context):
             if context.schedule:
                 data['schedule'] = context.schedule.output
@@ -176,6 +178,16 @@ class PressItemView(grok.View):
             imageTag = scale.tag()
         return imageTag
 
+    def getAttachments(self):
+        context = aq_inner(self.context)
+        target_uid = self.request.get('uid')
+        ptool = getToolByName(context, 'portal_url')
+        portal = ptool.getPortalObject()
+        attachments = portal.unrestrictedTraverse(
+            '@@pressitem-attachments')(uid=target_uid)
+        import pdb; pdb.set_trace( )
+        return attachments
+
     def safe_portal_encoding(self, string):
         portal = getSite()
         props = portal.portal_properties.site_properties
@@ -192,3 +204,39 @@ class PressItemView(grok.View):
         translation_service = getToolByName(self.context,
                                             'translation_service')
         return translation_service.ulocalized_time
+
+
+class AttachmentsView(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('zope2.View')
+    grok.name('pressitem-attachments')
+
+    def __call__(self, uid=None):
+        self.presscontent = self.resolvePressItem()
+        attachments = self.getAttachments()
+        template = ViewPageTemplateFile('attachments.pt')(self, **attachments)
+        return template
+
+    def update(self):
+        self.target_uid = self.request.get('uid', None)
+        self.presscontent = self.resolvePressItem()
+
+    def getAttachments(self):
+        context = aq_inner(self.context)
+        obj = self.presscontent
+        catalog = getToolByName(context, 'portal_catalog')
+        items = catalog(portal_type=['File', 'Image'],
+                        path=dict(query='/'.join(obj.getPhysicalPath()),
+                                  depth=1))
+        results = IContentListing(items)
+        return results
+
+    def resolvePressItem(self):
+        uid = self.request.get('uid', '')
+        if uid:
+            obj = uuidToObject(uid)
+            if not obj:
+                IStatusMessage(self.request).addStatusMessage(
+                    _(u"The requested item was not found"), type='error')
+            else:
+                return obj
