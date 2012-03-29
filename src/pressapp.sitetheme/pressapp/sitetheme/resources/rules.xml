@@ -58,7 +58,7 @@
         -->
         
         <!-- Logo (link target) -->
-        <copy attributes="href" css:content='#portal-logo' css:theme="#logo" />
+        <copy attributes="href" css:content='#portal-logo' css:theme="#main-logo" />
         
         <replace css:content-children="#content" css:theme-children="#frontpage-content"
             css:if-content="body.portaltype-plone-site" />
