@@ -9,6 +9,8 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+from Products.ATContentTypes.interface.image import IImageContent
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
 
@@ -172,7 +174,7 @@ class PressItemView(grok.View):
     def getImageTag(self, item):
         obj = item
         scales = getMultiAdapter((obj, self.request), name='images')
-        scale = scales.scale('image', scale='thumb')
+        scale = scales.scale('image', scale='mini')
         imageTag = None
         if scale is not None:
             imageTag = scale.tag()
@@ -185,7 +187,6 @@ class PressItemView(grok.View):
         portal = ptool.getPortalObject()
         attachments = portal.unrestrictedTraverse(
             '@@pressitem-attachments')(uid=target_uid)
-        import pdb; pdb.set_trace( )
         return attachments
 
     def safe_portal_encoding(self, string):
@@ -214,12 +215,33 @@ class AttachmentsView(grok.View):
     def __call__(self, uid=None):
         self.presscontent = self.resolvePressItem()
         attachments = self.getAttachments()
-        template = ViewPageTemplateFile('attachments.pt')(self, **attachments)
+        options = {'items': list()}
+        for item in attachments:
+            item_obj = item.getObject()
+            info = {}
+            info['title'] = item.Title
+            info['url'] = item.getURL()
+            if IImageContent.providedBy(item_obj):
+                image_tag = self.getImageTag(item_obj)
+                info['image'] = image_tag
+            else:
+                info['image'] = ''
+            options['items'].append(info)
+        template = ViewPageTemplateFile('attachments.pt')(self, **options)
         return template
 
     def update(self):
         self.target_uid = self.request.get('uid', None)
         self.presscontent = self.resolvePressItem()
+
+    def getImageTag(self, item):
+        obj = item
+        scales = getMultiAdapter((obj, self.request), name='images')
+        scale = scales.scale('image', scale='icon')
+        imageTag = None
+        if scale is not None:
+            imageTag = scale.tag()
+        return imageTag
 
     def getAttachments(self):
         context = aq_inner(self.context)
@@ -228,8 +250,8 @@ class AttachmentsView(grok.View):
         items = catalog(portal_type=['File', 'Image'],
                         path=dict(query='/'.join(obj.getPhysicalPath()),
                                   depth=1))
-        results = IContentListing(items)
-        return results
+        #results = IContentListing(items)
+        return items
 
     def resolvePressItem(self):
         uid = self.request.get('uid', '')
