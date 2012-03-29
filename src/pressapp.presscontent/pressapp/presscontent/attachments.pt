@@ -1,24 +1,26 @@
 <tal:block tal:define="items python:options['items']">
     <table style="width:100%">
     <tal:items tal:repeat="item items">
-        <tr tal:define="type string:File">
-          <td>
-            <img tal:replace="structure item/image" />
-          </td>
+        <tr tal:define="type item/type">
           <td>
             <strong tal:content="item/title" />
-          </td>
-          <td>
-          <tal:file tal:condition="python:type == 'File'">
+            (
+            <tal:file tal:condition="python:type == 'File'">
             <a href=""
                 tal:attributes="href string:${item/url}/at_download/file">
                 Download</a>
-          </tal:file>
-          <tal:image tal:condition="python:type == 'Image'">
-            <a href=""
-                tal:attributes="href string:${item/getURL}/at_download/image">
-                Download</a>
-          </tal:image>
+            </tal:file>
+            <tal:image tal:condition="python:type == 'Image'">
+              <a href=""
+                  tal:attributes="href string:${item/url}/at_download/image">
+                  Download</a>
+            </tal:image>)
+          </td>
+          <td>
+          
+          </td>
+          <td>
+            <img tal:replace="structure item/image" />
           </td>
         </tr>
     </tal:items>

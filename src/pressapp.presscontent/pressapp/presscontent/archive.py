@@ -214,13 +214,21 @@ class AttachmentsView(grok.View):
 
     def __call__(self, uid=None):
         self.presscontent = self.resolvePressItem()
-        attachments = self.getAttachments()
         options = {'items': list()}
+        pressitem = self.presscontent
+        iteminfo = {}
+        iteminfo['title'] = pressitem.Title()
+        iteminfo['url'] = pressitem.absolute_url()
+        iteminfo['type'] = 'Image'
+        iteminfo['image'] = self.getImageTag(pressitem)
+        options['items'].append(iteminfo)
+        attachments = self.getAttachments()
         for item in attachments:
             item_obj = item.getObject()
             info = {}
             info['title'] = item.Title
             info['url'] = item.getURL()
+            info['type'] = item.portal_type
             if IImageContent.providedBy(item_obj):
                 image_tag = self.getImageTag(item_obj)
                 info['image'] = image_tag
