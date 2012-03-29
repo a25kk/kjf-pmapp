@@ -3,9 +3,8 @@
     <tal:items tal:repeat="item items">
         <tr tal:define="type item/type">
           <td>
-            <strong tal:content="item/title" />
-            (
-            <tal:file tal:condition="python:type == 'File'">
+            <span tal:content="item/title" />
+            (<tal:file tal:condition="python:type == 'File'">
             <a href=""
                 tal:attributes="href string:${item/url}/at_download/file">
                 Download</a>
@@ -15,9 +14,6 @@
                   tal:attributes="href string:${item/url}/at_download/image">
                   Download</a>
             </tal:image>)
-          </td>
-          <td>
-          
           </td>
           <td>
             <img tal:replace="structure item/image" />
