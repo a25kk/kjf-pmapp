@@ -297,6 +297,15 @@ class Dispatcher(grok.View):
             imageTag = scale.tag()
         return imageTag
 
+    def getAttachments(self):
+        context = aq_inner(self.context)
+        target_uid = self.request.get('uid')
+        ptool = getToolByName(context, 'portal_url')
+        portal = ptool.getPortalObject()
+        attachments = portal.unrestrictedTraverse(
+            '@@pressitem-attachments')(uid=target_uid)
+        return attachments
+
     def safe_portal_encoding(self, string):
         portal = getSite()
         props = portal.portal_properties.site_properties
