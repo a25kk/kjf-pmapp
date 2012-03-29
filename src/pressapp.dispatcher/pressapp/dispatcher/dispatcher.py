@@ -197,6 +197,7 @@ class Dispatcher(grok.View):
                 data['file_name'] = filename
                 data['image_tag'] = self.getImageTag(context)
                 data['file_caption'] = context.caption
+            data['attachments'] = self.getAttachments()
         if IPressInvitation.providedBy(context):
             if context.schedule:
                 data['schedule'] = context.schedule.output
