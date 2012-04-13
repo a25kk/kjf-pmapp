@@ -186,6 +186,7 @@ class Dispatcher(grok.View):
         data['location'] = context.location
         data['text'] = context.text.output
         data['url'] = self._construct_webview_link()
+        data['pdf'] = self.pdf_download_link(context)
         data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
             data['kicker'] = context.kicker
@@ -279,6 +280,11 @@ class Dispatcher(grok.View):
         uuid = IUUID(context, None)
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
+
+    def pdf_download_link(self, obj):
+        obj_url = obj.absolute_url()
+        link = obj_url + '/@@asPlainPDF?converter=pdf-pisa'
+        return link
 
     def memberdata(self):
         context = aq_inner(self.context)
