@@ -14,10 +14,6 @@
             tal:replace="python:toLocalizedTime(date)" />
     </div>
     <div>
-        <!--<div class="image-box" tal:condition="nocall: context/image | nothing">
-            <img class="teaser-image" tal:replace="structure context/images/image" />
-            <div class="image-caption" tal:content="context/caption | nothing" />
-        </div>-->
         <div tal:define="picture nocall:context/image"
              tal:condition="nocall:picture"
              cllass="image-box">
