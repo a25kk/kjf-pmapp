@@ -1,0 +1,124 @@
+/* Define the 'c1' counter on a global element in order 
+ * to avoid scoping issues with H1 elements located inside 
+ * the inner DIVs of each chapter
+ */
+
+body {
+    counter-reset: c1 c2 c3 c4 c5 c6 c7 c8;
+}
+
+h1.title {
+    counter-increment: c1;
+    counter-reset: c2;
+}
+
+h2 {
+    counter-increment: c2;
+    counter-reset: c3;
+}
+
+h3 {
+    counter-increment: c3;
+    counter-reset: c4;
+}
+
+h4 {
+    counter-increment: c4;
+    counter-reset: c5;
+}
+
+h5 {
+    counter-increment: c5;
+    counter-reset: c6;
+}
+
+h6 {
+    counter-increment: c6;
+    counter-reset: c7;
+}
+
+h7 {
+    counter-increment: c7;
+    counter-reset: c8;
+}
+
+h8 {
+    counter-increment: c8;
+    counter-reset: c9;
+}
+
+
+/* 
+ * PDF Bookmarks
+ */
+h1.title {
+    prince-bookmark-label: counter(c1) ' ' content();
+    prince-bookmark-level: 1;
+}
+
+h1.title::before {
+    content: counter(c1) ' '; 
+}
+
+h2 {
+    prince-bookmark-label: counter(c1) '.' counter(c2) ' ' content();
+    prince-bookmark-level: 2;
+}
+
+h2::before {
+    content: counter(c1) '.' counter(c2) ' ';
+}
+
+h3 {
+    prince-bookmark-label: counter(c1) '.' counter(c2) '.' counter(c3) ' ' content();
+    prince-bookmark-level: 3;
+}
+
+h3::before {
+    content: counter(c1) '.' counter(c2) '.' counter(c3) ' ';
+}
+
+h4 {
+    prince-bookmark-label: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) ' '  content();
+    prince-bookmark-level: 4;
+}
+
+h4::before {
+    content: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) ' ';
+}
+
+h5 {
+    prince-bookmark-label: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) ' '  content();
+    prince-bookmark-level: 5;
+}
+
+h5::before {
+    content: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) ' ';
+}
+
+h6 {
+    prince-bookmark-label: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) '.' counter(c6) ' '  content();
+    prince-bookmark-level: 6;
+}
+
+h6::before {
+    content: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) '.' counter(c6) ' ';
+}
+
+h7 {
+    prince-bookmark-label: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) '.' counter(c6) '.' counter(c7) ' '  content();
+    prince-bookmark-level: 7;
+}
+
+h7::before {
+    content: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) '.' counter(c6) '.' counter(c7) ' ';
+}
+
+h8 {
+    prince-bookmark-label: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) '.' counter(c6) '.' counter(c7) '.' counter(c8) ' '  content();
+    prince-bookmark-level: 8;
+}
+
+h8::before {
+    content: counter(c1) '.' counter(c2) '.' counter(c3) '.' counter(c4) '.' counter(c5) '.' counter(c6) '.' counter(c7) '.' counter(c8) ' ';
+}
