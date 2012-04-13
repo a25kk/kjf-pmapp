@@ -1,0 +1,69 @@
+<div class="type-pressrelease document-body"
+    tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                data view/additional_data">
+    <h6 class="kicker bookmark-kicker"
+        tal:condition="context/kicker"
+        tal:content="context/kicker" />    
+    <h1 class="title bookmark-title" tal:content="context/Title" />
+    <h2 class="subtitle bookmark-subtitle"
+        tal:condition="context/subtitle" tal:content="context/subtitle" />
+    <div class="description" tal:content="context/Description" />
+    <div class="description">
+        <span tal:replace="data/location" />
+        <span tal:define="date data/date"
+            tal:replace="python:toLocalizedTime(date)" />
+    </div>
+    <div>
+        <!--<div class="image-box" tal:condition="nocall: context/image | nothing">
+            <img class="teaser-image" tal:replace="structure context/images/image" />
+            <div class="image-caption" tal:content="context/caption | nothing" />
+        </div>-->
+        <div tal:define="picture nocall:context/image"
+             tal:condition="nocall:picture"
+             cllass="image-box">
+            <img tal:attributes="src string:${context/absolute_url}/@@download/image/${picture/filename};
+                                 height picture/_height | nothing;
+                                 width picture/_width | nothing;"
+                class="teaser-image"
+                />
+        </div>
+
+        <div class="body" tal:content="structure context/text/output" />
+
+        <div>
+        Mit freundlichen Gr&uuml;&szlig;en<br />
+        <br />
+        Winfried Karg, Referent f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit
+        </div>
+        <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF)</h4>
+        <div>Die Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF) wurde 1911 gegr&uuml;ndet und feiert in diesem Jahr ihr 100j&auml;hriges Bestehen. Sie ist ein Gesundheits- und Sozialdienstleister mit rund 80 Einrichtungen und Diensten im Gebiet zwischen Lindau, Neu-Ulm, N&ouml;rdlingen, Aichach und Murnau. Dazu geh&ouml;ren unter anderem Angebote der Medizin mit mehreren Kliniken, der Berufsbildung f&uuml;r behinderte und nicht behinderte Jugendliche und Erwachsene mit Berufsbildungswerken und Vermittlungsdiensten, der Kinder- und Jugendhilfe mit Wohngruppen, Tagesstätten, Beratungsstellen und mobilen Diensten sowie mehrere Schulen.<br />
+        Die rund 3.100 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, Jugendlichen und Familien bei Schwierigkeiten und Fragen. Vorstandsvorsitzender der KJF ist Pr&auml;lat G&uuml;nter Grimme, Vorsitzender des Aufsichtsrates ist Weihbischof Josef Gr&uuml;nwald.</div>
+        <div>Weitere Informationen zu
+            <span tal:replace="data/org" />
+            finden Sie unter
+            <span tal:replace="data/link" /></div>
+        <br />
+        <hr />
+       <h4>Pressematerial Download:</h4>
+        <div>Die Bilder zu dieser Pressemitteilung finden Sie auch auf <a class="external link" href="http://www.kjf-augsburg.de/aktuell/presse/">http://www.KJF-Augsburg.de/aktuell/presse/</a></div>
+        <div>Abdruck honorarfrei. Bilder, die mit dieser Pressemitteilung bereitgestellt werden, d&uuml;rfen aus rechtlichen Gr&uuml;nden nur im Zusammenhang mit der hier geschilderten T&auml;tigkeit der Katholischen Jugendf&uuml;rsorge der Di&ouml;zese Augsburg ver&ouml;ffentlicht werden.<br /> 
+        Belegexemplar erbeten an:<br /> 
+        Katholische Jugendf&uuml;rsorge, Pressestelle,<br /> 
+        Postfach 10 20 02, 86010 Augsburg</div>
+        <hr />
+        <div>
+        Referat f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit | Telefon (0821) 3100-191 oder 160 53 75 201 | Fax (0821) 3100-178&nbsp;<br />
+        <a href="http://www.kjf-augsburg.de">www.kjf-augsburg.de</a> | <a href="mailto:presse@kjf-augsburg.de">presse@kjf-augsburg.de</a>&nbsp;
+        </div>
+        <hr />
+        <div>
+        <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V.</h4>
+        Vorsitzender des Vorstands: Domvikar Armin Z&uuml;rn
+        <br />
+        Vositzender des Aufsichtsrates: Weihbischof em. Josef Gr&uuml;nwald
+        <br />
+        Sitz: 86152 Augsburg
+            <br />
+        Amtsgericht Augsburg VR.-Nr.: 699</div>
+    </div>
+</div>
