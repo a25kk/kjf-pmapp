@@ -28,7 +28,9 @@
              tal:content="structure options/coverfront"
              id="cover-front"
         />
-
+        
+        <img src="http://pm.kreativkombinat.de/static-resources/banner-pr.jpg" />
+        
         <div id="main-content" tal:content="structure options/body" />
 
         <div tal:condition="options/coverback | nothing"
