@@ -94,6 +94,7 @@ class PressItemView(grok.View):
         data['location'] = context.location
         data['text'] = context.text.output
         data['url'] = self._construct_webview_link(context)
+        data['pdf'] = self.pdf_download_link(context)
         data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
             data['kicker'] = getattr(context, 'kicker', '')
@@ -161,6 +162,11 @@ class PressItemView(grok.View):
         uuid = IUUID(obj, None)
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
+
+    def pdf_download_link(self, obj):
+        obj_url = obj.absolute_url()
+        link = obj_url + '/@@asPlainPDF?converter=pdf-pisa'
+        return link
 
     def memberdata(self):
         context = aq_inner(self.context)
