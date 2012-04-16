@@ -82,14 +82,14 @@ class ImageAttachmentAddForm(form.SchemaEditForm):
         context = aq_inner(self.context)
         parent = aq_parent(context)
         assert IPressRelease.providedBy(context)
+        assert IATBlobImage.providedBy(context)
+        item_obj = context
         new_title = data['title']
-        new_id = getUtility(IIDNormalizer).normalize(new_title)
-        item = context.invokeFactory(type_name='Image',
-                                     id=new_id,
-                                     title=new_title)
-        item_obj = context[item]
+        new_desc = data['description']
         attachment = data['attachment'].data
         item_obj.setImage(attachment)
+        item_obj.setTitle(new_title)
+        item_obj.setDescription(new_desc)
         modified(item_obj)
         item_obj.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
