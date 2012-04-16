@@ -2,17 +2,13 @@ from five import grok
 from Acquisition import aq_inner, aq_parent
 from zope import schema
 from zope.lifecycleevent import modified
-from zope.component import getUtility
-
 from plone.directives import form
 from z3c.form import button
 from plone.namedfile.field import NamedBlobImage
 from Products.CMFPlone.utils import safe_unicode
 
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.app.blob.interfaces import IATBlobImage
-from pressapp.presscontent.pressroom import IPressRelease
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -81,7 +77,6 @@ class ImageAttachmentAddForm(form.SchemaEditForm):
     def applyChanges(self, data):
         context = aq_inner(self.context)
         parent = aq_parent(context)
-        assert IPressRelease.providedBy(context)
         assert IATBlobImage.providedBy(context)
         item_obj = context
         new_title = data['title']
