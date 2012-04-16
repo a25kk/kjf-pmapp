@@ -13,7 +13,7 @@
     <div id="archive-view" class="box">
     <div class="page-header">
         <h1>Archiv
-            <small>Liste aller Pressemitteilungen und Presseeinladungen</small>
+            <small>Liste aller Pressemitteilungen</small>
         </h1>
     </div>
     <section id="archive-listing" tal:condition="view/has_items">
