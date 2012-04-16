@@ -66,7 +66,7 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
                       u"in email clients that support this feature."),
         required=False,
     )
-    artchive = schema.Bool(
+    archive = schema.Bool(
         title=_(u"Visible in Archive?"),
         description=_(u"Mark this press release as visible in the archive."),
         required=False,
