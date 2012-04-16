@@ -165,7 +165,8 @@ class PressItemView(grok.View):
 
     def pdf_download_link(self, obj):
         obj_url = obj.absolute_url()
-        link = obj_url + '/@@asPlainPDF?converter=pdf-pisa'
+        link = (obj_url + '/@@asPlainPDF?converter=pdf-pisa'
+            + '&resource=pressapp_resource&template=pdf_template_standalone')
         return link
 
     def memberdata(self):
