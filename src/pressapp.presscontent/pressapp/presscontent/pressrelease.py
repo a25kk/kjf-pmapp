@@ -3,6 +3,7 @@ from five import grok
 from plone.directives import form
 
 from zope import schema
+from zope.component import getMultiAdapter
 
 from zope.app.component.hooks import getSite
 from plone.app.textfield import RichText
@@ -109,6 +110,33 @@ class Preview(grok.View):
     grok.context(IPressRelease)
     grok.require('zope2.View')
     grok.name('pressrelease-preview')
+
+
+class AsHtmlView(grok.View):
+    grok.context(IPressRelease)
+    grok.require('zope2.View')
+    grok.name('asHTML')
+
+    def additional_data(self):
+        context = aq_inner(self.context)
+        mtool = getToolByName(context, 'portal_membership')
+        member = mtool.getMemberById(context.Creator())
+        data = {}
+        data['location'] = context.location
+        data['img'] = self.getImageTag(context)
+        data['date'] = context.Date()
+        data['org'] = member.getProperty('organization', '')
+        data['link'] = member.getProperty('home_page', '')
+        return data
+
+    def getImageTag(self, item):
+        obj = item
+        scales = getMultiAdapter((obj, self.request), name='images')
+        scale = scales.scale('image', scale='mini')
+        imageTag = None
+        if scale is not None:
+            imageTag = scale.tag()
+        return imageTag
 
 
 class PressReleaseActions(grok.Viewlet):
