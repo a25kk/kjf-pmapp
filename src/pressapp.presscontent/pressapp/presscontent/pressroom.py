@@ -95,7 +95,6 @@ class DashboardStats(grok.View):
     grok.name('dashboard-statistics')
 
     def update(self):
-        context = aq_inner(self.context)
         self.has_content = len(self.published_presscontent()) > 0
 
     def published_presscontent(self):

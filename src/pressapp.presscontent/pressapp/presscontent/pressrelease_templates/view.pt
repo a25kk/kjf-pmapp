@@ -91,7 +91,8 @@
           <tbody>
             <tr tal:define="filename context/image/filename;">
               <td>
-                  <strong tal:content="filename" /></td>
+                  <strong tal:content="filename" />
+              </td>
               <td>&nbsp;</td>
               <td>
                 <a href=""
@@ -115,20 +116,30 @@
                                      scale='tile').tag()" />
                   </td>
                   <td>
-                  <tal:file tal:condition="python:type == 'File'">
+                  <div class="btn-group" tal:condition="python:type == 'File'">
                     <a href=""
                         class="btn btn-small"
                         tal:attributes="href string:${item/getURL}/at_download/file">
                         <i class="icon-download" />
                         Download</a>
-                  </tal:file>
-                  <tal:image tal:condition="python:type == 'Image'">
+                    <a href=""
+                        class="btn btn-small"
+                        tal:attributes="href string:${item/getURL}/@@edit-file-attachment">
+                        <i class="icon-edit" />
+                        Bearbeiten</a>
+                  </div>
+                  <div class="btn-group" tal:condition="python:type == 'Image'">
                     <a href=""
                         class="btn btn-small"
                         tal:attributes="href string:${item/getURL}/at_download/image">
                         <i class="icon-download" />
                         Download</a>
-                  </tal:image>
+                    <a href=""
+                        class="btn btn-small"
+                        tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
+                        <i class="icon-edit" />
+                        Bearbeiten</a>
+                  </div>
                   </td>
                 </tr>
               </tal:items>
@@ -166,6 +177,16 @@
       <div class="well">
       <ul class="nav nav-list">
           <li class="nav-header">Pressemitteilung</li>
+          <li>
+            <tal:archive tal:define="visible context/archive">
+              <span class="label label-success"
+                tal:condition="python:visible == True">
+                Im Archiv angezeigt</span>
+              <span class="label label-important"
+                tal:condition="python:visible == False">
+                Nicht im Archiv angezeigt</span>
+             </tal:archive>
+          </li>
           <li>Zuletzt ver&auml;ndert:
             <span tal:replace="python:toLocalizedTime(modified)" />,
             <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
@@ -183,8 +204,8 @@
           </li>
           <li class="nav-header">Zugewiesene Verteiler</li>
            <li tal:condition="view/has_channel_info" 
-               tal:repeat="channel context/channel">
-               <span tal:replace="channel" /></li>
+               tal:repeat="channel view/channel_names">
+               <span tal:replace="channel/channelname" /></li>
            <li><a href=""
                     tal:attributes="href string:${context/absolute_url}/@@select-channel">
                     <i class="icon-edit" />

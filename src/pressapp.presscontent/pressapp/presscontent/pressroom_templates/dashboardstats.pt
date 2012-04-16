@@ -17,7 +17,8 @@
         </div>
 
       <div class="container-fluid"
-          tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+          tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                      Batch python:modules['Products.CMFPlone'].Batch;
                       b_size python:25;b_start python:0;b_start request/b_start | b_start;">
           <div class="box">
             <table class="table table-striped"
@@ -27,31 +28,42 @@
                         <th>#</th>
                         <th>Typ</th>
                         <th>Titel</th>
-                        <th>Termin</th>
+                        <th>Erstellt</th>
+                        <th>Letzte &Auml;nderung</th>
+                        <th>Versand</th>
                         <th>Aktionen</th>
                     </tr>
                 </thead>
                 <tbody tal:define="items view/published_presscontent;
                                    batch python:Batch(items, b_size, int(b_start), orphan=1)">
-                  <tal:block tal:repeat="item items">
-                    <tr>
+                  <tal:block tal:repeat="item batch">
+                    <tr tal:define="type item/portal_type;
+                                    created item/created;
+                                    modified item/modified;
+                                    effective item/effective">
                         <td>1.</td>
-                        <td><span class="label info">Neu</span></td>
-                        <td><a href="#">PressRelease</a></td>
-                        <td>Lorem ipsum dolor sit amet</td>
-                        <td>20.09.2011</td>
                         <td>
-                            <div class="btn-group">
-                                <a class="btn btn-small">
-                                    <i class="icon-edit" />
-                                    Bearbeiten</a>
-                                <a class="btn btn-small">
-                                    <i class="icon-eye-open" />
-                                    Anzeigen</a>
-                                <a class="btn btn-small">
-                                    <i class="icon-share-alt" />
-                                    Senden</a>
-                             </div>
+                          <span tal:condition="python:type=='pressapp.presscontent.pressrelease'"
+                            class="badge badge-info">
+                            PM</span>
+                          <span tal:condition="python:type=='pressapp.presscontent.pressinvitation'"
+                            class="badge badge-info">
+                            PE</span>
+                        </td>
+                        <td><a href="#" tal:attributes="href item/getURL">
+                            <i class="icon-file" tal:condition="python:type=='pressapp.presscontent.pressrelease'" />
+                            <i class="icon-calendar" tal:condition="python:type=='pressapp.presscontent.pressinvitation'" />
+                              <span tal:content="item/Title">PressRelease</span>
+                            </a>
+                        </td>
+                        <td tal:content="python:toLocalizedTime(created)">Lorem ipsum dolor sit amet</td>
+                        <td tal:content="python:toLocalizedTime(modified)">20.09.2011</td>
+                        <td tal:content="python:toLocalizedTime(effective)">20.09.2011</td>
+                        <td>
+                            <a class="btn btn-small"
+                              tal:attributes="href item/getURL">
+                                <i class="icon-eye-open" />
+                                Anzeigen</a>
                          </td>
                     </tr>
                     <div metal:use-macro="context/batch_macros/macros/navigation" />
