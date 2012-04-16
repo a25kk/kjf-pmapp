@@ -19,7 +19,6 @@ from plone.uuid.interfaces import IUUID
 
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
-from pressapp.presscontent.interfaces import IPressContent
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -35,7 +34,7 @@ class ArchiveView(grok.View):
     def press_content(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        results = catalog(object_provides=IPressContent.__identifier__,
+        results = catalog(object_provides=IPressRelease.__identifier__,
                           review_state='published',
                           sort_on='effective')
         resultlist = IContentListing(results)

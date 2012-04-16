@@ -9,6 +9,7 @@ from zope.app.component.hooks import getSite
 from plone.app.textfield import RichText
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedBlobImage
+from plone.indexer import indexer
 from Products.CMFCore.utils import getToolByName
 
 from plone.app.contentlisting.interfaces import IContentListing
@@ -65,6 +66,19 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
                       u"in email clients that support this feature."),
         required=False,
     )
+    artchive = schema.Bool(
+        title=_(u"Visible in Archive?"),
+        description=_(u"Mark this press release as visible in the archive."),
+        required=False,
+        default=True,
+    )
+
+
+@grok.adapter(IPressRelease, name="archive")
+@indexer(IPressRelease)
+def archiveIndexer(context):
+    """ Catalog indexer registered as an adapter """
+    return context.archive
 
 
 class View(grok.View):
