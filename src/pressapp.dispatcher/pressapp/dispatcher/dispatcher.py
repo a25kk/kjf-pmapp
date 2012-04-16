@@ -306,7 +306,8 @@ class Dispatcher(grok.View):
 
     def getAttachments(self):
         context = aq_inner(self.context)
-        target_uid = self.request.get('uid')
+        target_uid = IUUID(context, None)
+        #target_string = '@@pressitem-attachments?uid=%s' % (target_uid)
         ptool = getToolByName(context, 'portal_url')
         portal = ptool.getPortalObject()
         attachments = portal.unrestrictedTraverse(

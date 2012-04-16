@@ -218,8 +218,11 @@ class AttachmentsView(grok.View):
     grok.require('zope2.View')
     grok.name('pressitem-attachments')
 
-    def __call__(self, uid=None):
-        self.presscontent = self.resolvePressItem()
+    def __call__(self, *args, **kw):
+        params = kw.copy()
+        if params.get('uid'):
+            self.target_uid = params.get('uid', None)
+        self.presscontent = self.resolvePressItem(self.target_uid)
         options = {'items': list()}
         pressitem = self.presscontent
         iteminfo = {}
@@ -267,8 +270,8 @@ class AttachmentsView(grok.View):
         #results = IContentListing(items)
         return items
 
-    def resolvePressItem(self):
-        uid = self.request.get('uid', '')
+    def resolvePressItem(self, uid=None):
+        #uid = self.request.get('uid', '')
         if uid:
             obj = uuidToObject(uid)
             if not obj:
