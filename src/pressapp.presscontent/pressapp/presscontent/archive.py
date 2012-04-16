@@ -36,6 +36,7 @@ class ArchiveView(grok.View):
         catalog = getToolByName(context, 'portal_catalog')
         results = catalog(object_provides=IPressRelease.__identifier__,
                           review_state='published',
+                          archive=True,
                           sort_on='effective')
         resultlist = IContentListing(results)
         return resultlist
