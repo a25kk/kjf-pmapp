@@ -189,8 +189,14 @@ class Dispatcher(grok.View):
         data['pdf'] = self.pdf_download_link(context)
         data['date'] = self.localize(datetime.now(), longformat=False)
         if IPressRelease.providedBy(context):
-            data['kicker'] = context.kicker
-            data['subtitle'] = context.subtitle
+            if context.kicker:
+                data['kicker'] = context.kicker
+            else:
+                data['kicker'] = ''
+            if context.subtitle:
+                data['subtitle'] = context.subtitle
+            else:
+                data['subtitle'] = ''
             if context.image:
                 url = context.absolute_url()
                 filename = context.image.filename
