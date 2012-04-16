@@ -10,7 +10,8 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <section tal:define="context_url context/absolute_url">
+  <section tal:define="context_url context/absolute_url;
+                       toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       
         <div class="page-header">
             <h1>Presseeinladungen: <small tal:content="context/Title" /></h1>
@@ -34,6 +35,7 @@
                               <th>#</th>
                               <th>Presseeinladung</th>
                               <th>Status</th>
+                              <th>Zuletzt ver&auml;ndert</th>
                               <th>Aktionen</th>
                           </tr>
                       </thead>
@@ -45,6 +47,8 @@
                                     tal:attributes="href item/getURL">
                                     PR Title</a></td>
                               <td><span class="label info">Neu</span></td>
+                              <td tal:define="modified context/modified"
+                                tal:content="python:toLocalizedTime(modified)"></td>
                               <td>
                                   <div class="btn-group"
                                     tal:define="item_url item/getURL">

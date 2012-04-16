@@ -14,7 +14,8 @@
         </div>
 
       <div class="container-fluid"
-            tal:define="context_url context/absolute_url">
+            tal:define="context_url context/absolute_url;
+                        toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
           <div class="box">
                   <p class="pull-right">
                       <a class="btn btn-primary"
@@ -31,6 +32,7 @@
                               <th>#</th>
                               <th>Pressemitteilung</th>
                               <th>Status</th>
+                              <th>Zuletzt ver&auml;ndert</th>
                               <th>Aktionen</th>
                           </tr>
                       </thead>
@@ -42,6 +44,8 @@
                                     tal:attributes="href item/getURL">
                                     PR Title</a></td>
                               <td><span class="label info">Neu</span></td>
+                              <td tal:define="modified context/modified"
+                                tal:content="python:toLocalizedTime(modified)"></td>
                               <td tal:define="item_url item/getURL">
                                   <div class="btn-group">
                                     <a class="btn btn-small"
