@@ -222,7 +222,7 @@ class AttachmentsView(grok.View):
         iteminfo['type'] = 'Image'
         iteminfo['image'] = self.getImageTag(pressitem)
         options['items'].append(iteminfo)
-        attachments = self.getAttachments()
+        attachments = self.queryAttachments()
         for item in attachments:
             item_obj = item.getObject()
             info = {}
@@ -251,7 +251,7 @@ class AttachmentsView(grok.View):
             imageTag = scale.tag()
         return imageTag
 
-    def getAttachments(self):
+    def queryAttachments(self):
         context = aq_inner(self.context)
         obj = self.presscontent
         catalog = getToolByName(context, 'portal_catalog')
