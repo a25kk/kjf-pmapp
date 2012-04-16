@@ -1,3 +1,4 @@
+import datetime
 from five import grok
 from Acquisition import aq_inner
 from zope import schema
@@ -59,6 +60,16 @@ class IPressInvitationAdd(form.Schema):
     )
 
 
+@form.default_value(field=IPressInvitationAdd['start'])
+def startDefaultValue(data):
+    return datetime.datetime.today() + datetime.timedelta(7)
+
+
+@form.default_value(field=IPressInvitationAdd['end'])
+def endDefaultValue(data):
+    return datetime.datetime.today() + datetime.timedelta(10)
+
+
 class PressInvitationAddForm(form.SchemaEditForm):
     grok.context(IPressRoom)
     grok.require('cmf.AddPortalContent')
@@ -72,8 +83,8 @@ class PressInvitationAddForm(form.SchemaEditForm):
 
     def updateActions(self):
         super(PressInvitationAddForm, self).updateActions()
-        self.actions['save'].addClass("btn btn-large")
-        self.actions['cancel'].addClass("btn btn-large")
+        self.actions['save'].addClass("btn")
+        self.actions['cancel'].addClass("btn")
 
     @button.buttonAndHandler(_(u"Create press invitation"), name="save")
     def handleApply(self, action):

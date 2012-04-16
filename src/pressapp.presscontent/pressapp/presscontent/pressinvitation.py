@@ -5,6 +5,7 @@ from plone.directives import form
 
 from zope import schema
 from zope.component import getMultiAdapter
+from zope.component import queryUtility
 from zope.site.hooks import getSite
 
 from plone.app.textfield import RichText
@@ -12,6 +13,7 @@ from Products.CMFCore.utils import getToolByName
 
 from plone.uuid.interfaces import IUUID
 from plone.app.layout.viewlets.interfaces import IAboveContent
+from plone.registry.interfaces import IRegistry
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -90,6 +92,24 @@ class View(grok.View):
         if channel is not None:
             channelinfo = True
         return channelinfo
+
+    def channel_names(self):
+        context = aq_inner(self.context)
+        names = []
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
+        channels = getattr(context, 'channel', None)
+        for channel in channels:
+            info = {}
+            info['channel'] = channel
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            info['channelname'] = channelname
+            names.append(info)
+        return names
 
     def has_recipients_info(self):
         context = aq_inner(self.context)

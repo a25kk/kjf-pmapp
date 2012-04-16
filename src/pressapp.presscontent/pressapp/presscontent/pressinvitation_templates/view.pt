@@ -53,7 +53,7 @@
     <div class="row-fluid">
     <div class="span8">
         <h2>Inhalt</h2>
-    <div class="row">
+    <div class="row-fluid">
         <div class="cell position-0 width-2:3">
             <h1 class="documentFirstHeading" tal:content="context/Title" />
             
@@ -79,24 +79,26 @@
                             end_date context/end">
                 <tbody>
                     <tr>
-                        <td>Beginn:</td>
+                        <td><h6>Beginn:</h6></td>
                         <td><span tal:replace="python:toLocalizedTime(start_date)" /></td>
                     </tr>
                     <tr>
-                        <td>Ende:</td>
+                        <td><h6>Ende:</h6></td>
                         <td><span tal:replace="python:toLocalizedTime(end_date)" /></td>
                     </tr>
                     <tr>
-                        <td>Veranstaltungsort:</td>
+                        <td><h6>Veranstaltungsort:</h6></td>
                         <td><span tal:content="context/location" /></td>
                     </tr>
                 </tbody>
             </table>
             
             <p tal:define="closed context/closed">
-                <span tal:condition="python:closed == False">
+                <span tal:condition="python:closed == False"
+                  class="label label-info">
                     Diese Veranstaltung ist &ouml;ffentlich.</span>
-                <span tal:condition="python:closed == True">
+                <span tal:condition="python:closed == True"
+                  class="label label-warning">
                     Diese Veranstaltung ist nur f&uuml;r geladene G&auml;ste</span>
             </p>
             
@@ -118,16 +120,20 @@
                   <i class="icon-edit" />
                     Bearbeiten</a>
               </li>
+              <li class="nav-header">Ansicht</li>
               <li>
                 <a href=""
+                  rel="twipsy"
+                  data-placement="left"
+                  data-original-title="Diese Presseeinladung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
                   tal:attributes="href view/constructPreviewURL">
                   <i class="icon-eye-open" />
                   Browser Vorschau</a>
               </li>
               <li class="nav-header">Zugewiesene Verteiler</li>
                <li tal:condition="view/has_channel_info" 
-                   tal:repeat="channel context/channel">
-                   <span tal:replace="channel" /></li>
+                   tal:repeat="channel view/channel_names">
+                   <span tal:replace="channel/channelname" /></li>
                <li><a href=""
                         tal:attributes="href string:${context/absolute_url}/@@select-channel">
                         <i class="icon-edit" />

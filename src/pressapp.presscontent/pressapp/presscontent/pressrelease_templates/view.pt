@@ -20,6 +20,9 @@
                         recipients view/has_recipients_info;">
             <div class="btn-group">
                 <a href="" class="btn"
+                    rel="twipsy"
+                    data-placement="left"
+                    data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
                     tal:attributes="href python:context_url+'/@@select-channel'">
                     <i class="icon-list-alt" />
                     Verteiler w&auml;hlen</a>
@@ -30,6 +33,9 @@
                     <i class="icon-edit" />
                     Empf&auml;nger bereinigen</a>
                 <a href="" class="btn"
+                    rel="twipsy"
+                    data-placement="left"
+                    data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
                         tal:condition="python:has_channels == True"
                         tal:attributes="href python:context_url+'/@@recipient-list'">
                         <i class="icon-edit" />
@@ -41,10 +47,10 @@
                     <i class="icon-share" />
                     Versand planen</a>
                 <a href="" class="btn"
-                        tal:condition="python:recipients == True"
-                        tal:attributes="href python:context_url+'/@@prepare-release'">
-                        <i class="icon-share" />
-                        Versand planen</a>
+                    tal:condition="python:recipients == True"
+                    tal:attributes="href python:context_url+'/@@prepare-release'">
+                    <i class="icon-share" />
+                    Versand planen</a>
             </div>
         </div>
         <h1>Pressemitteilung</h1>
@@ -94,12 +100,17 @@
                   <strong tal:content="filename" />
               </td>
               <td>&nbsp;</td>
+              <td>&nbsp;</td>
               <td>
-                <a href=""
-                    class="btn btn-small"
-                    tal:attributes="href string:${context/absolute_url}/@@download/attachment/${filename}">
-                    <i class="icon-download" />
-                    Download</a>
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <a href=""
+                      class="btn btn-small btn-inverse"
+                      tal:attributes="href string:${context/absolute_url}/@@download/attachment/${filename}">
+                      <i class="icon-download icon-white" />
+                      Download</a>
+                  </div>
+                </div>
               </td>
             </tr>
             <tal:block tal:condition="view/has_files">
@@ -116,30 +127,54 @@
                                      scale='tile').tag()" />
                   </td>
                   <td>
-                  <div class="btn-group" tal:condition="python:type == 'File'">
-                    <a href=""
-                        class="btn btn-small"
-                        tal:attributes="href string:${item/getURL}/at_download/file">
-                        <i class="icon-download" />
-                        Download</a>
+                  <div class="btn-toolbar" tal:condition="python:type == 'File'">
+                    <div class="btn-group">
                     <a href=""
                         class="btn btn-small"
                         tal:attributes="href string:${item/getURL}/@@edit-file-attachment">
                         <i class="icon-edit" />
                         Bearbeiten</a>
-                  </div>
-                  <div class="btn-group" tal:condition="python:type == 'Image'">
                     <a href=""
-                        class="btn btn-small"
-                        tal:attributes="href string:${item/getURL}/at_download/image">
-                        <i class="icon-download" />
+                        class="btn btn-small popoverLink link-overlay"
+                        tal:attributes="href string:${item/getURL}/delete_confirmation">
+                        <i class="icon-remove-sign" />
+                        L&ouml;schen</a>
+                      </div>
+                  </div>
+                  <div class="btn-toolbar" tal:condition="python:type == 'Image'">
+                    <div class="btn-group">
+                      <a href=""
+                          class="btn btn-small"
+                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
+                          <i class="icon-edit" />
+                          Bearbeiten</a>
+                      <a href=""
+                          class="btn btn-small popoverLink link-overlay"
+                          tal:attributes="href string:${item/getURL}/delete_confirmation">
+                          <i class="icon-remove-sign" />
+                          L&ouml;schen</a>
+                      </div>
+                  </div>
+                  </td>
+                  <td>
+                    <div class="btn-toolbar" tal:condition="python:type == 'File'">
+                      <div class="btn-group">
+                    <a href=""
+                        class="btn btn-small btn-inverse"
+                        tal:attributes="href string:${item/getURL}/at_download/file">
+                        <i class="icon-download icon-white" />
                         Download</a>
-                    <a href=""
-                        class="btn btn-small"
-                        tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
-                        <i class="icon-edit" />
-                        Bearbeiten</a>
-                  </div>
+                      </div>
+                    </div>
+                    <div class="btn-toolbar" tal:condition="python:type == 'Image'">
+                      <div class="btn-group">
+                      <a href=""
+                        class="btn btn-small btn-inverse"
+                        tal:attributes="href string:${item/getURL}/at_download/image">
+                        <i class="icon-download icon-white" />
+                        Download</a>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               </tal:items>
@@ -177,16 +212,6 @@
       <div class="well">
       <ul class="nav nav-list">
           <li class="nav-header">Pressemitteilung</li>
-          <li>
-            <tal:archive tal:define="visible context/archive">
-              <span class="label label-success"
-                tal:condition="python:visible == True">
-                Im Archiv angezeigt</span>
-              <span class="label label-important"
-                tal:condition="python:visible == False">
-                Nicht im Archiv angezeigt</span>
-             </tal:archive>
-          </li>
           <li>Zuletzt ver&auml;ndert:
             <span tal:replace="python:toLocalizedTime(modified)" />,
             <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
@@ -196,8 +221,28 @@
               <i class="icon-edit" />
                 Bearbeiten</a>
           </li>
+          <li class="nav-header">Anzeige</li>
+          <li>
+            <tal:archive tal:define="visible context/archive">
+              <span class="label label-success"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Diese Pressemittelung wir im Archiv und damit auch im iFrame auf der Mutterseite angezeigt"
+                tal:condition="python:visible == True">
+                Im Archiv angezeigt</span>
+              <span class="label label-important"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Diese Pressemittelung ist als intern markiert und wird nicht im Archiv angezeigt"
+                tal:condition="python:visible == False">
+                Nicht im Archiv angezeigt</span>
+             </tal:archive>
+          </li>
           <li>
                 <a href=""
+                  rel="twipsy"
+                  data-placement="left"
+                  data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
                   tal:attributes="href view/constructPreviewURL">
                   <i class="icon-eye-open" />
                   Browser Vorschau</a>
