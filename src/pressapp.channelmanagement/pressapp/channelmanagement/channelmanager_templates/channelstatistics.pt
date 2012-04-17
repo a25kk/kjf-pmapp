@@ -41,7 +41,7 @@
                                         value="Kontakte" />
                                     <input name="channelname" id="channelname" type="hidden"
                                         class="large uneditable-input"
-                                        tal:attributes="value item/name" />
+                                        tal:attributes="value item/channel" />
                                 </form>
                                 <h5><span class="badge badge-info" tal:content="item/subscriber" />
                                     Kontakte</h5>

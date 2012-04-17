@@ -53,7 +53,7 @@ class SubscriberImportForm(form.SchemaForm):
     schema = ISubscriberImport
     ignoreContext = True
 
-    label =_(u"Address Import Form")
+    label = _(u"Address Import Form")
     description = _(u"Upload existing address information by supplying a "
                     u"csv file.")
 

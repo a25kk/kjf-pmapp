@@ -46,6 +46,8 @@ class View(grok.View):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
         results = catalog(object_provides=ISubscriber.__identifier__,
+                          path=dict(query='/'.join(context.getPhysicalPath()),
+                                    depth=1),
                           sort_on='sortable_title')
         subscribers = IContentListing(results)
         return subscribers
