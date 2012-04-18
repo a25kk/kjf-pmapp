@@ -13,7 +13,12 @@
               <a href=""
                   tal:attributes="href string:${item/url}/at_download/image">
                   Download</a>
-            </tal:image>)
+            </tal:image>
+            <tal:mainimage tal:condition="python:type == 'MainImage'">
+              <a href=""
+                  tal:attributes="href string:${item/url}">
+                  Download</a>
+            </tal:mainimage>)
           </td>
           <td>
             <img tal:replace="structure item/image" />

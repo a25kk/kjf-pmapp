@@ -23,6 +23,12 @@
                 tal:attributes="href string:${item/getURL}/at_download/image">
                 Download</a>
           </tal:image>
+          <tal:mainimage tal:condition="python:type == 'MainImage'">
+            <a href=""
+              tal:attributes="href string:${item/absolute_url}/@@download/image/${item/image/filename}">
+              Download
+            </a>
+          </tal:mainimage>
           </td>
         </tr>
     </tal:items>

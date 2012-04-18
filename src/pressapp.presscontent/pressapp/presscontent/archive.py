@@ -234,8 +234,10 @@ class AttachmentsView(grok.View):
         pressitem = self.presscontent
         iteminfo = {}
         iteminfo['title'] = pressitem.Title()
-        iteminfo['url'] = pressitem.absolute_url()
-        iteminfo['type'] = 'Image'
+        url = pressitem.absolute_url()
+        filename = pressitem.image.filename
+        iteminfo['url'] = url + '/@@download/image/' + filename
+        iteminfo['type'] = 'MainImage'
         iteminfo['image'] = self.getImageTag(pressitem)
         options['items'].append(iteminfo)
         attachments = self.queryAttachments()
