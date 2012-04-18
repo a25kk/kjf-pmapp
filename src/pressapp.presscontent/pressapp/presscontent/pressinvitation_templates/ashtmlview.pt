@@ -27,14 +27,9 @@
     </div>
 
     <br />
-        <div>
-        Mit freundlichen Gr&uuml;&szlig;en<br />
-        <br />
-        Winfried Karg, Referent f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit
-        </div>
         <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF)</h4>
-        <div>Die Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF) wurde 1911 gegr&uuml;ndet und feiert in diesem Jahr ihr 100j&auml;hriges Bestehen. Sie ist ein Gesundheits- und Sozialdienstleister mit rund 80 Einrichtungen und Diensten im Gebiet zwischen Lindau, Neu-Ulm, N&ouml;rdlingen, Aichach und Murnau. Dazu geh&ouml;ren unter anderem Angebote der Medizin mit mehreren Kliniken, der Berufsbildung f&uuml;r behinderte und nicht behinderte Jugendliche und Erwachsene mit Berufsbildungswerken und Vermittlungsdiensten, der Kinder- und Jugendhilfe mit Wohngruppen, Tagesstätten, Beratungsstellen und mobilen Diensten sowie mehrere Schulen.<br />
-        Die rund 3.100 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, Jugendlichen und Familien bei Schwierigkeiten und Fragen. Vorstandsvorsitzender der KJF ist Pr&auml;lat G&uuml;nter Grimme, Vorsitzender des Aufsichtsrates ist Weihbischof Josef Gr&uuml;nwald.</div>
+        <p>Die Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF) wurde 1911 gegr&uuml;ndet. Sie ist ein Gesundheits- und Sozialdienstleister mit rund 80 Einrichtungen und Diensten im Gebiet zwischen Lindau, Neu-Ulm, N&ouml;rdlingen, Aichach und Murnau. Dazu geh&ouml;ren unter anderem Angebote der Medizin mit mehreren Kliniken, der Berufsbildung f&uuml;r behinderte und nicht behinderte Jugendliche und Erwachsene mit Berufsbildungswerken und Vermittlungsdiensten, der Kinder- und Jugendhilfe mit Wohngruppen, Tagesstätten, Beratungsstellen und mobilen Diensten sowie mehrere Schulen.<br />
+        Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, Jugendlichen und Familien bei Schwierigkeiten und Fragen. Vorstandsvorsitzender der KJF ist Domvikar Armin Z&uuml;rn, Vorsitzender des Aufsichtsrates ist Weihbischof em. Josef Gr&uuml;nwald.</p>
         <div>Weitere Informationen zu
             <span tal:replace="data/org" />
             finden Sie unter
