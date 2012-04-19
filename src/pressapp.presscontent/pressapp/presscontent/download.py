@@ -21,7 +21,7 @@ class DownloadAssets(grok.View):
         self.target_item = self.resolveItemByID()
 
     def render(self):
-        return self.download_url()
+        return self.stream_file()
 
     def download_url(self):
         context = aq_inner(self.context)
@@ -34,21 +34,33 @@ class DownloadAssets(grok.View):
             filename = item.image.filename
             load_file = item_path[1:] + '/@@download/image/' + filename
             download_url = url + '/@@download/image/' + filename
-            file_data = portal.restrictedTraverse(load_file)
-            return download_url
+            #file_data = portal.restrictedTraverse(load_file)
+            return self.download_blob(item.image)
 
-    def download_blob(context, request, file):
+    def stream_file(self):
+        context = aq_inner(self.context)
+        item = self.target_item
+        if item.image:
+            file_obj = item.image
+            filename = item.image.filename
+        else:
+            file_obj = item.file
+            filename = item.file.filename
+        set_headers(file_obj, self.request.response, filename)
+        return stream_data(file_obj)
+
+    def download_blob(self, file):
         """ Stream animation or image BLOB to the browser.
             @param context: Context object name is used to set the filename if
             blob itself doesn't provide one
             @param file: Blob object
         """
+        context = aq_inner(self.context)
+        request = self.request
         if file == None:
             raise NotFound(context, '', request)
         filename = getattr(file, 'filename', context.id + "_download")
-        set_headers(file, request.response)
-        cd = 'inline; filename=%s' % filename
-        request.response.setHeader("Content-Disposition", cd)
+        set_headers(file, request.response, filename)
         return stream_data(file)
 
     def resolveItemByID(self):
