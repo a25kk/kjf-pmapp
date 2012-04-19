@@ -1,0 +1,6 @@
+<layers>
+  <layer
+    name="pressapp.presscontent.layer"
+    interface="pressapp.presscontent.interfaces.IPressAppPolicy"
+  />
+</layers>

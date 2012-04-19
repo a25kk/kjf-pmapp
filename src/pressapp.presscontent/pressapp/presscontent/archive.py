@@ -226,6 +226,8 @@ class AttachmentsView(grok.View):
     grok.name('pressitem-attachments')
 
     def __call__(self, *args, **kw):
+        portal = getSite()
+        portal_url = portal.absolute_url()
         params = kw.copy()
         if params.get('uid'):
             self.target_uid = params.get('uid', None)
@@ -235,17 +237,19 @@ class AttachmentsView(grok.View):
         iteminfo = {}
         iteminfo['title'] = pressitem.Title()
         url = pressitem.absolute_url()
+        uuid = IUUID(pressitem, None)
         filename = pressitem.image.filename
-        iteminfo['url'] = url + '/@@download/image/' + filename
+        iteminfo['url'] = portal_url + '/@@download-assets?uid=' + uuid
         iteminfo['type'] = 'MainImage'
         iteminfo['image'] = self.getImageTag(pressitem)
         options['items'].append(iteminfo)
         attachments = self.queryAttachments()
         for item in attachments:
             item_obj = item.getObject()
+            uuid = IUUID(item, None)
             info = {}
             info['title'] = item.Title
-            info['url'] = item.getURL()
+            info['url'] = portal_url + '/@@download-assets?uid=' + uuid
             info['type'] = item.portal_type
             if IImageContent.providedBy(item_obj):
                 image_tag = self.getImageTag(item_obj)
