@@ -40,12 +40,13 @@ class DownloadAssets(grok.View):
     def stream_file(self):
         context = aq_inner(self.context)
         item = self.target_item
-        if item.image:
+        portal_type = item.portal_type
+        if portal_type == 'File':
+            file_obj = item.getFile()
+        else:
             file_obj = item.image
             filename = item.image.filename
-        else:
-            file_obj = item.file
-            filename = item.file.filename
+        filename = item.Title()
         set_headers(file_obj, self.request.response, filename)
         return stream_data(file_obj)
 
@@ -62,6 +63,37 @@ class DownloadAssets(grok.View):
         filename = getattr(file, 'filename', context.id + "_download")
         set_headers(file, request.response, filename)
         return stream_data(file)
+
+    def resolveItemByID(self):
+        uid = self.request.get('uid', '')
+        if uid:
+            obj = uuidToObject(uid)
+            if not obj:
+                IStatusMessage(self.request).addStatusMessage(
+                    _(u"The requested item was not found"), type='error')
+            else:
+                return obj
+
+
+class DownloadFileVersion(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('zope2.View')
+    grok.name('download-file-version')
+
+    def update(self):
+        self.target_item = self.resolveItemByID()
+
+    def render(self):
+        return self.generate_pdf()
+
+    def generate_pdf(self):
+        context = aq_inner(self.context)
+        item = self.target_item
+        attachment = item.unrestrictedTraverse(
+            '@@asPlainPDF')(converter='pdf-pisa',
+                            resource='pressapp_resource',
+                            template='pdf_template_standalone')
+        return attachment
 
     def resolveItemByID(self):
         uid = self.request.get('uid', '')

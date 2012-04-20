@@ -246,10 +246,10 @@ class AttachmentsView(grok.View):
         attachments = self.queryAttachments()
         for item in attachments:
             item_obj = item.getObject()
-            uuid = IUUID(item, None)
+            item_uuid = IUUID(item_obj, None)
             info = {}
             info['title'] = item.Title
-            info['url'] = portal_url + '/@@download-assets?uid=' + uuid
+            info['url'] = portal_url + '/@@download-assets?uid=' + item_uuid
             info['type'] = item.portal_type
             if IImageContent.providedBy(item_obj):
                 image_tag = self.getImageTag(item_obj)
