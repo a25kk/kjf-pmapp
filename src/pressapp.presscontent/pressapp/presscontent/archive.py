@@ -170,10 +170,11 @@ class PressItemView(grok.View):
         return url
 
     def pdf_download_link(self, obj):
-        obj_url = obj.absolute_url()
-        link = (obj_url + '/@@asPlainPDF?converter=pdf-pisa'
-            + '&resource=pressapp_resource&template=pdf_template_standalone')
-        return link
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        uuid = IUUID(obj, None)
+        url = portal_url + '/@@download-file-version?uid=' + uuid
+        return url
 
     def memberdata(self):
         context = aq_inner(self.context)
@@ -267,7 +268,7 @@ class AttachmentsView(grok.View):
     def getImageTag(self, item):
         obj = item
         scales = getMultiAdapter((obj, self.request), name='images')
-        scale = scales.scale('image', scale='icon')
+        scale = scales.scale('image', scale='thumb')
         imageTag = None
         if scale is not None:
             imageTag = scale.tag()
