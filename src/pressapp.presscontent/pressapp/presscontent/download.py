@@ -42,13 +42,19 @@ class DownloadAssets(grok.View):
         item = self.target_item
         portal_type = item.portal_type
         if portal_type == 'File':
-            file_obj = item.getFile()
+            file_field = item.getField('file')
+            filename = file_field.getFilename(item)
+            file_obj = file_field.getRaw(item).data
+            mimetype = file_field.getContentType(item)
+            self.request.response.setHeader('Content-Type', mimetype)
+            self.request.response.setHeader('Content-Disposition',
+                'attachment; filename="%s"' % filename)
+            return file_obj
         else:
             file_obj = item.image
             filename = item.image.filename
-        filename = item.Title()
-        set_headers(file_obj, self.request.response, filename)
-        return stream_data(file_obj)
+            set_headers(file_obj, self.request.response, filename)
+            return stream_data(file_obj)
 
     def download_blob(self, file):
         """ Stream animation or image BLOB to the browser.
