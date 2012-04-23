@@ -236,9 +236,7 @@ class AttachmentsView(grok.View):
         pressitem = self.presscontent
         iteminfo = {}
         iteminfo['title'] = pressitem.Title()
-        url = pressitem.absolute_url()
         uuid = IUUID(pressitem, None)
-        filename = pressitem.image.filename
         iteminfo['url'] = portal_url + '/@@download-assets?uid=' + uuid
         iteminfo['type'] = 'MainImage'
         iteminfo['image'] = self.getImageTag(pressitem)
@@ -277,7 +275,8 @@ class AttachmentsView(grok.View):
         context = aq_inner(self.context)
         obj = self.presscontent
         catalog = getToolByName(context, 'portal_catalog')
-        items = catalog(portal_type=['File', 'Image'],
+        items = catalog(portal_type=['pressapp.presscontent.fileattachment',
+                                     'Image'],
                         path=dict(query='/'.join(obj.getPhysicalPath()),
                                   depth=1))
         #results = IContentListing(items)
