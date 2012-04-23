@@ -6,7 +6,7 @@ from zope.schema import getFieldsInOrder
 from zope.lifecycleevent import modified
 from plone.directives import form
 from z3c.form import button
-from plone.namedfile.field import NamedBlobImage
+from plone.namedfile.field import NamedBlobFile
 from plone.dexterity.interfaces import IDexterityFTI
 from Products.CMFPlone.utils import safe_unicode
 
@@ -27,8 +27,8 @@ class IFileAttachmentAdd(form.Schema):
         description=_(u"A short description used as caption"),
         required=False,
     )
-    attachment = NamedBlobImage(
-        title=_(u"Image Attachment"),
+    attachment = NamedBlobFile(
+        title=_(u"File Attachment"),
         description=_(u"Upload a file attachment for this press release. The "
                       u"file will be available for download from the e-mail "
                       u"and provided as a thumbnail preview"),
@@ -78,6 +78,7 @@ class FileAttachmentAddForm(form.SchemaEditForm):
         data = {}
         for key, value in fields:
             data[key] = getattr(context, key, value)
+        data['title'] = safe_unicode(context.Title())
         data['description'] = safe_unicode(context.Description())
         return data
 

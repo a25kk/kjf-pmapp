@@ -148,6 +148,8 @@ class AsHtmlView(grok.View):
         data['date'] = context.Date()
         data['org'] = member.getProperty('organization', '')
         data['link'] = member.getProperty('home_page', '')
+        data['start'] = context.start
+        data['end'] = context.end
         return data
 
     def getImageTag(self, item):
