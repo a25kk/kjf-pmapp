@@ -227,8 +227,7 @@ class AttachmentsView(grok.View):
     grok.name('pressitem-attachments')
 
     def __call__(self, *args, **kw):
-        portal = getSite()
-        portal_url = portal.absolute_url()
+        portal_url = self.clean_portal_url()
         params = kw.copy()
         if params.get('uid'):
             self.target_uid = params.get('uid', None)
@@ -293,3 +292,12 @@ class AttachmentsView(grok.View):
                     _(u"The requested item was not found"), type='error')
             else:
                 return obj
+
+    def clean_portal_url(self):
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        if portal_url.startswith('https://'):
+            clean_url = portal_url.replace('https://', 'http://')
+        else:
+            clean_url = portal_url
+        return clean_url

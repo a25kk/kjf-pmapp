@@ -42,21 +42,17 @@ class DownloadAssets(grok.View):
         item = self.target_item
         portal_type = item.portal_type
         if portal_type == 'File':
-            file_field = item.getField('file')
-            filename = file_field.getFilename(item)
-            file_obj = file_field.getRaw(item).data
-            mimetype = file_field.getContentType(item)
-            self.request.response.setHeader('Content-Type', mimetype)
-            self.request.response.setHeader('Content-Disposition',
-                'attachment; filename="%s"' % filename)
-            return file_obj
+            file_obj = item.getFile()
+            file_id = item.getId()
+            item_path = item.absolute_url_path
+            return self.downlaod_blob(file_id, file_obj)
         else:
             file_obj = item.image
             filename = item.image.filename
             set_headers(file_obj, self.request.response, filename)
             return stream_data(file_obj)
 
-    def download_blob(self, file):
+    def download_blob(self, file_id, file):
         """ Stream animation or image BLOB to the browser.
             @param context: Context object name is used to set the filename if
             blob itself doesn't provide one
@@ -66,7 +62,7 @@ class DownloadAssets(grok.View):
         request = self.request
         if file == None:
             raise NotFound(context, '', request)
-        filename = getattr(file, 'filename', context.id + "_download")
+        filename = getattr(file, 'filename', file_id + "_download")
         set_headers(file, request.response, filename)
         return stream_data(file)
 
