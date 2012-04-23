@@ -170,8 +170,7 @@ class PressItemView(grok.View):
         return url
 
     def pdf_download_link(self, obj):
-        portal = getSite()
-        portal_url = portal.absolute_url()
+        portal_url = self.clean_portal_url()
         uuid = IUUID(obj, None)
         url = portal_url + '/@@download-file-version?uid=' + uuid
         return url
@@ -202,6 +201,15 @@ class PressItemView(grok.View):
         attachments = portal.unrestrictedTraverse(
             '@@pressitem-attachments')(uid=target_uid)
         return attachments
+
+    def clean_portal_url(self):
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        if portal_url.startswith('https://'):
+            clean_url = portal_url.replace('https://', 'http://')
+        else:
+            clean_url = portal_url
+        return clean_url
 
     def safe_portal_encoding(self, string):
         portal = getSite()
