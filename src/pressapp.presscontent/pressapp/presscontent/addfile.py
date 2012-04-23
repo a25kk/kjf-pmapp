@@ -6,6 +6,7 @@ from zope.component import getUtility
 
 from plone.directives import form
 from z3c.form import button
+from plone.dexterity.utils import createContentInContainer
 from plone.namedfile.field import NamedBlobFile
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
@@ -68,16 +69,11 @@ class FileAttachmentAddForm(form.SchemaEditForm):
     def applyChanges(self, data):
         context = aq_inner(self.context)
         assert IPressRelease.providedBy(context)
-        new_title = data['title']
-        new_id = getUtility(IIDNormalizer).normalize(new_title)
-        item = context.invokeFactory(type_name='File',
-                                     id=new_id,
-                                     title=new_title)
-        item_obj = context[item]
-        attachment = data['attachment'].data
-        item_obj.setFile(attachment)
-        modified(item_obj)
-        item_obj.reindexObject(idxs='modified')
+        item = createContentInContainer(context,
+            'pressapp.presscontent.fileattachment',
+            checkConstraints=True, **data)
+        modified(item)
+        item.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
             _(u"A new attachment was successfully added"),
             type='info')

@@ -27,6 +27,12 @@ class IFileAttachment(form.Schema, IImageScaleTraversable):
     """
     A basic file attachment for presscontents
     """
+    attachment = NamedBlobFile(
+        title=_(u"File Attachment"),
+        description=_(u"Uplaod file attachment. Note: for images that should "
+                      u"also provide previews use a special image attachment"),
+        required=True,
+    )
 
 
 class FileAttachment(dexterity.Item):

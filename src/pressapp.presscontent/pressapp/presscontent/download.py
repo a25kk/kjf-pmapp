@@ -45,7 +45,7 @@ class DownloadAssets(grok.View):
             file_obj = item.getFile()
             file_id = item.getId()
             item_path = item.absolute_url_path
-            return self.downlaod_blob(file_id, file_obj)
+            return self.download_blob(file_id, file_obj)
         else:
             file_obj = item.image
             filename = item.image.filename
@@ -64,6 +64,7 @@ class DownloadAssets(grok.View):
             raise NotFound(context, '', request)
         filename = getattr(file, 'filename', file_id + "_download")
         set_headers(file, request.response, filename)
+        import pdb; pdb.set_trace( )
         return stream_data(file)
 
     def resolveItemByID(self):

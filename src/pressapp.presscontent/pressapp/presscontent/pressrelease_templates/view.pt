@@ -127,7 +127,7 @@
                                      scale='tile').tag()" />
                   </td>
                   <td>
-                  <div class="btn-toolbar" tal:condition="python:type == 'File'">
+                  <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
                     <div class="btn-group">
                     <a href=""
                         class="btn btn-small"
@@ -157,11 +157,10 @@
                   </div>
                   </td>
                   <td>
-                    <div class="btn-toolbar" tal:condition="python:type == 'File'">
+                    <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
                       <div class="btn-group">
-                    <a href=""
-                        class="btn btn-small btn-inverse"
-                        tal:attributes="href string:${item/getURL}/at_download/file">
+                    <a href="" class="btn btn-small btn-inverse"
+                        tal:attributes="href string:${item/getURL}/@@download/attachment/${item/attachment/filename}">
                         <i class="icon-download icon-white" />
                         Download</a>
                       </div>
