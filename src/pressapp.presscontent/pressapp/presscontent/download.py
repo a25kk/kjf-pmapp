@@ -21,7 +21,7 @@ class DownloadAssets(grok.View):
 
     def stream_file(self):
         item = self.target_item
-        if item.attachment:
+        if getattr(item, 'attachment', ''):
             file_obj = item.attachment
             filename = item.attachment.filename
             set_headers(file_obj, self.request.response, filename)
