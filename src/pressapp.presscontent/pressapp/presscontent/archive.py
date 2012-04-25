@@ -303,8 +303,9 @@ class AttachmentsView(grok.View):
     def clean_portal_url(self):
         portal = getSite()
         portal_url = portal.absolute_url()
+        url = 'http://kjf-presse.de'
         if portal_url.startswith('https://'):
             clean_url = portal_url.replace('https://', 'http://')
         else:
             clean_url = portal_url
-        return clean_url
+        return url

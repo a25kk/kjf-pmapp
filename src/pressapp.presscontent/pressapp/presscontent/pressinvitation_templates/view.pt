@@ -80,11 +80,15 @@
                 <tbody>
                     <tr>
                         <td><h6>Beginn:</h6></td>
-                        <td><span tal:replace="python:toLocalizedTime(start_date)" /></td>
+                        <td><span tal:replace="python:toLocalizedTime(start_date)" />
+                        <span tal:replace="python:toLocalizedTime(start_date, time_only=True)" />
+                        </td>
                     </tr>
                     <tr>
                         <td><h6>Ende:</h6></td>
-                        <td><span tal:replace="python:toLocalizedTime(end_date)" /></td>
+                        <td><span tal:replace="python:toLocalizedTime(end_date)" />
+                        <span tal:replace="python:toLocalizedTime(end_date, time_only=True)" />
+                      </td>
                     </tr>
                     <tr>
                         <td><h6>Veranstaltungsort:</h6></td>

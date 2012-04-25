@@ -32,6 +32,7 @@ from plone.uuid.interfaces import IUUID
 
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
+
 from pressapp.dispatcher import MessageFactory as _
 
 
