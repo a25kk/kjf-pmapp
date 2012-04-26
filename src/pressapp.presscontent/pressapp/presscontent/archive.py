@@ -308,4 +308,4 @@ class AttachmentsView(grok.View):
             clean_url = portal_url.replace('https://', 'http://')
         else:
             clean_url = portal_url
-        return url
+        return clean_url
