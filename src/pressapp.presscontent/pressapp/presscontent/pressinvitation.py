@@ -150,6 +150,10 @@ class AsHtmlView(grok.View):
         data['link'] = member.getProperty('home_page', '')
         data['start'] = context.start
         data['end'] = context.end
+        if context.closed == True:
+            data['closed'] = _(u"For invited geusts only")
+        else:
+            data['closed'] = _(u"This is a public event")
         return data
 
     def getImageTag(self, item):

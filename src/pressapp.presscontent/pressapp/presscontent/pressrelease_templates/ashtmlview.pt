@@ -1,18 +1,18 @@
 <div class="type-pressrelease document-body"
     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                 data view/additional_data">
-    <h6 class="kicker bookmark-kicker"
-        tal:condition="context/kicker"
-        tal:content="context/kicker" />    
-    <h1 class="title bookmark-title" tal:content="context/Title" />
-    <h2 class="subtitle bookmark-subtitle"
-        tal:condition="context/subtitle" tal:content="context/subtitle" />
     <div class="description" tal:content="context/Description" />
     <div class="description">
         <span tal:replace="data/location" />
         <span tal:define="date data/date"
             tal:replace="python:toLocalizedTime(date)" />
     </div>
+    <h6 class="kicker bookmark-kicker"
+        tal:condition="context/kicker"
+        tal:content="context/kicker" />    
+    <h1 class="title bookmark-title" tal:content="context/Title" />
+    <h2 class="subtitle bookmark-subtitle"
+        tal:condition="context/subtitle" tal:content="context/subtitle" />
     <div>
         <div tal:define="picture nocall:context/image"
              tal:condition="nocall:picture"
@@ -23,7 +23,9 @@
                 class="teaser-image"
                 />
         </div>
-
+        <div class="subtitle bookmark-subtitle">
+            <span tal:replace="data/location" /> (kjf)
+        </div>
         <div class="body" tal:content="structure context/text/output" />
 
         <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF)</h4>
@@ -43,7 +45,7 @@ Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, J
         Postfach 10 20 02, 86010 Augsburg</div>
         <hr />
         <div>
-        Referat f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit | Telefon (0821) 3100-191 oder 160 53 75 201 | Fax (0821) 3100-178<br />
+        Referat f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit | Telefon (0821) 3100-191 oder 0160 53 75 201 | Fax (0821) 3100-178<br />
         http://www.kjf-augsburg.de | presse@kjf-augsburg.de
         </div>
         <hr />
