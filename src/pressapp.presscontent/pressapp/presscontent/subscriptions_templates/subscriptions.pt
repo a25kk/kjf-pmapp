@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+    <metal:content-core define-macro="main">
+    <section>
+        <div class="page-header">
+            <h1>Newsletter</h1>
+        </div>
+
+        <div class="box"
+            tal:define="email_error view/errors/email | nothing">
+            <form class="form-horizontal"
+                tal:attributes="action request/URL" method="post">
+                <fieldset>
+                <legend>Mit diesem Formular k&ouml;nnen Sie alle Pressemitteilungen der
+                    KJF-Augsburg als E-Mail Abonnement bestellen</legend>
+                    <div class="control-group"
+                        tal:attributes="class python:email_error and 'control-group error' or 'control-group'">
+                        <label class="control-label" for="input01">Ihre E-Mail-Adresse</label>
+                        <div class="controls">
+                            <div class="input-prepend">
+                            <span class="add-on">@</span>
+                                <input id="email"
+                                    class="span4"
+                                    type="text"
+                                    size="16"
+                                    name="email" />
+                                <span class="help-inline"
+                                    tal:condition="view/errors/email|nothing"
+                                    tal:content="view/errors/email|nothing">
+                                    Please correct the error</span>
+                            </div>
+                            <p class="help-block">
+                                Bitte geben Sie hier Ihre E-Mail-Adresse ein, um sich
+                                f&uuml;r unseren Newsletter anzumelden.<br />Um Ihr Abonnement zu
+                                beenden, verwenden Sie bitte den Button &quot;Abmelden&quot;
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="btn-group">
+                        <input class="btn btn-success"
+                            type="submit"
+                            rel="loading-indicator"
+                            data-loading-text="Newsletteranmeldung wird durchgef&uuml;hrt..."
+                            name="form.button.Subscribe"
+                            id="submit-button"
+                            value="Anmelden" />
+                        <input class="btn btn-danger"
+                            type="submit"
+                            rel="loading-indicator"
+                            data-loading-text="Abonnement wird beendet..."
+                            name="form.button.Unsubscribe"
+                            id="submit-button"
+                            value="Abmelden" />
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>    
+
+    </section>
+    </metal:content-core>
+</metal:main>
+</body>
+</html>
