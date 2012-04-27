@@ -4,14 +4,14 @@
         <tr tal:define="type item/type">
           <td>
             <span tal:content="item/title" />
-            (<tal:file tal:condition="python:type == 'File'">
+            (<tal:file tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
             <a href=""
-                tal:attributes="href string:${item/url}/at_download/file">
+                tal:attributes="href string:${item/url}">
                 Download</a>
             </tal:file>
             <tal:image tal:condition="python:type == 'Image'">
               <a href=""
-                  tal:attributes="href string:${item/url}/at_download/image">
+                  tal:attributes="href string:${item/url}">
                   Download</a>
             </tal:image>
             <tal:mainimage tal:condition="python:type == 'MainImage'">

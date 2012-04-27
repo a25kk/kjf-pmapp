@@ -1,11 +1,12 @@
 from Acquisition import aq_inner
 from five import grok
-
+from zope.component import queryUtility
 from Products.CMFCore.utils import getToolByName
 
 from Products.CMFCore.interfaces import IContentish
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.app.contentlisting.interfaces import IContentListing
+from plone.registry.interfaces import IRegistry
 from pressapp.channelmanagement.subscriber import ISubscriber
 from pressapp.presscontent import MessageFactory as _
 
@@ -36,11 +37,19 @@ class RecipientList(grok.View):
     def subscriber_listing(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
         channels = getattr(context, 'channel', '')
         subscribers = []
         for channelname in channels:
+            for value in records:
+                if records[value] == channelname:
+                    channel = value
+                else:
+                    channel = channelname
             results = catalog(object_provides=ISubscriber.__identifier__,
-                              channel=[channelname],
+                              channel=[channel],
                               sort_on='sortable_title')
             for item in results:
                 info = {}

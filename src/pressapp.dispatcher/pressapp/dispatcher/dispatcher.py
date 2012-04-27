@@ -32,6 +32,7 @@ from plone.uuid.interfaces import IUUID
 
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
+
 from pressapp.dispatcher import MessageFactory as _
 
 
@@ -147,13 +148,20 @@ class Dispatcher(grok.View):
 
     def _getRecievers(self, type):
         context = aq_inner(self.context)
+        portal = getSite()
+        presscenter = portal['presscenter']
         if type == 'test':
-            portal = getSite()
-            presscenter = portal['presscenter']
             recievers = presscenter.testRecipients
         else:
+            subscribers = getattr(presscenter, 'subscribers', '')
             recievers = getattr(context, 'recipients', '')
         recipients = []
+        if subscribers:
+            for item in subscribers:
+                recipient = {}
+                recipient['mail'] = item
+                recipient['name'] = item
+                recipients.append(recipient)
         if recievers:
             for address in recievers:
                 recipient = {}
@@ -214,8 +222,8 @@ class Dispatcher(grok.View):
                 data['travel'] = context.travel
             else:
                 data['travel'] = ''
-            data['start'] = self.localize(context.start, longformat=True)
-            data['end'] = self.localize(context.end, longformat=True)
+            data['start'] = context.start.strftime("%d.%m.%Y %H:%M")
+            data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
             if closed == True:
                 data['closed'] = _(u"Admittance for invited guests only")
@@ -288,10 +296,11 @@ class Dispatcher(grok.View):
         return url
 
     def pdf_download_link(self, obj):
-        obj_url = obj.absolute_url()
-        link = (obj_url + '/@@asPlainPDF?converter=pdf-pisa'
-            + '&resource=pressapp_resource&template=pdf_template_standalone')
-        return link
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        uuid = IUUID(obj, None)
+        url = portal_url + '/@@download-file-version?uid=' + uuid
+        return url
 
     def memberdata(self):
         context = aq_inner(self.context)
@@ -314,7 +323,6 @@ class Dispatcher(grok.View):
     def getAttachments(self):
         context = aq_inner(self.context)
         target_uid = IUUID(context, None)
-        #target_string = '@@pressitem-attachments?uid=%s' % (target_uid)
         ptool = getToolByName(context, 'portal_url')
         portal = ptool.getPortalObject()
         attachments = portal.unrestrictedTraverse(

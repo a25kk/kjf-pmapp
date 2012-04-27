@@ -133,7 +133,8 @@ class View(grok.View):
     def contained_attachments(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        items = catalog(portal_type=['File', 'Image'],
+        items = catalog(portal_type=['pressapp.presscontent.fileattachment',
+                        'Image'],
                         path=dict(query='/'.join(context.getPhysicalPath()),
                                   depth=1))
         results = IContentListing(items)

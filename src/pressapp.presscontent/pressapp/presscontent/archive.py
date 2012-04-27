@@ -122,8 +122,8 @@ class PressItemView(grok.View):
                 data['travel'] = context.travel
             else:
                 data['travel'] = ''
-            data['start'] = self.localize(context.start, longformat=True)
-            data['end'] = self.localize(context.end, longformat=True)
+            data['start'] = context.start.strftime("%d.%m.%Y %H:%M")
+            data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
             if closed == True:
                 data['closed'] = _(u"Admittance for invited guests only")
@@ -170,10 +170,10 @@ class PressItemView(grok.View):
         return url
 
     def pdf_download_link(self, obj):
-        obj_url = obj.absolute_url()
-        link = (obj_url + '/@@asPlainPDF?converter=pdf-pisa'
-            + '&resource=pressapp_resource&template=pdf_template_standalone')
-        return link
+        portal_url = self.clean_portal_url()
+        uuid = IUUID(obj, None)
+        url = portal_url + '/@@download-file-version?uid=' + uuid
+        return url
 
     def memberdata(self):
         context = aq_inner(self.context)
@@ -202,6 +202,15 @@ class PressItemView(grok.View):
             '@@pressitem-attachments')(uid=target_uid)
         return attachments
 
+    def clean_portal_url(self):
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        if portal_url.startswith('https://'):
+            clean_url = portal_url.replace('https://', 'http://')
+        else:
+            clean_url = portal_url
+        return clean_url
+
     def safe_portal_encoding(self, string):
         portal = getSite()
         props = portal.portal_properties.site_properties
@@ -226,6 +235,7 @@ class AttachmentsView(grok.View):
     grok.name('pressitem-attachments')
 
     def __call__(self, *args, **kw):
+        portal_url = self.clean_portal_url()
         params = kw.copy()
         if params.get('uid'):
             self.target_uid = params.get('uid', None)
@@ -234,18 +244,18 @@ class AttachmentsView(grok.View):
         pressitem = self.presscontent
         iteminfo = {}
         iteminfo['title'] = pressitem.Title()
-        url = pressitem.absolute_url()
-        filename = pressitem.image.filename
-        iteminfo['url'] = url + '/@@download/image/' + filename
+        uuid = IUUID(pressitem, None)
+        iteminfo['url'] = portal_url + '/@@download-assets?uid=' + uuid
         iteminfo['type'] = 'MainImage'
         iteminfo['image'] = self.getImageTag(pressitem)
         options['items'].append(iteminfo)
         attachments = self.queryAttachments()
         for item in attachments:
             item_obj = item.getObject()
+            item_uuid = IUUID(item_obj, None)
             info = {}
             info['title'] = item.Title
-            info['url'] = item.getURL()
+            info['url'] = portal_url + '/@@download-assets?uid=' + item_uuid
             info['type'] = item.portal_type
             if IImageContent.providedBy(item_obj):
                 image_tag = self.getImageTag(item_obj)
@@ -263,7 +273,7 @@ class AttachmentsView(grok.View):
     def getImageTag(self, item):
         obj = item
         scales = getMultiAdapter((obj, self.request), name='images')
-        scale = scales.scale('image', scale='icon')
+        scale = scales.scale('image', scale='thumb')
         imageTag = None
         if scale is not None:
             imageTag = scale.tag()
@@ -273,7 +283,8 @@ class AttachmentsView(grok.View):
         context = aq_inner(self.context)
         obj = self.presscontent
         catalog = getToolByName(context, 'portal_catalog')
-        items = catalog(portal_type=['File', 'Image'],
+        items = catalog(portal_type=['pressapp.presscontent.fileattachment',
+                                     'Image'],
                         path=dict(query='/'.join(obj.getPhysicalPath()),
                                   depth=1))
         #results = IContentListing(items)
@@ -288,3 +299,13 @@ class AttachmentsView(grok.View):
                     _(u"The requested item was not found"), type='error')
             else:
                 return obj
+
+    def clean_portal_url(self):
+        portal = getSite()
+        portal_url = portal.absolute_url()
+        url = 'http://kjf-presse.de'
+        if portal_url.startswith('https://'):
+            clean_url = portal_url.replace('https://', 'http://')
+        else:
+            clean_url = portal_url
+        return clean_url
