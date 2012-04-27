@@ -148,13 +148,20 @@ class Dispatcher(grok.View):
 
     def _getRecievers(self, type):
         context = aq_inner(self.context)
+        portal = getSite()
+        presscenter = portal['presscenter']
         if type == 'test':
-            portal = getSite()
-            presscenter = portal['presscenter']
             recievers = presscenter.testRecipients
         else:
+            subscribers = getattr(presscenter, 'subscribers', '')
             recievers = getattr(context, 'recipients', '')
         recipients = []
+        if subscribers:
+            for item in subscribers:
+                recipient = {}
+                recipient['mail'] = item
+                recipient['name'] = item
+                recipients.append(recipient)
         if recievers:
             for address in recievers:
                 recipient = {}
