@@ -42,6 +42,15 @@ class IPressCenter(form.Schema):
         ),
         required=False,
     )
+    subscribers = schema.List(
+        title=_(u"Subscribers"),
+        description=_(u"A list of subscribers - one address per line "
+                      u"- these are available as default list"),
+        value_type=schema.TextLine(
+            title=_(u"Subscriber"),
+        ),
+        required=False,
+    )
     stylesheet = schema.Text(
         title=_(u"Stylesheet"),
         description=_(u"CSS used for the HTML Email"),

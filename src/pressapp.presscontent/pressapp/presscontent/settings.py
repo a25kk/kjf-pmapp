@@ -41,6 +41,15 @@ class IGlobalSettings(form.Schema):
         ),
         required=False,
     )
+    subscribers = schema.List(
+        title=_(u"Subscribers"),
+        description=_(u"A list of subscribers - one address per line "
+                      u"- these are available as default list"),
+        value_type=schema.TextLine(
+            title=_(u"Subscriber"),
+        ),
+        required=False,
+    )
 
 
 class IUpdateTemplatePR(form.Schema):

@@ -22,7 +22,7 @@ $(document).ready(function() {
         $('span[rel=twipsy]').tooltip();
     });
     $(function() {
-        $('a[rel=loading-indicator]').click(function() {
+        $('a[rel=loading-indicator], input[rel=loading-indicator]').click(function() {
             $(this).button('loading');
         });
     });
