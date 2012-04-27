@@ -13,7 +13,8 @@
                              scale='tile').tag()" />
           </td>
           <td>
-          <tal:file tal:condition="python:type == 'File'">
+            <p tal:content="item" />
+          <tal:file tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
             <a href=""
                 tal:attributes="href string:${item/getURL}/at_download/file">
                 Download</a>

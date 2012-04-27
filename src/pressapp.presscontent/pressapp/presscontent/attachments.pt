@@ -4,7 +4,7 @@
         <tr tal:define="type item/type">
           <td>
             <span tal:content="item/title" />
-            (<tal:file tal:condition="python:type == 'File'">
+            (<tal:file tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
             <a href=""
                 tal:attributes="href string:${item/url}">
                 Download</a>

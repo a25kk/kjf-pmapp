@@ -1,9 +1,19 @@
 <div class="type-pressrelease document-body"
     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                 data view/additional_data">
-   
-    <h1 class="title bookmark-title" tal:content="context/Title" />
+    
     <div class="description" tal:content="context/Description" />
+    <div class="description">
+        <span tal:replace="data/location" />
+        <span tal:define="date data/date"
+            tal:replace="python:toLocalizedTime(date)" />
+    </div>
+    <h3 class="title bookmark-title">
+        An die Berichterstatter der Medien als Einladung sowie weitere
+        Empf&auml;nger zur Kenntnis</h3>
+    <h4>Wir laden ein:</h4>
+    <h1 class="title bookmark-title" tal:content="context/Title" />
+
     <div class="description">
         Ort: <span tal:replace="data/location" />
     </div>
@@ -16,23 +26,38 @@
         <span tal:replace="python:toLocalizedTime(end_date, time_only=True)" /> Uhr
     </div>
 
+    <div tal:content="data/closed" />
+
+
     <div class="body" tal:content="structure context/text/output" />
 
-    <div tal:condition="context/schedule">
-      <h4>Geplanter Ablauf:</h4>
-      <div tal:content="structure context/schedule/output" />
-    </div>
-    <div tal:condition="context/travel"
-      tal:content="context/travel" />
     <div tal:condition="context/directions">
-      <a href="href context/directions">
+        <h4>Anfahrtsskizze:</h4>
+      <a href="href context/directions"
+        tal:content="context/directions">
         Anfahrtsbeschreibung (Karte)</a>
-      <strong>Link: </strong>
-      <pre tal:content="context/directions" />
     </div>
 
+    <div tal:condition="context/travel">
+        <h4>Anreiseinformationen:</h4>
+        <span tal:content="context/travel" />
+    </div>
+
+    <div tal:condition="context/schedule">
+      <h4>Weitere Informationen:</h4>
+      <div tal:content="structure context/schedule/output" />
+    </div>
+
+    <div>Mit freundlichen Gr&uuml;&szlig;en</div>
+    <div>Winfried Karg, Referent f&uuml;r Presse und &Ouml;ffentlichkeitsarbeit</div>
+
+    <div>Weitere Informationen zu
+            <span tal:replace="data/org" />
+            finden Sie unter
+            <span tal:replace="data/link" /></div>
+        <hr />
         <div>
-        Referat f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit | Telefon (0821) 3100-191 oder 160 53 75 201 | Fax (0821) 3100-178<br />
+        Referat f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit | Telefon (0821) 3100-191 oder 0160 53 75 201 | Fax (0821) 3100-178<br />
         http://www.kjf-augsburg.de | presse@kjf-augsburg.de
         </div>
         <hr />

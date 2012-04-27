@@ -122,8 +122,8 @@ class PressItemView(grok.View):
                 data['travel'] = context.travel
             else:
                 data['travel'] = ''
-            data['start'] = self.localize(context.start, longformat=True)
-            data['end'] = self.localize(context.end, longformat=True)
+            data['start'] = context.start.strftime("%d.%m.%Y %H:%M")
+            data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
             if closed == True:
                 data['closed'] = _(u"Admittance for invited guests only")
@@ -308,4 +308,4 @@ class AttachmentsView(grok.View):
             clean_url = portal_url.replace('https://', 'http://')
         else:
             clean_url = portal_url
-        return url
+        return clean_url

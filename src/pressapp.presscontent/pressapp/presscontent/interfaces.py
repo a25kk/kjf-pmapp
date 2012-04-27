@@ -6,5 +6,5 @@ class IPressContent(Interface):
     """A general Interface to mark all press content """
 
 
-class IPressAppPolicy(IDefaultPloneLayer):
+class IPressAppPolicy(Interface):
     """ A marker inteface for a specific theme layer """

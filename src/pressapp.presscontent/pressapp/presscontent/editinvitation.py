@@ -49,6 +49,11 @@ class IPressInvitationEdit(form.Schema):
         description=_(u"Enter optional travel information."),
         required=False,
     )
+    directions = schema.URI(
+        title=_(u"Directions Link"),
+        description=_(u"Enter link to Google Map for directions"),
+        required=False,
+    )
     closed = schema.Bool(
         title=_(u"Closed Event"),
         description=_(u"Please select if the event is public."),
@@ -75,8 +80,8 @@ class PressInvitationEditForm(form.SchemaEditForm):
 
     def updateActions(self):
         super(PressInvitationEditForm, self).updateActions()
-        self.actions['save'].addClass("btn btn-large")
-        self.actions['cancel'].addClass("btn btn-large")
+        self.actions['save'].addClass("btn")
+        self.actions['cancel'].addClass("btn")
 
     @button.buttonAndHandler(_(u"Save"), name="save")
     def handleApply(self, action):
