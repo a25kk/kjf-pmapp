@@ -9,14 +9,14 @@
 
 <metal:main fill-slot="main">
     <metal:content-core define-macro="main">
-    <section>
+    <section id="archive-view">
         <div class="page-header">
             <h1>Newsletter</h1>
         </div>
 
         <div class="box"
             tal:define="email_error view/errors/email | nothing">
-            <form class="form-horizontal"
+            <form class="form-inline"
                 tal:attributes="action request/URL" method="post">
                 <fieldset>
                 <legend>Mit diesem Formular k&ouml;nnen Sie alle Pressemitteilungen der
@@ -28,7 +28,7 @@
                             <div class="input-prepend">
                             <span class="add-on">@</span>
                                 <input id="email"
-                                    class="span4"
+                                    class="span3"
                                     type="text"
                                     size="16"
                                     name="email" />
@@ -38,8 +38,7 @@
                                     Please correct the error</span>
                             </div>
                             <p class="help-block">
-                                Bitte geben Sie hier Ihre E-Mail-Adresse ein, um sich
-                                f&uuml;r unseren Newsletter anzumelden.<br />Um Ihr Abonnement zu
+                                Bitte geben Sie hier Ihre E-Mail-Adresse ein. Um Ihr Abonnement zu
                                 beenden, verwenden Sie bitte den Button &quot;Abmelden&quot;
                             </p>
                         </div>

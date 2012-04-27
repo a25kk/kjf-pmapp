@@ -7,39 +7,45 @@
       i18n:domain="pressapp.presscontent">
 <body>
 
-<metal:main fill-slot="main">
-    <metal:content-core define-macro="main">
+<metal:main fill-slot="body">
+    <metal:content-core define-macro="body">
+    <div id="content">
     <section tal:define="type view/action_type;
                          address view/address;
-                         portal_url view/portal_url">
+                         portal_url view/portal_url"
+        id="archive-view">
         <div class="page-header">
             <h1>Newsletter</h1>
         </div>
 
         <div class="box">
             <div class="alert alert-box alert-success">
-                <a href=""
-                    class="btn btn-small btn-inverse pull-right"
-                    tal:attributes="href python:portal_url + '/@@press-subscription'">
-                    <i class="icon-arrow-left icon-white" />
-                    Zur&uuml;ck zur Newsletteranmeldung</a>
-                <h4 class="alert-heading">Information</h4>
+                <h4 class="alert-heading"
+                     tal:condition="python:type == 'subscribe'">
+                     Sie erhalten ab sofort unseren Newsletter</h4>
+                <h4 class="alert-heading"
+                     tal:condition="python:type == 'unsubscribe'">
+                     Sie erhalten ab sofort keine weiteren Newsletter</h4>
                 <p tal:condition="python:type == 'subscribe'">
                     Ihre E-Mail-Adresse
                     <strong tal:content="address" />
                     wurde in die Liste der Newsletterabonnenten aufgenommen.
-                    Sie erhalten ab sofort unseren Newsletter.
                 </p>
                 <p tal:condition="python:type == 'unsubscribe'">
                     Ihre E-Mail-Adresse
                     <strong tal:content="address" />
-                    wurde erfolgreich abgemeldet. Sie erhalten
-                    keine weiteren Newsletter.
+                    wurde erfolgreich abgemeldet.
                 </p>
+                 <a href=""
+                    class="btn btn-mini btn-inverse"
+                    tal:attributes="href python:portal_url + '/@@press-subscription'">
+                    <i class="icon-arrow-left icon-white" />
+                    Zur&uuml;ck zur Newsletteranmeldung</a>
             </div>
         </div>    
 
     </section>
+    </div>
     </metal:content-core>
 </metal:main>
 </body>
