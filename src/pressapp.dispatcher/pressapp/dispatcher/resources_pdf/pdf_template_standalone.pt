@@ -29,7 +29,7 @@
              id="cover-front"
         />
         
-        <img src="http://pm.kreativkombinat.de/static-resources/banner-pr.jpg" />
+        <img src="http://pm.kreativkombinat.de/static-resources/pr.jpg" />
         
         <div id="main-content" tal:content="structure options/body" />
 
