@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-04-26 14:22+0000\n"
-"PO-Revision-Date: 2012-04-26 16:35+0100\n"
+"POT-Creation-Date: 2012-04-30 14:35+0000\n"
+"PO-Revision-Date: 2012-04-30 16:41+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,11 @@ msgstr "Presseverteiler wurden erfolgreich ausgewählt"
 #: ./../recipients.py:31
 msgid "A customized channel/recipient list used for this single press content. Note: If you don't require any changes, it is faster to just keep the channels."
 msgstr "Eine bereinigte Liste von E-Mail-Adressen für diesen Presseinhalt. Hinweis: falls Sie keine Änderungen vornehmen wollen, können Sie auch einfach die zugewiesenen Verteiler beibehalten oder an zentraler Stelle anpassen."
+
+#: ./../presscenter.py:47
+#: ./../settings.py:46
+msgid "A list of subscribers - one address per line - these are available as default list"
+msgstr "Liste von Newsletter Abonnenten - eine E-Mail-Adresse pro Ziele - die als Standard Empfänger mit eingefügt werden"
 
 #: ./../presscenter.py:38
 #: ./../settings.py:37
@@ -87,7 +92,7 @@ msgstr "Diese Veranstaltung ist nur für geladene Gäste."
 msgid "Attachment Caption"
 msgstr "Bildunterschrift Dateianhang"
 
-#: ./../presscenter.py:47
+#: ./../presscenter.py:56
 msgid "CSS used for the HTML Email"
 msgstr "CSS Datei, die in E-Mails im HTML Format verwendet wird"
 
@@ -143,11 +148,11 @@ msgstr "Link Anfahrtsbeschreibung"
 msgid "E-Mail Address for Tests"
 msgstr "E-Mail-Adresse für Tests"
 
-#: ./../presscenter.py:55
+#: ./../presscenter.py:64
 msgid "E-Mail Template Press Invitation"
 msgstr "E-Mail-Vorlage für Presseeinladungen"
 
-#: ./../presscenter.py:51
+#: ./../presscenter.py:60
 msgid "E-Mail Template Press Release"
 msgstr "E-Mail-Vorlage für Pressemitteilungen"
 
@@ -174,6 +179,10 @@ msgstr "Die Bearbeitung wurde abgebrochen"
 #: ./../editinvitation.py:98
 msgid "Editing this press invitation has been cancelled."
 msgstr "Die Aktualisierung dieser Presseeinladung wurde erfolgreich abgebrochen und alle Ihre ANpassungen verworfen."
+
+#: ./../subscriptions.py:28
+msgid "Email address is required"
+msgstr "E-Mail-Adresse ist eine Pflichtangabe"
 
 #: ./../addinvitation.py:33
 #: ./../editinvitation.py:35
@@ -242,11 +251,11 @@ msgstr "Dateianhang"
 msgid "For invited geusts only"
 msgstr "Diese Veranstaltung is tnur für geladene Gäste"
 
-#: ./../settings.py:299
+#: ./../settings.py:308
 msgid "Global CSS settings successfully updated"
 msgstr "Die globalen Einstellungen für das verwendete CSS wurden aktualisiert."
 
-#: ./../settings.py:128
+#: ./../settings.py:137
 msgid "Global settings successfully updated"
 msgstr "Einstellungen wurden erfolgreich aktualisiert"
 
@@ -321,11 +330,11 @@ msgstr "Bitte wählen Sie, ob diese Veranstaltung nur für geladene Gäste ist."
 msgid "Please select the channels this content should be dispatched to."
 msgstr "Wählen Sie aus der Liste die Verteiler für den Versand. Hinweis: Sie haben im nächsten SChritt die Möglichkeit eine Übersicht aller Empfänger einzusehen und zu bearbeiten."
 
-#: ./../settings.py:57
+#: ./../settings.py:66
 msgid "Press Invitation E-Mail Template"
 msgstr "E-Mail-Vorlage: Presseeinladungen"
 
-#: ./../settings.py:49
+#: ./../settings.py:58
 msgid "Press Release E-Mail Template"
 msgstr "E-Mail-Vorlage: Pressemitteilungen"
 
@@ -377,13 +386,13 @@ msgstr "Details zum Empfänger"
 msgid "Recipient List"
 msgstr "Liste Empfänger"
 
-#: ./../recipientlist.py:33
+#: ./../recipientlist.py:34
 msgid "Recipient list updated"
 msgstr "Die Liste der Empfänger für diesen Presseinhalt wurde aktualisiert"
 
 #: ./../editinvitation.py:86
 #: ./../editrelease.py:88
-#: ./../settings.py:150
+#: ./../settings.py:159
 msgid "Save"
 msgstr "Speichern"
 
@@ -391,7 +400,7 @@ msgstr "Speichern"
 msgid "Save Selection"
 msgstr "Auswahl speichern"
 
-#: ./../settings.py:86
+#: ./../settings.py:95
 msgid "Save Settings"
 msgstr "Einstellungen speichern"
 
@@ -433,13 +442,23 @@ msgstr "Absendername"
 msgid "Start Date"
 msgstr "Veranstaltungsbeginn"
 
-#: ./../presscenter.py:46
+#: ./../presscenter.py:55
 msgid "Stylesheet"
 msgstr "Stylesheet / Designvorgaben"
 
-#: ./../settings.py:65
+#: ./../settings.py:74
 msgid "Stylesheet for HTML E-Mails"
 msgstr "Designvorlage für den Versand von E-Mails im HTML Format. Hinweis: Die Unterstützung für CSS ist in E-Mail-Programmen unterschiedlich valide. Die vorliegenden CSS-Angaben entsprechen dem Standard, der von allen Programmen weitestgehend unterstützt wird."
+
+#: ./../presscenter.py:50
+#: ./../settings.py:49
+msgid "Subscriber"
+msgstr "Abonnent"
+
+#: ./../presscenter.py:46
+#: ./../settings.py:45
+msgid "Subscribers"
+msgstr "Abonnenten"
 
 #: ./../addrelease.py:29
 #: ./../editrelease.py:32
@@ -480,12 +499,20 @@ msgstr "Das Anlegen einer neuen Presseinladung wurde auf Ihren Wunsch abgebroche
 msgid "The creation of a new press release has been cancelled."
 msgstr "Die Erstellung einer neuen Pressemitteilung wurde abgebrochen."
 
+#: ./../subscriptions.py:32
+msgid "The entered email address is already subscribed"
+msgstr "Für die angegebene E-Mail-Adresse existiert bereits ein Abonnement"
+
+#: ./../subscriptions.py:56
+msgid "The entered email address is not subscribed"
+msgstr "Die eingegebene E-Mail-Addresse konnte nicht in der Liste der Abonnenten gefunden werden"
+
 #: ./../editrelease.py:133
 msgid "The press release was successfully updated"
 msgstr "Die Pressemitteilung wurde erfolgreich aktualisiert"
 
 #: ./../archive.py:70
-#: ./../download.py:42
+#: ./../download.py:45
 msgid "The requested item was not found"
 msgstr "Das gewünschte Objekt konnte nicht gefunden werden."
 
@@ -505,7 +532,7 @@ msgstr "Titel"
 msgid "Travel information"
 msgstr "Anreiseinformationen"
 
-#: ./../settings.py:79
+#: ./../settings.py:88
 msgid "Update default settings"
 msgstr "Aktualisieren Sie die Standardeinstellungen"
 
@@ -517,31 +544,31 @@ msgstr "Dateianhang aktualisieren"
 msgid "Update image attachment"
 msgstr "Bildanhang aktualisieren"
 
-#: ./../settings.py:276
+#: ./../settings.py:285
 msgid "Update of CSS has been cancelled"
 msgstr "Der Vorgang wurde abgebrochen und alle Änderungen an den Designvorgaben verworfen."
 
-#: ./../settings.py:98
+#: ./../settings.py:107
 msgid "Update of global settings has been cancelled"
 msgstr "Die Änderung der Standardeinstellungen wurde abgebrochen."
 
-#: ./../settings.py:219
+#: ./../settings.py:228
 msgid "Update of press invitation template has been cancelled"
 msgstr "Die Aktualisierung der E-Mail-Vorlage für Presseeinladungen wurde abgebrochen."
 
-#: ./../settings.py:162
+#: ./../settings.py:171
 msgid "Update of press release template has been cancelled"
 msgstr "Die Aktualisierung der E-Mail-Vorlage für Pressemitteilungen wurde abgebrochen."
 
-#: ./../settings.py:200
+#: ./../settings.py:209
 msgid "Update press invitation template"
 msgstr "E-Mail-Vorlage für Presseeinladungen aktualisieren"
 
-#: ./../settings.py:143
+#: ./../settings.py:152
 msgid "Update press release template"
 msgstr "E-Mail-Vorlage für Pressemitteilungen aktualisieren"
 
-#: ./../settings.py:257
+#: ./../settings.py:266
 msgid "Update used CSS file for E-Mails"
 msgstr "Design-Vorlage für E-Mails im HTML-Format anpassen"
 
@@ -578,6 +605,10 @@ msgstr "Laden Sie ein Bild zu dieser Pressemittelung hoch. Das Bild sollte berei
 #: ./../pressrelease.py:72
 msgid "Visible in Archive?"
 msgstr "Im Archiv angezeigt?"
+
+#: ./../subscriptions.py:39
+msgid "Your subscription settings have been updated"
+msgstr "Ihr Newsletter Abonnement wurde aktualisiert."
 
 #: ./../addfile.py:61
 #: ./../addimage.py:61
