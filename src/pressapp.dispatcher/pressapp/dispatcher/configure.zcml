@@ -28,11 +28,23 @@
       directory="resources_pdf"
       />
 
+  <browser:resource
+      name="demo.css"
+      file="resources_pdf/demo.css"
+      />
+
   <browser:page
+      name="asPlainPDFCustom"
+      for="*"
+      permission="zope2.View"
+      class=".pdf.CustomPDFDownloadView"
+    />
+
+  <!--<browser:page
       name="asPlainPDFCustom"
       for="pressapp.presscontent.interfaces.IPressAppPolicy"
       permission="zope2.View"
       class=".pdf.CustomPDFDownloadView"
-    />
+    />-->
 
 </configure>

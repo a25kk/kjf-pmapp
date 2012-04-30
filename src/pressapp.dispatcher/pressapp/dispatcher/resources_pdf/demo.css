@@ -9,3 +9,7 @@
 * {
     font-family: ArialUnicode;
 }
+
+.bookmark-kicker {
+    color: red !important;
+}

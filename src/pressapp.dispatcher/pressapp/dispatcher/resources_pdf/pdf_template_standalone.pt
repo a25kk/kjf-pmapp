@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="tables.css" />
         <link rel="stylesheet" href="injected_counters.css" />
         <link rel="stylesheet" href="injected_office_styles.css" />
+        <link rel="stylesheet" href="demo.css" />
 
         <!-- Language dependent hyphenation support -->
         <tal:if condition="options/language | nothing">

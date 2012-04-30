@@ -58,7 +58,7 @@ class DownloadFileVersion(grok.View):
     def generate_pdf(self):
         item = self.target_item
         attachment = item.unrestrictedTraverse(
-            '@@asPlainPDF')(converter='pdf-pisa',
+            '@@asPlainPDFCustom')(converter='pdf-pisa',
                             resource='pressapp_resource',
                             template='pdf_template_standalone')
         return attachment
