@@ -10,8 +10,7 @@
         <link rel="stylesheet" href="footnotes.css" />
         <link rel="stylesheet" href="images.css" />
         <link rel="stylesheet" href="tables.css" />
-        <link rel="stylesheet" href="injected_counters.css" />
-        <link rel="stylesheet" href="injected_office_styles.css" />
+        <link rel="stylesheet" href="plone_specific.css" />
         <link rel="stylesheet" href="demo.css" />
 
         <!-- Language dependent hyphenation support -->
