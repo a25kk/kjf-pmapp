@@ -21,3 +21,5 @@ var
 *.pyc
 *.pyo
 etc/**/*
+*.mo
+src/sauna.reload
