@@ -5,6 +5,9 @@ from plone.app.uuid.utils import uuidToObject
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.statusmessages.interfaces import IStatusMessage
 
+from pressapp.presscontent.pressrelease import IPressRelease
+from pressapp.presscontent.pressinvitation import IPressInvitation
+
 from pressapp.presscontent import MessageFactory as _
 
 
@@ -57,10 +60,16 @@ class DownloadFileVersion(grok.View):
 
     def generate_pdf(self):
         item = self.target_item
-        attachment = item.unrestrictedTraverse(
-            '@@asPlainPDFCustom')(converter='pdf-pisa',
-                            resource='pressapp_resource',
-                            template='pdf_template_standalone')
+        if IPressRelease.providedBy(item):
+            attachment = item.unrestrictedTraverse(
+                '@@asPlainPDFCustom')(converter='pdf-pisa',
+                                resource='pressapp_resource',
+                                template='pdf_template_standalone')
+        if IPressInvitation.providedBy(item):
+            attachment = item.unrestrictedTraverse(
+                '@@asPlainPDFCustom')(converter='pdf-pisa',
+                                      resource='pressapp_resource',
+                                      template='pdf_template_standalone_pi')
         return attachment
 
     def resolveItemByID(self):

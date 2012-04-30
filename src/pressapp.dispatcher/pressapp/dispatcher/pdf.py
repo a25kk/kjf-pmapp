@@ -9,13 +9,14 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interface.folder import IATFolder
 from ZPublisher.Iterators import filestream_iterator
-from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile as ViewPageTemplateFile2
+from zope.app.pagetemplate.viewpagetemplatefile import (ViewPageTemplateFile
+    as ViewPageTemplateFile2)
 
 from zopyx.smartprintng.plone.logger import LOG
 from zopyx.smartprintng.plone.resources import resources_registry
 from zopyx.smartprintng.plone import Transformer
 
-import zopyx.smartprintng.plone.browser.splitter
+from zopyx.smartprintng.plone.browser import splitter
 from zopyx.smartprintng.plone.browser.util import getLanguageForObject
 
 cwd = os.path.dirname(os.path.abspath(__file__))
@@ -53,21 +54,9 @@ class CustomProducePublishView(ProducePublishView):
 #        'addTableOfContents',
         )
 
-    transformations = (
-        'makeImagesLocal',
-#        'removeEmptyElements',
-#        'removeInternalLinks', 
-#        'annotateInternalLinks',
-#        'cleanupTables',
-        'convertFootnotes',
-        'removeCrapFromHeadings',
-        'fixHierarchies',
-#        'addTableOfContents',
-        )
-
     def copyResources(self, resources_dir, destdir):
-        """ Copy over resources for a global or local resources directory into the 
-            destination directory.
+        """ Copy over resources for a global or local resources
+            directory into the destination directory.
         """
         if os.path.exists(resources_dir):
             for name in os.listdir(resources_dir):
@@ -82,10 +71,11 @@ class CustomProducePublishView(ProducePublishView):
             transformations = self.transformations
 
         # the request can override transformations as well
-        if self.request.has_key('transformations'):
+        if 'transformations' in self.request:
             t_from_request = self.request['transformations']
             if isinstance(t_from_request, basestring):
-                transformations = t_from_request and t_from_request.split(',') or []
+                transformations = (t_from_request and t_from_request.split(',')
+                    or [])
             else:
                 transformations = t_from_request
 
@@ -100,7 +90,6 @@ class CustomProducePublishView(ProducePublishView):
             LOG.error('Conversion failed', exc_info=True)
             raise
 
-
     def __call2__(self, *args, **kw):
         """ URL parameters:
             'language' -  'de', 'en'....used to override the language of the
@@ -109,14 +98,16 @@ class CustomProducePublishView(ProducePublishView):
                           zopyx.convert2 (default: pdf-prince)
             'resource' - the name of a registered resource (directory)
             'template' - the name of a custom template name within the choosen
-                         'resource' 
+                         'resource'
         """
 
         # Output directory
-        tmpdir_prefix = os.path.join(tempfile.gettempdir(), 'produce-and-publish')
+        tmpdir_prefix = os.path.join(tempfile.gettempdir(),
+            'produce-and-publish')
         if not os.path.exists(tmpdir_prefix):
             os.makedirs(tmpdir_prefix)
-        destdir = tempfile.mkdtemp(dir=tmpdir_prefix, prefix=self.context.getId() + '-')
+        destdir = tempfile.mkdtemp(dir=tmpdir_prefix,
+            prefix=self.context.getId() + '-')
 
         # debug/logging
         params = kw.copy()
@@ -132,9 +123,11 @@ class CustomProducePublishView(ProducePublishView):
         custom_css = None
         custom_stylesheet = params.get('custom_stylesheet')
         if custom_stylesheet:
-            custom_css = str(self.context.restrictedTraverse(custom_stylesheet, None))
+            custom_css = str(self.context.restrictedTraverse(custom_stylesheet,
+                None))
             if custom_css is None:
-                raise ValueError('Could not access custom CSS at %s' % custom_stylesheet)
+                raise ValueError(
+                    'Could not access custom CSS at %s' % custom_stylesheet)
 
         # check for resource parameter
         resource = params.get('resource')
@@ -143,14 +136,16 @@ class CustomProducePublishView(ProducePublishView):
             if not resources_directory:
                 raise ValueError('No resource "%s" configured' % resource)
             if not os.path.exists(resources_directory):
-                raise ValueError('Resource directory for resource "%s" does not exist' % resource)
+                raise ValueError(
+            'Resource directory for resource "%s" does not exist' % resource)
             self.copyResources(resources_directory, destdir)
 
             # look up custom template in resources directory
             template_name = params.get('template', 'pdf_template')
             if not template_name.endswith('.pt'):
                 template_name += '.pt'
-            template_filename = os.path.join(resources_directory, template_name)
+            template_filename = os.path.join(resources_directory,
+                template_name)
             if not os.path.exists(template_filename):
                 raise IOError('No template found (%s)' % template_filename)
             template = ViewPageTemplateFile2(template_filename)
@@ -158,15 +153,11 @@ class CustomProducePublishView(ProducePublishView):
         else:
             template = self.template
 
-        # call the dedicated @@asHTML on the top-level node. For a leaf document
-        # this will return either a HTML fragment for a single document or @@asHTML
-        # might be defined as an aggregator for a bunch of documents (e.g. if the
-        # top-level is a folderish object
-
         html_view = self.context.restrictedTraverse('@@asHTML', None)
         if not html_view:
-            raise RuntimeError('Object at does not provide @@asHTML view (%s, %s)' % 
-                               (self.context.absolute_url(1), self.context.portal_type))
+            raise RuntimeError(
+                'Object at does not provide @@asHTML view (%s, %s)' %
+                (self.context.absolute_url(1), self.context.portal_type))
         html_fragment = html_view()
 
         # arbitrary application data
@@ -191,8 +182,7 @@ class CustomProducePublishView(ProducePublishView):
         dest_filename = os.path.join(destdir, 'index.html')
         fp = codecs.open(dest_filename, 'wb', encoding='utf-8')
         fp.write(html)
-        fp.close()  
-
+        fp.close()
         # split HTML document into parts and store them on the filesystem
         # (making only sense for folderish content)
         if IATFolder.providedBy(self.context) and not 'no-split' in params:
@@ -204,11 +194,13 @@ class CustomProducePublishView(ProducePublishView):
 
         # copy over language dependent hyphenation data
         if language:
-            hyphen_file = os.path.join(resources_dir, 'hyphenation', language + '.hyp')
+            hyphen_file = os.path.join(resources_dir,
+                'hyphenation', language + '.hyp')
             if os.path.exists(hyphen_file):
                 shutil.copy(hyphen_file, destdir)
 
-            hyphen_css_file = os.path.join(resources_dir, 'languages', language + '.css')
+            hyphen_css_file = os.path.join(resources_dir, 'languages',
+                language + '.css')
             if os.path.exists(hyphen_css_file):
                 shutil.copy(hyphen_css_file, destdir)
 
@@ -216,19 +208,18 @@ class CustomProducePublishView(ProducePublishView):
         self.copyResources(getattr(self, 'local_resources', ''), destdir)
         if ZIP_OUTPUT or 'zip_output' in params:
             archivename = tempfile.mktemp(suffix='.zip')
-            fp = zipfile.ZipFile(archivename, "w", zipfile.ZIP_DEFLATED) 
+            fp = zipfile.ZipFile(archivename, "w", zipfile.ZIP_DEFLATED)
             for root, dirs, files in os.walk(destdir):
                 #NOTE: ignore empty directories
                 for fn in files:
                     absfn = os.path.join(root, fn)
-                    zfn = absfn[len(destdir)+len(os.sep):] #XXX: relative path
+                    zfn = absfn[len(destdir) + len(os.sep):]
                     fp.write(absfn, zfn)
             fp.close()
             LOG.info('ZIP file written to %s' % archivename)
 
         if 'no_conversion' in params:
             return destdir
-        
         if LOCAL_CONVERSION:
             from zopyx.convert2 import Converter
             c = Converter(dest_filename)
@@ -242,7 +233,8 @@ class CustomProducePublishView(ProducePublishView):
             # Produce & Publish server integration
             from zopyx.smartprintng.client.zip_client import Proxy2
             proxy = Proxy2(URL)
-            result = proxy.convertZIP2(destdir, self.request.get('converter', 'pdf-prince'))
+            result = proxy.convertZIP2(destdir, self.request.get('converter',
+                'pdf-prince'))
             LOG.info('Output file: %s' % result['output_filename'])
             return result['output_filename']
 
