@@ -1,6 +1,7 @@
 from datetime import datetime
 from Acquisition import aq_inner
 from five import grok
+from zope.i18n import translate
 from zope.component import getMultiAdapter
 from zope.app.component.hooks import getSite
 
@@ -126,7 +127,11 @@ class PressItemView(grok.View):
             data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
             if closed == True:
-                data['closed'] = _(u"Admittance for invited guests only")
+                closed_msg = translate(
+                    _(u"Admittance for invited guests only"),
+                    domain='pressapp.presscontent',
+                    target_language='de')
+                data['closed'] = closed_msg
             else:
                 data['closed'] = ''
         if memberinfo:

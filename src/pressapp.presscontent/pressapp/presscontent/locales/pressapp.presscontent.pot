@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-04-26 14:22+0000\n"
+"POT-Creation-Date: 2012-04-30 14:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,11 @@ msgstr ""
 
 #: ./../recipients.py:31
 msgid "A customized channel/recipient list used for this single press content. Note: If you don't require any changes, it is faster to just keep the channels."
+msgstr ""
+
+#: ./../presscenter.py:47
+#: ./../settings.py:46
+msgid "A list of subscribers - one address per line - these are available as default list"
 msgstr ""
 
 #: ./../presscenter.py:38
@@ -90,7 +95,7 @@ msgstr ""
 msgid "Attachment Caption"
 msgstr ""
 
-#: ./../presscenter.py:47
+#: ./../presscenter.py:56
 msgid "CSS used for the HTML Email"
 msgstr ""
 
@@ -146,11 +151,11 @@ msgstr ""
 msgid "E-Mail Address for Tests"
 msgstr ""
 
-#: ./../presscenter.py:55
+#: ./../presscenter.py:64
 msgid "E-Mail Template Press Invitation"
 msgstr ""
 
-#: ./../presscenter.py:51
+#: ./../presscenter.py:60
 msgid "E-Mail Template Press Release"
 msgstr ""
 
@@ -176,6 +181,10 @@ msgstr ""
 
 #: ./../editinvitation.py:98
 msgid "Editing this press invitation has been cancelled."
+msgstr ""
+
+#: ./../subscriptions.py:28
+msgid "Email address is required"
 msgstr ""
 
 #: ./../addinvitation.py:33
@@ -245,11 +254,11 @@ msgstr ""
 msgid "For invited geusts only"
 msgstr ""
 
-#: ./../settings.py:299
+#: ./../settings.py:308
 msgid "Global CSS settings successfully updated"
 msgstr ""
 
-#: ./../settings.py:128
+#: ./../settings.py:137
 msgid "Global settings successfully updated"
 msgstr ""
 
@@ -324,11 +333,11 @@ msgstr ""
 msgid "Please select the channels this content should be dispatched to."
 msgstr ""
 
-#: ./../settings.py:57
+#: ./../settings.py:66
 msgid "Press Invitation E-Mail Template"
 msgstr ""
 
-#: ./../settings.py:49
+#: ./../settings.py:58
 msgid "Press Release E-Mail Template"
 msgstr ""
 
@@ -380,13 +389,13 @@ msgstr ""
 msgid "Recipient List"
 msgstr ""
 
-#: ./../recipientlist.py:33
+#: ./../recipientlist.py:34
 msgid "Recipient list updated"
 msgstr ""
 
 #: ./../editinvitation.py:86
 #: ./../editrelease.py:88
-#: ./../settings.py:150
+#: ./../settings.py:159
 msgid "Save"
 msgstr ""
 
@@ -394,7 +403,7 @@ msgstr ""
 msgid "Save Selection"
 msgstr ""
 
-#: ./../settings.py:86
+#: ./../settings.py:95
 msgid "Save Settings"
 msgstr ""
 
@@ -436,12 +445,22 @@ msgstr ""
 msgid "Start Date"
 msgstr ""
 
-#: ./../presscenter.py:46
+#: ./../presscenter.py:55
 msgid "Stylesheet"
 msgstr ""
 
-#: ./../settings.py:65
+#: ./../settings.py:74
 msgid "Stylesheet for HTML E-Mails"
+msgstr ""
+
+#: ./../presscenter.py:50
+#: ./../settings.py:49
+msgid "Subscriber"
+msgstr ""
+
+#: ./../presscenter.py:46
+#: ./../settings.py:45
+msgid "Subscribers"
 msgstr ""
 
 #: ./../addrelease.py:29
@@ -483,12 +502,20 @@ msgstr ""
 msgid "The creation of a new press release has been cancelled."
 msgstr ""
 
+#: ./../subscriptions.py:32
+msgid "The entered email address is already subscribed"
+msgstr ""
+
+#: ./../subscriptions.py:56
+msgid "The entered email address is not subscribed"
+msgstr ""
+
 #: ./../editrelease.py:133
 msgid "The press release was successfully updated"
 msgstr ""
 
 #: ./../archive.py:70
-#: ./../download.py:42
+#: ./../download.py:45
 msgid "The requested item was not found"
 msgstr ""
 
@@ -508,7 +535,7 @@ msgstr ""
 msgid "Travel information"
 msgstr ""
 
-#: ./../settings.py:79
+#: ./../settings.py:88
 msgid "Update default settings"
 msgstr ""
 
@@ -520,31 +547,31 @@ msgstr ""
 msgid "Update image attachment"
 msgstr ""
 
-#: ./../settings.py:276
+#: ./../settings.py:285
 msgid "Update of CSS has been cancelled"
 msgstr ""
 
-#: ./../settings.py:98
+#: ./../settings.py:107
 msgid "Update of global settings has been cancelled"
 msgstr ""
 
-#: ./../settings.py:219
+#: ./../settings.py:228
 msgid "Update of press invitation template has been cancelled"
 msgstr ""
 
-#: ./../settings.py:162
+#: ./../settings.py:171
 msgid "Update of press release template has been cancelled"
 msgstr ""
 
-#: ./../settings.py:200
+#: ./../settings.py:209
 msgid "Update press invitation template"
 msgstr ""
 
-#: ./../settings.py:143
+#: ./../settings.py:152
 msgid "Update press release template"
 msgstr ""
 
-#: ./../settings.py:257
+#: ./../settings.py:266
 msgid "Update used CSS file for E-Mails"
 msgstr ""
 
@@ -580,6 +607,10 @@ msgstr ""
 #: ./../editrelease.py:65
 #: ./../pressrelease.py:72
 msgid "Visible in Archive?"
+msgstr ""
+
+#: ./../subscriptions.py:39
+msgid "Your subscription settings have been updated"
 msgstr ""
 
 #: ./../addfile.py:61
