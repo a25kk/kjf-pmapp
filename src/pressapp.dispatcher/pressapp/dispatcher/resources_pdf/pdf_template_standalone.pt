@@ -30,6 +30,7 @@
         />
         
         <img src="http://pm.kreativkombinat.de/static-resources/pr.jpg" />
+        <br />
         
         <div id="main-content" tal:content="structure options/body" />
 

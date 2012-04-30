@@ -10,7 +10,8 @@
     font-family: ArialUnicode;
 }
 
-h6 {
-    color: red !important;
-    border: 1px solid #eee;
+h1 .title .bookmark-title { 
+    color: #cccccc !important;
+    border: 1px solid #cccccc !important;
+    font-size: 200px !important;
 }

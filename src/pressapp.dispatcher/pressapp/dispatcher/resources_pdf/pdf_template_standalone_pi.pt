@@ -31,6 +31,7 @@
         />
         
         <img src="http://pm.kreativkombinat.de/static-resources/pi.jpg" />
+        <br />
         
         <div id="main-content" tal:content="structure options/body" />
 
