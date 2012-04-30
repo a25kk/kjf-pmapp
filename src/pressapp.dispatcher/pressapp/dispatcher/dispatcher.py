@@ -15,6 +15,7 @@ from AccessControl import getSecurityManager
 from AccessControl.SecurityManagement import newSecurityManager
 from AccessControl.SecurityManagement import setSecurityManager
 from five import grok
+from zope.i18n import translate
 from zope.site.hooks import getSite
 from zope.component import getMultiAdapter
 from Products.CMFPlone.utils import safe_unicode
@@ -226,7 +227,11 @@ class Dispatcher(grok.View):
             data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
             if closed == True:
-                data['closed'] = _(u"Admittance for invited guests only")
+                closed_msg = translate(
+                    _(u"Admittance for invited guests only"),
+                    domain='pressapp.presscontent',
+                    target_language='de')
+                data['closed'] = closed_msg
             else:
                 data['closed'] = ''
         if memberinfo:
