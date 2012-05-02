@@ -14,6 +14,7 @@ class PrepareRelease(grok.View):
         self.recipient_count = len(self.recipient_list())
         self.has_recipients = self.recipient_count > 0
         self.subscriber_count = len(self.subscriber_list())
+        self.has_subscribers = self.subscriber_count > 0
 
     def recipient_list(self):
         context = aq_inner(self.context)

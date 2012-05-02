@@ -39,7 +39,13 @@
     <div class="row-fluid">
     <div class="span6">
         <div class="box" tal:condition="view/has_recipients">
-        <h3>Empf&auml;nger aus Verteilern: <span class="badge badge-info" tal:content="view/recipient_count">Count</span></h3>
+        <h3>Empf&auml;nger aus Verteilern:
+            <span class="badge badge-info" tal:content="view/recipient_count">Count</span>
+        </h3>
+        <div class="alert alert-info">
+            <strong>Information:</strong> alle Empf&auml;nger aus den
+            ausgew&auml;hlten Verteilern
+        </div>
         <a class="btn  btn-small btn-info show-details">
             <i class="icon-arrow-down icon-white" />
             Adressen anzeigen</a>
@@ -67,10 +73,14 @@
         </div>
     </div>
     <div class="span6">
-        <div class="box" tal:condition="view/has_recipients">
+        <div class="box" tal:condition="view/has_subscribers">
         <h3>Newsletter Abonnenten:
             <span class="badge badge-info" tal:content="view/subscriber_count">Count</span>
         </h3>
+        <div class="alert">
+            <strong>Hinweis:</strong> diese Liste wird nur f&uuml;r den Versand
+            von Pressemitteilungen verwendet.
+        </div>
         <a class="btn  btn-small btn-info show-details">
             <i class="icon-arrow-down icon-white" />
             Adressen anzeigen</a>

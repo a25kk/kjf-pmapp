@@ -156,7 +156,8 @@ class Dispatcher(grok.View):
         if type == 'send_now_recipients_only':
             recievers = getattr(context, 'recipients', '')
         else:
-            subscribers = getattr(presscenter, 'subscribers', '')
+            if IPressRelease.providedBy(context):
+                subscribers = getattr(presscenter, 'subscribers', '')
             recievers = getattr(context, 'recipients', '')
         recipients = []
         if subscribers:
