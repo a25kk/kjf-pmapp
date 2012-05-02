@@ -35,11 +35,11 @@
         
         <h1>Versand vorbereiten</h1>
     </div>
-    
-    <div class="box">
-        <h2>Zusammenfassung</h2>
+    <h2>Zusammenfassung</h2>
+    <div class="row-fluid">
+    <div class="span6">
         <div class="box" tal:condition="view/has_recipients">
-        <h3>Empf&auml;nger: <span tal:content="view/recipient_count">Count</span></h3>
+        <h3>Empf&auml;nger aus Verteilern: <span class="badge badge-info" tal:content="view/recipient_count">Count</span></h3>
         <a class="btn  btn-small btn-info show-details">
             <i class="icon-arrow-down icon-white" />
             Adressen anzeigen</a>
@@ -66,6 +66,38 @@
         </div>
         </div>
     </div>
+    <div class="span6">
+        <div class="box" tal:condition="view/has_recipients">
+        <h3>Newsletter Abonnenten:
+            <span class="badge badge-info" tal:content="view/subscriber_count">Count</span>
+        </h3>
+        <a class="btn  btn-small btn-info show-details">
+            <i class="icon-arrow-down icon-white" />
+            Adressen anzeigen</a>
+        <div class="xbox details visualClear">
+            <div class="visualClear">&nbsp;</div>
+            <div class="tile stats">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>E-Mail-Adresse</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tal:block tal:repeat="item view/subscriber_list">
+                        <tr>
+                            <td tal:content="repeat/item/number" />
+                            <td tal:content="item" />
+                        </tr>
+                        </tal:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
     
     <div class="visualClear">&nbsp;</div>
     <div class="form-actions">
@@ -75,6 +107,12 @@
             tal:attributes="href python:context_url+'/@@dispatcher?type=send_now'">
             <i class="icon-share-alt icon-white" />
             Jetzt versenden</a>
+        <a href="" class="btn btn-large btn-info"
+            rel="loading-indicator"
+            data-loading-text="Ihre Nachricht wird verschickt..."
+            tal:attributes="href python:context_url+'/@@dispatcher?type=send_now_recipients_only'">
+            <i class="icon-share-alt icon-white" />
+            Nur an Verteiler versenden</a>
         <a href="" class="btn btn-large btn-warning"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."

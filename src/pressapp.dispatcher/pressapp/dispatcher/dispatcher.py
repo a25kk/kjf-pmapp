@@ -153,6 +153,8 @@ class Dispatcher(grok.View):
         presscenter = portal['presscenter']
         if type == 'test':
             recievers = presscenter.testRecipients
+        if type == 'send_now_recipients_only':
+            recievers = getattr(context, 'recipients', '')
         else:
             subscribers = getattr(presscenter, 'subscribers', '')
             recievers = getattr(context, 'recipients', '')
