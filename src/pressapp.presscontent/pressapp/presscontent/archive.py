@@ -1,6 +1,7 @@
 from datetime import datetime
 from Acquisition import aq_inner
 from five import grok
+from App.config import getConfiguration
 from zope.i18n import translate
 from zope.component import getMultiAdapter
 from zope.app.component.hooks import getSite
@@ -210,11 +211,11 @@ class PressItemView(grok.View):
     def clean_portal_url(self):
         portal = getSite()
         portal_url = portal.absolute_url()
-        if portal_url.startswith('https://'):
-            clean_url = portal_url.replace('https://', 'http://')
+        static_url = 'http://kjf-presse.de'
+        if getConfiguration().debug_mode:
+            return portal_url
         else:
-            clean_url = portal_url
-        return clean_url
+            return static_url
 
     def safe_portal_encoding(self, string):
         portal = getSite()
@@ -308,9 +309,8 @@ class AttachmentsView(grok.View):
     def clean_portal_url(self):
         portal = getSite()
         portal_url = portal.absolute_url()
-        url = 'http://kjf-presse.de'
-        if portal_url.startswith('https://'):
-            clean_url = portal_url.replace('https://', 'http://')
+        static_url = 'http://kjf-presse.de'
+        if getConfiguration().debug_mode:
+            return portal_url
         else:
-            clean_url = portal_url
-        return clean_url
+            return static_url

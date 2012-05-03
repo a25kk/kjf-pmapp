@@ -50,6 +50,7 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
         title=_(u"Text"),
         required=True,
     )
+    form.primary('image')
     image = NamedBlobImage(
         title=_(u"Image Attachment"),
         description=_(u"Upload an image for this press release. The "
