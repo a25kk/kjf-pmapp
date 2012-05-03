@@ -1,9 +1,10 @@
 <div class="type-pressrelease document-body"
     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                data view/additional_data">
+                data view/additional_data;
+                memberinfo view/memberdata">
 
     <div class="description">
-        <span tal:replace="data/location" />
+        <span tal:replace="memberinfo/location" />
         <span tal:define="date data/date"
             tal:replace="python:toLocalizedTime(date)" />
     </div>

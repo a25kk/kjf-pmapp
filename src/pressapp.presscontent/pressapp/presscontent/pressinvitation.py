@@ -156,6 +156,16 @@ class AsHtmlView(grok.View):
             data['closed'] = ''
         return data
 
+    def memberdata(self):
+        context = aq_inner(self.context)
+        mtool = getToolByName(context, 'portal_membership')
+        member = mtool.getAuthenticatedMember()
+        memberinfo = {}
+        memberinfo['org'] = member.getProperty('organization', '')
+        memberinfo['link'] = member.getProperty('home_page', '')
+        memberinfo['location'] = member.getProperty('location', 'Augsburg')
+        return memberinfo
+
     def getImageTag(self, item):
         obj = item
         scales = getMultiAdapter((obj, self.request), name='images')
