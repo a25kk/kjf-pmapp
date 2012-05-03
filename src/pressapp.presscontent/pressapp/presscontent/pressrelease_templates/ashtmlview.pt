@@ -21,6 +21,8 @@
                                  width picture/_width | nothing;"
                 class="teaser-image"
                 />
+            <div tal:condition="context/caption"
+                tal:content="context/caption">Caption</div>
         </div>
         <div class="subtitle bookmark-subtitle">
             <span tal:replace="data/location" /> (kjf)

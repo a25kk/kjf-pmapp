@@ -151,9 +151,9 @@ class AsHtmlView(grok.View):
         data['start'] = context.start
         data['end'] = context.end
         if context.closed == True:
-            data['closed'] = _(u"For invited geusts only")
+            data['closed'] = _(u"Admittance for invited guests only")
         else:
-            data['closed'] = _(u"This is a public event")
+            data['closed'] = ''
         return data
 
     def getImageTag(self, item):

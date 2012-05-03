@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-04-30 14:35+0000\n"
+"POT-Creation-Date: 2012-05-03 15:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,7 +86,8 @@ msgstr ""
 msgid "Add press invitation"
 msgstr ""
 
-#: ./../archive.py:129
+#: ./../archive.py:132
+#: ./../pressinvitation.py:154
 msgid "Admittance for invited guests only"
 msgstr ""
 
@@ -203,7 +204,7 @@ msgstr ""
 msgid "Enter optional caption describing the attachment"
 msgstr ""
 
-#: ./../pressrelease.py:62
+#: ./../pressrelease.py:63
 msgid "Enter optional caption describing the image"
 msgstr ""
 
@@ -250,10 +251,6 @@ msgstr ""
 msgid "FileAttachment"
 msgstr ""
 
-#: ./../pressinvitation.py:154
-msgid "For invited geusts only"
-msgstr ""
-
 #: ./../settings.py:308
 msgid "Global CSS settings successfully updated"
 msgstr ""
@@ -268,7 +265,7 @@ msgstr ""
 msgid "Image Attachment"
 msgstr ""
 
-#: ./../pressrelease.py:61
+#: ./../pressrelease.py:62
 msgid "Image Attachment Caption"
 msgstr ""
 
@@ -290,7 +287,7 @@ msgstr ""
 
 #: ./../addrelease.py:63
 #: ./../editrelease.py:66
-#: ./../pressrelease.py:73
+#: ./../pressrelease.py:74
 msgid "Mark this press release as visible in the archive."
 msgstr ""
 
@@ -514,13 +511,9 @@ msgstr ""
 msgid "The press release was successfully updated"
 msgstr ""
 
-#: ./../archive.py:70
-#: ./../download.py:45
+#: ./../archive.py:72
+#: ./../download.py:76
 msgid "The requested item was not found"
-msgstr ""
-
-#: ./../pressinvitation.py:156
-msgid "This is a public event"
 msgstr ""
 
 #: ./../addfile.py:21
@@ -599,13 +592,13 @@ msgstr ""
 
 #: ./../addrelease.py:45
 #: ./../editrelease.py:48
-#: ./../pressrelease.py:55
+#: ./../pressrelease.py:56
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr ""
 
 #: ./../addrelease.py:62
 #: ./../editrelease.py:65
-#: ./../pressrelease.py:72
+#: ./../pressrelease.py:73
 msgid "Visible in Archive?"
 msgstr ""
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-04-30 14:35+0000\n"
-"PO-Revision-Date: 2012-04-30 16:41+0100\n"
+"POT-Creation-Date: 2012-05-03 15:52+0000\n"
+"PO-Revision-Date: 2012-05-03 17:54+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -83,9 +83,10 @@ msgstr "Pressemitteilung hinzufügen"
 msgid "Add press invitation"
 msgstr "Presseeinladung hinzufügen"
 
-#: ./../archive.py:129
+#: ./../archive.py:132
+#: ./../pressinvitation.py:154
 msgid "Admittance for invited guests only"
-msgstr "Diese Veranstaltung ist nur für geladene Gäste."
+msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung abzusehen."
 
 #: ./../addrelease.py:51
 #: ./../editrelease.py:54
@@ -200,7 +201,7 @@ msgstr "Geben Sie hier einen Link zu einer Anfahrtsbeschreibung (z.B. bei Google
 msgid "Enter optional caption describing the attachment"
 msgstr "Optionale Bildunterschrift, die den Dateianhang genauer bezeichnet."
 
-#: ./../pressrelease.py:62
+#: ./../pressrelease.py:63
 msgid "Enter optional caption describing the image"
 msgstr "Tragen Sie hier eine optionale Bildunterschrift ein."
 
@@ -247,10 +248,6 @@ msgstr "Der Dateianhang wurde erfolgreich aktualisiert"
 msgid "FileAttachment"
 msgstr "Dateianhang"
 
-#: ./../pressinvitation.py:154
-msgid "For invited geusts only"
-msgstr "Diese Veranstaltung is tnur für geladene Gäste"
-
 #: ./../settings.py:308
 msgid "Global CSS settings successfully updated"
 msgstr "Die globalen Einstellungen für das verwendete CSS wurden aktualisiert."
@@ -265,7 +262,7 @@ msgstr "Einstellungen wurden erfolgreich aktualisiert"
 msgid "Image Attachment"
 msgstr "Bildanhang"
 
-#: ./../pressrelease.py:61
+#: ./../pressrelease.py:62
 msgid "Image Attachment Caption"
 msgstr "Bildunterschrift zum Bildanhang"
 
@@ -287,7 +284,7 @@ msgstr "Ort"
 
 #: ./../addrelease.py:63
 #: ./../editrelease.py:66
-#: ./../pressrelease.py:73
+#: ./../pressrelease.py:74
 msgid "Mark this press release as visible in the archive."
 msgstr "Markieren Sie dieses Pressemitteilung als vertraulich, um diese aus der Auflistung im öffentlichen Archiv auszuschliessen."
 
@@ -511,14 +508,10 @@ msgstr "Die eingegebene E-Mail-Addresse konnte nicht in der Liste der Abonnenten
 msgid "The press release was successfully updated"
 msgstr "Die Pressemitteilung wurde erfolgreich aktualisiert"
 
-#: ./../archive.py:70
-#: ./../download.py:45
+#: ./../archive.py:72
+#: ./../download.py:76
 msgid "The requested item was not found"
 msgstr "Das gewünschte Objekt konnte nicht gefunden werden."
-
-#: ./../pressinvitation.py:156
-msgid "This is a public event"
-msgstr "Öffentliche Veranstaltung"
 
 #: ./../addfile.py:21
 #: ./../addimage.py:20
@@ -596,13 +589,13 @@ msgstr "Laden Sie hier bitte Ihr Bild hoch. Dieses wird in Presseinhalten als Do
 
 #: ./../addrelease.py:45
 #: ./../editrelease.py:48
-#: ./../pressrelease.py:55
+#: ./../pressrelease.py:56
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr "Laden Sie ein Bild zu dieser Pressemittelung hoch. Das Bild sollte bereit optimiert und verkleinert sein, da E-Mails nicht für den Versand grosser Dateimengen vorgesehen sind."
 
 #: ./../addrelease.py:62
 #: ./../editrelease.py:65
-#: ./../pressrelease.py:72
+#: ./../pressrelease.py:73
 msgid "Visible in Archive?"
 msgstr "Im Archiv angezeigt?"
 
