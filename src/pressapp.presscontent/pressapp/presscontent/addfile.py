@@ -2,13 +2,11 @@ from five import grok
 from Acquisition import aq_inner
 from zope import schema
 from zope.lifecycleevent import modified
-from zope.component import getUtility
 
 from plone.directives import form
 from z3c.form import button
 from plone.dexterity.utils import createContentInContainer
 from plone.namedfile.field import NamedBlobFile
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.presscontent.pressroom import IPressRelease
 

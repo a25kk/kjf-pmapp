@@ -296,6 +296,7 @@ class AttachmentsView(grok.View):
         obj = self.presscontent
         catalog = getToolByName(context, 'portal_catalog')
         items = catalog(portal_type=['pressapp.presscontent.fileattachment',
+                                     'pressapp.presscontent.imageattachment',
                                      'Image'],
                         path=dict(query='/'.join(obj.getPhysicalPath()),
                                   depth=1))
