@@ -63,7 +63,6 @@ class PressItemView(grok.View):
         rendered_email = cleanup_links(rendered)
         css_file = self.default_data['stylesheet']
         text = rendered_email.replace('[[PC_CSS]]', str(css_file))
-        import pdb; pdb.set_trace( )
         return text
 
     def resolvePressItem(self):
