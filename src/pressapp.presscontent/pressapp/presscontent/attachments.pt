@@ -10,6 +10,11 @@
                 tal:attributes="href string:${item/url}">
                 Download</a>
             </tal:file>
+            <tal:imagefile tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
+            <a href=""
+                tal:attributes="href string:${item/url}">
+                Download</a>
+            </tal:imagefile>
             <tal:image tal:condition="python:type == 'Image'">
               <a href=""
                   tal:attributes="href string:${item/url}">

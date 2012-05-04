@@ -120,7 +120,7 @@
                     <strong tal:content="item/Title" /></a>
                   </td>
                   <td tal:define="item_obj item/getObject">
-                    <img tal:condition="python:type == 'Image'"
+                    <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
                         class="thumbnail" 
                         tal:define="scale item_obj/@@images"
                         tal:replace="structure python: scale.scale('image',
@@ -155,12 +155,34 @@
                           L&ouml;schen</a>
                       </div>
                   </div>
+                  <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
+                    <div class="btn-group">
+                      <a href=""
+                          class="btn btn-small"
+                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
+                          <i class="icon-edit" />
+                          Bearbeiten</a>
+                      <a href=""
+                          class="btn btn-small popoverLink link-overlay"
+                          tal:attributes="href string:${item/getURL}/delete_confirmation">
+                          <i class="icon-remove-sign" />
+                          L&ouml;schen</a>
+                      </div>
+                  </div>
                   </td>
                   <td>
                     <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
                       <div class="btn-group">
                     <a href="" class="btn btn-small btn-inverse"
                         tal:attributes="href string:${item/getURL}/@@download/attachment/${item/attachment/filename}">
+                        <i class="icon-download icon-white" />
+                        Download</a>
+                      </div>
+                    </div>
+                    <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
+                      <div class="btn-group">
+                    <a href="" class="btn btn-small btn-inverse"
+                        tal:attributes="href string:${item/getURL}/@@download/image/${item/image/filename}">
                         <i class="icon-download icon-white" />
                         Download</a>
                       </div>

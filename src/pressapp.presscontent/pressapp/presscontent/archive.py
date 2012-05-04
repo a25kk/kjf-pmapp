@@ -22,6 +22,7 @@ from plone.uuid.interfaces import IUUID
 
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
+from pressapp.presscontent.imageattachment import IImageAttachment
 
 from pressapp.presscontent import MessageFactory as _
 
@@ -268,7 +269,7 @@ class AttachmentsView(grok.View):
             info['title'] = item.Title
             info['url'] = portal_url + view_name + item_uuid + item_timestamp
             info['type'] = item.portal_type
-            if IImageContent.providedBy(item_obj):
+            if IImageAttachment.providedBy(item_obj):
                 image_tag = self.getImageTag(item_obj)
                 info['image'] = image_tag
             else:
