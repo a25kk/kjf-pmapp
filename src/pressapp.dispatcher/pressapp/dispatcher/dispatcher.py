@@ -155,19 +155,19 @@ class Dispatcher(grok.View):
         presscenter = portal['presscenter']
         if type == 'test':
             recievers = presscenter.testRecipients
-        if type == 'send_now_recipients_only':
+        elif type == 'send_now_recipients_only':
             recievers = getattr(context, 'recipients', '')
         else:
-            if IPressRelease.providedBy(context):
-                subscribers = getattr(presscenter, 'subscribers', '')
             recievers = getattr(context, 'recipients', '')
         recipients = []
-        if subscribers:
-            for item in subscribers:
-                recipient = {}
-                recipient['mail'] = item
-                recipient['name'] = item
-                recipients.append(recipient)
+        if IPressRelease.providedBy(context):
+            subscribers = getattr(presscenter, 'subscribers', '')
+            if subscribers:
+                for item in subscribers:
+                    recipient = {}
+                    recipient['mail'] = item
+                    recipient['name'] = item
+                    recipients.append(recipient)
         if recievers:
             for address in recievers:
                 recipient = {}
