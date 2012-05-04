@@ -45,6 +45,10 @@ class DownloadAssets(grok.View):
             self.fieldname = info.fieldname
             file = info.value
             self.filename = getattr(file, 'filename', self.fieldname)
+            try:
+                str(self.filename)
+            except UnicodeEncodeError:
+                self.filename = (self.filename).encode('utf-8')
             set_headers(file, self.request.response, self.filename)
             return stream_data(file)
             #file_obj = item.image
