@@ -82,6 +82,35 @@ class DownloadAssets(grok.View):
                 return obj
 
 
+class ImageAssets(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('zope2.View')
+    grok.name('image-asset')
+
+    def update(self):
+        self.target_item = self.resolveItemByID()
+
+    def render(self):
+        return self.traverse_image()
+
+    def traverse_image(self):
+        item = self.target_item
+        image = item.unrestrictedTraverse('image_thumb')
+        image_path = item.absolute_url_path()
+        img_path = item.getPhysicalPath()
+        return image_path
+
+    def resolveItemByID(self):
+        uid = self.request.get('uid', '')
+        if uid:
+            obj = uuidToObject(uid)
+            if not obj:
+                IStatusMessage(self.request).addStatusMessage(
+                    _(u"The requested item was not found"), type='error')
+            else:
+                return obj
+
+
 class DownloadFileVersion(grok.View):
     grok.context(INavigationRoot)
     grok.require('zope2.View')

@@ -15,6 +15,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interface.image import IImageContent
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
+from pressapp.dispatcher.utils import cleanup_links
 
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.uuid.interfaces import IUUID
@@ -58,9 +59,11 @@ class PressItemView(grok.View):
         context_content = self._dynamic_content(obj)
         output_file = self._render_output_html()
         output_html = self._compose_email_content(output_file, context_content)
-        rendered_email = self._exchange_relative_urls(output_html)
+        rendered = self._exchange_relative_urls(output_html)
+        rendered_email = cleanup_links(rendered)
         css_file = self.default_data['stylesheet']
         text = rendered_email.replace('[[PC_CSS]]', str(css_file))
+        import pdb; pdb.set_trace( )
         return text
 
     def resolvePressItem(self):
@@ -270,6 +273,7 @@ class AttachmentsView(grok.View):
                 info['image'] = ''
             options['items'].append(info)
         template = ViewPageTemplateFile('attachments.pt')(self, **options)
+        #clean_template = self.fix_ssl_links(template)
         return template
 
     def update(self):
