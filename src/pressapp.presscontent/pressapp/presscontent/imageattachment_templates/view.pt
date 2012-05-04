@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+  <div class="page-header">
+    <h1 tal:content="context/Title" />
+  </div>
+
+  <p class="document-description"
+    tal:condition="context/Description"
+    tal:content="context/Description" />
+
+  <img tal:define="scale context/@@images"
+          tal:replace="structure python: scale.scale('image',
+                       scale='preview').tag()" />
+  
+  <div class="btn-group">
+    <a href="" class="btn"
+      tal:attributes="href string:${context/absolute_url}/@@download/image/${context/image/filename}">
+      <i class="icon-download" />
+      Download</a>
+  </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>

@@ -42,34 +42,15 @@ class DownloadAssets(grok.View):
                 filename = (item.image.filename).decode('utf-8')
                 set_headers(file_obj, self.request.response, filename)
                 return stream_data(file_obj)
-            self.fieldname = info.fieldname
+            field_name = info.fieldname
             file = info.value
-            self.filename = getattr(file, 'filename', self.fieldname)
+            item_filename = getattr(file, 'filename', field_name)
             try:
-                str(self.filename)
+                str(item_filename)
             except UnicodeEncodeError:
-                self.filename = (self.filename).encode('utf-8')
-            set_headers(file, self.request.response, self.filename)
+                item_filename = (item_filename).encode('utf-8')
+            set_headers(file, self.request.response, item_filename)
             return stream_data(file)
-            #file_obj = item.image
-            #filename = (item.image.filename).decode('utf-8')
-            #set_headers(file_obj, self.request.response, filename)
-            #return stream_data(file_obj)
-
-    def _getFile(self):
-        if not self.fieldname:
-            info = IPrimaryFieldInfo(self.context, None)
-            if info is None:
-                # Ensure that we have at least a filedname
-                raise NotFound(self, '', self.request)
-            self.fieldname = info.fieldname
-            file = info.value
-        else:
-            context = getattr(self.context, 'aq_explicit', self.context)
-            file = guarded_getattr(context, self.fieldname, None)
-        if file is None:
-            raise NotFound(self, self.fieldname, self.request)
-        return file
 
     def resolveItemByID(self):
         uid = self.request.get('uid', '')

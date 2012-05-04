@@ -167,12 +167,6 @@
                     </div>
                     <div class="btn-toolbar" tal:condition="python:type == 'Image'">
                       <div class="btn-group">
-                        <a href="" tal:define="portal_url context/portal_url;
-                                               item_uid item/uuid"
-                          tal:attributes="href python:portal_url + '/@@image-asset?uid=' + item_uid">
-                          Preview
-                          <img tal:attributes="src python:portal_url + '/@@image-asset?uid=' + item_uid" />
-                        </a>
                       <a href=""
                         class="btn btn-small btn-inverse"
                         tal:attributes="href string:${item/getURL}/at_download/image">

@@ -244,6 +244,7 @@ class AttachmentsView(grok.View):
 
     def __call__(self, *args, **kw):
         portal_url = self.clean_portal_url()
+        view_name = '/@@download-assets?uid='
         params = kw.copy()
         if params.get('uid'):
             self.target_uid = params.get('uid', None)
@@ -253,7 +254,8 @@ class AttachmentsView(grok.View):
         iteminfo = {}
         iteminfo['title'] = pressitem.Title()
         uuid = IUUID(pressitem, None)
-        iteminfo['url'] = portal_url + '/@@download-assets?uid=' + uuid
+        timestamp_string = self.generate_timestamp(pressitem)
+        iteminfo['url'] = portal_url + view_name + uuid + timestamp_string
         iteminfo['type'] = 'MainImage'
         iteminfo['image'] = self.getImageTag(pressitem)
         options['items'].append(iteminfo)
@@ -261,9 +263,10 @@ class AttachmentsView(grok.View):
         for item in attachments:
             item_obj = item.getObject()
             item_uuid = IUUID(item_obj, None)
+            item_timestamp = self.generate_timestamp(item_obj)
             info = {}
             info['title'] = item.Title
-            info['url'] = portal_url + '/@@download-assets?uid=' + item_uuid
+            info['url'] = portal_url + view_name + item_uuid + item_timestamp
             info['type'] = item.portal_type
             if IImageContent.providedBy(item_obj):
                 image_tag = self.getImageTag(item_obj)
@@ -317,3 +320,12 @@ class AttachmentsView(grok.View):
             return portal_url
         else:
             return static_url
+
+    def generate_timestamp(self, item):
+        url_param = '&timestamp='
+        if hasattr(item, '_p_mtime'):
+            timestamp = item._p_mtime
+        else:
+            timestamp = ''
+        ts_string = url_param + str(timestamp)
+        return ts_string
