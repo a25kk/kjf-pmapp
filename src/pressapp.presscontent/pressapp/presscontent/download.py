@@ -1,11 +1,8 @@
 from five import grok
-from AccessControl.ZopeGuards import guarded_getattr
-from zope.publisher.interfaces import NotFound
 
 from plone.namedfile.utils import set_headers, stream_data
 
 from plone.app.uuid.utils import uuidToObject
-from Products.CMFPlone.utils import safe_unicode
 from plone.rfc822.interfaces import IPrimaryFieldInfo
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from Products.statusmessages.interfaces import IStatusMessage
@@ -51,35 +48,6 @@ class DownloadAssets(grok.View):
                 item_filename = (item_filename).encode('utf-8')
             set_headers(file, self.request.response, item_filename)
             return stream_data(file)
-
-    def resolveItemByID(self):
-        uid = self.request.get('uid', '')
-        if uid:
-            obj = uuidToObject(uid)
-            if not obj:
-                IStatusMessage(self.request).addStatusMessage(
-                    _(u"The requested item was not found"), type='error')
-            else:
-                return obj
-
-
-class ImageAssets(grok.View):
-    grok.context(INavigationRoot)
-    grok.require('zope2.View')
-    grok.name('image-asset')
-
-    def update(self):
-        self.target_item = self.resolveItemByID()
-
-    def render(self):
-        return self.traverse_image()
-
-    def traverse_image(self):
-        item = self.target_item
-        image = item.unrestrictedTraverse('image_thumb')
-        image_path = item.absolute_url_path()
-        img_path = item.getPhysicalPath()
-        return image_path
 
     def resolveItemByID(self):
         uid = self.request.get('uid', '')
