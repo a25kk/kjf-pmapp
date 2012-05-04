@@ -15,7 +15,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interface.image import IImageContent
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
-from pressapp.dispatcher.utils import cleanup_links
+from pressapp.dispatcher.utils import postprocess_emailtemplate
 
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.uuid.interfaces import IUUID
@@ -60,7 +60,7 @@ class PressItemView(grok.View):
         output_file = self._render_output_html()
         output_html = self._compose_email_content(output_file, context_content)
         rendered = self._exchange_relative_urls(output_html)
-        rendered_email = cleanup_links(rendered)
+        rendered_email = postprocess_emailtemplate(rendered)
         css_file = self.default_data['stylesheet']
         text = rendered_email.replace('[[PC_CSS]]', str(css_file))
         return text

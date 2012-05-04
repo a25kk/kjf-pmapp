@@ -28,6 +28,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.interfaces import IContentish
 
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
+from pressapp.dispatcher.utils import postprocess_emailtemplate
 
 from plone.uuid.interfaces import IUUID
 
@@ -69,7 +70,8 @@ class Dispatcher(grok.View):
         context_content = self._dynamic_content()
         output_file = self._render_output_html()
         output_html = self._compose_email_content(output_file, context_content)
-        rendered_email = self._exchange_relative_urls(output_html)
+        rendered = self._exchange_relative_urls(output_html)
+        rendered_email = postprocess_emailtemplate(rendered)
         text_html = rendered_email['html']
         plain_text = rendered_email['plain']
         image_urls = rendered_email['images']
