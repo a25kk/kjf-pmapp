@@ -12,7 +12,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from Products.ATContentTypes.interface.image import IImageContent
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
 from pressapp.dispatcher.utils import postprocess_emailtemplate

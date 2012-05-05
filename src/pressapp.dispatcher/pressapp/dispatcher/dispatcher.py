@@ -70,10 +70,11 @@ class Dispatcher(grok.View):
         context_content = self._dynamic_content()
         output_file = self._render_output_html()
         output_html = self._compose_email_content(output_file, context_content)
-        rendered = self._exchange_relative_urls(output_html)
-        rendered_email = postprocess_emailtemplate(rendered)
-        text_html = rendered_email['html']
-        plain_text = rendered_email['plain']
+        rendered_email = self._exchange_relative_urls(output_html)
+        text_html_part = rendered_email['html']
+        text_html = postprocess_emailtemplate(text_html_part)
+        plain_text_part = rendered_email['plain']
+        plain_text = postprocess_emailtemplate(plain_text_part)
         image_urls = rendered_email['images']
         css_file = self.default_data['stylesheet']
         plain_text = plain_text.replace('[[PC_CSS]]', '')
@@ -292,7 +293,6 @@ class Dispatcher(grok.View):
         for item in parser.anchorlist:
             counter += 1
             anchorlist += "[%d] %s\n" % (counter, item)
-        #text = textout.getvalue() + anchorlist
         text = textout.getvalue() + anchorlist
         del textout, formtext, parser, anchorlist
         return text
