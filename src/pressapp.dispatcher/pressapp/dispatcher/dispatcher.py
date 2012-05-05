@@ -71,10 +71,8 @@ class Dispatcher(grok.View):
         output_file = self._render_output_html()
         output_html = self._compose_email_content(output_file, context_content)
         rendered_email = self._exchange_relative_urls(output_html)
-        text_html_part = rendered_email['html']
-        text_html = postprocess_emailtemplate(text_html_part)
-        plain_text_part = rendered_email['plain']
-        plain_text = postprocess_emailtemplate(plain_text_part)
+        text_html = rendered_email['html']
+        plain_text = rendered_email['plain']
         image_urls = rendered_email['images']
         css_file = self.default_data['stylesheet']
         plain_text = plain_text.replace('[[PC_CSS]]', '')
@@ -270,7 +268,8 @@ class Dispatcher(grok.View):
         """
         parser_output_zpt = SafeHTMLParser(self)
         parser_output_zpt.feed(output_html)
-        text = parser_output_zpt.html
+        text_raw = parser_output_zpt.html
+        text = postprocess_emailtemplate(text_raw)
         text_plain = self.create_plaintext_message(text)
         image_urls = parser_output_zpt.image_urls
         return dict(html=text, plain=text_plain, images=image_urls)
