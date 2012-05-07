@@ -1,9 +1,11 @@
 from lxml import etree
 from lxml import html
+from lxml.html.clean import clean_html
 
 
 def postprocess_emailtemplate(content):
-    content = content.strip()
+    stripped_content = content.strip()
+    content = clean_html(stripped_content)
     tree = html.document_fromstring(content)
     for node in tree.xpath('//*[@src]'):
         src = node.get('src')
@@ -15,5 +17,8 @@ def postprocess_emailtemplate(content):
         if href.startswith('https://'):
             url = href.replace('https://', 'http://')
             node.set('href', url)
-    data = etree.tostring(tree, pretty_print=False, encoding="utf-8")
+    data = etree.tostring(tree,
+                          pretty_print=True,
+                          encoding="utf-8",
+                          method='html')
     return data

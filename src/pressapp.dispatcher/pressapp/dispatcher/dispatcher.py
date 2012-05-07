@@ -267,8 +267,9 @@ class Dispatcher(grok.View):
         parser_output_zpt = SafeHTMLParser(self)
         parser_output_zpt.feed(output_html)
         text_raw = parser_output_zpt.html
-        text = postprocess_emailtemplate(text_raw)
-        text_plain = self.create_plaintext_message(text)
+        text_raw_clean = text_raw.replace('\r', '')
+        text = postprocess_emailtemplate(text_raw_clean)
+        text_plain = self.create_plaintext_message(text_raw_clean)
         image_urls = parser_output_zpt.image_urls
         return dict(html=text, plain=text_plain, images=image_urls)
 
@@ -289,7 +290,11 @@ class Dispatcher(grok.View):
         anchorlist = "\n\n" + ("-" * plain_text_maxcols) + "\n\n"
         for item in parser.anchorlist:
             counter += 1
-            anchorlist += "[%d] %s\n" % (counter, item)
+            if item.startswith('https://'):
+                new_item = item.replace('https://', 'http://')
+            else:
+                new_item = item
+            anchorlist += "[%d] %s\n" % (counter, new_item)
         text = textout.getvalue() + anchorlist
         del textout, formtext, parser, anchorlist
         return text
