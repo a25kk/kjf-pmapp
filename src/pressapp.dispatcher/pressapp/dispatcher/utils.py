@@ -1,11 +1,9 @@
 from lxml import etree
 from lxml import html
-from lxml.html.clean import clean_html
 
 
 def postprocess_emailtemplate(content):
-    stripped_content = content.strip()
-    content = clean_html(stripped_content)
+    content = content.strip()
     tree = html.document_fromstring(content)
     for node in tree.xpath('//*[@src]'):
         src = node.get('src')
