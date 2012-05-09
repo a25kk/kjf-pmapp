@@ -11,12 +11,11 @@
     <h3 class="title bookmark-title">
         An die Berichterstatter der Medien als Einladung sowie weitere
         Empf&auml;nger zur Kenntnis</h3>
-    <h4>Wir laden ein:</h4>
+    <h4>Wir laden Sie ein:</h4>
     <h1 class="title bookmark-title" tal:content="context/Title" />
 
-    <div class="description">
-        Ort: <span tal:replace="data/location" />
-    </div>
+    <div class="body" tal:content="structure context/text/output" />
+
     <div tal:define="start_date data/start">
         Beginn: <span tal:replace="python:toLocalizedTime(start_date)" />,
         <span tal:replace="python:toLocalizedTime(start_date, time_only=True)" /> Uhr
@@ -25,11 +24,19 @@
         Ende: <span tal:replace="python:toLocalizedTime(end_date)" />,
         <span tal:replace="python:toLocalizedTime(end_date, time_only=True)" /> Uhr
     </div>
+	<div class="description">
+        Ort: <span tal:replace="data/location" />
+    </div>
 
-    <div tal:content="data/closed" />
+    <div tal:condition="context/schedule">
+      <h4>Weitere Informationen:</h4>
+      <div tal:content="structure context/schedule/output" />
+    </div>
 
-
-    <div class="body" tal:content="structure context/text/output" />
+    <div tal:condition="context/travel">
+        <h4>Anreiseinformationen:</h4>
+        <span tal:content="context/travel" />
+    </div>
 
     <div tal:condition="context/directions">
         <h4>Anfahrtsskizze:</h4>
@@ -38,15 +45,7 @@
         Anfahrtsbeschreibung (Karte)</a>
     </div>
 
-    <div tal:condition="context/travel">
-        <h4>Anreiseinformationen:</h4>
-        <span tal:content="context/travel" />
-    </div>
-
-    <div tal:condition="context/schedule">
-      <h4>Weitere Informationen:</h4>
-      <div tal:content="structure context/schedule/output" />
-    </div>
+    <div tal:content="data/closed" /><br />
 
     <div>Mit freundlichen Gr&uuml;&szlig;en</div>
     <div>Winfried Karg, Referent f&uuml;r Presse und &Ouml;ffentlichkeitsarbeit</div>
