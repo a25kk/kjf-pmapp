@@ -20,26 +20,19 @@
         Beginn: <span tal:replace="python:toLocalizedTime(start_date)" />,
         <span tal:replace="python:toLocalizedTime(start_date, time_only=True)" /> Uhr
     </div>
-    <div tal:define="end_date data/end">
-        Ende: <span tal:replace="python:toLocalizedTime(end_date)" />,
-        <span tal:replace="python:toLocalizedTime(end_date, time_only=True)" /> Uhr
-    </div>
 	<div class="description">
         Ort: <span tal:replace="data/location" />
     </div>
 
     <div tal:condition="context/schedule">
-      <h4>Weitere Informationen:</h4>
       <div tal:content="structure context/schedule/output" />
     </div>
 
     <div tal:condition="context/travel">
-        <h4>Anreiseinformationen:</h4>
         <span tal:content="context/travel" />
     </div>
 
     <div tal:condition="context/directions">
-        <h4>Anfahrtsskizze:</h4>
       <a href="href context/directions"
         tal:content="context/directions">
         Anfahrtsbeschreibung (Karte)</a>
