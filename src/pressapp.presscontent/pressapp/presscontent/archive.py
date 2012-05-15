@@ -126,6 +126,10 @@ class PressItemView(grok.View):
                 data['travel'] = context.travel
             else:
                 data['travel'] = ''
+            if context.directions:
+                data['directions'] = context.directions
+            else:
+                data['directions'] = ''
             data['start'] = context.start.strftime("%d.%m.%Y %H:%M")
             data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
