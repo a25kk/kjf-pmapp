@@ -3,6 +3,7 @@ from five import grok
 from plone.directives import form
 
 from zope import schema
+from zope.schema.vocabulary import getVocabularyRegistry
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 
@@ -75,6 +76,16 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
         required=False,
         default=True,
     )
+    distributor = schema.List(
+        title=_(u"Selected Dsitributors"),
+        description=_(u"Select external distributors to filter display in "
+                      u"the press archive listing"),
+        value_type=schema.Choice(
+            title=_(u"Distributor"),
+            vocabulary='pressapp.presscontent.externalDistributors',
+        ),
+        required=False,
+    )
 
 
 @grok.adapter(IPressRelease, name="archive")
@@ -116,6 +127,22 @@ class View(grok.View):
             info['channelname'] = channelname
             names.append(info)
         return names
+
+    def distributors(self):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        dist_vocab = vr.get(context,
+                            'pressapp.presscontent.externalDistributors')
+        distributor = context.distributor
+        data = []
+        if distributor:
+            for item in distributor:
+                info = {}
+                term = dist_vocab.getTerm(item)
+                info['title'] = term.title
+                info['value'] = term.value
+                data.append(info)
+            return data
 
     def has_recipients_info(self):
         context = aq_inner(self.context)

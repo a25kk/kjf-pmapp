@@ -10,7 +10,9 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       portal_state context/@@plone_portal_state;
+                       portal_url portal_state/portal_url"
     class="container-fluid">
     
     <div class="page-header">
@@ -242,7 +244,21 @@
               <i class="icon-edit" />
                 Bearbeiten</a>
           </li>
-          <li class="nav-header">Anzeige</li>
+          <li>
+                <a href=""
+                  rel="twipsy"
+                  data-placement="left"
+                  data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
+                  tal:attributes="href view/constructPreviewURL">
+                  <i class="icon-eye-open" />
+                  Browser Vorschau</a>
+          </li>
+          <li class="nav-header">Archiv</li>
+          <li><a href=""
+                tal:attributes="href string:${context/absolute_url}/@@archive-settings">
+              <i class="icon-edit" />
+                Einstellungen bearbeiten</a>
+          </li>
           <li>
             <tal:archive tal:define="visible context/archive">
               <span class="label label-success"
@@ -259,14 +275,15 @@
                 Nicht im Archiv angezeigt</span>
              </tal:archive>
           </li>
-          <li>
+          <li>Extern abrufbar auf:<br />
+            <tal:block  tal:condition="view/distributors"
+                tal:repeat="target view/distributors">
                 <a href=""
-                  rel="twipsy"
-                  data-placement="left"
-                  data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
-                  tal:attributes="href view/constructPreviewURL">
+                  tal:define="hash target/value"
+                  tal:attributes="href python:portal_url + '/@@press-archive?dist-id=' + hash">
                   <i class="icon-eye-open" />
-                  Browser Vorschau</a>
+                  <span tal:content="target/title" /></a>
+            </tal:block>
           </li>
           <li class="nav-header">Zugewiesene Verteiler</li>
            <li tal:condition="view/has_channel_info" 

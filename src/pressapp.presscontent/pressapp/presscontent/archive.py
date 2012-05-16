@@ -1,3 +1,4 @@
+import hashlib
 from datetime import datetime
 from Acquisition import aq_inner
 from five import grok
@@ -5,6 +6,7 @@ from App.config import getConfiguration
 from zope.i18n import translate
 from zope.component import getMultiAdapter
 from zope.app.component.hooks import getSite
+from zope.schema.vocabulary import getVocabularyRegistry
 
 from plone.app.uuid.utils import uuidToObject
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -43,6 +45,19 @@ class ArchiveView(grok.View):
                           sort_on='effective')
         resultlist = IContentListing(results)
         return resultlist
+
+    def generate_hashes(self):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        dist_vocab = vr.get(context,
+            'pressapp.presscontent.externalDistributors')
+        data = {}
+        for entry in dist_vocab:
+            key = entry.value
+            h = hashlib.sha1()
+            h.update(key)
+            data[key] = h.hexdigest()
+        return data
 
 
 class PressItemView(grok.View):
