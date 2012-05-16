@@ -59,6 +59,10 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
                       u"a large image file via E-mail is not recommended"),
         required=True,
     )
+    imagename = schema.TextLine(
+        title=_(u"Image Title"),
+        required=True,
+    )
     caption = schema.TextLine(
         title=_(u"Image Attachment Caption"),
         description=_(u"Enter optional caption describing the image"),

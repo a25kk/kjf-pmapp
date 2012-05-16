@@ -280,7 +280,7 @@
                 tal:repeat="target view/distributors">
                 <a href=""
                   tal:define="hash target/value"
-                  tal:attributes="href python:portal_url + '/@@press-archive?dist-id=' + hash">
+                  tal:attributes="href python:portal_url + '/@@press-archive?distid=' + hash">
                   <i class="icon-eye-open" />
                   <span tal:content="target/title" /></a>
             </tal:block>

@@ -39,10 +39,18 @@ class ArchiveView(grok.View):
     def press_content(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        results = catalog(object_provides=IPressRelease.__identifier__,
+        dist_id = self.request.get('distid', None)
+        if dist_id:
+            results = catalog(object_provides=IPressRelease.__identifier__,
                           review_state='published',
                           archive=True,
+                          distributor=dist_id,
                           sort_on='effective')
+        else:
+            results = catalog(object_provides=IPressRelease.__identifier__,
+                              review_state='published',
+                              archive=True,
+                              sort_on='effective')
         resultlist = IContentListing(results)
         return resultlist
 

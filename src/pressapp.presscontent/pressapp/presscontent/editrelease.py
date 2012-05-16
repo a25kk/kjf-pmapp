@@ -61,12 +61,6 @@ class IPressReleaseEdit(form.Schema):
                       u"in email clients that support this feature."),
         required=False,
     )
-    archive = schema.Bool(
-        title=_(u"Visible in Archive?"),
-        description=_(u"Mark this press release as visible in the archive."),
-        required=False,
-        default=True,
-    )
 
 
 class PressReleaseEditForm(form.SchemaEditForm):
