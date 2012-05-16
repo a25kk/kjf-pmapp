@@ -60,7 +60,7 @@
 
   <div class="row-fluid">
   <div class="span8">
-      <h2>Inhalt</h2>
+     
       <div class="box">
     <h6 tal:condition="context/kicker"
         tal:content="context/kicker" />
@@ -231,7 +231,7 @@
   </div>
   
   <div class="span3" tal:define="modified context/modified">
-      <h2>Informationen</h2>
+      
       <div class="well">
       <ul class="nav nav-list">
           <li class="nav-header">Pressemitteilung</li>
@@ -254,17 +254,12 @@
                   Browser Vorschau</a>
           </li>
           <li class="nav-header">Archiv</li>
-          <li><a href=""
-                tal:attributes="href string:${context/absolute_url}/@@archive-settings">
-              <i class="icon-edit" />
-                Einstellungen bearbeiten</a>
-          </li>
           <li>
             <tal:archive tal:define="visible context/archive">
               <span class="label label-success"
                 rel="twipsy"
                 data-placement="left"
-                data-original-title="Diese Pressemittelung wir im Archiv und damit auch im iFrame auf der Mutterseite angezeigt"
+                data-original-title="Diese Pressemittelung wir im Archiv angezeigt"
                 tal:condition="python:visible == True">
                 Im Archiv angezeigt</span>
               <span class="label label-important"
@@ -275,15 +270,24 @@
                 Nicht im Archiv angezeigt</span>
              </tal:archive>
           </li>
-          <li>Extern abrufbar auf:<br />
+          <li>
             <tal:block  tal:condition="view/distributors"
                 tal:repeat="target view/distributors">
                 <a href=""
                   tal:define="hash target/value"
                   tal:attributes="href python:portal_url + '/@@press-archive?distid=' + hash">
                   <i class="icon-eye-open" />
-                  <span tal:content="target/title" /></a>
+                  <span tal:content="target/title" />
+                  </a>
             </tal:block>
+          </li>
+          <li><a href=""
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Anzeigeoptionen Archiv und Zielseiten bearbeiten"
+                tal:attributes="href string:${context/absolute_url}/@@archive-settings">
+              <i class="icon-edit" />
+                Einstellungen bearbeiten</a>
           </li>
           <li class="nav-header">Zugewiesene Verteiler</li>
            <li tal:condition="view/has_channel_info" 

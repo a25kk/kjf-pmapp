@@ -279,7 +279,10 @@ class AttachmentsView(grok.View):
         options = {'items': list()}
         pressitem = self.presscontent
         iteminfo = {}
-        iteminfo['title'] = pressitem.Title()
+        if pressitem.imagename:
+            iteminfo['title'] = pressitem.imagename
+        else:
+            iteminfo['title'] = pressitem.Title()
         uuid = IUUID(pressitem, None)
         timestamp_string = self.generate_timestamp(pressitem)
         iteminfo['url'] = portal_url + view_name + uuid + timestamp_string

@@ -23,7 +23,7 @@ class IArchiveSettingsEdit(form.Schema):
         required=False,
         default=True,
     )
-    distributor = schema.List(
+    distributor = schema.Set(
         title=_(u"Selected Dsitributors"),
         description=_(u"Select external distributors to filter display in "
                       u"the press archive listing"),

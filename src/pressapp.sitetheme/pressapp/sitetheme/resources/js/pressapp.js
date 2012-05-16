@@ -17,6 +17,7 @@ $(document).ready(function() {
     $('#form-widgets-selected2').chosen();
     $('#form-widgets-channel-from').chosen();
     $('#form-widgets-channel').chosen();
+    $('#form-widgets-distributor').chosen();
     $(function() {
         $('a[rel=twipsy]').tooltip();
         $('span[rel=twipsy]').tooltip();

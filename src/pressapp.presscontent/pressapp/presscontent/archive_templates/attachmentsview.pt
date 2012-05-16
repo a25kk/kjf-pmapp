@@ -3,7 +3,11 @@
     <tal:items tal:repeat="item items">
         <tr tal:define="type item/portal_type">
           <td><a href="" tal:attributes="href item/getURL">
-            <strong tal:content="item/Title" /></a>
+              <strong tal:condition="python:type == 'MainImage'"
+                tal:content="item/imagename" />
+              <strong tal:condition="python:type != 'MainImage'"
+                tal:content="item/Title" />
+              </a>
           </td>
           <td tal:define="item_obj item/getObject">
             <img tal:condition="python:type == 'Image'"
