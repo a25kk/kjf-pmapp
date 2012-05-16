@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-05-03 15:52+0000\n"
+"POT-Creation-Date: 2012-05-16 15:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,11 @@ msgstr ""
 msgid "A list of test recipients - one address per line comma seperated in the format: E-mail, Name"
 msgstr ""
 
-#: ./../addfile.py:78
+#: ./../addfile.py:76
 msgid "A new attachment was successfully added"
 msgstr ""
 
-#: ./../addimage.py:83
+#: ./../addimage.py:77
 msgid "A new image attachment was successfully been added"
 msgstr ""
 
@@ -63,8 +63,8 @@ msgstr ""
 msgid "A press release content type."
 msgstr ""
 
-#: ./../addfile.py:26
-#: ./../addimage.py:25
+#: ./../addfile.py:24
+#: ./../addimage.py:24
 #: ./../editfile.py:27
 msgid "A short description used as caption"
 msgstr ""
@@ -73,9 +73,12 @@ msgstr ""
 msgid "A single press room that will be the workspace for members."
 msgstr ""
 
-#: ./../addfile.py:46
-#: ./../addimage.py:46
+#: ./../addfile.py:44
 msgid "Add new file attachment"
+msgstr ""
+
+#: ./../addimage.py:45
+msgid "Add new image attachment"
 msgstr ""
 
 #: ./../addrelease.py:78
@@ -86,13 +89,17 @@ msgstr ""
 msgid "Add press invitation"
 msgstr ""
 
-#: ./../archive.py:132
+#: ./../archive.py:161
 #: ./../pressinvitation.py:154
 msgid "Admittance for invited guests only"
 msgstr ""
 
+#: ./../archivesettings.py:97
+msgid "Archive settings successfully updated"
+msgstr ""
+
 #: ./../addrelease.py:51
-#: ./../editrelease.py:54
+#: ./../editrelease.py:58
 msgid "Attachment Caption"
 msgstr ""
 
@@ -115,11 +122,11 @@ msgstr ""
 msgid "Closed Event"
 msgstr ""
 
-#: ./../addfile.py:53
+#: ./../addfile.py:51
 msgid "Create file attachment"
 msgstr ""
 
-#: ./../addimage.py:53
+#: ./../addimage.py:52
 msgid "Create image attachment"
 msgstr ""
 
@@ -131,13 +138,17 @@ msgstr ""
 msgid "Create press release"
 msgstr ""
 
+#: ./../profiles/default/types/pressapp.presscontent.imageattachment.xml
+msgid "Custom image attachment type"
+msgstr ""
+
 #: ./../presscenter.py:33
 #: ./../settings.py:32
 msgid "Default email address used in test despatches"
 msgstr ""
 
-#: ./../addfile.py:25
-#: ./../addimage.py:24
+#: ./../addfile.py:23
+#: ./../addimage.py:23
 #: ./../editfile.py:26
 msgid "Description"
 msgstr ""
@@ -145,6 +156,11 @@ msgstr ""
 #: ./../editinvitation.py:53
 #: ./../pressinvitation.py:56
 msgid "Directions Link"
+msgstr ""
+
+#: ./../archivesettings.py:31
+#: ./../pressrelease.py:88
+msgid "Distributor"
 msgstr ""
 
 #: ./../presscenter.py:32
@@ -160,8 +176,12 @@ msgstr ""
 msgid "E-Mail Template Press Release"
 msgstr ""
 
-#: ./../editimage.py:45
+#: ./../editimage.py:49
 msgid "Edit Image attachment"
+msgstr ""
+
+#: ./../archivesettings.py:47
+msgid "Edit archive setting"
 msgstr ""
 
 #: ./../editfile.py:48
@@ -172,11 +192,12 @@ msgstr ""
 msgid "Edit press invitation"
 msgstr ""
 
-#: ./../editrelease.py:81
+#: ./../editrelease.py:79
 msgid "Edit press release"
 msgstr ""
 
-#: ./../editrelease.py:100
+#: ./../archivesettings.py:66
+#: ./../editrelease.py:98
 msgid "Editing has been cancelled."
 msgstr ""
 
@@ -200,17 +221,17 @@ msgid "Enter link to Google Map for directions"
 msgstr ""
 
 #: ./../addrelease.py:52
-#: ./../editrelease.py:55
+#: ./../editrelease.py:59
 msgid "Enter optional caption describing the attachment"
 msgstr ""
 
-#: ./../pressrelease.py:63
+#: ./../pressrelease.py:68
 msgid "Enter optional caption describing the image"
 msgstr ""
 
 #: ./../addrelease.py:21
 #: ./../editrelease.py:24
-#: ./../pressrelease.py:31
+#: ./../pressrelease.py:32
 msgid "Enter optional kicker / teaser line."
 msgstr ""
 
@@ -237,9 +258,9 @@ msgstr ""
 msgid "Event Location"
 msgstr ""
 
-#: ./../addfile.py:30
+#: ./../addfile.py:28
 #: ./../editfile.py:31
-#: ./../fileattachment.py:31
+#: ./../fileattachment.py:17
 msgid "File Attachment"
 msgstr ""
 
@@ -259,35 +280,44 @@ msgstr ""
 msgid "Global settings successfully updated"
 msgstr ""
 
-#: ./../addimage.py:29
+#: ./../addimage.py:28
 #: ./../addrelease.py:44
-#: ./../editimage.py:28
+#: ./../editimage.py:32
 msgid "Image Attachment"
 msgstr ""
 
-#: ./../pressrelease.py:62
+#: ./../pressrelease.py:67
 msgid "Image Attachment Caption"
 msgstr ""
 
-#: ./../editimage.py:91
+#: ./../editrelease.py:54
+#: ./../pressrelease.py:63
+msgid "Image Title"
+msgstr ""
+
+#: ./../editimage.py:104
 msgid "Image attachment has successfully been updated"
+msgstr ""
+
+#: ./../profiles/default/types/pressapp.presscontent.imageattachment.xml
+msgid "ImageAttachment"
 msgstr ""
 
 #: ./../addrelease.py:20
 #: ./../editrelease.py:23
-#: ./../pressrelease.py:30
+#: ./../pressrelease.py:31
 msgid "Kicker"
 msgstr ""
 
 #: ./../addrelease.py:34
 #: ./../editrelease.py:37
-#: ./../pressrelease.py:44
+#: ./../pressrelease.py:45
 msgid "Location"
 msgstr ""
 
 #: ./../addrelease.py:63
-#: ./../editrelease.py:66
-#: ./../pressrelease.py:74
+#: ./../archivesettings.py:22
+#: ./../pressrelease.py:79
 msgid "Mark this press release as visible in the archive."
 msgstr ""
 
@@ -311,7 +341,7 @@ msgstr ""
 
 #: ./../addrelease.py:30
 #: ./../editrelease.py:33
-#: ./../pressrelease.py:40
+#: ./../pressrelease.py:41
 msgid "Please enter an optional subtitle here."
 msgstr ""
 
@@ -369,7 +399,7 @@ msgstr ""
 
 #: ./../addrelease.py:35
 #: ./../editrelease.py:38
-#: ./../pressrelease.py:45
+#: ./../pressrelease.py:46
 msgid "Provide a location for this press release that will be prepended to the main body text."
 msgstr ""
 
@@ -390,9 +420,9 @@ msgstr ""
 msgid "Recipient list updated"
 msgstr ""
 
+#: ./../archivesettings.py:54
 #: ./../editinvitation.py:86
-#: ./../editrelease.py:88
-#: ./../settings.py:159
+#: ./../editrelease.py:86
 msgid "Save"
 msgstr ""
 
@@ -410,6 +440,11 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
+#: ./../archivesettings.py:28
+#: ./../pressrelease.py:85
+msgid "Select external distributors to filter display in the press archive listing"
+msgstr ""
+
 #: ./../channelselection.py:36
 msgid "Select the appropriate channels"
 msgstr ""
@@ -420,6 +455,11 @@ msgstr ""
 
 #: ./../channelselection.py:35
 msgid "Selected Channels"
+msgstr ""
+
+#: ./../archivesettings.py:27
+#: ./../pressrelease.py:84
+msgid "Selected Dsitributors"
 msgstr ""
 
 #: ./../channelselection.py:72
@@ -462,7 +502,7 @@ msgstr ""
 
 #: ./../addrelease.py:29
 #: ./../editrelease.py:32
-#: ./../pressrelease.py:39
+#: ./../pressrelease.py:40
 msgid "Subtitle"
 msgstr ""
 
@@ -483,11 +523,11 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ./../addfile.py:65
+#: ./../addfile.py:63
 msgid "The creation of a new attachment has been cancelled."
 msgstr ""
 
-#: ./../addimage.py:65
+#: ./../addimage.py:64
 msgid "The creation of a new image attachment has been cancelled."
 msgstr ""
 
@@ -507,17 +547,17 @@ msgstr ""
 msgid "The entered email address is not subscribed"
 msgstr ""
 
-#: ./../editrelease.py:133
+#: ./../editrelease.py:131
 msgid "The press release was successfully updated"
 msgstr ""
 
-#: ./../archive.py:72
-#: ./../download.py:76
+#: ./../archive.py:97
+#: ./../download.py:58
 msgid "The requested item was not found"
 msgstr ""
 
-#: ./../addfile.py:21
-#: ./../addimage.py:20
+#: ./../addfile.py:19
+#: ./../addimage.py:19
 #: ./../addinvitation.py:20
 msgid "Title"
 msgstr ""
@@ -536,7 +576,7 @@ msgstr ""
 msgid "Update file attachment"
 msgstr ""
 
-#: ./../editimage.py:52
+#: ./../editimage.py:56
 msgid "Update image attachment"
 msgstr ""
 
@@ -572,33 +612,37 @@ msgstr ""
 msgid "Updating file attachment has been cancelled."
 msgstr ""
 
-#: ./../editimage.py:65
+#: ./../editimage.py:69
 msgid "Updating image attachment has been cancelled."
 msgstr ""
 
-#: ./../fileattachment.py:32
+#: ./../fileattachment.py:18
 msgid "Uplaod file attachment. Note: for images that should also provide previews use a special image attachment"
 msgstr ""
 
-#: ./../addfile.py:31
+#: ./../addfile.py:29
 msgid "Upload a file attachment for this press release. The file will be available for download from the e-mail"
 msgstr ""
 
-#: ./../addimage.py:30
+#: ./../addimage.py:29
 #: ./../editfile.py:32
-#: ./../editimage.py:29
+#: ./../editimage.py:33
 msgid "Upload a file attachment for this press release. The file will be available for download from the e-mail and provided as a thumbnail preview"
+msgstr ""
+
+#: ./../imageattachment.py:19
+msgid "Upload an image attachment for this press release"
 msgstr ""
 
 #: ./../addrelease.py:45
 #: ./../editrelease.py:48
-#: ./../pressrelease.py:56
+#: ./../pressrelease.py:57
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr ""
 
 #: ./../addrelease.py:62
-#: ./../editrelease.py:65
-#: ./../pressrelease.py:73
+#: ./../archivesettings.py:21
+#: ./../pressrelease.py:78
 msgid "Visible in Archive?"
 msgstr ""
 
@@ -606,15 +650,51 @@ msgstr ""
 msgid "Your subscription settings have been updated"
 msgstr ""
 
-#: ./../addfile.py:61
-#: ./../addimage.py:61
+#: ./../addfile.py:59
+#: ./../addimage.py:60
 #: ./../addinvitation.py:97
 msgid "cancel"
+msgstr ""
+
+#: ./../vocabulary.py:24
+msgid "ejv-aichach-friedberg.de"
+msgstr ""
+
+#: ./../vocabulary.py:26
+msgid "ejv-augsburg.de"
+msgstr ""
+
+#: ./../vocabulary.py:28
+msgid "ejv-memmingen-unterallgaeu.de"
+msgstr ""
+
+#: ./../vocabulary.py:30
+msgid "ejv-ostallgaeu.de"
+msgstr ""
+
+#: ./../vocabulary.py:16
+msgid "josefinum.de"
+msgstr ""
+
+#: ./../vocabulary.py:18
+msgid "kinderzentrum-augsburg.de"
+msgstr ""
+
+#: ./../vocabulary.py:14
+msgid "kjf-augsburg.de"
 msgstr ""
 
 #. Default: "Suchen"
 #: ./../presscenter_templates/view.pt:53
 msgid "label_search"
+msgstr ""
+
+#: ./../vocabulary.py:22
+msgid "sankt-georg-kempten.de"
+msgstr ""
+
+#: ./../vocabulary.py:20
+msgid "sanktelisabeth.de"
 msgstr ""
 
 #. Default: "..."

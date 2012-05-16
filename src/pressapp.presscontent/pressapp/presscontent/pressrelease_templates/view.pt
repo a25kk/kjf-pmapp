@@ -212,7 +212,7 @@
               <div class="visualClear">&nbsp;</div>
               <a href="" class="btn btn-inverse"
                 rel="twipsy"
-                data-original-title="Bilder werden als Thumbnails/Vorschau in E-Mails dargestellt"
+                data-original-title="Bilder werden als Thumbnails in E-Mails dargestellt"
                 tal:define="context_url context/absolute_url"
                 tal:attributes="href python:context_url + '/@@add-image-attachment'">
                 <i class="icon-picture icon-white" />
