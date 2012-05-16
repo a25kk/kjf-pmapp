@@ -82,8 +82,8 @@ class PressReleaseEditForm(form.SchemaEditForm):
 
     def updateActions(self):
         super(PressReleaseEditForm, self).updateActions()
-        self.actions['save'].addClass("btn btn-large")
-        self.actions['cancel'].addClass("btn btn-large")
+        self.actions['save'].addClass("btn")
+        self.actions['cancel'].addClass("btn")
 
     @button.buttonAndHandler(_(u"Save"), name="save")
     def handleApply(self, action):
