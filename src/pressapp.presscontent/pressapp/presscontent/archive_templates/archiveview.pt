@@ -54,7 +54,7 @@
                             <small class="discreet" tal:content="item/Description" />
                             </h4>
                         </td>
-                        <td tal:define="effective_date item/effective">
+                        <td tal:define="effective_date item/Date">
                             <span tal:content="python:toLocalizedTime(effective_date)"
                                 class="label label-inverse">
                             </span>
