@@ -23,11 +23,6 @@ class IImageAttachmentEdit(form.Schema):
         title=_(u"Title"),
         required=True,
     )
-    description = schema.Text(
-        title=_(u"Description"),
-        description=_(u"A short description used as caption"),
-        required=False,
-    )
     image = NamedBlobImage(
         title=_(u"Image Attachment"),
         description=_(u"Upload a file attachment for this press release. The "
@@ -80,7 +75,6 @@ class ImageAttachmentEditForm(form.SchemaEditForm):
         for key, value in fields:
             data[key] = getattr(context, key, value)
         data['title'] = safe_unicode(context.Title())
-        data['description'] = safe_unicode(context.Description())
         return data
 
     def applyChanges(self, data):
@@ -97,7 +91,6 @@ class ImageAttachmentEditForm(form.SchemaEditForm):
                 setattr(context, key, new_value)
             except KeyError:
                 continue
-        context.setDescription(data['description'])
         modified(context)
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(

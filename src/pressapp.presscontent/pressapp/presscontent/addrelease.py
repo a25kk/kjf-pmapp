@@ -47,6 +47,10 @@ class IPressReleaseAdd(form.Schema):
                       u"a large image file via E-mail is not recommended"),
         required=True,
     )
+    imagename = schema.TextLine(
+        title=_(u"Image Title"),
+        required=True,
+    )
     caption = schema.TextLine(
         title=_(u"Attachment Caption"),
         description=_(u"Enter optional caption describing the attachment"),
@@ -57,12 +61,6 @@ class IPressReleaseAdd(form.Schema):
         description=_(u"Optional summary that is useful as a preview text "
                       u"in email clients that support this feature."),
         required=False,
-    )
-    archive = schema.Bool(
-        title=_(u"Visible in Archive?"),
-        description=_(u"Mark this press release as visible in the archive."),
-        required=False,
-        default=True,
     )
 
 

@@ -19,11 +19,6 @@ class IImageAttachmentAdd(form.Schema):
         title=_(u"Title"),
         required=True,
     )
-    description = schema.Text(
-        title=_(u"Description"),
-        description=_(u"A short description used as caption"),
-        required=False,
-    )
     image = NamedBlobImage(
         title=_(u"Image Attachment"),
         description=_(u"Upload a file attachment for this press release. The "
