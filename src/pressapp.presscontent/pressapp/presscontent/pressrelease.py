@@ -66,7 +66,7 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
     caption = schema.TextLine(
         title=_(u"Image Attachment Caption"),
         description=_(u"Enter optional caption describing the image"),
-        required=True,
+        required=False,
     )
     description = schema.Text(
         title=_(u"Summary"),
