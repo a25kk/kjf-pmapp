@@ -51,11 +51,6 @@ class IPressReleaseAdd(form.Schema):
         title=_(u"Image Title"),
         required=True,
     )
-    caption = schema.TextLine(
-        title=_(u"Attachment Caption"),
-        description=_(u"Enter optional caption describing the attachment"),
-        required=True,
-    )
     description = schema.Text(
         title=_(u"Summary"),
         description=_(u"Optional summary that is useful as a preview text "
