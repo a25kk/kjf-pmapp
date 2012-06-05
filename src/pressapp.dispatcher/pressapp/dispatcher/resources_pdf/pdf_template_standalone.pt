@@ -21,7 +21,6 @@
         <tal:if condition="options/custom_css |nothing">
             <style type="text/css" tal:content="options/custom_css" />
         </tal:if>
-
     </head>
     <body>
         <div tal:condition="options/coverfront | nothing"
@@ -31,7 +30,7 @@
         
         <img src="http://pm.kreativkombinat.de/static-resources/pr.jpg" />
         <br />
-        
+
         <div id="main-content" tal:content="structure options/body" />
 
         <div tal:condition="options/coverback | nothing"

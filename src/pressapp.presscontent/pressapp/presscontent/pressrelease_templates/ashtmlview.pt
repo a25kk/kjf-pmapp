@@ -15,11 +15,14 @@
     <div>
         <div tal:define="picture nocall:context/image"
              tal:condition="nocall:picture"
-             cllass="image-box">
-            <img tal:attributes="src string:${context/absolute_url}/@@download/image/${picture/filename};
+             class="image-box">
+            <!--<img tal:attributes="src string:${context/absolute_url}/@@download/image/${picture/filename};
                                  height picture/_height | nothing;
                                  width picture/_width | nothing;"
                 class="teaser-image"
+                />-->
+            <img tal:define="scales context/@@images"
+                tal:replace="structure python: scales.tag('image', scale='preview', css_class='teaser-image')"
                 />
             <div tal:condition="context/caption"
                 tal:content="context/caption">Caption</div>

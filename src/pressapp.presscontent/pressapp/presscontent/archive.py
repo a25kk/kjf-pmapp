@@ -138,7 +138,7 @@ class PressItemView(grok.View):
                 data['file_url'] = url + '/@@download/attachment/' + filename
                 data['file_name'] = filename
                 data['image_tag'] = self.getImageTag(context)
-                data['file_caption'] = context.caption
+                data['file_caption'] = context.imagename
             data['attachments'] = self.getAttachments()
         if IPressInvitation.providedBy(context):
             if context.schedule:

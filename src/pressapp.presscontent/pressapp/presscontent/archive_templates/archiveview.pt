@@ -12,9 +12,7 @@
   <div id="content">
     <div id="archive-view" class="box">
     <div class="page-header">
-        <h1>Archiv
-            <small>Pressemitteilungen</small>
-        </h1>
+        <h1>Pressemitteilungen</h1>
     </div>
     <section id="archive-listing" tal:condition="view/has_items">
         <tal:block tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
@@ -70,7 +68,7 @@
         class="alert alert-block alert-warning">
         <h4 class="alert-heding">Information:</h4>
         <p>Leider liegen im Augenblick keine aktuellen
-           Pressemitteilungen oder Presseeinladungen vor</p>
+           Pressemitteilungen vor</p>
         <p>F&uuml;r weiter Informationen wenden Sie sich bitte am
            presse@kjf-augsburg.de</p>
     </div>
