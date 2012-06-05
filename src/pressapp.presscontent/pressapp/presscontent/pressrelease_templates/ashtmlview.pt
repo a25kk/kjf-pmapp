@@ -34,12 +34,10 @@
                     <tr>
                         <td tal:repeat="item attachments">
                             <img tal:define="item_obj item/getObject;
-                                             scales item_obj/@@images;
-                                             thumbnail python: scales.scale('image', width=200, height=200);"
-                                tal:condition="thumbnail"
-                                tal:attributes="src thumbnail/url;
-                                                width thumbnail/width;
-                                                height thumbnail/height" />
+                                             scales item_obj/@@images"
+                                 tal:replace="structure python: scales.tag('image',
+                                              width=200, height=200, direction='down')"
+                                />
                             <p tal:content="item/Title" />
                         </td>
                     </tr>
