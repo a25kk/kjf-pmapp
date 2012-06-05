@@ -13,35 +13,21 @@
     <h2 class="subtitle bookmark-subtitle"
         tal:condition="context/subtitle" tal:content="context/subtitle" />
     <div>
-        <div tal:define="picture nocall:context/image"
-             tal:condition="nocall:picture"
-             class="image-box">
-            <!--<img tal:attributes="src string:${context/absolute_url}/@@download/image/${picture/filename};
-                                 height picture/_height | nothing;
-                                 width picture/_width | nothing;"
-                class="teaser-image"
-                />-->
-            <img tal:define="scales context/@@images"
-                tal:replace="structure python: scales.tag('image', scale='preview', css_class='teaser-image')"
-                />
-            <div tal:condition="context/caption"
-                tal:content="context/caption">Caption</div>
-        </div>
         <div class="subtitle bookmark-subtitle">
             <span tal:replace="data/location" /> (kjf)
         </div>
         <div class="body" tal:content="structure context/text/output" />
 
-        <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF)</h4>
-<p>Die Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF) wurde 1911 gegr&uuml;ndet. Sie ist ein Gesundheits- und Sozialdienstleister mit rund 80 Einrichtungen und Diensten im Gebiet zwischen Lindau, Neu-Ulm, N&ouml;rdlingen, Aichach und Murnau. Dazu geh&ouml;ren unter anderem Angebote der Medizin mit mehreren Kliniken, der Berufsbildung f&uuml;r behinderte und nicht behinderte Jugendliche und Erwachsene mit Berufsbildungswerken und Vermittlungsdiensten, der Kinder- und Jugendhilfe mit Wohngruppen, Tagesstätten, Beratungsstellen und mobilen Diensten sowie mehrere Schulen.<br />
-Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, Jugendlichen und Familien bei Schwierigkeiten und Fragen. Vorstandsvorsitzender der KJF ist Domvikar Armin Z&uuml;rn, Vorsitzender des Aufsichtsrates ist Weihbischof em. Josef Gr&uuml;nwald.</p>
-        <div>Weitere Informationen zu
-            <span tal:replace="data/org" />
-            finden Sie unter
-            <span tal:replace="data/link" /></div>
-        <br />
-        <hr />
-        <h4>Pressematerial Download:</h4>
+        <div id="media-content">
+        <div tal:define="picture nocall:context/image"
+             tal:condition="nocall:picture"
+             class="image-box">
+            <img tal:define="scales context/@@images"
+                tal:replace="structure python: scales.tag('image', scale='preview', css_class='teaser-image')"
+                /><br />
+            <span tal:condition="context/caption"
+                tal:content="context/caption">Caption</span>
+        </div>
         <tal:block tal:define="attachments view/queryAttachments">
             <table>
                 <tbody>
@@ -49,7 +35,7 @@ Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, J
                         <td tal:repeat="item attachments">
                             <img tal:define="item_obj item/getObject;
                                              scales item_obj/@@images;
-                                             thumbnail python: scales.scale('image', width=64, height=64);"
+                                             thumbnail python: scales.scale('image', width=200, height=200);"
                                 tal:condition="thumbnail"
                                 tal:attributes="src thumbnail/url;
                                                 width thumbnail/width;
@@ -60,12 +46,22 @@ Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, J
                 </tbody>
             </table>
         </tal:block>
+        </div>
+        <div id="footNotes">
+        <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF)</h4>
+        <p>Die Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF) wurde 1911 gegr&uuml;ndet. Sie ist ein Gesundheits- und Sozialdienstleister mit rund 80 Einrichtungen und Diensten im Gebiet zwischen Lindau, Neu-Ulm, N&ouml;rdlingen, Aichach und Murnau. Dazu geh&ouml;ren unter anderem Angebote der Medizin mit mehreren Kliniken, der Berufsbildung f&uuml;r behinderte und nicht behinderte Jugendliche und Erwachsene mit Berufsbildungswerken und Vermittlungsdiensten, der Kinder- und Jugendhilfe mit Wohngruppen, Tagesstätten, Beratungsstellen und mobilen Diensten sowie mehrere Schulen.<br />
+            Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, Jugendlichen und Familien bei Schwierigkeiten und Fragen. Vorstandsvorsitzender der KJF ist Domvikar Armin Z&uuml;rn, Vorsitzender des Aufsichtsrates ist Weihbischof em. Josef Gr&uuml;nwald.</p>
+        <div>Weitere Informationen zu
+            <span tal:replace="data/org" />
+            finden Sie unter
+            <span tal:replace="data/link" /></div>
+        <hr />
+        <h4>Pressematerial Download:</h4>
         <div>Die Bilder zu dieser Pressemitteilung finden Sie auch auf <a class="external link" href="http://www.kjf-augsburg.de/aktuell/presse/">http://www.KJF-Augsburg.de/aktuell/presse/</a></div>
         <div>Abdruck honorarfrei. Bilder, die mit dieser Pressemitteilung bereitgestellt werden, d&uuml;rfen aus rechtlichen Gr&uuml;nden nur im Zusammenhang mit der hier geschilderten T&auml;tigkeit der Katholischen Jugendf&uuml;rsorge der Di&ouml;zese Augsburg ver&ouml;ffentlicht werden.<br /> 
         Belegexemplar erbeten an:<br /> 
         Katholische Jugendf&uuml;rsorge, Pressestelle,<br /> 
         Postfach 10 20 02, 86010 Augsburg</div>
-        <hr />
         <div>
         Referat f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit | Telefon (0821) 3100-191 oder 0160 53 75 201 | Fax (0821) 3100-178<br />
         http://www.kjf-augsburg.de | presse@kjf-augsburg.de
@@ -80,5 +76,6 @@ Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, J
         Sitz: 86152 Augsburg
         <br />
         Amtsgericht Augsburg VR.-Nr.: 699</p></div>
+        </div>
     </div>
 </div>
