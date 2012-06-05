@@ -206,6 +206,16 @@ class AsHtmlView(grok.View):
             imageTag = scale.tag()
         return imageTag
 
+    def queryAttachments(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        items = catalog(portal_type=['pressapp.presscontent.fileattachment',
+                                     'pressapp.presscontent.imageattachment'],
+                        path=dict(query='/'.join(context.getPhysicalPath()),
+                                  depth=1))
+        #results = IContentListing(items)
+        return items
+
 
 class PressReleaseActions(grok.Viewlet):
     grok.name('pressapp.membercontent.PressReleaseActions')

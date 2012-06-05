@@ -38,7 +38,25 @@ Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, J
             <span tal:replace="data/link" /></div>
         <br />
         <hr />
-       <h4>Pressematerial Download:</h4>
+        <h4>Pressematerial Download:</h4>
+        <tal:block tal:define="attachments view/queryAttachments">
+            <table>
+                <tbody>
+                    <tr>
+                        <td tal:repeat="item attachments">
+                            <img tal:define="item_obj item/getObject;
+                                             scales item_obj/@@images;
+                                             thumbnail python: scales.scale('image', width=64, height=64);"
+                                tal:condition="thumbnail"
+                                tal:attributes="src thumbnail/url;
+                                                width thumbnail/width;
+                                                height thumbnail/height" />
+                            <p tal:content="item/Title" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tal:block>
         <div>Die Bilder zu dieser Pressemitteilung finden Sie auch auf <a class="external link" href="http://www.kjf-augsburg.de/aktuell/presse/">http://www.KJF-Augsburg.de/aktuell/presse/</a></div>
         <div>Abdruck honorarfrei. Bilder, die mit dieser Pressemitteilung bereitgestellt werden, d&uuml;rfen aus rechtlichen Gr&uuml;nden nur im Zusammenhang mit der hier geschilderten T&auml;tigkeit der Katholischen Jugendf&uuml;rsorge der Di&ouml;zese Augsburg ver&ouml;ffentlicht werden.<br /> 
         Belegexemplar erbeten an:<br /> 
