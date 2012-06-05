@@ -12,49 +12,42 @@
     <h1 class="title bookmark-title" tal:content="context/Title" />
     <h2 class="subtitle bookmark-subtitle"
         tal:condition="context/subtitle" tal:content="context/subtitle" />
+    <div tal:define="picture nocall:context/image"
+             tal:condition="nocall:picture"
+             class="ximage-container">
+            <img tal:define="scales context/@@images"
+                tal:replace="structure python: scales.tag('image', scale='mini', css_class='teaser-image')"
+                /><br />
+            <span tal:condition="context/caption"
+                tal:content="context/caption"
+                class="image-caption">Caption</span>
+    </div>
     <div>
         <div class="subtitle bookmark-subtitle">
             <span tal:replace="data/location" /> (kjf)
         </div>
         <div class="body" tal:content="structure context/text/output" />
 
-        <div id="media-content">
-        <div tal:define="picture nocall:context/image"
-             tal:condition="nocall:picture"
-             class="image-box">
-            <img tal:define="scales context/@@images"
-                tal:replace="structure python: scales.tag('image', scale='preview', css_class='teaser-image')"
-                /><br />
-            <span tal:condition="context/caption"
-                tal:content="context/caption">Caption</span>
-        </div>
-        <tal:block tal:define="attachments view/queryAttachments">
-            <table>
-                <tbody>
-                    <tr>
-                        <td tal:repeat="item attachments">
-                            <img tal:define="item_obj item/getObject;
-                                             scales item_obj/@@images"
-                                 tal:replace="structure python: scales.tag('image',
-                                              width=200, height=200, direction='down')"
-                                />
-                            <p tal:content="item/Title" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </tal:block>
-        </div>
         <div id="footNotes">
-        <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF)</h4>
+        <h2>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF)</h2>
         <p>Die Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V. (KJF) wurde 1911 gegr&uuml;ndet. Sie ist ein Gesundheits- und Sozialdienstleister mit rund 80 Einrichtungen und Diensten im Gebiet zwischen Lindau, Neu-Ulm, N&ouml;rdlingen, Aichach und Murnau. Dazu geh&ouml;ren unter anderem Angebote der Medizin mit mehreren Kliniken, der Berufsbildung f&uuml;r behinderte und nicht behinderte Jugendliche und Erwachsene mit Berufsbildungswerken und Vermittlungsdiensten, der Kinder- und Jugendhilfe mit Wohngruppen, Tagesstätten, Beratungsstellen und mobilen Diensten sowie mehrere Schulen.<br />
             Die rund 3.300 Besch&auml;ftigten des Verbandes helfen im Jahr 55.000 Kindern, Jugendlichen und Familien bei Schwierigkeiten und Fragen. Vorstandsvorsitzender der KJF ist Domvikar Armin Z&uuml;rn, Vorsitzender des Aufsichtsrates ist Weihbischof em. Josef Gr&uuml;nwald.</p>
-        <div>Weitere Informationen zu
-            <span tal:replace="data/org" />
+        <div>Weitere Informationen 
             finden Sie unter
             <span tal:replace="data/link" /></div>
         <hr />
-        <h4>Pressematerial Download:</h4>
+        <h3>Pressematerial Download:</h3>
+        <div tal:define="attachments view/queryAttachments"
+            class="ximage-container">
+            <tal:images tal:repeat="item attachments">
+                <img tal:define="item_obj item/getObject;
+                                 scales item_obj/@@images"
+                     tal:replace="structure python: scales.tag('image',
+                                  width=128, height=128, direction='down')"
+                    />
+                <p class="image-caption" tal:content="item/Title" />
+            </tal:images>
+        </div>
         <div>Die Bilder zu dieser Pressemitteilung finden Sie auch auf <a class="external link" href="http://www.kjf-augsburg.de/aktuell/presse/">http://www.KJF-Augsburg.de/aktuell/presse/</a></div>
         <div>Abdruck honorarfrei. Bilder, die mit dieser Pressemitteilung bereitgestellt werden, d&uuml;rfen aus rechtlichen Gr&uuml;nden nur im Zusammenhang mit der hier geschilderten T&auml;tigkeit der Katholischen Jugendf&uuml;rsorge der Di&ouml;zese Augsburg ver&ouml;ffentlicht werden.<br /> 
         Belegexemplar erbeten an:<br /> 
@@ -65,15 +58,6 @@
         http://www.kjf-augsburg.de | presse@kjf-augsburg.de
         </div>
         <hr />
-        <div>
-        <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V.</h4>
-        <p>Vorsitzender des Vorstands: Domvikar Armin Z&uuml;rn
-        <br />
-        Vorsitzender des Aufsichtsrates: Weihbischof em. Josef Gr&uuml;nwald
-        <br />
-        Sitz: 86152 Augsburg
-        <br />
-        Amtsgericht Augsburg VR.-Nr.: 699</p></div>
         </div>
     </div>
 </div>

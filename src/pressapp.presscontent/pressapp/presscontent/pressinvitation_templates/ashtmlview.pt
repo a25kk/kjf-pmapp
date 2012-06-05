@@ -42,24 +42,8 @@
 
     <div>Mit freundlichen Gr&uuml;&szlig;en</div>
     <div>Winfried Karg, Referent f&uuml;r Presse und &Ouml;ffentlichkeitsarbeit</div>
-
-    <div>Weitere Informationen zu
-            <span tal:replace="data/org" />
+    <hr />
+    <div>Weitere Informationen
             finden Sie unter
             <span tal:replace="data/link" /></div>
-        <hr />
-        <div>
-        Referat f&uuml;r Presse- und &Ouml;ffentlichkeitsarbeit | Telefon (0821) 3100-191 oder 0160 53 75 201 | Fax (0821) 3100-178<br />
-        http://www.kjf-augsburg.de | presse@kjf-augsburg.de
-        </div>
-        <hr />
-        <div>
-        <h4>Katholische Jugendf&uuml;rsorge der Di&ouml;zese Augsburg e.V.</h4>
-        <p>Vorsitzender des Vorstands: Domvikar Armin Z&uuml;rn
-        <br />
-        Vorsitzender des Aufsichtsrates: Weihbischof em. Josef Gr&uuml;nwald
-        <br />
-        Sitz: 86152 Augsburg
-        <br />
-        Amtsgericht Augsburg VR.-Nr.: 699</p></div>
 </div>
