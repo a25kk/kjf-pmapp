@@ -51,7 +51,8 @@
                         <p class="image-caption" tal:content="item/Title" />
                     </tal:image>
                     <tal:file tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
-                        <a tal:attributes="href string:${item/absolute_url}/@@download/attachment/${item/attachment/filename}" />
+                        <a tal:attributes="href string:${item/absolute_url}/@@download/attachment/${item/attachment/filename}">
+                            Dateianhang: <span tal:replace="item/Title" /></a>
                     </tal:file>
                 </tal:block>
             </tal:attachments>
