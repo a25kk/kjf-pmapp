@@ -40,8 +40,8 @@
         <div tal:define="attachments view/queryAttachments"
             class="ximage-container">
             <tal:attachments tal:repeat="item attachments">
-                <tal:block tal:define="item_type item/type;
-                                       item_obj item/getObject;">
+                <tal:block tal:define="item_obj item/getObject;
+                                       item_type item_obj/portal_type;">
                     <tal:image tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
                         <img tal:define="item_obj item/getObject;
                                          scales item_obj/@@images"
