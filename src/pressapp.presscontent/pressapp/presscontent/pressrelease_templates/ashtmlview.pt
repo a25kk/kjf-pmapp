@@ -42,7 +42,7 @@
             <tal:attachments tal:repeat="item attachments">
                 <tal:block tal:define="item_obj item/getObject;
                                        item_type item_obj/portal_type;">
-                    <tal:image tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
+                    <tal:image tal:condition="python:item_type == 'pressapp.presscontent.imageattachment'">
                         <img tal:define="item_obj item/getObject;
                                          scales item_obj/@@images"
                              tal:replace="structure python: scales.tag('image',
@@ -50,9 +50,11 @@
                             />
                         <p class="image-caption" tal:content="item/Title" />
                     </tal:image>
-                    <tal:file tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
-                        <a tal:attributes="href string:${item/absolute_url}/@@download/attachment/${item/attachment/filename}">
-                            Dateianhang: <span tal:replace="item/Title" /></a>
+                    <tal:file tal:condition="python:item_type == 'pressapp.presscontent.fileattachment'">
+                        <p><a tal:define="attachment nocall: item_obj/attachment;
+                                       filename attachment/filename"
+                            tal:attributes="href string:${item/getURL}/@@download/attachment/${item_obj/attachment/filename}">
+                            Dateianhang: <span tal:replace="item/Title" /></a></p>
                     </tal:file>
                 </tal:block>
             </tal:attachments>
