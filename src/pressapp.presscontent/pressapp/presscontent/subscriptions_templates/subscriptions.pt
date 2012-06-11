@@ -59,6 +59,7 @@
                             name="form.button.Unsubscribe"
                             id="submit-button"
                             value="Abmelden" />
+                        <span tal:replace="structure context/@@authenticator/authenticator"/>
                         </div>
                     </div>
                 </fieldset>
