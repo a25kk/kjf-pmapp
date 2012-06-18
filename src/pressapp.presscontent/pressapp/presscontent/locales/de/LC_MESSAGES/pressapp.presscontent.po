@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-05-16 15:36+0000\n"
-"PO-Revision-Date: 2012-05-16 17:43+0100\n"
+"POT-Creation-Date: 2012-06-18 13:28+0000\n"
+"PO-Revision-Date: 2012-06-18 15:34+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -40,15 +40,15 @@ msgstr "Eine Liste von E-Mail-Adressen/Emfängern - eine Adresse pro Zeile durch
 msgid "A new attachment was successfully added"
 msgstr "Ein neuer Dateianhang wurde erfolgreich angelegt"
 
-#: ./../addimage.py:77
+#: ./../addimage.py:72
 msgid "A new image attachment was successfully been added"
 msgstr "EIn neuer Bildanhang wurde erfolgreich angelegt"
 
-#: ./../addinvitation.py:114
+#: ./../addinvitation.py:119
 msgid "A new press invitation was successfully added"
 msgstr "Eine neue Presseeinladung wurde erfolgreich angelegt"
 
-#: ./../addrelease.py:110
+#: ./../addrelease.py:103
 msgid "A new press release was successfully added"
 msgstr "Eine neue Pressemitteilung wurde erfolgreich angelegt"
 
@@ -61,7 +61,6 @@ msgid "A press release content type."
 msgstr "Objekttyp Pressemitteilung"
 
 #: ./../addfile.py:24
-#: ./../addimage.py:24
 #: ./../editfile.py:27
 msgid "A short description used as caption"
 msgstr "Kurze Beschreibung die als Bildunterschrift oder Dateiinformation verwendet werden kann"
@@ -74,19 +73,18 @@ msgstr "Ein persönlicher Ordner für registrierte Benutzer (Presszimmer)."
 msgid "Add new file attachment"
 msgstr "Dateianhang hinzufügen"
 
-#: ./../addimage.py:45
+#: ./../addimage.py:40
 msgid "Add new image attachment"
 msgstr "Neuen Bildanhang hinzufügen"
 
-#: ./../addrelease.py:78
+#: ./../addrelease.py:71
 msgid "Add new press release"
 msgstr "Pressemitteilung hinzufügen"
 
-#: ./../addinvitation.py:82
+#: ./../addinvitation.py:87
 msgid "Add press invitation"
 msgstr "Presseeinladung hinzufügen"
 
-#: ./../archive.py:161
 #: ./../pressinvitation.py:154
 msgid "Admittance for invited guests only"
 msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung als Terminankündigung abzusehen."
@@ -94,11 +92,6 @@ msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, 
 #: ./../archivesettings.py:97
 msgid "Archive settings successfully updated"
 msgstr "Die Anzeigeeinstellungen Archiv wurden erfolgreich aktualisiert"
-
-#: ./../addrelease.py:51
-#: ./../editrelease.py:58
-msgid "Attachment Caption"
-msgstr "Bildunterschrift Dateianhang"
 
 #: ./../presscenter.py:56
 msgid "CSS used for the HTML Email"
@@ -113,7 +106,7 @@ msgstr "Verteiler"
 msgid "Channels"
 msgstr "Verteiler"
 
-#: ./../addinvitation.py:51
+#: ./../addinvitation.py:56
 #: ./../editinvitation.py:58
 #: ./../pressinvitation.py:61
 msgid "Closed Event"
@@ -123,15 +116,15 @@ msgstr "Geschlossene Veranstaltung"
 msgid "Create file attachment"
 msgstr "Dateianhang anlegen"
 
-#: ./../addimage.py:52
+#: ./../addimage.py:47
 msgid "Create image attachment"
 msgstr "Bildanhang anlegen"
 
-#: ./../addinvitation.py:89
+#: ./../addinvitation.py:94
 msgid "Create press invitation"
 msgstr "Presseeinladung erstellen"
 
-#: ./../addrelease.py:85
+#: ./../addrelease.py:78
 msgid "Create press release"
 msgstr "Pressemitteilung erstellen"
 
@@ -145,11 +138,15 @@ msgid "Default email address used in test despatches"
 msgstr "Standard E-Mail-Adresse die in den E-Mail HEADER Zeilen verwendet wird"
 
 #: ./../addfile.py:23
-#: ./../addimage.py:23
 #: ./../editfile.py:26
 msgid "Description"
 msgstr "Beschreibung"
 
+#: ./../archive.py:161
+msgid "Diese Veranstaltung kann nur auf Einladung besucht werden. Von einer Publikation bitten wir daher abzusehen."
+msgstr "Diese Veranstaltung ist nur für geladene Gäste"
+
+#: ./../addinvitation.py:51
 #: ./../editinvitation.py:53
 #: ./../pressinvitation.py:56
 msgid "Directions Link"
@@ -173,7 +170,7 @@ msgstr "E-Mail-Vorlage für Presseeinladungen"
 msgid "E-Mail Template Press Release"
 msgstr "E-Mail-Vorlage für Pressemitteilungen"
 
-#: ./../editimage.py:49
+#: ./../editimage.py:44
 msgid "Edit Image attachment"
 msgstr "Bildanhang bearbeiten"
 
@@ -189,12 +186,12 @@ msgstr "Dateianhang bearbeiten"
 msgid "Edit press invitation"
 msgstr "Presseeinladung bearbeiten"
 
-#: ./../editrelease.py:79
+#: ./../editrelease.py:74
 msgid "Edit press release"
 msgstr "Pressemitteilung bearbeiten"
 
 #: ./../archivesettings.py:66
-#: ./../editrelease.py:98
+#: ./../editrelease.py:93
 msgid "Editing has been cancelled."
 msgstr "Die Bearbeitung wurde abgebrochen"
 
@@ -212,15 +209,11 @@ msgstr "E-Mail-Adresse ist eine Pflichtangabe"
 msgid "End Date"
 msgstr "Veranstaltungsende"
 
+#: ./../addinvitation.py:52
 #: ./../editinvitation.py:54
 #: ./../pressinvitation.py:57
 msgid "Enter link to Google Map for directions"
 msgstr "Geben Sie hier einen Link zu einer Anfahrtsbeschreibung (z.B. bei Google Maps) ein."
-
-#: ./../addrelease.py:52
-#: ./../editrelease.py:59
-msgid "Enter optional caption describing the attachment"
-msgstr "Optionale Bildunterschrift, die den Dateianhang genauer bezeichnet."
 
 #: ./../pressrelease.py:68
 msgid "Enter optional caption describing the image"
@@ -277,9 +270,9 @@ msgstr "Die globalen Einstellungen für das verwendete CSS wurden aktualisiert."
 msgid "Global settings successfully updated"
 msgstr "Einstellungen wurden erfolgreich aktualisiert"
 
-#: ./../addimage.py:28
+#: ./../addimage.py:23
 #: ./../addrelease.py:44
-#: ./../editimage.py:32
+#: ./../editimage.py:27
 msgid "Image Attachment"
 msgstr "Bildanhang"
 
@@ -287,12 +280,13 @@ msgstr "Bildanhang"
 msgid "Image Attachment Caption"
 msgstr "Bildunterschrift zum Bildanhang"
 
+#: ./../addrelease.py:51
 #: ./../editrelease.py:54
 #: ./../pressrelease.py:63
 msgid "Image Title"
 msgstr "Bildname"
 
-#: ./../editimage.py:104
+#: ./../editimage.py:97
 msgid "Image attachment has successfully been updated"
 msgstr "Der Bildanhang wurde erfolgreich aktualisiert"
 
@@ -312,7 +306,6 @@ msgstr "Dachzeile"
 msgid "Location"
 msgstr "Ort"
 
-#: ./../addrelease.py:63
 #: ./../archivesettings.py:22
 #: ./../pressrelease.py:79
 msgid "Mark this press release as visible in the archive."
@@ -330,8 +323,8 @@ msgstr "Im Augenblick gibt es noch keine Pressemitteilungen."
 msgid "No pressrooms available!"
 msgstr "Es gibt keine verfügbaren Benutzerordner/Pressezimmer"
 
-#: ./../addinvitation.py:57
-#: ./../addrelease.py:57
+#: ./../addinvitation.py:62
+#: ./../addrelease.py:56
 #: ./../editinvitation.py:64
 msgid "Optional summary that is useful as a preview text in email clients that support this feature."
 msgstr "Geben Sie hier optional eine kurze Zusammenfassung des Inhalt ein. Diese Zusammenfassung kann von den meisten E-Mail-Programmen als Voransicht der Nachricht im Posteingang angezeigt werden."
@@ -347,7 +340,7 @@ msgstr "Bitte tragen Sie hier einen optionalen Subtitel ein."
 msgid "Please enter default send from E-mail address"
 msgstr "Geben Sie hier eine Standard E-Mail-Adresse als Absenderadresse für Presseinhalte ein."
 
-#: ./../addinvitation.py:52
+#: ./../addinvitation.py:57
 #: ./../editinvitation.py:59
 #: ./../pressinvitation.py:62
 msgid "Please select if the event is public."
@@ -419,7 +412,7 @@ msgstr "Die Liste der Empfänger für diesen Presseinhalt wurde aktualisiert"
 
 #: ./../archivesettings.py:54
 #: ./../editinvitation.py:86
-#: ./../editrelease.py:86
+#: ./../editrelease.py:81
 msgid "Save"
 msgstr "Speichern"
 
@@ -503,8 +496,8 @@ msgstr "Abonnenten"
 msgid "Subtitle"
 msgstr "Subtitel"
 
-#: ./../addinvitation.py:56
-#: ./../addrelease.py:56
+#: ./../addinvitation.py:61
+#: ./../addrelease.py:55
 #: ./../editinvitation.py:63
 msgid "Summary"
 msgstr "Zusammenfassung"
@@ -524,15 +517,15 @@ msgstr "Haupttext"
 msgid "The creation of a new attachment has been cancelled."
 msgstr "Das Anlegen eines neuen Dateianhangs wurde abgebrochen"
 
-#: ./../addimage.py:64
+#: ./../addimage.py:59
 msgid "The creation of a new image attachment has been cancelled."
 msgstr "Das Anlegen eines Bildanhangs wurde abgebrochen"
 
-#: ./../addinvitation.py:101
+#: ./../addinvitation.py:106
 msgid "The creation of a new press invitation has been cancelled."
 msgstr "Das Anlegen einer neuen Presseinladung wurde auf Ihren Wunsch abgebrochen."
 
-#: ./../addrelease.py:97
+#: ./../addrelease.py:90
 msgid "The creation of a new press release has been cancelled."
 msgstr "Die Erstellung einer neuen Pressemitteilung wurde abgebrochen."
 
@@ -544,7 +537,7 @@ msgstr "Für die angegebene E-Mail-Adresse existiert bereits ein Abonnement"
 msgid "The entered email address is not subscribed"
 msgstr "Die eingegebene E-Mail-Addresse konnte nicht in der Liste der Abonnenten gefunden werden"
 
-#: ./../editrelease.py:131
+#: ./../editrelease.py:126
 msgid "The press release was successfully updated"
 msgstr "Die Pressemitteilung wurde erfolgreich aktualisiert"
 
@@ -573,7 +566,7 @@ msgstr "Aktualisieren Sie die Standardeinstellungen"
 msgid "Update file attachment"
 msgstr "Dateianhang aktualisieren"
 
-#: ./../editimage.py:56
+#: ./../editimage.py:51
 msgid "Update image attachment"
 msgstr "Bildanhang aktualisieren"
 
@@ -609,7 +602,7 @@ msgstr "Design-Vorlage für E-Mails im HTML-Format anpassen"
 msgid "Updating file attachment has been cancelled."
 msgstr "Die Aktualisierung wurde abgebrochen."
 
-#: ./../editimage.py:69
+#: ./../editimage.py:64
 msgid "Updating image attachment has been cancelled."
 msgstr "Die Aktualisierung des Bildanhangs wurde abgebrochen"
 
@@ -621,9 +614,9 @@ msgstr "Laden Sie einen Dateianhang hoch. Hinweis: um Bilder in die E-Mail einzu
 msgid "Upload a file attachment for this press release. The file will be available for download from the e-mail"
 msgstr "Laden Sie hier bitte den Dateianhang hoch. Dieser wird in der Pressemitteilung dann als verfügbarer Download eingefügt."
 
-#: ./../addimage.py:29
+#: ./../addimage.py:24
 #: ./../editfile.py:32
-#: ./../editimage.py:33
+#: ./../editimage.py:28
 msgid "Upload a file attachment for this press release. The file will be available for download from the e-mail and provided as a thumbnail preview"
 msgstr "Laden Sie hier bitte Ihr Bild hoch. Dieses wird in Presseinhalten als Download-Link und als Vorschaubild erscheinen."
 
@@ -637,7 +630,6 @@ msgstr "Laden Sie hier einen Bildanhang zu dieser Pressemitteilung hoch"
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr "Laden Sie ein Bild zu dieser Pressemittelung hoch. Das Bild sollte bereit optimiert und verkleinert sein, da E-Mails nicht für den Versand grosser Dateimengen vorgesehen sind."
 
-#: ./../addrelease.py:62
 #: ./../archivesettings.py:21
 #: ./../pressrelease.py:78
 msgid "Visible in Archive?"
@@ -648,8 +640,8 @@ msgid "Your subscription settings have been updated"
 msgstr "Ihr Newsletter Abonnement wurde aktualisiert."
 
 #: ./../addfile.py:59
-#: ./../addimage.py:60
-#: ./../addinvitation.py:97
+#: ./../addimage.py:55
+#: ./../addinvitation.py:102
 msgid "cancel"
 msgstr "Abbrechen"
 

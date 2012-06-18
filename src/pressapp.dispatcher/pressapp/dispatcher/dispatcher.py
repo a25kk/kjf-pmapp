@@ -234,7 +234,9 @@ class Dispatcher(grok.View):
             closed = context.closed
             if closed == True:
                 closed_msg = translate(
-                    _(u"Admittance for invited guests only"),
+                    _(u"Diese Veranstaltung kann nur auf Einladung besucht "
+                      u"werden. Von einer Publikation bitten wir daher "
+                      u"abzusehen."),
                     domain='pressapp.presscontent',
                     target_language='de')
                 data['closed'] = closed_msg

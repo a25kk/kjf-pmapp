@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-05-31 14:01+0000\n"
+"POT-Creation-Date: 2012-06-18 13:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Domain: pressapp.dispatcher\n"
 
 #: ./../dispatcher.py:237
-msgid "Admittance for invited guests only"
+msgid "Diese Veranstaltung kann nur auf Einladung besucht werden. Von einer Publikation bitten wir daher abzusehen."
 msgstr ""
 
 #: ./../dispatcher.py:54
