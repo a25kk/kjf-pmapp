@@ -39,14 +39,25 @@
         <h3>Pressematerial Download:</h3>
         <div tal:define="attachments view/queryAttachments"
             class="ximage-container">
-            <tal:images tal:repeat="item attachments">
-                <img tal:define="item_obj item/getObject;
-                                 scales item_obj/@@images"
-                     tal:replace="structure python: scales.tag('image',
-                                  width=128, height=128, direction='down')"
-                    />
-                <p class="image-caption" tal:content="item/Title" />
-            </tal:images>
+            <tal:attachments tal:repeat="item attachments">
+                <tal:block tal:define="item_obj item/getObject;
+                                       item_type item_obj/portal_type;">
+                    <tal:image tal:condition="python:item_type == 'pressapp.presscontent.imageattachment'">
+                        <img tal:define="item_obj item/getObject;
+                                         scales item_obj/@@images"
+                             tal:replace="structure python: scales.tag('image',
+                                          width=128, height=128, direction='down')"
+                            />
+                        <p class="image-caption" tal:content="item/Title" />
+                    </tal:image>
+                    <tal:file tal:condition="python:item_type == 'pressapp.presscontent.fileattachment'">
+                        <p><a tal:define="attachment nocall: item_obj/attachment;
+                                       filename attachment/filename"
+                            tal:attributes="href string:${item/getURL}/@@download/attachment/${item_obj/attachment/filename}">
+                            Dateianhang: <span tal:replace="item/Title" /></a></p>
+                    </tal:file>
+                </tal:block>
+            </tal:attachments>
         </div>
         <div>Die Bilder zu dieser Pressemitteilung finden Sie auch auf <a class="external link" href="http://www.kjf-augsburg.de/aktuell/presse/">http://www.KJF-Augsburg.de/aktuell/presse/</a></div>
         <div>Abdruck honorarfrei. Bilder, die mit dieser Pressemitteilung bereitgestellt werden, d&uuml;rfen aus rechtlichen Gr&uuml;nden nur im Zusammenhang mit der hier geschilderten T&auml;tigkeit der Katholischen Jugendf&uuml;rsorge der Di&ouml;zese Augsburg ver&ouml;ffentlicht werden.<br /> 

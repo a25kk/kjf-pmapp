@@ -1,5 +1,6 @@
 from five import grok
 from Acquisition import aq_inner
+from AccessControl import Unauthorized
 from zope.component import getMultiAdapter
 from zope.app.component.hooks import getSite
 from Products.statusmessages.interfaces import IStatusMessage
@@ -18,6 +19,10 @@ class Subscriptions(grok.View):
         self.errors = {}
         if 'form.button.Subscribe' in self.request:
             context = aq_inner(self.context)
+            authenticator = getMultiAdapter(
+                (self.request, context), name=u"authenticator")
+            if not authenticator.verify():
+                raise Unauthorized
             context_url = context.absolute_url()
             pcenter = self.presscenter
             email = self.request.get('email', None)
