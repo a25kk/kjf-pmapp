@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "POT-Creation-Date: 2012-06-18 13:28+0000\n"
-"PO-Revision-Date: 2012-06-18 15:34+0100\n"
+"PO-Revision-Date: 2012-06-20 14:53+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -144,7 +144,7 @@ msgstr "Beschreibung"
 
 #: ./../archive.py:161
 msgid "Diese Veranstaltung kann nur auf Einladung besucht werden. Von einer Publikation bitten wir daher abzusehen."
-msgstr "Diese Veranstaltung ist nur für geladene Gäste"
+msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung als Terminankündigung abzusehen."
 
 #: ./../addinvitation.py:51
 #: ./../editinvitation.py:53
