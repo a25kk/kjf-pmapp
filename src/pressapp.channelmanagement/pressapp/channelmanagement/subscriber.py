@@ -1,14 +1,15 @@
 from Acquisition import aq_inner
 from five import grok
-from plone.directives import dexterity, form
+from plone.directives import form
 
 from zope import schema
-from zope.interface import invariant, Invalid
+from zope.component import queryUtility
 
-from z3c.form import group, field
 from plone.formwidget.autocomplete import AutocompleteMultiFieldWidget
 from Products.CMFCore.utils import getToolByName
 from pressapp.channelmanagement.vocabulary import ChannelSourceBinder
+
+from plone.registry.interfaces import IRegistry
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
 
@@ -63,6 +64,64 @@ class View(grok.View):
     grok.context(ISubscriber)
     grok.require('zope2.View')
     grok.name('view')
+
+    def update(self):
+        self.key = 'pressapp.channelmanagement.channelList'
+
+    def channels(self):
+        records = self.channel_records()
+        channels = []
+        for channel in records:
+            info = {}
+            info['channel'] = channel
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            info['channelname'] = channelname
+            context_channels = getattr(self.context, 'channel', None)
+            if channel not in context_channels:
+                channels.append(info)
+        return channels
+
+    def selected_channels(self):
+        context = aq_inner(self.context)
+        records = self.channel_records()
+        names = []
+        channels = getattr(context, 'channel', None)
+        for channel in channels:
+            info = {}
+            info['channel'] = channel
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            info['channelname'] = channelname
+            names.append(info)
+        return names
+
+    def channel_names(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        channels = catalog.uniqueValuesFor('channel')
+        records = self.channel_records()
+        names = []
+        for channel in channels:
+            info = {}
+            info['channel'] = channel
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            info['channelname'] = channelname
+            names.append(info)
+        return names
+
+    def channel_records(self):
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
+        return records
 
 
 class SubscriberActions(grok.Viewlet):

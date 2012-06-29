@@ -52,6 +52,10 @@
                                     tal:attributes="href python:item_url+'/edit'">
                                     <i class="icon-edit" />
                                     Bearbeiten</a>
+                                <a class="btn btn-small"
+                                    tal:attributes="href item_url">
+                                    <i class="icon-eye-open" />
+                                    Anzeigen</a>
                             </td>
                         </tr>
                       </tal:block>

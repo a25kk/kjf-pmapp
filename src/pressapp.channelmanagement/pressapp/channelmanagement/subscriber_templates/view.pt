@@ -21,8 +21,8 @@
     <h1 class="documentFirstHeading">Kontaktinformationen
         <small tal:content="context/Title" /></h1>
     
-    <div class="row">
-        <div class="cell position-0 width-1:2">
+    <div class="row-fluid">
+        <div class="span6">
         <section class="box">
             <table class="table table-condensed">
                 <thead>
@@ -63,14 +63,21 @@
             </table>
         </section>
         </div>
-        <div class="cell position-1:2 width-1:2">
+        <div class="span6">
             <div class="box">
                 <h3>Verteiler:</h3>
-                <ul tal:define="channels context/channel">
-                    <li tal:repeat="channel channels">
-                        <span tal:replace="channel" />
-                    </li>
-                </ul>
+                <div class="tile">
+                    <tal:block tal:repeat="item view/selected_channels">
+                        <span class="badge badge-success" tal:content="item/channelname" />
+                    </tal:block>
+                </div>
+                <div class="box"
+                     tal:define="channels view/channels">
+                    <tal:block tal:repeat="channel channels">
+                        <span class="label"
+                            tal:content="channel/channelname" />
+                    </tal:block>
+                </div>
             </div>
         </div>
     </div>
