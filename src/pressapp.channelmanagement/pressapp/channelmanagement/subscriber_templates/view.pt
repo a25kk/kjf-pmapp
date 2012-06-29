@@ -65,19 +65,30 @@
         </div>
         <div class="span6">
             <div class="box">
-                <h3>Verteiler:</h3>
-                <div class="tile">
-                    <tal:block tal:repeat="item view/selected_channels">
-                        <span class="badge badge-success" tal:content="item/channelname" />
-                    </tal:block>
-                </div>
-                <div class="box"
+                <h3>Verteiler:
+                    <small>
+                        <tal:block tal:repeat="item view/selected_channels">
+                            <span class="badge badge-success" tal:content="item/channelname" />
+                        </tal:block>
+                    </small>
+                </h3>
+                <div class="visualClear">&nbsp;</div>
+                <div class="form-inline"
                      tal:define="channels view/channels">
-                    <tal:block tal:repeat="channel channels">
-                        <span class="label"
-                            tal:content="channel/channelname" />
-                    </tal:block>
+                    <div class="controls"
+                        tal:repeat="channel channels">
+                        <div class="input-prepend pull-left"
+                            tal:define="used channel/active">
+                            <tal:block tal:condition="python:used == False">
+                                <span class="add-on"><i class="icon-check" /></span> <span class="input-large uneditable-input" tal:content="channel/channelname">Some value here</span>
+                            </tal:block>
+                            <tal:block tal:condition="python:used == True">
+                                <span class="add-on"><i class="icon-check-empty" /></span> <input class="input-large disabled" id="disabledInput" type="text" disabled tal:attributes="placeholder channel/channelname" />
+                            </tal:block>
+                        </div>
+                    </div>
                 </div>
+                <div class="visualClear"><!-- --></div>
             </div>
         </div>
     </div>

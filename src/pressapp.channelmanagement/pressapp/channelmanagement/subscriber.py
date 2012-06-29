@@ -81,7 +81,10 @@ class View(grok.View):
             info['channelname'] = channelname
             context_channels = getattr(self.context, 'channel', None)
             if channel not in context_channels:
-                channels.append(info)
+                info['active'] = True
+            else:
+                info['active'] = False
+            channels.append(info)
         return channels
 
     def selected_channels(self):
