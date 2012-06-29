@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "POT-Creation-Date: 2012-06-18 13:32+0000\n"
-"PO-Revision-Date: 2012-06-18 15:35+0100\n"
+"PO-Revision-Date: 2012-06-29 13:52+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: ./../dispatcher.py:237
 msgid "Diese Veranstaltung kann nur auf Einladung besucht werden. Von einer Publikation bitten wir daher abzusehen."
-msgstr "Diese Veranstaltung ist nur für geladene Gäste"
+msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung als Terminankündigung abzusehen."
 
 #: ./../dispatcher.py:54
 msgid "Your request has been dispatched"
