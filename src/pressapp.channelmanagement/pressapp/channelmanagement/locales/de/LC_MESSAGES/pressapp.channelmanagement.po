@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-01-10 17:19+0000\n"
-"PO-Revision-Date: 2012-01-19 17:34+0100\n"
+"POT-Creation-Date: 2012-07-02 12:50+0000\n"
+"PO-Revision-Date: 2012-07-02 14:54+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -12,6 +12,11 @@ msgstr ""
 "Language-Code: de\n"
 "Language-Name: German\n"
 "Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./../addsubscriber.py:99
+msgid "A new address was successfully added"
+msgstr "Ein neuer Pressekontakt wurde erfolgreich hinzugefügt"
 
 #: ./../profiles/default/types/pressapp.channelmanagement.subscriber.xml
 msgid "A single recipient/subscriber object"
@@ -21,75 +26,164 @@ msgstr "Ein Kontakt/Empfänger"
 msgid "A specific channel holding subscriber objects"
 msgstr "Eine Kontaktliste, die Abonnenten/Kontaktadressen beinhaltet"
 
+#: ./../addsubscriber.py:66
+msgid "Add new subscriber address"
+msgstr "Presskontakt hinzufügen"
+
+#: ./../subscriberimport.py:56
+msgid "Address Import Form"
+msgstr "Pressekontakt Import"
+
+#: ./../channelmanager.py:25
+msgid "Available Channels"
+msgstr "Verfügbare Verteiler"
+
 #: ./../profiles/default/types/pressapp.channelmanagement.channelmanager.xml
 msgid "Central managing unit for subscriber channels"
 msgstr "Zentrale Verwaltungseinheit für Verteilerlisten."
 
+#: ./../addsubscriber.py:51
+#: ./../editsubscriber.py:54
 #: ./../profiles/default/types/pressapp.channelmanagement.channel.xml
-#: ./../subscriber.py:102
 msgid "Channel"
 msgstr "Verteiler"
+
+#: ./../channelmanager.py:29
+msgid "Channel Title"
+msgstr "Verteiler Bezeichnung"
 
 #: ./../profiles/default/types/pressapp.channelmanagement.channelmanager.xml
 msgid "ChannelManager"
 msgstr "Adressverwaltung"
 
-#: ./../subscriber.py:98
+#: ./../addsubscriber.py:47
+#: ./../editsubscriber.py:50
+#: ./../subscriber.py:53
 msgid "Channels"
 msgstr "Verteiler"
 
-#: ./../subscriber.py:93
+#: ./../addsubscriber.py:43
+#: ./../editsubscriber.py:46
+#: ./../subscriber.py:48
 msgid "Comment"
 msgstr "Kommentare"
 
-#: ./../subscriber.py:77
+#: ./../addsubscriber.py:27
+#: ./../editsubscriber.py:30
+#: ./../subscriber.py:32
 msgid "Contact Person"
 msgstr "Kontaktperson"
 
-#: ./../subscriber.py:69
+#: ./../addsubscriber.py:19
+#: ./../editsubscriber.py:22
+#: ./../subscriber.py:24
 msgid "Contact Title"
 msgstr "Kontakt Titel"
 
-#: ./../subscriber.py:73
+#: ./../addsubscriber.py:73
+msgid "Create subscriber"
+msgstr "Pressekontakt erstellen"
+
+#: ./../editsubscriber.py:69
+msgid "Edit subscriber"
+msgstr "Pressekontakt bearbeiten"
+
+#: ./../addsubscriber.py:23
+#: ./../editsubscriber.py:26
+#: ./../subscriber.py:28
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#: ./../subscriber.py:89
+#: ./../addsubscriber.py:39
+#: ./../editsubscriber.py:42
+#: ./../subscriber.py:44
 msgid "Fax"
 msgstr "Fax"
 
-#: ./../subscriber.py:85
+#: ./../subscriberimport.py:41
+msgid "File Upload"
+msgstr "Dateiupload"
+
+#: ./../subscriberimport.py:64
+msgid "Import"
+msgstr "Import"
+
+#: ./../subscriberimport.py:76
+msgid "Imported records: "
+msgstr "Importierte Daten:"
+
+#: ./../addsubscriber.py:35
+#: ./../editsubscriber.py:38
+#: ./../subscriber.py:40
 msgid "Mobile Phone"
 msgstr "Mobil"
 
-#: ./../subscriber.py:81
+#: ./../addsubscriber.py:31
+#: ./../editsubscriber.py:34
+#: ./../subscriber.py:36
 msgid "Phone"
 msgstr "Telefon"
 
-#: ./../subscriber.py:99
+#: ./../addsubscriber.py:48
+#: ./../editsubscriber.py:51
+#: ./../subscriber.py:54
 msgid "Please select the channels this recipient is subscribed to."
 msgstr "Bitte wählen Sie die Verteilerlisten, in denen dieser Kontakt gelistet werden soll, durch Eingabe in das Suchfeld."
+
+#: ./../subscriberimport.py:42
+msgid "Please upload a file in csv format containing the user information to be imported."
+msgstr "Bitte laden Sie hier eine csv-Datei hoch, die Kontaktinformationen beinhaltet."
+
+#: ./../editsubscriber.py:122
+msgid "SUbscriber has successfully been updated"
+msgstr "Dieser Pressekontakt wurde erfolgreich aktualisiert."
 
 #: ./../profiles/default/types/pressapp.channelmanagement.subscriber.xml
 msgid "Subscriber"
 msgstr "Abbonent/Kontakt"
 
-#: ./../channelmanager_templates/view.pt:121
+#: ./../addsubscriber.py:85
+msgid "The creation of a new subscriber has been cancelled."
+msgstr "Das Anlegen eines Pressekontakts wurde abgebrochen"
+
+#: ./../channel_templates/view.pt:71
+#: ./../channelmanager_templates/channelinformation.pt:120
 msgid "There are no subscribers yet"
 msgstr "Es wurden noch keine Kontakte angelegt."
 
+#: ./../channelmanager.py:26
+msgid "Update available channels. One entry per line"
+msgstr "Aktualisieren Sie die verfügbaren Verteiler. Ein Eintrag pro Zeile"
+
+#: ./../editsubscriber.py:76
+msgid "Update subscriber"
+msgstr "Pressekontakt aktualisieren"
+
+#: ./../editsubscriber.py:89
+msgid "Updating susbcriber has been cancelled."
+msgstr "Die Aktualisierung des Pressekontaktes wurde abgebrochen"
+
+#: ./../subscriberimport.py:57
+msgid "Upload existing address information by supplying a csv file."
+msgstr "Bestehende Adressen als csv-Datei hochladen."
+
+#: ./../addsubscriber.py:81
+#: ./../editsubscriber.py:84
+msgid "cancel"
+msgstr "Abbrechen"
+
 #. Default: "Search"
-#: ./../channelmanager_templates/view.pt:41
+#: ./../channelmanager_templates/channelinformation.pt:52
 msgid "label_search"
 msgstr "Suche"
 
 #. Default: "Search Subscriber"
-#: ./../channelmanager_templates/view.pt:26
+#: ./../channelmanager_templates/channelinformation.pt:37
 msgid "text_search"
 msgstr "Suchbegriff"
 
 #. Default: "..."
-#: ./../channelmanager_templates/view.pt:30
+#: ./../channelmanager_templates/channelinformation.pt:41
 msgid "title_search_site"
 msgstr "Suchen"
 

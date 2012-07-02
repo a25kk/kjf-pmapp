@@ -13,7 +13,7 @@
     <p class="pull-right">
           <a
             tal:define="context_url context/absolute_url;"
-            tal:attributes="href python:context_url+'/edit'">
+            tal:attributes="href python:context_url+'/@@edit-subscriber'">
             <i class="icon-edit" />
               Bearbeiten</a>
     </p>

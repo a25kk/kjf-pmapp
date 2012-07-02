@@ -48,14 +48,14 @@ class ISubscriber(form.Schema):
         title=_(u"Comment"),
         required=False,
     )
-    form.widget(channel=AutocompleteMultiFieldWidget)
+    #form.widget(channel=AutocompleteMultiFieldWidget)
     channel = schema.List(
         title=_(u"Channels"),
         description=_(u"Please select the channels this recipient "
                       u"is subscribed to."),
         value_type=schema.Choice(
             title=_(u"Channel"),
-            source=ChannelSourceBinder(),
+            vocabulary='pressapp.channelmanagement.channellisting',
         )
     )
 

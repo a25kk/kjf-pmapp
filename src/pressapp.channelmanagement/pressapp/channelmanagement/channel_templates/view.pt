@@ -15,7 +15,7 @@
         <p class="pull-right">
               <a class="btn btn-small btn-primary popoverForm"
                 tal:define="context_url context/absolute_url;"
-                tal:attributes="href python:context_url+'/++add++pressapp.channelmanagement.subscriber'">
+                tal:attributes="href python:context_url+'/@@add-subscriber'">
                 <i class="icon-plus-sign icon-white" />
                   Neuen Kontakt anlegen</a>
         </p>
@@ -49,7 +49,7 @@
                             </td>
                             <td tal:define="item_url item/getURL">
                                 <a class="btn btn-small"
-                                    tal:attributes="href python:item_url+'/edit'">
+                                    tal:attributes="href python:item_url+'/@@edit-susbcriber'">
                                     <i class="icon-edit" />
                                     Bearbeiten</a>
                                 <a class="btn btn-small"

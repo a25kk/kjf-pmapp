@@ -19,7 +19,7 @@
     
     <div class="page-header">
         <a class="btn btn-small btn-primary pull-right"
-                tal:attributes="href python:channel_url+'/++add++pressapp.channelmanagement.subscriber'">
+                tal:attributes="href python:channel_url+'/@@add-subscriber'">
                 <i class="icon-plus-sign icon-white" />
                   Neuen Kontakt anlegen</a>
         <h1>Administration: Adressen</h1>
