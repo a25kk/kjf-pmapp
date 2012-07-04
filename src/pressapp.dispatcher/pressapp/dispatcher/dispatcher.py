@@ -103,7 +103,7 @@ class Dispatcher(grok.View):
             # alternatives = MIMEMultipart('alternative')
             # outer.attach(alternatives)
             cs_utf = Charset('utf-8')
-            personal_text_plain = cs_utf.body_encode(personal_text_plain)
+            xpersonal_text_plain = cs_utf.body_encode(personal_text_plain)
             text_part = MIMEText(personal_text_plain,
                                  'plain',
                                  _charset=charset)
