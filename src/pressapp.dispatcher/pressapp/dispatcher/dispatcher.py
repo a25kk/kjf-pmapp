@@ -79,7 +79,7 @@ class Dispatcher(grok.View):
         css_file = self.default_data['stylesheet']
         plain_text = plain_text.replace('[[PC_CSS]]', '')
         text = text_html.replace('[[PC_CSS]]', str(css_file))
-        for body_charset in 'US-ASCII', email_charset, 'UTF-8':
+        for body_charset in 'US-ASCII', 'iso-8859-1', 'UTF-8':
             try:
                 plain_text = plain_text.encode(body_charset)
             except UnicodeError:
@@ -93,23 +93,19 @@ class Dispatcher(grok.View):
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
 
-            # outer = MIMEMultipart('related')
             outer = MIMEMultipart('alternative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             outer['From'] = self.default_data['email']
             outer['Subject'] = subject_header
             outer.epilogue = ''
             outer.preamble = 'This is a multi-part message in MIME format.'
-            # alternatives = MIMEMultipart('alternative')
-            # outer.attach(alternatives)
-            cs_utf = Charset('utf-8')
-            xpersonal_text_plain = cs_utf.body_encode(personal_text_plain)
+            # cs_utf = Charset('utf-8')
             text_part = MIMEText(personal_text_plain,
                                  'plain',
-                                 _charset=charset)
+                                 _charset=body_charset)
             html_text = MIMEText(personal_text,
                                  'html',
-                                 _charset=charset)
+                                 _charset=body_charset)
             outer.attach(text_part)
             outer.attach(html_text)
             # alternatives.attach(text_part)
