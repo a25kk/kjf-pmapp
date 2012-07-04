@@ -18,8 +18,8 @@
             <img tal:define="scales context/@@images"
                 tal:replace="structure python: scales.tag('image', scale='mini', css_class='teaser-image')"
                 /><br />
-            <span tal:condition="context/caption"
-                tal:content="context/caption"
+            <span tal:condition="context/imagename"
+                tal:content="context/imagename"
                 class="image-caption">Caption</span>
     </div>
     <div>
