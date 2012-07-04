@@ -62,7 +62,6 @@ class Dispatcher(grok.View):
         proptool = getToolByName(context, 'portal_properties')
         siteprops = proptool.site_properties
         charset = siteprops.getProperty('default_charset')
-        email_charset = proptool.getProperty('email_charset', 'ISO-8859-1')
         subject = self.request.get('subject', '')
         if subject == '':
             subject = context.Title()
@@ -81,7 +80,7 @@ class Dispatcher(grok.View):
         text = text_html.replace('[[PC_CSS]]', str(css_file))
         for body_charset in 'US-ASCII', 'iso-8859-1', 'UTF-8':
             try:
-                plain_text = plain_text.encode(body_charset)
+                plain_text = safe_unicode(plain_text).encode(body_charset)
             except UnicodeError:
                 pass
             else:
@@ -100,9 +99,10 @@ class Dispatcher(grok.View):
             outer.epilogue = ''
             outer.preamble = 'This is a multi-part message in MIME format.'
             # cs_utf = Charset('utf-8')
+            # plain_part = personal_text_plain.encode(body_charset)
             text_part = MIMEText(personal_text_plain,
                                  'plain',
-                                 _charset='latin-1')
+                                 _charset=body_charset)
             html_text = MIMEText(personal_text,
                                  'html',
                                  _charset=body_charset)
