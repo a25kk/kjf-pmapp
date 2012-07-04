@@ -73,7 +73,6 @@ class Dispatcher(grok.View):
         rendered_email = self._exchange_relative_urls(output_html)
         text_html = rendered_email['html']
         plain_text = rendered_email['plain']
-        image_urls = rendered_email['images']
         css_file = self.default_data['stylesheet']
         plain_text = plain_text.replace('[[PC_CSS]]', '')
         text = text_html.replace('[[PC_CSS]]', str(css_file))
@@ -84,55 +83,28 @@ class Dispatcher(grok.View):
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
                 str(recipient_name))
 
-            outer = MIMEMultipart('related')
+            # outer = MIMEMultipart('related')
+            outer = MIMEMultipart('alternative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
             outer['From'] = self.default_data['email']
             outer['Subject'] = subject_header
             outer.epilogue = ''
             outer.preamble = 'This is a multi-part message in MIME format.'
-            alternatives = MIMEMultipart('alternative')
-            outer.attach(alternatives)
+            # alternatives = MIMEMultipart('alternative')
+            # outer.attach(alternatives)
             text_part = MIMEText(personal_text_plain, 'plain', charset)
             html_text = MIMEText(personal_text, 'html', charset)
-            image_number = 0
-            reference_tool = getToolByName(context, 'reference_catalog')
-            for image_url in image_urls:
-                try:
-                    image_url = urlparse(image_url)[2]
-                    if 'resolveuid' in image_url:
-                        urlparts = image_url.split('/')[1:]
-                        uuid = urlparts.pop(0)
-                        o = reference_tool.lookupObject(uuid)
-                        if o and urlparts:
-                            o = o.restrictedTraverse(urlparts[0])
-                    if "@@images" in image_url:
-                        image_url = image_url[:image_url.index('@@images')]
-                        o = context.restrictedTraverse(
-                                urllib.unquote(image_url))
-                    else:
-                        o = context.restrictedTraverse(
-                                urllib.unquote(image_url))
-                except Exception, e:
-                    log.error('Could not resolve the image \"%s\": %s'
-                                % (image_url, e))
-                else:
-                    if hasattr(o, "_data"):
-                        image = MIMEImage(o._data)
-                    elif hasattr(o, "data"):
-                        image = MIMEImage(o.data)
-                    else:
-                        image = MIMEImage(o.GET())
-                    image["Content-ID"] = "<image_%s>" % image_number
-                    image_number += 1
-                    alternatives.attach(image)
-            alternatives.attach(text_part)
-            alternatives.attach(html_text)
+            outer.attach(text_part)
+            outer.attach(html_text)
+            # alternatives.attach(text_part)
+            # alternatives.attach(html_text)
             try:
                 mailhost.send(outer.as_string())
                 log.info("Sent newsletter to \"%s\"" % recipient['mail'])
                 send_counter += 1
             except Exception, e:
-                log.info("Sending to \"%s\" failed" % recipient['mail'])
+                log.info("Sending to \"%s\" failed: %s" % (
+                        recipient['mail'], e))
                 send_error_counter += 1
         log.info("Dipatched to %s recipients with %s errors." % (send_counter,
             send_error_counter))
