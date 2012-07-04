@@ -99,7 +99,6 @@ class Dispatcher(grok.View):
             html_text = MIMEText(personal_text,
                                  'html',
                                  _charset=charset)
-            import pdb; pdb.set_trace( )
             outer.attach(text_part)
             outer.attach(html_text)
             # alternatives.attach(text_part)
