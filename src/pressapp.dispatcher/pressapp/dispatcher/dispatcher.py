@@ -102,14 +102,12 @@ class Dispatcher(grok.View):
             # cs_utf = Charset('utf-8')
             text_part = MIMEText(personal_text_plain,
                                  'plain',
-                                 _charset=body_charset)
+                                 _charset='iso-8859-1')
             html_text = MIMEText(personal_text,
                                  'html',
                                  _charset=body_charset)
             outer.attach(text_part)
             outer.attach(html_text)
-            # alternatives.attach(text_part)
-            # alternatives.attach(html_text)
             try:
                 mailhost.send(outer.as_string())
                 log.info("Sent newsletter to \"%s\"" % recipient['mail'])
