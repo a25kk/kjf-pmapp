@@ -102,7 +102,7 @@ class Dispatcher(grok.View):
             # cs_utf = Charset('utf-8')
             text_part = MIMEText(personal_text_plain,
                                  'plain',
-                                 _charset='iso-8859-1')
+                                 _charset='latin-1')
             html_text = MIMEText(personal_text,
                                  'html',
                                  _charset=body_charset)
