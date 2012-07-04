@@ -17,6 +17,6 @@ def postprocess_emailtemplate(content):
             node.set('href', url)
     data = etree.tostring(tree,
                           pretty_print=True,
-                          encoding="utf-8",
+                          # encoding="utf-8",
                           method='html')
     return data
