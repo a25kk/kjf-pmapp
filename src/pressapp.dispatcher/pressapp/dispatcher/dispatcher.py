@@ -1,14 +1,10 @@
 import cStringIO
 import formatter
-import urllib
 
 from htmllib import HTMLParser
-from urlparse import urlparse
 from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
-from email.MIMEImage import MIMEImage
 from email.Header import Header
-from email.charset import Charset
 
 from datetime import datetime
 from Acquisition import aq_inner
@@ -59,9 +55,6 @@ class Dispatcher(grok.View):
     def send(self):
         context = aq_inner(self.context)
         mailhost = getToolByName(context, 'MailHost')
-        proptool = getToolByName(context, 'portal_properties')
-        siteprops = proptool.site_properties
-        charset = siteprops.getProperty('default_charset')
         subject = self.request.get('subject', '')
         if subject == '':
             subject = context.Title()
