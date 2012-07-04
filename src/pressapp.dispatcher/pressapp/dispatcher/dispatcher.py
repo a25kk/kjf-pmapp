@@ -59,7 +59,8 @@ class Dispatcher(grok.View):
         context = aq_inner(self.context)
         mailhost = getToolByName(context, 'MailHost')
         proptool = getToolByName(context, 'portal_properties')
-        charset = proptool.getProperty('default_charset')
+        siteprops = proptool.site_properties
+        charset = siteprops.getProperty('default_charset')
         subject = self.request.get('subject', '')
         if subject == '':
             subject = context.Title()
@@ -92,8 +93,13 @@ class Dispatcher(grok.View):
             outer.preamble = 'This is a multi-part message in MIME format.'
             # alternatives = MIMEMultipart('alternative')
             # outer.attach(alternatives)
-            text_part = MIMEText(personal_text_plain, 'plain', charset)
-            html_text = MIMEText(personal_text, 'html', charset)
+            text_part = MIMEText(personal_text_plain,
+                                 'plain',
+                                 _charset=charset)
+            html_text = MIMEText(personal_text,
+                                 'html',
+                                 _charset=charset)
+            import pdb; pdb.set_trace( )
             outer.attach(text_part)
             outer.attach(html_text)
             # alternatives.attach(text_part)
