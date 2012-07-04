@@ -8,6 +8,7 @@ from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEImage import MIMEImage
 from email.Header import Header
+from email.charset import Charset
 
 from datetime import datetime
 from Acquisition import aq_inner
@@ -61,6 +62,7 @@ class Dispatcher(grok.View):
         proptool = getToolByName(context, 'portal_properties')
         siteprops = proptool.site_properties
         charset = siteprops.getProperty('default_charset')
+        email_charset = proptool.getProperty('email_charset', 'ISO-8859-1')
         subject = self.request.get('subject', '')
         if subject == '':
             subject = context.Title()
@@ -77,6 +79,13 @@ class Dispatcher(grok.View):
         css_file = self.default_data['stylesheet']
         plain_text = plain_text.replace('[[PC_CSS]]', '')
         text = text_html.replace('[[PC_CSS]]', str(css_file))
+        for body_charset in 'US-ASCII', email_charset, 'UTF-8':
+            try:
+                plain_text = plain_text.encode(body_charset)
+            except UnicodeError:
+                pass
+            else:
+                break
         for recipient in recipients:
             recipient_name = self.safe_portal_encoding(recipient['name'])
             personal_text = text.replace('[[SUBSCRIBER]]',
@@ -93,6 +102,8 @@ class Dispatcher(grok.View):
             outer.preamble = 'This is a multi-part message in MIME format.'
             # alternatives = MIMEMultipart('alternative')
             # outer.attach(alternatives)
+            cs_utf = Charset('utf-8')
+            personal_text_plain = cs_utf.body_encode(personal_text_plain)
             text_part = MIMEText(personal_text_plain,
                                  'plain',
                                  _charset=charset)
