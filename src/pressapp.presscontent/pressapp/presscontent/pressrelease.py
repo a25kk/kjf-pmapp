@@ -226,6 +226,7 @@ class PressReleaseActions(grok.Viewlet):
     def update(self):
         context = aq_inner(self.context)
         self.context_url = context.absolute_url()
+        self.available = len(self.homefolder_url()) > 0
 
     def homefolder_url(self):
         context = aq_inner(self.context)
