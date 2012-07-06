@@ -1,9 +1,10 @@
-<div class="editbar" id="editbar">
+<div class="editbar" id="editbar"
+    tal:condition="viewlet/available">
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
             <div class="btn-toolbar">
-                <div class="btn-group locator" tal:condition="viewlet/homefolder_url">
+                <div class="btn-group locator">
                     <a class="btn btn-large btn-inverse"
                         tal:attributes="href viewlet/homefolder_url">
                         <i class="icon-home icon-white" />
