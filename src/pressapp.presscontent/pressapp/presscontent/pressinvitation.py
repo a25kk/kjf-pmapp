@@ -190,6 +190,7 @@ class PressInvitationActions(grok.Viewlet):
     def homefolder_url(self):
         context = aq_inner(self.context)
         mtool = getToolByName(context, 'portal_membership')
-        member = mtool.getAuthenticatedMember()
-        home_folder = member.getHomeFolder().absolute_url()
-        return home_folder
+        if not mtool.isAnonymousUser():
+            member = mtool.getAuthenticatedMember()
+            home_folder = member.getHomeFolder().absolute_url()
+            return home_folder
