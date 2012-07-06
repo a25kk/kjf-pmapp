@@ -3,7 +3,7 @@
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
             <div class="btn-toolbar">
-                <div class="btn-group locator">
+                <div class="btn-group locator" tal:condition="viewlet/homefolder_url">
                     <a class="btn btn-large btn-inverse"
                         tal:attributes="href viewlet/homefolder_url">
                         <i class="icon-home icon-white" />
