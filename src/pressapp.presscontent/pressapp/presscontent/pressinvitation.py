@@ -185,7 +185,9 @@ class PressInvitationActions(grok.Viewlet):
     def update(self):
         context = aq_inner(self.context)
         self.context_url = context.absolute_url()
-        self.available = len(self.homefolder_url()) > 0
+        self.portal_state = getMultiAdapter((context, self.request),
+                                            name='plone_portal_state')
+        self.anonymous = self.portal_state.anonymous()
 
     def homefolder_url(self):
         context = aq_inner(self.context)

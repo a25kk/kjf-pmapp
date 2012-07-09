@@ -226,7 +226,9 @@ class PressReleaseActions(grok.Viewlet):
     def update(self):
         context = aq_inner(self.context)
         self.context_url = context.absolute_url()
-        self.available = self._has_homefolder()
+        self.portal_state = getMultiAdapter((context, self.request),
+                                            name='plone_portal_state')
+        self.anonymous = self.portal_state.anonymous()
 
     def homefolder_url(self):
         context = aq_inner(self.context)
@@ -235,11 +237,3 @@ class PressReleaseActions(grok.Viewlet):
             member = mtool.getAuthenticatedMember()
             home_folder = member.getHomeFolder().absolute_url()
             return home_folder
-
-    def _has_homefolder(self):
-        context = aq_inner(self.context)
-        mtool = getToolByName(context, 'portal_membership')
-        homefolder = False
-        if not mtool.isAnonymousUser():
-            homefolder = True
-        return homefolder
