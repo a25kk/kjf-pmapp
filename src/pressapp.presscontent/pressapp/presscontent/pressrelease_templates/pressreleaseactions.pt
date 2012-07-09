@@ -1,5 +1,6 @@
 <div class="editbar" id="editbar"
-    tal:condition="viewlet/available">
+    tal:define="available viewlet/available"
+    tal:condition="python:available and available == True">
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
