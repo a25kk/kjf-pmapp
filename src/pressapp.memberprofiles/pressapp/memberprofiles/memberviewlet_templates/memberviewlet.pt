@@ -1,4 +1,5 @@
-<div id="member-information-box" class="container-fluid">
+<div id="member-information-box" class="container-fluid"
+    tal:condition="not:viewlet/anonymous">
     <div id="member-infobox">
         <tal:block tal:define="memberinfo viewlet/memberdetails;
                                portal_url context/@@plone_portal_state/navigation_root_url;

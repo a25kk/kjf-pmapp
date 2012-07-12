@@ -1,5 +1,6 @@
 from five import grok
 from Acquisition import aq_inner
+from zope.component import getMultiAdapter
 
 from plone.app.layout.viewlets.interfaces import IBelowContent
 from Products.CMFCore.utils import getToolByName
@@ -15,6 +16,9 @@ class MemberViewlet(grok.Viewlet):
     def update(self):
         context = aq_inner(self.context)
         self.context_url = context.absolute_url()
+        self.portal_state = getMultiAdapter((context, self.request),
+                                            name='plone_portal_state')
+        self.anonymous = self.portal_state.anonymous()
 
     def must_edit(self):
         data = self.memberdetails()
