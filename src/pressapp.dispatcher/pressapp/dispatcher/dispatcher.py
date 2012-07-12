@@ -15,6 +15,8 @@ from five import grok
 from zope.i18n import translate
 from zope.site.hooks import getSite
 from zope.component import getMultiAdapter
+from zope.lifecycleevent import modified
+
 from Products.CMFPlone.utils import safe_unicode
 
 import logging
@@ -120,6 +122,8 @@ class Dispatcher(grok.View):
                 newSecurityManager(self.request, owner)
                 try:
                     wftool.doActionFor(context, 'publish')
+                    modified(context)
+                    context.reindexObject(idxs='modified')
                 finally:
                     setSecurityManager(sm)
 

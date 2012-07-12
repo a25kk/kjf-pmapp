@@ -16,7 +16,7 @@
              tal:condition="nocall:picture"
              class="ximage-container">
             <img tal:define="scales context/@@images"
-                tal:replace="structure python: scales.tag('image', scale='mini', css_class='teaser-image')"
+                tal:replace="structure python: scales.tag('image', scale='mini', css_class='teaser-image', title='Mainimage', alt='mainimage')"
                 /><br />
             <span tal:condition="context/imagename"
                 tal:content="context/imagename"
