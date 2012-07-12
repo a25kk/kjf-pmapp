@@ -1,4 +1,5 @@
 from five import grok
+from zope.component import getMultiAdapter
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from AccessControl import getSecurityManager
@@ -20,6 +21,9 @@ class EditBarViewlet(grok.Viewlet):
         context = aq_inner(self.context)
         self.context_url = context.absolute_url()
         self.parent_url = aq_parent(context).absolute_url()
+        self.portal_state = getMultiAdapter((context, self.request),
+                                            name='plone_portal_state')
+        self.anonymous = self.portal_state.anonymous()
 
     def is_administrator(self):
         context = aq_inner(self.context)
