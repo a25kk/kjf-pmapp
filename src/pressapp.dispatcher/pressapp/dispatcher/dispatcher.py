@@ -147,7 +147,11 @@ class Dispatcher(grok.View):
         if recievers:
             for address in recievers:
                 recipient = {}
-                recipient_email, recipient_name = address.split(',')
+                try:
+                    recipient_email, recipient_name = address.split(',')
+                except:
+                    recipient_email = address
+                    recipient_name = address
                 recipient['mail'] = recipient_email
                 recipient['name'] = safe_unicode(recipient_name)
                 recipients.append(recipient)
