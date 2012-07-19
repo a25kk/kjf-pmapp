@@ -83,7 +83,9 @@ class View(grok.View):
             except KeyError:
                 channelname = channel
             info['channelname'] = channelname
-            info['count'] = len(catalog.searchResults(channel=[channel]))
+            info['count'] = len(catalog.searchResults(
+                                    object_provides=ISubscriber.__identifier__,
+                                    channel=[channel]))
             names.append(info)
         return names
 
