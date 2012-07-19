@@ -45,12 +45,14 @@ class ArchiveView(grok.View):
                           review_state='published',
                           archive=True,
                           distributor=dist_id,
-                          sort_on='effective')
+                          sort_on='modified',
+                          sort_order='reverse')
         else:
             results = catalog(object_provides=IPressRelease.__identifier__,
                               review_state='published',
                               archive=True,
-                              sort_on='effective')
+                              sort_on='modified',
+                              sort_order='reverse')
         resultlist = IContentListing(results)
         return resultlist
 
