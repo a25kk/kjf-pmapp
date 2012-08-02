@@ -299,7 +299,10 @@ class AttachmentsView(grok.View):
             item_uuid = IUUID(item_obj, None)
             item_timestamp = self.generate_timestamp(item_obj)
             info = {}
-            info['title'] = item.Title
+            item_title = item.Title
+            if item_title.startswith('assets-'):
+                item_title = item.Description
+            info['title'] = item_title
             info['url'] = portal_url + view_name + item_uuid + item_timestamp
             info['type'] = item.portal_type
             if IImageAttachment.providedBy(item_obj):

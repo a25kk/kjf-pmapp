@@ -19,8 +19,9 @@ from pressapp.presscontent import MessageFactory as _
 
 class IImageAttachmentEdit(form.Schema):
 
-    title = schema.TextLine(
-        title=_(u"Title"),
+    description = schema.Text(
+        title=_(u"Image Caption"),
+        description=_(u"Enter a short summary of the image contents"),
         required=True,
     )
     image = NamedBlobImage(
@@ -74,7 +75,7 @@ class ImageAttachmentEditForm(form.SchemaEditForm):
         data = {}
         for key, value in fields:
             data[key] = getattr(context, key, value)
-        data['title'] = safe_unicode(context.Title())
+            data['description'] = safe_unicode(context.Description())
         return data
 
     def applyChanges(self, data):
@@ -91,6 +92,7 @@ class ImageAttachmentEditForm(form.SchemaEditForm):
                 setattr(context, key, new_value)
             except KeyError:
                 continue
+        context.setDescription(data['description'])
         modified(context)
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(

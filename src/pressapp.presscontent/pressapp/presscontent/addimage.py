@@ -1,4 +1,9 @@
+import os
+import base64
+import random
+import hashlib
 from five import grok
+from random import SystemRandom
 from Acquisition import aq_inner
 from zope import schema
 from zope.lifecycleevent import modified
@@ -15,8 +20,9 @@ from pressapp.presscontent import MessageFactory as _
 
 class IImageAttachmentAdd(form.Schema):
 
-    title = schema.TextLine(
-        title=_(u"Title"),
+    description = schema.Text(
+        title=_(u"Image Caption"),
+        description=_(u"Enter a short summary of the image contents"),
         required=True,
     )
     image = NamedBlobImage(
@@ -63,12 +69,24 @@ class ImageAttachmentAddForm(form.SchemaEditForm):
     def applyChanges(self, data):
         context = aq_inner(self.context)
         assert IPressRelease.providedBy(context)
+        base_string = u'assets-'
+        random_key = self.generate_random_key()
+        new_title = base_string + random_key
+        data['title'] = new_title
         item = createContentInContainer(context,
             'pressapp.presscontent.imageattachment',
             checkConstraints=True, **data)
+        item.setDescription(data['description'])
         modified(item)
         item.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
             _(u"A new image attachment was successfully been added"),
             type='info')
         return self.request.response.redirect(context.absolute_url() + '/view')
+
+    def generate_random_key(self):
+        key = base64.b64encode(
+                hashlib.sha256(str(random.getrandbits(256))
+                ).digest(), random.choice([
+                'rA', 'aZ', 'gQ', 'hH', 'hG', 'aR', 'DD'])).rstrip('==')
+        return key

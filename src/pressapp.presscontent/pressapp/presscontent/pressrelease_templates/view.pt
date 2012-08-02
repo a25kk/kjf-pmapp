@@ -119,7 +119,10 @@
               <tal:items tal:repeat="item view/contained_attachments">
                 <tr tal:define="type item/portal_type">
                   <td><a href="" tal:attributes="href item/getURL">
-                    <strong tal:content="item/Title" /></a>
+                    <strong tal:condition="item/Description"
+                      tal:content="item/Description" />
+                    <strong tal:condition="not:context/Description"
+                      tal:content="item/Title" /></a>
                   </td>
                   <td tal:define="item_obj item/getObject">
                     <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
