@@ -1,9 +1,7 @@
-import os
 import base64
 import random
 import hashlib
 from five import grok
-from random import SystemRandom
 from Acquisition import aq_inner
 from zope import schema
 from zope.lifecycleevent import modified
