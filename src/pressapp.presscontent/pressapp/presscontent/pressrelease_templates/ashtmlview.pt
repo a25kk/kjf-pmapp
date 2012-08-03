@@ -48,7 +48,10 @@
                              tal:replace="structure python: scales.tag('image',
                                           width=128, height=128, direction='down')"
                             />
-                        <p class="image-caption" tal:content="item/Title" />
+                        <p class="image-caption" tal:condition="not:item/Description"
+                            tal:content="item/Title" />
+                        <p class="image-caption" tal:condition="item/Description"
+                            tal:content="item/Description" />
                     </tal:image>
                     <tal:file tal:condition="python:item_type == 'pressapp.presscontent.fileattachment'">
                         <p><a tal:define="attachment nocall: item_obj/attachment;
