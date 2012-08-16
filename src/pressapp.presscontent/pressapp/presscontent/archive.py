@@ -124,7 +124,7 @@ class PressItemView(grok.View):
         data['text'] = context.text.output
         data['url'] = self._construct_webview_link(context)
         data['pdf'] = self.pdf_download_link(context)
-        data['date'] = self.localize(datetime.now(), longformat=False)
+        data['date'] = self.format_time(context.Date())
         if IPressRelease.providedBy(context):
             if context.kicker:
                 data['kicker'] = getattr(context, 'kicker', '')
@@ -266,6 +266,11 @@ class PressItemView(grok.View):
         translation_service = getToolByName(self.context,
                                             'translation_service')
         return translation_service.ulocalized_time
+
+    def format_time(self, time):
+        util = getToolByName(self.context, 'translation_service')
+        # zope_time = DateTime(time.isoformat())
+        return util.toLocalizedTime(time, long_format=False)
 
 
 class AttachmentsView(grok.View):
