@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-08-03 14:20+0000\n"
-"PO-Revision-Date: 2012-08-03 16:23+0100\n"
+"POT-Creation-Date: 2012-10-10 15:36+0000\n"
+"PO-Revision-Date: 2012-10-10 17:40+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr "Presseeinladung hinzufügen"
 msgid "Admittance for invited guests only"
 msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung als Terminankündigung abzusehen."
 
-#: ./../archivesettings.py:97
+#: ./../archivesettings.py:103
 msgid "Archive settings successfully updated"
 msgstr "Die Anzeigeeinstellungen Archiv wurden erfolgreich aktualisiert"
 
@@ -142,7 +142,7 @@ msgstr "Standard E-Mail-Adresse die in den E-Mail HEADER Zeilen verwendet wird"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ./../archive.py:163
+#: ./../archive.py:222
 msgid "Diese Veranstaltung kann nur auf Einladung besucht werden. Von einer Publikation bitten wir daher abzusehen."
 msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung als Terminankündigung abzusehen."
 
@@ -152,8 +152,8 @@ msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, 
 msgid "Directions Link"
 msgstr "Link Anfahrtsbeschreibung"
 
-#: ./../archivesettings.py:31
-#: ./../pressrelease.py:88
+#: ./../archivesettings.py:37
+#: ./../pressrelease.py:95
 msgid "Distributor"
 msgstr "Zielseiten"
 
@@ -174,7 +174,7 @@ msgstr "E-Mail-Vorlage für Pressemitteilungen"
 msgid "Edit Image attachment"
 msgstr "Bildanhang bearbeiten"
 
-#: ./../archivesettings.py:47
+#: ./../archivesettings.py:53
 msgid "Edit archive setting"
 msgstr "Einstellungen Archiv bearbeiten"
 
@@ -190,7 +190,7 @@ msgstr "Presseeinladung bearbeiten"
 msgid "Edit press release"
 msgstr "Pressemitteilung bearbeiten"
 
-#: ./../archivesettings.py:66
+#: ./../archivesettings.py:72
 #: ./../editrelease.py:93
 msgid "Editing has been cancelled."
 msgstr "Die Bearbeitung wurde abgebrochen"
@@ -316,7 +316,12 @@ msgstr "Dachzeile"
 msgid "Location"
 msgstr "Ort"
 
-#: ./../archivesettings.py:22
+#: ./../archivesettings.py:27
+#: ./../pressrelease.py:85
+msgid "Mark this press release as suitable for displaying as snippet on the main site."
+msgstr "Markieren Sie diese Pressemitteilung als für die Vorschaubox auf kjf-augsburg.de geeignet."
+
+#: ./../archivesettings.py:21
 #: ./../pressrelease.py:79
 msgid "Mark this press release as visible in the archive."
 msgstr "Markieren Sie dieses Pressemitteilung als vertraulich, um diese aus der Auflistung im öffentlichen Archiv auszuschliessen."
@@ -420,7 +425,7 @@ msgstr "Liste Empfänger"
 msgid "Recipient list updated"
 msgstr "Die Liste der Empfänger für diesen Presseinhalt wurde aktualisiert"
 
-#: ./../archivesettings.py:54
+#: ./../archivesettings.py:60
 #: ./../editinvitation.py:86
 #: ./../editrelease.py:81
 msgid "Save"
@@ -440,8 +445,8 @@ msgstr "Einstellungen speichern"
 msgid "Schedule"
 msgstr "Versandplanung"
 
-#: ./../archivesettings.py:28
-#: ./../pressrelease.py:85
+#: ./../archivesettings.py:34
+#: ./../pressrelease.py:92
 msgid "Select external distributors to filter display in the press archive listing"
 msgstr "Wählen Sie die externen Seiten aus, auf denen diese Pressemitteilung im Archiv erscheinen soll"
 
@@ -457,8 +462,8 @@ msgstr "Verteilerauswahl für den Versand"
 msgid "Selected Channels"
 msgstr "Ausgewählte und zugewiesene Verteiler"
 
-#: ./../archivesettings.py:27
-#: ./../pressrelease.py:84
+#: ./../archivesettings.py:33
+#: ./../pressrelease.py:91
 msgid "Selected Dsitributors"
 msgstr "Ausgewählte Zielseiten"
 
@@ -551,7 +556,7 @@ msgstr "Die eingegebene E-Mail-Addresse konnte nicht in der Liste der Abonnenten
 msgid "The press release was successfully updated"
 msgstr "Die Pressemitteilung wurde erfolgreich aktualisiert"
 
-#: ./../archive.py:99
+#: ./../archive.py:158
 #: ./../download.py:58
 msgid "The requested item was not found"
 msgstr "Das gewünschte Objekt konnte nicht gefunden werden."
@@ -640,10 +645,15 @@ msgstr "Laden Sie hier einen Bildanhang zu dieser Pressemitteilung hoch"
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr "Laden Sie ein Bild zu dieser Pressemittelung hoch. Das Bild sollte bereit optimiert und verkleinert sein, da E-Mails nicht für den Versand grosser Dateimengen vorgesehen sind."
 
-#: ./../archivesettings.py:21
+#: ./../archivesettings.py:20
 #: ./../pressrelease.py:78
 msgid "Visible in Archive?"
 msgstr "Im Archiv angezeigt?"
+
+#: ./../archivesettings.py:26
+#: ./../pressrelease.py:84
+msgid "Visible on main site?"
+msgstr "Freigeben für die Vorschau?"
 
 #: ./../subscriptions.py:44
 msgid "Your subscription settings have been updated"

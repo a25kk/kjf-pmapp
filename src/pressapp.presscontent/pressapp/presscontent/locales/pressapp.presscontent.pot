@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-03 14:20+0000\n"
+"POT-Creation-Date: 2012-10-10 15:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Admittance for invited guests only"
 msgstr ""
 
-#: ./../archivesettings.py:97
+#: ./../archivesettings.py:103
 msgid "Archive settings successfully updated"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ./../archive.py:163
+#: ./../archive.py:222
 msgid "Diese Veranstaltung kann nur auf Einladung besucht werden. Von einer Publikation bitten wir daher abzusehen."
 msgstr ""
 
@@ -155,8 +155,8 @@ msgstr ""
 msgid "Directions Link"
 msgstr ""
 
-#: ./../archivesettings.py:31
-#: ./../pressrelease.py:88
+#: ./../archivesettings.py:37
+#: ./../pressrelease.py:95
 msgid "Distributor"
 msgstr ""
 
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Edit Image attachment"
 msgstr ""
 
-#: ./../archivesettings.py:47
+#: ./../archivesettings.py:53
 msgid "Edit archive setting"
 msgstr ""
 
@@ -193,7 +193,7 @@ msgstr ""
 msgid "Edit press release"
 msgstr ""
 
-#: ./../archivesettings.py:66
+#: ./../archivesettings.py:72
 #: ./../editrelease.py:93
 msgid "Editing has been cancelled."
 msgstr ""
@@ -319,7 +319,12 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: ./../archivesettings.py:22
+#: ./../archivesettings.py:27
+#: ./../pressrelease.py:85
+msgid "Mark this press release as suitable for displaying as snippet on the main site."
+msgstr ""
+
+#: ./../archivesettings.py:21
 #: ./../pressrelease.py:79
 msgid "Mark this press release as visible in the archive."
 msgstr ""
@@ -423,7 +428,7 @@ msgstr ""
 msgid "Recipient list updated"
 msgstr ""
 
-#: ./../archivesettings.py:54
+#: ./../archivesettings.py:60
 #: ./../editinvitation.py:86
 #: ./../editrelease.py:81
 msgid "Save"
@@ -443,8 +448,8 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-#: ./../archivesettings.py:28
-#: ./../pressrelease.py:85
+#: ./../archivesettings.py:34
+#: ./../pressrelease.py:92
 msgid "Select external distributors to filter display in the press archive listing"
 msgstr ""
 
@@ -460,8 +465,8 @@ msgstr ""
 msgid "Selected Channels"
 msgstr ""
 
-#: ./../archivesettings.py:27
-#: ./../pressrelease.py:84
+#: ./../archivesettings.py:33
+#: ./../pressrelease.py:91
 msgid "Selected Dsitributors"
 msgstr ""
 
@@ -554,7 +559,7 @@ msgstr ""
 msgid "The press release was successfully updated"
 msgstr ""
 
-#: ./../archive.py:99
+#: ./../archive.py:158
 #: ./../download.py:58
 msgid "The requested item was not found"
 msgstr ""
@@ -643,9 +648,14 @@ msgstr ""
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr ""
 
-#: ./../archivesettings.py:21
+#: ./../archivesettings.py:20
 #: ./../pressrelease.py:78
 msgid "Visible in Archive?"
+msgstr ""
+
+#: ./../archivesettings.py:26
+#: ./../pressrelease.py:84
+msgid "Visible on main site?"
 msgstr ""
 
 #: ./../subscriptions.py:44
