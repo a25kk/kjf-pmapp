@@ -6274,6 +6274,12 @@ table.grid th {
   float: left;
   padding-left: 19px;
 }
+body {
+  background: #96c6d0;
+}
+body #content-wrapper {
+  margin-top: 40px;
+}
 #logo {
   background: url(../images/logo.png) no-repeat 0px 0px transparent;
   margin: 0px;
