@@ -17,6 +17,7 @@
     
     <theme href="frontpage.html" css:if-content="body.template-login_form" />
     <theme href="archive.html" css:if-content="body.template-press-archive" />
+    <theme href="archive.html" css:if-content="body.template-press-archive-snippet" />
     <theme href="archive.html" css:if-content="body.template-press-subscription" />
     <theme href="archive.html" css:if-content="body.template-press-subscription-success" />
     <theme href="default.html" css:if-content="body.portaltype-plone-site" />

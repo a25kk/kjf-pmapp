@@ -1,37 +1,39 @@
-<div class="editbar" id="editbar">
+<div class="editbar navbar" id="editbar">
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url;
                     portal_url context/portal_url;
                     home_url viewlet/my_workspace">
         <div class="container-fluid">
-            <div class="container-fluid btn-toolbar">
-                <div class="btn-group">
-                    <a class="btn btn-large btn-inverse"
+                    <a class="brand"
                         tal:attributes="href python:portal_url + '/presscenter'">
                         <i class="icon-cog icon-white" />
                         Administration</a>
-                </div>
-                <div class="btn-group">
-                    <a class="btn btn-large"
+                <ul class="nav pull-right">
+                    <li>
+                        <a
                         tal:attributes="href python:portal_url+'/presscenter/kontakte'">
                         <i class="icon-list-alt" />
                         Adressen</a>
-                    <a class="btn btn-large"
+                    </li>
+                    <li>
+                        <a
                         tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
                         <i class="icon-user" />
                         Redakteure</a>
-                    <a class="btn btn-large"
+                    </li>
+                    <li>
+                    <a
                         tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
                         <i class="icon-align-justify" />
                         Einstellungen</a>
-                </div>
-                <div class="btn-group">
-                    <a class="btn btn-large"
+                    </li>
+                    <li>
+                        <a
                         tal:attributes="href python:portal_url+'/presscenter/kontakte/@@channel-statistics'">
                         <i class="icon-signal" />
                         Statistiken</a>
-                </div>
-            </div>
+                    </li>
+                </ul>
         </div>
     </div>
 </div>
