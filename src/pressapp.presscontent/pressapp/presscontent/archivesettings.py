@@ -8,7 +8,6 @@ from zope.schema import getFieldsInOrder
 from plone.directives import form
 from z3c.form import button
 from plone.dexterity.interfaces import IDexterityFTI
-from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.presscontent.pressrelease import IPressRelease
 
@@ -22,6 +21,13 @@ class IArchiveSettingsEdit(form.Schema):
         description=_(u"Mark this press release as visible in the archive."),
         required=False,
         default=True,
+    )
+    snippet = schema.Bool(
+        title=_(u"Visible on main site?"),
+        description=_(u"Mark this press release as suitable for displaying as "
+                      u"snippet on the main site."),
+        required=False,
+        default=False,
     )
     distributor = schema.Set(
         title=_(u"Selected Dsitributors"),
@@ -70,7 +76,7 @@ class ArchiveSettingsEditForm(form.SchemaEditForm):
     def getContent(self):
         context = aq_inner(self.context)
         fti = getUtility(IDexterityFTI,
-                name='pressapp.presscontent.pressrelease')
+                         name='pressapp.presscontent.pressrelease')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         data = {}
@@ -82,7 +88,7 @@ class ArchiveSettingsEditForm(form.SchemaEditForm):
         context = aq_inner(self.context)
         assert IPressRelease.providedBy(context)
         fti = getUtility(IDexterityFTI,
-                name='pressapp.presscontent.pressrelease')
+                         name='pressapp.presscontent.pressrelease')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         for key, value in fields:

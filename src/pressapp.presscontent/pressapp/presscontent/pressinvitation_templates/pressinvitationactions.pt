@@ -1,30 +1,32 @@
-<div class="editbar" id="editbar"
+<div class="editbar navbar" id="editbar"
     tal:condition="not:viewlet/anonymous">
     <div class="editbar-inner"
         tal:define="context_url viewlet/context_url">
         <div class="container-fluid">
-            <div class="btn-toolbar">
-                <div class="btn-group locator">
-                    <a class="btn btn-large btn-inverse"
+                    <a class="brand"
                         tal:attributes="href viewlet/homefolder_url">
                         <i class="icon-home icon-white" />
                         Arbeitsplatz</a>
-                </div>
-                <div class="btn-group">
-                    <a class="btn btn-large"
+                <ul class="nav pull-right">
+                    <li>
+                    <a
                         tal:attributes="href python:context_url+'/view'">
                         <i class="icon-eye-open" />
                         Anzeigen</a>
-                    <a class="btn btn-large"
+                    </li>
+                    <li>
+                    <a
                         tal:attributes="href python:context_url+'/@@edit-press-invitation'">
                         <i class="icon-edit" />
                         Bearbeiten</a>
-                    <a class="btn btn-large popoverLink"
+                    </li>
+                    <li>
+                    <a class="popoverLink"
                         tal:attributes="href python:context_url+'/delete_confirmation'">
                         <i class="icon-remove-sign" />
                         Entfernen</a>
-                </div>
-            </div>
+                    </li>
+                </ul>
         </div>
     </div>
 </div>
