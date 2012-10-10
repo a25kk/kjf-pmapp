@@ -18,6 +18,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.dispatcher.safehtmlparser import SafeHTMLParser
 from pressapp.dispatcher.utils import postprocess_emailtemplate
 
+from plone.app.textfield.interfaces import ITransformer
 from plone.app.contentlisting.interfaces import IContentListing
 from plone.uuid.interfaces import IUUID
 
@@ -42,11 +43,11 @@ class ArchiveView(grok.View):
         dist_id = self.request.get('distid', None)
         if dist_id:
             results = catalog(object_provides=IPressRelease.__identifier__,
-                          review_state='published',
-                          archive=True,
-                          distributor=dist_id,
-                          sort_on='modified',
-                          sort_order='reverse')
+                              review_state='published',
+                              archive=True,
+                              distributor=dist_id,
+                              sort_on='modified',
+                              sort_order='reverse')
         else:
             results = catalog(object_provides=IPressRelease.__identifier__,
                               review_state='published',
@@ -60,7 +61,7 @@ class ArchiveView(grok.View):
         context = aq_inner(self.context)
         vr = getVocabularyRegistry()
         dist_vocab = vr.get(context,
-            'pressapp.presscontent.externalDistributors')
+                            'pressapp.presscontent.externalDistributors')
         data = {}
         for entry in dist_vocab:
             key = entry.value
@@ -68,6 +69,64 @@ class ArchiveView(grok.View):
             h.update(key)
             data[key] = h.hexdigest()
         return data
+
+
+class ArchiveSnippetView(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('zope2.View')
+    grok.name('press-archive-snippet')
+
+    def update(self):
+        self.has_snippet = len(self._getData()) > 0
+
+    def compose_snippet(self):
+        pressreleases = self._getData()
+        release = pressreleases[0]
+        obj = release.getObject()
+        item = {}
+        item['title'] = obj.Title()
+        item['url'] = self.getPreviewLink(release)
+        item['image'] = self.getImageTag(obj)
+        item['description'] = self.processBodyText(obj)
+        return item
+
+    def _getData(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        results = catalog(object_provides=IPressRelease.__identifier__,
+                          review_state='published',
+                          archive=True,
+                          snippet=True,
+                          sort_on='modified',
+                          sort_order='reverse',
+                          sort_limit=3)[:3]
+        return results
+
+    def getImageTag(self, item):
+        obj = item
+        scales = getMultiAdapter((obj, self.request), name='images')
+        scale = scales.scale('image', scale='thumb')
+        imageTag = None
+        if scale is not None:
+            imageTag = scale.tag()
+        return imageTag
+
+    def processBodyText(self, item):
+        context = aq_inner(self.context)
+        ploneview = getMultiAdapter((context, self.request), name="plone")
+        transformer = ITransformer(self.context)
+        transformed_value = transformer(item.text, 'text/plain')
+        cropped = ploneview.cropText(transformed_value, 120, '...')
+        return cropped
+
+    def getPreviewLink(self, item):
+        context = aq_inner(self.context)
+        pstate = getMultiAdapter((context, self.request),
+                                 name="plone_portal_state")
+        portal_url = pstate.portal_url()
+        item_uid = item.UID
+        link = portal_url + '/@@pressitem-view?uid=' + item_uid
+        return link
 
 
 class PressItemView(grok.View):
@@ -158,7 +217,7 @@ class PressItemView(grok.View):
             data['start'] = context.start.strftime("%d.%m.%Y %H:%M")
             data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
-            if closed == True:
+            if closed is True:
                 closed_msg = translate(
                     _(u"Diese Veranstaltung kann nur auf Einladung besucht "
                       u"werden. Von einer Publikation bitten wir daher "

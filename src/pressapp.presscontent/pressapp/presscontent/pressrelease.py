@@ -80,6 +80,13 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
         required=False,
         default=True,
     )
+    snippet = schema.Bool(
+        title=_(u"Visible on main site?"),
+        description=_(u"Mark this press release as suitable for displaying as "
+                      u"snippet on the main site."),
+        required=False,
+        default=False,
+    )
     distributor = schema.List(
         title=_(u"Selected Dsitributors"),
         description=_(u"Select external distributors to filter display in "
@@ -95,8 +102,19 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
 @grok.adapter(IPressRelease, name="archive")
 @indexer(IPressRelease)
 def archiveIndexer(context):
-    """ Catalog indexer registered as an adapter """
     return context.archive
+
+
+@grok.adapter(IPressRelease, name="snippet")
+@indexer(IPressRelease)
+def snippetIndexer(context):
+    return context.snippet
+
+
+@grok.adapter(IPressRelease, name="distributor")
+@indexer(IPressRelease)
+def distributorIndexer(obj):
+    return obj.distributor
 
 
 class View(grok.View):

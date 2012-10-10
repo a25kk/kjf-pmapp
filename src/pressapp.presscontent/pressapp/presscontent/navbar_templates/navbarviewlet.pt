@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top xnavbar-inverse" id="navbar">
+<div class="navbar navbar-fixed-top navbar-inverse" id="navbar">
     <div class="navbar-inner"
         tal:define="context_url viewlet/context_url;
                     portal_url viewlet/portal_url;

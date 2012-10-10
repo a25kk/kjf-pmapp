@@ -13,10 +13,10 @@
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                        portal_state context/@@plone_portal_state;
                        portal_url portal_state/portal_url"
-    class="container-fluid">
+    class="xcontainer-fluid window">
     
-    <div class="page-header">
-        <div class="btn-toolbar pull-right"
+    <div class="xpage-header window-header">
+        <!--<div class="btn-toolbar pull-right"
             tal:define="context_url context/absolute_url;
                         has_channels view/has_channel_info;
                         recipients view/has_recipients_info;">
@@ -54,12 +54,94 @@
                     <i class="icon-share" />
                     Versand planen</a>
             </div>
+        </div>-->
+        <div class="navbar pull-right">
+        <ul class="nav pull-right"
+          tal:define="context_url context/absolute_url">
+            <li>
+              <a href=""
+                  rel="twipsy"
+                  data-placement="left"
+                  data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
+                  tal:attributes="href view/constructPreviewURL">
+                  <i class="icon-envelope" />
+                  E-Mail Vorschau</a>
+            </li>
+                    <li>
+                    <a
+                        tal:attributes="href python:context_url+'/view'">
+                        <i class="icon-eye-open" />
+                        Anzeigen</a>
+                    </li>
+                    <li>
+                    <a
+                        tal:attributes="href python:context_url+'/@@edit-press-release'">
+                        <i class="icon-edit" />
+                        Bearbeiten</a>
+                    </li>
+                    <li>
+                    <a class="popoverLink"
+                        tal:attributes="href python:context_url+'/delete_confirmation'">
+                        <i class="icon-remove-sign" />
+                        Entfernen</a>
+                    </li>
+                </ul>
         </div>
         <h1>Pressemitteilung</h1>
     </div>
-
+    <div class="window-toolbar"
+      tal:define="context_url context/absolute_url;
+                        has_channels view/has_channel_info;
+                        recipients view/has_recipients_info;">
+        <div class="navbar">
+        <ul class="nav pull-right">
+          <li class="divider-vertical"></li>
+          <li>
+            <a href=""
+                    rel="twipsy"
+                    data-placement="left"
+                    data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
+                    tal:attributes="href python:context_url+'/@@select-channel'">
+                    <i class="icon-list-alt" />
+                    Verteiler w&auml;hlen</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li class="disabled">
+            <a href=""
+                    tal:condition="not: view/has_channel_info"
+                    rel="twipsy"
+                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
+                    <i class="icon-edit" />
+                    Empf&auml;nger bereinigen</a>
+                <a href="" class="xbtn"
+                    rel="twipsy"
+                    data-placement="left"
+                    data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
+                        tal:condition="python:has_channels == True"
+                        tal:attributes="href python:context_url+'/@@recipient-list'">
+                        <i class="icon-edit" />
+                        Empf&auml;nger bereinigen</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li class="disabled">
+            <a href="" class="disabled"
+                    rel="twipsy"
+                    tal:condition="not:view/has_recipients_info"
+                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
+                    <i class="icon-share" />
+                    Versand planen</a>
+                <a href="" class="xbtn"
+                    tal:condition="python:recipients == True"
+                    tal:attributes="href python:context_url+'/@@prepare-release'">
+                    <i class="icon-share" />
+                    Versand planen</a>
+          </li>
+        </ul>
+        </div>
+      </div>
+  <section class="window-content">
   <div class="row-fluid">
-  <div class="span8">
+  <div class="span9" id="content-core">
      
       <div class="box">
     <h6 tal:condition="context/kicker"
@@ -234,8 +316,8 @@
   </div>
   
   <div class="span3" tal:define="modified context/modified">
-      
-      <div class="well">
+    <div id="sidebar"> 
+      <div class="xwell" tal:content="nothing">
       <ul class="nav nav-list">
           <li class="nav-header">Pressemitteilung</li>
           <li>Zuletzt ver&auml;ndert:
@@ -303,8 +385,52 @@
             </li>
       </ul>
       </div>
+      <h4>Informationen</h4>
+      <p class="muted">Zuletzt ver&auml;ndert:
+            <span tal:replace="python:toLocalizedTime(modified)" />,
+            <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
+      </p>
+      <div class="tile">
+        <h5>Archiv</h5>
+        <p tal:define="visible context/archive">
+              <span class="label label-success"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Diese Pressemittelung wir im Archiv angezeigt"
+                tal:condition="python:visible == True">
+                Im Archiv angezeigt</span>
+              <span class="label label-important"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Diese Pressemittelung ist als intern markiert und wird nicht im Archiv angezeigt"
+                tal:condition="python:visible == False">
+                Nicht im Archiv angezeigt</span>
+        </p>
+        <p>
+          <a href=""
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Anzeigeoptionen Archiv und Zielseiten bearbeiten"
+                tal:attributes="href string:${context/absolute_url}/@@archive-settings">
+              <i class="icon-edit" />
+                Einstellungen bearbeiten</a>
+        </p>
+      </div>
+      <div class="tile">
+        <h5>Zugewiesene Verteiler</h5>
+           <div tal:condition="view/has_channel_info" 
+               tal:repeat="channel view/channel_names">
+               <span tal:replace="channel/channelname" /></div>
+           <p><a href=""
+                    tal:attributes="href string:${context/absolute_url}/@@select-channel">
+                    <i class="icon-edit" />
+                    Verteiler bearbeiten</a>
+            </p>
+      </div>
+    </div>
   </div>
   </div>
+  </section>
   </section>
   </metal:content-core>
 </metal:main>

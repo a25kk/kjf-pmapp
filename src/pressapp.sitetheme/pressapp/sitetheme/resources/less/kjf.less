@@ -1,5 +1,12 @@
 // Custom styles added for brevity - should be re-factored as custom.less file maybe
 
+body.portaltype-pressapp-presscontent-pressrelease {
+  background: lighten(#50a0b0, 20%);
+  #content-wrapper {
+    margin-top: @baseLineHeight * 2;
+  }
+}
+
 #logo {
     background:url(../images/logo.png) no-repeat 0px 0px transparent;
     margin: 0px;
@@ -19,7 +26,7 @@ img.image-left {
 /* @group Content Area */
 
 #content-wrapper {
-    background: #fff;
+    //background: #fff;
     //padding: 18px 0px 80px 0px;
 }
 
@@ -51,6 +58,60 @@ img.image-left {
 
 #push {
     height: 80px;
+}
+
+.window {
+  margin: @baseLineHeight 0;
+  //border: 2px solid @grayLight;
+  //.box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.6));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  background: #ededed;
+  .window-header {
+    padding: @baseLineHeight @baseLineHeight;
+    //min-height: @navbarHeight;
+    #gradient > .vertical(#e9e9e9, #b2b2b2);
+    border-bottom: 1px solid #656565;
+    //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+    margin: 0px;
+    color: @gray;
+  }
+  .window-toolbar {
+            min-height: @navbarHeight;
+            margin:-18px 0px 0px;
+            padding: 0px 20px;
+            border-bottom: 1px solid #656565;
+            //#gradient > .vertical(#bbb, @grayLight);
+            //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+            .nav a {
+                //color: @grayDark;
+                font-size: @baseFontSize + 4;
+            }
+            .nav li.active a {
+                //color: @white;
+            }
+        }
+  .window-content {
+    background: @white;
+    color: @gray;
+    min-height: 500px;
+    .tile {
+        padding: @baseLineHeight / 2;
+        border-bottom: 1px solid @grayLight;
+        border: none !important;
+        background: transparent !important;
+        &.active {
+            background: @white;
+            color: @black;
+            border-right: 4px solid @gray;
+        }
+    }
+    #content-core {
+      border-right: 1px solid @gray;
+    }
+    #sidebar {
+      background: @white;
+    }
+  }
 }
 
 .box {
@@ -117,6 +178,22 @@ footer {
 #archive-view {
     width: 600px;
     margin: 0px auto;
+    &.archive-snippet-view {
+      width: 320px;
+      h4 {
+        text-transform: uppercase;
+      }
+      p {
+        font-size: @fontSizeSmall;
+        line-height: @baseLineHeight * 0.85;
+      }
+      a {
+        color: @grayLight;
+      }
+      .thumb {
+        text-align: right;
+      }
+    }
 }
 
 

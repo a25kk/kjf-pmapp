@@ -3,9 +3,13 @@
     <index name="archive" meta_type="FieldIndex">
         <indexed_attr value="archive" />
     </index>
+    <index name="snippet" meta_type="FieldIndex">
+        <indexed_attr value="snippet" />
+    </index>
     <index name="distributor" meta_type="KeywordIndex">
         <indexed_attr value="distributor" />
     </index>
     <column value="archive" />
+    <column value="snippet" />
     <column value="distributor" />
 </object>
