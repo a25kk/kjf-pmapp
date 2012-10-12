@@ -60,6 +60,50 @@ img.image-left {
     height: 80px;
 }
 
+#nav-bar .navbar-inner {
+  .border-radius(0);
+}
+
+.navbar .brand {
+    color: @white;
+}
+
+#main-wrapper {
+  padding: 0 @baseLineHeight / 2 @baseLineHeight;
+}
+
+#actionbar {
+  margin: @baseLineHeight;
+  .brandname {
+    color: @white;
+    margin: 0;
+    line-height: 100%;
+  }
+  #section-nav {
+        li > a {
+        color: @tableBackgroundHover;
+        text-shadow: none;
+        }
+        li.active > a {
+            background: @appColor;
+        }
+    }
+  #customer-logo {
+    display: block;
+      border: 1px solid @white;
+      .border-radius(4px);
+      text-indent: -9999px;
+      width: 180px;
+      height: 31px;
+      background:url(../images/logo-small.png) no-repeat 32px 0px @white;
+      margin: 3px 20px 0px 10px;
+  }
+}
+
+#actionbar + #content-wrapper {
+  margin-top: 0px;
+}
+
 .window {
   margin: @baseLineHeight 0;
   //border: 2px solid @grayLight;

@@ -12,7 +12,8 @@
   
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                        portal_state context/@@plone_portal_state;
-                       portal_url portal_state/portal_url"
+                       portal_url portal_state/portal_url;
+                       context_url context/absolute_url;"
     class="xcontainer-fluid window">
     
     <div class="window-header">
@@ -57,7 +58,33 @@
         </div>
         <h1>Pressemitteilung</h1>
     </div>
-
+  <div class="window-toolbar">
+        <div class="navbar">
+        <ul class="nav">
+          <li>
+           <a
+               tal:attributes="href python:context_url+'/view'">
+               <i class="icon-eye-open" />
+               Anzeigen</a>
+           </li>
+           <li class="divider-vertical"></li>
+           <li>
+           <a
+               tal:attributes="href python:context_url+'/@@edit-press-release'">
+               <i class="icon-edit" />
+               Bearbeiten</a>
+           </li>
+           <li class="divider-vertical"></li>
+           <li>
+           <a class="popoverLink"
+               tal:attributes="href python:context_url+'/delete_confirmation'">
+               <i class="icon-remove-sign" />
+               Entfernen</a>
+           </li>
+           <li class="divider-vertical"></li>
+        </ul>
+        </div>
+      </div>
   <div class="row-fluid window-content">
   <div class="span9" id="content-core">
      
@@ -234,7 +261,29 @@
   </div>
   
   <div class="span3" tal:define="modified context/modified">
-      
+    <aside id="sidebar">
+      <ul class="nav nav-tabs nav-stacked">
+          <li>
+           <a
+               tal:attributes="href python:context_url+'/view'">
+               <i class="icon-eye-open" />
+               Anzeigen</a>
+           </li>
+           <li class="divider-vertical"></li>
+           <li>
+           <a
+               tal:attributes="href python:context_url+'/@@edit-press-release'">
+               <i class="icon-edit" />
+               Bearbeiten</a>
+           </li>
+           <li class="divider-vertical"></li>
+           <li>
+           <a class="popoverLink"
+               tal:attributes="href python:context_url+'/delete_confirmation'">
+               <i class="icon-remove-sign" />
+               Entfernen</a>
+           </li>
+      </ul>
       <div class="well">
       <ul class="nav nav-list">
           <li class="nav-header">Pressemitteilung</li>
@@ -303,6 +352,7 @@
             </li>
       </ul>
       </div>
+    </aside>
   </div>
   </div>
   </section>
