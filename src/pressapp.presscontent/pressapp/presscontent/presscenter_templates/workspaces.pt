@@ -17,11 +17,11 @@
                     context_url context/absolute_url">
     
     <div class="container-fluid">
-        <div class="page-header">
+        <div class="page-header" id="page-header">
             <h1>Redakteure</h1>
         </div>
         
-        <section>
+        <section id="content-core">
               <table class="table table-condensed">
                 <thead>
                   <tr>

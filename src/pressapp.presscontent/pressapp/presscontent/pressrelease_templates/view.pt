@@ -16,7 +16,7 @@
                        context_url context/absolute_url;"
     class="xcontainer-fluid window">
     
-    <div class="window-header">
+    <div class="window-header" id="page-header">
         <div class="btn-toolbar pull-right"
             tal:define="context_url context/absolute_url;
                         has_channels view/has_channel_info;
@@ -58,33 +58,35 @@
         </div>
         <h1>Pressemitteilung</h1>
     </div>
+
   <div class="window-toolbar">
-        <div class="navbar">
+      <div class="navbar">
         <ul class="nav">
           <li>
-           <a
-               tal:attributes="href python:context_url+'/view'">
-               <i class="icon-eye-open" />
-               Anzeigen</a>
-           </li>
-           <li class="divider-vertical"></li>
-           <li>
-           <a
-               tal:attributes="href python:context_url+'/@@edit-press-release'">
-               <i class="icon-edit" />
-               Bearbeiten</a>
-           </li>
-           <li class="divider-vertical"></li>
-           <li>
-           <a class="popoverLink"
-               tal:attributes="href python:context_url+'/delete_confirmation'">
-               <i class="icon-remove-sign" />
-               Entfernen</a>
+            <a
+              tal:attributes="href python:context_url+'/view'">
+              <i class="icon-eye-open" />
+              Anzeigen</a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+            <a
+              tal:attributes="href python:context_url+'/@@edit-press-release'">
+              <i class="icon-edit" />
+              Bearbeiten</a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+            <a class="popoverLink"
+              tal:attributes="href python:context_url+'/delete_confirmation'">
+              <i class="icon-remove-sign" />
+              Entfernen</a>
            </li>
            <li class="divider-vertical"></li>
         </ul>
-        </div>
       </div>
+  </div>
+
   <div class="row-fluid window-content">
   <div class="span9" id="content-core">
      

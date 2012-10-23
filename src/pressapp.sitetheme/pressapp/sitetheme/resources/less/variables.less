@@ -33,6 +33,10 @@
 // --------------------------
 
 @appColor:              #50a0b0;
+@appBrown:              #b8aa88;
+@appDark:               #607080;
+@appDarker:             #2A323F;
+
 
 
 // Scaffolding
@@ -43,7 +47,7 @@
 
 // Links
 // -------------------------
-@linkColor:             #08c;
+@linkColor:             @appColor;
 @linkColorHover:        darken(@linkColor, 15%);
 
 
@@ -194,12 +198,12 @@
 @navbarBrandColor:                @navbarLinkColor;
 
 // Inverted navbar
-@navbarInverseBackground:                #111111;
-@navbarInverseBackgroundHighlight:       #222222;
+@navbarInverseBackground:                @appDarker;
+@navbarInverseBackgroundHighlight:       lighten(@appDarker, 5%);
 @navbarInverseBorder:                    #252525;
 
-@navbarInverseText:                      @grayLight;
-@navbarInverseLinkColor:                 @grayLight;
+@navbarInverseText:                      @grayLighter;
+@navbarInverseLinkColor:                 @grayLighter;
 @navbarInverseLinkColorHover:            @white;
 @navbarInverseLinkColorActive:           @navbarInverseLinkColorHover;
 @navbarInverseLinkBackgroundHover:       transparent;

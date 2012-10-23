@@ -9,13 +9,62 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-        <div class="page-header">
-        <h1>Pressemitteilungen bearbeiten <small tal:content="context/Title" /></h1>
-        </div>
 
+    <div class="page-header" id="page-header">
+      <div class="btn-toolbar pull-right"
+            tal:define="context_url context/absolute_url;">
+            <div class="btn-group">
+                <a class="btn xbtn-primary"
+                  rel="loading-indicator"
+                  data-loading-text="Wird geladen..."
+                  tal:attributes="href python:context_url+'/@@add-press-release'">
+                    <i class="icon-plus-sign icon-white" />
+                      Neu anlegen</a>
+            </div>
+      </div>
+      <h1>Pressemitteilungen bearbeiten <small tal:content="context/Title" /></h1>
+    </div>
+
+    <section id="content-core">
       <div class="container-fluid"
             tal:define="context_url context/absolute_url;
                         toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+
+        <tal:block tal:condition="view/has_pressreleases">
+          <div class="tile" tal:repeat="item view/contained_pressreleases">
+            <div class="row-fluid">
+              <div class="span1">
+                <h2><i class="icon-file icon-large"></i></h2>
+              </div>
+              <div class="span7">
+                <h3 tal:define="state item/review_state">
+                  <a tal:attributes="href item/getURL"
+                    tal:content="item/Title">Document 23-07-2012, Revision-003</a>
+                    <small tal:content="state"
+                      i18n:domain="plone"
+                      i18n:translate="">Unpublished</small></h3>
+                <!--<p>Internal use only - first draft of final evaluation context</p>-->
+                <p class="muted"><i class="icon-info-sign"></i>
+                  <small tal:define="modified context/modified">
+                    Zuletzt verändert:
+                    <span tal:content="python:toLocalizedTime(modified)">
+                    Release Info</span></small>
+                </p>
+              </div>
+              <div class="span4">
+                <div class="btn-group" tal:define="item_url item/getURL">
+                  <a class="btn btn-small"
+                      tal:attributes="href python:item_url+'/@@edit-press-release'">
+                      Bearbeiten</a>
+                  <a class="btn btn-small"
+                      tal:attributes="href python:item_url+'/view'">
+                      Anzeigen</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tal:block>
+
           <div class="box">
                   <p class="pull-right">
                       <a class="btn btn-primary"
@@ -71,7 +120,7 @@
                    </div>
          </div>
       </div>
-              
+    </section>          
     
   </metal:content-core>
 </metal:main>

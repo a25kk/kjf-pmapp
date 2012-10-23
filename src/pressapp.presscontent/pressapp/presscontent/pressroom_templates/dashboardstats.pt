@@ -10,12 +10,12 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
         
-        <div class="page-header">
-            <h1>Statistik <small>&Uuml;bersicht der gesendeten Pressemitteilungen und
-                Presseeinladungen</small>
-            </h1>
-        </div>
-
+    <div class="page-header" id="page-header">
+      <h1>Statistik <small>&Uuml;bersicht der gesendeten Pressemitteilungen und
+          Presseeinladungen</small>
+      </h1>
+    </div>
+    <section id="content-core">
       <div class="container-fluid"
           tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                       Batch python:modules['Products.CMFPlone'].Batch;
@@ -81,7 +81,7 @@
             </div>     
          </div>
       </div>
-              
+    </section>          
     
   </metal:content-core>
 </metal:main>

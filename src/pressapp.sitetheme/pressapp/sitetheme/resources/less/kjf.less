@@ -7,14 +7,45 @@ body {
   }
 }
 
+body.template-login_form {
+  #content-wrapper {
+    margin-top: @navbarHeight;
+  }
+}
+
+.splashbar {
+  padding: @navbarHeight;
+  text-align: center;
+  #gradient > .vertical(@appDark, @appDarker);
+  border-bottom: 1px solid @black;
+  h1 {
+    font-size: @navbarHeight;
+    color: @white;
+    a {
+      color: @white;
+    }
+  }
+}
+
+.subheader {
+  background: @appBrown;
+  padding: @baseLineHeight;
+  text-align: center;
+  border-bottom: 1px solid @appDark;
+  h2 {
+    color: @white;
+  }
+}
+
 #logo {
-    background:url(../images/logo.png) no-repeat 0px 0px transparent;
+    background:url(../images/logo.png) no-repeat 0px 0px white;
     margin: 0px;
     width: 180px;
     height: 108px;
     display: block;
     text-indent: -9999px;
     overflow: hidden;
+    .img-polaroid();
 }
 
 img.image-left {
@@ -37,18 +68,6 @@ img.image-left {
     margin: 1em 0.25em 2em 0.25em;
 }
 
-#login_form label {
-    width: 70px;
-}
-
-#login-forgotten-password {
-    clear: both;
-    margin-top: @baseLineHeight * 2;
-    .discreet {
-        #font > .sans-serif(normal, 80%, @baseLineHeight);
-    }
-}
-
 #outer-wrapper {
     //min-height: 100%;
     //height: auto !important;
@@ -69,7 +88,7 @@ img.image-left {
 }
 
 #main-wrapper {
-  padding: 0 @baseLineHeight / 2 @baseLineHeight;
+  padding: @navbarHeight @baseLineHeight / 2 @baseLineHeight;
 }
 
 #actionbar {
@@ -78,84 +97,34 @@ img.image-left {
     color: @white;
     margin: 0;
     line-height: 100%;
+    a {
+      color: @white;
+    }
   }
   #section-nav {
         li > a {
         color: @tableBackgroundHover;
-        text-shadow: none;
+        font-weight: bold;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
         }
-        li.active > a {
+        li > a:hover {
             background: @appColor;
         }
     }
   #customer-logo {
     display: block;
-      border: 1px solid @white;
-      .border-radius(4px);
-      text-indent: -9999px;
-      width: 180px;
-      height: 31px;
-      background:url(../images/logo-small.png) no-repeat 32px 0px @white;
-      margin: 3px 20px 0px 10px;
+    border: 1px solid @white;
+    .border-radius(4px);
+    text-indent: -9999px;
+    width: 180px;
+    height: 31px;
+    background:url(../images/logo-small.png) no-repeat 32px 0px @white;
+    margin: 3px 20px 0px 10px;
   }
 }
 
 #actionbar + #content-wrapper {
   margin-top: 0px;
-}
-
-.window {
-  margin: @baseLineHeight 0;
-  //border: 2px solid @grayLight;
-  //.box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.6));
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
-  background: #ededed;
-  .window-header {
-    padding: @baseLineHeight @baseLineHeight;
-    //min-height: @navbarHeight;
-    #gradient > .vertical(#e9e9e9, #b2b2b2);
-    border-bottom: 1px solid #656565;
-    //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
-    margin: 0px;
-    color: @gray;
-  }
-  .window-toolbar {
-            min-height: @navbarHeight;
-            margin:-18px 0px 0px;
-            padding: 0px 20px;
-            border-bottom: 1px solid #656565;
-            //#gradient > .vertical(#bbb, @grayLight);
-            //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
-            .nav a {
-                //color: @grayDark;
-                font-size: @baseFontSize + 4;
-            }
-            .nav li.active a {
-                //color: @white;
-            }
-        }
-  .window-content {
-    background: @white;
-    color: @gray;
-    min-height: 500px;
-    .tile {
-        padding: @baseLineHeight / 2;
-        border-bottom: 1px solid @grayLight;
-        border: none !important;
-        background: transparent !important;
-        &.active {
-            background: @white;
-            color: @black;
-            border-right: 4px solid @gray;
-        }
-    }
-    #content-core {
-      border-right: 1px solid @gray;
-    }
-    #sidebar {
-      background: @white;
-    }
-  }
 }
 
 .box {
@@ -196,6 +165,75 @@ img.image-left {
           margin-bottom:0px;
       }
   }
+  h3 > a {
+    color:@gray;
+  }
+}
+
+.window {
+  display: none;
+  margin: @baseLineHeight 0;
+  //border: 2px solid @grayLight;
+  //.box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.6));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  background: #ededed;
+  .window-header {
+    padding: @baseLineHeight @baseLineHeight;
+    //min-height: @navbarHeight;
+    #gradient > .vertical(#e9e9e9, #b2b2b2);
+    border-bottom: 1px solid #656565;
+    //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+    margin: 0px;
+    color: @gray;
+  }
+  .window-toolbar {
+            min-height: @navbarHeight;
+            margin:-18px 0px 0px;
+            padding: 0px 20px;
+            border-bottom: 1px solid #656565;
+            //#gradient > .vertical(#bbb, @grayLight);
+            //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+            .nav a {
+                //color: @grayDark;
+                font-size: @baseFontSize + 4;
+            }
+            .nav li.active a {
+                //color: @white;
+            }
+        }
+  .window-content {
+    background: @white;
+    //background: #f5f5f5;
+    color: @gray;
+    min-height: 500px;
+    .window-column {
+      border-right: 1px solid @gray;
+      min-height: 500px;
+      padding: @baseLineHeight;
+      background: #f5f5f5;
+    }
+    .tile {
+        padding: @baseLineHeight / 2;
+        border-bottom: 1px solid @grayLight;
+        .box-shadow(none);
+        border: 0px;
+        border-bottom: 1px solid @grayLight;
+        .border-radius(0);
+        background: transparent !important;
+        &.active,
+        &:hover {
+            background: #f5f5f5;
+            color: @black;
+            border-right: 4px solid @gray;
+        }
+    }
+    #content-core {
+      border-right: 1px solid @gray;
+    }
+    #sidebar {
+      //background: @white;
+    }
+  }
 }
 
 #main-logo {
@@ -209,14 +247,16 @@ img.image-left {
 }
 
 footer {
-    background: #ddd;
-    padding:@baseLineHeight;
-    #gradient > .vertical(#ddd, @grayLight);
-    border-top: 1px solid @gray;
-    position: static;
-    top: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
     left: 0;
-    height: 76px;
+    z-index: @zindexFixedNavbar;
+    margin-bottom: 0; // remove 18px margin for static navbar
+    #footer-content {
+      padding: @baseLineHeight;
+      color: @grayLighter;
+    }
 }
 
 #archive-view {
@@ -267,6 +307,63 @@ body#content {
 
 /* @end */
 
+// @Login Form styles
+// ------------------
+
+body.template-login_form {
+  .box {
+    //background: lighten(@appBrown, 20%);
+    background: @grayLighter;
+    .box-shadow(inset -1px 0px 5px rgba(0,0,0, .5));
+  }
+  #login_form label {
+    width: 70px;
+  }
+  #login-forgotten-password {
+    clear: both;
+    //margin-top: @baseLineHeight / 2;
+    .discreet {
+        #font > .sans-serif(normal, 80%, @baseLineHeight);
+    }
+  }
+}
+
+#login_form {
+  width: 300px;
+  label {
+    font-weight: bold;
+    font-size: @baseFontSize + 2;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 245px;
+    height: @baseLineHeight + 4;
+    border-color: @grayDark;
+    font-size: @baseFontSize + 2;
+    line-height: @baseLineHeight + 2;
+    //width: 95%;
+    .box-shadow(inset -1px 0px 10px rgba(0,0,0, .5));
+  }
+  #login-action {
+    padding-top: @baseLineHeight;
+    background: transparent;
+    text-align:right;
+    input.context {
+      .btn-large();
+      .btn-primary();
+      .border-radius(0px);
+    }
+  }
+  .center-block();
+}
+
+#login-forgotten-password {
+  width: 260px;
+  a {
+    color: @white;
+  }
+  .center-block();
+}
 
 
 /* @group Search results page */
