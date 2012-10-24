@@ -10,11 +10,11 @@
 <metal:main fill-slot="body">
   <metal:content-core define-macro="body">
   <div id="content">
-    <div id="archive-view" class="box archive-snippet-view"
+    <div id="archive-view" class="archive-snippet-view"
       tal:condition="view/has_snippet">
       <section class="row-fluid" tal:define="snippet view/compose_snippet">
         <div class="span6">
-          <h4>Aktuelles</h4>
+          <h4 id="snippet-header">Aktuelles</h4>
           <h5 tal:content="snippet/title" />
           <p><span tal:replace="snippet/description" /><br />
             <span class="muted">
