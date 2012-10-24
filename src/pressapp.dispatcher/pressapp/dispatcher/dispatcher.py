@@ -2,9 +2,9 @@ import cStringIO
 import formatter
 
 from htmllib import HTMLParser
-from email.MIMEText import MIMEText
-from email.MIMEMultipart import MIMEMultipart
-from email.Header import Header
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.header import Header
 
 from datetime import datetime
 from Acquisition import aq_inner
@@ -50,7 +50,7 @@ class Dispatcher(grok.View):
             self.recipients = self._getRecievers(send_type)
             self.status = self.send()
             IStatusMessage(self.request).addStatusMessage(
-            _(u"Your request has been dispatched"), type='info')
+                _(u"Your request has been dispatched"), type='info')
             return self.request.response.redirect(
                 context.absolute_url() + '/@@dispatch-success')
 
@@ -83,9 +83,9 @@ class Dispatcher(grok.View):
         for recipient in recipients:
             recipient_name = self.safe_portal_encoding(recipient['name'])
             personal_text = text.replace('[[SUBSCRIBER]]',
-                str(recipient_name))
+                                         str(recipient_name))
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
-                str(recipient_name))
+                                                     str(recipient_name))
 
             outer = MIMEMultipart('alternative')
             outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
@@ -97,10 +97,10 @@ class Dispatcher(grok.View):
             # plain_part = personal_text_plain.encode(body_charset)
             text_part = MIMEText(personal_text_plain,
                                  'plain',
-                                 _charset=body_charset)
+                                 'UTF-8')
             html_text = MIMEText(personal_text,
                                  'html',
-                                 _charset=body_charset)
+                                 'UTF-8')
             outer.attach(text_part)
             outer.attach(html_text)
             try:
@@ -109,10 +109,10 @@ class Dispatcher(grok.View):
                 send_counter += 1
             except Exception, e:
                 log.info("Sending to \"%s\" failed: %s" % (
-                        recipient['mail'], e))
+                         recipient['mail'], e))
                 send_error_counter += 1
         log.info("Dipatched to %s recipients with %s errors." % (send_counter,
-            send_error_counter))
+                 send_error_counter))
         if self.request.get('type') != 'test':
             wftool = getToolByName(context, 'portal_workflow')
             if wftool.getInfoFor(context, 'review_state') == 'private':
@@ -215,7 +215,7 @@ class Dispatcher(grok.View):
             data['start'] = context.start.strftime("%d.%m.%Y %H:%M")
             data['end'] = context.end.strftime("%d.%m.%Y %H:%M")
             closed = context.closed
-            if closed == True:
+            if closed is True:
                 closed_msg = translate(
                     _(u"Diese Veranstaltung kann nur auf Einladung besucht "
                       u"werden. Von einer Publikation bitten wir daher "
@@ -269,7 +269,7 @@ class Dispatcher(grok.View):
         plain_text_maxcols = 72
         textout = cStringIO.StringIO()
         formtext = formatter.AbstractFormatter(formatter.DumbWriter(
-                        textout, plain_text_maxcols))
+                                               textout, plain_text_maxcols))
         parser = HTMLParser(formtext)
         parser.feed(text)
         parser.close()
