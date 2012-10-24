@@ -1,5 +1,4 @@
 import hashlib
-from datetime import datetime
 from Acquisition import aq_inner
 from five import grok
 from App.config import getConfiguration
@@ -105,7 +104,7 @@ class ArchiveSnippetView(grok.View):
     def getImageTag(self, item):
         obj = item
         scales = getMultiAdapter((obj, self.request), name='images')
-        scale = scales.scale('image', scale='thumb')
+        scale = scales.scale('image',  width=130, height=190, direction='down')
         imageTag = None
         if scale is not None:
             imageTag = scale.tag()
@@ -116,7 +115,7 @@ class ArchiveSnippetView(grok.View):
         ploneview = getMultiAdapter((context, self.request), name="plone")
         transformer = ITransformer(self.context)
         transformed_value = transformer(item.text, 'text/plain')
-        cropped = ploneview.cropText(transformed_value, 120, '...')
+        cropped = ploneview.cropText(transformed_value, 120, '')
         return cropped
 
     def getPreviewLink(self, item):
