@@ -9,7 +9,7 @@
 
 <metal:main fill-slot="body">
   <metal:content-core define-macro="body">
-  <div id="content">
+  <div id="content-core">
     <div id="archive-view" class="box">
     <div class="page-header">
         <h1>Pressemitteilungen</h1>

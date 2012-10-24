@@ -16,24 +16,24 @@
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                     context_url context/absolute_url">
     
-    <div class="container-fluid">
+  <div class="container-fluid">
         
-        <div class="page-header" id="page-header">
-            <h1>Administration</h1>
-        </div>
-    <section id="content-core">
-    <div class="box container-fluid">
-      <div class="btn-group pull-right">
-                <a href="" class="btn"
+    <div class="page-header" id="page-header">
+      <div class="btn-toolbar pull-right"
+            tal:define="context_url context/absolute_url;">
+            <div class="btn-group">
+              <a href="" class="btn"
                     rel="twipsy"
                     data-original-title="&Uuml;bersicht &uuml;ber die Verwendung von Verteilern in Presseinhalten"
                     tal:attributes="href python:portal_url + '/presscenter/kontakte/@@channel-statistics'">
                     <i class="icon-signal" />
                     Statistik</a>
             </div>
-        <h3><i class="icon-search" />
-        Sofortsuche</h3>
-          <form name="searchform" id="searchGadget_form" 
+      </div>
+      <div class="btn-toolbar pull-right">
+      <form name="searchform"
+            class="form-search"
+            id="searchGadget_form" 
                 action="search"
                 tal:attributes="action string:${portal_url}/search;
                                 id string:search_form">
@@ -52,14 +52,17 @@
 
               <input class="searchButton btn primary small"
                      type="submit"
-                     value="Suchen"
-                     i18n:attributes="value label_search;" />
+                     value="Suchen" />
 
               <div class="LSResult" id="LSResult" style=""><div class="LSShadow" id="LSShadow"></div></div>
               </div>
           </form>
+      </div>
+      <h1>Administration</h1>
     </div>
 
+    <section id="content-core">
+      <div class="window-column">
         <div class="row-fluid">
           <div class="span4">
             <div class="page-header">
@@ -160,6 +163,7 @@
           </table>
         </div>
         </div>
+      </div>
     </section>
     </div>
   </metal:content-core>

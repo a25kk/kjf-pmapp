@@ -27,7 +27,8 @@
 
     <section id="content-core">
     <div class="row-fluid">
-        <div class="span8">
+        <div class="span9">
+          <div class="window-column">
           <div class="page-header">
             <h2><span tal:content="view/subscriber_count" />
                 <a href=""
@@ -62,8 +63,9 @@
                     </tbody>
                 </table>
             </section>
+          </div>
         </div>
-        <div class="span4">
+        <div class="span3">
           <div class="page-header">
             <h2><span
                   tal:content="view/channel_counter" />

@@ -17,11 +17,12 @@
                     context_url context/absolute_url">
     
     <div class="container-fluid">
-        <div class="page-header">
+        <div class="page-header" id="page-header">
             <h1>Einstellungen</h1>
         </div>
         
-        <section>
+        <section id="content-core">
+          <div class="window-column">
           <a class="btn btn-primary pull-right"
                     tal:attributes="href python:context_url+'/@@update-settings'">
                     <i class="icon-edit icon-white" />
@@ -105,6 +106,7 @@
                     </div>
               <h4>Presseeinladung</h4>
               </div>
+          </div>
         </section>
         
     </div>

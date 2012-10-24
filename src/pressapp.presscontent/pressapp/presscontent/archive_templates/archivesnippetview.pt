@@ -9,7 +9,7 @@
 
 <metal:main fill-slot="body">
   <metal:content-core define-macro="body">
-  <div id="content">
+  <div id="content-core">
     <div id="archive-view" class="box archive-snippet-view"
       tal:condition="view/has_snippet">
       <section class="row-fluid" tal:define="snippet view/compose_snippet">
