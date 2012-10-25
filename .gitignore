@@ -22,4 +22,5 @@ var
 *.pyo
 etc/**/*
 *.mo
+*-ck.js
 src/sauna.reload

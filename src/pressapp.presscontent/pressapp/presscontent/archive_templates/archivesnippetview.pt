@@ -9,23 +9,24 @@
 
 <metal:main fill-slot="body">
   <metal:content-core define-macro="body">
-  <div id="content-core">
-    <div id="archive-view" class="box archive-snippet-view"
+  <div id="content">
+    <div id="archive-view" class="archive-snippet-view"
       tal:condition="view/has_snippet">
-      <section class="row-fluid" tal:define="snippet view/compose_snippet">
-        <div class="span6">
-          <h4>Aktuelles</h4>
+      <section class="media"
+        tal:define="snippet view/compose_snippet">
+        <div class="media-object pull-right">
+          <div class="thumb">
+            <img tal:replace="structure snippet/image" />
+          </div>
+        </div>
+        <div class="media-content">
+          <h4 id="snippet-header">Aktuelles</h4>
           <h5 tal:content="snippet/title" />
-          <p><span tal:replace="snippet/description" /><br />
+          <p><span tal:replace="snippet/description" />&hellip;<br />
             <span class="muted">
             <a href="" tal:attributes="href snippet/url">
               Mehr dazu lesen Sie hier</a></span>
           </p>
-        </div>
-        <div class="span6">
-          <div class="thumb">
-            <img tal:replace="structure snippet/image" />
-          </div>
         </div>
       </section>
     </div>
