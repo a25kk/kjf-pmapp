@@ -5616,6 +5616,34 @@ table.grid th {
 .visualClear {
   clear: both;
 }
+.editbar {
+  overflow: visible;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: #eeeeee;
+  border-bottom: #999999;
+}
+.editbar .brand {
+  margin-left: -10px;
+}
+.editbar-inner {
+  background: #eeeeee;
+  background-color: #fafafa;
+  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-repeat: repeat-x;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.editbar-inner .locator {
+  float: left;
+  padding-left: 19px;
+}
 #logo {
   background: url(../images/logo.png) no-repeat 0px 0px transparent;
   margin: 0px;
@@ -6344,4 +6372,9 @@ table.table thead .sorting_desc_disabled {
 }
 table.dataTable th:active {
   outline: none;
+}
+table.dataTable tr.row_selected td {
+  border: 1px solid #b94a48;
+  border-width: 1px 0px;
+  background-color: #f2dede;
 }

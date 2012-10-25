@@ -81,7 +81,6 @@
         
         <!-- Document Content -->
         <replace css:content-children="#content" css:theme-children="#document-content" />
-        <!--<before css:content="#edit-bar" css:theme="#document-content" />-->
         <before css:content=".portalMessage" css:theme="#document-content" />
         
         <!-- Columns -->

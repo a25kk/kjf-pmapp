@@ -32,7 +32,7 @@
             </div>
             <div class="span6">
                 <a href="javascript:void(0)" id="delete"
-                    class="btn btn-xlarge btn-danger">
+                    class="btn btn-large btn-danger">
                     <i class="icon-remove icon-white" />
                     Adresse entfernen</a>
             </div>
