@@ -20,7 +20,7 @@ class Subscriptions(grok.View):
         if 'form.button.Subscribe' in self.request:
             context = aq_inner(self.context)
             authenticator = getMultiAdapter(
-                (self.request, context), name=u"authenticator")
+                (context, self.request), name=u"authenticator")
             if not authenticator.verify():
                 raise Unauthorized
             context_url = context.absolute_url()
