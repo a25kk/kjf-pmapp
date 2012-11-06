@@ -17,10 +17,11 @@
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
     class="container-fluid">
         
-        <div class="page-header">
+        <div class="page-header" id="page-header">
             <h1>Adressen <small>Zugewiesene Empf&auml;nger</small></h1>
         </div>
-        
+    <div id="content-core">
+      <div class="window-column">     
         <div class="row-fluid">
             <div class="span6">
                 <div class="alert alert-block alert-info">
@@ -75,6 +76,8 @@
                   Abbrechen</a>
             </div>
         </form>
+      </div>
+    </div>
   </section>
   </metal:content-core>
 </metal:main>

@@ -14,7 +14,7 @@
                        context_url context/absolute_url"
     class="container-fluid">
     
-    <div class="page-header">
+    <div class="page-header" id="page-header">
         <div class="btn-toolbar pull-right"
             tal:define="context_url context/absolute_url;">
             <div class="btn-group">
@@ -35,6 +35,8 @@
         
         <h1>Versand vorbereiten</h1>
     </div>
+    <div id="content-core">
+    <div class="window-column">
     <h2>Zusammenfassung</h2>
     <div class="row-fluid">
     <div class="span6">
@@ -111,7 +113,7 @@
     
     <div class="visualClear">&nbsp;</div>
     <div class="form-actions">
-        <a href="" class="btn btn-xlarge btn-success"
+        <a href="" class="btn btn-large btn-success"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
             tal:attributes="href python:context_url+'/@@dispatcher?type=send_now'">
@@ -130,7 +132,8 @@
             <i class="icon-share-alt icon-white" />
             Testversand durchf&uuml;hren</a>
     </div>
-    
+    </div>
+    </div>
   </section>
   </metal:content-core>
 </metal:main>
