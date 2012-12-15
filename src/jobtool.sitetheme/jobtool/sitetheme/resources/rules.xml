@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    
+    <xsl:template match="activity|add-profile-tab|bookmark|comments|friendpile|like|like-box|live-stream|login-button|pronoun|recommendations|serverFbml|profile-pic|user-status">
+      <xsl:element name="fb:{local-name()}" xmlns:fb="http://www.facebook.com/2008/fbml">
+        <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+    </xsl:template>
+    <xsl:template match="plusone">
+      <xsl:element name="g:{local-name()}" xmlns:g="http://base.google.com/ns/1.0">
+        <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+    </xsl:template>
+    
+    <theme href="frontpage.html" css:if-content="body.template-login_form" />
+    
+    <!-- Rules applying to a standard Plone web page -->
+    <rules css:if-content="#visual-portal-wrapper">
+
+        <notheme if="$ajax_load" />
+        <theme href="theme.html" />
+        
+        <replace theme="/htm/head/title" content="/html/head/title" />
+        <replace theme="/html/head/base" content="/html/head/base" />
+        
+        <!-- Add meta tags -->
+        <drop theme="/html/head/meta" />
+        <after content="/html/head/meta" theme-children="/html/head" />
+
+        <!-- Drop styles in the head - these are added back by including them from Plone -->
+        <drop theme="/html/head/link" />
+        <drop theme="/html/head/style" />
+        <drop theme="/html/head/script" />
+        <drop theme="/html/head/comment()" />
+
+        <after
+            content="/html/head/base | /html/head/style | /html/head/script | /html/head/link | /html/head/comment()"
+            theme-children="/html/head" />
+        
+        <!-- Favicon intializer
+        <after theme="/html/head">
+            <link rel="shortcut icon" href="/++theme++pressapp.sitetheme/images/favicon.ico" type="image/x-icon" />
+        </after> -->
+
+        <!-- Copy over the id/class attributes on the body tag.
+             This is important for per-section styling -->
+        <merge attributes="class" css:content="body" css:theme="body" />
+        <copy attributes="id dir" css:content="body" css:theme="body" />
+        
+        <!-- Optional inclusion of CMSUI
+        <before css:theme-children="body" css:content="#plone-cmsui-trigger" />
+        -->
+        
+        <!-- Logo (link target) -->
+        <copy attributes="href" css:content='#portal-logo' css:theme="#main-logo" />
+        <copy attributes="href" css:content='#portal-logo' css:theme="#fp-logo" />
+
+        
+        <replace css:content-children="#content" css:theme-children="#frontpage-content"
+            css:if-content="body.portaltype-plone-site" />
+        
+        <replace css:content="#navbar" css:theme="#nav-bar" />
+
+        <copy attributes="href" css:content='#portal-logo' css:theme="#brandname" />
+        <replace css:content-children="#subnavbar"
+            css:theme-children="#subnavbar" />
+        
+        <after css:content="#portal-personaltools a" css:theme-children="#site-actions"
+            css:if-content="#anon-personalbar" />
+        <replace css:content="#user-name" css:theme="#user-name"
+            css:if-content="#user-name" />
+        
+        <replace css:content="#editbar" css:theme="#editbar"
+            css:if-content="#editbar" />
+        
+        <replace css:content-children="#member-infobox" css:theme-children="#member-box"
+            css:if-content="#user-name" />
+        
+        <replace css:content-children="#page-header"
+            css:theme-children=".window-header" />
+
+        <replace css:content-children=".window-toolbar"
+            css:theme-children=".window-toolbar" />
+
+        <!-- Document Content -->
+        <replace css:content-children="#content-core" css:theme-children="#document-content" />
+
+        <!--<before css:content="#edit-bar" css:theme="#document-content" />-->
+        <before css:content=".portalMessage" css:theme="#actionbar" />
+
+        
+        <!-- Columns -->
+        <replace css:content-children="#portal-column-one > *" css:theme-children="#sidebar" />
+        <!-- <replace css:content-children="#portal-column-two > *" css:theme-children="#sidebar-content" /> -->
+        
+        
+    </rules>
+
+</rules>
