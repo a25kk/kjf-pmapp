@@ -6,10 +6,13 @@ from zope.component import getMultiAdapter
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
 
+from jobtool.jobcontent.interfaces import IJobTool
+
 
 class ActionBar(grok.Viewlet):
     grok.name('jobtool.jobcontent.ActionBarViewlet')
     grok.context(Interface)
+    grok.layer(IJobTool)
     grok.require('zope2.View')
     grok.viewletmanager(IAboveContent)
 
