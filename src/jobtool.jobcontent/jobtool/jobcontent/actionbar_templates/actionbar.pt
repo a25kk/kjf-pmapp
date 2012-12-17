@@ -1,0 +1,31 @@
+<section id="actionbar"
+    tal:condition="not:viewlet/anonymous"
+    tal:define="context_url viewlet/context_url;
+                context_state context/@@plone_context_state">
+    <div class="row-fluid">
+      <div class="span2">
+        <h1 class="brandname">
+          <a href="/" id="brandname"
+            tal:attributes="href context_state/canonical_object_url">
+            Arbeitsplatz</a>
+          </h1>
+      </div>
+      <div class="span8" id="subnavbar">
+        <div class="navbar">
+            <ul class="nav xnav-pills pull-right" id="section-nav">
+              <li><a href="#contact"
+                    tal:attributes="href python:context_url + '/@@jobs-active'">
+                <span class="label label-success">76</span>
+                aktive Stellenangebote</a></li>
+              <li><a href="#"
+                    tal:attributes="href python:context_url + '/@@jobs-inactive'">
+                <span class="label label-important">243</span>
+                inaktive Stellenangebote</a></li>
+            </ul>
+            </div>
+      </div>
+      <div class="span2">
+        <a href="#" id="customer-logo">KJF PressApp</a>
+      </div>
+    </div>
+</section>

@@ -8,4 +8,6 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="jobtool.jobcontent.jobopening" meta_type="Dexterity FTI" />
+  <object name="jobtool.jobcontent.jobcenter" meta_type="Dexterity FTI" />
 </object>
