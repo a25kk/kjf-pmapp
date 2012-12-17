@@ -37,9 +37,13 @@ body.jobtool-frontpage {
       color: @white;
     }
   }
+  #frontpage-content-wrapper {
+    padding: @navbarHeight 0;
+  }
   .box {
     //background: lighten(@appBrown, 20%);
     background: @white;
+    padding:@paddingLarge;
     .border-radius(0px);
     .box-shadow(inset -1px 0px 5px rgba(0,0,0, .5));
   }
@@ -89,6 +93,10 @@ body > header {
   .navbar-inner {
     .border-radius(0);
   }
+}
+
+#main-wrapper {
+  padding-top: @navbarHeight;
 }
 
 #actionbar {

@@ -8,10 +8,13 @@ from Products.CMFCore.interfaces import IContentish
 
 from plone.app.layout.viewlets.interfaces import IPortalTop
 
+from pressapp.presscontent.interfaces import IPressAppPolicy
+
 
 class NavBarViewlet(grok.Viewlet):
     grok.name('pressapp.membercontent.EditBarViewlet')
     grok.context(IContentish)
+    grok.layer(IPressAppPolicy)
     grok.require('zope2.View')
     grok.viewletmanager(IPortalTop)
 

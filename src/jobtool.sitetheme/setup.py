@@ -20,7 +20,7 @@ setup(name='jobtool.sitetheme',
       url='http://dist.vorwaerts-werbung.de',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['example'],
+      namespace_packages=['jobtool'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[

@@ -3,9 +3,12 @@ from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
 
+from pressapp.presscontent.interfaces import IPressAppPolicy
+
 
 class FrontpageView(grok.View):
     grok.context(INavigationRoot)
+    grok.layer(IPressAppPolicy)
     grok.require('zope2.View')
     grok.name('frontpage-view')
 

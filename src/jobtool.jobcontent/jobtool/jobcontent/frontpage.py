@@ -1,11 +1,16 @@
 from five import grok
 from Acquisition import aq_inner
+from plone import api
+
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
+
+from jobtool.jobcontent.interfaces import IJobTool
 
 
 class FrontpageView(grok.View):
     grok.context(INavigationRoot)
+    grok.layer(IJobTool)
     grok.require('zope2.View')
     grok.name('frontpage-view')
 
@@ -16,10 +21,6 @@ class FrontpageView(grok.View):
             return self.request.response.redirect(
                 context.absolute_url() + "/login_form")
         else:
-            try:
-                member = mtool.getAuthenticatedMember()
-                home_url = member.getHomeFolder().absolute_url()
-                return self.request.response.redirect(home_url)
-            except:
-                home_url = mtool.getMembersFolder().absolute_url()
-                return self.request.response.redirect(home_url)
+            portal_url = api.portal.get().absolute_url()
+            url = portal_url + '/@@jobcenter-dashboard'
+            return self.request.response.redirect(url)

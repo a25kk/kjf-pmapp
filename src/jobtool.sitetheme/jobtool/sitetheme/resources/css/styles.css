@@ -6197,8 +6197,12 @@ body.jobtool-frontpage .subheader {
 body.jobtool-frontpage .subheader h2 {
   color: #ffffff;
 }
+body.jobtool-frontpage #frontpage-content-wrapper {
+  padding: 40px 0;
+}
 body.jobtool-frontpage .box {
   background: #ffffff;
+  padding: 11px 19px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
@@ -6246,6 +6250,9 @@ body > header #main-nav .selected > a:focus {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
+}
+#main-wrapper {
+  padding-top: 40px;
 }
 #actionbar {
   margin: 20px 40px;

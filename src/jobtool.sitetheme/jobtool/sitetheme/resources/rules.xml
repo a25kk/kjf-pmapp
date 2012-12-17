@@ -62,7 +62,7 @@
         <replace css:content-children="#content" css:theme-children="#frontpage-content"
             css:if-content="body.portaltype-plone-site" />
         
-        <replace css:content="#navbar" css:theme="#nav-bar" />
+        <replace css:content="#nav-bar" css:theme="#nav-bar" />
 
         <copy attributes="href" css:content='#portal-logo' css:theme="#brandname" />
         <replace css:content-children="#subnavbar"
