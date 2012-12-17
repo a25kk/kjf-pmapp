@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main"
+        tal:define="portal_url context/portal_url;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    context_url context/absolute_url">
+    
+    <section id="jobcenter-dashboard">
+      <header id="page-header">
+        <h1>Dashboard Jobcenter</h1>
+      </header>
+      <article id="content-core">
+        <h2>This page will display recent changes and will provide quick
+          access to the most common interactions and functions</h2>
+      </article>
+    </section>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

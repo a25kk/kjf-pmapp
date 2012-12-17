@@ -1,0 +1,6 @@
+<layers>
+  <layer
+    name="jobtool.jobcontent.layer"
+    interface="jobtool.jobcontent.interfaces.IJobTool"
+  />
+</layers>
