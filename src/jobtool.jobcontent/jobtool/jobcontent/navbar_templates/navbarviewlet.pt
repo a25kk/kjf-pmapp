@@ -20,22 +20,6 @@
                     tal:define="memberinfo viewlet/memberinfo;
                                 home_folder viewlet/portal_url">
                     <li class="divider-vertical"></li>
-                    <li id="main-menu">
-                        <a href="/"
-                            data-traget="#main-menu"
-                            tal:attributes="href home_folder">
-                            <i class="icon-home icon-white" />
-                            Arbeitsplatz
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li><a href=""
-                            tal:attributes="href python:home_folder+'/@@dashboard-statistics'">
-                        <i class="icon-share-alt icon-white" />
-                            Statistik
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
                     <li class="dropdown" tal:condition="viewlet/is_administrator">
                         <a href="/" class="dropdown-toggle"
                             data-toggle="dropdown"

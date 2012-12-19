@@ -16,6 +16,7 @@
     </xsl:template>
     
     <theme href="frontpage.html" css:if-content="body.template-login_form" />
+    <theme href="frontpage.html" css:if-content="body.template-logged_out" />
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
