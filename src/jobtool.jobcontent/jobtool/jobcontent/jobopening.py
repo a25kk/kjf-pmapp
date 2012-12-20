@@ -6,6 +6,8 @@ from plone import api
 from plone.directives import dexterity, form
 
 from zope import schema
+from zope.schema.vocabulary import getVocabularyRegistry
+
 from plone.app.textfield import RichText
 
 from plone.namedfile.interfaces import IImageScaleTraversable
@@ -76,3 +78,15 @@ class View(grok.View):
         context = aq_inner(self.context)
         modified = context.modified
         return api.portal.get_localized_time(datetime=modified)
+
+    def pretty_jobtype(self):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.jobTypes')
+        selected = getattr(context, 'jobtype', None)
+        try:
+            vocabterm = records.getTerm(selected)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = selected
+        return prettyname

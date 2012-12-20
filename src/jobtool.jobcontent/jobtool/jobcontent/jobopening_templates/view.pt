@@ -15,7 +15,9 @@
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime">
       <header id="page-header">
         <div class="pull-right">
-            <h4 tal:content="context/jobtype" />
+            <h4 tal:content="view/pretty_jobtype"
+              i18n:translate=""
+              />
             <h5 tal:define="date context/start"
               tal:content="python:toLocalizedTime(date, long_format=False)" />
         </div>
