@@ -1,0 +1,156 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-12-20 12:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: jobtool.jobcontent\n"
+
+#: ./../profiles/default/types/jobtool.jobcontent.jobopening.xml
+msgid "A job opening describing the vacancy"
+msgstr ""
+
+#: ./../vocabulary.py:28
+msgid "Administration"
+msgstr ""
+
+#: ./../vocabulary.py:29
+msgid "Care"
+msgstr ""
+
+#: ./../jobopening.py:42
+msgid "Category"
+msgstr ""
+
+#: ./../jobopening.py:44
+msgid "Category Selection"
+msgstr ""
+
+#: ./../vocabulary.py:26
+msgid "Education"
+msgstr ""
+
+#: ./../jobopening.py:56
+msgid "Enter Summary of the job opening"
+msgstr ""
+
+#: ./../profiles/default/types/jobtool.jobcontent.jobcenter.xml
+msgid "Folderish jobcenter and managing unit"
+msgstr ""
+
+#: ./../vocabulary.py:13
+msgid "Fulltime"
+msgstr ""
+
+#: ./../jobopening.py:30
+msgid "Institution"
+msgstr ""
+
+#: ./../vocabulary.py:31
+msgid "Internship"
+msgstr ""
+
+#: ./../jobopening.py:55
+msgid "Job Description"
+msgstr ""
+
+#: ./../jobopening.py:25
+msgid "Job Type"
+msgstr ""
+
+#: ./../profiles/default/types/jobtool.jobcontent.jobcenter.xml
+msgid "JobCenter"
+msgstr ""
+
+#: ./../profiles/default/types/jobtool.jobcontent.jobopening.xml
+msgid "JobOpening"
+msgstr ""
+
+#: ./../jobcenter_templates/view.pt:27
+#: ./../jobopening_templates/view.pt:26
+msgid "Last changed:"
+msgstr ""
+
+#: ./../jobopening.py:34
+msgid "Location"
+msgstr ""
+
+#: ./../jobopening.py:51
+msgid "Mark this job opening as available for preview pages"
+msgstr ""
+
+#: ./../vocabulary.py:30
+msgid "Medicine"
+msgstr ""
+
+#: ./../vocabulary.py:32
+msgid "Other"
+msgstr ""
+
+#: ./../vocabulary.py:13
+msgid "Parttime"
+msgstr ""
+
+#: ./../vocabulary.py:27
+msgid "Philosophy"
+msgstr ""
+
+#: ./../jobopening.py:50
+msgid "Preview"
+msgstr ""
+
+#: ./../jobopening.py:38
+msgid "Start date"
+msgstr ""
+
+#: ./../jobopening.py:21
+msgid "Title"
+msgstr ""
+
+#: ./../vocabulary.py:57
+msgid "ejv-aichach-friedberg.de"
+msgstr ""
+
+#: ./../vocabulary.py:59
+msgid "ejv-augsburg.de"
+msgstr ""
+
+#: ./../vocabulary.py:61
+msgid "ejv-memmingen-unterallgaeu.de"
+msgstr ""
+
+#: ./../vocabulary.py:63
+msgid "ejv-ostallgaeu.de"
+msgstr ""
+
+#: ./../vocabulary.py:49
+msgid "josefinum.de"
+msgstr ""
+
+#: ./../vocabulary.py:51
+msgid "kinderzentrum-augsburg.de"
+msgstr ""
+
+#: ./../vocabulary.py:47
+msgid "kjf-augsburg.de"
+msgstr ""
+
+#: ./../vocabulary.py:55
+msgid "sankt-georg-kempten.de"
+msgstr ""
+
+#: ./../vocabulary.py:53
+msgid "sanktelisabeth.de"
+msgstr ""
+

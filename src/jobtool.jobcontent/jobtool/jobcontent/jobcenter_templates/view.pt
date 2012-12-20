@@ -49,7 +49,8 @@
                       <h4>
                         <span tal:replace="item/Title">
                           Heilpädagogin/en oder Sozialpädagogin/en</span>
-                        <small tal:content="item/jobtype">Aktiv</small></h4>
+                        <small tal:content="item/jobtype"
+                          i18n:translate="">Aktiv</small></h4>
                       <p><small><span tal:content="item/location">Augsburg</span>,
                           <span tal:content="item/institution">Klinik Josefinum</span>
                           </small>
