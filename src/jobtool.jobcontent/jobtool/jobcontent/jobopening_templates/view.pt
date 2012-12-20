@@ -11,9 +11,17 @@
   <metal:content-core define-macro="main">
 
     <section id="jobcenter-dashboard"
-      tal:define="context_url context/absolute_url">
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
       <header id="page-header">
+        <div class="pull-right">
+            <h4 tal:content="context/jobtype" />
+            <h5 tal:define="date context/start"
+              tal:content="python:toLocalizedTime(date, long_format=False)" />
+        </div>
+
         <h1 tal:content="context/Title">Title</h1>
+
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
               <span tal:content="time"
@@ -25,12 +33,17 @@
         <div class="row-fluid">
           <div class="span9">
             <div class="window-column">
-              <div class="window-column-content"
-                tal:content="structure context/text/output" />
+              <div class="window-column-content">
+                <a href="#" class="btn btn-primary btn-small pull-right">
+                  Edit</a>
+                <div tal:content="structure context/text/output" />
+              </div>
             </div>
           </div>
           <div class="span3">
             <aside id="sidebar">
+              <a href="#" class="btn btn-primary btn-mini pull-right">
+                  Edit</a>
               <h4>Informationen</h4>
                 <p class="muted"
                   tal:define="time context/modified">
@@ -44,13 +57,17 @@
                   <p tal:content="context/location" />
                   <p><span class="badge" tal:content="context/jobtype" /></p>
                 </div>
-                <hr />
                 <h6>Datum</h6>
                   <p tal:content="context/start" />
                 <hr />
+                <a href="#" class="btn btn-primary btn-mini pull-right">
+                  Edit</a>
+                <h4>Einstellungen</h4>
                 <div class="panel">
                   <h6>Kategory</h6>
-                  <p tal:content="context/category" />
+                  <tal:cats tal:repeat="cat context/category">
+                    <span tal:content="cat" />
+                  </tal:cats>
                   <h6>Preview</h6>
                   <p tal:content="context/preview" />
                 </div>

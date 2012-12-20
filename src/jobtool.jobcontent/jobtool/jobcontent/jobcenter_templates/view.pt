@@ -49,7 +49,7 @@
               <h4>Informationen</h4>
                 <p class="muted">
                   <span i18n:translate="">Last changed:</span>
-                  <span tal:content="view/last_modified">12.12.2012</span>
+                  <span tal:content="context/modified">12.12.2012</span>
                 </p>
                 <p>
                   <a href="" class="btn btn-primary btn-large"
