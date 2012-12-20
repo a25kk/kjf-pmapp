@@ -42,45 +42,32 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <a href="#" class="btn btn-primary btn-mini pull-right">
-                  Edit</a>
-              <h4>Informationen</h4>
-                <p class="muted"
-                  tal:define="time context/modified">
-                  <span i18n:translate="">Last changed:</span>
-                  <span tal:content="time"
-                     tal:attributes="data-appui string:prettydate;
-                                     title time" />
-                </p>
-                <div class="panel">
-                  <p tal:content="context/institution" />
-                  <p tal:content="context/location" />
-                  <p><span class="badge" tal:content="context/jobtype" /></p>
-                </div>
-                <h6>Datum</h6>
-                  <p tal:content="context/start" />
+              <h4 tal:content="context/institution" />
+              <h5 tal:content="context/location" />
                 <hr />
-                <a href="#" class="btn btn-primary btn-mini pull-right">
-                  Edit</a>
-                <h4>Einstellungen</h4>
                 <div class="panel">
-                  <h6>Kategory</h6>
-                  <tal:cats tal:repeat="cat context/category">
-                    <span tal:content="cat" />
-                  </tal:cats>
-                  <h6>Preview</h6>
-                  <p tal:content="context/preview" />
+                  <h5>Preview</h5>
+                  <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
+                    data-appui="preview-switch"
+                    tal:define="preview context/preview">
+                    <input type="checkbox" value="1" name="previewCheckbox" class="checkbox" checked="checked"
+                        tal:attributes="checked python: preview and 'checked' or ''"
+                       />
+                    <label class="check" for="previewCheckbox"></label>
+                  </div>
                 </div>
-                <!--<p>
-                  <a href="" class="btn btn-primary btn-large"
-                    rel="twipsy"
-                    data-placement="left"
-                    data-original-title="Add new job posting now"
-                    tal:attributes="href python:context_url + '/++add++jobtool.jobcontent.jobopening'">
-                    <i class="icon-list-alt"></i>
-                    Add job opening
-                  </a>
-                </p>-->
+                <hr />
+                <h5>Status</h5>
+                <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
+                  data-appui="state-switch">
+                  <input type="checkbox" value="1" name="stateCheckbox" class="checkbox" checked="checked" />
+                  <label class="check" for="stateCheckbox"></label>
+                </div>
+                <hr />
+                <h5>Kategory</h5>
+                <tal:cats tal:repeat="cat context/category">
+                  <span tal:content="cat" />
+                </tal:cats>
             </aside>
           </div>
         </div>

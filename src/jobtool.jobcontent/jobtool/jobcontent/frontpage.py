@@ -22,5 +22,5 @@ class FrontpageView(grok.View):
                 context.absolute_url() + "/login_form")
         else:
             portal_url = api.portal.get().absolute_url()
-            url = portal_url + '/@@jobcenter-dashboard'
+            url = portal_url + '/jobcenter'
             return self.request.response.redirect(url)
