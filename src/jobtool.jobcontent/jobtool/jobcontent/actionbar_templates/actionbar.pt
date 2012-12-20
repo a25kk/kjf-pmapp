@@ -15,11 +15,13 @@
             <ul class="nav xnav-pills pull-right" id="section-nav">
               <li><a href="#contact"
                     tal:attributes="href python:context_url + '/@@jobs-active'">
-                <span class="label label-success">76</span>
+                <span class="label label-success"
+                  tal:content="viewlet/active_jobs">76</span>
                 aktive Stellenangebote</a></li>
               <li><a href="#"
                     tal:attributes="href python:context_url + '/@@jobs-inactive'">
-                <span class="label label-important">243</span>
+                <span class="label label-important"
+                  tal:content="viewlet/inactive_jobs">243</span>
                 inaktive Stellenangebote</a></li>
             </ul>
             </div>

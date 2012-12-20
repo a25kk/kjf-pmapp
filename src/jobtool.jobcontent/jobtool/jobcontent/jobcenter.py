@@ -1,7 +1,14 @@
 from five import grok
+from Acquisition import aq_inner
+from plone import api
+
 from plone.directives import dexterity, form
 
 from plone.namedfile.interfaces import IImageScaleTraversable
+
+from plone.app.contentlisting.interfaces import IContentListing
+
+from jobtool.jobcontent.jobopening import IJobOpening
 
 from jobtool.jobcontent import MessageFactory as _
 
@@ -20,3 +27,29 @@ class View(grok.View):
     grok.context(IJobCenter)
     grok.require('zope2.View')
     grok.name('view')
+
+    def update(self):
+        self.has_jobs = len(self.get_data()) > 0
+
+    def active_jobs(self):
+        jobs = self.get_data(state='published')
+        return len(jobs)
+
+    def inactive_jobs(self):
+        jobs = self.get_data(state='private')
+        return len(jobs)
+
+    def get_data(self, state=None):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        query = self.base_query()
+        if state is not None:
+            query['review_state'] = state
+        brains = catalog.searchResults(**query)
+        results = IContentListing(brains)
+        return results
+
+    def base_query(self):
+        obj_provides = IJobOpening.__identifier__
+        return dict(object_provides=obj_provides,
+                    sort_on='modified',
+                    sort_order='reverse')

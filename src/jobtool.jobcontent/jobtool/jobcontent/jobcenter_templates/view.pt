@@ -10,22 +10,62 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-  <header id="page-header">
-    <div class="pull-right">
-      <form action="."
-        tal:define="context_url context/absolute_url"
-        tal:attributes="action python:context_url + '/@@search'">
-          <div class="input-append">
-            <input class="span2" id="appendedInputButton" type="text">
-            <input class="btn" type="submit" value="Search" />
+    <section id="jobcenter-dashboard"
+      tal:define="context_url context/absolute_url">
+      <header id="page-header">
+        <div class="pull-right">
+          <form action=".">
+              <div class="input-append">
+                <input class="span2" id="appendedInputButton" type="text">
+                <input class="btn" type="submit" value="Search" />
+              </div>
+          </form>
+        </div>
+        <h1>Jobcenter</h1>
+      </header>
+      <article id="content-core">
+        <div class="row-fluid">
+          <div class="span9">
+            <div class="window-column">
+              <div class="tile">
+                  <div class="row-fluid">
+                    <div class="span2">
+                      <h4>16.11.2012</h4>
+                      <p><strong></strong>Teilzeit</p>
+                    </div>
+                    <div class="span6">
+                      <h4><i class="icon-star"></i> Heilpädagogin/en oder Sozialpädagogin/en <small class="label">Aktiv</small></h4>
+                      <p><small>Augsburg, Klinik Josefinum</small></p>
+                    </div>
+                    <div class="span4">
+                        <a href class="btn btn-small pull-right">Edit</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
           </div>
-      </form>
-    </div>
-    <h1>Jobcenter</h1>
-  </header>
-  <section id="content-core">
-     <div tal:content="context/Title">Title inserted here</div>
-  </section>
+          <div class="span3">
+            <aside id="sidebar">
+              <h4>Informationen</h4>
+                <p class="muted">
+                  <span i18n:translate="">Last changed:</span>
+                  <span tal:content="view/last_modified">12.12.2012</span>
+                </p>
+                <p>
+                  <a href="" class="btn btn-primary btn-large"
+                    rel="twipsy"
+                    data-placement="left"
+                    data-original-title="Add new job posting now"
+                    tal:attributes="href python:context_url + '/++add++jobtool.jobcontent.jobopening'">
+                    <i class="icon-list-alt"></i>
+                    Add job opening
+                  </a>
+                </p>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
     
   </metal:content-core>
 </metal:main>

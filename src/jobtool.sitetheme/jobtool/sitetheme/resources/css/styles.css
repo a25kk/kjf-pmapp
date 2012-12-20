@@ -6608,6 +6608,9 @@ body > header #main-nav .selected > a:focus {
   font-size: 24.5px;
   line-height: 20px;
 }
+.window .window-header p.discreet {
+  color: #eeeeee;
+}
 .window .window-header .btn {
   border-color: #000000;
 }
@@ -6638,6 +6641,9 @@ body > header #main-nav .selected > a:focus {
   border-right: 1px solid #555555;
   min-height: 500px;
   padding-bottom: 20px;
+}
+.window .window-content .window-column .window-column-content {
+  padding: 20px;
 }
 .window .window-content .tile {
   padding: 2px 10px;
