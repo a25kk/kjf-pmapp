@@ -10,10 +10,9 @@
 <metal:main fill-slot="body">
   <metal:content-core define-macro="body">
   <div id="content">
-    <div id="archive-view" class="archive-snippet-view"
-      tal:condition="view/has_snippet">
+    <div id="archive-view" class="archive-snippet-view">
       <section class="media"
-        tal:define="snippet view/compose_snippet">
+        tal:define="snippet view/get_snippet">
         <div class="media-object pull-right">
           <div class="thumb">
             <img tal:replace="structure snippet/image" />
