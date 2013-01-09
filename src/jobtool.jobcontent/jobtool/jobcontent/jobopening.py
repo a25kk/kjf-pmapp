@@ -1,3 +1,4 @@
+import json
 import datetime
 from Acquisition import aq_inner
 from five import grok
@@ -90,3 +91,86 @@ class View(grok.View):
         except KeyError:
             prettyname = selected
         return prettyname
+
+    def is_active(self):
+        context = aq_inner(self.context)
+        active = False
+        current_state = api.content.get_state(obj=context)
+        if current_state == 'published':
+            active = True
+        return active
+
+
+class JobPreviewSettings(grok.View):
+    grok.context(IJobOpening)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('update-job-preview')
+
+    def update(self):
+        context = aq_inner(self.context)
+        state = self.request.form.get('state', '')
+        results = {'results': None,
+                   'success': False,
+                   'message': ''
+                   }
+        if state:
+            if state == 'true':
+                setattr(context, 'preview', True)
+                results['success'] = True
+            else:
+                setattr(context, 'preview', False)
+                results['success'] = True
+            results['results'] = {
+                'state': 'changed',
+                'transitions': (),
+            }
+        self.results = results
+
+    def render(self):
+        results = self.results
+        self.request.response.setHeader('Content-Type',
+                                        'application/json; charset=utf-8')
+        return json.dumps(results)
+
+
+class JobStateTransition(grok.View):
+    grok.context(IJobOpening)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('update-job-state')
+
+    def update(self):
+        context = aq_inner(self.context)
+        state = self.request.form.get('state', '')
+        results = {'results': None,
+                   'success': False,
+                   'message': ''
+                   }
+        if state:
+            transition = 'publish'
+            if state == 'true':
+                transition = 'retract'
+            try:
+                api.content.transition(obj=context, transition=transition)
+                results['success'] = True
+            except api.exc.InvalidParameterError, e:
+                results['message'] = "%s" % e
+            results['results'] = {
+                'state': api.content.get_state(self.context),
+                'transitions': self.get_possible_transitions(self.context),
+            }
+        self.results = results
+
+    def render(self):
+        results = self.results
+        self.request.response.setHeader('Content-Type',
+                                        'application/json; charset=utf-8')
+        return json.dumps(results)
+
+    def get_possible_transitions(self, item):
+        """
+        Return the posible transitions for an item. This should
+        eventually get out of this tutorial, since its NASTY.
+        """
+        workflow_tool = api.portal.get_tool('portal_workflow')
+        items = workflow_tool.getTransitionsFor(item)
+        return [item['id'] for item in items]

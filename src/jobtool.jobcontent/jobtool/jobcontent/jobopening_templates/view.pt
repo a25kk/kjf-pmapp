@@ -51,7 +51,8 @@
                   <h5>Preview</h5>
                   <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
                     data-appui="preview-switch"
-                    tal:define="preview context/preview">
+                    tal:define="preview context/preview"
+                    tal:attributes="data-target string:${context_url}/@@update-job-preview">
                     <input type="checkbox" value="1" name="previewCheckbox" class="checkbox" checked="checked"
                         tal:attributes="checked python: preview and 'checked' or ''"
                        />
@@ -61,8 +62,13 @@
                 <hr />
                 <h5>Status</h5>
                 <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
-                  data-appui="state-switch">
-                  <input type="checkbox" value="1" name="stateCheckbox" class="checkbox" checked="checked" />
+                  data-appui="state-switch"
+                  tal:define="active view/is_active"
+                  tal:attributes="data-target string:${context_url}/@@update-job-state">
+                  <input type="checkbox" value="1" name="stateCheckbox"
+                    class="checkbox" checked="checked"
+                    tal:attributes="checked python:active and 'checked' or ''"
+                    />
                   <label class="check" for="stateCheckbox"></label>
                 </div>
                 <hr />
