@@ -74,7 +74,11 @@
                 <hr />
                 <h5>Kategory</h5>
                 <tal:cats tal:repeat="cat context/category">
-                  <span tal:content="cat" />
+                  <span tal:define="categoryname python:view.pretty_category(cat)"
+                    tal:content="categoryname"
+                    i18n:translate=""
+                    class="label"
+                    />
                 </tal:cats>
             </aside>
           </div>

@@ -92,6 +92,17 @@ class View(grok.View):
             prettyname = selected
         return prettyname
 
+    def pretty_category(self, category):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.jobCategory')
+        try:
+            vocabterm = records.getTerm(category)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = category
+        return prettyname
+
     def is_active(self):
         context = aq_inner(self.context)
         active = False
@@ -115,10 +126,10 @@ class JobPreviewSettings(grok.View):
                    }
         if state:
             if state == 'true':
-                setattr(context, 'preview', True)
+                setattr(context, 'preview', False)
                 results['success'] = True
             else:
-                setattr(context, 'preview', False)
+                setattr(context, 'preview', True)
                 results['success'] = True
             results['results'] = {
                 'state': 'changed',
