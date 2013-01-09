@@ -4,6 +4,8 @@ from plone import api
 
 from plone.directives import dexterity, form
 
+from zope.schema.vocabulary import getVocabularyRegistry
+
 from plone.namedfile.interfaces import IImageScaleTraversable
 
 from plone.app.contentlisting.interfaces import IContentListing
@@ -53,3 +55,15 @@ class View(grok.View):
         return dict(object_provides=obj_provides,
                     sort_on='modified',
                     sort_order='reverse')
+
+    def pretty_jobtype(self, jobtype):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.jobTypes')
+        selected = jobtype
+        try:
+            vocabterm = records.getTerm(selected)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = selected
+        return prettyname

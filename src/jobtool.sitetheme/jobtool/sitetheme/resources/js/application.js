@@ -22,7 +22,6 @@
                     success: function (data) {
                         var state,
                             transition;
-                        alert(data);
                         if (data.success) {
                             state = data.results.state;
                             transition = data.results.transitions[0];
@@ -56,7 +55,6 @@
                     method: "GET",
                     success: function (data) {
                         var state;
-                        alert(data);
                         if (data.success) {
                             state = data.results.state;
                         } else {
