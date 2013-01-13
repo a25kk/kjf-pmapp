@@ -1,3 +1,4 @@
+import json
 from five import grok
 from Acquisition import aq_inner
 from plone import api
@@ -10,6 +11,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 
 from plone.app.contentlisting.interfaces import IContentListing
 
+from Products.CMFCore.interfaces import IContentish
 from jobtool.jobcontent.jobopening import IJobOpening
 
 from jobtool.jobcontent import MessageFactory as _
@@ -67,3 +69,36 @@ class View(grok.View):
         except KeyError:
             prettyname = selected
         return prettyname
+
+
+class JobsCounterJSON(grok.View):
+    grok.context(IContentish)
+    grok.require('zope2.View')
+    grok.name('json-jobs-counter')
+
+    def render(self):
+        data = self.jobs_counter()
+        self.request.response.setHeader('Content-Type',
+                                        'application/json; charset=utf-8')
+        return json.dumps(data)
+
+    def jobs_counter(self):
+        active = self.get_data(state='published')
+        inactive = self.get_data(state='private')
+        counter = {'active_idx': len(active),
+                   'inactive_idx': len(inactive)}
+        return counter
+
+    def get_data(self, state=None):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        query = self.base_query()
+        if state is not None:
+            query['review_state'] = state
+        brains = catalog.searchResults(**query)
+        return brains
+
+    def base_query(self):
+        obj_provides = IJobOpening.__identifier__
+        return dict(object_provides=obj_provides,
+                    sort_on='modified',
+                    sort_order='reverse')

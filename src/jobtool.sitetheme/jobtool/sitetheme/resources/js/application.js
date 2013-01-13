@@ -21,10 +21,14 @@
                     method: "GET",
                     success: function (data) {
                         var state,
-                            transition;
+                            active,
+                            inactive;
                         if (data.success) {
                             state = data.results.state;
-                            transition = data.results.transitions[0];
+                            active = data.results.counter[0];
+                            inactive = data.results.counter[1];
+                            $('#counter-active').text(active);
+                            $('#counter-inactive').text(inactive);
                         } else {
                             alert(error_msg + "\n\nError:\n" + data.messages);
                         }
