@@ -85,7 +85,7 @@
                     rel="twipsy"
                     data-placement="left"
                     data-original-title="Add new job posting now"
-                    tal:attributes="href python:context_url + '/++add++jobtool.jobcontent.jobopening'">
+                    tal:attributes="href python:context_url + '/@@add-job'">
                     Add job opening
                   </a>
                 </p>
