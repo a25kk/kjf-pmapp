@@ -167,9 +167,24 @@ body > header {
     h1 {
       font-size: @baseFontSize * 1.75;
       line-height: @baseLineHeight;
+      small {
+        font-size: @baseFontSize;
+        .label {
+          font-weight: normal;
+        }
+        a {
+          color: @white;
+          font-weight: normal;
+        }
+      }
     }
     p.discreet {
       color: @grayLighter;
+      a.link-clear-filter {
+        display: inline-block;
+        //margin-left:@baseLineHeight;
+        color: @appBrown;
+      }
     }
     .btn {
       border-color: @black;
@@ -258,6 +273,9 @@ body > header {
             color: @black;
             border-right: 0px solid @gray;
         }
+      }
+      input.dial {
+        text-shadow: none;
       }
     }
   }

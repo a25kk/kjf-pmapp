@@ -34,14 +34,37 @@ class View(grok.View):
 
     def update(self):
         self.has_jobs = len(self.get_data()) > 0
+        self.index_active = len(self.active_jobs())
+        self.index_inactive = len(self.inactive_jobs())
+        self.has_filter = self.request.get('filter', None)
+
+    def filter_info(self):
+        info = {}
+        if self.has_filter:
+            value = self.request.get('filter')
+            if value == 'published':
+                info['state'] = _(u"Active")
+                info['klass'] = 'label label-success'
+            else:
+                info['state'] = _(u"Inactive")
+                info['klass'] = 'label label-important'
+        return info
 
     def active_jobs(self):
         jobs = self.get_data(state='published')
-        return len(jobs)
+        return jobs
 
     def inactive_jobs(self):
         jobs = self.get_data(state='private')
-        return len(jobs)
+        return jobs
+
+    def job_listing(self):
+        statefilter = self.request.get('filter', None)
+        if statefilter is None:
+            jobs = self.get_data()
+        else:
+            jobs = self.get_data(state=statefilter)
+        return jobs
 
     def get_data(self, state=None):
         catalog = api.portal.get_tool(name='portal_catalog')

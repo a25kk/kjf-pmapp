@@ -10,6 +10,7 @@
             return;
         }
         $('span[data-appui="prettydate"]').timeago();
+        $('input[data-appui="knob"]').knob();
         var statechanger = $('div[data-appui="state-switch"]');
         var statechanger_url = $(statechanger).data('target');
         $('div[data-appui="state-switch"]').toggleSlide({

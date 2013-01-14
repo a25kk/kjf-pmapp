@@ -12,7 +12,7 @@
 
     <section id="jobcenter-dashboard"
       tal:define="context_url context/absolute_url;
-                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
         <div class="pull-right">
           <form action=".">
@@ -22,12 +22,24 @@
               </div>
           </form>
         </div>
-        <h1>Jobcenter</h1>
+        <h1>Jobcenter
+          <small tal:condition="view/has_filter"
+            tal:define="info view/filter_info">
+            <span tal:attributes="class info/klass"
+              tal:content="info/state" />
+          </small>
+        </h1>
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
               <span tal:content="time"
                  tal:attributes="data-appui string:prettydate;
                                  title time" />
+          <a href="" tal:condition="view/has_filter"
+            tal:attributes="href context_url"
+            class="pull-right link-clear-filter">
+              <i class="icon-remove-circle"></i>
+              <span i18n:translate="">Clear filter</span>
+          </a>
         </p>
       </header>
       <article id="content-core">
@@ -35,34 +47,45 @@
           <div class="span9">
             <div class="window-column">
               <tal:items tal:condition="view/has_jobs">
-                <div class="tile" tal:repeat="item view/get_data">
-                  <div class="row-fluid">
-                    <div class="span2">
-                      <h4 tal:define="date item/start"
-                          tal:content="python:toLocalizedTime(date, long_format=False)">
-                          16.11.2012
-                      </h4>
-                      <p><span class="label" tal:content="item/review_state"
-                          i18n:translate="">
-                          Active/Inactive</span></p>
-                    </div>
-                    <div class="span6">
-                      <h4>
-                        <span tal:replace="item/Title">
-                          Heilpädagogin/en oder Sozialpädagogin/en</span>
-                        <small tal:define="job_type item/jobtype"
-                          tal:content="python:view.pretty_jobtype(job_type)"
-                          i18n:translate="">Aktiv</small>
-                      </h4>
-                      <p><small><span tal:content="item/location">Augsburg</span>,
-                          <span tal:content="item/institution">Klinik Josefinum</span>
-                          </small>
-                      </p>
-                    </div>
-                    <div class="span4">
-                        <a href="" class="btn btn-mini pull-right"
-                          i18n:translate=""
-                          tal:attributes="href item/getURL">Edit</a>
+                <div class="tile-wrapper"
+                  tal:define="items view/job_listing;
+                              items_count python:len(items)">
+                  <div class="alert" tal:condition="view/has_filter">
+                    <strong tal:define="info view/filter_info">
+                      <span tal:replace="info/state" />
+                      Jobs:
+                    </strong>
+                    <span tal:replace="items_count" />
+                  </div>
+                  <div class="tile" tal:repeat="item items">
+                    <div class="row-fluid">
+                      <div class="span2">
+                        <h4 tal:define="date item/start"
+                            tal:content="python:toLocalizedTime(date, long_format=False)">
+                            16.11.2012
+                        </h4>
+                        <p><span class="label" tal:content="item/review_state"
+                            i18n:translate="">
+                            Active/Inactive</span></p>
+                      </div>
+                      <div class="span6">
+                        <h4>
+                          <span tal:replace="item/Title">
+                            Heilpädagogin/en oder Sozialpädagogin/en</span>
+                          <small tal:define="job_type item/jobtype"
+                            tal:content="python:view.pretty_jobtype(job_type)"
+                            i18n:translate="">Aktiv</small>
+                        </h4>
+                        <p><small><span tal:content="item/location">Augsburg</span>,
+                            <span tal:content="item/institution">Klinik Josefinum</span>
+                            </small>
+                        </p>
+                      </div>
+                      <div class="span4">
+                          <a href="" class="btn btn-mini pull-right"
+                            i18n:translate=""
+                            tal:attributes="href item/getURL">Edit</a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -89,6 +112,19 @@
                     Add job opening
                   </a>
                 </p>
+                <hr />
+                <div class="panel" tal:define="active_idx view/index_active">
+                  <h5 i18n:translate="">Currently active job openings</h5>
+                  <input type="text"
+                    value="75"
+                    class="dial"
+                    data-appui="knob"
+                    data-thickness=".4"
+                    data-fgColor="#222222"
+                    data-bgColor="#cccccc"
+                    data-readOnly="true"
+                    tal:attributes="value active_idx">
+                </div>
             </aside>
           </div>
         </div>

@@ -6899,8 +6899,22 @@ body > header #main-nav .selected > a:focus {
   font-size: 24.5px;
   line-height: 20px;
 }
+.window .window-header h1 small {
+  font-size: 14px;
+}
+.window .window-header h1 small .label {
+  font-weight: normal;
+}
+.window .window-header h1 small a {
+  color: #ffffff;
+  font-weight: normal;
+}
 .window .window-header p.discreet {
   color: #eeeeee;
+}
+.window .window-header p.discreet a.link-clear-filter {
+  display: inline-block;
+  color: #57595c;
 }
 .window .window-header .btn {
   border-color: #000000;
@@ -7054,6 +7068,9 @@ body > header #main-nav .selected > a:focus {
   background: #f5f5f5;
   color: #000000;
   border-right: 0px solid #555555;
+}
+.window .window-content #sidebar input.dial {
+  text-shadow: none;
 }
 #login_form {
   width: 300px;
