@@ -30,25 +30,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href=""
-                                tal:attributes="href python:portal_url+'/presscenter/'">
+                                tal:attributes="href python:portal_url+'/jobcenter/@@overview'">
                                 <i class="icon-list" />
                                 &Uuml;bersicht
                                 </a>
                             </li>
                             <li><a href=""
-                                    tal:attributes="href python:portal_url+'/presscenter/kontakte'">
-                                <i class="icon-list-alt" />
-                                Adressen
-                                </a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
-                                <i class="icon-user" />
-                                Redakteure
-                                </a>
-                            </li>
-                            <li><a href=""
-                                tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
+                                tal:attributes="href python:portal_url+'/jobcenter/@@global-settings'">
                                 <i class="icon-align-justify" />
                                     Einstellungen
                                 </a>

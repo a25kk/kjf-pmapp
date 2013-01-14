@@ -94,6 +94,39 @@ class View(grok.View):
         return prettyname
 
 
+class Overview(grok.View):
+    grok.context(IJobCenter)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('overview')
+
+    def get_percental_value(self, index):
+        jobs = self.jobs_index()
+        one_percent = float(jobs) / 100
+        if index == '0':
+            index_value = index
+        else:
+            index_value = index / one_percent
+        return str(index_value)
+
+    def jobs_index(self):
+        context = aq_inner(self.context)
+        return len(context.items())
+
+    def active_index(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')(
+            portal_type='jobtool.jobcontent.jobopening',
+            review_state='published')
+        return len(items)
+
+    def inactive_index(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')(
+            portal_type='jobtool.jobcontent.jobopening',
+            review_state='private')
+        return len(items)
+
+
 class JobsCounterJSON(grok.View):
     grok.context(IContentish)
     grok.require('zope2.View')

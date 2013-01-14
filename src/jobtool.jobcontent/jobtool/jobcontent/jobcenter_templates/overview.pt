@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="jobtool.jobcontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <section id="jobcenter-dashboard"
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+      <header id="page-header">
+        <div class="pull-right">
+          <form action=".">
+              <div class="input-append">
+                <input class="span2" id="appendedInputButton" type="text">
+                <input class="btn" type="submit" value="Search" />
+              </div>
+          </form>
+        </div>
+        <h1>Jobcenter
+          <small i18n:translate="">Overview
+          </small>
+        </h1>
+        <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
+      </header>
+      <article id="content-core">
+        <div class="row-fluid">
+          <div class="span9">
+            <div class="window-column">
+              <div class="window-column-content">
+                <div class="row-fluid">
+                  <div class="span6">
+                    <div class="panel" tal:define="active_idx view/active_index">
+                      <h5 i18n:translate="">Active jobs</h5>
+                      <input type="text"
+                        value="75"
+                        class="dial"
+                        data-appui="knob"
+                        data-thickness=".4"
+                        data-fgColor="#468847"
+                        data-bgColor="#ffffff"
+                        data-readOnly="true"
+                        tal:attributes="value active_idx">
+                        <hr>
+                      <div class="progress progress-success"
+                        tal:define="progress python:view.get_percental_value(active_idx)">
+                        <div class="bar"
+                          tal:attributes="style python:'width: ' + progress + '%'"
+                          tal:content="string:${progress}%">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="statuspanel">
+                      <div class="top success">
+                        <i class="icon-circle icon-4x"></i>
+                        <h6>Aktiv</h6>
+                      </div>
+                      <div class="bottom">
+                        <h2 tal:content="view/active_index">100</h2>
+                        <h6>Jobs</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="span6">
+                    <div class="panel" tal:define="inactive_idx view/inactive_index">
+                      <h5 i18n:translate="">Inactive jobs</h5>
+                      <input type="text"
+                        value="75"
+                        class="dial"
+                        data-appui="knob"
+                        data-thickness=".4"
+                        data-fgColor="#b94a48"
+                        data-bgColor="#ffffff"
+                        data-readOnly="true"
+                        tal:attributes="value inactive_idx">
+                        <hr>
+                      <div class="progress progress-danger"
+                        tal:define="progress python:view.get_percental_value(inactive_idx)">
+                        <div class="bar"
+                          tal:attributes="style python:'width: ' + progress + '%'"
+                          tal:content="string:${progress}%">
+                        </div>
+                      </div>                    
+                    </div>
+                    <div class="statuspanel">
+                      <div class="top danger">
+                        <i class="icon-circle-blank icon-4x"></i>
+                        <h6>Inaktiv</h6>
+                      </div>
+                      <div class="bottom">
+                        <h2 tal:content="view/inactive_index">100</h2>
+                        <h6>Jobs</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <aside id="sidebar">
+              <h4>Informationen</h4>
+                <p>
+                  <a href="" class="btn btn-primary btn-large"
+                    rel="twipsy"
+                    data-placement="left"
+                    data-original-title="Add new job posting now"
+                    tal:attributes="href python:context_url + '/@@add-job'">
+                    Add job opening
+                  </a>
+                </p>
+                <hr />
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

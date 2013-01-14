@@ -54,7 +54,7 @@ class JobAddForm(form.SchemaEditForm):
         self.actions['save'].addClass("btn btn-primary")
         self.actions['cancel'].addClass("btn")
 
-    @button.buttonAndHandler(_(u"Post job opening"), name="save")
+    @button.buttonAndHandler(_(u"Add job opening"), name="save")
     def handleApply(self, action):
         data, errors = self.extractData()
         if errors:
@@ -75,11 +75,11 @@ class JobAddForm(form.SchemaEditForm):
         container = context
         item = createContentInContainer(
             container,
-            'chromsystems.shopcontent.orderableitem',
+            'jobtool.jobcontent.jobopening',
             checkConstraints=True, **data)
         modified(item)
         item.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(
-            _(u"A new jon opening has successfully been added"),
+            _(u"A new job opening has successfully been added"),
             type='info')
         return self.request.response.redirect(context.absolute_url() + '/view')

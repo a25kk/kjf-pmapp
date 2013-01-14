@@ -38,7 +38,7 @@
               <div class="window-column-content">
                 <a href="#" class="btn btn-primary btn-small pull-right">
                   Edit</a>
-                <div tal:content="structure context/text/output" />
+                <div tal:condition="context/text" tal:content="structure context/text/output" />
               </div>
             </div>
           </div>
