@@ -7499,6 +7499,7 @@ body > header #main-nav .selected > a:focus {
   color: #FFF;
   font-weight: normal;
   text-transform: uppercase;
+  font-size: 12px;
 }
 .statuspanel .bottom {
   padding-top: 20px;
