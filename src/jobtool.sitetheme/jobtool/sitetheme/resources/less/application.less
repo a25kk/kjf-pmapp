@@ -274,11 +274,12 @@ body > header {
             border-right: 0px solid @gray;
         }
       }
-      input.dial {
-        box-shadow: none;
-      }
     }
   }
+}
+
+input.dial {
+  box-shadow: none;
 }
 
 /* ============== panels ============== */
@@ -334,11 +335,13 @@ body > header {
   /*    box-shadow: inset 0 0 10px lighten($warning, 8%);
       border: 1px solid darken($warning, 20%)*/ }
 .statuspanel .success, .statuspanel .success h6 {
-  background-color: #4cb158;
-  /*    box-shadow: inset 0 0 10px lighten($success, 8%);
-      border: 1px solid darken($success, 20%)*/ }
+  background-color: @btnSuccessBackground;
+  /*    box-shadow: inset 0 0 10px lighten(@successText, 8%);
+      border: 1px solid darken(@successText, 20%)*/
+}
 .statuspanel .danger, .statuspanel .danger h6 {
-  background-color: #ea494a;
+  //background-color: #ea494a;
+  background: @btnDangerBackground;
   /*    box-shadow: inset 0 0 10px lighten($danger, 8%);
       border: 1px solid darken($danger, 20%)*/ }
 .statuspanel .info, .statuspanel .info h6 {
@@ -354,6 +357,9 @@ body > header {
   /*    box-shadow: inset 0 0 10px lighten($purple, 8%);
       border: 1px solid darken($purple, 20%)*/ }
 
+#sidebar .statuspanel {
+  margin-top: @baseLineHeight;
+}
 
 #login_form {
   width: 300px;

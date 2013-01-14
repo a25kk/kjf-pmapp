@@ -34,12 +34,6 @@
               <span tal:content="time"
                  tal:attributes="data-appui string:prettydate;
                                  title time" />
-          <a href="" tal:condition="view/has_filter"
-            tal:attributes="href context_url"
-            class="pull-right link-clear-filter">
-              <i class="icon-remove-circle"></i>
-              <span i18n:translate="">Clear filter</span>
-          </a>
         </p>
       </header>
       <article id="content-core">
@@ -56,6 +50,12 @@
                       Jobs:
                     </strong>
                     <span tal:replace="items_count" />
+                    <a href=""
+                      tal:attributes="href context_url"
+                      class="pull-right link-clear-filter">
+                        <i class="icon-remove-circle"></i>
+                        <span i18n:translate="">Clear filter</span>
+                    </a>
                   </div>
                   <div class="tile" tal:repeat="item items">
                     <div class="row-fluid">

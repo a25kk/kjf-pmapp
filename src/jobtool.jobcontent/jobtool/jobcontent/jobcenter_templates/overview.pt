@@ -15,17 +15,10 @@
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
         <div class="pull-right">
-          <form action=".">
-              <div class="input-append">
-                <input class="span2" id="appendedInputButton" type="text">
-                <input class="btn" type="submit" value="Search" />
-              </div>
-          </form>
+          <h4 i18n:translate="">Overview
+          </h4>
         </div>
-        <h1>Jobcenter
-          <small i18n:translate="">Overview
-          </small>
-        </h1>
+        <h1>Jobcenter</h1>
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
               <span tal:content="time"
@@ -41,7 +34,16 @@
                 <div class="row-fluid">
                   <div class="span6">
                     <div class="panel" tal:define="active_idx view/active_index">
-                      <h5 i18n:translate="">Active jobs</h5>
+                      <div class="statuspanel">
+                        <div class="top success">
+                          <i class="icon-circle icon-4x"></i>
+                          <h6>Aktiv</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/active_index">100</h2>
+                          <h6>Jobs</h6>
+                        </div>
+                      </div>
                       <input type="text"
                         value="75"
                         class="dial"
@@ -51,7 +53,8 @@
                         data-bgColor="#ffffff"
                         data-readOnly="true"
                         tal:attributes="value active_idx">
-                        <hr>
+                        <hr class="visualClear">
+                      <h4>Anteil aktive Stellenangebote</h4>
                       <div class="progress progress-success"
                         tal:define="progress python:view.get_percental_value(active_idx)">
                         <div class="bar"
@@ -59,21 +62,30 @@
                           tal:content="string:${progress}%">
                         </div>
                       </div>
-                    </div>
-                    <div class="statuspanel">
-                      <div class="top success">
-                        <i class="icon-circle icon-4x"></i>
-                        <h6>Aktiv</h6>
-                      </div>
-                      <div class="bottom">
-                        <h2 tal:content="view/active_index">100</h2>
-                        <h6>Jobs</h6>
-                      </div>
+                      <p>
+                        <a href="" class="btn btn-success"
+                          data-appui="tooltip"
+                          data-placement="left"
+                          data-original-title="Liste aller inaktiven Stellenangebote"
+                          tal:attributes="href python:context_url + '?filter=published'">
+                          Aktive Stellenangebote zeigen
+                        </a>
+                      </p>
+                      <hr />
                     </div>
                   </div>
                   <div class="span6">
                     <div class="panel" tal:define="inactive_idx view/inactive_index">
-                      <h5 i18n:translate="">Inactive jobs</h5>
+                      <div class="statuspanel">
+                        <div class="top danger">
+                          <i class="icon-circle-blank icon-4x"></i>
+                          <h6>Inaktiv</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/inactive_index">100</h2>
+                          <h6>Jobs</h6>
+                        </div>
+                      </div>
                       <input type="text"
                         value="75"
                         class="dial"
@@ -83,24 +95,25 @@
                         data-bgColor="#ffffff"
                         data-readOnly="true"
                         tal:attributes="value inactive_idx">
-                        <hr>
+                        <hr class="visualClear"/>
+                      <h4>Anteil inaktive Stellenangebote</h4>
                       <div class="progress progress-danger"
                         tal:define="progress python:view.get_percental_value(inactive_idx)">
                         <div class="bar"
                           tal:attributes="style python:'width: ' + progress + '%'"
                           tal:content="string:${progress}%">
                         </div>
-                      </div>                    
-                    </div>
-                    <div class="statuspanel">
-                      <div class="top danger">
-                        <i class="icon-circle-blank icon-4x"></i>
-                        <h6>Inaktiv</h6>
                       </div>
-                      <div class="bottom">
-                        <h2 tal:content="view/inactive_index">100</h2>
-                        <h6>Jobs</h6>
-                      </div>
+                      <p>
+                        <a href="" class="btn btn-danger"
+                          data-appui="tooltip"
+                          data-placement="left"
+                          data-original-title="Liste aller inaktiven Stellenangebote"
+                          tal:attributes="href python:context_url + '?filter=private'">
+                          Inaktive Stellenangebote zeigen
+                        </a>
+                      </p>
+                      <hr />                   
                     </div>
                   </div>
                 </div>
@@ -108,15 +121,34 @@
             </div>
           </div>
           <div class="span3">
-            <aside id="sidebar">
-              <h4>Informationen</h4>
+            <aside id="sidebar"
+              tal:define="preview_idx string:0">
+              <div class="statuspanel">
+                <div class="top">
+                  <i class="icon-eye-open icon-4x"></i>
+                  <h6>Preview</h6>
+                </div>
+                <div class="bottom">
+                  <h2>0</h2>
+                  <h6>Jobs</h6>
+                </div>
+              </div>
+              <hr class="visualClear" />
+              <h4>Anteil Preview</h4>
+              <div class="progress"
+                tal:define="progress python:view.get_percental_value(preview_idx)">
+                <div class="bar"
+                  tal:attributes="style python:'width: ' + progress + '%'"
+                  tal:content="string:${progress}%">
+                </div>
+              </div>     
                 <p>
-                  <a href="" class="btn btn-primary btn-large"
-                    rel="twipsy"
+                  <a href="" class="btn btn-primary"
+                    data-appui="tooltip"
                     data-placement="left"
                     data-original-title="Add new job posting now"
                     tal:attributes="href python:context_url + '/@@add-job'">
-                    Add job opening
+                    Show job preview
                   </a>
                 </p>
                 <hr />
