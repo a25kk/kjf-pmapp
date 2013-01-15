@@ -52,6 +52,10 @@ class IJobEdit(form.Schema):
         ),
         required=True,
     )
+
+
+class IJobSummaryEdit(form.Schema):
+
     text = RichText(
         title=_(u"Job Description"),
         description=_(u"Enter Summary of the job opening"),
@@ -88,6 +92,81 @@ class JobEditForm(form.SchemaEditForm):
         context = aq_inner(self.context)
         IStatusMessage(self.request).addStatusMessage(
             _(u"Orderable item edit has been cancelled."),
+            type='info')
+        return self.request.response.redirect(context.absolute_url())
+
+    def getContent(self):
+        context = aq_inner(self.context)
+        fti = getUtility(IDexterityFTI,
+                         name='jobtool.jobcontent.jobopening')
+        schema = fti.lookupSchema()
+        fields = getFieldsInOrder(schema)
+        data = {}
+        for key, value in fields:
+            data[key] = getattr(context, key, value)
+        return data
+
+    def applyChanges(self, data):
+        context = aq_inner(self.context)
+        fti = getUtility(IDexterityFTI,
+                         name='jobtool.jobcontent.jobopening')
+        schema = fti.lookupSchema()
+        fields = getFieldsInOrder(schema)
+        for key, value in fields:
+            try:
+                new_value = data[key]
+                setattr(context, key, new_value)
+            except KeyError:
+                continue
+        modified(context)
+        context.reindexObject(idxs='modified')
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"The job opening has successfully been updated"),
+            type='info')
+        return self.request.response.redirect(context.absolute_url() + '/view')
+
+    def pretty_jobtype(self):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.jobTypes')
+        selected = getattr(context, 'jobtype', None)
+        try:
+            vocabterm = records.getTerm(selected)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = selected
+        return prettyname
+
+
+class JobSummaryEditForm(form.SchemaEditForm):
+    grok.context(IJobOpening)
+    grok.require('cmf.AddPortalContent')
+    grok.name('edit-job-summary')
+
+    schema = IJobSummaryEdit
+    ignoreContext = False
+    css_class = 'shop-form'
+
+    label = _(u"Edit job opening")
+
+    def updateActions(self):
+        super(JobSummaryEditForm, self).updateActions()
+        self.actions['save'].addClass("btn btn-primary")
+        self.actions['cancel'].addClass("btn")
+
+    @button.buttonAndHandler(_(u"Save"), name="save")
+    def handleApply(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        self.applyChanges(data)
+
+    @button.buttonAndHandler(_(u"cancel"))
+    def handleCancel(self, action):
+        context = aq_inner(self.context)
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"Summary edit has been cancelled."),
             type='info')
         return self.request.response.redirect(context.absolute_url())
 

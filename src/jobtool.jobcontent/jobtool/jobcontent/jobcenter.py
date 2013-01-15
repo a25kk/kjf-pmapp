@@ -96,6 +96,12 @@ class View(grok.View):
             prettyname = selected
         return prettyname
 
+    def get_state_info(self, state):
+        info = _(u"Inactive")
+        if state == 'published':
+            info = _(u"Active")
+        return info
+
 
 class Overview(grok.View):
     grok.context(IJobCenter)

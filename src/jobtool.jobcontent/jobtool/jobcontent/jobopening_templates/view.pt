@@ -88,6 +88,11 @@
                       />
                   </a>
                 </tal:cats>
+                <p class="text-warning" tal:condition="not:context/category">
+                  <span i18n:translate="">There are no categories asigned yet.</span><br />
+                  <a href="" tal:attributes="href python:context_url + '/@@edit-job-categorization'"
+                    i18n:translate="">Add categories</a>
+                </p>
             </aside>
           </div>
         </div>

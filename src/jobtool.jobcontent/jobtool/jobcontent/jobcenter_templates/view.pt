@@ -14,10 +14,14 @@
       tal:define="context_url context/absolute_url;
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
-        <div class="pull-right">
-          <form action=".">
+        <div class="pull-right"
+          tal:define="navigation_root_url context_url">
+          <form action="."
+            tal:attributes="action python:context_url + '/@@search'">
               <div class="input-append">
-                <input class="span2" id="appendedInputButton" type="text">
+                <input class="span3" id="SearchableText"
+                  name="SearchableText"
+                  type="text">
                 <input class="btn" type="submit" value="Search" />
               </div>
           </form>
@@ -64,8 +68,9 @@
                             tal:content="python:toLocalizedTime(date, long_format=False)">
                             16.11.2012
                         </h4>
-                        <p><span class="label" tal:content="item/review_state"
-                            i18n:translate="">
+                        <p><span class="label"
+                            tal:define="state item/review_state"
+                            tal:content="python:view.get_state_info(state)">
                             Active/Inactive</span></p>
                       </div>
                       <div class="span6">
@@ -91,10 +96,11 @@
                 </div>
               </tal:items>
               <tal:noitems tal:condition="not:view/has_jobs">
-                <h2>Welcome to the Jobcenter</h2>
-                <p class="lead">In order to get you started with the tool, you
+                <h2 i18n:translate="">Welcome to the Jobcenter</h2>
+                <p class="lead" i18n:translate="">In order to get you started with the tool, you
                   should start adding a jobopening:</p>
-                <p><a href="#" class="btn btn-primary btn-large">
+                <p><a href="#" class="btn btn-primary btn-large"
+                  i18n:translate="">
                   Add new job posting now</a>
                 </p>
               </tal:noitems>
@@ -126,6 +132,7 @@
                     rel="twipsy"
                     data-placement="left"
                     data-original-title="Add new job posting now"
+                    i18n:translate=""
                     tal:attributes="href python:context_url + '/@@add-job'">
                     Add job opening
                   </a>
