@@ -26,6 +26,10 @@ class ActionBar(grok.Viewlet):
                                             name='plone_portal_state')
         self.anonymous = self.portal_state.anonymous()
 
+    def jobcenter(self):
+        portal = api.portal.get()
+        return portal['jobcenter']
+
     def active_jobs(self):
         jobs = self.get_data(state='published')
         return len(jobs)

@@ -143,11 +143,12 @@ input.datetime-widget,
 /* Emulates the styling from the h1 tag */
 #content .field input[type="text"][name$=".title"],
 #form-widgets-IBasic-title,
+#formfield-form-widgets-title input,
 #archetypes-fieldname-title input {
     height: @baseLineHeight * 1.5;
     line-height: @baseLineHeight * 1.5;
     font-size: @baseLineHeight * 1.25;
-    font-weight: bold;
+    //font-weight: bold;
     width: 100%;
     color: @gray;
 }
@@ -162,11 +163,11 @@ input.datetime-widget,
     width: 100%;
 }
 
-#content-core label {
+#content-core label,
+#document-content label {
     font-weight: bold;
     span.formHelp {
-        display: inline-block;
-        .ie7-inline-block();
+        display: block;
         .muted();
     }
 }

@@ -14,15 +14,8 @@
       tal:define="context_url context/absolute_url;
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime">
       <header id="page-header">
-        <div class="pull-right">
-            <h4 tal:content="view/pretty_jobtype"
-              i18n:translate=""
-              />
-            <h5 tal:define="date context/start"
-              tal:content="python:toLocalizedTime(date, long_format=False)" />
-        </div>
 
-        <h1 tal:content="context/Title">Title</h1>
+        <h1 i18n:translate="">Edit Job Categries</h1>
 
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
@@ -36,15 +29,14 @@
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
-                <a href="#" class="btn btn-primary btn-small pull-right"
-                  tal:attributes="href python:context_url + '/@@edit-job-opening'">
-                  Edit</a>
-                <div tal:condition="context/text" tal:content="structure context/text/output" />
+                <div id="xcontent-core">
+                  <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+                </div>
               </div>
             </div>
           </div>
           <div class="span3">
-            <aside id="sidebar">
+            <aside id="sidebar" tal:content="nothing">
               <h4 tal:content="context/institution" />
               <h5 tal:content="context/location" />
                 <hr />
@@ -73,20 +65,13 @@
                   <label class="check" for="stateCheckbox"></label>
                 </div>
                 <hr />
-                
                 <h5>Kategory</h5>
                 <tal:cats tal:repeat="cat context/category">
-                  <a href="" class=""
-                    data-appui="tooltip"
-                    data-placement="top"
-                    data-original-title="Kategorien bearbeiten"
-                    tal:attributes="href python:context_url + '/@@edit-job-categorization'">
-                    <span tal:define="categoryname python:view.pretty_category(cat)"
-                      tal:content="categoryname"
-                      i18n:translate=""
-                      class="label"
-                      />
-                  </a>
+                  <span tal:define="categoryname python:view.pretty_category(cat)"
+                    tal:content="categoryname"
+                    i18n:translate=""
+                    class="label"
+                    />
                 </tal:cats>
             </aside>
           </div>

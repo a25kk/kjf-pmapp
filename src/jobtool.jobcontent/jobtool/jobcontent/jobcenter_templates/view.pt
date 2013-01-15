@@ -102,8 +102,26 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <h4>Informationen</h4>
-                <p>
+                <div class="stats widget">
+                  <div class="stat inverse">
+                    <h2 tal:content="view/jobs_index">72</h2>
+                    <h6>Jobs</h6>
+                  </div>
+                </div>
+                <div class="stats panel" tal:define="active_idx view/index_active">
+                  <h5 i18n:translate="">Aktive Stellenangebote</h5>
+                  <input type="text"
+                    value="75"
+                    class="dial"
+                    data-appui="knob"
+                    data-thickness=".4"
+                    data-fgColor="#222222"
+                    data-bgColor="#61858C"
+                    data-readOnly="true"
+                    tal:attributes="value active_idx">
+                </div>
+                <hr />
+                <p class="stats">
                   <a href="" class="btn btn-primary btn-large"
                     rel="twipsy"
                     data-placement="left"
@@ -113,18 +131,6 @@
                   </a>
                 </p>
                 <hr />
-                <div class="panel" tal:define="active_idx view/index_active">
-                  <h5 i18n:translate="">Currently active job openings</h5>
-                  <input type="text"
-                    value="75"
-                    class="dial"
-                    data-appui="knob"
-                    data-thickness=".4"
-                    data-fgColor="#222222"
-                    data-bgColor="#cccccc"
-                    data-readOnly="true"
-                    tal:attributes="value active_idx">
-                </div>
             </aside>
           </div>
         </div>

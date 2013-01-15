@@ -66,8 +66,8 @@
         <replace css:content="#nav-bar" css:theme="#nav-bar" />
 
         <copy attributes="href" css:content='#portal-logo' css:theme="#brandname" />
-        <replace css:content-children="#subnavbar"
-            css:theme-children="#subnavbar" />
+        <replace css:content-children="#actionbar"
+            css:theme-children="#actionbar" />
         
         <after css:content="#portal-personaltools a" css:theme-children="#site-actions"
             css:if-content="#anon-personalbar" />

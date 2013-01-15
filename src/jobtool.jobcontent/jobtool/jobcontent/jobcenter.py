@@ -50,6 +50,9 @@ class View(grok.View):
                 info['klass'] = 'label label-important'
         return info
 
+    def jobs_index(self):
+        return len(self.job_listing())
+
     def active_jobs(self):
         jobs = self.get_data(state='published')
         return jobs

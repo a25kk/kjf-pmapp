@@ -49,7 +49,7 @@
                         class="dial"
                         data-appui="knob"
                         data-thickness=".4"
-                        data-fgColor="#468847"
+                        data-fgColor="#607080"
                         data-bgColor="#ffffff"
                         data-readOnly="true"
                         tal:attributes="value active_idx">
@@ -65,7 +65,7 @@
                       <p>
                         <a href="" class="btn btn-success"
                           data-appui="tooltip"
-                          data-placement="left"
+                          data-placement="top"
                           data-original-title="Liste aller inaktiven Stellenangebote"
                           tal:attributes="href python:context_url + '?filter=published'">
                           Aktive Stellenangebote zeigen
@@ -91,7 +91,7 @@
                         class="dial"
                         data-appui="knob"
                         data-thickness=".4"
-                        data-fgColor="#b94a48"
+                        data-fgColor="#D35E5E"
                         data-bgColor="#ffffff"
                         data-readOnly="true"
                         tal:attributes="value inactive_idx">
@@ -107,7 +107,7 @@
                       <p>
                         <a href="" class="btn btn-danger"
                           data-appui="tooltip"
-                          data-placement="left"
+                          data-placement="top"
                           data-original-title="Liste aller inaktiven Stellenangebote"
                           tal:attributes="href python:context_url + '?filter=private'">
                           Inaktive Stellenangebote zeigen
@@ -145,7 +145,7 @@
                 <p>
                   <a href="" class="btn btn-primary"
                     data-appui="tooltip"
-                    data-placement="left"
+                    data-placement="top"
                     data-original-title="Add new job posting now"
                     tal:attributes="href python:context_url + '/@@add-job'">
                     Show job preview

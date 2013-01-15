@@ -11,6 +11,26 @@
         }
         $('span[data-appui="prettydate"]').timeago();
         $('input[data-appui="knob"]').knob();
+        $('a[data-appui="tooltip"]').tooltip();
+        $('#form-widgets-category').chosen();
+        $('a.popoverForm').prepOverlay({
+            subtype: 'ajax',
+            filter: common_content_filter,
+            formselector: '#form',
+            closeselector: '.overlayCloseAction, [name="form.button.Cancel"]',
+            noform: 'reload',
+            config: {
+                closeOnClick: false,
+                top: 80,
+                mask: {
+                    color: '#000000',
+                    opacity: 0.8
+                }
+            },
+            redirect: function () {
+                return location.href;
+            }
+        });
         var statechanger = $('div[data-appui="state-switch"]');
         var statechanger_url = $(statechanger).data('target');
         $('div[data-appui="state-switch"]').toggleSlide({

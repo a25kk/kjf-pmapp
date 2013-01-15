@@ -3,12 +3,13 @@
     tal:define="context_url viewlet/context_url;
                 context_state context/@@plone_context_state">
     <div class="row-fluid">
-      <div class="span2">
-        <h1 class="brandname">
+      <div class="span4">
+        <h2 class="brandname">
           <a href="/" id="brandname"
-            tal:attributes="href context_state/canonical_object_url">
+            tal:define="jobcenter viewlet/jobcenter"
+            tal:attributes="href jobcenter/absolute_url">
             Arbeitsplatz</a>
-          </h1>
+          </h2>
       </div>
       <div class="span8" id="subnavbar">
         <div class="navbar">
@@ -27,9 +28,6 @@
                 inaktive Stellenangebote</a></li>
             </ul>
             </div>
-      </div>
-      <div class="span2">
-        <a href="#" id="customer-logo">KJF PressApp</a>
       </div>
     </div>
 </section>

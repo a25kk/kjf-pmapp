@@ -8,10 +8,14 @@ body {
   //background:url(../assets/img/bg-white-fabric.png) repeat 0 0 @white;
 }
 
-// faust for providing a data image via stylesheet
-// Add this class to any element to provide some extend of visual noise
-.make-some-noise {
-    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQAQMAAAC032DuAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMACHhIRQoAAAN7SURBVCiRAXADj/wAAkQJcM1mLQnAjAAb4sEhBjkWRBpWAIKF/FlkjVDJKKgA0KxA5QFOFWKpQgBG5PjjxiiDVJtnAHD5UwQVQstA7u8AOAYIMPmwiKga2gBooyeQA+jdVxiNABAIYGkr3lgTDBsAXQBAcGFmEGFEXQAwUgJEk6SsEMjDAApsetkgJK9PKJQAfDApaQUONGIDEgAKpcRsXsojEuY1ACYN4xSjdyGRVLcAsCBxpEiAUIkwYgBGLNoX24Yj9iJRAGMGy8gopJFOQvkAEZgtO9HAJC+9WACKQEJCwJGqpRoIAKYmUxdgMdl89AIApMRLQ/2pQLVbBQBDTLPsYJCDUEjoAHzhwoxoCKB4DAgAAN6ASuQFERMyvQCzWAJoFpkGjFsGAGLQnTrBTH4zIKIAFGUFG3UALzJDiwCmsCEwxUDwgFgIAFi/LtLBIAUJNBEAE4TENLhU8TjOCgAtAYILmwxnJrBoAAhNyenNNwViQFkANAFOhHKUo84QUAD0DRiji8DNOMJqADHrmeMWgFAgRrQAmIm9A9EhEGSBSgAulqWIGymRfxpwAH0DAAQSAnKWgdQASeJNibLEQzNOZwBzyCNrQnAEFoQoAAxMomBElggSqkgAAwFV5OAQZJ28ZwCCFaFCjSWxAObRAB8AJgRUj4BKIygApBGgk0MCkUMxFADVwIDCBY+OdMWgAG1xdOROdABshSMACAFX0QKD4hVCgwB2Mh6ZnAco8kNpAHsI4C8RY9CIiewAqyAZg6UNgAz7mgBkAxCbD25svIhqACgzbQNxciGqYNQAkARc2iVSMJ2lZADNJknADN80kC5jAOOUE5OONKUAsA0ARQLA1ABqDAEQCACIlnFgRPrqeUQyAKkAOV/GAUgi1RAAeAIX22Pv4uTlJABvEiKL1OBOaIWIAEsoNPRyRGQcMM0AQmzLIn0jGg0gNAAqsAQfVSb/NB1UAAi0AywKJQUIjCoA85ksYPNtqJExcQAYgoDzhYBwbfaustAKsgPswqlOqHbJMAUQlvpxLB1UzAGABpyxQ0mCs81wNXACHgmQEVxF1T9FUA8jrxkbDXWRJhoQBgoSwOksFRSSibACNkCSFowJxiMBYA4ek2cwRDk1DM8wCQCsQXTxHsamgRAEGGIlVQmcLwKhUAG+wigJjtKYW0HQC0OKRNEGFqXIOAbRpCReUGtgIAAAAASUVORK5CYII=);
+input.context,
+input.destructive {
+  margin-right: 10px;
+  .btn-primary();
+}
+
+.progress-success .bar, .progress .bar-success {
+  #gradient > .vertical(lighten(#607080, 5%), #607080);
 }
 
 body.jobtool-frontpage {
@@ -261,8 +265,12 @@ body > header {
     }
     #content-core {
       border-right: 1px solid @gray;
+      input.context {
+        .btn-primary();
+      }
     }
     #sidebar {
+      padding-top: @baseLineHeight;
       text-shadow: 0 1px 0 @navbarBackgroundHighlight;
       .tile {
         padding: @paddingSmall;
@@ -280,6 +288,14 @@ body > header {
 
 input.dial {
   box-shadow: none;
+}
+
+a.caltrigger {
+  padding: 0px;
+}
+
+#caltitle select {
+  width: 165px;
 }
 
 /* ============== panels ============== */
@@ -335,13 +351,14 @@ input.dial {
   /*    box-shadow: inset 0 0 10px lighten($warning, 8%);
       border: 1px solid darken($warning, 20%)*/ }
 .statuspanel .success, .statuspanel .success h6 {
-  background-color: @btnSuccessBackground;
+  //background-color: @btnSuccessBackground;
+  background: @appDark;
   /*    box-shadow: inset 0 0 10px lighten(@successText, 8%);
       border: 1px solid darken(@successText, 20%)*/
 }
 .statuspanel .danger, .statuspanel .danger h6 {
   //background-color: #ea494a;
-  background: @btnDangerBackground;
+  background: lighten(@appRed, 5%);
   /*    box-shadow: inset 0 0 10px lighten($danger, 8%);
       border: 1px solid darken($danger, 20%)*/ }
 .statuspanel .info, .statuspanel .info h6 {
@@ -357,9 +374,52 @@ input.dial {
   /*    box-shadow: inset 0 0 10px lighten($purple, 8%);
       border: 1px solid darken($purple, 20%)*/ }
 
-#sidebar .statuspanel {
-  margin-top: @baseLineHeight;
+
+// Counter widget
+
+.widget {
+  padding-right: @baseLineHeight;
 }
+
+.stats {
+  text-align: center;
+}
+  .stats .stat {
+    background-color: #eeeeee;
+    color: #555555;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center; }
+    .stats .stat h2 {
+      font-weight: 1; }
+    .stats .stat h6 {
+      margin-top: -10px; }
+  .stats .warning {
+    background-color: #ffa93c;
+    color: #FFF; }
+  .stats .success {
+    background-color: #4cb158;
+    color: #FFF; }
+  .stats .danger {
+    background-color: @appRed;
+    color: #FFF; }
+  .stats .info {
+    background-color: @appDark;
+    color: #FFF; }
+  .stats .primary {
+    background-color: #007ccd;
+    color: #FFF; }
+  .stats .purple {
+    background-color: #7932ea;
+    color: #FFF; }
+  .stats .inverse {
+    background-color: @appBrown;
+    color: #FFF; }
+
+
+// Form styles
+// ------------------------
 
 #login_form {
   width: 300px;
