@@ -179,6 +179,7 @@
         }
         $('#table-contacts, #table-channels').dataTable({
             "bPaginate": true,
+            "bRetrieve": true,
             "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span3'i><'span9'p>>",
             "sPaginationType": "bootstrap",
             "iDisplayLength": 50,
