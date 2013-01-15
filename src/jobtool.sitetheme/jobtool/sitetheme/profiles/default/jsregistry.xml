@@ -16,6 +16,10 @@
  <javascript authenticated="False" cacheable="True" compression="none"
      conditionalcomment="" cookable="True" enabled="True"
      expression="request/HTTP_X_THEME_ENABLED | nothing"
+     id="++theme++jobtool.sitetheme/js/jquery.knob.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="none"
+     conditionalcomment="" cookable="True" enabled="True"
+     expression="request/HTTP_X_THEME_ENABLED | nothing"
      id="++theme++jobtool.sitetheme/js/bootstrap.js" inline="False"/>
  <javascript authenticated="False" cacheable="True" compression="safe"
      conditionalcomment="" cookable="True" enabled="True"
