@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="jobtool.jobcontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <section id="jobcenter-dashboard"
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+      <header id="page-header">
+        <div class="pull-right">
+          <h4 i18n:translate=""><i class="icon-cogs icon-2x"></i>
+          </h4>
+        </div>
+        <h1>Jobcenter</h1>
+        <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
+      </header>
+      <article id="content-core">
+        <div class="row-fluid">
+          <div class="span9">
+            <div class="window-column">
+              <div class="window-column-content">
+                <div class="row-fluid">
+                  <div class="span3">
+                    <div class="panel" tal:define="active_idx view/active_index">
+                      <div class="statuspanel">
+                        <div class="top success">
+                          <i class="icon-circle icon-4x"></i>
+                          <h6>Aktiv</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/active_index">100</h2>
+                          <h6>Jobs</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="span9">
+                    <small class="pull-right">
+                      <a href="#" class="link-editable"
+                        tal:attributes="href python:context_url + '/@@settings-listing'">
+                        <i class="icon-edit"></i> bearbeiten
+                      </a>
+                    </small>
+                    <h2 i18n:translate="">
+                      Job listing settings
+                    </h2>
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <th i18n:translate="">Preview frame width</th>
+                          <td>480px</td>
+                          <td>(default value)</td>
+                        </tr>
+                        <tr>
+                          <th i18n:translate="">Preview items per page</th>
+                          <td>15</td>
+                          <td>(default value)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <hr class="visualClear">
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <aside id="sidebar"
+              tal:define="preview_idx string:0">
+              <div class="stats widget">
+                <div class="stat inverse">
+                  <h2 tal:content="view/jobs_index">72</h2>
+                  <h6>Jobs</h6>
+                </div>
+              </div>
+                <h3 i18n:translate="">History</h3>
+                <hr />
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
