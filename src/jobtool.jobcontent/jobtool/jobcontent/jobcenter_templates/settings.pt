@@ -76,13 +76,37 @@
                       Preview job listing</a>
                   </div>
                 </div>
-                <hr class="visualClear">
-                  <pre tal:content="view/jobtool_history" />
-                <div tal:define="history view/jobtool_history">
-                  <tal:items tal:repeat="entry history">
-                    <pre tal:content="entry" />
-                  </tal:items>
-                </div>
+                <hr class="visualClear" />
+
+                  <h2 i18n:translate="">Job listing external sites</h2>
+                  <p i18n:translate="">
+                    External sites configured as distributor sites can implement
+                    the job listing as an iframe window by using this urls. Copy
+                    the relevant URL for each external service from the provided
+                    field.
+                  </p>
+                  <table class="table">
+                    <tbody tal:define="distributors view/distributor_list;
+                                       base_url string:http://jobs.kjf-presse.de">
+                      <tal:block tal:repeat="dist distributors">
+                        <tr tal:define="token dist/token;
+                                        term dist/term;">
+                          <td><span tal:content="term"  /><br />
+                            <span class="discreet"
+                              tal:content="python:base_url + '/@@joblisting?distid=' + token" />
+
+                          </td>
+                          <td>
+                            <div class="input-prepend">
+                              <span class="add-on"><i class="icon-share"></i></span>
+                              <input type="text"
+                                tal:attributes="value python:base_url + '/@@joblisting?distid=' + token" />
+                            </div>
+                          </td>
+                        </tr>
+                      </tal:block>
+                    </tbody>
+                  </table>
               </div>
             </div>
           </div>
@@ -95,8 +119,22 @@
                   <h6>Jobs</h6>
                 </div>
               </div>
-                <h3 i18n:translate="">History</h3>
-                <hr />
+              <hr />
+                <h3 i18n:translate="">Last modified</h3>
+                <div class="history-listing" tal:define="history view/get_history">
+                  <tal:items tal:repeat="entry history">
+                    <h6><span tal:replace="entry/title" /></h6>
+                    <p class="discreet">
+                      <span tal:content="entry/action" i18n:translate="">
+                        Action</span>
+                      <span tal:define="time entry/timestamp"
+                          tal:content="time"
+                          tal:attributes="data-appui string:prettydate;
+                                          title time" />
+                        <span>by <span tal:replace="entry/actor" /></span>
+                    </p>
+                  </tal:items>
+                </div>
             </aside>
           </div>
         </div>

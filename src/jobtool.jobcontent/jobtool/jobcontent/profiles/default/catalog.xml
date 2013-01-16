@@ -6,6 +6,10 @@
     <index name="category" meta_type="KeywordIndex">
         <indexed_attr value="category" />
     </index>
+    <index name="distributor" meta_type="KeywordIndex">
+        <indexed_attr value="distributor" />
+    </index>
     <column value="preview" />
     <column value="category" />
+    <column value="distributor" />
 </object>

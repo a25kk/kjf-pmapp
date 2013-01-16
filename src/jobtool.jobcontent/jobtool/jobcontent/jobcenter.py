@@ -161,17 +161,34 @@ class Settings(grok.View):
             review_state='private')
         return len(items)
 
+    def distributor_list(self):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.externalDistributors')
+        terms = []
+        for r in records:
+            info = {}
+            info['term'] = r.title
+            info['token'] = r.value
+            terms.append(info)
+        return terms
+
+    def get_history(self):
+        context = aq_inner(self.context)
+        history = context.restrictedTraverse('@@changes').jobtool_history()
+        return history
+
     def jobtool_history(self):
         history = []
         status = self.status_list()
         timestamps = list()
         for x in status:
-            pit = x['time']
+            pit = x['timestamp']
             timestamps.append(pit)
         pit_sorted = sorted(timestamps, reverse=True)
         for pit in pit_sorted:
             for x in status:
-                if x['time'] == pit:
+                if x['timestamp'] == pit:
                     history.append(x)
         return history
 
@@ -182,20 +199,25 @@ class Settings(grok.View):
         for item in items:
             obj = item.getObject()
             history = self.history_info(obj)
-            for event in history:
+            if len(history) > 0:
+                event = history[0]
                 idx += 1
                 info = {}
                 info['idx'] = idx
                 timestamp = event['time']
                 time = api.portal.get_localized_time(datetime=timestamp,
-                                                     long_format=True)
+                                                     long_format=False)
+                time_only = api.portal.get_localized_time(datetime=timestamp,
+                                                          time_only=True)
                 info['time'] = time
+                info['time_only'] = time_only
+                info['timestamp'] = timestamp.ISO8601()
                 actor = event['actor']
                 info['actor'] = actor['username']
                 info['action'] = event['transition_title']
                 info['title'] = item.Title
                 info['url'] = item.getURL()
-                info['details'] = event
+                #info['details'] = event
                 state_info.append(info)
         return state_info
 
@@ -244,3 +266,71 @@ class JobsCounterJSON(grok.View):
         return dict(object_provides=obj_provides,
                     sort_on='modified',
                     sort_order='reverse')
+
+
+class JobCenterHistory(grok.View):
+    grok.context(IJobCenter)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('changes')
+
+    def render(self):
+        data = self.jobtool_history()
+        self.request.response.setHeader('Content-Type',
+                                        'application/json; charset=utf-8')
+        return json.dumps(data)
+
+    def jobtool_history(self):
+        history = []
+        status = self.status_list()
+        timestamps = list()
+        for x in status:
+            pit = x['timestamp']
+            timestamps.append(pit)
+        pit_sorted = sorted(timestamps, reverse=True)
+        for pit in pit_sorted:
+            for x in status:
+                if x['timestamp'] == pit:
+                    history.append(x)
+        return history
+
+    def status_list(self):
+        items = self.last_modified_jobs()
+        state_info = []
+        idx = 0
+        for item in items:
+            obj = item.getObject()
+            history = self.history_info(obj)
+            if len(history) > 0:
+                event = history[0]
+                idx += 1
+                info = {}
+                info['idx'] = idx
+                timestamp = event['time']
+                time = api.portal.get_localized_time(datetime=timestamp,
+                                                     long_format=False)
+                time_only = api.portal.get_localized_time(datetime=timestamp,
+                                                          time_only=True)
+                info['time'] = time
+                info['time_only'] = time_only
+                info['timestamp'] = timestamp.ISO8601()
+                actor = event['actor']
+                info['actor'] = actor['username']
+                info['action'] = event['transition_title']
+                info['title'] = item.Title
+                info['url'] = item.getURL()
+                #info['details'] = event
+                state_info.append(info)
+        return state_info
+
+    def history_info(self, item):
+        context = aq_inner(self.context)
+        chv = ContentHistoryView(item, context.REQUEST).fullHistory()
+        return chv
+
+    def last_modified_jobs(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        results = catalog(object_provides=IJobOpening.__identifier__,
+                          sort_on='modified',
+                          sort_order='reverse',
+                          sort_limit=5)[:5]
+        return results

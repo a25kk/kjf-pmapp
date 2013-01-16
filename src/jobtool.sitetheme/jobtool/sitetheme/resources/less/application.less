@@ -4,6 +4,9 @@
 
 body {
   background:@appBackgroundDark;
+  &.joblisting-preview {
+    background: @white;
+  }
 }
 
 input.context,
@@ -330,6 +333,11 @@ body > header {
       .widget {
         margin: 0 @baseLineHeight;
       }
+      .history-listing {
+        h6 {
+          margin-bottom: 0px;
+        }
+      }
     }
   }
   .window-content > form {
@@ -371,6 +379,10 @@ body > header {
     }
     &.bodytext {
       padding: @paddingLarge;
+      font-size: @fontSizeSmall;
+      h2 {
+        font-size: @fontSizeSmall * 2.25;
+      }
       .alert-info {
         background-color: rgba(255, 255, 255, 0.35);
         border: 1px solid @grayLight;

@@ -7142,6 +7142,9 @@ table.grid th {
 body {
   background: #d9d9d2;
 }
+body.joblisting-preview {
+  background: #ffffff;
+}
 input.context,
 input.destructive {
   margin-right: 10px;
@@ -7622,6 +7625,9 @@ body > header #main-nav .selected > a:focus {
 .window .window-content #sidebar .widget {
   margin: 0 20px;
 }
+.window .window-content #sidebar .history-listing h6 {
+  margin-bottom: 0px;
+}
 .window .window-content > form {
   padding: 20px;
 }
@@ -7693,6 +7699,10 @@ body > header #main-nav .selected > a:focus {
 }
 #joblisting-view .splashbox.bodytext {
   padding: 11px 19px;
+  font-size: 11.9px;
+}
+#joblisting-view .splashbox.bodytext h2 {
+  font-size: 26.775000000000002px;
 }
 #joblisting-view .splashbox.bodytext .alert-info {
   background-color: rgba(255, 255, 255, 0.35);

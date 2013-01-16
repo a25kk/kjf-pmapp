@@ -3,7 +3,6 @@ from five import grok
 from plone import api
 
 from zope.schema.vocabulary import getVocabularyRegistry
-from plone.app.uuid.utils import uuidToObject
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.contentlisting.interfaces import IContentListing
