@@ -6,6 +6,7 @@ from plone import api
 from plone.directives import dexterity, form
 
 from zope.schema.vocabulary import getVocabularyRegistry
+from plone.app.layout.viewlets.content import ContentHistoryView
 
 from plone.namedfile.interfaces import IImageScaleTraversable
 
@@ -159,6 +160,57 @@ class Settings(grok.View):
             portal_type='jobtool.jobcontent.jobopening',
             review_state='private')
         return len(items)
+
+    def jobtool_history(self):
+        history = []
+        status = self.status_list()
+        timestamps = list()
+        for x in status:
+            pit = x['time']
+            timestamps.append(pit)
+        pit_sorted = sorted(timestamps, reverse=True)
+        for pit in pit_sorted:
+            for x in status:
+                if x['time'] == pit:
+                    history.append(x)
+        return history
+
+    def status_list(self):
+        items = self.last_modified_jobs()
+        state_info = []
+        idx = 0
+        for item in items:
+            obj = item.getObject()
+            history = self.history_info(obj)
+            for event in history:
+                idx += 1
+                info = {}
+                info['idx'] = idx
+                timestamp = event['time']
+                time = api.portal.get_localized_time(datetime=timestamp,
+                                                     long_format=True)
+                info['time'] = time
+                actor = event['actor']
+                info['actor'] = actor['username']
+                info['action'] = event['transition_title']
+                info['title'] = item.Title
+                info['url'] = item.getURL()
+                info['details'] = event
+                state_info.append(info)
+        return state_info
+
+    def history_info(self, item):
+        context = aq_inner(self.context)
+        chv = ContentHistoryView(item, context.REQUEST).fullHistory()
+        return chv
+
+    def last_modified_jobs(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        results = catalog(object_provides=IJobOpening.__identifier__,
+                          sort_on='modified',
+                          sort_order='reverse',
+                          sort_limit=5)[:5]
+        return results
 
 
 class JobsCounterJSON(grok.View):

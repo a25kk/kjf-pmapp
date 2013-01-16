@@ -7207,6 +7207,15 @@ body.jobtool-frontpage .splashbar h1 {
 body.jobtool-frontpage .splashbar h1 a {
   color: #ffffff;
 }
+body.jobtool-frontpage .splashbar h1 #fp-logo {
+  background: url(../img/logo.png) no-repeat 0 0 transparent;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  height: 100px;
+  text-indent: -9999px;
+}
 body.jobtool-frontpage .subheader {
   background: #61858c;
   padding: 20px;

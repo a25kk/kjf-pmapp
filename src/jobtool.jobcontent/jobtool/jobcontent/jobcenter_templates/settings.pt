@@ -12,6 +12,7 @@
 
     <section id="jobcenter-dashboard"
       tal:define="context_url context/absolute_url;
+                  portal_url context/portal_url;
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
         <div class="pull-right">
@@ -70,9 +71,18 @@
                         </tr>
                       </tbody>
                     </table>
+                    <a href="" class="btn btn-primary pull-right"
+                      tal:attributes="href python:portal_url + '/@@joblisting'">
+                      Preview job listing</a>
                   </div>
                 </div>
                 <hr class="visualClear">
+                  <pre tal:content="view/jobtool_history" />
+                <div tal:define="history view/jobtool_history">
+                  <tal:items tal:repeat="entry history">
+                    <pre tal:content="entry" />
+                  </tal:items>
+                </div>
               </div>
             </div>
           </div>
