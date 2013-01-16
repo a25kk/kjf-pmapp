@@ -15,6 +15,12 @@
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime">
       <header id="page-header">
 
+        <div class="pull-right">
+            <h4 tal:content="context/Title" />
+            <h5 tal:define="date context/start"
+              tal:content="python:toLocalizedTime(date, long_format=False)" />
+        </div>
+
         <h1 i18n:translate="">Edit Job Categries</h1>
 
         <p tal:define="time context/modified" class="discreet">
@@ -36,43 +42,10 @@
             </div>
           </div>
           <div class="span3">
-            <aside id="sidebar" tal:content="nothing">
+            <aside id="sidebar">
               <h4 tal:content="context/institution" />
               <h5 tal:content="context/location" />
-                <hr />
-                <div class="panel">
-                  <h5>Preview</h5>
-                  <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
-                    data-appui="preview-switch"
-                    tal:define="preview context/preview"
-                    tal:attributes="data-target string:${context_url}/@@update-job-preview">
-                    <input type="checkbox" value="1" name="previewCheckbox" class="checkbox" checked="checked"
-                        tal:attributes="checked python: preview and 'checked' or ''"
-                       />
-                    <label class="check" for="previewCheckbox"></label>
-                  </div>
-                </div>
-                <hr />
-                <h5>Status</h5>
-                <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
-                  data-appui="state-switch"
-                  tal:define="active view/is_active"
-                  tal:attributes="data-target string:${context_url}/@@update-job-state">
-                  <input type="checkbox" value="1" name="stateCheckbox"
-                    class="checkbox" checked="checked"
-                    tal:attributes="checked python:active and 'checked' or ''"
-                    />
-                  <label class="check" for="stateCheckbox"></label>
-                </div>
-                <hr />
-                <h5>Kategory</h5>
-                <tal:cats tal:repeat="cat context/category">
-                  <span tal:define="categoryname python:view.pretty_category(cat)"
-                    tal:content="categoryname"
-                    i18n:translate=""
-                    class="label"
-                    />
-                </tal:cats>
+              <hr />
             </aside>
           </div>
         </div>

@@ -8,6 +8,7 @@ from zope.lifecycleevent import modified
 
 from plone.directives import form
 from z3c.form import button
+from zope.schema.vocabulary import getVocabularyRegistry
 
 from Products.CMFPlone.utils import safe_unicode
 
@@ -89,3 +90,15 @@ class JobCategoryEditForm(form.SchemaEditForm):
             _(u"The job opening has successfully been updated"),
             type='info')
         return self.request.response.redirect(context.absolute_url() + '/view')
+
+    def pretty_jobtype(self):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.jobTypes')
+        selected = getattr(context, 'jobtype', None)
+        try:
+            vocabterm = records.getTerm(selected)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = selected
+        return prettyname

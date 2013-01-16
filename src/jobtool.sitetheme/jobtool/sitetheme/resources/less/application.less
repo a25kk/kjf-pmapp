@@ -296,6 +296,9 @@ body > header {
           }
         }
       }
+      .widget {
+        margin: 0 @baseLineHeight;
+      }
     }
   }
 }
@@ -333,10 +336,13 @@ a.link-clear-filter {
 //  color: @white;
 //  border-color: darken(spin(@appDark, -10), 5%);
 //  border-radius: 0px;
-//}
+//} 
 
 .progress-success .bar, .progress .bar-success {
   #gradient > .vertical(lighten(#607080, 5%), #607080);
+}
+.progress-danger .bar, .progress .bar-danger {
+  #gradient > .vertical(lighten(@appRed, 5%), @appRed);
 }
 
 // Status panels

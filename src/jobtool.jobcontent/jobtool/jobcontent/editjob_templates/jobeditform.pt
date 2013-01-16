@@ -46,7 +46,15 @@
             <aside id="sidebar">
               <h4 tal:content="context/institution" />
               <h5 tal:content="context/location" />
-                <hr />
+              <hr />
+              <h5 i18n:translate="">State</h5>
+              <div class="box-editable" tal:define="active view/is_active">
+                <span tal:condition="active"
+                  class="label label-success">Aktiv</span>
+                <span tal:condition="not:active"
+                  class="label label-important">Inaktiv</span>
+              </div>
+              <hr />
             </aside>
           </div>
         </div>

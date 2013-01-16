@@ -1,6 +1,8 @@
 from five import grok
 from Acquisition import aq_inner
 from zope import schema
+from plone import api
+
 from zope.schema import getFieldsInOrder
 from zope.component import getUtility
 
@@ -11,7 +13,6 @@ from z3c.form import button
 
 from zope.schema.vocabulary import getVocabularyRegistry
 
-from Products.CMFPlone.utils import safe_unicode
 from plone.app.textfield import RichText
 
 from plone.dexterity.interfaces import IDexterityFTI
@@ -50,6 +51,11 @@ class IJobEdit(form.Schema):
             title=_(u"Category Selection"),
             vocabulary=u"jobtool.jobcontent.jobCategory",
         ),
+        required=True,
+    )
+    text = RichText(
+        title=_(u"Job Description"),
+        description=_(u"Enter Summary of the job opening"),
         required=True,
     )
 
@@ -136,6 +142,14 @@ class JobEditForm(form.SchemaEditForm):
         except KeyError:
             prettyname = selected
         return prettyname
+
+    def is_active(self):
+        context = aq_inner(self.context)
+        active = False
+        current_state = api.content.get_state(obj=context)
+        if current_state == 'published':
+            active = True
+        return active
 
 
 class JobSummaryEditForm(form.SchemaEditForm):

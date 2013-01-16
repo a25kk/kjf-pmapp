@@ -7556,6 +7556,9 @@ body > header #main-nav .selected > a:focus {
 .window .window-content #sidebar .box-editable:hover a.link-editable {
   display: inline-block;
 }
+.window .window-content #sidebar .widget {
+  margin: 0 20px;
+}
 input.dial {
   box-shadow: none;
 }
@@ -7581,6 +7584,17 @@ a.link-clear-filter {
   background-image: linear-gradient(to bottom, #6b7d8f, #607080);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6b7d8f', endColorstr='#ff607080', GradientType=0);
+}
+.progress-danger .bar,
+.progress .bar-danger {
+  background-color: #d05656;
+  background-image: -moz-linear-gradient(top, #d35e5e, #cd4a4a);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d35e5e), to(#cd4a4a));
+  background-image: -webkit-linear-gradient(top, #d35e5e, #cd4a4a);
+  background-image: -o-linear-gradient(top, #d35e5e, #cd4a4a);
+  background-image: linear-gradient(to bottom, #d35e5e, #cd4a4a);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd35e5e', endColorstr='#ffcd4a4a', GradientType=0);
 }
 .statuspanel {
   width: 150px !important;

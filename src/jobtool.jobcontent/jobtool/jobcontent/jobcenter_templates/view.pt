@@ -49,8 +49,7 @@
                   tal:define="items view/job_listing;
                               items_count python:len(items)">
                   <tal:block tal:condition="view/has_filter">
-                    <div class="alert" tal:define="info view/filter_info"
-                      tal:attributes="class string:alert alert-${info/klass}">
+                    <div class="alert" tal:define="info view/filter_info">
                       <strong>
                         Jobs <span tal:replace="info/state" />:
                       </strong>
