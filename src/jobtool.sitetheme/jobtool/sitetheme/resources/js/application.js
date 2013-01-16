@@ -9,7 +9,35 @@
             // enhancement.
             return;
         }
+        if (!Modernizr.csstransitions) { // Test if CSS transitions are supported
+            $(function () {
+                $('div.window').on('load', function () {
+                    $(this).animate({opacity: '1'}, {queue: false, duration: 500});
+                });
+            });
+        }
         $('span[data-appui="prettydate"]').timeago();
+        $('input[data-appui="knob"]').knob();
+        $('a[data-appui="tooltip"]').tooltip();
+        $('#form-widgets-category').chosen();
+        $('a.popoverForm').prepOverlay({
+            subtype: 'ajax',
+            filter: common_content_filter,
+            formselector: '#form',
+            closeselector: '.overlayCloseAction, [name="form.button.Cancel"]',
+            noform: 'reload',
+            config: {
+                closeOnClick: false,
+                top: 80,
+                mask: {
+                    color: '#000000',
+                    opacity: 0.8
+                }
+            },
+            redirect: function () {
+                return location.href;
+            }
+        });
         var statechanger = $('div[data-appui="state-switch"]');
         var statechanger_url = $(statechanger).data('target');
         $('div[data-appui="state-switch"]').toggleSlide({
@@ -21,10 +49,14 @@
                     method: "GET",
                     success: function (data) {
                         var state,
-                            transition;
+                            active,
+                            inactive;
                         if (data.success) {
                             state = data.results.state;
-                            transition = data.results.transitions[0];
+                            active = data.results.counter[0];
+                            inactive = data.results.counter[1];
+                            $('#counter-active').text(active);
+                            $('#counter-inactive').text(inactive);
                         } else {
                             alert(error_msg + "\n\nError:\n" + data.messages);
                         }

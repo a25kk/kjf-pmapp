@@ -1,6 +1,23 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts">
-<javascript authenticated="False" cacheable="True" compression="none"
+    
+ <javascript authenticated="False" cacheable="True" compression="none"
+     conditionalcomment="" cookable="True" enabled="True"
+     expression="request/HTTP_X_THEME_ENABLED | nothing"
+     id="http://cdnjs.cloudflare.com/ajax/libs/chosen/0.9.9/chosen.jquery.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="none"
+     conditionalcomment="" cookable="True" enabled="True"
+     expression="request/HTTP_X_THEME_ENABLED | nothing"
+     id="++theme++jobtool.sitetheme/js/jquery.timeago.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="none"
+     conditionalcomment="" cookable="True" enabled="True"
+     expression="request/HTTP_X_THEME_ENABLED | nothing"
+     id="++theme++jobtool.sitetheme/js/jquery.timeago.de.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="none"
+     conditionalcomment="" cookable="True" enabled="True"
+     expression="request/HTTP_X_THEME_ENABLED | nothing"
+     id="++theme++jobtool.sitetheme/js/jquery.knob.js" inline="False"/>
+ <javascript authenticated="False" cacheable="True" compression="none"
      conditionalcomment="" cookable="True" enabled="True"
      expression="request/HTTP_X_THEME_ENABLED | nothing"
      id="++theme++jobtool.sitetheme/js/bootstrap.js" inline="False"/>

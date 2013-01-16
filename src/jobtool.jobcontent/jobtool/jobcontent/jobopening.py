@@ -41,6 +41,16 @@ class IJobOpening(form.Schema, IImageScaleTraversable):
         title=_(u"Start date"),
         required=False,
     )
+    distributor = schema.List(
+        title=_(u"Selected Distributors"),
+        description=_(u"Select external distributors to filter display in "
+                      u"the press archive listing"),
+        value_type=schema.Choice(
+            title=_(u"Distributor"),
+            vocabulary='jobtool.jobcontent.externalDistributors',
+        ),
+        required=False,
+    )
     category = schema.List(
         title=_(u"Category"),
         value_type=schema.Choice(
@@ -101,6 +111,17 @@ class View(grok.View):
             prettyname = vocabterm.title
         except KeyError:
             prettyname = category
+        return prettyname
+
+    def pretty_distributor(self, distributor):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.externalDistributors')
+        try:
+            vocabterm = records.getTerm(distributor)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = distributor
         return prettyname
 
     def is_active(self):
@@ -167,7 +188,7 @@ class JobStateTransition(grok.View):
                 results['message'] = "%s" % e
             results['results'] = {
                 'state': api.content.get_state(self.context),
-                'transitions': self.get_possible_transitions(self.context),
+                'counter': self.jobs_counter(),
             }
         self.results = results
 
@@ -176,6 +197,26 @@ class JobStateTransition(grok.View):
         self.request.response.setHeader('Content-Type',
                                         'application/json; charset=utf-8')
         return json.dumps(results)
+
+    def jobs_counter(self):
+        active = self.get_data(state='published')
+        inactive = self.get_data(state='private')
+        counter = [len(active), len(inactive)]
+        return counter
+
+    def get_data(self, state=None):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        query = self.base_query()
+        if state is not None:
+            query['review_state'] = state
+        brains = catalog.searchResults(**query)
+        return brains
+
+    def base_query(self):
+        obj_provides = IJobOpening.__identifier__
+        return dict(object_provides=obj_provides,
+                    sort_on='modified',
+                    sort_order='reverse')
 
     def get_possible_transitions(self, item):
         """

@@ -12,17 +12,27 @@
 
     <section id="jobcenter-dashboard"
       tal:define="context_url context/absolute_url;
-                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
-        <div class="pull-right">
-          <form action=".">
+        <div class="pull-right"
+          tal:define="navigation_root_url context_url">
+          <form action="."
+            tal:attributes="action python:context_url + '/@@search'">
               <div class="input-append">
-                <input class="span2" id="appendedInputButton" type="text">
+                <input class="span3" id="SearchableText"
+                  name="SearchableText"
+                  type="text">
                 <input class="btn" type="submit" value="Search" />
               </div>
           </form>
         </div>
-        <h1>Jobcenter</h1>
+        <h1>Jobcenter
+          <small tal:condition="view/has_filter"
+            tal:define="info view/filter_info">
+            <span tal:attributes="class string:label label-${info/klass}"
+              tal:content="info/state" />
+          </small>
+        </h1>
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
               <span tal:content="time"
@@ -35,43 +45,63 @@
           <div class="span9">
             <div class="window-column">
               <tal:items tal:condition="view/has_jobs">
-                <div class="tile" tal:repeat="item view/get_data">
-                  <div class="row-fluid">
-                    <div class="span2">
-                      <h4 tal:define="date item/start"
-                          tal:content="python:toLocalizedTime(date, long_format=False)">
-                          16.11.2012
-                      </h4>
-                      <p><span class="label" tal:content="item/review_state"
-                          i18n:translate="">
-                          Active/Inactive</span></p>
+                <div class="tile-wrapper"
+                  tal:define="items view/job_listing;
+                              items_count python:len(items)">
+                  <tal:block tal:condition="view/has_filter">
+                    <div class="alert" tal:define="info view/filter_info">
+                      <strong>
+                        Jobs <span tal:replace="info/state" />:
+                      </strong>
+                      <span tal:replace="items_count" />
+                      <a href=""
+                        tal:attributes="href context_url"
+                        class="pull-right link-clear-filter">
+                          <i class="icon-remove-circle"></i>
+                          <span i18n:translate="">Clear filter</span>
+                      </a>
                     </div>
-                    <div class="span6">
-                      <h4>
-                        <span tal:replace="item/Title">
-                          Heilpädagogin/en oder Sozialpädagogin/en</span>
-                        <small tal:define="job_type item/jobtype"
-                          tal:content="python:view.pretty_jobtype(job_type)"
-                          i18n:translate="">Aktiv</small>
-                      </h4>
-                      <p><small><span tal:content="item/location">Augsburg</span>,
-                          <span tal:content="item/institution">Klinik Josefinum</span>
-                          </small>
-                      </p>
-                    </div>
-                    <div class="span4">
-                        <a href="" class="btn btn-mini pull-right"
-                          i18n:translate=""
-                          tal:attributes="href item/getURL">Edit</a>
+                  </tal:block>
+                  <div class="tile" tal:repeat="item items">
+                    <div class="row-fluid">
+                      <div class="span2">
+                        <h4 tal:define="date item/start"
+                            tal:content="python:toLocalizedTime(date, long_format=False)">
+                            16.11.2012
+                        </h4>
+                        <p><span class="label"
+                            tal:define="state item/review_state"
+                            tal:content="python:view.get_state_info(state)">
+                            Active/Inactive</span></p>
+                      </div>
+                      <div class="span6">
+                        <h4>
+                          <span tal:replace="item/Title">
+                            Heilpädagogin/en oder Sozialpädagogin/en</span>
+                          <small tal:define="job_type item/jobtype"
+                            tal:content="python:view.pretty_jobtype(job_type)"
+                            i18n:translate="">Aktiv</small>
+                        </h4>
+                        <p><small><span tal:content="item/location">Augsburg</span>,
+                            <span tal:content="item/institution">Klinik Josefinum</span>
+                            </small>
+                        </p>
+                      </div>
+                      <div class="span4">
+                          <a href="" class="btn btn-mini pull-right"
+                            i18n:translate=""
+                            tal:attributes="href item/getURL">Edit</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </tal:items>
               <tal:noitems tal:condition="not:view/has_jobs">
-                <h2>Welcome to the Jobcenter</h2>
-                <p class="lead">In order to get you started with the tool, you
+                <h2 i18n:translate="">Welcome to the Jobcenter</h2>
+                <p class="lead" i18n:translate="">In order to get you started with the tool, you
                   should start adding a jobopening:</p>
-                <p><a href="#" class="btn btn-primary btn-large">
+                <p><a href="#" class="btn btn-primary btn-large"
+                  i18n:translate="">
                   Add new job posting now</a>
                 </p>
               </tal:noitems>
@@ -79,16 +109,44 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <h4>Informationen</h4>
-                <p>
+                <div class="stats widget" tal:condition="not:view/has_filter">
+                  <div class="stat inverse">
+                    <h2 tal:content="view/jobs_index">72</h2>
+                    <h6>Jobs</h6>
+                  </div>
+                </div>
+                <div class="stats widget" tal:condition="view/has_filter">
+                  <div class="stat inverse"
+                    tal:define="info view/filter_info"
+                    tal:attributes="class string:stat ${info/klass}">
+                    <h2 tal:content="view/jobs_index">72</h2>
+                    <h6>Jobs</h6>
+                  </div>
+                </div>
+                <div class="stats panel" tal:define="active_idx view/index_active">
+                  <h5 i18n:translate="">Aktive Stellenangebote</h5>
+                  <input type="text"
+                    value="75"
+                    class="dial"
+                    data-appui="knob"
+                    data-thickness=".4"
+                    data-fgColor="#222222"
+                    data-bgColor="#61858C"
+                    data-readOnly="true"
+                    tal:attributes="value active_idx">
+                </div>
+                <hr />
+                <p class="stats">
                   <a href="" class="btn btn-primary btn-large"
                     rel="twipsy"
                     data-placement="left"
                     data-original-title="Add new job posting now"
-                    tal:attributes="href python:context_url + '/++add++jobtool.jobcontent.jobopening'">
+                    i18n:translate=""
+                    tal:attributes="href python:context_url + '/@@add-job'">
                     Add job opening
                   </a>
                 </p>
+                <hr />
             </aside>
           </div>
         </div>

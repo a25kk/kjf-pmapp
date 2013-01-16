@@ -3,15 +3,13 @@
 
 
 body {
-  //background: lighten(@appColor, 20%);
   background:@appBackgroundDark;
-  //background:url(../assets/img/bg-white-fabric.png) repeat 0 0 @white;
 }
 
-// faust for providing a data image via stylesheet
-// Add this class to any element to provide some extend of visual noise
-.make-some-noise {
-    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQAQMAAAC032DuAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMACHhIRQoAAAN7SURBVCiRAXADj/wAAkQJcM1mLQnAjAAb4sEhBjkWRBpWAIKF/FlkjVDJKKgA0KxA5QFOFWKpQgBG5PjjxiiDVJtnAHD5UwQVQstA7u8AOAYIMPmwiKga2gBooyeQA+jdVxiNABAIYGkr3lgTDBsAXQBAcGFmEGFEXQAwUgJEk6SsEMjDAApsetkgJK9PKJQAfDApaQUONGIDEgAKpcRsXsojEuY1ACYN4xSjdyGRVLcAsCBxpEiAUIkwYgBGLNoX24Yj9iJRAGMGy8gopJFOQvkAEZgtO9HAJC+9WACKQEJCwJGqpRoIAKYmUxdgMdl89AIApMRLQ/2pQLVbBQBDTLPsYJCDUEjoAHzhwoxoCKB4DAgAAN6ASuQFERMyvQCzWAJoFpkGjFsGAGLQnTrBTH4zIKIAFGUFG3UALzJDiwCmsCEwxUDwgFgIAFi/LtLBIAUJNBEAE4TENLhU8TjOCgAtAYILmwxnJrBoAAhNyenNNwViQFkANAFOhHKUo84QUAD0DRiji8DNOMJqADHrmeMWgFAgRrQAmIm9A9EhEGSBSgAulqWIGymRfxpwAH0DAAQSAnKWgdQASeJNibLEQzNOZwBzyCNrQnAEFoQoAAxMomBElggSqkgAAwFV5OAQZJ28ZwCCFaFCjSWxAObRAB8AJgRUj4BKIygApBGgk0MCkUMxFADVwIDCBY+OdMWgAG1xdOROdABshSMACAFX0QKD4hVCgwB2Mh6ZnAco8kNpAHsI4C8RY9CIiewAqyAZg6UNgAz7mgBkAxCbD25svIhqACgzbQNxciGqYNQAkARc2iVSMJ2lZADNJknADN80kC5jAOOUE5OONKUAsA0ARQLA1ABqDAEQCACIlnFgRPrqeUQyAKkAOV/GAUgi1RAAeAIX22Pv4uTlJABvEiKL1OBOaIWIAEsoNPRyRGQcMM0AQmzLIn0jGg0gNAAqsAQfVSb/NB1UAAi0AywKJQUIjCoA85ksYPNtqJExcQAYgoDzhYBwbfaustAKsgPswqlOqHbJMAUQlvpxLB1UzAGABpyxQ0mCs81wNXACHgmQEVxF1T9FUA8jrxkbDXWRJhoQBgoSwOksFRSSibACNkCSFowJxiMBYA4ek2cwRDk1DM8wCQCsQXTxHsamgRAEGGIlVQmcLwKhUAG+wigJjtKYW0HQC0OKRNEGFqXIOAbRpCReUGtgIAAAAASUVORK5CYII=);
+input.context,
+input.destructive {
+  margin-right: 10px;
+  .btn-primary();
 }
 
 body.jobtool-frontpage {
@@ -59,10 +57,8 @@ body.jobtool-frontpage {
   }
 }
 
+// Custom editbar styles for the header
 
-// faust styles for a custom editbar override of the basic
-// twitter bootstarp navbar to make the edit bar look like a
-// browser toolbar
 body > header {
     #toolbar + nav,
     #editbar-wrapper + nav {
@@ -98,6 +94,9 @@ body > header {
 #main-wrapper {
   padding-top: @navbarHeight;
 }
+
+// Action bar
+// ---------------------------
 
 #actionbar {
   margin: @baseLineHeight @baseLineHeight * 2;
@@ -145,6 +144,9 @@ body > header {
   }
 }
 
+// Content window styles
+// --------------------------
+
 .window {
   //display: none;
   padding: 0px;
@@ -167,9 +169,24 @@ body > header {
     h1 {
       font-size: @baseFontSize * 1.75;
       line-height: @baseLineHeight;
+      small {
+        font-size: @baseFontSize;
+        .label {
+          font-weight: normal;
+        }
+        a {
+          color: @white;
+          font-weight: normal;
+        }
+      }
     }
     p.discreet {
       color: @grayLighter;
+      a.link-clear-filter {
+        display: inline-block;
+        //margin-left:@baseLineHeight;
+        color: @appBrown;
+      }
     }
     .btn {
       border-color: @black;
@@ -216,11 +233,37 @@ body > header {
       text-shadow: 0 1px 0 @navbarBackgroundHighlight;
       .window-column-content {
         padding: @baseLineHeight;
+        .window-column-text {
+          margin-right: @baseLineHeight * 2;
+        }
+        .featurette {
+          margin: @navbarHeight * 2;
+          padding: @baseLineHeight;
+          background-color: rgba(255, 255, 255, 0.35);
+          border: 1px solid @grayLight;
+          .stats {
+            display: block;
+            .stat {
+              display: block;
+              .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+              .stat-header {
+                margin: (@baseLineHeight / 2) 0;
+                font-family: @headingsFontFamily;
+                font-weight: @headingsFontWeight;
+                line-height: @baseLineHeight;
+                font-size: @baseFontSize * 2.25;
+              }
+              .stat-subheader {
+                display: block;
+                text-transform: uppercase;
+              }
+            }
+          }
+        }
       }
     }
     .tile {
         padding: @paddingSmall;
-        border-bottom: 1px solid @grayLight;
         .box-shadow(none);
         border: 0px;
         border-bottom: 1px solid @grayLight;
@@ -228,6 +271,7 @@ body > header {
         background: transparent !important;
         .btn {
           .btn-primary();
+          margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
         }
         &.active,
         &:hover {
@@ -246,12 +290,17 @@ body > header {
     }
     #content-core {
       border-right: 1px solid @gray;
+      input.context {
+        .btn-primary();
+      }
     }
     #sidebar {
+      padding-top: @baseLineHeight;
+      padding-right: @baseLineHeight * 1.5;
       text-shadow: 0 1px 0 @navbarBackgroundHighlight;
       .tile {
         padding: @paddingSmall;
-        margin-right: @baseLineHeight;
+        //margin-right: @baseLineHeight;
         &.active,
         &:hover {
             background: #f5f5f5;
@@ -259,9 +308,198 @@ body > header {
             border-right: 0px solid @gray;
         }
       }
+      .box-editable {
+        a.link-editable {
+          display:none;
+          z-index: 1;
+        }
+        &:hover {
+          color: @black;
+          a.link-editable {
+            display: inline-block;
+          }
+        }
+      }
+      .widget {
+        margin: 0 @baseLineHeight;
+      }
+    }
+  }
+  .window-content > form {
+    padding: @baseLineHeight;
+  }
+}
+
+input.dial {
+  box-shadow: none;
+}
+
+a.caltrigger {
+  padding: 0px;
+}
+
+#caltitle select {
+  width: 165px;
+}
+
+a.link-clear-filter {
+  color: @gray;
+}
+
+.tile-wrapper {
+  .alert {
+    margin-bottom: @baseLineHeight / 2;
+  }
+}
+
+//.alert-important {
+//  background-color: lighten(@appRed, 15%);
+//  color: @white;
+//  border-color: darken(spin(@appRed, -10), 5%);
+//  border-radius: 0px;
+//}
+//.alert-success {
+//  background: @appDark;
+//  color: @white;
+//  border-color: darken(spin(@appDark, -10), 5%);
+//  border-radius: 0px;
+//} 
+
+.progress-success .bar, .progress .bar-success {
+  #gradient > .vertical(lighten(#607080, 5%), #607080);
+}
+.progress-danger .bar, .progress .bar-danger {
+  #gradient > .vertical(lighten(@appRed, 5%), @appRed);
+}
+
+// Status panels
+// ------------------
+
+.statuspanel {
+  width: 150px !important;
+  background-color: @white;
+  border-radius: 6px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  .top {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #555555;
+    color: @white;
+    padding-top: 20px;
+    i {
+      display: block;
+      margin: 0px auto 20px;
+    }
+    h6 {
+      display: inline;
+      background-color: #555555;
+      position: relative;
+      top: 5px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      color: #FFF;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: @baseFontSize - 2;
+    }
+  }
+  .bottom {
+    padding-top: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-align: center;
+    border-top: none;
+    h2 {
+      font-weight: 600;
+      margin: 0;
+    }
+    h6 {
+      font-size: 0.7em;
+      font-weight: 1;
+      position: relative;
+      bottom: 10px;
+      color: #555555;
     }
   }
 }
+.statuspanel .warning, .statuspanel .warning h6 {
+  background-color: #ffa93c;
+}
+.statuspanel .success, .statuspanel .success h6 {
+  background: @appDark;
+}
+.statuspanel .danger, .statuspanel .danger h6 {
+  background: lighten(@appRed, 5%);
+}
+.statuspanel .info, .statuspanel .info h6 {
+  background-color: #14b8d4;
+}
+.statuspanel .primary, .statuspanel .primary h6 {
+  background-color: #007ccd;
+}
+.statuspanel .purple, .statuspanel .purple h6 {
+  background-color: #7932ea;
+}
+
+
+// Counter widget
+
+.widget {
+  //padding-right: @baseLineHeight;
+}
+
+.stats {
+  text-align: center;
+  .stat {
+    background-color: #eeeeee;
+    color: #555555;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    h2 {
+      font-weight: 1;
+    }
+    h6 {
+      margin-top: -10px;
+    }
+  }
+  .warning,
+  .important {
+    background-color: lighten(@appRed, 5%);
+    color: #FFF;
+  }
+  .success {
+    background-color: @appDark;
+    color: #FFF;
+  }
+  .danger {
+    background-color: @appRed;
+    color: #FFF;
+  }
+  .info {
+    background-color: @appDark;
+    color: #FFF;
+  }
+  .primary {
+    background-color: #007ccd;
+    color: #FFF;
+  }
+  .purple {
+    background-color: #7932ea;
+    color: #FFF;
+  }
+  .inverse {
+    background-color: @appBrown;
+    color: #FFF;
+  }
+}
+
+// Form styles
+// ------------------------
 
 #login_form {
   width: 300px;
@@ -300,7 +538,48 @@ body > header {
   .center-block();
 }
 
-// faust styles for a HMTL5 based site footer
+// Keyframe animations
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+@keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+ 
+.dim-in {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:dimIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:dimIn ease-in 1;
+  animation:dimIn ease-in 1;
+ 
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+ 
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+ 
+.dim-in.one {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+ 
+.dim-in.two {
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay:1.2s;
+  animation-delay: 1.2s;
+}
+ 
+.dim-in.three {
+  -webkit-animation-delay: 1.6s;
+  -moz-animation-delay: 1.6s;
+  animation-delay: 1.6s;
+}
+
+
+// Site footer
 body > footer {
     margin-top: @baseLineHeight;
     padding: @baseLineHeight 0;

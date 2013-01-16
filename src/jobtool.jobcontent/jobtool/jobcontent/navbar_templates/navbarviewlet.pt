@@ -7,6 +7,7 @@
             <a href="" class="brand pull-right"
                 id="main-logo"
                 tal:attributes="href portal_url">
+                <i class="icon-cloud-download"></i>
                 JobTool</a>
             <a class="btn btn-navbar"
                 data-toggle="collapse"
@@ -30,25 +31,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href=""
-                                tal:attributes="href python:portal_url+'/presscenter/'">
+                                tal:attributes="href python:portal_url+'/jobcenter/@@overview'">
                                 <i class="icon-list" />
                                 &Uuml;bersicht
                                 </a>
                             </li>
                             <li><a href=""
-                                    tal:attributes="href python:portal_url+'/presscenter/kontakte'">
-                                <i class="icon-list-alt" />
-                                Adressen
-                                </a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
-                                <i class="icon-user" />
-                                Redakteure
-                                </a>
-                            </li>
-                            <li><a href=""
-                                tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
+                                tal:attributes="href python:portal_url+'/jobcenter/@@settings'">
                                 <i class="icon-align-justify" />
                                     Einstellungen
                                 </a>
@@ -87,14 +76,9 @@
                             </li>
                             <li class="divider"></li>
                             <li><a href=""
-                                tal:attributes="href python:home_folder + '/@@member-information'">
+                                tal:attributes="href python:portal_url + '/@@personal-information'">
                                 <i class="icon-cog" />
                                 Profil bearbeiten</a>
-                            </li>
-                            <li><a href=""
-                                tal:attributes="href home_folder">
-                                <i class="icon-home" />
-                                Mein Arbeitsplatz</a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">

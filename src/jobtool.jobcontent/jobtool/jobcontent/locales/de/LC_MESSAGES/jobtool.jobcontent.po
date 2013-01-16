@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jobtool.jobcontent\n"
-"POT-Creation-Date: 2013-01-09 16:45+0000\n"
+"POT-Creation-Date: 2013-01-15 00:48+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <cb@vorwaerts-werbung.de>\n"
@@ -20,26 +20,96 @@ msgstr ""
 msgid "A job opening describing the vacancy"
 msgstr "Ein Stellenangebot"
 
+#: ./../postjob.py:83
+msgid "A new job opening has successfully been added"
+msgstr "Ein neues Stellenangebot wurde erfolgreich hinzugefügt"
+
+#: ./../jobcenter.py:46
+msgid "Active"
+msgstr "Aktiv"
+
+#: ./../postjob_templates/jobaddform.pt:18
+msgid "Add Job Posting"
+msgstr "Stellenangebot hinzufügen"
+
+#: ./../jobopening_templates/view.pt:93
+msgid "Add categories"
+msgstr "Kategorien hinzufügen"
+
+#: ./../jobcenter_templates/view.pt:127
+#: ./../postjob.py:57
+msgid "Add job opening"
+msgstr "Stellenangebot hinzufügen"
+
+#: ./../postjob.py:50
+msgid "Add new image attachment"
+msgstr ""
+
+#: ./../jobcenter_templates/view.pt:98
+msgid "Add new job posting now"
+msgstr "Neues Stellenangebot jetzt anlegen."
+
 #: ./../vocabulary.py:28
 msgid "Administration"
 msgstr "Verwaltung"
+
+#: ./../jobcenter_templates/view.pt:114
+msgid "Aktive Stellenangebote"
+msgstr "Aktive Stellenangebote"
 
 #: ./../vocabulary.py:29
 msgid "Care"
 msgstr "Pflege"
 
+#: ./../categorization.py:24
+#: ./../editjob.py:48
 #: ./../jobopening.py:45
 msgid "Category"
 msgstr "Kategorie"
 
+#: ./../categorization.py:26
+#: ./../editjob.py:50
 #: ./../jobopening.py:47
 msgid "Category Selection"
 msgstr "Kategorieauswahl"
+
+#: ./../jobcenter_templates/view.pt:57
+msgid "Clear filter"
+msgstr "Filter entfernen"
+
+#: ./../jobcenter_templates/view.pt:86
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: ./../categorization_templates/jobcategoryeditform.pt:18
+msgid "Edit Job Categries"
+msgstr "Job Kategorien bearbeiten"
+
+#: ./../editjob_templates/jobeditform.pt:25
+msgid "Edit Job Opening"
+msgstr "Stellenangebot bearbeiten"
+
+#: ./../editjob_templates/jobsummaryeditform.pt:25
+msgid "Edit Job Opening Summary"
+msgstr "Beschreibung Jobangebot bearbeiten"
+
+#: ./../editjob.py:150
+msgid "Edit job opening"
+msgstr "Stellenangebot bearbeiten"
+
+#: ./../categorization.py:42
+msgid "Edit job opening categorization"
+msgstr "Stellenangebot Kategorisierung bearbeiten"
+
+#: ./../editjob.py:75
+msgid "Edit orderable item"
+msgstr "Jobangebot anlegen"
 
 #: ./../vocabulary.py:26
 msgid "Education"
 msgstr "Ausbildung"
 
+#: ./../editjob.py:61
 #: ./../jobopening.py:59
 msgid "Enter Summary of the job opening"
 msgstr "Ausführliche Stellenbeschreibung"
@@ -52,7 +122,17 @@ msgstr "Jobcenter zur Verwaltung von Stellenangeboten"
 msgid "Fulltime"
 msgstr "Vollzeit"
 
+#: ./../jobcenter_templates/view.pt:96
+msgid "In order to get you started with the tool, you should start adding a jobopening:"
+msgstr "Um mit dem Jobtool loslegen zu können, sollten Sie zunächst ein Stellenangebot hinzufügen."
+
+#: ./../jobcenter.py:49
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: ./../editjob.py:36
 #: ./../jobopening.py:33
+#: ./../postjob.py:28
 msgid "Institution"
 msgstr "Einrichtung"
 
@@ -60,11 +140,14 @@ msgstr "Einrichtung"
 msgid "Internship"
 msgstr "Praktika"
 
+#: ./../editjob.py:60
 #: ./../jobopening.py:58
 msgid "Job Description"
 msgstr "Stellenbeschreibung"
 
+#: ./../editjob.py:31
 #: ./../jobopening.py:28
+#: ./../postjob.py:23
 msgid "Job Type"
 msgstr "Stellenart"
 
@@ -76,12 +159,15 @@ msgstr "Jobcenter"
 msgid "JobOpening"
 msgstr "Stellenangebot"
 
-#: ./../jobcenter_templates/view.pt:27
-#: ./../jobopening_templates/view.pt:28
+#: ./../categorization_templates/jobcategoryeditform.pt:21
+#: ./../editjob_templates/jobeditform.pt:28
+#: ./../jobcenter_templates/overview.pt:23
 msgid "Last changed:"
 msgstr "Zuletzt verändert:"
 
+#: ./../editjob.py:40
 #: ./../jobopening.py:37
+#: ./../postjob.py:32
 msgid "Location"
 msgstr "Ort"
 
@@ -93,9 +179,17 @@ msgstr "Setzen Sie eine Markierung, um dieses Stellenangebot in der Vorschau anz
 msgid "Medicine"
 msgstr "Medizin"
 
+#: ./../editjob.py:94
+msgid "Orderable item edit has been cancelled."
+msgstr "Die Bearbeitung wurde abgebrochen"
+
 #: ./../vocabulary.py:32
 msgid "Other"
 msgstr "Sonstige"
+
+#: ./../jobcenter_templates/overview.pt:18
+msgid "Overview"
+msgstr "Übersicht Stellenangebote"
 
 #: ./../vocabulary.py:13
 msgid "Parttime"
@@ -109,13 +203,50 @@ msgstr "Pädagogik/Philosophie"
 msgid "Preview"
 msgstr "Vorschau"
 
+#: ./../categorization.py:61
+#: ./../postjob.py:69
+msgid "Process has been cancelled."
+msgstr "Der Vorgang wurde abgebrochen"
+
+#: ./../categorization.py:49
+#: ./../editjob.py:82
+msgid "Save"
+msgstr "Speichern"
+
+#: ./../editjob.py:44
 #: ./../jobopening.py:41
+#: ./../postjob.py:36
 msgid "Start date"
 msgstr "Anfangsdatum"
 
+#: ./../editjob.py:169
+msgid "Summary edit has been cancelled."
+msgstr "Das Bearbeiten der ausführlichen Beschreibung des Stellenangebotes wurde abgebrochen."
+
+#: ./../categorization.py:89
+#: ./../editjob.py:124
+msgid "The job opening has successfully been updated"
+msgstr "Das Stellenangebot wurde erfolgreich aktualisiert."
+
+#: ./../jobopening_templates/view.pt:92
+msgid "There are no categories asigned yet."
+msgstr "Dieses Stellenangebot wurde noch keiner Kategorie hinzugefügt."
+
+#: ./../editjob.py:27
 #: ./../jobopening.py:24
+#: ./../postjob.py:19
 msgid "Title"
 msgstr "Titel"
+
+#: ./../jobcenter_templates/view.pt:95
+msgid "Welcome to the Jobcenter"
+msgstr "Willkommen im Jobcenter"
+
+#: ./../categorization.py:57
+#: ./../editjob.py:90
+#: ./../postjob.py:65
+msgid "cancel"
+msgstr "Abbrechen"
 
 #: ./../vocabulary.py:57
 msgid "ejv-aichach-friedberg.de"
