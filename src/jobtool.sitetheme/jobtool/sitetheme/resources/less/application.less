@@ -330,6 +330,52 @@ body > header {
   }
 }
 
+// Job listing
+// ---------------------------
+
+#joblisting-view {
+  padding: @baseLineHeight;
+  #joblisting {
+    border-top: 1px solid @gray;
+  }
+  .splashbox {
+    padding: @paddingSmall;
+    .box-shadow(none);
+    border: 0px;
+    border-bottom: 1px solid @gray;
+    border-right: 1px solid @gray;
+    border-left: 4px solid @gray;
+    .border-radius(0);
+    //background: transparent !important;
+    background: url(../assets/img/bg-white-fabric.png) repeat @white;
+    h4 > a {
+      color: @textColor;
+      text-decoration: underline;
+    }
+    h6 {
+      color: @textColor;
+    }
+    #joblisting-details {
+      text-align: right;
+    }
+    .btn {
+      .btn-primary();
+      margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
+    }
+    &.bodytext {
+      padding: @paddingLarge;
+      .alert-info {
+        background-color: rgba(255, 255, 255, 0.35);
+        border: 1px solid @grayLight;
+        color: @textColor;
+        h4 {
+          color: @gray;
+        }
+      }
+    }
+  }
+}
+
 // Customizations + overrides
 // -----------------------------
 

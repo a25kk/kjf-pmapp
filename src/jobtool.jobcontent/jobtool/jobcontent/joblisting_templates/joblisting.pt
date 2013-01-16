@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="jobtool.jobcontent">
+<body>
+
+<metal:main fill-slot="body">
+  <metal:content-core define-macro="body">
+  <div id="content-core">
+    <section id="joblisting-view"
+      style="width:480px"
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+      <header>
+        <h1 i18n:translate="">Joblisting</h1>
+      </header>
+      <article id="joblisting">
+        <tal:items tal:condition="view/has_items">
+          <div class="splashbox" tal:repeat="item view/active_jobs">
+            <div class="row-fluid">
+              <div class="span8">
+                <h4 tal:define="item_uid item/UID;">
+                  <a href="" tal:attributes="href python:context_url + '/@@jobdetails?juid=' + item_uid">
+                      <span tal:content="item/Title" />
+                  </a>
+                </h4>
+                <h6><span tal:content="item/location">Augsburg</span>,
+                    <span tal:content="item/institution">Klinik Josefinum</span>
+                </h6>
+              </div>
+              <div class="span4" id="joblisting-details">
+                <h5><span tal:define="job_type item/jobtype"
+                    tal:content="python:view.pretty_jobtype(job_type)"
+                    i18n:translate="">Job type</span>
+                </h5>
+                <h6 tal:define="date item/start"
+                    tal:content="python:toLocalizedTime(date, long_format=False)">
+                    16.11.2012
+                </h6>
+              </div>
+            </div>
+          </div>
+        </tal:items>
+        <div class="alert" tal:condition="not:view/has_items">
+          <h4 i18n:translate="">Information</h4>
+          <p i18n:translate="">There are no active job openings at the moment.</p>
+        </div>
+      </article>
+    </section>
+  </div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

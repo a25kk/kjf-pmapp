@@ -17,6 +17,8 @@
     
     <theme href="frontpage.html" css:if-content="body.template-login_form" />
     <theme href="frontpage.html" css:if-content="body.template-logged_out" />
+    <theme href="joblisting.html" css:if-content="body.template-joblisting" />
+    <theme href="joblisting.html" css:if-content="body.template-jobdetails" />
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
