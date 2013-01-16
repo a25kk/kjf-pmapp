@@ -9,6 +9,13 @@
             // enhancement.
             return;
         }
+        if (!Modernizr.csstransitions) { // Test if CSS transitions are supported
+            $(function () {
+                $('div.window').on('load', function () {
+                    $(this).animate({opacity: '1'}, {queue: false, duration: 500});
+                });
+            });
+        }
         $('span[data-appui="prettydate"]').timeago();
         $('input[data-appui="knob"]').knob();
         $('a[data-appui="tooltip"]').tooltip();

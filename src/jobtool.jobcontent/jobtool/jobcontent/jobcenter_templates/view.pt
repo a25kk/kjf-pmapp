@@ -29,7 +29,7 @@
         <h1>Jobcenter
           <small tal:condition="view/has_filter"
             tal:define="info view/filter_info">
-            <span tal:attributes="class info/klass"
+            <span tal:attributes="class string:label label-${info/klass}"
               tal:content="info/state" />
           </small>
         </h1>
@@ -48,19 +48,21 @@
                 <div class="tile-wrapper"
                   tal:define="items view/job_listing;
                               items_count python:len(items)">
-                  <div class="alert" tal:condition="view/has_filter">
-                    <strong tal:define="info view/filter_info">
-                      <span tal:replace="info/state" />
-                      Jobs:
-                    </strong>
-                    <span tal:replace="items_count" />
-                    <a href=""
-                      tal:attributes="href context_url"
-                      class="pull-right link-clear-filter">
-                        <i class="icon-remove-circle"></i>
-                        <span i18n:translate="">Clear filter</span>
-                    </a>
-                  </div>
+                  <tal:block tal:condition="view/has_filter">
+                    <div class="alert" tal:define="info view/filter_info"
+                      tal:attributes="class string:alert alert-${info/klass}">
+                      <strong>
+                        Jobs <span tal:replace="info/state" />:
+                      </strong>
+                      <span tal:replace="items_count" />
+                      <a href=""
+                        tal:attributes="href context_url"
+                        class="pull-right link-clear-filter">
+                          <i class="icon-remove-circle"></i>
+                          <span i18n:translate="">Clear filter</span>
+                      </a>
+                    </div>
+                  </tal:block>
                   <div class="tile" tal:repeat="item items">
                     <div class="row-fluid">
                       <div class="span2">
@@ -108,8 +110,16 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-                <div class="stats widget">
+                <div class="stats widget" tal:condition="not:view/has_filter">
                   <div class="stat inverse">
+                    <h2 tal:content="view/jobs_index">72</h2>
+                    <h6>Jobs</h6>
+                  </div>
+                </div>
+                <div class="stats widget" tal:condition="view/has_filter">
+                  <div class="stat inverse"
+                    tal:define="info view/filter_info"
+                    tal:attributes="class string:stat ${info/klass}">
                     <h2 tal:content="view/jobs_index">72</h2>
                     <h6>Jobs</h6>
                   </div>

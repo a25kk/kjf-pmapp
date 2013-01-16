@@ -44,10 +44,10 @@ class View(grok.View):
             value = self.request.get('filter')
             if value == 'published':
                 info['state'] = _(u"Active")
-                info['klass'] = 'label label-success'
+                info['klass'] = 'success'
             else:
                 info['state'] = _(u"Inactive")
-                info['klass'] = 'label label-important'
+                info['klass'] = 'important'
         return info
 
     def jobs_index(self):
@@ -115,7 +115,8 @@ class Overview(grok.View):
             index_value = index
         else:
             index_value = index / one_percent
-        return str(index_value)
+        index = round(float(index_value))
+        return str(index)
 
     def jobs_index(self):
         context = aq_inner(self.context)

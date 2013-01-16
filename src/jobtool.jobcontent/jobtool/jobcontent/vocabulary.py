@@ -52,16 +52,8 @@ class DistributorsVocabulary(object):
             'c643191e6ab591b3a896e35954cae269a1f3baeb',
             _(u"sanktelisabeth.de"):
             '5d01382073f2461fb31f1321821da02b54591546',
-            _(u"sankt-georg-kempten.de"):
-            'e1ee49115859acafec2ba2e28f9a2c7b9b093561',
-            _(u"ejv-aichach-friedberg.de"):
-            '60d99866dd53c6fb1754fb723619812a0f0ab2d0',
-            _(u"ejv-augsburg.de"):
-            '87b0342f80abe497f72943676b0fa4e2319f01b9',
-            _(u"ejv-memmingen-unterallgaeu.de"):
-            '5975ca7ee68ea80307c71fd05cb892c57691a120',
-            _(u"ejv-ostallgaeu.de"):
-            '421e5c8dbc1611a321c1757da6bcca3dd5d1bb20'}
+            _(u"sankt-nikolaus.de"):
+            'e1ee49115859acafec2ba2e28f9a2c7b9b093561'}
         return SimpleVocabulary([SimpleTerm(value, title=title)
                                 for title, value in
                                 sorted(DISTRIBUTORS.iteritems())])

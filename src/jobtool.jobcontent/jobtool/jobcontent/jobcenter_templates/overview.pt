@@ -123,6 +123,12 @@
           <div class="span3">
             <aside id="sidebar"
               tal:define="preview_idx string:0">
+              <div class="stats widget">
+                <div class="stat inverse">
+                  <h2 tal:content="view/jobs_index">72</h2>
+                  <h6>Jobs</h6>
+                </div>
+              </div>
               <div class="statuspanel">
                 <div class="top">
                   <i class="icon-eye-open icon-4x"></i>

@@ -41,6 +41,16 @@ class IJobOpening(form.Schema, IImageScaleTraversable):
         title=_(u"Start date"),
         required=False,
     )
+    distributor = schema.List(
+        title=_(u"Selected Distributors"),
+        description=_(u"Select external distributors to filter display in "
+                      u"the press archive listing"),
+        value_type=schema.Choice(
+            title=_(u"Distributor"),
+            vocabulary='jobtool.jobcontent.externalDistributors',
+        ),
+        required=False,
+    )
     category = schema.List(
         title=_(u"Category"),
         value_type=schema.Choice(
@@ -101,6 +111,17 @@ class View(grok.View):
             prettyname = vocabterm.title
         except KeyError:
             prettyname = category
+        return prettyname
+
+    def pretty_distributor(self, distributor):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.externalDistributors')
+        try:
+            vocabterm = records.getTerm(distributor)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = distributor
         return prettyname
 
     def is_active(self):

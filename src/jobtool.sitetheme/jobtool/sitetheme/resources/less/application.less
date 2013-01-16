@@ -3,19 +3,13 @@
 
 
 body {
-  //background: lighten(@appColor, 20%);
   background:@appBackgroundDark;
-  //background:url(../assets/img/bg-white-fabric.png) repeat 0 0 @white;
 }
 
 input.context,
 input.destructive {
   margin-right: 10px;
   .btn-primary();
-}
-
-.progress-success .bar, .progress .bar-success {
-  #gradient > .vertical(lighten(#607080, 5%), #607080);
 }
 
 body.jobtool-frontpage {
@@ -63,10 +57,8 @@ body.jobtool-frontpage {
   }
 }
 
+// Custom editbar styles for the header
 
-// faust styles for a custom editbar override of the basic
-// twitter bootstarp navbar to make the edit bar look like a
-// browser toolbar
 body > header {
     #toolbar + nav,
     #editbar-wrapper + nav {
@@ -102,6 +94,9 @@ body > header {
 #main-wrapper {
   padding-top: @navbarHeight;
 }
+
+// Action bar
+// ---------------------------
 
 #actionbar {
   margin: @baseLineHeight @baseLineHeight * 2;
@@ -148,6 +143,9 @@ body > header {
     margin: 3px 20px 0px 10px;
   }
 }
+
+// Content window styles
+// --------------------------
 
 .window {
   //display: none;
@@ -235,11 +233,13 @@ body > header {
       text-shadow: 0 1px 0 @navbarBackgroundHighlight;
       .window-column-content {
         padding: @baseLineHeight;
+        .window-column-text {
+          margin-right: @baseLineHeight * 2;
+        }
       }
     }
     .tile {
         padding: @paddingSmall;
-        border-bottom: 1px solid @grayLight;
         .box-shadow(none);
         border: 0px;
         border-bottom: 1px solid @grayLight;
@@ -247,6 +247,7 @@ body > header {
         background: transparent !important;
         .btn {
           .btn-primary();
+          margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
         }
         &.active,
         &:hover {
@@ -271,15 +272,28 @@ body > header {
     }
     #sidebar {
       padding-top: @baseLineHeight;
+      padding-right: @baseLineHeight * 1.5;
       text-shadow: 0 1px 0 @navbarBackgroundHighlight;
       .tile {
         padding: @paddingSmall;
-        margin-right: @baseLineHeight;
+        //margin-right: @baseLineHeight;
         &.active,
         &:hover {
             background: #f5f5f5;
             color: @black;
             border-right: 0px solid @gray;
+        }
+      }
+      .box-editable {
+        a.link-editable {
+          display:none;
+          z-index: 1;
+        }
+        &:hover {
+          color: @black;
+          a.link-editable {
+            display: inline-block;
+          }
         }
       }
     }
@@ -298,7 +312,36 @@ a.caltrigger {
   width: 165px;
 }
 
-/* ============== panels ============== */
+a.link-clear-filter {
+  color: @gray;
+}
+
+.tile-wrapper {
+  .alert {
+    margin-bottom: @baseLineHeight / 2;
+  }
+}
+
+//.alert-important {
+//  background-color: lighten(@appRed, 15%);
+//  color: @white;
+//  border-color: darken(spin(@appRed, -10), 5%);
+//  border-radius: 0px;
+//}
+//.alert-success {
+//  background: @appDark;
+//  color: @white;
+//  border-color: darken(spin(@appDark, -10), 5%);
+//  border-radius: 0px;
+//}
+
+.progress-success .bar, .progress .bar-success {
+  #gradient > .vertical(lighten(#607080, 5%), #607080);
+}
+
+// Status panels
+// ------------------
+
 .statuspanel {
   width: 150px !important;
   background-color: @white;
@@ -307,116 +350,120 @@ a.caltrigger {
   display: inline-block;
   margin-bottom: 20px;
   margin-right: 20px;
-}
-.statuspanel .top {
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  background-color: #555555;
-  color: @white;
-  padding-top: 20px;
-}
-  .statuspanel .top i {
-    display: block;
-    margin: 0px auto 20px;
-}
-.statuspanel .top h6 {
-    display: inline;
+  .top {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     background-color: #555555;
-    position: relative;
-    top: 5px;
-    padding: 6px 12px;
-    border-radius: 30px;
-    color: #FFF;
-    font-weight: normal;
-    text-transform: uppercase;
-    font-size: @baseFontSize - 2;
+    color: @white;
+    padding-top: 20px;
+    i {
+      display: block;
+      margin: 0px auto 20px;
+    }
+    h6 {
+      display: inline;
+      background-color: #555555;
+      position: relative;
+      top: 5px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      color: #FFF;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: @baseFontSize - 2;
+    }
+  }
+  .bottom {
+    padding-top: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-align: center;
+    border-top: none;
+    h2 {
+      font-weight: 600;
+      margin: 0;
+    }
+    h6 {
+      font-size: 0.7em;
+      font-weight: 1;
+      position: relative;
+      bottom: 10px;
+      color: #555555;
+    }
+  }
 }
-.statuspanel .bottom {
-  padding-top: 20px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  text-align: center;
-  border-top: none; }
-  .statuspanel .bottom h2 {
-    font-weight: 600;
-    margin: 0; }
-  .statuspanel .bottom h6 {
-    font-size: 0.7em;
-    font-weight: 1;
-    position: relative;
-    bottom: 10px;
-    color: #555555; }
 .statuspanel .warning, .statuspanel .warning h6 {
   background-color: #ffa93c;
-  /*    box-shadow: inset 0 0 10px lighten($warning, 8%);
-      border: 1px solid darken($warning, 20%)*/ }
+}
 .statuspanel .success, .statuspanel .success h6 {
-  //background-color: @btnSuccessBackground;
   background: @appDark;
-  /*    box-shadow: inset 0 0 10px lighten(@successText, 8%);
-      border: 1px solid darken(@successText, 20%)*/
 }
 .statuspanel .danger, .statuspanel .danger h6 {
-  //background-color: #ea494a;
   background: lighten(@appRed, 5%);
-  /*    box-shadow: inset 0 0 10px lighten($danger, 8%);
-      border: 1px solid darken($danger, 20%)*/ }
+}
 .statuspanel .info, .statuspanel .info h6 {
   background-color: #14b8d4;
-  /*    box-shadow: inset 0 0 10px lighten($info, 8%);
-      border: 1px solid darken($info, 20%)*/ }
+}
 .statuspanel .primary, .statuspanel .primary h6 {
   background-color: #007ccd;
-  /*    box-shadow: inset 0 0 10px lighten($primary, 8%);
-      border: 1px solid darken($primary, 20%)*/ }
+}
 .statuspanel .purple, .statuspanel .purple h6 {
   background-color: #7932ea;
-  /*    box-shadow: inset 0 0 10px lighten($purple, 8%);
-      border: 1px solid darken($purple, 20%)*/ }
+}
 
 
 // Counter widget
 
 .widget {
-  padding-right: @baseLineHeight;
+  //padding-right: @baseLineHeight;
 }
 
 .stats {
   text-align: center;
-}
-  .stats .stat {
+  .stat {
     background-color: #eeeeee;
     color: #555555;
     padding: 10px;
     border-radius: 6px;
     margin-bottom: 20px;
-    text-align: center; }
-    .stats .stat h2 {
-      font-weight: 1; }
-    .stats .stat h6 {
-      margin-top: -10px; }
-  .stats .warning {
-    background-color: #ffa93c;
-    color: #FFF; }
-  .stats .success {
-    background-color: #4cb158;
-    color: #FFF; }
-  .stats .danger {
-    background-color: @appRed;
-    color: #FFF; }
-  .stats .info {
+    text-align: center;
+    h2 {
+      font-weight: 1;
+    }
+    h6 {
+      margin-top: -10px;
+    }
+  }
+  .warning,
+  .important {
+    background-color: lighten(@appRed, 5%);
+    color: #FFF;
+  }
+  .success {
     background-color: @appDark;
-    color: #FFF; }
-  .stats .primary {
+    color: #FFF;
+  }
+  .danger {
+    background-color: @appRed;
+    color: #FFF;
+  }
+  .info {
+    background-color: @appDark;
+    color: #FFF;
+  }
+  .primary {
     background-color: #007ccd;
-    color: #FFF; }
-  .stats .purple {
+    color: #FFF;
+  }
+  .purple {
     background-color: #7932ea;
-    color: #FFF; }
-  .stats .inverse {
+    color: #FFF;
+  }
+  .inverse {
     background-color: @appBrown;
-    color: #FFF; }
-
+    color: #FFF;
+  }
+}
 
 // Form styles
 // ------------------------
@@ -458,7 +505,48 @@ a.caltrigger {
   .center-block();
 }
 
-// faust styles for a HMTL5 based site footer
+// Keyframe animations
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+@keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+ 
+.dim-in {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:dimIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:dimIn ease-in 1;
+  animation:dimIn ease-in 1;
+ 
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+ 
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+ 
+.dim-in.one {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+ 
+.dim-in.two {
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay:1.2s;
+  animation-delay: 1.2s;
+}
+ 
+.dim-in.three {
+  -webkit-animation-delay: 1.6s;
+  -moz-animation-delay: 1.6s;
+  animation-delay: 1.6s;
+}
+
+
+// Site footer
 body > footer {
     margin-top: @baseLineHeight;
     padding: @baseLineHeight 0;

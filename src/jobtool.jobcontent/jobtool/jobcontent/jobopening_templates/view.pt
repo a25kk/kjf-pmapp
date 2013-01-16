@@ -25,10 +25,10 @@
         <h1 tal:content="context/Title">Title</h1>
 
         <p tal:define="time context/modified" class="discreet">
-              <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
+          <span i18n:translate="">Last changed:</span>
+          <span tal:content="time"
+             tal:attributes="data-appui string:prettydate;
+                             title time" />
         </p>
       </header>
       <article id="content-core">
@@ -39,17 +39,69 @@
                 <a href="#" class="btn btn-primary btn-small pull-right"
                   tal:attributes="href python:context_url + '/@@edit-job-opening'">
                   Edit</a>
-                <div tal:condition="context/text" tal:content="structure context/text/output" />
+                <div class="window-column-text"
+                  tal:condition="context/text"
+                  tal:content="structure context/text/output" />
               </div>
             </div>
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <h4 tal:content="context/institution" />
-              <h5 tal:content="context/location" />
-                <hr />
-                <div class="panel">
-                  <h5>Preview</h5>
+                <div class="box-editable">
+                  <small class="pull-right">
+                    <a href="#" class="link-editable"
+                      tal:attributes="href python:context_url + '/@@edit-job-opening'">
+                      <i class="icon-edit"></i> bearbeiten
+                    </a>
+                  </small>
+                  <h4 tal:content="context/institution" />
+                  <h5 tal:content="context/location" />
+                </div><!-- / base settings -->
+              <hr />
+                <div class="box-editable">
+                  <h5 i18n:translate="">State</h5>
+                  <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
+                    data-appui="state-switch"
+                    tal:define="active view/is_active"
+                    tal:attributes="data-target string:${context_url}/@@update-job-state">
+                    <input type="checkbox" value="1" name="stateCheckbox"
+                      class="checkbox" checked="checked"
+                      tal:attributes="checked python:active and 'checked' or ''"
+                      />
+                    <label class="check" for="stateCheckbox"></label>
+                  </div>
+                </div><!-- / Job state -->
+              <hr />
+                <div class="box-editable">
+                  <small class="pull-right">
+                      <a href="#" class="link-editable"
+                        tal:attributes="href python:context_url + '/@@edit-job-categorization'">
+                        <i class="icon-edit"></i> bearbeiten
+                      </a>
+                  </small>
+                  <h5 i18n:translate="">Category</h5>
+                  <tal:cats tal:repeat="cat context/category">
+                    <a href="" class=""
+                      data-appui="tooltip"
+                      data-placement="top"
+                      data-original-title="Kategorien bearbeiten"
+                      tal:attributes="href python:context_url + '/@@edit-job-categorization'">
+                      <span tal:define="categoryname python:view.pretty_category(cat)"
+                        tal:content="categoryname"
+                        i18n:translate=""
+                        class="label"
+                        />
+                    </a>
+                  </tal:cats>
+                  <p class="text-warning" tal:condition="not:context/category">
+                    <span i18n:translate="">There are no categories asigned yet.</span><br />
+                    <a href="" tal:attributes="href python:context_url + '/@@edit-job-categorization'"
+                      i18n:translate="">Add categories</a>
+                  </p>
+                </div><!-- / Job category -->
+              <hr>
+                <div class="box-editable">
+                  <h5 i18n:translate="">Preview</h5>
                   <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
                     data-appui="preview-switch"
                     tal:define="preview context/preview"
@@ -59,40 +111,31 @@
                        />
                     <label class="check" for="previewCheckbox"></label>
                   </div>
-                </div>
-                <hr />
-                <h5>Status</h5>
-                <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
-                  data-appui="state-switch"
-                  tal:define="active view/is_active"
-                  tal:attributes="data-target string:${context_url}/@@update-job-state">
-                  <input type="checkbox" value="1" name="stateCheckbox"
-                    class="checkbox" checked="checked"
-                    tal:attributes="checked python:active and 'checked' or ''"
-                    />
-                  <label class="check" for="stateCheckbox"></label>
-                </div>
-                <hr />
-                
-                <h5>Kategory</h5>
-                <tal:cats tal:repeat="cat context/category">
-                  <a href="" class=""
-                    data-appui="tooltip"
-                    data-placement="top"
-                    data-original-title="Kategorien bearbeiten"
-                    tal:attributes="href python:context_url + '/@@edit-job-categorization'">
-                    <span tal:define="categoryname python:view.pretty_category(cat)"
-                      tal:content="categoryname"
-                      i18n:translate=""
-                      class="label"
-                      />
-                  </a>
-                </tal:cats>
-                <p class="text-warning" tal:condition="not:context/category">
-                  <span i18n:translate="">There are no categories asigned yet.</span><br />
-                  <a href="" tal:attributes="href python:context_url + '/@@edit-job-categorization'"
-                    i18n:translate="">Add categories</a>
-                </p>
+                </div><!-- / Job preview -->
+              <hr />
+                <div class="box-editable">
+                  <small class="pull-right">
+                      <a href="#" class="link-editable"
+                        tal:attributes="href python:context_url + '/@@edit-job-distributors'">
+                        <i class="icon-edit"></i> bearbeiten
+                      </a>
+                  </small>
+                  <h5 i18n:translate="">
+                    External Distributors
+                  </h5>
+                  <ul>
+                    <li tal:repeat="dist context/distributor">
+                      <span tal:content="python:view.pretty_distributor(dist)" />
+                    </li>
+                  </ul>
+                  <p class="text-warning" tal:condition="not:context/distributor">
+                    <small i18n:translate="">There are no external distributors/sites
+                      asigned yet.</small><br />
+                    <a href="" tal:attributes="href python:context_url + '/@@edit-job-distributors'"
+                      i18n:translate="">Add distributors</a>
+                  </p>
+                </div><!-- / job distributors -->
+              <hr />
             </aside>
           </div>
         </div>
