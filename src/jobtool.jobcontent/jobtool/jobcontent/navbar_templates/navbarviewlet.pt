@@ -37,7 +37,7 @@
                                 </a>
                             </li>
                             <li><a href=""
-                                tal:attributes="href python:portal_url+'/jobcenter/@@global-settings'">
+                                tal:attributes="href python:portal_url+'/jobcenter/@@settings'">
                                 <i class="icon-align-justify" />
                                     Einstellungen
                                 </a>
@@ -76,14 +76,9 @@
                             </li>
                             <li class="divider"></li>
                             <li><a href=""
-                                tal:attributes="href python:home_folder + '/@@member-information'">
+                                tal:attributes="href python:portal_url + '/@@personal-information'">
                                 <i class="icon-cog" />
                                 Profil bearbeiten</a>
-                            </li>
-                            <li><a href=""
-                                tal:attributes="href home_folder">
-                                <i class="icon-home" />
-                                Mein Arbeitsplatz</a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">

@@ -137,6 +137,30 @@ class Overview(grok.View):
         return len(items)
 
 
+class Settings(grok.View):
+    grok.context(IJobCenter)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('settings')
+
+    def jobs_index(self):
+        context = aq_inner(self.context)
+        return len(context.items())
+
+    def active_index(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')(
+            portal_type='jobtool.jobcontent.jobopening',
+            review_state='published')
+        return len(items)
+
+    def inactive_index(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')(
+            portal_type='jobtool.jobcontent.jobopening',
+            review_state='private')
+        return len(items)
+
+
 class JobsCounterJSON(grok.View):
     grok.context(IContentish)
     grok.require('zope2.View')

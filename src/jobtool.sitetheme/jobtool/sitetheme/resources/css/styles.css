@@ -7611,6 +7611,9 @@ body > header #main-nav .selected > a:focus {
 .window .window-content #sidebar .widget {
   margin: 0 20px;
 }
+.window .window-content > form {
+  padding: 20px;
+}
 input.dial {
   box-shadow: none;
 }

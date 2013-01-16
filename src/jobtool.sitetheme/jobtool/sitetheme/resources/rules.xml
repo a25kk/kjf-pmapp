@@ -81,7 +81,8 @@
             css:if-content="#user-name" />
         
         <replace css:content-children="#page-header"
-            css:theme-children=".window-header" />
+            css:theme-children=".window-header"
+            css:if-content="#page-header" />
 
         <replace css:content-children=".window-toolbar"
             css:theme-children=".window-toolbar" />
