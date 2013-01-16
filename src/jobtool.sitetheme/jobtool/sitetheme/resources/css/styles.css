@@ -5810,6 +5810,7 @@ input.standalone {
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   border-color: #c5c5c5;
   border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+  border-radius: 0px;
 }
 input.context [class^="icon-"],
 input.standalone [class^="icon-"],
@@ -6082,6 +6083,7 @@ input.standalone {
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   border-color: #c5c5c5;
   border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+  border-radius: 0px;
 }
 input.context [class^="icon-"],
 input.standalone [class^="icon-"],
@@ -7628,6 +7630,9 @@ a.link-clear-filter {
 }
 .tile-wrapper .alert {
   margin-bottom: 10px;
+}
+.btn {
+  border-radius: 0px;
 }
 .progress-success .bar,
 .progress .bar-success {
