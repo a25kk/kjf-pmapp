@@ -37,11 +37,35 @@
             <div class="window-column">
               <div class="window-column-content">
                 <a href="#" class="btn btn-primary btn-small pull-right"
+                  tal:condition="context/text"
                   tal:attributes="href python:context_url + '/@@edit-job-opening'">
                   Edit</a>
                 <div class="window-column-text"
                   tal:condition="context/text"
                   tal:content="structure context/text/output" />
+                <div tal:condition="not:context/text"
+                  class="featurette dim-in two">
+                  <div class="row-fluid">
+                    <div class="span9">
+                      <h2>Detailed job description</h2>
+                      <p class="lead">
+                        You have already provided the neccessary details for
+                        displaying this vacancy in the public job listing.
+                        You can also provide an additional detailed job description visible
+                        in the extended job view.
+                      </p>
+                    </div>
+                    <div class="span3">
+                      <a class="stats widget"
+                        tal:attributes="href python:context_url + '/@@edit-job-summary'">
+                        <span class="stat primary">
+                          <span class="stat-header"><i class="icon-file-alt icon-4x"></i></span>
+                          <span class="stat-subheader">Add job description</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -94,7 +118,7 @@
                     </a>
                   </tal:cats>
                   <p class="text-warning" tal:condition="not:context/category">
-                    <span i18n:translate="">There are no categories asigned yet.</span><br />
+                    <small i18n:translate="">There are no categories asigned yet.</small><br />
                     <a href="" tal:attributes="href python:context_url + '/@@edit-job-categorization'"
                       i18n:translate="">Add categories</a>
                   </p>

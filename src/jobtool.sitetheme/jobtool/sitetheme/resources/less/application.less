@@ -236,6 +236,30 @@ body > header {
         .window-column-text {
           margin-right: @baseLineHeight * 2;
         }
+        .featurette {
+          margin: @navbarHeight * 2;
+          padding: @baseLineHeight;
+          background-color: rgba(255, 255, 255, 0.35);
+          border: 1px solid @grayLight;
+          .stats {
+            display: block;
+            .stat {
+              display: block;
+              .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+              .stat-header {
+                margin: (@baseLineHeight / 2) 0;
+                font-family: @headingsFontFamily;
+                font-weight: @headingsFontWeight;
+                line-height: @baseLineHeight;
+                font-size: @baseFontSize * 2.25;
+              }
+              .stat-subheader {
+                display: block;
+                text-transform: uppercase;
+              }
+            }
+          }
+        }
       }
     }
     .tile {

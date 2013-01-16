@@ -82,5 +82,5 @@ class JobAddForm(form.SchemaEditForm):
         IStatusMessage(self.request).addStatusMessage(
             _(u"A new job opening has successfully been added"),
             type='info')
-        next_url = context.absolute_url() + '/@@edit-job-summary'
+        next_url = item.absolute_url()
         return self.request.response.redirect(next_url)
