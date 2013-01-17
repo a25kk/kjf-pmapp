@@ -1,7 +1,12 @@
 from five import grok
+from plone import api
+
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.interfaces import IVocabularyFactory
+
+from plone.i18n.normalizer import idnormalizer
+from Products.CMFPlone.utils import safe_unicode
 
 from jobtool.jobcontent import MessageFactory as _
 
@@ -60,3 +65,27 @@ class DistributorsVocabulary(object):
 
 grok.global_utility(DistributorsVocabulary,
                     name=u"jobtool.jobcontent.externalDistributors")
+
+
+class InstitutionsVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        cats = catalog.uniqueValuesFor("institution")
+        entries = []
+        done = []
+        for cat in cats:
+            cat_unicode = safe_unicode(cat)
+            cat_id = idnormalizer.normalize(cat_unicode)
+            if cat_id not in done:
+                entry = (cat_id, cat_unicode)
+                entries.append(entry)
+                done.append(cat_id)
+        terms = [SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
+                 for pair in entries]
+        return SimpleVocabulary(terms)
+
+
+grok.global_utility(InstitutionsVocabulary,
+                    name=u"jobtool.jobcontent.jobInstitutions")
