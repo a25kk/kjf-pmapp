@@ -16,7 +16,7 @@
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
         <div class="pull-right">
-          <h4 i18n:translate=""><i class="icon-cogs icon-2x"></i>
+          <h4><i class="icon-cogs icon-2x"></i>
           </h4>
         </div>
         <h1>Jobcenter</h1>

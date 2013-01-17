@@ -45,8 +45,9 @@
               <h5 tal:content="context/location" />
                 <hr />
               <h5>Information</h5>
-              <p>Edit the summary of this job opening.</p>
-              <p class="muted">This will be the actual text of the job posting accessible
+              <p i18n:translate="">Edit the summary of this job opening.</p>
+              <p class="muted" i18n:translate="">
+                This will be the actual text of the job posting accessible
                 from the preview inside the iframe.</p>
             </aside>
           </div>

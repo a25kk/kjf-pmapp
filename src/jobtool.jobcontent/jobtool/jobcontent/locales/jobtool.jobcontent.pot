@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-15 00:48+0000\n"
+"POT-Creation-Date: 2013-01-17 21:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "A new job opening has successfully been added"
 msgstr ""
 
-#: ./../jobcenter.py:46
+#: ./../jobcenter.py:55
 msgid "Active"
 msgstr ""
 
@@ -33,11 +33,19 @@ msgstr ""
 msgid "Add Job Posting"
 msgstr ""
 
-#: ./../jobopening_templates/view.pt:93
+#: ./../jobopening_templates/view.pt:124
 msgid "Add categories"
 msgstr ""
 
-#: ./../jobcenter_templates/view.pt:127
+#: ./../jobopening_templates/view.pt:160
+msgid "Add distributors"
+msgstr ""
+
+#: ./../jobopening_templates/view.pt:65
+msgid "Add job description"
+msgstr ""
+
+#: ./../jobcenter_templates/view.pt:141
 #: ./../postjob.py:57
 msgid "Add job opening"
 msgstr ""
@@ -46,43 +54,62 @@ msgstr ""
 msgid "Add new image attachment"
 msgstr ""
 
-#: ./../jobcenter_templates/view.pt:98
+#: ./../jobcenter_templates/view.pt:103
 msgid "Add new job posting now"
 msgstr ""
 
-#: ./../vocabulary.py:28
+#: ./../vocabulary.py:33
 msgid "Administration"
 msgstr ""
 
-#: ./../jobcenter_templates/view.pt:114
+#: ./../jobcenter_templates/view.pt:127
 msgid "Aktive Stellenangebote"
 msgstr ""
 
-#: ./../vocabulary.py:29
+#: ./../joblisting_templates/jobdetails.pt:18
+msgid "Back to overview"
+msgstr ""
+
+#: ./../vocabulary.py:34
 msgid "Care"
 msgstr ""
 
-#: ./../categorization.py:24
-#: ./../editjob.py:48
-#: ./../jobopening.py:45
+#: ./../categorization.py:25
+#: ./../editjob.py:49
+#: ./../jobopening.py:55
 msgid "Category"
 msgstr ""
 
-#: ./../categorization.py:26
-#: ./../editjob.py:50
-#: ./../jobopening.py:47
+#: ./../categorization.py:27
+#: ./../editjob.py:51
+#: ./../jobopening.py:57
 msgid "Category Selection"
 msgstr ""
 
-#: ./../jobcenter_templates/view.pt:57
+#: ./../jobcenter_templates/view.pt:61
 msgid "Clear filter"
 msgstr ""
 
-#: ./../jobcenter_templates/view.pt:86
+#: ./../jobopening_templates/view.pt:52
+msgid "Detailed job description"
+msgstr ""
+
+#: ./../distributors.py:28
+#: ./../jobopening.py:49
+msgid "Distributor"
+msgstr ""
+
+#: ./../jobcenter_templates/joblistingsettings.pt:104
+#: ./../jobcenter_templates/view.pt:91
+#: ./../jobopening_templates/view.pt:43
 msgid "Edit"
 msgstr ""
 
-#: ./../categorization_templates/jobcategoryeditform.pt:18
+#: ./../distributors_templates/jobdistributoreditform.pt:24
+msgid "Edit External Distributors"
+msgstr ""
+
+#: ./../categorization_templates/jobcategoryeditform.pt:24
 msgid "Edit Job Categries"
 msgstr ""
 
@@ -94,62 +121,100 @@ msgstr ""
 msgid "Edit Job Opening Summary"
 msgstr ""
 
-#: ./../editjob.py:150
+#: ./../editjob.py:164
 msgid "Edit job opening"
 msgstr ""
 
-#: ./../categorization.py:42
+#: ./../categorization.py:43
 msgid "Edit job opening categorization"
 msgstr ""
 
-#: ./../editjob.py:75
+#: ./../distributors.py:44
+msgid "Edit job opening distributors"
+msgstr ""
+
+#: ./../editjob.py:81
 msgid "Edit orderable item"
 msgstr ""
 
-#: ./../vocabulary.py:26
+#: ./../editjob_templates/jobsummaryeditform.pt:48
+msgid "Edit the summary of this job opening."
+msgstr ""
+
+#: ./../vocabulary.py:31
 msgid "Education"
 msgstr ""
 
-#: ./../editjob.py:61
-#: ./../jobopening.py:59
+#: ./../editjob.py:58
+#: ./../jobopening.py:69
 msgid "Enter Summary of the job opening"
+msgstr ""
+
+#: ./../jobopening_templates/view.pt:149
+msgid "External Distributors"
+msgstr ""
+
+#: ./../jobcenter_templates/settings.pt:82
+msgid "External sites configured as distributor sites can implement the job listing as an iframe window by using this urls. Copy the relevant URL for each external service from the provided field."
 msgstr ""
 
 #: ./../profiles/default/types/jobtool.jobcontent.jobcenter.xml
 msgid "Folderish jobcenter and managing unit"
 msgstr ""
 
-#: ./../vocabulary.py:13
+#: ./../vocabulary.py:18
 msgid "Fulltime"
 msgstr ""
 
-#: ./../jobcenter_templates/view.pt:96
+#: ./../jobcenter_templates/view.pt:101
 msgid "In order to get you started with the tool, you should start adding a jobopening:"
 msgstr ""
 
-#: ./../jobcenter.py:49
+#: ./../jobcenter.py:58
 msgid "Inactive"
 msgstr ""
 
-#: ./../editjob.py:36
+#: ./../jobcenter_templates/joblistingsettings.pt:114
+#: ./../joblisting_templates/jobdetails.pt:52
+#: ./../joblisting_templates/joblisting.pt:48
+msgid "Information"
+msgstr ""
+
+#: ./../editjob.py:37
+#: ./../jobcenter.py:29
 #: ./../jobopening.py:33
-#: ./../postjob.py:28
 msgid "Institution"
 msgstr ""
 
-#: ./../vocabulary.py:31
+#: ./../jobcenter.py:27
+msgid "Institutions"
+msgstr ""
+
+#: ./../vocabulary.py:36
 msgid "Internship"
 msgstr ""
 
-#: ./../editjob.py:60
-#: ./../jobopening.py:58
+#: ./../editjob.py:57
+#: ./../jobopening.py:68
 msgid "Job Description"
 msgstr ""
 
-#: ./../editjob.py:31
+#: ./../editjob.py:32
 #: ./../jobopening.py:28
 #: ./../postjob.py:23
 msgid "Job Type"
+msgstr ""
+
+#: ./../jobcenter_templates/settings.pt:81
+msgid "Job listing external sites"
+msgstr ""
+
+#: ./../jobcenter_templates/settings.pt:57
+msgid "Job listing settings"
+msgstr ""
+
+#: ./../jobcenter_templates/joblistingsettings.pt:62
+msgid "Job opening preview"
 msgstr ""
 
 #: ./../profiles/default/types/jobtool.jobcontent.jobcenter.xml
@@ -160,128 +225,191 @@ msgstr ""
 msgid "JobOpening"
 msgstr ""
 
-#: ./../categorization_templates/jobcategoryeditform.pt:21
+#: ./../jobcenter_templates/joblistingsettings.pt:117
+msgid "Jobcenter"
+msgstr ""
+
+#: ./../joblisting_templates/jobdetails.pt:22
+#: ./../joblisting_templates/joblisting.pt:18
+msgid "Joblisting"
+msgstr ""
+
+#: ./../categorization_templates/jobcategoryeditform.pt:27
+#: ./../distributors_templates/jobdistributoreditform.pt:27
 #: ./../editjob_templates/jobeditform.pt:28
-#: ./../jobcenter_templates/overview.pt:23
 msgid "Last changed:"
 msgstr ""
 
-#: ./../editjob.py:40
+#: ./../jobcenter_templates/joblistingsettings.pt:137
+#: ./../jobcenter_templates/overview.pt:137
+#: ./../jobcenter_templates/settings.pt:123
+msgid "Last modified"
+msgstr ""
+
+#: ./../editjob.py:41
 #: ./../jobopening.py:37
 #: ./../postjob.py:32
 msgid "Location"
 msgstr ""
 
-#: ./../jobopening.py:54
+#: ./../jobcenter_templates/joblistingsettings.pt:65
+msgid "Manage and review job openings marked for preview on the main site. The listed jobs will be randomly shuffled when displayed."
+msgstr ""
+
+#: ./../jobopening.py:64
 msgid "Mark this job opening as available for preview pages"
 msgstr ""
 
-#: ./../vocabulary.py:30
+#: ./../vocabulary.py:35
 msgid "Medicine"
 msgstr ""
 
-#: ./../editjob.py:94
+#: ./../editjob.py:100
 msgid "Orderable item edit has been cancelled."
 msgstr ""
 
-#: ./../vocabulary.py:32
+#: ./../vocabulary.py:37
 msgid "Other"
 msgstr ""
 
+#: ./../jobcenter_templates/joblistingsettings.pt:18
 #: ./../jobcenter_templates/overview.pt:18
 msgid "Overview"
 msgstr ""
 
-#: ./../vocabulary.py:13
+#: ./../vocabulary.py:18
 msgid "Parttime"
 msgstr ""
 
-#: ./../vocabulary.py:27
+#: ./../vocabulary.py:32
 msgid "Philosophy"
 msgstr ""
 
-#: ./../jobopening.py:53
+#: ./../jobopening.py:63
+#: ./../jobopening_templates/view.pt:130
 msgid "Preview"
 msgstr ""
 
-#: ./../categorization.py:61
+#: ./../jobcenter_templates/settings.pt:63
+msgid "Preview frame width"
+msgstr ""
+
+#: ./../jobcenter_templates/settings.pt:68
+msgid "Preview items per page"
+msgstr ""
+
+#: ./../categorization.py:62
+#: ./../distributors.py:63
 #: ./../postjob.py:69
 msgid "Process has been cancelled."
 msgstr ""
 
-#: ./../categorization.py:49
-#: ./../editjob.py:82
+#: ./../categorization.py:50
+#: ./../distributors.py:51
+#: ./../editjob.py:88
 msgid "Save"
 msgstr ""
 
-#: ./../editjob.py:44
+#: ./../distributors.py:25
+#: ./../jobopening.py:46
+msgid "Select external distributors to filter display in the press archive listing"
+msgstr ""
+
+#: ./../distributors.py:24
+#: ./../jobopening.py:45
+msgid "Selected Distributors"
+msgstr ""
+
+#: ./../editjob.py:45
 #: ./../jobopening.py:41
 #: ./../postjob.py:36
 msgid "Start date"
 msgstr ""
 
-#: ./../editjob.py:169
+#: ./../editjob_templates/jobeditform.pt:50
+#: ./../jobopening_templates/view.pt:88
+msgid "State"
+msgstr ""
+
+#: ./../editjob.py:183
 msgid "Summary edit has been cancelled."
 msgstr ""
 
-#: ./../categorization.py:89
-#: ./../editjob.py:124
+#: ./../categorization.py:90
+#: ./../distributors.py:92
+#: ./../editjob.py:130
 msgid "The job opening has successfully been updated"
 msgstr ""
 
-#: ./../jobopening_templates/view.pt:92
+#: ./../jobcenter_templates/joblistingsettings.pt:115
+msgid "There are currently now job openings marked as preview item. Visit the"
+msgstr ""
+
+#: ./../joblisting_templates/joblisting.pt:49
+msgid "There are no active job openings at the moment."
+msgstr ""
+
+#: ./../jobopening_templates/view.pt:123
 msgid "There are no categories asigned yet."
 msgstr ""
 
-#: ./../editjob.py:27
+#: ./../jobopening_templates/view.pt:158
+msgid "There are no external distributors/sites asigned yet."
+msgstr ""
+
+#: ./../joblisting_templates/jobdetails.pt:61
+msgid "There was an error resolving this job opening."
+msgstr ""
+
+#: ./../joblisting_templates/jobdetails.pt:53
+msgid "This job opening does not have a detailed job description"
+msgstr ""
+
+#: ./../editjob_templates/jobsummaryeditform.pt:49
+msgid "This will be the actual text of the job posting accessible from the preview inside the iframe."
+msgstr ""
+
+#: ./../editjob.py:28
 #: ./../jobopening.py:24
 #: ./../postjob.py:19
 msgid "Title"
 msgstr ""
 
-#: ./../jobcenter_templates/view.pt:95
+#: ./../jobcenter_templates/view.pt:100
 msgid "Welcome to the Jobcenter"
 msgstr ""
 
-#: ./../categorization.py:57
-#: ./../editjob.py:90
-#: ./../postjob.py:65
+#: ./../jobopening_templates/view.pt:53
+msgid "You have already provided the neccessary details for displaying this vacancy in the public job listing. You can also provide an additional detailed job description visible in the extended job view."
+msgstr ""
+
+#: ./../categorization.py:58
+#: ./../distributors.py:59
+#: ./../editjob.py:96
 msgid "cancel"
 msgstr ""
 
-#: ./../vocabulary.py:57
-msgid "ejv-aichach-friedberg.de"
-msgstr ""
-
-#: ./../vocabulary.py:59
-msgid "ejv-augsburg.de"
-msgstr ""
-
-#: ./../vocabulary.py:61
-msgid "ejv-memmingen-unterallgaeu.de"
-msgstr ""
-
-#: ./../vocabulary.py:63
-msgid "ejv-ostallgaeu.de"
-msgstr ""
-
-#: ./../vocabulary.py:49
+#: ./../vocabulary.py:54
 msgid "josefinum.de"
 msgstr ""
 
-#: ./../vocabulary.py:51
+#: ./../vocabulary.py:56
 msgid "kinderzentrum-augsburg.de"
 msgstr ""
 
-#: ./../vocabulary.py:47
+#: ./../vocabulary.py:52
 msgid "kjf-augsburg.de"
 msgstr ""
 
-#: ./../vocabulary.py:55
-msgid "sankt-georg-kempten.de"
+#: ./../vocabulary.py:60
+msgid "sankt-nikolaus.de"
 msgstr ""
 
-#: ./../vocabulary.py:53
+#: ./../vocabulary.py:58
 msgid "sanktelisabeth.de"
+msgstr ""
+
+#: ./../jobcenter_templates/joblistingsettings.pt:119
+msgid "to choose vacancies suitable for preview."
 msgstr ""
 

@@ -62,7 +62,7 @@
                     <h2 i18n:translate="">
                       Job opening preview
                     </h2>
-                    <p class="lead">
+                    <p class="lead" i18n:translate="">
                       Manage and review job openings marked for preview on
                       the main site. The listed jobs will be randomly shuffled
                       when displayed.</p>

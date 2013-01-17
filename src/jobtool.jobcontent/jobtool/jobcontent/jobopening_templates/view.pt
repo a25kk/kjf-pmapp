@@ -36,10 +36,12 @@
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
-                <a href="#" class="btn btn-primary btn-small pull-right"
+                <a href="#" class="pull-right"
                   tal:condition="context/text"
-                  tal:attributes="href python:context_url + '/@@edit-job-opening'">
-                  Edit</a>
+                  tal:attributes="href python:context_url + '/@@edit-job-summary'">
+                  <i class="icon-edit"></i>
+                  <span i18n:translate="">Edit</span>
+                </a>
                 <div class="window-column-text"
                   tal:condition="context/text"
                   tal:content="structure context/text/output" />
@@ -47,8 +49,8 @@
                   class="featurette dim-in two">
                   <div class="row-fluid">
                     <div class="span9">
-                      <h2>Detailed job description</h2>
-                      <p class="lead">
+                      <h2 i18n:translate="">Detailed job description</h2>
+                      <p class="lead" i18n:translate="">
                         You have already provided the neccessary details for
                         displaying this vacancy in the public job listing.
                         You can also provide an additional detailed job description visible
@@ -60,7 +62,7 @@
                         tal:attributes="href python:context_url + '/@@edit-job-summary'">
                         <span class="stat primary">
                           <span class="stat-header"><i class="icon-file-alt icon-4x"></i></span>
-                          <span class="stat-subheader">Add job description</span>
+                          <span class="stat-subheader" i18n:translate="">Add job description</span>
                         </span>
                       </a>
                     </div>
