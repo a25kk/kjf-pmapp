@@ -86,13 +86,14 @@
                       <div class="span6">
                         <h4>
                           <span tal:replace="item/Title">
-                            Heilpädagogin/en oder Sozialpädagogin/en</span>
+                            Job opening title
+                          </span>
                           <small tal:define="job_type item/jobtype"
                             tal:content="python:view.pretty_jobtype(job_type)"
-                            i18n:translate="">Aktiv</small>
+                            i18n:translate="">Job type</small>
                         </h4>
-                        <p><small><span tal:content="item/location">Augsburg</span>,
-                            <span tal:content="item/institution">Klinik Josefinum</span>
+                        <p><small><span tal:content="item/location">location</span>,
+                            <span tal:content="item/institution">institution</span>
                             </small>
                         </p>
                       </div>
