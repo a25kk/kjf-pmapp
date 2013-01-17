@@ -187,6 +187,53 @@ class Settings(grok.View):
         return history
 
 
+class JoblistingSettings(grok.View):
+    grok.context(IJobCenter)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('settings-joblisting')
+
+    def update(self):
+        self.has_items = len(self.preview_items()) > 0
+
+    def jobs_index(self):
+        context = aq_inner(self.context)
+        return len(context.items())
+
+    def preview_index(self):
+        return len(self.preview_items())
+
+    def preview_items(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')(
+            portal_type='jobtool.jobcontent.jobopening',
+            preview=True,
+            review_state='published')
+        return items
+
+    def pretty_jobtype(self, jobtype):
+        context = aq_inner(self.context)
+        vr = getVocabularyRegistry()
+        records = vr.get(context, 'jobtool.jobcontent.jobTypes')
+        selected = jobtype
+        try:
+            vocabterm = records.getTerm(selected)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = selected
+        return prettyname
+
+    def get_state_info(self, state):
+        info = _(u"Inactive")
+        if state == 'published':
+            info = _(u"Active")
+        return info
+
+    def get_history(self):
+        context = aq_inner(self.context)
+        history = context.restrictedTraverse('@@changes').jobtool_history()
+        return history
+
+
 class JobsCounterJSON(grok.View):
     grok.context(IContentish)
     grok.require('zope2.View')
