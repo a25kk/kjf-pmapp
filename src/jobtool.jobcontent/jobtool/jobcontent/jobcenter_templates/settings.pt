@@ -78,7 +78,7 @@
                 </div>
                 <hr class="visualClear" />
 
-                  <h2 i18n:translate="">Job listing external sites</h2>
+                  <h3 i18n:translate="">Job listing external sites</h3>
                   <p i18n:translate="">
                     External sites configured as distributor sites can implement
                     the job listing as an iframe window by using this urls. Copy

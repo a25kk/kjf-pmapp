@@ -5917,6 +5917,20 @@ input.standalone .badge {
   position: relative;
   top: -1px;
 }
+input.context.btn-primary,
+input.standalone.btn-primary {
+  background-color: #57595c;
+  border-color: #57595c;
+}
+input.context.btn-primary:hover,
+input.standalone.btn-primary:hover,
+input.context.btn-primary:focus,
+input.standalone.btn-primary:focus,
+input.context.btn-primary:active,
+input.standalone.btn-primary:active {
+  background-color: #4b4c4f;
+  border-color: #3e4042;
+}
 #category {
   font-size: 11px;
   margin: 20px 0px;
@@ -6189,6 +6203,20 @@ input.context .badge,
 input.standalone .badge {
   position: relative;
   top: -1px;
+}
+input.context.btn-primary,
+input.standalone.btn-primary {
+  background-color: #57595c;
+  border-color: #57595c;
+}
+input.context.btn-primary:hover,
+input.standalone.btn-primary:hover,
+input.context.btn-primary:focus,
+input.standalone.btn-primary:focus,
+input.context.btn-primary:active,
+input.standalone.btn-primary:active {
+  background-color: #4b4c4f;
+  border-color: #3e4042;
 }
 .fieldRequired,
 span.required {
@@ -7730,6 +7758,16 @@ a.link-clear-filter {
 .btn {
   border-radius: 0px;
 }
+.btn.btn-primary {
+  background-color: #57595c;
+  border-color: #57595c;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active {
+  background-color: #4b4c4f;
+  border-color: #3e4042;
+}
 .progress-success .bar,
 .progress .bar-success {
   background-color: #677889;
@@ -7861,7 +7899,7 @@ a.link-clear-filter {
   color: #FFF;
 }
 .stats .primary {
-  background-color: #007ccd;
+  background-color: #61858c;
   color: #FFF;
 }
 .stats .purple {

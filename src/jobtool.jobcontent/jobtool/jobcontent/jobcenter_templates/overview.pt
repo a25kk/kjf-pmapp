@@ -30,7 +30,8 @@
         <div class="row-fluid">
           <div class="span9">
             <div class="window-column">
-              <div class="window-column-content">
+              <div class="window-column-content"
+                tal:define="jobidx view/jobs_index">
                 <div class="row-fluid">
                   <div class="span6">
                     <div class="panel" tal:define="active_idx view/active_index">
@@ -52,7 +53,8 @@
                         data-fgColor="#607080"
                         data-bgColor="#ffffff"
                         data-readOnly="true"
-                        tal:attributes="value active_idx">
+                        tal:attributes="data-max jobidx;
+                                        value active_idx">
                         <hr class="visualClear">
                       <h4>Anteil aktive Stellenangebote</h4>
                       <div class="progress progress-success"
@@ -94,7 +96,8 @@
                         data-fgColor="#D35E5E"
                         data-bgColor="#ffffff"
                         data-readOnly="true"
-                        tal:attributes="value inactive_idx">
+                        tal:attributes="data-max jobidx;
+                                        value inactive_idx">
                         <hr class="visualClear"/>
                       <h4>Anteil inaktive Stellenangebote</h4>
                       <div class="progress progress-danger"
@@ -129,35 +132,23 @@
                   <h6>Jobs</h6>
                 </div>
               </div>
-              <div class="statuspanel">
-                <div class="top">
-                  <i class="icon-eye-open icon-4x"></i>
-                  <h6>Preview</h6>
-                </div>
-                <div class="bottom">
-                  <h2>0</h2>
-                  <h6>Jobs</h6>
-                </div>
-              </div>
-              <hr class="visualClear" />
-              <h4>Anteil Preview</h4>
-              <div class="progress"
-                tal:define="progress python:view.get_percental_value(preview_idx)">
-                <div class="bar"
-                  tal:attributes="style python:'width: ' + progress + '%'"
-                  tal:content="string:${progress}%">
-                </div>
-              </div>     
-                <p>
-                  <a href="" class="btn btn-primary"
-                    data-appui="tooltip"
-                    data-placement="top"
-                    data-original-title="Add new job posting now"
-                    tal:attributes="href python:context_url + '/@@add-job'">
-                    Show job preview
-                  </a>
-                </p>
                 <hr />
+
+              <h3 i18n:translate="">Last modified</h3>
+                <div class="history-listing" tal:define="history view/get_history">
+                  <tal:items tal:repeat="entry history">
+                    <h6><span tal:replace="entry/title" /></h6>
+                    <p class="discreet">
+                      <span tal:content="entry/action" i18n:translate="">
+                        Action</span>
+                      <span tal:define="time entry/timestamp"
+                          tal:content="time"
+                          tal:attributes="data-appui string:prettydate;
+                                          title time" />
+                        <span>by <span tal:replace="entry/actor" /></span>
+                    </p>
+                  </tal:items>
+                </div>
             </aside>
           </div>
         </div>

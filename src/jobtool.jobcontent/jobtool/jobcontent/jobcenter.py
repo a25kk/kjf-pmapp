@@ -145,6 +145,11 @@ class Overview(grok.View):
             review_state='private')
         return len(items)
 
+    def get_history(self):
+        context = aq_inner(self.context)
+        history = context.restrictedTraverse('@@changes').jobtool_history()
+        return history
+
 
 class Settings(grok.View):
     grok.context(IJobCenter)

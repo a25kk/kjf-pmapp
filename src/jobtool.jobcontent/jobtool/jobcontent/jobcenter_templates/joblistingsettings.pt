@@ -48,11 +48,14 @@
                         value="75"
                         class="dial"
                         data-appui="knob"
+                        data-angleOffset="-90"
+                        data-angleArc="180"
                         data-thickness=".4"
-                        data-fgColor="#607080"
+                        data-fgColor="#555555"
                         data-bgColor="#ffffff"
                         data-readOnly="true"
-                        tal:attributes="value active_idx">
+                        tal:attributes="data-max view/jobs_index;
+                                        value active_idx">
                     </div>
                   </div>
                   <div class="span6">

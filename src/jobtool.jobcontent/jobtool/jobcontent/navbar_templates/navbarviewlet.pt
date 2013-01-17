@@ -25,26 +25,26 @@
                         <a href="/" class="dropdown-toggle"
                             data-toggle="dropdown"
                             tal:attributes="href python:portal_url+'/press-center'">
-                            <i class="icon-cog icon-white" />
+                            <i class="icon-cogs icon-white" />
                             Administration
                             <b class="caret" />
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/jobcenter/@@overview'">
-                                <i class="icon-list" />
+                                <i class="icon-cog" />
                                 &Uuml;bersicht
                                 </a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/jobcenter/@@settings-joblisting'">
-                                <i class="icon-share" />
+                                <i class="icon-cog" />
                                 Vorschau
                                 </a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/jobcenter/@@settings'">
-                                <i class="icon-align-justify" />
+                                <i class="icon-cog" />
                                     Einstellungen
                                 </a>
                             </li>

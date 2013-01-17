@@ -130,10 +130,11 @@
                     class="dial"
                     data-appui="knob"
                     data-thickness=".4"
-                    data-fgColor="#222222"
+                    data-fgColor="#57595C"
                     data-bgColor="#61858C"
                     data-readOnly="true"
-                    tal:attributes="value active_idx">
+                    tal:attributes="data-max view/jobs_index;
+                                    value active_idx">
                 </div>
                 <hr />
                 <p class="stats">
