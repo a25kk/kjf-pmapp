@@ -33,30 +33,23 @@ class IJobEdit(form.Schema):
         vocabulary=u"jobtool.jobcontent.jobTypes",
         required=True,
     )
-    organization = schema.Choice(
-        title=_(u"Organization"),
-        vocabulary=u"jobtool.jobcontent.jobInstitutions",
-        required=True,
-    )
-    institution = schema.TextLine(
-        title=_(u"Institution"),
-        required=True,
-    )
-    location = schema.TextLine(
-        title=_(u"Location"),
-        required=True,
-    )
     start = schema.Datetime(
         title=_(u"Start date"),
         required=False,
     )
-    category = schema.List(
-        title=_(u"Category"),
-        value_type=schema.Choice(
-            title=_(u"Category Selection"),
-            vocabulary=u"jobtool.jobcontent.jobCategory",
-        ),
+    institution = schema.Choice(
+        title=_(u"Institution"),
+        vocabulary=u"jobtool.jobcontent.jobInstitutions",
         required=True,
+    )
+    location = schema.Choice(
+        title=_(u"Location"),
+        vocabulary=u"jobtool.jobcontent.jobLocations",
+        required=True,
+    )
+    locationOverride = schema.TextLine(
+        title=_(u"Location Override"),
+        required=False,
     )
 
 

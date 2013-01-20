@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="span3">
-            <aside id="sidebar" tal:content="nothing">
+            <aside id="sidebar">
               <h4>Information</h4>
               <p i18n:translate="">Edit the summary of this job opening.</p>
               <p class="muted" i18n:translate="">

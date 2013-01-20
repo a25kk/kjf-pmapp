@@ -19,21 +19,27 @@ class IJobAdd(form.Schema):
         title=_(u"Title"),
         required=True,
     )
+    start = schema.Datetime(
+        title=_(u"Start date"),
+        required=False,
+    )
     jobtype = schema.Choice(
         title=_(u"Job Type"),
         vocabulary=u"jobtool.jobcontent.jobTypes",
         required=True,
     )
-    institution = schema.TextLine(
+    institution = schema.Choice(
         title=_(u"Institution"),
+        vocabulary=u"jobtool.jobcontent.jobInstitutions",
         required=True,
     )
-    location = schema.TextLine(
+    location = schema.Choice(
         title=_(u"Location"),
+        vocabulary=u"jobtool.jobcontent.jobLocations",
         required=True,
     )
-    start = schema.Datetime(
-        title=_(u"Start date"),
+    locationOverride = schema.TextLine(
+        title=_(u"Location Override"),
         required=False,
     )
 

@@ -24,21 +24,27 @@ class IJobOpening(form.Schema, IImageScaleTraversable):
         title=_(u"Title"),
         required=True,
     )
+    start = schema.Datetime(
+        title=_(u"Start date"),
+        required=False,
+    )
     jobtype = schema.Choice(
         title=_(u"Job Type"),
         vocabulary=u"jobtool.jobcontent.jobTypes",
         required=True,
     )
-    institution = schema.TextLine(
+    institution = schema.Choice(
         title=_(u"Institution"),
+        vocabulary=u"jobtool.jobcontent.jobInstitutions",
         required=True,
     )
-    location = schema.TextLine(
+    location = schema.Choice(
         title=_(u"Location"),
+        vocabulary=u"jobtool.jobcontent.jobLocations",
         required=True,
     )
-    start = schema.Datetime(
-        title=_(u"Start date"),
+    locationOverride = schema.TextLine(
+        title=_(u"Location Override"),
         required=False,
     )
     distributor = schema.List(
@@ -122,6 +128,18 @@ class View(grok.View):
             prettyname = vocabterm.title
         except KeyError:
             prettyname = distributor
+        return prettyname
+
+    def pretty_term(self, vocab, term):
+        context = aq_inner(self.context)
+        vocabulary = 'jobtool.jobcontent.' + vocab
+        vr = getVocabularyRegistry()
+        records = vr.get(context, vocabulary)
+        try:
+            vocabterm = records.getTerm(term)
+            prettyname = vocabterm.title
+        except KeyError:
+            prettyname = term
         return prettyname
 
     def is_active(self):

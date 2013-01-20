@@ -7150,8 +7150,8 @@ body > header #main-nav .selected > a:focus {
   text-transform: uppercase;
 }
 .window .window-content .window-column .window-column-content div.formControls {
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid #999999;
+  background: transparent;
+  border-top: 1px solid #999999;
 }
 .window .window-content .tile {
   padding: 2px 10px;

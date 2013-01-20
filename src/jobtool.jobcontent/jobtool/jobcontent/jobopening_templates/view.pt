@@ -73,16 +73,25 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-                <div class="box-editable">
+              <div class="box-editable">
                   <small class="pull-right">
                     <a href="#" class="link-editable"
                       tal:attributes="href python:context_url + '/@@edit-job-opening'">
                       <i class="icon-edit"></i> bearbeiten
                     </a>
                   </small>
-                  <h4 tal:content="context/institution" />
-                  <h5 tal:content="context/location" />
-                </div><!-- / base settings -->
+                <h4 i18n:translate="">Informationen</h4>
+                  <h5 tal:define="term context/institution;
+                                  pretty_term python:view.pretty_term('jobInstitutions', term)"
+                      tal:content="pretty_term" />
+                  <p tal:condition="context/locationOverride"
+                    tal:content="context/locationOverride" />
+                  <p tal:condition="not:context/locationOverride"
+                    tal:define="term context/location;
+                                pretty_term python:view.pretty_term('jobLocations', term)"
+                    tal:content="pretty_term" />
+              </div><!-- / base settings -->
+               
               <hr />
                 <div class="box-editable">
                   <h5 i18n:translate="">State</h5>
