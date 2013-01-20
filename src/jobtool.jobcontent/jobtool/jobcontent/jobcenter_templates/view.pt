@@ -69,10 +69,12 @@
                             tal:content="python:toLocalizedTime(date, long_format=False)">
                             16.11.2012
                         </h4>
-                        <p><span class="label"
+                        <p>
+                          <span class="xxlabel"
                             tal:define="state item/review_state"
                             tal:content="python:view.get_state_info(state)">
-                            Active/Inactive</span></p>
+                            Active/Inactive</span>
+                        </p>
                       </div>
                       <div class="span6">
                         <h4>
@@ -82,9 +84,19 @@
                             tal:content="python:view.pretty_jobtype(job_type)"
                             i18n:translate="">Aktiv</small>
                         </h4>
-                        <p><small><span tal:content="item/location">Augsburg</span>,
-                            <span tal:content="item/institution">Klinik Josefinum</span>
-                            </small>
+                        <p><small>
+                          <span tal:condition="not:item/locationOverride"
+                            tal:define="term item/location;
+                                        pretty_term python:view.pretty_term('jobLocations', term)"
+                            tal:content="pretty_term">
+                            Augsburg
+                          </span>
+                          <span tal:condition="item/locationOverride"
+                            tal:replace="item/locationOverride" />,
+                          <span tal:define="term item/institution;
+                                            pretty_term python:view.pretty_term('jobInstitutions', term)"
+                            tal:content="pretty_term">Klinik Josefinum</span>
+                          </small>
                         </p>
                       </div>
                       <div class="span4">

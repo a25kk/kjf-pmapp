@@ -44,16 +44,21 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <h4 tal:content="context/institution" />
-              <h5 tal:content="context/location" />
-              <hr />
-              <h5 i18n:translate="">State</h5>
-              <div class="box-editable" tal:define="active view/is_active">
-                <span tal:condition="active"
-                  class="label label-success">Aktiv</span>
-                <span tal:condition="not:active"
-                  class="label label-important">Inaktiv</span>
-              </div>
+              <p i18n:translate="" class="lead">
+                Edit basic details of this job opening
+              </p>
+              <p i18n:translate="">
+                Job openings will be sorted on the start date when listed in
+                the job preview listings.
+              </p>
+              <hr>
+              <p i18n:translate="">
+                Please note that any selection from the location dropdown menu
+                will be ignored if you provide an alternative value via the
+                location override field. Since values for institution and location
+                are absolutely necessary to display a job, the dropdown menu does
+                still require a value.
+              </p>
               <hr />
             </aside>
           </div>

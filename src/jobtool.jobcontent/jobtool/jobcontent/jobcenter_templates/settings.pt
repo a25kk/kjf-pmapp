@@ -36,48 +36,107 @@
                   <div class="span3">
                     <div class="panel" tal:define="active_idx view/active_index">
                       <div class="statuspanel">
-                        <div class="top success">
-                          <i class="icon-circle icon-4x"></i>
-                          <h6>Aktiv</h6>
+                        <div class="top">
+                          <i class="icon-cogs icon-4x"></i>
+                          <h6>Jobcenter</h6>
                         </div>
                         <div class="bottom">
-                          <h2 tal:content="view/active_index">100</h2>
-                          <h6>Jobs</h6>
+                          <h2 i18n:translate="">Settings</h2>
+                          <h6>Global</h6>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="span9">
-                    <small class="pull-right">
-                      <a href="#" class="link-editable"
-                        tal:attributes="href python:context_url + '/@@settings-listing'">
-                        <i class="icon-edit"></i> bearbeiten
-                      </a>
-                    </small>
                     <h2 i18n:translate="">
-                      Job listing settings
+                      Settings
                     </h2>
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <th i18n:translate="">Preview frame width</th>
-                          <td>480px</td>
-                          <td>(default value)</td>
-                        </tr>
-                        <tr>
-                          <th i18n:translate="">Preview items per page</th>
-                          <td>15</td>
-                          <td>(default value)</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <a href="" class="btn btn-primary pull-right"
-                      tal:attributes="href python:portal_url + '/@@joblisting'">
-                      Preview job listing</a>
+                    <p class="lead" i18n:translate="">The job center allows you to to configure
+                      the desired appearance of the job preview and to edit
+                      the presets for the job opening edit form.</p>
+                    <p i18n:translate="" class="lead">This page also lists
+                      the available URLs that can be used on external sites
+                      that wish to implement a job opening preview box.</p>
                   </div>
                 </div>
                 <hr class="visualClear" />
 
+                <h3 i18n:translate="">Jobcenter basic settings</h3>
+                <table class="table">
+                      <tbody>
+                        <tr>
+                          <th i18n:translate="">Job listing settings</th>
+                          <td><small class="pull-right">
+                            <a href="#" class="btn btn-primary btn-small"
+                              tal:attributes="href python:context_url + '/@@settings-listing'">
+                              bearbeiten
+                            </a>
+                            </small>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td i18n:translate="">Preview frame width</td>
+                          <td>
+                            <span tal:condition="context/width"
+                               tal:replace="context/width" />
+                            <span tal:condition="not:context/width">
+                                480</span> px
+                          </td>
+                        </tr>
+                        <tr>
+                          <td i18n:translate="">Preview items per page</td>
+                          <td><span tal:condition="context/limit"
+                               tal:replace="context/limit" />
+                              <span tal:condition="not:context/limit">
+                                10</span> Stellenangebote
+                          </td>
+                        </tr>
+                        <tr>
+                          <th i18n:translate="">Job opening settings</th>
+                          <td><small class="pull-right">
+                            <a href="#" class="btn btn-primary btn-small"
+                              tal:attributes="href python:context_url + '/@@settings-listing'">
+                              bearbeiten
+                            </a>
+                            </small>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td i18n:translate="">Institutions</td>
+                          <td tal:define="items context/institutions">
+                            <span class="badge"
+                              tal:content="python:len(items)" />
+                            <a class="discreet" data-toggle="collapse"
+                              data-target="#list-institutions">anzeigen</a>
+                            <div class="collapse" id="list-institutions">
+                              <ul class="discreet">
+                                <tal:block tal:repeat="item items">
+                                  <li tal:content="item" />
+                                </tal:block>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td i18n:translate="">Locations</td>
+                          <td tal:define="items context/locations">
+                            <span class="badge"
+                              tal:content="python:len(items)" />
+                            <a class="discreet" data-toggle="collapse"
+                              data-target="#list-locations">anzeigen</a>
+                            <div class="collapse"  id="list-locations">
+                            <ul  class=" discreet">
+                              <tal:block tal:repeat="item items">
+                                <li tal:content="item" />
+                              </tal:block>
+                            </ul>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  <hr>
                   <h3 i18n:translate="">Job listing external sites</h3>
                   <p i18n:translate="">
                     External sites configured as distributor sites can implement

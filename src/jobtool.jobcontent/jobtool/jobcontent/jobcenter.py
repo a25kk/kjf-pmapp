@@ -123,6 +123,18 @@ class View(grok.View):
             prettyname = selected
         return prettyname
 
+    def pretty_term(self, vocab, term):
+        context = aq_inner(self.context)
+        vocabulary = 'jobtool.jobcontent.' + vocab
+        vr = getVocabularyRegistry()
+        records = vr.get(context, vocabulary)
+        try:
+            vocabterm = records.getTerm(term)
+            prettyname = vocabterm.title
+        except (LookupError, KeyError):
+            prettyname = term
+        return prettyname
+
     def get_state_info(self, state):
         info = _(u"Inactive")
         if state == 'published':

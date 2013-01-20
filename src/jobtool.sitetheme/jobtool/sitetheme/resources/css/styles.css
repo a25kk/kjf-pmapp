@@ -5563,6 +5563,7 @@ input.standalone {
   background-color: #a7a9aa;
   border-color: #bbbbbb;
   border-radius: 0px;
+  text-shadow: none;
 }
 input.context [class^="icon-"],
 input.standalone [class^="icon-"],
@@ -5805,6 +5806,7 @@ input.standalone {
   background-color: #a7a9aa;
   border-color: #bbbbbb;
   border-radius: 0px;
+  text-shadow: none;
 }
 input.context [class^="icon-"],
 input.standalone [class^="icon-"],
@@ -7060,7 +7062,18 @@ body > header #main-nav .selected > a:focus {
   color: #57595c;
 }
 .window .window-header .btn {
-  border-color: #000000;
+  background-color: #57595c;
+  border-color: #57595c;
+}
+.window .window-header .btn:hover,
+.window .window-header .btn:focus,
+.window .window-header .btn:active {
+  background-color: #4b4c4f;
+  border-color: #3e4042;
+}
+.window .window-header .btn .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 .window .window-header #section-nav li > a {
   color: #57595c;
@@ -7095,6 +7108,7 @@ body > header #main-nav .selected > a:focus {
   padding: 20px;
 }
 .window .window-content .window-column .window-column-content .window-column-text {
+  padding-top: 20px;
   margin-right: 40px;
 }
 .window .window-content .window-column .window-column-content .featurette {
@@ -7168,6 +7182,7 @@ body > header #main-nav .selected > a:focus {
 .window .window-content .tile .btn {
   background-color: #57595c;
   border-color: #57595c;
+  text-shadow: none;
   margin: 10px 25px 0;
 }
 .window .window-content .tile .btn:hover,
@@ -7228,7 +7243,8 @@ body > header #main-nav .selected > a:focus {
   border-right: 0px solid #555555;
 }
 .window .window-content #sidebar .box-editable a.link-editable {
-  display: none;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
   z-index: 1;
 }
 .window .window-content #sidebar .box-editable:hover {
@@ -7236,6 +7252,9 @@ body > header #main-nav .selected > a:focus {
 }
 .window .window-content #sidebar .box-editable:hover a.link-editable {
   display: inline-block;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  color: #555555;
 }
 .window .window-content #sidebar .widget {
   margin: 0 20px;
@@ -7326,6 +7345,7 @@ a.link-clear-filter {
 }
 .btn {
   border-radius: 0px;
+  text-shadow: none;
 }
 .btn.btn-primary {
   background-color: #57595c;

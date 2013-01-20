@@ -200,7 +200,8 @@ body > header {
       }
     }
     .btn {
-      border-color: @black;
+      //border-color: @black;
+      .btn-primary();
     }
     #section-nav {
         li > a {
@@ -245,6 +246,7 @@ body > header {
       .window-column-content {
         padding: @baseLineHeight;
         .window-column-text {
+          padding-top: @baseLineHeight;
           margin-right: @baseLineHeight * 2;
         }
         .featurette {
@@ -288,6 +290,7 @@ body > header {
         background: transparent !important;
         .btn {
           .btn-primary();
+          text-shadow: none;
           margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
         }
         &.active,
@@ -327,13 +330,15 @@ body > header {
       }
       .box-editable {
         a.link-editable {
-          display:none;
+          .opacity(70);
           z-index: 1;
         }
         &:hover {
           color: @black;
           a.link-editable {
             display: inline-block;
+            .opacity(100);
+            color: @gray;
           }
         }
       }
@@ -433,6 +438,7 @@ a.link-clear-filter {
 
 .btn {
   border-radius: 0px;
+  text-shadow: none;
   &.btn-primary {
     background-color: @btnPrimaryBackground;
         border-color: @btnPrimaryBackground;

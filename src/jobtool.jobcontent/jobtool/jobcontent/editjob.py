@@ -28,14 +28,14 @@ class IJobEdit(form.Schema):
         title=_(u"Title"),
         required=True,
     )
+    start = schema.Datetime(
+        title=_(u"Start date"),
+        required=False,
+    )
     jobtype = schema.Choice(
         title=_(u"Job Type"),
         vocabulary=u"jobtool.jobcontent.jobTypes",
         required=True,
-    )
-    start = schema.Datetime(
-        title=_(u"Start date"),
-        required=False,
     )
     institution = schema.Choice(
         title=_(u"Institution"),
