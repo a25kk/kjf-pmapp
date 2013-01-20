@@ -33,6 +33,11 @@ class IJobEdit(form.Schema):
         vocabulary=u"jobtool.jobcontent.jobTypes",
         required=True,
     )
+    organization = schema.Choice(
+        title=_(u"Organization"),
+        vocabulary=u"jobtool.jobcontent.jobInstitutions",
+        required=True,
+    )
     institution = schema.TextLine(
         title=_(u"Institution"),
         required=True,
@@ -51,11 +56,6 @@ class IJobEdit(form.Schema):
             title=_(u"Category Selection"),
             vocabulary=u"jobtool.jobcontent.jobCategory",
         ),
-        required=True,
-    )
-    text = RichText(
-        title=_(u"Job Description"),
-        description=_(u"Enter Summary of the job opening"),
         required=True,
     )
 

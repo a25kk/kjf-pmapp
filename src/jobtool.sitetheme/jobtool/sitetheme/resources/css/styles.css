@@ -3200,86 +3200,38 @@ button.close {
 }
 .btn {
   display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-
-  *zoom: 1;
-  padding: 4px 12px;
+  padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
+  font-weight: 500;
   line-height: 20px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  color: #333333;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #e6e6e6;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   border: 1px solid #bbbbbb;
-  *border: 0;
-  border-bottom-color: #a2a2a2;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
-  *margin-left: .3em;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-}
-.btn:hover,
-.btn:active,
-.btn.active,
-.btn.disabled,
-.btn[disabled] {
-  color: #333333;
-  background-color: #e6e6e6;
-  *background-color: #d9d9d9;
-}
-.btn:active,
-.btn.active {
-  background-color: #cccccc \9;
-}
-.btn:first-child {
-  *margin-left: 0;
-}
-.btn:hover {
-  color: #333333;
-  text-decoration: none;
-  background-position: 0 -15px;
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
 }
 .btn:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-.btn.active,
-.btn:active {
-  background-image: none;
+.btn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.btn:active,
+.btn.active {
   outline: 0;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 .btn.disabled,
-.btn[disabled] {
+.btn[disabled],
+fieldset[disabled] .btn {
   cursor: default;
-  background-image: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
@@ -3289,24 +3241,12 @@ button.close {
 .btn-large {
   padding: 11px 19px;
   font-size: 17.5px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
   border-radius: 6px;
-}
-.btn-large [class^="icon-"],
-.btn-large [class*=" icon-"] {
-  margin-top: 4px;
 }
 .btn-small {
   padding: 2px 10px;
   font-size: 11.9px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
   border-radius: 3px;
-}
-.btn-small [class^="icon-"],
-.btn-small [class*=" icon-"] {
-  margin-top: 0;
 }
 .btn-mini [class^="icon-"],
 .btn-mini [class*=" icon-"] {
@@ -3315,9 +3255,14 @@ button.close {
 .btn-mini {
   padding: 1px 6px;
   font-size: 10.5px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
   border-radius: 3px;
+}
+.btn [class^="icon-"]::before {
+  vertical-align: -2px;
+}
+.btn-small [class^="icon-"]::before,
+.btn-mini [class^="icon-"]::before {
+  vertical-align: -1px;
 }
 .btn-block {
   display: block;
@@ -3336,244 +3281,76 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
-.btn-primary.active,
-.btn-warning.active,
-.btn-danger.active,
-.btn-success.active,
-.btn-info.active,
-.btn-inverse.active {
-  color: rgba(255, 255, 255, 0.75);
-}
 .btn {
-  border-color: #c5c5c5;
-  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+  color: #fff;
+  background-color: #a7a9aa;
+  border-color: #bbbbbb;
+}
+.btn:hover,
+.btn:focus,
+.btn:active {
+  background-color: #9a9c9d;
+  border-color: #a2a2a2;
 }
 .btn-primary {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #525457;
-  background-image: -moz-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57595c), to(#4b4c4f));
-  background-image: -webkit-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -o-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: linear-gradient(to bottom, #57595c, #4b4c4f);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff57595c', endColorstr='#ff4b4c4f', GradientType=0);
-  border-color: #4b4c4f #4b4c4f #252628;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #4b4c4f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #57595c;
+  border-color: #57595c;
 }
 .btn-primary:hover,
-.btn-primary:active,
-.btn-primary.active,
-.btn-primary.disabled,
-.btn-primary[disabled] {
-  color: #ffffff;
+.btn-primary:focus,
+.btn-primary:active {
   background-color: #4b4c4f;
-  *background-color: #3e4042;
-}
-.btn-primary:active,
-.btn-primary.active {
-  background-color: #323335 \9;
+  border-color: #3e4042;
 }
 .btn-warning {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #faa732;
-  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
-  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
-  background-image: -o-linear-gradient(top, #fbb450, #f89406);
-  background-image: linear-gradient(to bottom, #fbb450, #f89406);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
-  border-color: #f89406 #f89406 #ad6704;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #f89406;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #fbb450;
+  border-color: #fbb450;
 }
 .btn-warning:hover,
-.btn-warning:active,
-.btn-warning.active,
-.btn-warning.disabled,
-.btn-warning[disabled] {
-  color: #ffffff;
-  background-color: #f89406;
-  *background-color: #df8505;
-}
-.btn-warning:active,
-.btn-warning.active {
-  background-color: #c67605 \9;
+.btn-warning:focus,
+.btn-warning:active {
+  background-color: #faa937;
+  border-color: #fa9f1e;
 }
 .btn-danger {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #d05656;
-  background-image: -moz-linear-gradient(top, #d35e5e, #cd4a4a);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d35e5e), to(#cd4a4a));
-  background-image: -webkit-linear-gradient(top, #d35e5e, #cd4a4a);
-  background-image: -o-linear-gradient(top, #d35e5e, #cd4a4a);
-  background-image: linear-gradient(to bottom, #d35e5e, #cd4a4a);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd35e5e', endColorstr='#ffcd4a4a', GradientType=0);
-  border-color: #cd4a4a #cd4a4a #9f2c2c;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #cd4a4a;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #d35e5e;
+  border-color: #d35e5e;
 }
 .btn-danger:hover,
-.btn-danger:active,
-.btn-danger.active,
-.btn-danger.disabled,
-.btn-danger[disabled] {
-  color: #ffffff;
+.btn-danger:focus,
+.btn-danger:active {
   background-color: #cd4a4a;
-  *background-color: #c73737;
-}
-.btn-danger:active,
-.btn-danger.active {
-  background-color: #b33131 \9;
+  border-color: #c73737;
 }
 .btn-success {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #5c6b7a;
-  background-image: -moz-linear-gradient(top, #607080, #556371);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#607080), to(#556371));
-  background-image: -webkit-linear-gradient(top, #607080, #556371);
-  background-image: -o-linear-gradient(top, #607080, #556371);
-  background-image: linear-gradient(to bottom, #607080, #556371);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff607080', endColorstr='#ff556371', GradientType=0);
-  border-color: #556371 #556371 #343d46;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #556371;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #607080;
+  border-color: #607080;
 }
 .btn-success:hover,
-.btn-success:active,
-.btn-success.active,
-.btn-success.disabled,
-.btn-success[disabled] {
-  color: #ffffff;
+.btn-success:focus,
+.btn-success:active {
   background-color: #556371;
-  *background-color: #4a5663;
-}
-.btn-success:active,
-.btn-success.active {
-  background-color: #3f4a54 \9;
-}
-.btn-info {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #49afcd;
-  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
-  background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
-  border-color: #2f96b4 #2f96b4 #1f6377;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #2f96b4;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-.btn-info:hover,
-.btn-info:active,
-.btn-info.active,
-.btn-info.disabled,
-.btn-info[disabled] {
-  color: #ffffff;
-  background-color: #2f96b4;
-  *background-color: #2a85a0;
-}
-.btn-info:active,
-.btn-info.active {
-  background-color: #24748c \9;
-}
-.btn-inverse {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #363636;
-  background-image: -moz-linear-gradient(top, #444444, #222222);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
-  background-image: -webkit-linear-gradient(top, #444444, #222222);
-  background-image: -o-linear-gradient(top, #444444, #222222);
-  background-image: linear-gradient(to bottom, #444444, #222222);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
-  border-color: #222222 #222222 #000000;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #222222;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-.btn-inverse:hover,
-.btn-inverse:active,
-.btn-inverse.active,
-.btn-inverse.disabled,
-.btn-inverse[disabled] {
-  color: #ffffff;
-  background-color: #222222;
-  *background-color: #151515;
-}
-.btn-inverse:active,
-.btn-inverse.active {
-  background-color: #080808 \9;
-}
-button.btn,
-input[type="submit"].btn {
-  *padding-top: 3px;
-  *padding-bottom: 3px;
-}
-button.btn::-moz-focus-inner,
-input[type="submit"].btn::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-button.btn.btn-large,
-input[type="submit"].btn.btn-large {
-  *padding-top: 7px;
-  *padding-bottom: 7px;
-}
-button.btn.btn-small,
-input[type="submit"].btn.btn-small {
-  *padding-top: 3px;
-  *padding-bottom: 3px;
-}
-button.btn.btn-mini,
-input[type="submit"].btn.btn-mini {
-  *padding-top: 1px;
-  *padding-bottom: 1px;
+  border-color: #4a5663;
 }
 .btn-link,
 .btn-link:active,
-.btn-link[disabled] {
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
   background-color: transparent;
   background-image: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.btn-link {
+.btn-link,
+.btn-link:hover,
+.btn-link:active {
   border-color: transparent;
-  cursor: pointer;
+}
+.btn-link {
   color: #607080;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
+  font-weight: normal;
+  cursor: pointer;
   border-radius: 0;
 }
 .btn-link:hover {
@@ -3581,7 +3358,8 @@ input[type="submit"].btn.btn-mini {
   text-decoration: underline;
   background-color: transparent;
 }
-.btn-link[disabled]:hover {
+.btn-link[disabled]:hover,
+fieldset[disabled] .btn-link:hover {
   color: #333333;
   text-decoration: none;
 }
@@ -3714,7 +3492,7 @@ input[type="submit"].btn.btn-mini {
   box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
 }
 .btn-group.open .btn.dropdown-toggle {
-  background-color: #e6e6e6;
+  background-color: #8d9091;
 }
 .btn-group.open .btn-primary.dropdown-toggle {
   background-color: #4b4c4f;
@@ -5771,45 +5549,19 @@ dd.image-caption {
 input.context,
 input.standalone {
   display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-
-  *zoom: 1;
-  padding: 4px 12px;
+  padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
+  font-weight: 500;
   line-height: 20px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  color: #333333;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #e6e6e6;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   border: 1px solid #bbbbbb;
-  *border: 0;
-  border-bottom-color: #a2a2a2;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
-  *margin-left: .3em;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  border-color: #c5c5c5;
-  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+  color: #fff;
+  background-color: #a7a9aa;
+  border-color: #bbbbbb;
   border-radius: 0px;
 }
 input.context [class^="icon-"],
@@ -5848,67 +5600,48 @@ input.context [class*=" icon-"].icon-spin.icon-large,
 input.standalone [class*=" icon-"].icon-spin.icon-large {
   line-height: .8em;
 }
-input.context:hover,
-input.standalone:hover,
-input.context:active,
-input.standalone:active,
-input.context.active,
-input.standalone.active,
-input.context.disabled,
-input.standalone.disabled,
-input.context[disabled],
-input.standalone[disabled] {
-  color: #333333;
-  background-color: #e6e6e6;
-  *background-color: #d9d9d9;
-}
-input.context:active,
-input.standalone:active,
-input.context.active,
-input.standalone.active {
-  background-color: #cccccc \9;
-}
-input.context:first-child,
-input.standalone:first-child {
-  *margin-left: 0;
-}
-input.context:hover,
-input.standalone:hover {
-  color: #333333;
-  text-decoration: none;
-  background-position: 0 -15px;
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
-}
 input.context:focus,
 input.standalone:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-input.context.active,
-input.standalone.active,
+input.context:hover,
+input.standalone:hover {
+  color: #fff;
+  text-decoration: none;
+}
 input.context:active,
-input.standalone:active {
-  background-image: none;
+input.standalone:active,
+input.context.active,
+input.standalone.active {
   outline: 0;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 input.context.disabled,
 input.standalone.disabled,
 input.context[disabled],
-input.standalone[disabled] {
+input.standalone[disabled],
+fieldset[disabled] input.context,
+fieldset[disabled] input.standalone {
   cursor: default;
-  background-image: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+input.context:hover,
+input.standalone:hover,
+input.context:focus,
+input.standalone:focus,
+input.context:active,
+input.standalone:active {
+  background-color: #9a9c9d;
+  border-color: #a2a2a2;
 }
 input.context .label,
 input.standalone .label,
@@ -6058,45 +5791,19 @@ div.formHelp {
 input.context,
 input.standalone {
   display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-
-  *zoom: 1;
-  padding: 4px 12px;
+  padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
+  font-weight: 500;
   line-height: 20px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  color: #333333;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #e6e6e6;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   border: 1px solid #bbbbbb;
-  *border: 0;
-  border-bottom-color: #a2a2a2;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
-  *margin-left: .3em;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  border-color: #c5c5c5;
-  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+  color: #fff;
+  background-color: #a7a9aa;
+  border-color: #bbbbbb;
   border-radius: 0px;
 }
 input.context [class^="icon-"],
@@ -6135,67 +5842,48 @@ input.context [class*=" icon-"].icon-spin.icon-large,
 input.standalone [class*=" icon-"].icon-spin.icon-large {
   line-height: .8em;
 }
-input.context:hover,
-input.standalone:hover,
-input.context:active,
-input.standalone:active,
-input.context.active,
-input.standalone.active,
-input.context.disabled,
-input.standalone.disabled,
-input.context[disabled],
-input.standalone[disabled] {
-  color: #333333;
-  background-color: #e6e6e6;
-  *background-color: #d9d9d9;
-}
-input.context:active,
-input.standalone:active,
-input.context.active,
-input.standalone.active {
-  background-color: #cccccc \9;
-}
-input.context:first-child,
-input.standalone:first-child {
-  *margin-left: 0;
-}
-input.context:hover,
-input.standalone:hover {
-  color: #333333;
-  text-decoration: none;
-  background-position: 0 -15px;
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
-}
 input.context:focus,
 input.standalone:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-input.context.active,
-input.standalone.active,
+input.context:hover,
+input.standalone:hover {
+  color: #fff;
+  text-decoration: none;
+}
 input.context:active,
-input.standalone:active {
-  background-image: none;
+input.standalone:active,
+input.context.active,
+input.standalone.active {
   outline: 0;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 input.context.disabled,
 input.standalone.disabled,
 input.context[disabled],
-input.standalone[disabled] {
+input.standalone[disabled],
+fieldset[disabled] input.context,
+fieldset[disabled] input.standalone {
   cursor: default;
-  background-image: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+input.context:hover,
+input.standalone:hover,
+input.context:focus,
+input.standalone:focus,
+input.context:active,
+input.standalone:active {
+  background-color: #9a9c9d;
+  border-color: #a2a2a2;
 }
 input.context .label,
 input.standalone .label,
@@ -7176,42 +6864,18 @@ body.joblisting-preview {
 input.context,
 input.destructive {
   margin-right: 10px;
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #525457;
-  background-image: -moz-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57595c), to(#4b4c4f));
-  background-image: -webkit-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -o-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: linear-gradient(to bottom, #57595c, #4b4c4f);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff57595c', endColorstr='#ff4b4c4f', GradientType=0);
-  border-color: #4b4c4f #4b4c4f #252628;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #4b4c4f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #57595c;
+  border-color: #57595c;
+  text-shadow: none;
 }
 input.context:hover,
 input.destructive:hover,
+input.context:focus,
+input.destructive:focus,
 input.context:active,
-input.destructive:active,
-input.context.active,
-input.destructive.active,
-input.context.disabled,
-input.destructive.disabled,
-input.context[disabled],
-input.destructive[disabled] {
-  color: #ffffff;
+input.destructive:active {
   background-color: #4b4c4f;
-  *background-color: #3e4042;
-}
-input.context:active,
-input.destructive:active,
-input.context.active,
-input.destructive.active {
-  background-color: #323335 \9;
+  border-color: #3e4042;
 }
 input.context .caret,
 input.destructive .caret {
@@ -7485,6 +7149,10 @@ body > header #main-nav .selected > a:focus {
   display: block;
   text-transform: uppercase;
 }
+.window .window-content .window-column .window-column-content div.formControls {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #999999;
+}
 .window .window-content .tile {
   padding: 2px 10px;
   -webkit-box-shadow: none;
@@ -7498,36 +7166,15 @@ body > header #main-nav .selected > a:focus {
   background: transparent !important;
 }
 .window .window-content .tile .btn {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #525457;
-  background-image: -moz-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57595c), to(#4b4c4f));
-  background-image: -webkit-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -o-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: linear-gradient(to bottom, #57595c, #4b4c4f);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff57595c', endColorstr='#ff4b4c4f', GradientType=0);
-  border-color: #4b4c4f #4b4c4f #252628;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #4b4c4f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #57595c;
+  border-color: #57595c;
   margin: 10px 25px 0;
 }
 .window .window-content .tile .btn:hover,
-.window .window-content .tile .btn:active,
-.window .window-content .tile .btn.active,
-.window .window-content .tile .btn.disabled,
-.window .window-content .tile .btn[disabled] {
-  color: #ffffff;
+.window .window-content .tile .btn:focus,
+.window .window-content .tile .btn:active {
   background-color: #4b4c4f;
-  *background-color: #3e4042;
-}
-.window .window-content .tile .btn:active,
-.window .window-content .tile .btn.active {
-  background-color: #323335 \9;
+  border-color: #3e4042;
 }
 .window .window-content .tile .btn .caret {
   border-top-color: #ffffff;
@@ -7539,45 +7186,6 @@ body > header #main-nav .selected > a:focus {
   color: #000000;
   border-left: 4px solid #555555;
   margin-left: -4px;
-}
-.window .window-content .tile.active .btn,
-.window .window-content .tile:hover .btn {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #363636;
-  background-image: -moz-linear-gradient(top, #444444, #222222);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
-  background-image: -webkit-linear-gradient(top, #444444, #222222);
-  background-image: -o-linear-gradient(top, #444444, #222222);
-  background-image: linear-gradient(to bottom, #444444, #222222);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
-  border-color: #222222 #222222 #000000;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #222222;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-.window .window-content .tile.active .btn:hover,
-.window .window-content .tile:hover .btn:hover,
-.window .window-content .tile.active .btn:active,
-.window .window-content .tile:hover .btn:active,
-.window .window-content .tile.active .btn.active,
-.window .window-content .tile:hover .btn.active,
-.window .window-content .tile.active .btn.disabled,
-.window .window-content .tile:hover .btn.disabled,
-.window .window-content .tile.active .btn[disabled],
-.window .window-content .tile:hover .btn[disabled] {
-  color: #ffffff;
-  background-color: #222222;
-  *background-color: #151515;
-}
-.window .window-content .tile.active .btn:active,
-.window .window-content .tile:hover .btn:active,
-.window .window-content .tile.active .btn.active,
-.window .window-content .tile:hover .btn.active {
-  background-color: #080808 \9;
 }
 .window .window-content .tile.active .btn .caret,
 .window .window-content .tile:hover .btn .caret {
@@ -7592,35 +7200,14 @@ body > header #main-nav .selected > a:focus {
   border-right: 1px solid #555555;
 }
 .window .window-content #content-core input.context {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #525457;
-  background-image: -moz-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57595c), to(#4b4c4f));
-  background-image: -webkit-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -o-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: linear-gradient(to bottom, #57595c, #4b4c4f);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff57595c', endColorstr='#ff4b4c4f', GradientType=0);
-  border-color: #4b4c4f #4b4c4f #252628;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #4b4c4f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #57595c;
+  border-color: #57595c;
 }
 .window .window-content #content-core input.context:hover,
-.window .window-content #content-core input.context:active,
-.window .window-content #content-core input.context.active,
-.window .window-content #content-core input.context.disabled,
-.window .window-content #content-core input.context[disabled] {
-  color: #ffffff;
+.window .window-content #content-core input.context:focus,
+.window .window-content #content-core input.context:active {
   background-color: #4b4c4f;
-  *background-color: #3e4042;
-}
-.window .window-content #content-core input.context:active,
-.window .window-content #content-core input.context.active {
-  background-color: #323335 \9;
+  border-color: #3e4042;
 }
 .window .window-content #content-core input.context .caret {
   border-top-color: #ffffff;
@@ -7690,36 +7277,15 @@ body > header #main-nav .selected > a:focus {
   text-align: right;
 }
 #joblisting-view .splashbox .btn {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #525457;
-  background-image: -moz-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57595c), to(#4b4c4f));
-  background-image: -webkit-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -o-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: linear-gradient(to bottom, #57595c, #4b4c4f);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff57595c', endColorstr='#ff4b4c4f', GradientType=0);
-  border-color: #4b4c4f #4b4c4f #252628;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #4b4c4f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #57595c;
+  border-color: #57595c;
   margin: 10px 25px 0;
 }
 #joblisting-view .splashbox .btn:hover,
-#joblisting-view .splashbox .btn:active,
-#joblisting-view .splashbox .btn.active,
-#joblisting-view .splashbox .btn.disabled,
-#joblisting-view .splashbox .btn[disabled] {
-  color: #ffffff;
+#joblisting-view .splashbox .btn:focus,
+#joblisting-view .splashbox .btn:active {
   background-color: #4b4c4f;
-  *background-color: #3e4042;
-}
-#joblisting-view .splashbox .btn:active,
-#joblisting-view .splashbox .btn.active {
-  background-color: #323335 \9;
+  border-color: #3e4042;
 }
 #joblisting-view .splashbox .btn .caret {
   border-top-color: #ffffff;
@@ -7739,6 +7305,9 @@ body > header #main-nav .selected > a:focus {
 }
 #joblisting-view .splashbox.bodytext .alert-info h4 {
   color: #555555;
+}
+.mceIframeContainer {
+  padding: 11px 19px !important;
 }
 input.dial {
   box-shadow: none;
@@ -7939,41 +7508,18 @@ a.link-clear-filter {
 #login_form #login-action input.context {
   padding: 11px 19px;
   font-size: 17.5px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
   border-radius: 6px;
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #525457;
-  background-image: -moz-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#57595c), to(#4b4c4f));
-  background-image: -webkit-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: -o-linear-gradient(top, #57595c, #4b4c4f);
-  background-image: linear-gradient(to bottom, #57595c, #4b4c4f);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff57595c', endColorstr='#ff4b4c4f', GradientType=0);
-  border-color: #4b4c4f #4b4c4f #252628;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #4b4c4f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #57595c;
+  border-color: #57595c;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
 #login_form #login-action input.context:hover,
-#login_form #login-action input.context:active,
-#login_form #login-action input.context.active,
-#login_form #login-action input.context.disabled,
-#login_form #login-action input.context[disabled] {
-  color: #ffffff;
+#login_form #login-action input.context:focus,
+#login_form #login-action input.context:active {
   background-color: #4b4c4f;
-  *background-color: #3e4042;
-}
-#login_form #login-action input.context:active,
-#login_form #login-action input.context.active {
-  background-color: #323335 \9;
+  border-color: #3e4042;
 }
 #login_form #login-action input.context .caret {
   border-top-color: #ffffff;

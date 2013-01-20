@@ -72,7 +72,10 @@ class InstitutionsVocabulary(object):
 
     def __call__(self, context):
         catalog = api.portal.get_tool(name='portal_catalog')
-        cats = catalog.uniqueValuesFor("institution")
+        portal = api.portal.get()
+        jobcenter = portal['jobcenter']
+        # cats = catalog.uniqueValuesFor("institution")
+        cats = jobcenter.institutions
         entries = []
         done = []
         for cat in cats:
@@ -89,3 +92,28 @@ class InstitutionsVocabulary(object):
 
 grok.global_utility(InstitutionsVocabulary,
                     name=u"jobtool.jobcontent.jobInstitutions")
+
+
+class LocationsVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        portal = api.portal.get()
+        jobcenter = portal['jobcenter']
+        cats = jobcenter.locations
+        entries = []
+        done = []
+        for cat in cats:
+            cat_unicode = safe_unicode(cat)
+            cat_id = idnormalizer.normalize(cat_unicode)
+            if cat_id not in done:
+                entry = (cat_id, cat_unicode)
+                entries.append(entry)
+                done.append(cat_id)
+        terms = [SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
+                 for pair in entries]
+        return SimpleVocabulary(terms)
+
+
+grok.global_utility(LocationsVocabulary,
+                    name=u"jobtool.jobcontent.jobLocations")

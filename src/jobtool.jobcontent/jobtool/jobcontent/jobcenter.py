@@ -23,10 +23,28 @@ class IJobCenter(form.Schema, IImageScaleTraversable):
     """
     Folderish jobcenter and managing unit
     """
-    institution = schema.List(
+    width = schema.TextLine(
+        title=_(u"Width Preview"),
+        required=False,
+    )
+    limit = schema.TextLine(
+        title=_(u"Limit Preview Display"),
+        required=False,
+    )
+    institutions = schema.List(
         title=_(u"Institutions"),
         value_type=schema.TextLine(
             title=_(u"Institution"),
+        ),
+        required=False,
+    )
+    locations = schema.List(
+        title=_(u"Available Locations"),
+        description=_(u"Provide a list of locations (one entry per line) that "
+                      u"will be available to job opening edit forms as "
+                      u"selection vocabulary"),
+        value_type=schema.TextLine(
+            title=_(u"Location"),
         ),
         required=False,
     )

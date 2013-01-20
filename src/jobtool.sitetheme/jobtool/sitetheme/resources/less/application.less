@@ -13,6 +13,7 @@ input.context,
 input.destructive {
   margin-right: 10px;
   .btn-primary();
+  text-shadow: none;
 }
 
 body.jobtool-frontpage {
@@ -270,6 +271,11 @@ body > header {
             }
           }
         }
+        div.formControls {
+          background-color: rgba(255, 255, 255, 0.5);
+          border: 1px solid @grayLight;
+          //background: url(../assets/img/bg-white-fabric.png) repeat #fff;
+        }
       }
     }
     .tile {
@@ -397,6 +403,10 @@ body > header {
 
 // Customizations + overrides
 // -----------------------------
+
+.mceIframeContainer {
+  padding: @paddingLarge !important;
+}
 
 input.dial {
   box-shadow: none;
