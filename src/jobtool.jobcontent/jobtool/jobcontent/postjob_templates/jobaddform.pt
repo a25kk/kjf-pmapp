@@ -14,14 +14,15 @@
       tal:define="context_url context/absolute_url;
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime">
       <header id="page-header">
-
+        <div class="pull-right">
+            <h4><i class="icon-edit icon-2x"></i></h4>
+          </div>
         <h1 i18n:translate="">Add Job Posting</h1>
 
-        <p tal:define="time context/modified" class="discreet">
-              <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
+        <p class="discreet">
+          <span i18n:translate="">Provide basic information about this job
+            opening
+          </span>
         </p>
       </header>
       <article id="content-core">
@@ -37,17 +38,20 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <h4>Information</h4>
-              <p i18n:translate="">Edit the summary of this job opening.</p>
-              <p class="muted" i18n:translate="">
-                This will be the actual text of the job posting accessible
-                from the preview inside the iframe.</p>
-              <p i18n:translate="">In order to preserve the original formating you can try to
-                paste the text via the "paste from word" function
+              <p i18n:translate="" class="lead">Add basic details in order to
+                make this job opening display in listings.
               </p>
-              <p i18n:translate="">Please note that word is known to produce the most horrible
-                HTML formating. Therefore pasting the original text body into
-                the editor and adjusting the layout might work better.
+              <p i18n:translate="">
+                Job openings will be sorted on the start date when listed in
+                the job preview listings.
+              </p>
+              <hr>
+              <p i18n:translate="">
+                Please note that any selection from the location dropdown menu
+                will be ignored if you provide an alternative value via the
+                location override field. Since values for institution and location
+                are absolutely necessary to display a job, the dropdown menu does
+                still require a value.
               </p>
               <hr />
             </aside>

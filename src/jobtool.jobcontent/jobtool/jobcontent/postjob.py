@@ -21,7 +21,7 @@ class IJobAdd(form.Schema):
     )
     start = schema.Datetime(
         title=_(u"Start date"),
-        required=False,
+        required=True,
     )
     jobtype = schema.Choice(
         title=_(u"Job Type"),
