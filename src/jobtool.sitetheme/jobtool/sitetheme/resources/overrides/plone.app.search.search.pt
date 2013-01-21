@@ -26,10 +26,20 @@
 
 <body>
 
-  <div id="content-core" metal:fill-slot="main">
+  <div id="xxcontent-core" metal:fill-slot="main">
     <header id="page-header">
-      <h1>Search results</h1>
+      <div class="pull-right">
+        <h4><i class="icon-search icon-2x"></i></h4>
+      </div>
+      <h1>Jobcenter Suche</h1>
+      <p class="discreet">Suchen Sie nach Stellenangeboten</p>
     </header>
+    
+    <section id="content-core">
+    <div class="row-fluid">
+    <div class="span9">
+    <div class="window-column">
+    <div class="window-column-content">
     <form name="searchform"
           action="@@search"
           class="searchPage enableAutoFocus"
@@ -43,7 +53,7 @@
         <input type="hidden" name="sort_on" value="" />
 
         <fieldset id="search-field" i18n:domain="plone" class="noborder">
-            <input class="searchPage"
+            <input class="searchPage input-xxlarge"
                    name="SearchableText"
                    type="text"
                    size="25"
@@ -51,42 +61,29 @@
                    i18n:attributes="title title_search_title;"
                    tal:attributes="value st;"
                    />
-            <input class="searchPage searchButton allowMultiSubmit"
+            <input class="btn btn-large searchButton allowMultiSubmit"
                    type="submit"
                    value="Search"
                    i18n:attributes="value label_search;"/>
         </fieldset>
+        <hr>
+        <div class="container-fluid">
 
-        <div class="row">
-
-            <div class="cell width-full position-0">
-                <h1 class="documentFirstHeading"
+            <div class="box">
+                <h3 class="documentFirstHeading"
                     i18n:translate=""
                     tal:condition="not:st">
                     Search results
-                </h1>
-                <h1 class="documentFirstHeading"
+                </h3>
+                <h3 class="documentFirstHeading"
                     i18n:translate=""
                     tal:condition="st">
                     Search results for
-                    <strong id="search-term" tal:content="st" i18n:name="term">
+                    <small id="search-term" tal:content="st" i18n:name="term">
                         Search Term
-                    </strong>
-                </h1>
+                    </small>
+                </h3>
 
-                <p id="rss-subscription" i18n:domain="plone"
-                   tal:condition="context/portal_syndication/isSiteSyndicationAllowed">
-                      <img src="" alt="RSS"
-                           tal:attributes="src string:${portal_url}/rss.gif"/>
-                    <a href=""
-                       class="link-feed"
-                       tal:define="here_url context/@@plone_context_state/object_url"
-                       tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}">
-                        <span i18n:translate="title_subscribe_rss_feed">
-                          Subscribe to an always-updated RSS feed.
-                        </span>
-                    </a>
-                </p>
             </div>
             <div class="visualClear"><!-- --></div>
             <div id="search-results-wrapper"
@@ -103,7 +100,7 @@
                         items matching your search terms.
                     </span>
 
-                    <dl class="actionMenu deactivated"
+                    <dl class="actionMenu deactivated" tal:content="nothing"
                         tal:attributes="class python:view.show_advanced_search() and 'actionMenu activated' or 'actionMenu deactivated'">
 
                       <dt class="actionMenuHeader">
@@ -274,18 +271,17 @@
                                                    use_view_action site_properties/typesUseViewActionInListings|python:();
                                                    allowAnonymousViewAbout site_properties/allowAnonymousViewAbout;
                                                    show_about python:not isAnon or allowAnonymousViewAbout;">
-                          <dl class="searchResults">
+                          <div class="searchResults tile">
                               <tal:results repeat="item batch">
-                                    <dt tal:attributes="class item/ContentTypeClass">
-                                      <img tal:replace="structure item/getIcon" />
+                                    <h4 tal:attributes="class item/ContentTypeClass">
                                       <a href="#"
                                          tal:define="item_url item/getURL;
                                                      item_type item/portal_type"
                                          tal:attributes="href python:item_type in use_view_action and (item_url + '/view') or item_url;
                                                          class string:state-${item/review_state}"
                                          tal:content="item/Title" />
-                                    </dt>
-                                    <dd>
+                                    </h4>
+                                    <div>
                                       <span class="discreet" i18n:domain="plone"
                                         tal:condition="show_about">
                                         <span class="documentAuthor"
@@ -302,6 +298,7 @@
                                               </a>
                                             </tal:block>
                                         </span>
+                                      </span>
 
                                         <span tal:define="publication_date item/EffectiveDate;
                                                           modification_date item/ModificationDate">
@@ -328,55 +325,9 @@
 
                                         </span>
 
-                                        <span tal:define="categories item/Subject|nothing"
-                                              tal:condition="categories">
-                                          &mdash;
-                                          <tal:filedunder i18n:translate="">filed under:</tal:filedunder>
-                                          <span tal:repeat="category categories">
-                                            <a href=""
-                                               class="link-category"
-                                               rel="tag"
-                                               tal:content="category"
-                                               tal:attributes="href string:$navigation_root_url/@@search?Subject%3Alist=${category}">
-                                              Category
-                                            </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
-                                          </span>
-                                        </span>
-                                      </span>
-                                      <div tal:content="item/CroppedDescription">
-                                        Cropped description
-                                      </div>
-
-                                      <cite class="documentLocation link-location"
-                                            tal:define="breadcrumbs python: view.breadcrumbs(item);
-                                                        is_rtl context/@@plone_portal_state/is_rtl;"
-                                            tal:condition='breadcrumbs'>
-                                          <span i18n:translate="text_searchitem_location">
-                                              Located in
-                                          </span>
-                                          <span tal:repeat="crumb breadcrumbs"
-                                                tal:attributes="dir python:is_rtl and 'rtl' or 'ltr';">
-                                              <tal:item tal:define="is_last repeat/crumb/end;
-                                                                    url crumb/absolute_url;
-                                                                    title crumb/Title">
-                                                  <a href="#"
-                                                     tal:omit-tag="not: url"
-                                                     tal:attributes="href url"
-                                                     tal:content="title">
-                                                      crumb
-                                                  </a>
-                                                  <span class="breadcrumbSeparator" tal:condition="not: is_last">
-                                                      <tal:ltr condition="not: is_rtl">/</tal:ltr>
-                                                      <tal:rtl condition="is_rtl">/</tal:rtl>
-                                                  </span>
-                                               </tal:item>
-                                          </span>
-
-                                      </cite>
-
-                                    </dd>
+                                    </div>
                               </tal:results>
-                          </dl>
+                          </div>
                           <div metal:use-macro="context/batch_macros/macros/navigation" />
                         </metal:results>
                     </div>
@@ -387,7 +338,18 @@
 
         <div class="visualClear"><!-- --></div>
     </form>
-
+    </div>
+    </div>
+    </div>
+    <div class="span3">
+      <aside id="sidebar">
+      <p class="lead">Finden Sie Stellenangebote im System</p>
+      <p>Geben Sie Ihre Suchparameter in das Suchfeld ein, um die Ergebnisse
+        weiter einzuschränken</p>
+      </aside>
+    </div>
+    </div>
+    </section>
   </div>
 
 </body>

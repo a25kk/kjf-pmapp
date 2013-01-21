@@ -12,8 +12,11 @@ body {
 input.context,
 input.destructive {
   margin-right: 10px;
-  .btn-primary();
+  .btn();
   text-shadow: none;
+}
+input.destructive {
+  .btn-danger();
 }
 
 body.jobtool-frontpage {
@@ -457,6 +460,108 @@ a.link-clear-filter {
 .progress-danger .bar, .progress .bar-danger {
   #gradient > .vertical(lighten(@appRed, 5%), @appRed);
 }
+
+
+// Search results page
+// ------------------------------
+
+fieldset#search-field {
+    border: none !important;
+}
+input.searchPage {
+    margin-top: @baseLineHeight / 2;
+    font-size:@baseFontSize * 2 !important;
+    line-height: @baseLineHeight * 1.75;
+    height: @baseLineHeight * 1.75;
+}
+#rss-subscription {
+  float: left;
+  line-height: 3em;
+}
+#search-results-bar .actionMenuContent {
+    margin-top: 1em;
+    padding: 0;
+}
+#search-filter {
+    background: #ddd;
+    margin: 0;
+    padding: 0;
+}
+#content #search-filter fieldset {
+    border: none !important;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+#content #search-filter legend {
+    background: transparent;
+    font-size: 1.1em;
+    padding: 0.5em 0.9em;
+    font-weight: bold;
+}
+#search-filter .field {
+    background: #eee;
+    padding: 1em 1.5em;
+    margin: 0;
+}
+#search-filter .field label {
+    font-weight: normal;
+}
+#search-filter .formControls {
+    text-align:center
+}
+#search-results-wrapper {
+    margin-top: 1em;
+}
+form.searchPage h1.documentFirstHeading {
+    font-weight:normal;
+    letter-spacing:0;
+  float: left;
+  margin-right: 0.8em;
+}
+form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
+    background: transparent !important;
+}
+#search-results-bar > * {
+    float: left;
+}
+#searchResultsSort{
+  float:right;
+}
+#search-results-bar {
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 100%;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    padding: 1em 0;
+}
+#search-results-bar dl.actionMenu {
+    margin-bottom: 0;
+}
+#search-results-bar dd.actionMenuContent {
+    margin-left: 0;
+    padding-left: 0;
+}
+#search-results-bar dt.actionMenuHeader a {
+    border-bottom: none;
+}
+#search-results-bar dt.actionMenuHeader a::after {
+  content: " ▼";
+}
+#search-results {
+    padding: 1em;
+}
+.searchResults {
+    margin-top: 0;
+}
+#ajax-search-res {
+    display: none;
+}
+
+/* @end */
+
 
 // Status panels
 // ------------------

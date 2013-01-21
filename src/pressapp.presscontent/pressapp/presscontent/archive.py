@@ -100,10 +100,15 @@ class ArchiveSnippetJSON(grok.View):
         self.has_snippet = len(self._getData()) > 0
 
     def render(self):
+        cb = self.request.get('callback', None)
         snippet_info = self.compose_snippet()
         snippet = {'snippet': snippet_info}
-        #self.request.response.setHeader("Content-type", "application/json")
-        return json.dumps(snippet)
+        self.request.response.setHeader("Content-type", "application/json")
+        if cb is None:
+            return json.dumps(snippet)
+        else:
+            json_snippet = json.dumps(snippet)
+            return '%s(%s)' % (cb, json_snippet)
 
     def compose_snippet(self):
         pressreleases = self._getData()

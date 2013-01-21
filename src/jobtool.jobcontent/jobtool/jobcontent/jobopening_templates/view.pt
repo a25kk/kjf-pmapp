@@ -172,6 +172,16 @@
                   </p>
                 </div><!-- / Job category -->
                 <hr>
+                <p class="stats">
+                  <a href="" class="btn btn-danger"
+                    rel="twipsy"
+                    data-placement="left"
+                    data-original-title="Remove job opening"
+                    i18n:translate=""
+                    tal:attributes="href python:context_url + '/delete_confirmation'">
+                    Remove job opening
+                  </a>
+                </p>
             </aside>
           </div>
         </div>
