@@ -3,7 +3,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="jobtool.jobcontent">
 
   <metal:block fill-slot="top_slot"
                tal:define="dummy python:request.set('disable_border',1)" />
@@ -34,7 +34,12 @@
           tal:condition="not:folder_warning">
         Do you really want to delete this item?
       </h1>
-      <p>Bitte beachten Sie unsere Hinweise zum Entfernen von Inhalten</p>
+        <p tal:define="time context/modified" class="discreet">
+          <span i18n:translate="">Last changed:</span>
+          <span tal:content="time"
+             tal:attributes="data-appui string:prettydate;
+                             title time" />
+        </p>
       </header>
 
       <div id="content-core">
@@ -80,18 +85,19 @@
           <aside id="sidebar">
             <div class="stats widget">
               <div class="stat important">
-                <h2>Warnung
+                <h2 i18n:translate="">Warning
                 </h2>
-                <h6>Inhalte entfernen</h6>
               </div>
             </div>
             <hr>
-            <p class="lead">Diese Aktion kann nicht widerrufen werden</p>
+            <p class="lead" i18n:translate="">
+              The delete action can not be undone
+            </p>
             <hr>
-            <h5>Tipp</h5>
-            <p>Sie können dieses Stellenangebot
-              zu einem späteren Zeitpunkt erneut verwenden, indem Sie es über die
-              Schaltfläche <strong>Status</strong> auf "inaktiv" setzen.
+            <p i18n:translate="">
+              You can always mark a job opening as inactive to hide it from
+              any public interfaces and reuse it in the future by reactivating
+              it with a new date.
             </p>
           </aside>
         </div>
