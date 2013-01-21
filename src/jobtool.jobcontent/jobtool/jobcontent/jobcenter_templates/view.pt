@@ -46,8 +46,12 @@
             <div class="window-column">
               <tal:items tal:condition="view/has_jobs">
                 <div class="tile-wrapper"
-                  tal:define="items view/job_listing;
-                              items_count python:len(items)">
+                  tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                              b_size python:int(request.get('b_size', 20));
+                              b_start python:int(request.get('b_start', 0));
+                              items view/job_listing;
+                              items_count python:len(items);
+                              batch python:Batch(items, b_size, b_start);">
                   <tal:block tal:condition="view/has_filter">
                     <div class="alert" tal:define="info view/filter_info">
                       <strong>
@@ -62,7 +66,7 @@
                       </a>
                     </div>
                   </tal:block>
-                  <div class="tile" tal:repeat="item items">
+                  <div class="tile" tal:repeat="item batch">
                     <div class="row-fluid">
                       <div class="span2">
                         <h4 tal:define="date item/start"
@@ -106,6 +110,7 @@
                       </div>
                     </div>
                   </div>
+                  <div metal:use-macro="context/batch_macros/macros/navigation" />
                 </div>
               </tal:items>
               <tal:noitems tal:condition="not:view/has_jobs">
