@@ -1,0 +1,782 @@
+// Custom application specific styles
+//--------------------------------------
+
+
+body {
+  background:@appBackgroundDark;
+  &.joblisting-preview {
+    background: @white;
+  }
+}
+
+input.context,
+input.destructive {
+  margin-right: 10px;
+  .btn();
+  text-shadow: none;
+}
+input.destructive {
+  .btn-danger();
+}
+
+body.jobtool-frontpage {
+  .splashbar {
+    padding: @navbarHeight;
+    text-align: center;
+    #gradient > .vertical(@appBrown, @appBrown);
+    border-bottom: 1px solid @black;
+    h1 {
+      font-size: @navbarHeight;
+      color: @white;
+      a {
+        color: @white;
+      }
+      #fp-logo {
+        background:url(../img/logo.png) no-repeat 0 0 transparent;
+        display: block;
+        .center-block();
+        .size(100px, 250px);
+        text-indent: -9999px;
+      }
+    }
+  }
+  .subheader {
+    background: @appColor;
+    padding: @baseLineHeight;
+    text-align: center;
+    border-bottom: 1px solid @appDark;
+    h2 {
+      color: @white;
+    }
+  }
+  #frontpage-content-wrapper {
+    padding: @navbarHeight 0;
+  }
+  .box {
+    //background: lighten(@appBrown, 20%);
+    background: @white;
+    padding:@paddingLarge;
+    border: 1px solid @appDark;
+    //.box-shadow(inset 0px 0px 5px rgba(0,0,0, .5));
+  }
+  #login_form label {
+    width: 70px;
+  }
+  #login-forgotten-password {
+    clear: both;
+    //margin-top: @baseLineHeight / 2;
+    .discreet {
+        #font > .sans-serif(normal, 80%, @baseLineHeight);
+    }
+  }
+}
+
+// Custom editbar styles for the header
+
+body > header {
+    #toolbar + nav,
+    #editbar-wrapper + nav {
+        margin-top: @navbarHeight;
+        .navbar-inner {
+            .border-radius(0px);
+            .container {
+                //width: @gridRowWidth;
+                //.container-fixed();
+            }
+        }
+    }
+    // Active nav items
+    #main-nav .selected > a,
+    #main-nav .selected > a:hover,
+    #main-nav .selected > a:focus {
+      color: @navbarInverseLinkColorActive;
+      background-color: @navbarInverseLinkBackgroundActive;
+    }
+    .brand {
+      //float:right !important;
+    }
+    margin-bottom: @baseLineHeight;
+}
+
+#nav-bar {
+  .box-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
+  .navbar-inner {
+    .border-radius(0);
+  }
+}
+
+#main-wrapper {
+  padding-top: @navbarHeight;
+}
+
+// Action bar
+// ---------------------------
+
+#actionbar {
+  margin: @baseLineHeight @baseLineHeight * 2;
+  .brandname {
+    color: @appColor;
+    margin: 0;
+    line-height: 100%;
+    a {
+      color: @appBrown;
+    }
+  }
+  #section-nav {
+      li {
+        margin-left: @baseLineHeight;
+      }
+        li > a {
+        color: @appBrown;
+        font-weight: bold;
+        text-shadow: none;
+        border: 1px solid @appBrown;
+        background: @appColorLight;
+        text-align: center;
+        position:relative;
+        }
+        li > a:hover {
+            background: @appColor;
+            color:@white;
+            .label {
+              background: @appBrown;
+            }
+        }
+        .label-error {
+          background:@appRed;
+        }
+    }
+  #customer-logo {
+    display: block;
+    border: 1px solid @appBrown;
+    .border-radius(4px);
+    text-indent: -9999px;
+    width: 180px;
+    height: 31px;
+    background:url(../assets/img/logo-small.png) no-repeat 32px 0px @white;
+    margin: 3px 20px 0px 10px;
+  }
+}
+
+// Content window styles
+// --------------------------
+
+.window {
+  //display: none;
+  padding: 0px;
+  margin: @baseLineHeight;
+  border: 2px solid @appBrown;
+  .border-radius(0px);
+  //.box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.6));
+  //box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  background: url(../assets/img/bg-white-fabric.png) repeat @appBackground;
+  .window-header {
+    padding: @baseLineHeight / 2 @baseLineHeight;
+    //min-height: @navbarHeight;
+    //#gradient > .vertical(#e9e9e9, #b2b2b2);
+    //#gradient > .vertical(lighten(@appBrown, 10%), @appBrown);
+    background: @appColor;
+    border-bottom: 1px solid @appBrown;
+    //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+    margin: 0px;
+    color: @grayLighter;
+    h1 {
+      font-size: @baseFontSize * 1.75;
+      line-height: @baseLineHeight;
+      small {
+        font-size: @baseFontSize;
+        .label {
+          font-weight: normal;
+        }
+        a {
+          color: @white;
+          font-weight: normal;
+        }
+      }
+    }
+    p.discreet {
+      color: @grayLighter;
+      a.link-clear-filter {
+        display: inline-block;
+        //margin-left:@baseLineHeight;
+        color: @appBrown;
+      }
+    }
+    .btn {
+      //border-color: @black;
+      .btn-primary();
+    }
+    #section-nav {
+        li > a {
+        color: @appBrown;
+        font-weight: bold;
+        text-shadow: none;
+        border: 1px solid @appBrown;
+        background: @appColorLight;
+        }
+        li > a:hover {
+            background: @appColor;
+            color:@white;
+        }
+    }
+  }
+  .window-toolbar {
+            //min-height: @navbarHeight;
+            //margin:-18px 0px 0px;
+            padding: 0px 20px;
+            border-bottom: 1px solid #656565;
+            //#gradient > .vertical(#bbb, @grayLight);
+            //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+            .nav a {
+                //color: @grayDark;
+                font-size: @baseFontSize + 4;
+            }
+            .nav li.active a {
+                //color: @white;
+            }
+        }
+  .window-content {
+    background: url(../assets/img/bg-white-fabric.png) repeat @appBackground;
+    //background: #f5f5f5;
+    color: @gray;
+    min-height: 500px;
+    //.box-shadow(inset 0 5px 10px rgba(0, 0, 0, 0.6));
+    .window-column {
+      border-right: 1px solid @gray;
+      min-height: 500px;
+      padding-bottom: @baseLineHeight;
+      text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+      .window-column-content {
+        padding: @baseLineHeight;
+        .window-column-text {
+          padding-top: @baseLineHeight;
+          margin-right: @baseLineHeight * 2;
+        }
+        .featurette {
+          margin: @navbarHeight * 2;
+          padding: @baseLineHeight;
+          background-color: rgba(255, 255, 255, 0.35);
+          border: 1px solid @grayLight;
+          .stats {
+            display: block;
+            .stat {
+              display: block;
+              .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+              .stat-header {
+                margin: (@baseLineHeight / 2) 0;
+                font-family: @headingsFontFamily;
+                font-weight: @headingsFontWeight;
+                line-height: @baseLineHeight;
+                font-size: @baseFontSize * 2.25;
+              }
+              .stat-subheader {
+                display: block;
+                text-transform: uppercase;
+              }
+            }
+          }
+        }
+        div.formControls {
+          //background-color: rgba(255, 255, 255, 0.5);
+          background: transparent;
+          border-top: 1px solid @grayLight;
+          //background: url(../assets/img/bg-white-fabric.png) repeat #fff;
+        }
+      }
+    }
+    .tile {
+        padding: @paddingSmall;
+        .box-shadow(none);
+        border: 0px;
+        border-bottom: 1px solid @grayLight;
+        .border-radius(0);
+        background: transparent !important;
+        .btn {
+          .btn-primary();
+          text-shadow: none;
+          margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
+        }
+        &.active,
+        &:hover {
+            background: url(../assets/img/bg-white-fabric.png) repeat @white !important;
+            color: @black;
+            border-left: 4px solid @gray;
+            margin-left: -4px;
+            .btn {
+              .btn-inverse();
+            }
+        }
+        h4 {
+          font-size: @baseFontSize;
+          margin-bottom: 0px;
+        }
+    }
+    #content-core {
+      border-right: 1px solid @gray;
+      input.context {
+        .btn-primary();
+      }
+    }
+    #sidebar {
+      padding-top: @baseLineHeight;
+      padding-right: @baseLineHeight * 1.5;
+      text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+      .tile {
+        padding: @paddingSmall;
+        //margin-right: @baseLineHeight;
+        &.active,
+        &:hover {
+            background: #f5f5f5;
+            color: @black;
+            border-right: 0px solid @gray;
+        }
+      }
+      .box-editable {
+        a.link-editable {
+          .opacity(70);
+          z-index: 1;
+        }
+        &:hover {
+          color: @black;
+          a.link-editable {
+            display: inline-block;
+            .opacity(100);
+            color: @gray;
+          }
+        }
+      }
+      .widget {
+        margin: 0 @baseLineHeight;
+      }
+      .history-listing {
+        h6 {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+  .window-content > form {
+    padding: @baseLineHeight;
+  }
+}
+
+// Job listing
+// ---------------------------
+
+#joblisting-view {
+  padding: @baseLineHeight;
+  #joblisting {
+    border-top: 1px solid @gray;
+  }
+  .splashbox {
+    padding: @paddingSmall;
+    .box-shadow(none);
+    border: 0px;
+    border-bottom: 1px solid @gray;
+    border-right: 1px solid @gray;
+    border-left: 4px solid @gray;
+    .border-radius(0);
+    //background: transparent !important;
+    background: url(../assets/img/bg-white-fabric.png) repeat @white;
+    h4 > a {
+      color: @textColor;
+      text-decoration: underline;
+    }
+    h6 {
+      color: @textColor;
+    }
+    #joblisting-details {
+      text-align: right;
+    }
+    .btn {
+      .btn-primary();
+      margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
+    }
+    &.bodytext {
+      padding: @paddingLarge;
+      font-size: @fontSizeSmall;
+      h2 {
+        font-size: @fontSizeSmall * 2.25;
+      }
+      .alert-info {
+        background-color: rgba(255, 255, 255, 0.35);
+        border: 1px solid @grayLight;
+        color: @textColor;
+        h4 {
+          color: @gray;
+        }
+      }
+    }
+  }
+}
+
+// Customizations + overrides
+// -----------------------------
+
+.mceIframeContainer {
+  padding: @paddingLarge !important;
+}
+
+input.dial {
+  box-shadow: none;
+}
+
+a.caltrigger {
+  padding: 0px;
+}
+
+#caltitle select {
+  width: 165px;
+}
+
+a.link-clear-filter {
+  color: @gray;
+}
+
+.tile-wrapper {
+  .alert {
+    margin-bottom: @baseLineHeight / 2;
+  }
+}
+
+.btn {
+  border-radius: 0px;
+  text-shadow: none;
+  &.btn-primary {
+    background-color: @btnPrimaryBackground;
+        border-color: @btnPrimaryBackground;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken(@btnPrimaryBackground, 5%);
+          border-color: darken(@btnPrimaryBackground, 10%);
+    }
+  }
+}
+
+.progress-success .bar, .progress .bar-success {
+  #gradient > .vertical(lighten(#607080, 5%), #607080);
+}
+.progress-danger .bar, .progress .bar-danger {
+  #gradient > .vertical(lighten(@appRed, 5%), @appRed);
+}
+
+#form-widgets-institutions,
+#form-widgets-locations {
+  .input-block-level();
+}
+
+// Search results page
+// ------------------------------
+
+fieldset#search-field {
+    border: none !important;
+}
+input.searchPage {
+    margin-top: @baseLineHeight / 2;
+    font-size:@baseFontSize * 2 !important;
+    line-height: @baseLineHeight * 1.75;
+    height: @baseLineHeight * 1.75;
+}
+#rss-subscription {
+  float: left;
+  line-height: 3em;
+}
+#search-results-bar .actionMenuContent {
+    margin-top: 1em;
+    padding: 0;
+}
+#search-filter {
+    background: #ddd;
+    margin: 0;
+    padding: 0;
+}
+#content #search-filter fieldset {
+    border: none !important;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+#content #search-filter legend {
+    background: transparent;
+    font-size: 1.1em;
+    padding: 0.5em 0.9em;
+    font-weight: bold;
+}
+#search-filter .field {
+    background: #eee;
+    padding: 1em 1.5em;
+    margin: 0;
+}
+#search-filter .field label {
+    font-weight: normal;
+}
+#search-filter .formControls {
+    text-align:center
+}
+#search-results-wrapper {
+    margin-top: 1em;
+}
+form.searchPage h1.documentFirstHeading {
+    font-weight:normal;
+    letter-spacing:0;
+  float: left;
+  margin-right: 0.8em;
+}
+form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
+    background: transparent !important;
+}
+#search-results-bar > * {
+    float: left;
+}
+#searchResultsSort{
+  float:right;
+}
+#search-results-bar {
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 100%;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    padding: 1em 0;
+}
+#search-results-bar dl.actionMenu {
+    margin-bottom: 0;
+}
+#search-results-bar dd.actionMenuContent {
+    margin-left: 0;
+    padding-left: 0;
+}
+#search-results-bar dt.actionMenuHeader a {
+    border-bottom: none;
+}
+#search-results-bar dt.actionMenuHeader a::after {
+  content: " ▼";
+}
+#search-results {
+    padding: 1em;
+}
+.searchResults {
+    margin-top: 0;
+}
+#ajax-search-res {
+    display: none;
+}
+
+/* @end */
+
+
+// Status panels
+// ------------------
+
+.statuspanel {
+  width: 150px !important;
+  background-color: @white;
+  border-radius: 6px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  .top {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #555555;
+    color: @white;
+    padding-top: 20px;
+    i {
+      display: block;
+      margin: 0px auto 20px;
+    }
+    h6 {
+      display: inline;
+      background-color: #555555;
+      position: relative;
+      top: 5px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      color: #FFF;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: @baseFontSize - 2;
+    }
+  }
+  .bottom {
+    padding-top: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-align: center;
+    border-top: none;
+    h2 {
+      font-weight: 600;
+      margin: 0;
+    }
+    h6 {
+      font-size: 0.7em;
+      font-weight: 1;
+      position: relative;
+      bottom: 10px;
+      color: #555555;
+    }
+  }
+}
+.statuspanel .warning, .statuspanel .warning h6 {
+  background-color: #ffa93c;
+}
+.statuspanel .success, .statuspanel .success h6 {
+  background: @appDark;
+}
+.statuspanel .danger, .statuspanel .danger h6 {
+  background: lighten(@appRed, 5%);
+}
+.statuspanel .info, .statuspanel .info h6 {
+  background-color: #14b8d4;
+}
+.statuspanel .primary, .statuspanel .primary h6 {
+  background-color: #007ccd;
+}
+.statuspanel .purple, .statuspanel .purple h6 {
+  background-color: #7932ea;
+}
+
+
+// Counter widget
+
+.widget {
+  //padding-right: @baseLineHeight;
+}
+
+.stats {
+  text-align: center;
+  .stat {
+    background-color: #eeeeee;
+    color: #555555;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    h2 {
+      font-weight: 1;
+    }
+    h6 {
+      margin-top: -10px;
+    }
+  }
+  .warning,
+  .important {
+    background-color: lighten(@appRed, 5%);
+    color: #FFF;
+  }
+  .success {
+    background-color: @appDark;
+    color: #FFF;
+  }
+  .danger {
+    background-color: @appRed;
+    color: #FFF;
+  }
+  .info {
+    background-color: @appDark;
+    color: #FFF;
+  }
+  .primary {
+    background-color: @appColor;
+    color: #FFF;
+  }
+  .purple {
+    background-color: #7932ea;
+    color: #FFF;
+  }
+  .inverse {
+    background-color: @appBrown;
+    color: #FFF;
+  }
+}
+
+// Form styles
+// ------------------------
+
+#login_form {
+  width: 300px;
+  label {
+    font-weight: bold;
+    font-size: @baseFontSize + 2;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 245px;
+    height: @baseLineHeight + 4;
+    border-color: @grayDark;
+    font-size: @baseFontSize + 2;
+    line-height: @baseLineHeight + 2;
+    //width: 95%;
+    //.box-shadow(inset -1px 0px 10px rgba(0,0,0, .5));
+  }
+  #login-action {
+    padding-top: @baseLineHeight;
+    background: transparent;
+    text-align:right;
+    input.context {
+      .btn-large();
+      .btn-primary();
+      .border-radius(0px);
+    }
+  }
+  .center-block();
+}
+
+#login-forgotten-password {
+  width: 260px;
+  a {
+    color: @white;
+  }
+  .center-block();
+}
+
+// Keyframe animations
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+@keyframes dimIn { from { opacity:0; } to { opacity:1; } }
+ 
+.dim-in {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:dimIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:dimIn ease-in 1;
+  animation:dimIn ease-in 1;
+ 
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+ 
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+ 
+.dim-in.one {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+ 
+.dim-in.two {
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay:1.2s;
+  animation-delay: 1.2s;
+}
+ 
+.dim-in.three {
+  -webkit-animation-delay: 1.6s;
+  -moz-animation-delay: 1.6s;
+  animation-delay: 1.6s;
+}
+
+
+// Site footer
+body > footer {
+    margin-top: @baseLineHeight;
+    padding: @baseLineHeight 0;
+    border-top: 1px solid @grayLighter;
+}

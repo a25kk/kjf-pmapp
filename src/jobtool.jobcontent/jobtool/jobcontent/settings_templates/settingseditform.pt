@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="jobtool.jobcontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <section id="jobcenter-dashboard"
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+      <header id="page-header">
+        <div class="pull-right">
+          <h4><i class="icon-cogs icon-2x"></i></h4>
+        </div>
+
+        <h1 i18n:translate="">Edit Jobcenter Settings</h1>
+
+        <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
+      </header>
+      <article id="content-core">
+        <div class="row-fluid">
+          <div class="span9">
+            <div class="window-column">
+              <div class="window-column-content">
+                <div id="xxcontent-core">
+                  <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <aside id="sidebar">
+              <div class="stats widget">
+                <div class="stat inverse">
+                  <h2 i18n:translate="">Settings</h2>
+                  <h6>Jobcenter</h6>
+                </div>
+              </div>
+              <hr />
+              <p i18n:translate="" class="lead">
+                Update locations and institutions
+              </p>
+              <p i18n:translate="">
+                The provided entries will be selectable as presets in the
+                job opening edit form. Please provide all default values
+                that should be available for selection.
+              </p>
+              <hr>
+              <p i18n:translate="">
+                Please note that any selection from the location dropdown menu
+                can be overridden with a specific value in the edit forms.
+              </p>
+              <hr />
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

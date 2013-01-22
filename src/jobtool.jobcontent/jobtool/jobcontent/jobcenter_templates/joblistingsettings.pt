@@ -1,0 +1,164 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="jobtool.jobcontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <section id="jobcenter-dashboard"
+      tal:define="context_url context/absolute_url;
+                  portal_url context/portal_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+      <header id="page-header">
+        <div class="pull-right">
+          <h4 i18n:translate="">Overview
+          </h4>
+        </div>
+        <h1>Jobcenter</h1>
+        <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
+      </header>
+      <article id="content-core">
+        <div class="row-fluid">
+          <div class="span9">
+            <div class="window-column">
+              <div class="window-column-content">
+                <div class="row-fluid">
+                  <div class="span6">
+                    <div class="panel" tal:define="active_idx view/preview_index">
+                      <div class="statuspanel">
+                        <div class="top">
+                          <i class="icon-share icon-4x"></i>
+                          <h6>Vorschau</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/preview_index">100</h2>
+                          <h6>Jobs</h6>
+                        </div>
+                      </div>
+                      <input type="text"
+                        value="75"
+                        class="dial"
+                        data-appui="knob"
+                        data-angleOffset="-90"
+                        data-angleArc="180"
+                        data-thickness=".4"
+                        data-fgColor="#555555"
+                        data-bgColor="#ffffff"
+                        data-readOnly="true"
+                        tal:attributes="data-max view/jobs_index;
+                                        value active_idx">
+                    </div>
+                  </div>
+                  <div class="span6">
+                    <h2 i18n:translate="">
+                      Job opening preview
+                    </h2>
+                    <p class="lead" i18n:translate="">
+                      Manage and review job openings marked for preview on
+                      the main site. The listed jobs will be randomly shuffled
+                      when displayed.</p>
+                  </div>
+                </div>
+                <hr class="visualClear">
+              </div>
+              <tal:items tal:condition="view/has_items">
+                <div class="tile-wrapper"
+                  tal:define="items view/preview_items;
+                              items_count python:len(items)">
+                  <div class="tile" tal:repeat="item items">
+                    <div class="row-fluid">
+                      <div class="span2">
+                        <h4 tal:define="date item/start"
+                            tal:content="python:toLocalizedTime(date, long_format=False)">
+                            16.11.2012
+                        </h4>
+                        <p><span class="label"
+                            tal:define="state item/review_state"
+                            tal:content="python:view.get_state_info(state)">
+                            Active/Inactive</span></p>
+                      </div>
+                      <div class="span6">
+                        <h4>
+                          <span tal:replace="item/Title">
+                            Job opening title
+                          </span>
+                          <small tal:define="job_type item/jobtype"
+                            tal:content="python:view.pretty_jobtype(job_type)"
+                            i18n:translate="">Job type</small>
+                        </h4>
+                        <p><small><span tal:content="item/location">location</span>,
+                            <span tal:content="item/institution">institution</span>
+                            </small>
+                        </p>
+                      </div>
+                      <div class="span4">
+                          <a href="" class="btn btn-mini pull-right"
+                            i18n:translate=""
+                            tal:attributes="href item/getURL">Edit</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </tal:items>
+              <tal:noitems tal:condition="not:view/has_items">
+                <div class="alert">
+                  <h2 i18n:translate="">Information</h2>
+                  <p><span i18n:translate="">There are currently now job openings
+                    marked as preview item. Visit the</span>
+                    <a href="" tal:attributes="href context_url"
+                      i18n:translate="">Jobcenter</a>
+                    <span i18n:translate="">
+                      to choose vacancies suitable for preview.
+                    </span>
+                  </p>
+                </div>
+              </tal:noitems>
+            </div>
+          </div>
+          <div class="span3">
+            <aside id="sidebar"
+              tal:define="preview_idx string:0">
+              <div class="stats widget">
+                <div class="stat inverse">
+                  <h2 tal:content="view/jobs_index">72</h2>
+                  <h6>Jobs</h6>
+                </div>
+              </div>
+              <hr />
+                <h3 i18n:translate="">Last modified</h3>
+                <div class="history-listing" tal:define="history view/get_history">
+                  <tal:items tal:repeat="entry history">
+                    <h6><span tal:replace="entry/title" /></h6>
+                    <p class="discreet">
+                      <span tal:content="entry/action" i18n:translate="">
+                        Action</span>
+                      <span tal:define="time entry/timestamp"
+                          tal:content="time"
+                          tal:attributes="data-appui string:prettydate;
+                                          title time" />
+                        <span>by <span tal:replace="entry/actor" /></span>
+                    </p>
+                  </tal:items>
+                </div>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

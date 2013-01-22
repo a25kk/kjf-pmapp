@@ -6,10 +6,13 @@ from plone.app.layout.viewlets.interfaces import IBelowContent
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.interfaces import IContentish
 
+from pressapp.presscontent.interfaces import IPressAppPolicy
+
 
 class MemberViewlet(grok.Viewlet):
     grok.name('pressapp.memberprofiles.MemberViewlet')
     grok.context(IContentish)
+    grok.layer(IPressAppPolicy)
     grok.require('zope2.View')
     grok.viewletmanager(IBelowContent)
 

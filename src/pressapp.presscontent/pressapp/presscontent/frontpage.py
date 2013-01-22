@@ -3,18 +3,21 @@ from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.navigation.interfaces import INavigationRoot
 
+from pressapp.presscontent.interfaces import IPressAppPolicy
+
 
 class FrontpageView(grok.View):
     grok.context(INavigationRoot)
+    grok.layer(IPressAppPolicy)
     grok.require('zope2.View')
     grok.name('frontpage-view')
-    
+
     def render(self):
         context = aq_inner(self.context)
         mtool = getToolByName(context, 'portal_membership')
         if mtool.isAnonymousUser():
             return self.request.response.redirect(
-                    context.absolute_url() + "/login_form")
+                context.absolute_url() + "/login_form")
         else:
             try:
                 member = mtool.getAuthenticatedMember()

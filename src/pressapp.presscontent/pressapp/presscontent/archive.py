@@ -1,4 +1,5 @@
 import hashlib
+import json
 from Acquisition import aq_inner
 from five import grok
 from App.config import getConfiguration
@@ -76,7 +77,38 @@ class ArchiveSnippetView(grok.View):
     grok.name('press-archive-snippet')
 
     def update(self):
+        self.has_snippet = len(self.get_snippet()) > 0
+
+    def get_snippet(self):
+        data = self._getData()
+        item = json.loads(data)
+        snippet = item['snippet']
+        return snippet
+
+    def _getData(self):
+        context = aq_inner(self.context)
+        data = context.unrestrictedTraverse('@@press-archive-snippet-json')()
+        return data
+
+
+class ArchiveSnippetJSON(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('zope2.View')
+    grok.name('press-archive-snippet-json')
+
+    def update(self):
         self.has_snippet = len(self._getData()) > 0
+        self.callback_param = self.request.get('callback', None)
+
+    def render(self):
+        snippet_info = self.compose_snippet()
+        snippet = {'snippet': snippet_info}
+        self.request.response.setHeader("Content-type", "application/json")
+        if self.callback_param is None:
+            return json.dumps(snippet)
+        else:
+            json_snippet = json.dumps(snippet)
+            return '%s(%s)' % (self.callback_param, json_snippet)
 
     def compose_snippet(self):
         pressreleases = self._getData()
