@@ -107,14 +107,19 @@ input.standalone {
 
 .listingBar {
     .pagination();
-    a,
-    span.current {
-        display: inline-block;
-        padding: 5px 14px;
-        background-color: #fff;
-        border: 1px solid @grayLight;
-        border-radius:4px;
-        font-size: 11px;
+    > span,
+    > a {
+        float: left; // Collapse white-space
+        padding: 4px 12px;
+        line-height: @line-height-base;
+        text-decoration: none;
+        background-color: @pagination-background;
+        border: 1px solid @pagination-border;
+        border-left-width: 0;
+        &:first-child {
+            border-right-width: 1px;
+            .border-right-radius(@border-radius-base);
+        }
         &.next {
             float: right;
         }
@@ -122,6 +127,20 @@ input.standalone {
             float: left;
         }   
     }
+    //a {
+    //    display: inline-block;
+    //    padding: 5px 14px;
+    //    background-color: #fff;
+    //    border: 1px solid @grayLight;
+    //    border-radius:4px;
+    //    font-size: 11px;
+    //    &.next {
+    //        float: right;
+    //    }
+    //    &.previous {
+    //        float: left;
+    //    }   
+    //}
     a:hover {
       text-decoration: none;
       background-color: #f5f5f5;

@@ -193,8 +193,8 @@ input.destructive {
   }
   .window-toolbar {
       //min-height: @navbar-height;
-      margin:-18px 0px 0px;
-      padding: 0px 20px;
+      margin:0px 0px 0px;
+      padding: 0px @line-height-base 0 0;
       border-bottom: 1px solid #656565;
       .nav {
         font-size: @font-size-base;
@@ -203,9 +203,9 @@ input.destructive {
       //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
       .nav a {
           //color: @grayDark;
-          font-size: @font-size-base;
-          padding: @line-height-base / 2;
-          line-height:@font-size-base;
+          //font-size: @font-size-base;
+          //padding: @line-height-base / 2;
+          //line-height:@font-size-base;
       }
       .nav li.active a {
           //color: #fff;
@@ -257,6 +257,132 @@ input.destructive {
   }
 }
 
+// Status panels
+// ------------------
+
+.statuspanel {
+  width: 150px !important;
+  background-color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  .top {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #555555;
+    color: #fff;
+    padding-top: 20px;
+    i {
+      display: block;
+      margin: 0px auto 20px;
+    }
+    h6 {
+      display: inline;
+      background-color: #555555;
+      position: relative;
+      top: 5px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      color: #FFF;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: @font-size-base - 2;
+    }
+  }
+  .bottom {
+    padding-top: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: @grayLighter;
+    text-align: center;
+    border-top: none;
+    h2 {
+      font-weight: 600;
+      margin: 0;
+    }
+    h6 {
+      font-size: 0.7em;
+      font-weight: 1;
+      position: relative;
+      bottom: 10px;
+      color: #555555;
+    }
+  }
+}
+.statuspanel .warning, .statuspanel .warning h6 {
+  background-color: #ffa93c;
+}
+.statuspanel .success, .statuspanel .success h6 {
+  background: @app-color;
+}
+.statuspanel .danger, .statuspanel .danger h6 {
+  background: lighten(@app-brown, 5%);
+}
+.statuspanel .info, .statuspanel .info h6 {
+  background-color: #14b8d4;
+}
+.statuspanel .primary, .statuspanel .primary h6 {
+  background-color: #007ccd;
+}
+.statuspanel .purple, .statuspanel .purple h6 {
+  background-color: #7932ea;
+}
+
+
+// Counter widget
+
+.widget {
+  //padding-right: @baseLineHeight;
+}
+
+.stats {
+  text-align: center;
+  .stat {
+    background-color: #eeeeee;
+    color: #555555;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    h2 {
+      font-weight: 1;
+    }
+    h6 {
+      margin-top: -10px;
+    }
+  }
+  .warning,
+  .important {
+    background-color: lighten(@state-error-text, 5%);
+    color: #FFF;
+  }
+  .success {
+    background-color: @app-dark;
+    color: #FFF;
+  }
+  .danger {
+    background-color: @app-darker;
+    color: #FFF;
+  }
+  .info {
+    background-color: @app-dark;
+    color: #FFF;
+  }
+  .primary {
+    background-color: @app-color;
+    color: #FFF;
+  }
+  .purple {
+    background-color: #7932ea;
+    color: #FFF;
+  }
+  .inverse {
+    background-color: @app-brown;
+    color: #FFF;
+  }
+}
 
 // Form styles
 // ------------------------

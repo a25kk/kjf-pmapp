@@ -97,7 +97,7 @@
                             <span tal:content="memberinfo/username">John Doe</span>
                             <b class="caret" />
                         </a>
-                        <ul class="dropdown-menu nav-list">
+                        <ul class="dropdown-menu xnav-list">
                             <li class="nav-header">
                                 Kontoeinstellungen</li>
                             <li tal:define="login memberinfo/login_time">

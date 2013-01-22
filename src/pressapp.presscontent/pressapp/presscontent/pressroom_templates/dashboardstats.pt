@@ -16,6 +16,28 @@
       </h1>
     </div>
     <section id="content-core">
+      <div class="box">
+        <div class="statuspanel">
+          <div class="top success">
+            <i class="icon-file-alt icon-4x"></i>
+            <h6>PM</h6>
+          </div>
+          <div class="bottom">
+            <h2 tal:content="view/pressrelease_index">100</h2>
+            <h6>Pressemitteilungen</h6>
+          </div>
+        </div>
+        <div class="statuspanel">
+          <div class="top danger">
+            <i class="icon-calendar icon-4x"></i>
+            <h6>PE</h6>
+          </div>
+          <div class="bottom">
+            <h2 tal:content="view/pressinvitations_index">100</h2>
+            <h6>Presseeinladung</h6>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid"
           tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                       Batch python:modules['Products.CMFPlone'].Batch;

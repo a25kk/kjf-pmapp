@@ -1,18 +1,13 @@
 from five import grok
-from plone.directives import dexterity, form
+from plone.directives import form
 
-from zope import schema
 from Acquisition import aq_inner
-from z3c.form import group, field
 from Products.CMFCore.utils import getToolByName
-from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from plone.app.contentlisting.interfaces import IContentListing
 
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
 from pressapp.presscontent.interfaces import IPressContent
-
-from pressapp.presscontent import MessageFactory as _
 
 
 class IPressRoom(form.Schema):
@@ -27,7 +22,6 @@ class View(grok.View):
     grok.name('view')
 
     def update(self):
-        context = aq_inner(self.context)
         self.has_releases = len(self.contained_pressreleases()) > 0
         self.pressreleases = self.contained_pressreleases()
         self.has_invitations = len(self.contained_invitations()) > 0
@@ -59,7 +53,6 @@ class DashboardReleases(grok.View):
     grok.name('dashboard-releases')
 
     def update(self):
-        context = aq_inner(self.context)
         self.has_pressreleases = len(self.contained_pressreleases()) > 0
 
     def contained_pressreleases(self):
@@ -77,7 +70,6 @@ class DashboardInvitations(grok.View):
     grok.name('dashboard-invitations')
 
     def update(self):
-        context = aq_inner(self.context)
         self.has_pressinvitations = len(self.contained_pressinvitations()) > 0
 
     def contained_pressinvitations(self):
@@ -96,6 +88,22 @@ class DashboardStats(grok.View):
 
     def update(self):
         self.has_content = len(self.published_presscontent()) > 0
+
+    def presscontent_index(self):
+        context = aq_inner(self.context)
+        return len(context.items())
+
+    def pressrelease_index(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')(
+            portal_type='pressapp.presscontent.pressrelease',)
+        return len(items)
+
+    def pressinvitations_index(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')(
+            portal_type='pressapp.presscontent.pressinvitation',)
+        return len(items)
 
     def published_presscontent(self):
         context = aq_inner(self.context)
