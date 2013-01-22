@@ -7038,12 +7038,7 @@ body.jobtool-frontpage #frontpage-content-wrapper {
 body.jobtool-frontpage .box {
   background: #ffffff;
   padding: 11px 19px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-  -webkit-box-shadow: inset -1px 0px 5px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: inset -1px 0px 5px rgba(0, 0, 0, 0.5);
-  box-shadow: inset -1px 0px 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #607080;
 }
 body.jobtool-frontpage #login_form label {
   width: 70px;
@@ -7730,9 +7725,6 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
   border-color: #333333;
   font-size: 16px;
   line-height: 22px;
-  -webkit-box-shadow: inset -1px 0px 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: inset -1px 0px 10px rgba(0, 0, 0, 0.5);
-  box-shadow: inset -1px 0px 10px rgba(0, 0, 0, 0.5);
 }
 #login_form #login-action {
   padding-top: 20px;
