@@ -66,9 +66,6 @@
                       </div>
                       <p>
                         <a href="" class="btn btn-success"
-                          data-appui="tooltip"
-                          data-placement="top"
-                          data-original-title="Liste aller inaktiven Stellenangebote"
                           tal:attributes="href python:context_url + '?filter=published'">
                           Aktive Stellenangebote zeigen
                         </a>
@@ -109,9 +106,6 @@
                       </div>
                       <p>
                         <a href="" class="btn btn-danger"
-                          data-appui="tooltip"
-                          data-placement="top"
-                          data-original-title="Liste aller inaktiven Stellenangebote"
                           tal:attributes="href python:context_url + '?filter=private'">
                           Inaktive Stellenangebote zeigen
                         </a>

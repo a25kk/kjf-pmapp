@@ -32,13 +32,13 @@
                         <ul class="dropdown-menu">
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/jobcenter/@@overview'">
-                                <i class="icon-cog" />
+                                <i class="icon-bar-chart" />
                                 &Uuml;bersicht
                                 </a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/jobcenter/@@settings-joblisting'">
-                                <i class="icon-cog" />
+                                <i class="icon-share" />
                                 Vorschau
                                 </a>
                             </li>
@@ -83,12 +83,12 @@
                             <li class="divider"></li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/@@personal-information'">
-                                <i class="icon-cog" />
+                                <i class="icon-user" />
                                 Profil bearbeiten</a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">
-                                <i class="icon-remove-sign" />
+                                <i class="icon-signout" />
                                 Abmelden</a>
                             </li>
                         </ul>

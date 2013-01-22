@@ -12,6 +12,7 @@
 
     <section id="jobcenter-dashboard"
       tal:define="context_url context/absolute_url;
+                  portal_url context/portal_url;
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
         <div class="pull-right">
