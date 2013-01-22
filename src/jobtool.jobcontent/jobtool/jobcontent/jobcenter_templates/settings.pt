@@ -41,8 +41,8 @@
                           <h6>Jobcenter</h6>
                         </div>
                         <div class="bottom">
-                          <h2 i18n:translate="">Settings</h2>
-                          <h6>Global</h6>
+                          <h2 i18n:translate="">Jobcenter</h2>
+                          <h6 i18n:translate="">Settings</h6>
                         </div>
                       </div>
                     </div>
@@ -68,7 +68,7 @@
                           <th i18n:translate="">Job listing settings</th>
                           <td><small class="pull-right">
                             <a href="#" class="btn btn-primary btn-small"
-                              tal:attributes="href python:context_url + '/@@settings-listing'">
+                              tal:attributes="href python:context_url + '/@@settings-preview'">
                               bearbeiten
                             </a>
                             </small>
@@ -95,7 +95,7 @@
                           <th i18n:translate="">Job opening settings</th>
                           <td><small class="pull-right">
                             <a href="#" class="btn btn-primary btn-small"
-                              tal:attributes="href python:context_url + '/@@settings-listing'">
+                              tal:attributes="href python:context_url + '/@@settings-jobtool'">
                               bearbeiten
                             </a>
                             </small>

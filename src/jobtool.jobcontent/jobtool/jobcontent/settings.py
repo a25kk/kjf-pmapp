@@ -1,7 +1,6 @@
 from five import grok
 from Acquisition import aq_inner
 from zope import schema
-from plone import api
 
 from zope.schema import getFieldsInOrder
 from zope.component import getUtility
@@ -88,7 +87,8 @@ class SettingsEditForm(form.SchemaEditForm):
         IStatusMessage(self.request).addStatusMessage(
             _(u"Update of jobcenter settings has been cancelled."),
             type='info')
-        return self.request.response.redirect(context.absolute_url())
+        next_url = context.absolute_url() + '/@@settings'
+        return self.request.response.redirect(next_url)
 
     def getContent(self):
         context = aq_inner(self.context)
@@ -152,7 +152,8 @@ class PreviewSettingsEditForm(form.SchemaEditForm):
         IStatusMessage(self.request).addStatusMessage(
             _(u"Jobcenter update has been cancelled."),
             type='info')
-        return self.request.response.redirect(context.absolute_url())
+        next_url = context.absolute_url() + '/@@settings'
+        return self.request.response.redirect(next_url)
 
     def getContent(self):
         context = aq_inner(self.context)
