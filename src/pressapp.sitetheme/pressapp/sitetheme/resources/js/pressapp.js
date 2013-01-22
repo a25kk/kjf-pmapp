@@ -9,7 +9,7 @@
             // enhancement.
             return;
         }
-        $('.window').fadeIn('slow');
+        //$('.window').fadeIn('slow');
         $('select.chosen-select').chosen();
         /* Apply to popup forms */
         $(document).on('loadInsideOverlay', function (e) {

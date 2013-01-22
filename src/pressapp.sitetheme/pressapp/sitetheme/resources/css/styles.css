@@ -128,7 +128,7 @@ textarea {
   clear: both;
 }
 .hide-text {
-  font: a;
+  font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -6456,7 +6456,7 @@ body.template-login_form #content-wrapper {
   background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
   background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
   background-repeat: repeat-x;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -6981,7 +6981,7 @@ select.chzn-select {
   background-image: -moz-linear-gradient(center bottom, #eeeeee 0%, #ffffff 50%);
   background-image: -o-linear-gradient(top, #eeeeee 0%, #ffffff 50%);
   background-image: -ms-linear-gradient(top, #eeeeee 0%, #ffffff 50%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
   background-image: linear-gradient(top, #eeeeee 0%, #ffffff 50%);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -7022,7 +7022,7 @@ select.chzn-select {
   background-image: -moz-linear-gradient(center bottom, #cccccc 0%, #eeeeee 60%);
   background-image: -o-linear-gradient(bottom, #cccccc 0%, #eeeeee 60%);
   background-image: -ms-linear-gradient(top, #cccccc 0%, #eeeeee 60%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#cccccc', endColorstr='#eeeeee', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#eeeeee', GradientType=0);
   background-image: linear-gradient(top, #cccccc 0%, #eeeeee 60%);
   border-left: 1px solid #aaa;
   position: absolute;
@@ -7075,7 +7075,7 @@ select.chzn-select {
   background-image: -moz-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
   background-image: -o-linear-gradient(bottom, #ffffff 85%, #eeeeee 99%);
   background-image: -ms-linear-gradient(top, #ffffff 85%, #eeeeee 99%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
   background-image: linear-gradient(top, #ffffff 85%, #eeeeee 99%);
   border: 1px solid #aaa;
   margin: 0;
@@ -7123,7 +7123,7 @@ select.chzn-select {
   background-image: -moz-linear-gradient(center bottom, #e4e4e4 0%, #eeeeee 70%);
   background-image: -o-linear-gradient(bottom, #e4e4e4 0%, #eeeeee 70%);
   background-image: -ms-linear-gradient(top, #e4e4e4 0%, #eeeeee 70%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#e4e4e4', endColorstr='#eeeeee', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4e4e4', endColorstr='#eeeeee', GradientType=0);
   background-image: linear-gradient(top, #e4e4e4 0%, #eeeeee 70%);
   color: #333;
   border: 1px solid #b4b4b4;
@@ -7223,7 +7223,7 @@ select.chzn-select {
   background-image: -moz-linear-gradient(center bottom, #ffffff 0%, #eeeeee 50%);
   background-image: -o-linear-gradient(bottom, #ffffff 0%, #eeeeee 50%);
   background-image: -ms-linear-gradient(top, #ffffff 0%, #eeeeee 50%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
   background-image: linear-gradient(top, #ffffff 0%, #eeeeee 50%);
   -webkit-border-bottom-left-radius: 0;
   -webkit-border-bottom-right-radius: 0;
