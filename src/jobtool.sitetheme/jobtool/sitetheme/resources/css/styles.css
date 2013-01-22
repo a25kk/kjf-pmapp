@@ -7489,6 +7489,15 @@ a.link-clear-filter {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd35e5e', endColorstr='#ffcd4a4a', GradientType=0);
 }
+#form-widgets-institutions,
+#form-widgets-locations {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 fieldset#search-field {
   border: none !important;
 }

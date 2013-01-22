@@ -15,17 +15,16 @@
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime">
       <header id="page-header">
         <div class="pull-right">
-            <h4 tal:content="view/pretty_jobtype"
-              i18n:translate=""
-              />
-            <h5 tal:define="date context/start"
-              tal:content="python:toLocalizedTime(date, long_format=False)" />
+          <h4><i class="icon-cogs icon-2x"></i></h4>
         </div>
 
-        <h1 i18n:translate="">Edit Job Opening Summary</h1>
+        <h1 i18n:translate="">Edit Jobcenter Settings</h1>
 
         <p tal:define="time context/modified" class="discreet">
-          <span tal:content="context/Title" />
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
         </p>
       </header>
       <article id="content-core">
@@ -41,21 +40,27 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <p i18n:translate="" class="lead">Edit the summary of this job opening.</p>
+              <div class="stats widget">
+                <div class="stat inverse">
+                  <h2 i18n:translate="">Settings</h2>
+                  <h6>Jobcenter</h6>
+                </div>
+              </div>
+              <hr />
+              <p i18n:translate="" class="lead">
+                Update locations and institutions
+              </p>
               <p i18n:translate="">
-                This will be the actual text of the job posting accessible
-                from the preview inside the iframe.</p>
+                The provided entries will be selectable as presets in the
+                job opening edit form. Please provide all default values
+                that should be available for selection.
+              </p>
               <hr>
-              <p i18n:translate="">In order to preserve the original formating you can try to
-                paste the text via the paste from word button
+              <p i18n:translate="">
+                Please note that any selection from the location dropdown menu
+                can be overridden with a specific value in the edit forms.
               </p>
-              <p i18n:translate="">Please note that Word is known to produce 
-                horrible HTML code with very unpredictable
-                formating and an unecessarily large number of characters
-                due to additional mostly useless code being inserted.
-                Therefore pasting the original text body into
-                the editor and adjusting the layout might work better.
-              </p>
+              <hr />
             </aside>
           </div>
         </div>
