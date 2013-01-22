@@ -5440,6 +5440,16 @@ body #content-wrapper {
 body.template-login_form #content-wrapper {
   margin-top: 50px;
 }
+.btn-primary {
+  background-color: #2a323f;
+  border-color: #2a323f;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #202630;
+  border-color: #161a20;
+}
 input.context,
 input.destructive {
   margin-right: 10px;
@@ -5920,6 +5930,8 @@ input.destructive:active {
   border-radius: 6px;
   background-color: #428bca;
   border-color: #428bca;
+  background-color: #2a323f;
+  border-color: #2a323f;
   border-radius: 0px;
 }
 #login_form #login-action input.context:hover,
@@ -5927,6 +5939,12 @@ input.destructive:active {
 #login_form #login-action input.context:active {
   background-color: #357ebd;
   border-color: #3071a9;
+}
+#login_form #login-action input.context:hover,
+#login_form #login-action input.context:focus,
+#login_form #login-action input.context:active {
+  background-color: #202630;
+  border-color: #161a20;
 }
 #login-forgotten-password {
   width: 260px;
