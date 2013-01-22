@@ -27,13 +27,24 @@
                       <span tal:content="item/Title" />
                   </a>
                 </h4>
-                <h6><span tal:content="item/location">Augsburg</span>,
-                    <span tal:content="item/institution">Klinik Josefinum</span>
+                <h6>
+                    <span tal:condition="not:item/locationOverride"
+                      tal:define="term item/location;
+                                  pretty_term python:view.pretty_term('jobLocations', term)"
+                      tal:content="pretty_term">
+                      Augsburg
+                    </span>
+                    <span tal:condition="item/locationOverride"
+                      tal:replace="item/locationOverride" />,
+                    <span tal:define="term item/institution;
+                                      pretty_term python:view.pretty_term('jobInstitutions', term)"
+                      tal:content="pretty_term">Klinik Josefinum</span>
                 </h6>
               </div>
               <div class="span4" id="joblisting-details">
-                <h5><span tal:define="job_type item/jobtype"
-                    tal:content="python:view.pretty_jobtype(job_type)"
+                <h5><span tal:define="term item/jobtype;
+                                      pretty_term python:view.pretty_term('jobTypes', term)"
+                    tal:content="pretty_term"
                     i18n:translate="">Job type</span>
                 </h5>
                 <h6 tal:define="date item/start"

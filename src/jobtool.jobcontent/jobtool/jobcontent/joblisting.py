@@ -8,8 +8,6 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.contentlisting.interfaces import IContentListing
 from jobtool.jobcontent.jobopening import IJobOpening
 
-from jobtool.jobcontent import MessageFactory as _
-
 
 class JobListing(grok.View):
     grok.context(INavigationRoot)
@@ -38,16 +36,16 @@ class JobListing(grok.View):
         resultlist = IContentListing(results)
         return resultlist
 
-    def pretty_jobtype(self, jobtype):
+    def pretty_term(self, vocab, term):
         context = aq_inner(self.context)
+        vocabulary = 'jobtool.jobcontent.' + vocab
         vr = getVocabularyRegistry()
-        records = vr.get(context, 'jobtool.jobcontent.jobTypes')
-        selected = jobtype
+        records = vr.get(context, vocabulary)
         try:
-            vocabterm = records.getTerm(selected)
+            vocabterm = records.getTerm(term)
             prettyname = vocabterm.title
-        except KeyError:
-            prettyname = selected
+        except (LookupError, KeyError):
+            prettyname = term
         return prettyname
 
 
@@ -69,14 +67,14 @@ class JobDetails(grok.View):
             obj = api.content.get(UID=uid)
             return obj
 
-    def pretty_jobtype(self, jobtype):
+    def pretty_term(self, vocab, term):
         context = aq_inner(self.context)
+        vocabulary = 'jobtool.jobcontent.' + vocab
         vr = getVocabularyRegistry()
-        records = vr.get(context, 'jobtool.jobcontent.jobTypes')
-        selected = jobtype
+        records = vr.get(context, vocabulary)
         try:
-            vocabterm = records.getTerm(selected)
+            vocabterm = records.getTerm(term)
             prettyname = vocabterm.title
-        except KeyError:
-            prettyname = selected
+        except (LookupError, KeyError):
+            prettyname = term
         return prettyname
