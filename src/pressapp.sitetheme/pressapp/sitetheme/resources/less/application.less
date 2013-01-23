@@ -21,8 +21,8 @@ body.template-login_form {
 }
 
 .btn-primary {
-  background-color: @app-darker;
-      border-color: @app-darker;
+  background-color: @app-color;
+      border-color: @app-color;
   &:hover,
   &:focus,
   &:active {
@@ -151,7 +151,7 @@ input.destructive {
           margin-bottom:0px;
       }
   }
-  h4 > a {
+  h5 > a {
     color:@gray;
   }
 }
@@ -231,7 +231,7 @@ input.destructive {
       border-right: 1px solid @gray;
       min-height: 500px;
       padding: @line-height-base;
-      background: #f5f5f5;
+      background: #fff;
     }
     .tile {
         padding: @line-height-base / 2;
@@ -394,6 +394,30 @@ input.destructive {
     color: #FFF;
   }
 }
+
+// Customizations + overrides
+// -----------------------------
+
+.mceIframeContainer {
+  padding: @padding-large !important;
+}
+
+input.dial {
+  box-shadow: none;
+}
+
+a.caltrigger {
+  padding: 0px;
+}
+
+#caltitle select {
+  width: 165px;
+}
+
+form.overlayForm {
+    padding: @line-height-base;
+}
+
 
 // Form styles
 // ------------------------

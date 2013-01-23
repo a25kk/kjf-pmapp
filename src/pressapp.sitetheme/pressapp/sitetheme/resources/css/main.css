@@ -5441,8 +5441,8 @@ body.template-login_form #content-wrapper {
   margin-top: 50px;
 }
 .btn-primary {
-  background-color: #2a323f;
-  border-color: #2a323f;
+  background-color: #50a0b0;
+  border-color: #50a0b0;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -5675,7 +5675,7 @@ input.destructive:active {
 .tile.stats form {
   margin-bottom: 0px;
 }
-.tile h4 > a {
+.tile h5 > a {
   color: #555555;
 }
 .window {
@@ -5749,7 +5749,7 @@ input.destructive:active {
   border-right: 1px solid #555555;
   min-height: 500px;
   padding: 20px;
-  background: #f5f5f5;
+  background: #fff;
 }
 .window .window-content .tile {
   padding: 10px;
@@ -5901,6 +5901,21 @@ input.destructive:active {
   background-color: #b8aa88;
   color: #FFF;
 }
+.mceIframeContainer {
+  padding: 11px 19px !important;
+}
+input.dial {
+  box-shadow: none;
+}
+a.caltrigger {
+  padding: 0px;
+}
+#caltitle select {
+  width: 165px;
+}
+form.overlayForm {
+  padding: 20px;
+}
 #login_form {
   width: 300px;
   display: block;
@@ -5930,8 +5945,8 @@ input.destructive:active {
   border-radius: 6px;
   background-color: #428bca;
   border-color: #428bca;
-  background-color: #2a323f;
-  border-color: #2a323f;
+  background-color: #50a0b0;
+  border-color: #50a0b0;
   border-radius: 0px;
 }
 #login_form #login-action input.context:hover,

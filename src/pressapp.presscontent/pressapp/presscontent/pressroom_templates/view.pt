@@ -59,10 +59,10 @@
                         </div>
                         <div class="media-content"
                           tal:define="state item/review_state">
-                          <h4 tal:define="state item/review_state">
+                          <h5 tal:define="state item/review_state">
                             <a tal:attributes="href item/getURL"
                               tal:content="item/Title">Document 23-07-2012, Revision-003</a>
-                          </h4>
+                          </h5>
                           <div class="btn-group pull-right" tal:define="item_url item/getURL">
                             <a class="btn btn-mini"
                                 tal:attributes="href python:item_url+'/@@edit-press-release'">
