@@ -92,13 +92,23 @@
                           <span tal:replace="item/Title">
                             Job opening title
                           </span>
-                          <small tal:define="job_type item/jobtype"
-                            tal:content="python:view.pretty_jobtype(job_type)"
+                          <small tal:define="term item/jobtype"
+                            tal:content="python:view.pretty_term('jobTypes', term)"
                             i18n:translate="">Job type</small>
                         </h4>
-                        <p><small><span tal:content="item/location">location</span>,
-                            <span tal:content="item/institution">institution</span>
-                            </small>
+                        <p><small>
+                          <span tal:condition="not:item/locationOverride"
+                            tal:define="term item/location;
+                                        pretty_term python:view.pretty_term('jobLocations', term)"
+                            tal:content="pretty_term">
+                            Augsburg
+                          </span>
+                          <span tal:condition="item/locationOverride"
+                            tal:replace="item/locationOverride" />,
+                          <span tal:define="term item/institution;
+                                            pretty_term python:view.pretty_term('jobInstitutions', term)"
+                            tal:content="pretty_term">Klinik Josefinum</span>
+                          </small>
                         </p>
                       </div>
                       <div class="span4">
