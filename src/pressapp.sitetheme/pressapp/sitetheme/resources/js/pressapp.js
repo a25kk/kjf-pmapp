@@ -10,6 +10,7 @@
             return;
         }
         $('span[data-appui="prettydate"]').timeago();
+        $('input[data-appui="knob"]').knob();
         $('select.chosen-select').chosen();
         /* Apply to popup forms */
         $(document).on('loadInsideOverlay', function (e) {
