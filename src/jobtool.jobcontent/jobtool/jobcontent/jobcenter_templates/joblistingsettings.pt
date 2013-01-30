@@ -28,11 +28,11 @@
         </p>
       </header>
       <article id="content-core">
-        <div class="row-fluid">
+        <div class="row">
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
-                <div class="row-fluid">
+                <div class="row">
                   <div class="span6">
                     <div class="panel" tal:define="active_idx view/preview_index">
                       <div class="statuspanel">
@@ -76,7 +76,7 @@
                   tal:define="items view/preview_items;
                               items_count python:len(items)">
                   <div class="tile" tal:repeat="item items">
-                    <div class="row-fluid">
+                    <div class="row">
                       <div class="span2">
                         <h4 tal:define="date item/start"
                             tal:content="python:toLocalizedTime(date, long_format=False)">

@@ -3,16 +3,16 @@
 
 
 body {
-  background:@appBackgroundDark;
+  background:@app-background-dark;
   &.joblisting-preview {
-    background: @white;
+    background: #fff;
   }
 }
 
 input.context,
 input.destructive {
   margin-right: 10px;
-  .btn();
+  //.btn();
   text-shadow: none;
 }
 input.destructive {
@@ -21,15 +21,15 @@ input.destructive {
 
 body.jobtool-frontpage {
   .splashbar {
-    padding: @navbarHeight;
+    padding: @navbar-height;
     text-align: center;
-    #gradient > .vertical(@appBrown, @appBrown);
-    border-bottom: 1px solid @black;
+    #gradient > .vertical(@app-brown, @app-brown);
+    border-bottom: 1px solid #000;
     h1 {
-      font-size: @navbarHeight;
-      color: @white;
+      font-size: @navbar-height;
+      color: #fff;
       a {
-        color: @white;
+        color: #fff;
       }
       #fp-logo {
         background:url(../img/logo.png) no-repeat 0 0 transparent;
@@ -41,22 +41,22 @@ body.jobtool-frontpage {
     }
   }
   .subheader {
-    background: @appColor;
-    padding: @baseLineHeight;
+    background: @app-color;
+    padding: @line-height-base;
     text-align: center;
-    border-bottom: 1px solid @appDark;
+    border-bottom: 1px solid @app-dark;
     h2 {
-      color: @white;
+      color: #fff;
     }
   }
   #frontpage-content-wrapper {
-    padding: @navbarHeight 0;
+    padding: @navbar-height 0;
   }
   .box {
-    //background: lighten(@appBrown, 20%);
-    background: @white;
-    padding:@paddingLarge;
-    border: 1px solid @appDark;
+    //background: lighten(@app-brown, 20%);
+    background: #fff;
+    padding:@padding-large;
+    border: 1px solid @app-dark;
     //.box-shadow(inset 0px 0px 5px rgba(0,0,0, .5));
   }
   #login_form label {
@@ -64,9 +64,9 @@ body.jobtool-frontpage {
   }
   #login-forgotten-password {
     clear: both;
-    //margin-top: @baseLineHeight / 2;
+    //margin-top: @line-height-base / 2;
     .discreet {
-        #font > .sans-serif(normal, 80%, @baseLineHeight);
+        #font > .sans-serif(normal, 80%, @line-height-base);
     }
   }
 }
@@ -76,12 +76,10 @@ body.jobtool-frontpage {
 body > header {
     #toolbar + nav,
     #editbar-wrapper + nav {
-        margin-top: @navbarHeight;
+        margin-top: @navbar-height;
         .navbar-inner {
-            .border-radius(0px);
+            border-radius: 0px;
             .container {
-                //width: @gridRowWidth;
-                //.container-fixed();
             }
         }
     }
@@ -89,71 +87,74 @@ body > header {
     #main-nav .selected > a,
     #main-nav .selected > a:hover,
     #main-nav .selected > a:focus {
-      color: @navbarInverseLinkColorActive;
-      background-color: @navbarInverseLinkBackgroundActive;
+      color: @navbar-inverse-link-color-active;
+      background-color: @navbar-inverse-link-bg-active;
     }
     .brand {
       //float:right !important;
     }
-    margin-bottom: @baseLineHeight;
+    margin-bottom: @line-height-base;
 }
 
 #nav-bar {
   .box-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
   .navbar-inner {
-    .border-radius(0);
+    border-radius: 0;
   }
 }
 
 #main-wrapper {
-  padding-top: @navbarHeight;
+  padding-top: @navbar-height;
 }
 
 // Action bar
 // ---------------------------
 
 #actionbar {
-  margin: @baseLineHeight @baseLineHeight * 2;
+  margin: @line-height-base @line-height-base * 2;
   .brandname {
-    color: @appColor;
+    color: @app-color;
     margin: 0;
     line-height: 100%;
     a {
-      color: @appBrown;
+      color: @app-brown;
     }
+  }
+  #subnavbar .navbar {
+    background:transparent;
   }
   #section-nav {
       li {
-        margin-left: @baseLineHeight;
+        margin-left: @line-height-base;
       }
         li > a {
-        color: @appBrown;
+        color: @app-brown;
         font-weight: bold;
         text-shadow: none;
-        border: 1px solid @appBrown;
-        background: @appColorLight;
+        border: 1px solid @app-brown;
+        background: @app-color-light;
         text-align: center;
         position:relative;
         }
         li > a:hover {
-            background: @appColor;
-            color:@white;
+            background: @app-color;
+            color:#fff;
             .label {
-              background: @appBrown;
+              background: @app-brown;
             }
         }
         .label-error {
-          background:@appRed;
+          background:@app-red;
         }
     }
   #customer-logo {
     display: block;
-    border: 1px solid @appBrown;
-    .border-radius(4px);
+    border: 1px solid @app-brown;
+    border-radius: 4px;
     text-indent: -9999px;
     width: 180px;
     height: 31px;
-    background:url(../assets/img/logo-small.png) no-repeat 32px 0px @white;
+    background:url(../assets/img/logo-small.png) no-repeat 32px 0px #fff;
     margin: 3px 20px 0px 10px;
   }
 }
@@ -164,32 +165,28 @@ body > header {
 .window {
   //display: none;
   padding: 0px;
-  margin: @baseLineHeight;
-  border: 2px solid @appBrown;
-  .border-radius(0px);
+  margin: @line-height-base;
+  border: 2px solid @app-brown;
+  border-radius: 0px;
   //.box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.6));
   //box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
-  background: url(../assets/img/bg-white-fabric.png) repeat @appBackground;
+  background: url(../assets/img/bg-white-fabric.png) repeat @app-background;
   .window-header {
-    padding: @baseLineHeight / 2 @baseLineHeight;
-    //min-height: @navbarHeight;
-    //#gradient > .vertical(#e9e9e9, #b2b2b2);
-    //#gradient > .vertical(lighten(@appBrown, 10%), @appBrown);
-    background: @appColor;
-    border-bottom: 1px solid @appBrown;
-    //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+    padding: @line-height-base / 2 @line-height-base;
+    background: @app-color;
+    border-bottom: 1px solid @app-brown;
     margin: 0px;
     color: @grayLighter;
     h1 {
-      font-size: @baseFontSize * 1.75;
-      line-height: @baseLineHeight;
+      font-size: @font-size-base * 1.75;
+      line-height: @line-height-base;
       small {
-        font-size: @baseFontSize;
+        font-size: @font-size-base;
         .label {
           font-weight: normal;
         }
         a {
-          color: @white;
+          color: #fff;
           font-weight: normal;
         }
       }
@@ -198,76 +195,66 @@ body > header {
       color: @grayLighter;
       a.link-clear-filter {
         display: inline-block;
-        //margin-left:@baseLineHeight;
-        color: @appBrown;
+        color: @app-brown;
       }
     }
     .btn {
-      //border-color: @black;
       .btn-primary();
     }
     #section-nav {
         li > a {
-        color: @appBrown;
+        color: @app-brown;
         font-weight: bold;
         text-shadow: none;
-        border: 1px solid @appBrown;
-        background: @appColorLight;
+        border: 1px solid @app-brown;
+        background: @app-color-light;
         }
         li > a:hover {
-            background: @appColor;
-            color:@white;
+            background: @app-color;
+            color: #fff;
         }
     }
   }
   .window-toolbar {
-            //min-height: @navbarHeight;
-            //margin:-18px 0px 0px;
             padding: 0px 20px;
             border-bottom: 1px solid #656565;
-            //#gradient > .vertical(#bbb, @grayLight);
-            //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
             .nav a {
-                //color: @grayDark;
-                font-size: @baseFontSize + 4;
+                font-size: @font-size-base + 4;
             }
             .nav li.active a {
-                //color: @white;
             }
         }
   .window-content {
-    background: url(../assets/img/bg-white-fabric.png) repeat @appBackground;
-    //background: #f5f5f5;
+    background: url(../assets/img/bg-white-fabric.png) repeat @app-background;
     color: @gray;
     min-height: 500px;
-    //.box-shadow(inset 0 5px 10px rgba(0, 0, 0, 0.6));
     .window-column {
       border-right: 1px solid @gray;
       min-height: 500px;
-      padding-bottom: @baseLineHeight;
-      text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+      padding-bottom: @line-height-base;
+      text-shadow: 0 1px 0 @navbar-bg;
       .window-column-content {
-        padding: @baseLineHeight;
+        padding: @line-height-base;
         .window-column-text {
-          padding-top: @baseLineHeight;
-          margin-right: @baseLineHeight * 2;
+          padding-top: @line-height-base;
+          margin-right: @line-height-base * 2;
         }
         .featurette {
-          margin: @navbarHeight * 2;
-          padding: @baseLineHeight;
+          margin: @navbar-height * 2;
+          padding: @line-height-base;
           background-color: rgba(255, 255, 255, 0.35);
           border: 1px solid @grayLight;
           .stats {
             display: block;
             .stat {
               display: block;
-              .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+              background: @btn-background-primary;
               .stat-header {
-                margin: (@baseLineHeight / 2) 0;
-                font-family: @headingsFontFamily;
-                font-weight: @headingsFontWeight;
-                line-height: @baseLineHeight;
-                font-size: @baseFontSize * 2.25;
+                margin: (@line-height-base / 2) 0;
+                font-family: @headings-font-family;
+                font-weight: @headings-font-weight;
+                line-height: @line-height-base;
+                font-size: @font-size-base * 2.25;
               }
               .stat-subheader {
                 display: block;
@@ -285,29 +272,29 @@ body > header {
       }
     }
     .tile {
-        padding: @paddingSmall;
+        padding: @padding-small;
         .box-shadow(none);
         border: 0px;
         border-bottom: 1px solid @grayLight;
-        .border-radius(0);
+        border-radius: 0;
         background: transparent !important;
         .btn {
           .btn-primary();
           text-shadow: none;
-          margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
+          margin: @line-height-base / 2 @line-height-base * 1.25 0;
         }
         &.active,
         &:hover {
-            background: url(../assets/img/bg-white-fabric.png) repeat @white !important;
-            color: @black;
+            background: url(../assets/img/bg-white-fabric.png) repeat #fff !important;
+            color: #000;
             border-left: 4px solid @gray;
             margin-left: -4px;
             .btn {
-              .btn-inverse();
+              .btn-primary();
             }
         }
         h4 {
-          font-size: @baseFontSize;
+          font-size: @font-size-base;
           margin-bottom: 0px;
         }
     }
@@ -318,16 +305,16 @@ body > header {
       }
     }
     #sidebar {
-      padding-top: @baseLineHeight;
-      padding-right: @baseLineHeight * 1.5;
-      text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+      padding-top: @line-height-base;
+      padding-right: @line-height-base * 1.5;
+      text-shadow: 0 1px 0 @navbar-bg;
       .tile {
-        padding: @paddingSmall;
-        //margin-right: @baseLineHeight;
+        padding: @padding-small;
+        //margin-right: @line-height-base;
         &.active,
         &:hover {
             background: #f5f5f5;
-            color: @black;
+            color: #000;
             border-right: 0px solid @gray;
         }
       }
@@ -337,7 +324,7 @@ body > header {
           z-index: 1;
         }
         &:hover {
-          color: @black;
+          color: #000;
           a.link-editable {
             display: inline-block;
             .opacity(100);
@@ -346,7 +333,7 @@ body > header {
         }
       }
       .widget {
-        margin: 0 @baseLineHeight;
+        margin: 0 @line-height-base;
       }
       .history-listing {
         h6 {
@@ -356,7 +343,7 @@ body > header {
     }
   }
   .window-content > form {
-    padding: @baseLineHeight;
+    padding: @line-height-base;
   }
 }
 
@@ -364,44 +351,44 @@ body > header {
 // ---------------------------
 
 #joblisting-view {
-  padding: @baseLineHeight;
+  padding: @line-height-base;
   #joblisting {
     border-top: 1px solid @gray;
   }
   .splashbox {
-    padding: @paddingSmall;
+    padding: @padding-small;
     .box-shadow(none);
     border: 0px;
     border-bottom: 1px solid @gray;
     border-right: 1px solid @gray;
     border-left: 4px solid @gray;
-    .border-radius(0);
+    border-radius: 0;
     //background: transparent !important;
-    background: url(../assets/img/bg-white-fabric.png) repeat @white;
+    background: url(../assets/img/bg-white-fabric.png) repeat #fff;
     h4 > a {
-      color: @textColor;
+      color: @text-color;
       text-decoration: underline;
     }
     h6 {
-      color: @textColor;
+      color: @text-color;
     }
     #joblisting-details {
       text-align: right;
     }
     .btn {
       .btn-primary();
-      margin: @baseLineHeight / 2 @baseLineHeight * 1.25 0;
+      margin: @line-height-base / 2 @line-height-base * 1.25 0;
     }
     &.bodytext {
-      padding: @paddingLarge;
-      font-size: @fontSizeSmall;
+      padding: @padding-large;
+      font-size: @font-size-small;
       h2 {
-        font-size: @fontSizeSmall * 2.25;
+        font-size: @font-size-small * 2.25;
       }
       .alert-info {
         background-color: rgba(255, 255, 255, 0.35);
         border: 1px solid @grayLight;
-        color: @textColor;
+        color: @text-color;
         h4 {
           color: @gray;
         }
@@ -414,7 +401,7 @@ body > header {
 // -----------------------------
 
 .mceIframeContainer {
-  padding: @paddingLarge !important;
+  padding: @padding-large !important;
 }
 
 input.dial {
@@ -435,7 +422,7 @@ a.link-clear-filter {
 
 .tile-wrapper {
   .alert {
-    margin-bottom: @baseLineHeight / 2;
+    margin-bottom: @line-height-base / 2;
   }
 }
 
@@ -443,13 +430,13 @@ a.link-clear-filter {
   border-radius: 0px;
   text-shadow: none;
   &.btn-primary {
-    background-color: @btnPrimaryBackground;
-        border-color: @btnPrimaryBackground;
+    background-color: @btn-background-primary;
+        border-color: @btn-background-primary;
     &:hover,
     &:focus,
     &:active {
-      background-color: darken(@btnPrimaryBackground, 5%);
-          border-color: darken(@btnPrimaryBackground, 10%);
+      background-color: darken(@btn-background-primary, 5%);
+          border-color: darken(@btn-background-primary, 10%);
     }
   }
 }
@@ -458,13 +445,9 @@ a.link-clear-filter {
   #gradient > .vertical(lighten(#607080, 5%), #607080);
 }
 .progress-danger .bar, .progress .bar-danger {
-  #gradient > .vertical(lighten(@appRed, 5%), @appRed);
+  #gradient > .vertical(lighten(@app-red, 5%), @app-red);
 }
 
-#form-widgets-institutions,
-#form-widgets-locations {
-  .input-block-level();
-}
 
 // Search results page
 // ------------------------------
@@ -473,10 +456,10 @@ fieldset#search-field {
     border: none !important;
 }
 input.searchPage {
-    margin-top: @baseLineHeight / 2;
-    font-size:@baseFontSize * 2 !important;
-    line-height: @baseLineHeight * 1.75;
-    height: @baseLineHeight * 1.75;
+    margin-top: @line-height-base / 2;
+    font-size:@font-size-base * 2 !important;
+    line-height: @line-height-base * 1.75;
+    height: @line-height-base * 1.75;
 }
 #rss-subscription {
   float: left;
@@ -572,7 +555,7 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
 
 .statuspanel {
   width: 150px !important;
-  background-color: @white;
+  background-color: #fff;
   border-radius: 6px;
   text-align: center;
   display: inline-block;
@@ -582,7 +565,7 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     background-color: #555555;
-    color: @white;
+    color: #fff;
     padding-top: 20px;
     i {
       display: block;
@@ -598,7 +581,7 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
       color: #FFF;
       font-weight: normal;
       text-transform: uppercase;
-      font-size: @baseFontSize - 2;
+      font-size: @font-size-base - 2;
     }
   }
   .bottom {
@@ -624,10 +607,10 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
   background-color: #ffa93c;
 }
 .statuspanel .success, .statuspanel .success h6 {
-  background: @appDark;
+  background: @app-dark;
 }
 .statuspanel .danger, .statuspanel .danger h6 {
-  background: lighten(@appRed, 5%);
+  background: lighten(@app-red, 5%);
 }
 .statuspanel .info, .statuspanel .info h6 {
   background-color: #14b8d4;
@@ -664,23 +647,23 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
   }
   .warning,
   .important {
-    background-color: lighten(@appRed, 5%);
+    background-color: lighten(@app-red, 5%);
     color: #FFF;
   }
   .success {
-    background-color: @appDark;
+    background-color: @app-dark;
     color: #FFF;
   }
   .danger {
-    background-color: @appRed;
+    background-color: @app-red;
     color: #FFF;
   }
   .info {
-    background-color: @appDark;
+    background-color: @app-dark;
     color: #FFF;
   }
   .primary {
-    background-color: @appColor;
+    background-color: @app-color;
     color: #FFF;
   }
   .purple {
@@ -688,7 +671,7 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
     color: #FFF;
   }
   .inverse {
-    background-color: @appBrown;
+    background-color: @app-brown;
     color: #FFF;
   }
 }
@@ -700,26 +683,26 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
   width: 300px;
   label {
     font-weight: bold;
-    font-size: @baseFontSize + 2;
+    font-size: @font-size-base + 2;
   }
   input[type="text"],
   input[type="password"] {
     width: 245px;
-    height: @baseLineHeight + 4;
+    height: @line-height-base + 4;
     border-color: @grayDark;
-    font-size: @baseFontSize + 2;
-    line-height: @baseLineHeight + 2;
+    font-size: @font-size-base + 2;
+    line-height: @line-height-base + 2;
     //width: 95%;
     //.box-shadow(inset -1px 0px 10px rgba(0,0,0, .5));
   }
   #login-action {
-    padding-top: @baseLineHeight;
+    padding-top: @line-height-base;
     background: transparent;
     text-align:right;
     input.context {
       .btn-large();
       .btn-primary();
-      .border-radius(0px);
+      border-radius: 0px;
     }
   }
   .center-block();
@@ -728,7 +711,7 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
 #login-forgotten-password {
   width: 260px;
   a {
-    color: @white;
+    color: #fff;
   }
   .center-block();
 }
@@ -776,7 +759,7 @@ form.searchPage h1.documentFirstHeading .highlightedSearchTerm {
 
 // Site footer
 body > footer {
-    margin-top: @baseLineHeight;
-    padding: @baseLineHeight 0;
+    margin-top: @line-height-base;
+    padding: @line-height-base 0;
     border-top: 1px solid @grayLighter;
 }
