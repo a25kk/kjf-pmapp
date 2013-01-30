@@ -173,10 +173,13 @@ select.datetime-widget,
 
 div.field {
     margin-bottom: @line-height-base / 2;
+
 }
 
-div.formHelp {
+div.formHelp,
+span.formHelp {
     .help-block();
+    font-weight: normal;
 }
 
 .formControls {
@@ -197,6 +200,8 @@ span.required {
 
 dl.portalMessage {
     .alert();
+    margin-top: 0px;
+    border-radius: 0px;
     dt {
         margin: 0;
     }

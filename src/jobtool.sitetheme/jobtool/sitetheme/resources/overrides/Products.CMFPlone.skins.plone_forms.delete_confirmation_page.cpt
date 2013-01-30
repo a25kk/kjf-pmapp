@@ -3,7 +3,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="jobtool.jobcontent">
+      i18n:domain="plone">
 
   <metal:block fill-slot="top_slot"
                tal:define="dummy python:request.set('disable_border',1)" />
@@ -34,7 +34,8 @@
           tal:condition="not:folder_warning">
         Do you really want to delete this item?
       </h1>
-        <p tal:define="time context/modified" class="discreet">
+        <p tal:define="time context/modified" class="discreet"
+          i18n:domain="jobtool.jobcontent">
           <span i18n:translate="">Last changed:</span>
           <span tal:content="time"
              tal:attributes="data-appui string:prettydate;
@@ -85,19 +86,21 @@
           <aside id="sidebar">
             <div class="stats widget">
               <div class="stat important">
-                <h2 i18n:translate="">Warning
+                <h2 i18n:translate="">Warnung
                 </h2>
               </div>
             </div>
             <hr>
             <p class="lead" i18n:translate="">
-              The delete action can not be undone
+              Das L&ouml;schen von Inhalten kann nicht r&uuml;ckg&auml;ngig gemacht werden.
             </p>
             <hr>
             <p i18n:translate="">
-              You can always mark a job opening as inactive to hide it from
-              any public interfaces and reuse it in the future by reactivating
-              it with a new date.
+              Falls Sie sich unsicher sind, k&ouml;nnen Sie ein Stellenangebot &uuml;ber
+              die Bearbeitungsoberfl&auml;che auf &quot;inaktiv&quot; stellen, um es von allen
+              &ouml;ffentlichen Teilen der Seite zu verstecken. Auf diesem Wege kann
+              das Angebot zu einem sp&auml;teren Zeitpunkt aktualisiert und wieder
+              aktiviert werden.
             </p>
           </aside>
         </div>

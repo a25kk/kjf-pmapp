@@ -36,7 +36,7 @@
     </header>
     
     <section id="content-core">
-    <div class="row-fluid">
+    <div class="row">
     <div class="span9">
     <div class="window-column">
     <div class="window-column-content">
@@ -52,8 +52,9 @@
         <input type="hidden" name="advanced_search" value="False" />
         <input type="hidden" name="sort_on" value="" />
 
-        <fieldset id="search-field" i18n:domain="plone" class="noborder">
-            <input class="searchPage input-xxlarge"
+        <div id="search-field" i18n:domain="plone"
+          class="noborder input-group">
+            <input class="searchPage span5"
                    name="SearchableText"
                    type="text"
                    size="25"
@@ -61,13 +62,15 @@
                    i18n:attributes="title title_search_title;"
                    tal:attributes="value st;"
                    />
-            <input class="btn btn-large searchButton allowMultiSubmit"
+            <span class="input-group-btn">
+            <button class="btn btn-large searchButton allowMultiSubmit"
                    type="submit"
                    value="Search"
-                   i18n:attributes="value label_search;"/>
-        </fieldset>
+                   i18n:attributes="value label_search;">Search</button>
+            </span>
+        </div>
         <hr>
-        <div class="container-fluid">
+        <div class="container">
 
             <div class="box">
                 <h3 class="documentFirstHeading"
@@ -87,7 +90,7 @@
             </div>
             <div class="visualClear"><!-- --></div>
             <div id="search-results-wrapper"
-                 class="cell width-full position-0"
+                 class="container"
                  tal:define="b_start python:0;
                              b_start request/b_start | b_start;
                              batch python: view.results(b_start=b_start);
@@ -271,8 +274,9 @@
                                                    use_view_action site_properties/typesUseViewActionInListings|python:();
                                                    allowAnonymousViewAbout site_properties/allowAnonymousViewAbout;
                                                    show_about python:not isAnon or allowAnonymousViewAbout;">
-                          <div class="searchResults tile">
+                          <div class="searchResults">
                               <tal:results repeat="item batch">
+                                <div class="tile">
                                     <h4 tal:attributes="class item/ContentTypeClass">
                                       <a href="#"
                                          tal:define="item_url item/getURL;
@@ -326,6 +330,7 @@
                                         </span>
 
                                     </div>
+                                  </div>
                               </tal:results>
                           </div>
                           <div metal:use-macro="context/batch_macros/macros/navigation" />

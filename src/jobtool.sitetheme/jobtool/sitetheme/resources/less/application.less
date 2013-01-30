@@ -10,9 +10,10 @@ body {
 }
 
 input.context,
-input.destructive {
+input.destructive,
+input.standalone {
   margin-right: 10px;
-  //.btn();
+  .btn();
   text-shadow: none;
 }
 input.destructive {
@@ -35,7 +36,7 @@ body.jobtool-frontpage {
         background:url(../img/logo.png) no-repeat 0 0 transparent;
         display: block;
         .center-block();
-        .size(100px, 250px);
+        .size(250px, 100px);
         text-indent: -9999px;
       }
     }
@@ -101,6 +102,9 @@ body > header {
   .navbar-inner {
     border-radius: 0;
   }
+  .nav-user p {
+    padding: @line-height-base / 2;
+  }
 }
 
 #main-wrapper {
@@ -135,12 +139,16 @@ body > header {
         background: @app-color-light;
         text-align: center;
         position:relative;
+        .counter {
+          background: @app-brown;
+        }
         }
         li > a:hover {
             background: @app-color;
             color:#fff;
-            .label {
-              background: @app-brown;
+            .counter {
+              background: #fff;
+              color: @app-brown;
             }
         }
         .label-error {
@@ -456,10 +464,10 @@ fieldset#search-field {
     border: none !important;
 }
 input.searchPage {
-    margin-top: @line-height-base / 2;
+    margin-top: 0;
     font-size:@font-size-base * 2 !important;
-    line-height: @line-height-base * 1.75;
-    height: @line-height-base * 1.75;
+    line-height: @line-height-base * 2;
+    height: @line-height-base * 2.25;
 }
 #rss-subscription {
   float: left;
