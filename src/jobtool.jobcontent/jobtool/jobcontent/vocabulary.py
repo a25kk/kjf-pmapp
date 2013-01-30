@@ -15,7 +15,9 @@ class JobTypeVocabulary(object):
     grok.implements(IVocabularyFactory)
 
     def __call__(self, context):
-        TYPES = {_(u"Fulltime"): 'fulltime', _(u"Parttime"): 'parttime'}
+        TYPES = {_(u"Fulltime"): 'fulltime',
+                 _(u"Parttime"): 'parttime',
+                 _(u"Fulltime and Parttime"): 'fullandpart'}
 
         return SimpleVocabulary([SimpleTerm(value, title=title) for
                                 title, value in TYPES.iteritems()])
@@ -29,7 +31,7 @@ class JobCategoryVocabulary(object):
 
     def __call__(self, context):
         CATS = {_(u"Education"): 'education',
-                _(u"Philosophy"): 'philosophy',
+                _(u"Psychology"): 'psychology',
                 _(u"Administration"): 'administration',
                 _(u"Care"): 'care',
                 _(u"Medicine"): 'medicine',
@@ -71,7 +73,6 @@ class InstitutionsVocabulary(object):
     grok.implements(IVocabularyFactory)
 
     def __call__(self, context):
-        catalog = api.portal.get_tool(name='portal_catalog')
         portal = api.portal.get()
         jobcenter = portal['jobcenter']
         # cats = catalog.uniqueValuesFor("institution")
