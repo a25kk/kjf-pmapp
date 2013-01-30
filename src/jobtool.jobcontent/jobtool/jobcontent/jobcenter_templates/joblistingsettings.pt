@@ -28,11 +28,11 @@
         </p>
       </header>
       <article id="content-core">
-        <div class="row-fluid">
+        <div class="row">
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
-                <div class="row-fluid">
+                <div class="row">
                   <div class="span6">
                     <div class="panel" tal:define="active_idx view/preview_index">
                       <div class="statuspanel">
@@ -76,7 +76,7 @@
                   tal:define="items view/preview_items;
                               items_count python:len(items)">
                   <div class="tile" tal:repeat="item items">
-                    <div class="row-fluid">
+                    <div class="row">
                       <div class="span2">
                         <h4 tal:define="date item/start"
                             tal:content="python:toLocalizedTime(date, long_format=False)">
@@ -92,13 +92,23 @@
                           <span tal:replace="item/Title">
                             Job opening title
                           </span>
-                          <small tal:define="job_type item/jobtype"
-                            tal:content="python:view.pretty_jobtype(job_type)"
+                          <small tal:define="term item/jobtype"
+                            tal:content="python:view.pretty_term('jobTypes', term)"
                             i18n:translate="">Job type</small>
                         </h4>
-                        <p><small><span tal:content="item/location">location</span>,
-                            <span tal:content="item/institution">institution</span>
-                            </small>
+                        <p><small>
+                          <span tal:condition="not:item/locationOverride"
+                            tal:define="term item/location;
+                                        pretty_term python:view.pretty_term('jobLocations', term)"
+                            tal:content="pretty_term">
+                            Augsburg
+                          </span>
+                          <span tal:condition="item/locationOverride"
+                            tal:replace="item/locationOverride" />,
+                          <span tal:define="term item/institution;
+                                            pretty_term python:view.pretty_term('jobInstitutions', term)"
+                            tal:content="pretty_term">Klinik Josefinum</span>
+                          </small>
                         </p>
                       </div>
                       <div class="span4">

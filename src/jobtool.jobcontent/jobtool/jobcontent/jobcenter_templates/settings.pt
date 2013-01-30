@@ -28,11 +28,11 @@
         </p>
       </header>
       <article id="content-core">
-        <div class="row-fluid">
+        <div class="row">
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
-                <div class="row-fluid">
+                <div class="row">
                   <div class="span3">
                     <div class="panel" tal:define="active_idx view/active_index">
                       <div class="statuspanel">
@@ -156,8 +156,8 @@
 
                           </td>
                           <td>
-                            <div class="input-prepend">
-                              <span class="add-on"><i class="icon-share"></i></span>
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="icon-share"></i></span>
                               <input type="text"
                                 tal:attributes="value python:base_url + '/@@joblisting?distid=' + token" />
                             </div>

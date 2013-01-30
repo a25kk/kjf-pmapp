@@ -32,7 +32,7 @@
         </p>
       </header>
       <article id="content-core">
-        <div class="row-fluid">
+        <div class="row">
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
@@ -48,7 +48,7 @@
                 </div>
                 <div tal:condition="not:context/text"
                   class="featurette dim-in two">
-                  <div class="row-fluid">
+                  <div class="row">
                     <div class="span9">
                       <h2 i18n:translate="">Detailed job description</h2>
                       <p class="lead" i18n:translate="">

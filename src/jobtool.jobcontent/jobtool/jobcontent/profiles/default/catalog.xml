@@ -3,13 +3,9 @@
     <index name="preview" meta_type="FieldIndex">
         <indexed_attr value="preview" />
     </index>
-    <index name="category" meta_type="KeywordIndex">
-        <indexed_attr value="category" />
-    </index>
-    <index name="institution" meta_type="KeywordIndex">
-        <indexed_attr value="institution" />
+    <index name="distributor" meta_type="KeywordIndex">
+        <indexed_attr value="distributor" />
     </index>
     <column value="preview" />
-    <column value="category" />
-    <column value="institution" />
+    <column value="distributor" />
 </object>

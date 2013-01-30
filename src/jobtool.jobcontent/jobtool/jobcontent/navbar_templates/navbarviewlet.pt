@@ -1,9 +1,8 @@
 <div class="navbar navbar-fixed-top navbar-inverse" id="nav-bar">
-    <div class="navbar-inner"
+    <div class="xcontainer"
         tal:define="context_url viewlet/context_url;
                     portal_url viewlet/portal_url;
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime">
-        <div class="container-fluid">
             <a href="" class="brand pull-right"
                 id="main-logo"
                 tal:attributes="href portal_url">
@@ -64,21 +63,24 @@
                             <span tal:content="memberinfo/username">John Doe</span>
                             <b class="caret" />
                         </a>
-                        <ul class="dropdown-menu nav-list">
+                        <ul class="dropdown-menu">
                             <li class="nav-header">
                                 Kontoeinstellungen</li>
                             <li tal:define="login memberinfo/login_time">
-                                <img tal:replace="structure memberinfo/portrait" /><br />
-                                <strong tal:content="memberinfo/organization" /><br />
-                                <span tal:replace="memberinfo/location" /><br />
-                                <span tal:replace="memberinfo/home_page" />
+                                <p>
+                                    <img tal:replace="structure memberinfo/portrait" /><br />
+                                    <strong tal:content="memberinfo/organization" /><br />
+                                    <span tal:replace="memberinfo/location" /><br />
+                                    <span tal:replace="memberinfo/home_page" />
+                                </p>
                             </li>
                             <li class="divider"></li>
                             <li tal:define="login memberinfo/login_time">
-                                Angemeldet:<br />
-                                <small>
-                                <span tal:replace="python:toLocalizedTime(login)" />,
-                                <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr</small>
+                                <p>Angemeldet:<br />
+                                    <small>
+                                    <span tal:replace="python:toLocalizedTime(login)" />,
+                                    <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr</small>
+                                </p>
                             </li>
                             <li class="divider"></li>
                             <li><a href=""
@@ -95,6 +97,5 @@
                     </li>
                 </ul>
             </div>
-        </div>
     </div>
 </div>

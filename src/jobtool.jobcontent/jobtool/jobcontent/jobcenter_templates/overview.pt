@@ -27,12 +27,12 @@
         </p>
       </header>
       <article id="content-core">
-        <div class="row-fluid">
+        <div class="row">
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content"
                 tal:define="jobidx view/jobs_index">
-                <div class="row-fluid">
+                <div class="row">
                   <div class="span6">
                     <div class="panel" tal:define="active_idx view/active_index">
                       <div class="statuspanel">

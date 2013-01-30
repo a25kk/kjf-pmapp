@@ -18,11 +18,13 @@
           tal:define="navigation_root_url context_url">
           <form action="."
             tal:attributes="action python:context_url + '/@@search'">
-              <div class="input-append">
-                <input class="span3" id="SearchableText"
+              <div class="input-group span12">
+                <input id="SearchableText"
                   name="SearchableText"
                   type="text">
-                <input class="btn" type="submit" value="Search" />
+                <span class="input-group-btn">
+                  <button class="btn" type="button">Search</button>
+                </span>
               </div>
           </form>
         </div>
@@ -41,7 +43,7 @@
         </p>
       </header>
       <article id="content-core">
-        <div class="row-fluid">
+        <div class="row">
           <div class="span9">
             <div class="window-column">
               <tal:items tal:condition="view/has_jobs">
@@ -67,7 +69,7 @@
                     </div>
                   </tal:block>
                   <div class="tile" tal:repeat="item batch">
-                    <div class="row-fluid">
+                    <div class="row">
                       <div class="span2">
                         <h4 tal:define="date item/start"
                             tal:content="python:toLocalizedTime(date, long_format=False)">

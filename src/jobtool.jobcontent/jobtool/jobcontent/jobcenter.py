@@ -268,6 +268,18 @@ class JoblistingSettings(grok.View):
         history = context.restrictedTraverse('@@changes').jobtool_history()
         return history
 
+    def pretty_term(self, vocab, term):
+        context = aq_inner(self.context)
+        vocabulary = 'jobtool.jobcontent.' + vocab
+        vr = getVocabularyRegistry()
+        records = vr.get(context, vocabulary)
+        try:
+            vocabterm = records.getTerm(term)
+            prettyname = vocabterm.title
+        except (LookupError, KeyError):
+            prettyname = term
+        return prettyname
+
 
 class JobsCounterJSON(grok.View):
     grok.context(IContentish)

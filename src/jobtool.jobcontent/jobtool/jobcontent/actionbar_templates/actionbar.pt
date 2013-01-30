@@ -3,7 +3,7 @@
     tal:define="context_url viewlet/context_url;
                 context_state context/@@plone_context_state;
                 jobcenter viewlet/jobcenter">
-    <div class="row-fluid">
+    <div class="row">
       <div class="span4">
         <h2 class="brandname">
           <a href="/" id="brandname"
@@ -17,13 +17,13 @@
               tal:define="jobcenter_url jobcenter/absolute_url">
               <li><a href="#contact"
                     tal:attributes="href python:jobcenter_url + '?filter=published'">
-                <span class="label label-success"
+                <span class="counter"
                   id="counter-active"
                   tal:content="viewlet/active_jobs">76</span>
                 aktive Stellenangebote</a></li>
               <li><a href="#"
                     tal:attributes="href python:jobcenter_url + '?filter=private'">
-                <span class="label label-important"
+                <span class="counter"
                   id="counter-inactive"
                   tal:content="viewlet/inactive_jobs">243</span>
                 inaktive Stellenangebote</a></li>
