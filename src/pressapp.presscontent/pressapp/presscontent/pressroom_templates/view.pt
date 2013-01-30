@@ -29,6 +29,12 @@
             </div>
         </div>
         <h1>Arbeitsplatz <span tal:replace="context/Title" /></h1>
+        <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
     </div>
     
     <section id="content-core">
@@ -55,7 +61,7 @@
                     <div class="tile" tal:repeat="item view/pressreleases">
                       <div class="media">
                         <div class="media-object pull-left">
-                          <h2><i class="icon-file icon-large"></i></h2>
+                          <h5><i class="icon-file icon-large"></i></h5>
                         </div>
                         <div class="media-content"
                           tal:define="state item/review_state">
@@ -71,12 +77,12 @@
                                 tal:attributes="href python:item_url+'/view'">
                                 Anzeigen</a>
                           </div>
-                          <p class="muted"><i class="icon-info-sign"></i>
+                          <p class="muted">
                             <small tal:define="modified context/modified">
                               Zuletzt verändert:
                               <span tal:content="python:toLocalizedTime(modified)">
                               Release Info</span></small>
-                            <small class="label"
+                            <small
                                 tal:content="state"
                                 i18n:domain="plone"
                                 i18n:translate="">Unpublished</small>

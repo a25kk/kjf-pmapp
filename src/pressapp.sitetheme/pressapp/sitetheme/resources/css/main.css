@@ -5713,7 +5713,7 @@ input.destructive:active {
 .window .window-header h1 {
   font-size: 24.5px;
   line-height: 20px;
-  margin: 10px 0 20px;
+  margin: 10px 0 10px;
 }
 .window .window-header h1 small {
   font-size: 14px;
@@ -5726,7 +5726,7 @@ input.destructive:active {
   font-weight: normal;
 }
 .window .window-header p.discreet {
-  color: #eeeeee;
+  color: #555555;
 }
 .window .window-header p.discreet a.link-clear-filter {
   display: inline-block;

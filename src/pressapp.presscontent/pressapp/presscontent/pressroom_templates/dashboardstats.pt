@@ -14,6 +14,12 @@
       <h1>Statistik <small>&Uuml;bersicht der gesendeten Pressemitteilungen und
           Presseeinladungen</small>
       </h1>
+      <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
     </div>
     <section id="content-core">
       <div class="box">

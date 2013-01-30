@@ -10,24 +10,33 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <section tal:define="context_url context/absolute_url;
+  <article tal:define="context_url context/absolute_url;
                        toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       
-        <div class="page-header">
-            <h1>Presseeinladungen: <small tal:content="context/Title" /></h1>
+    <header class="page-header" id="page-header">
+        <div class="btn-toolbar pull-right"
+            tal:define="context_url context/absolute_url;">
+            <div class="btn-group">
+                <a class="btn"
+                  rel="loading-indicator"
+                  data-loading-text="Wird geladen..."
+                  tal:attributes="href python:context_url+'/@@add-press-invitation'">
+                  <i class="icon-plus-sign icon-white" />
+                    Neu anlegen
+                </a>
+            </div>
         </div>
-
+        <h1>Presseeinladungen: <small tal:content="context/Title" /></h1>
+        <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
+    </header>
+    <section id="content-core">
       <div class="container-fluid">
           <div class="box">
-                  <p class="pull-right">
-                      <a class="btn btn-primary"
-                        rel="loading-indicator"
-                        data-loading-text="Wird geladen..."
-                        tal:attributes="href python:context_url+'/@@add-press-invitation'">
-                        <i class="icon-plus-sign icon-white" />
-                          Neu anlegen
-                      </a>
-                  </p>
                   <h2>Presseeinladungen</h2>
                   <table class="table table-striped" tal:condition="view/has_pressinvitations">
                       <thead>
@@ -76,8 +85,8 @@
                    </div>
          </div>
       </div>
-              
-  </section>
+    </section>       
+  </article>
   </metal:content-core>
 </metal:main>
 

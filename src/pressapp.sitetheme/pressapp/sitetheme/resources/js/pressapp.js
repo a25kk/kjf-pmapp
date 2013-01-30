@@ -9,7 +9,7 @@
             // enhancement.
             return;
         }
-        //$('.window').fadeIn('slow');
+        $('span[data-appui="prettydate"]').timeago();
         $('select.chosen-select').chosen();
         /* Apply to popup forms */
         $(document).on('loadInsideOverlay', function (e) {
