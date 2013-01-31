@@ -20,6 +20,7 @@ var
 .svn
 *.pyc
 *.pyo
+.codeintel
 etc/**/*
 *.mo
 *-ck.js
