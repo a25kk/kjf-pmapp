@@ -102,12 +102,17 @@ class JobListingSnippetJSON(grok.View):
             return '%s(%s)' % (self.callback_param, json_snippet)
 
     def compose_snippet(self):
+        pts = api.portal.get_tool(name="translation_service")
         pressreleases = self._getData()
         release = random.choice(pressreleases)
         obj = release.getObject()
         uuid = api.content.get_uuid(obj=obj)
         portal_url = api.portal.get().absolute_url()
         obj_url = portal_url + '/@@jobdetails?juid=' + uuid
+        job_type = self.pretty_term('jobTypes', obj.jobtype)
+        translated_jobtype = pts.translate(job_type,
+                                           'jobtool.jobcenter',
+                                           target_language='de')
         job_start = api.portal.get_localized_time(datetime=obj.start,
                                                   long_format=False)
         if obj.locationOverride:
@@ -120,7 +125,7 @@ class JobListingSnippetJSON(grok.View):
         item['institution'] = self.pretty_term('jobInstitutions',
                                                obj.institution)
         item['location'] = job_location
-        item['type'] = self.pretty_term('jobTypes', obj.jobtype)
+        item['type'] = translated_jobtype
         item['date'] = job_start
         return item
 
