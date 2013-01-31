@@ -9,6 +9,8 @@ from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
 from pressapp.presscontent.interfaces import IPressContent
 
+from pressapp.presscontent import MessageFactory as _
+
 
 class IPressRoom(form.Schema):
     """
@@ -45,6 +47,12 @@ class View(grok.View):
                           sort_order='reverse')
         items = IContentListing(results)
         return items
+
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
 
 
 class DashboardReleases(grok.View):

@@ -14,9 +14,24 @@
       tal:define="context_url context/absolute_url;
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
-        <div class="pull-right"
-          tal:define="navigation_root_url context_url">
-          <form action="."
+        <div class="row">
+          <div class="span9">
+            <h1>Jobcenter
+              <small tal:condition="view/has_filter"
+                tal:define="info view/filter_info">
+                <span tal:attributes="class string:label label-${info/klass}"
+                  tal:content="info/state" />
+              </small>
+            </h1>
+            <p tal:define="time context/modified" class="discreet">
+                  <span i18n:translate="">Last changed:</span>
+                  <span tal:content="time"
+                     tal:attributes="data-appui string:prettydate;
+                                     title time" />
+            </p>
+          </div>
+          <div class="span3">
+            <form action="."
             tal:attributes="action python:context_url + '/@@search'">
               <div class="input-group span12">
                 <input id="SearchableText"
@@ -27,20 +42,8 @@
                 </span>
               </div>
           </form>
+          </div>
         </div>
-        <h1>Jobcenter
-          <small tal:condition="view/has_filter"
-            tal:define="info view/filter_info">
-            <span tal:attributes="class string:label label-${info/klass}"
-              tal:content="info/state" />
-          </small>
-        </h1>
-        <p tal:define="time context/modified" class="discreet">
-              <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
-        </p>
       </header>
       <article id="content-core">
         <div class="row">

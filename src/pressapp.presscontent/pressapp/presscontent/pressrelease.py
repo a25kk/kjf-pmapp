@@ -1,3 +1,4 @@
+import json
 from Acquisition import aq_inner
 from five import grok
 from plone.directives import form
@@ -255,3 +256,35 @@ class PressReleaseActions(grok.Viewlet):
             member = mtool.getAuthenticatedMember()
             home_folder = member.getHomeFolder().absolute_url()
             return home_folder
+
+
+class ArchiveSettings(grok.View):
+    grok.context(IPressRelease)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('update-archive-settings')
+
+    def update(self):
+        context = aq_inner(self.context)
+        state = self.request.form.get('state', '')
+        results = {'results': None,
+                   'success': False,
+                   'message': ''
+                   }
+        if state:
+            if state == 'true':
+                setattr(context, 'archive', False)
+                results['success'] = True
+            else:
+                setattr(context, 'archive', True)
+                results['success'] = True
+            results['results'] = {
+                'state': 'changed',
+                'transitions': (),
+            }
+        self.results = results
+
+    def render(self):
+        results = self.results
+        self.request.response.setHeader('Content-Type',
+                                        'application/json; charset=utf-8')
+        return json.dumps(results)

@@ -24,6 +24,38 @@
             $('a[rel=twipsy]').tooltip();
             $('span[rel=twipsy]').tooltip();
         });
+        var previewchanger = $('div[data-appui="archive-switch"]');
+        var previewchanger_url = $(previewchanger).data('target');
+        $(previewchanger).toggleSlide({
+            onClick: function (evt, status) {
+                var error_msg = "There was an error updating this item - please try again!";
+                var ajax_url = previewchanger_url + '?state=' + status;
+                $.ajax({
+                    url: ajax_url,
+                    method: "GET",
+                    success: function (data) {
+                        var state;
+                        if (data.success) {
+                            state = data.results.state;
+                        } else {
+                            alert(error_msg + "\n\nError:\n" + data.messages);
+                        }
+                    },
+                    error: function (data) {
+                        alert(error_msg);
+                    }
+                });
+                console.log('.alternative changed to: ' + status, 'the reverse of: ' + !status);
+            },
+            text: {
+                enabled: 'An',
+                disabled: 'Aus'
+            },
+            style: {
+                enabled: 'success',
+                disabled: 'danger'
+            }
+        });
         $(function () {
             $('a[rel=loading-indicator], input[rel=loading-indicator]').on('click', function () {
                 $(this).button('loading');
@@ -62,7 +94,7 @@
                 "iTotalPages":    Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
             };
         };
-        
+
         /* Bootstrap style pagination control */
         $.extend($.fn.dataTableExt.oPagination, {
             "bootstrap": {
@@ -116,7 +148,7 @@
                             sClass = (j == oPaging.iPage + 1) ? 'class="active"' : '';
                             $('<li ' + sClass + '><a href="#">' + j + '</a></li>')
                                 .insertBefore($('li:last', an[i])[0])
-                                .bind('click', function () {
+                                .on('click', function () {
                                     oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
                                     fnDraw(oSettings);
                                 });
@@ -165,7 +197,7 @@
                 /* Init the table */
                 oTable = $('#recipient-table').dataTable({
                     "bPaginate": false,
-                    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+                    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
                     "sPaginationType": "bootstrap",
                     "oLanguage": {
                         "sLengthMenu": "_MENU_ records per page"
@@ -181,7 +213,7 @@
         $('#table-contacts, #table-channels').dataTable({
             "bPaginate": true,
             "bRetrieve": true,
-            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span3'i><'span9'p>>",
+            "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span3'i><'span9'p>>",
             "sPaginationType": "bootstrap",
             "iDisplayLength": 50,
             "oLanguage": {

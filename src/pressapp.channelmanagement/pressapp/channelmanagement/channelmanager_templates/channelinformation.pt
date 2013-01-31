@@ -25,7 +25,7 @@
               <small tal:content="view/channelname" /></h1>
         </div>
 
-        <div class="row-fluid">
+        <div class="row">
             <div class="span6">
                 <div class="well">
                     <form name="searchform" id="searchGadget_form" 

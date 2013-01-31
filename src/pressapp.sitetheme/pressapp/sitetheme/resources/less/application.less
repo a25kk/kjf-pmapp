@@ -65,8 +65,18 @@ input.destructive {
   }
 }
 
+#nav-bar {
+  .box-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
+  .navbar-inner {
+    border-radius: 0;
+  }
+  .nav-user p {
+    padding: @line-height-base / 2;
+  }
+}
+
 #actionbar {
-  margin: @line-height-base @line-height-base 0 @line-height-base;
+  margin: @line-height-base @line-height-base * 2;
   .brandname {
     color: #fff;
     margin: @font-size-base 0 0;
@@ -106,7 +116,7 @@ input.destructive {
 }
 
 #main-wrapper {
-  padding: @line-height-base @line-height-base / 2 @line-height-base;
+  padding: @line-height-base 0;
 }
 
 #navbar + #main-wrapper {
@@ -234,8 +244,7 @@ input.destructive {
       background: #fff;
     }
     .tile {
-        padding: @line-height-base / 2;
-        border-bottom: 1px solid @grayLight;
+        padding: @padding-small;
         .box-shadow(none);
         border: 0px;
         border-bottom: 1px solid @grayLight;
@@ -245,15 +254,19 @@ input.destructive {
         &:hover {
             background: #fff !important;
             color: #000;
-            border-right: 4px solid @gray;
-            margin-right: -4px;
+            border-left: 4px solid @gray;
+            margin-left: -4px;
+        }
+        h5 {
+          font-size: @font-size-base;
+          margin: 0px;
         }
     }
     #content-core {
       border-right: 1px solid @gray;
     }
     #sidebar {
-      //background: #fff;
+      padding-top: @line-height-base;
       .tile {
         padding: @padding-small;
         margin-right: @line-height-base;

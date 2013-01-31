@@ -11,9 +11,9 @@
   <metal:content-core define-macro="main">
   <div class="container-fluid">
     
-    <div class="page-header">
+    <div class="page-header" id="page-header">
         <p class="pull-right">
-              <a class="btn btn-small btn-primary popoverForm"
+              <a class="btn btn-small popoverForm"
                 tal:define="context_url context/absolute_url;"
                 tal:attributes="href python:context_url+'/@@add-subscriber'">
                 <i class="icon-plus-sign icon-white" />
@@ -23,8 +23,9 @@
     </div>
     
     <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
-                         b_size python:50;b_start python:0;b_start request/b_start | b_start;">
-        <div class="xbox">
+                         b_size python:50;b_start python:0;b_start request/b_start | b_start;"
+      id="content-core">
+        <div class="window-column">
               <table class="table table-condensed table-striped"
                 id="table-contacts">
                   <thead>

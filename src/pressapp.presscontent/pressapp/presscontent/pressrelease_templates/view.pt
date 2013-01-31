@@ -57,6 +57,12 @@
             </div>
         </div>
         <h1>Pressemitteilung</h1>
+         <p tal:define="time context/modified" class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:content="time"
+               tal:attributes="data-appui string:prettydate;
+                               title time" />
+        </p>
     </div>
 
   <div class="window-toolbar">
@@ -98,7 +104,7 @@
   </div>
 
   <section id="content-core">
-  <div class="row-fluid window-content">
+  <div class="row">
     <div class="span9">
      
       <div class="window-column">
@@ -295,6 +301,19 @@
                tal:condition="python:visible == False">
                Nicht im Archiv angezeigt</span>
             </p>
+            <div class="box-editable">
+              <h5 i18n:translate="">Archive</h5>
+              <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
+                data-appui="archive-switch"
+                tal:define="preview context/archive"
+                tal:attributes="data-target string:${context_url}/@@update-archive-settings">
+                <input type="checkbox" value="1" name="previewCheckbox" class="checkbox" checked="checked"
+                    tal:attributes="checked python: preview and 'checked' or ''"
+                   />
+                <label class="check" for="previewCheckbox"></label>
+              </div>
+            </div><!-- / Job preview -->
+            <hr />
             <tal:externals tal:condition="view/distributors">
               <h5>Zielseiten</h5>
               <p tal:repeat="target view/distributors">

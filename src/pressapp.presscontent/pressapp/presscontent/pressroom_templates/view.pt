@@ -59,35 +59,28 @@
                   </div>
                   <tal:pms tal:condition="view/has_releases">
                     <div class="tile" tal:repeat="item view/pressreleases">
-                      <div class="media">
-                        <div class="media-object pull-left">
-                          <h5><i class="icon-file icon-large"></i></h5>
-                        </div>
-                        <div class="media-content"
+                      <div class="row">
+                        <div class="span9"
                           tal:define="state item/review_state">
                           <h5 tal:define="state item/review_state">
+                            <i class="icon-file icon-large"></i>
                             <a tal:attributes="href item/getURL"
                               tal:content="item/Title">Document 23-07-2012, Revision-003</a>
                           </h5>
-                          <div class="btn-group pull-right" tal:define="item_url item/getURL">
-                            <a class="btn btn-mini"
-                                tal:attributes="href python:item_url+'/@@edit-press-release'">
-                                Bearbeiten</a>
-                            <a class="btn btn-mini"
-                                tal:attributes="href python:item_url+'/view'">
-                                Anzeigen</a>
-                          </div>
                           <p class="muted">
-                            <small tal:define="modified context/modified">
+                            <small tal:define="modified item/modified">
                               Zuletzt verändert:
                               <span tal:content="python:toLocalizedTime(modified)">
                               Release Info</span></small>
-                            <small
-                                tal:content="state"
-                                i18n:domain="plone"
+                            <small tal:define="state item/review_state"
+                                tal:content="python:view.get_state_info(state)"
                                 i18n:translate="">Unpublished</small>
                           </p>
-                          
+                        </div>
+                        <div class="span3">
+                            <a class="btn btn-mini pull-right"
+                                tal:attributes="href item/getURL">
+                                Bearbeiten</a>
                         </div>
                       </div>
                     </div>
