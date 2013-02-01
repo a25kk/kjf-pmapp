@@ -6042,8 +6042,10 @@ input.destructive:active {
 }
 .window .window-content {
   background: #fff;
+  background: url(../images/bg-main-mobile.jpg) repeat 0 0 #ffffff;
   color: #555555;
   min-height: 500px;
+  text-shadow: 0 1px 0 #eeeeee;
 }
 .window .window-content .window-column {
   border-right: 1px solid #555555;
