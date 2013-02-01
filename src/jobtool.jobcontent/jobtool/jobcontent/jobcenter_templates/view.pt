@@ -14,12 +14,8 @@
       tal:define="context_url context/absolute_url;
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       <header id="page-header">
-<<<<<<< HEAD
-        <div class="row">
-=======
         <div class="row"
           tal:define="navigation_root_url context_url">
->>>>>>> master
           <div class="span9">
             <h1>Jobcenter
               <small tal:condition="view/has_filter"
@@ -37,7 +33,6 @@
           </div>
           <div class="span3">
             <form action="."
-<<<<<<< HEAD
             tal:attributes="action python:context_url + '/@@search'">
               <div class="input-group span12">
                 <input id="SearchableText"
@@ -48,18 +43,6 @@
                 </span>
               </div>
           </form>
-=======
-              tal:attributes="action python:context_url + '/@@search'">
-                <div class="input-group span12">
-                  <input id="SearchableText"
-                    name="SearchableText"
-                    type="text">
-                  <span class="input-group-btn">
-                    <button class="btn" type="button">Search</button>
-                  </span>
-                </div>
-            </form>
->>>>>>> master
           </div>
         </div>
       </header>

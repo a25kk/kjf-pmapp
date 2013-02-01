@@ -41,7 +41,7 @@
       <div class="xxxcontainer-fluid"
         tal:define="context_url context/absolute_url">
           <div class="row">
-              <div class="span6">
+              <div class="span9">
                   <div class="window-column">
                   <div class="page-header">
                       <p class="pull-right">
@@ -135,8 +135,14 @@
                   </table>
                   </div>
               </div>
-              <div class="span6">
+              <div class="span3">
                   <div class="window-column">
+                    <div class="stats widget">
+                      <div class="stat inverse">
+                        <h2 tal:content="view/presscontent_index">72</h2>
+                        <h6>Jobs</h6>
+                      </div>
+                    </div>
                   <div class="page-header">
                       <p class="pull-right">
                             <a class="btn btn-primary btn-small"

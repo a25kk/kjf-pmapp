@@ -28,6 +28,10 @@ class View(grok.View):
         self.pressreleases = self.contained_pressreleases()
         self.has_invitations = len(self.contained_invitations()) > 0
 
+    def presscontent_index(self):
+        context = aq_inner(self.context)
+        return len(context.items())
+
     def contained_pressreleases(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
@@ -53,6 +57,11 @@ class View(grok.View):
         if state == 'published':
             info = _(u"sent")
         return info
+
+    def get_history(self):
+        context = aq_inner(self.context)
+        history = context.restrictedTraverse('@@changes').jobtool_history()
+        return history
 
 
 class DashboardReleases(grok.View):
