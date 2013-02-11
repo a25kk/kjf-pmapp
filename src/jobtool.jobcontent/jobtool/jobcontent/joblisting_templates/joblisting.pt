@@ -20,7 +20,7 @@
       <article id="joblisting">
         <tal:items tal:condition="view/has_items">
           <div class="splashbox" tal:repeat="item view/active_jobs">
-            <div class="row-fluid">
+            <div class="row">
               <div class="span8">
                 <h4 tal:define="item_uid item/UID;">
                   <a href="" tal:attributes="href python:context_url + '/@@jobdetails?juid=' + item_uid">
