@@ -138,9 +138,9 @@
               <div class="span3">
                   <div class="window-column">
                     <div class="stats widget">
-                      <div class="stat inverse">
+                      <div class="stat info">
                         <h2 tal:content="view/presscontent_index">72</h2>
-                        <h6>Jobs</h6>
+                        <h6>Presseinhalte</h6>
                       </div>
                     </div>
                   <div class="page-header">
@@ -155,7 +155,7 @@
                                 tal:attributes="href python:context_url+'/@@dashboard-invitations'">
                           Presseeinladungen</a></h2>
                   </div>
-                  <table class="table table-striped">
+                  <table class="table table-striped" tal:content="nothing">
                       <thead>
                           <tr>
                               <th>#</th>
