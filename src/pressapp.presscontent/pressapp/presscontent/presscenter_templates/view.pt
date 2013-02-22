@@ -53,33 +53,80 @@
     </header>
 
     <section id="content-core">
-      <div class="window-column">
-        <div class="row-fluid">
-          <div class="span4">
-            <div class="page-header">
-                <h2>
-                  <a tal:attributes="href python:context_url+'/kontakte'"
-                    rel="twipsy"
-                    data-placement="right"
-                    data-original-title="Verwaltung von E-Mail-Adressen und Verteilerlisten">
-                    Adressen</a>
-                </h2>
-            </div>
-            <tal:block tal:define="stats view/statistics">
-              <div class="tile stats">
-                <h4><span class="badge badge-info" tal:content="stats/channels" />
-                  Verteiler
-                </h4>
+      <div class="xxxwindow-column">
+        <div class="row">
+          <div class="span9">
+            <section class="window-column">
+              <div class="window-column-content"
+                tal:define="pressidx view/presscontent_index">
+                <div class="row">
+                  <div class="span6">
+                    <div class="panel" tal:define="pr_idx view/pr_index">
+                      <div class="statuspanel">
+                        <div class="top success">
+                          <i class="icon-file-alt icon-4x"></i>
+                          <h6>PM</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/pr_index">100</h2>
+                          <h6>Pressemitteilungen</h6>
+                        </div>
+                      </div>
+                      <input type="text"
+                        value="75"
+                        class="dial"
+                        data-appui="knob"
+                        data-thickness=".4"
+                        data-fgColor="#999"
+                        data-bgColor="#ffffff"
+                        data-readOnly="true"
+                        tal:attributes="data-max pressidx;
+                                        value pr_idx">
+                        <hr class="visualClear">
+                      <h4>Pressemitteilungen</h4>
+                      <!--<div class="progress progress-success"
+                        tal:define="progress python:view.get_percental_value(active_idx)">
+                        <div class="bar"
+                          tal:attributes="style python:'width: ' + progress + '%'"
+                          tal:content="string:${progress}%">
+                        </div>
+                      </div>-->
+                      <p>
+                        <a href="" class="btn"
+                          tal:attributes="href python:context_url + '?filter=published'">
+                          Pressemitteilungen zeigen
+                        </a>
+                      </p>
+                      <hr />
+                    </div>
+                  </div>
+                  <div class="span6">
+                    <div class="panel" tal:define="pi_idx view/pi_index">
+                      <div class="statuspanel">
+                        <div class="top danger">
+                          <i class="icon-calendar icon-4x"></i>
+                          <h6>PE</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/pi_index">100</h2>
+                          <h6>Presseeinladung</h6>
+                        </div>
+                      </div>
+                      <input type="text"
+                          value="75"
+                          class="dial"
+                          data-appui="knob"
+                          data-thickness=".4"
+                          data-fgColor="#999"
+                          data-bgColor="#ffffff"
+                          data-readOnly="true"
+                          tal:attributes="data-max pressidx;
+                                          value pi_idx">
+                          <hr class="visualClear">
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="tile stats">
-                <h4><span class="badge badge-info" tal:content="stats/recipients" />
-                  Adressen 
-                </h4>
-              </div>
-            </tal:block>
-          </div>
-          <div class="span4">
-            <section>
                   <div class="page-header">
                       <h2><a href="" tal:attributes="href python:context_url + '/@@workspaces'"
                             rel="twipsy"
@@ -123,15 +170,37 @@
                     </table>
           </section>
           </div>
-        <div class="span4">
-          <div class="page-header">
+        <div class="span3">
+          <aside id="sidebar">
+            <div class="stats widget">
+              <div class="stat info">
+                <h2 tal:content="view/presscontent_index">72</h2>
+                <h6>Presseinhalte</h6>
+              </div>
+            </div>
+            <hr>
+              <h3>Zuletzt ver&auml;ndert</h3>
+              <div class="history-listing" tal:define="history view/get_history">
+                <tal:items tal:repeat="entry history">
+                  <h6><span tal:replace="entry/title" /></h6>
+                  <p class="discreet">
+                    <span tal:content="entry/action" i18n:translate="">
+                      Action</span>
+                    <span tal:define="time entry/timestamp"
+                        tal:content="time"
+                        tal:attributes="data-appui string:prettydate;
+                                        title time" />
+                      <span>by <span tal:replace="entry/actorname" /></span>
+                  </p>
+                </tal:items>
+              </div>
+            <hr>
             <h2><a href="" tal:attributes="href python:context_url + '/@@global-settings'"
                   rel="twipsy"
                   data-placement="right"
                   data-original-title="Verwaltung der E-Mail-Vorlagen und der Standard-Einstellungen">
                 Einstellungen</a>
             </h2>
-          </div>
           <table class="table table-condensed">
             <tbody>
               <tr>
@@ -152,6 +221,7 @@
               </tr>
             </tbody>
           </table>
+          </aside>
         </div>
         </div>
       </div>

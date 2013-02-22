@@ -81,6 +81,35 @@ class View(grok.View):
         self.has_pressrooms = len(self.contained_pressrooms()) > 0
         self.pressrooms = self.contained_pressrooms()
 
+    def presscontent_index(self):
+        items = self.get_data()
+        return len(items)
+
+    def pr_index(self):
+        items = self.get_data(ptype='pressapp.presscontent.pressrelease')
+        return len(items)
+
+    def pi_index(self):
+        items = self.get_data(ptype='pressapp.presscontent.pressinvitation')
+        return len(items)
+
+    def get_data(self, ptype=None):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        query = self.base_query()
+        presstypes = ['pressapp.presscontent.pressrelease',
+                      'pressapp.presscontent.pressinvitation']
+        if ptype is not None:
+            query['portal_type'] = ptype
+        else:
+            query['portal_type'] = presstypes
+        brains = catalog.searchResults(**query)
+        results = IContentListing(brains)
+        return results
+
+    def base_query(self):
+        return dict(sort_on='modified',
+                    sort_order='reverse')
+
     def contained_pressrooms(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
@@ -101,6 +130,12 @@ class View(grok.View):
     def can_edit(self):
         return bool(getSecurityManager().checkPermission(
                     'Portlets: Manage own portlets', self.context))
+
+    def get_history(self):
+        context = aq_inner(self.context)
+        history = context.restrictedTraverse('@@changes').pressapp_history(
+            limit=5)
+        return history
 
     def statistics(self):
         context = aq_inner(self.context)
@@ -205,6 +240,7 @@ class PressCenterHistory(grok.View):
                 info['action'] = event['transition_title']
                 info['title'] = item.Title
                 info['url'] = item.getURL()
+                info['type'] = item.portal_type
                 #info['details'] = event
                 state_info.append(info)
         return state_info

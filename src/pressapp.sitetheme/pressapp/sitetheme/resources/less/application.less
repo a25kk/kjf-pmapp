@@ -98,7 +98,7 @@ input.destructive {
         font-weight: bold;
         text-shadow: none;
         //border: 1px solid @app-color;
-        background: lighten(@app-color, 10%);
+        // background: lighten(@app-color, 10%);
         .counter {
           background: #fff;
           color: @app-color;
@@ -253,6 +253,9 @@ input.destructive {
       min-height: 500px;
       padding: @line-height-base;
       background: transparent;
+      .btn {
+        text-shadow: none;
+      }
     }
     .tile {
         padding: @padding-small;
@@ -306,6 +309,7 @@ input.destructive {
       }
       .widget {
         margin: 0 @line-height-base;
+        text-shadow: none;
       }
       .history-listing {
         h6 {
