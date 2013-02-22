@@ -278,18 +278,39 @@ input.destructive {
     }
     #sidebar {
       padding-top: @line-height-base;
+      padding-right: @line-height-base * 1.5;
+      text-shadow: 0 1px 0 @navbar-bg;
       .tile {
         padding: @padding-small;
-        margin-right: @line-height-base;
+        //margin-right: @line-height-base;
         &.active,
         &:hover {
             background: #f5f5f5;
             color: #000;
-            border-left: 0px solid @gray;
+            border-right: 0px solid @gray;
+        }
+      }
+      .box-editable {
+        a.link-editable {
+          .opacity(70);
+          z-index: 1;
+        }
+        &:hover {
+          color: #000;
+          a.link-editable {
+            display: inline-block;
+            .opacity(100);
+            color: @gray;
+          }
         }
       }
       .widget {
         margin: 0 @line-height-base;
+      }
+      .history-listing {
+        h6 {
+          margin-bottom: 0px;
+        }
       }
     }
   }
