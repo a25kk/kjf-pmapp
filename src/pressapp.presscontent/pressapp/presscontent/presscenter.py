@@ -160,14 +160,14 @@ class PressCenterHistory(grok.View):
     grok.name('changes')
 
     def render(self):
-        data = self.jobtool_history()
+        data = self.pressapp_history()
         self.request.response.setHeader('Content-Type',
                                         'application/json; charset=utf-8')
         return json.dumps(data)
 
-    def pressapp_history(self):
+    def pressapp_history(self, limit=5):
         history = []
-        status = self.status_list()
+        status = self.status_list(limit=limit)
         timestamps = list()
         for x in status:
             pit = x['timestamp']
@@ -179,8 +179,8 @@ class PressCenterHistory(grok.View):
                     history.append(x)
         return history
 
-    def status_list(self):
-        items = self.last_modified_content()
+    def status_list(self, limit=5):
+        items = self.last_modified_content(limit=limit)
         state_info = []
         idx = 0
         for item in items:
@@ -201,6 +201,7 @@ class PressCenterHistory(grok.View):
                 info['timestamp'] = timestamp.ISO8601()
                 actor = event['actor']
                 info['actor'] = actor['username']
+                info['actorname'] = actor['fullname']
                 info['action'] = event['transition_title']
                 info['title'] = item.Title
                 info['url'] = item.getURL()
@@ -213,10 +214,12 @@ class PressCenterHistory(grok.View):
         chv = ContentHistoryView(item, context.REQUEST).fullHistory()
         return chv
 
-    def last_modified_content(self):
+    def last_modified_content(self, limit=5):
         catalog = api.portal.get_tool(name='portal_catalog')
-        results = catalog(object_provides=IPressContent.__identifier__,
+        press_types = ['pressapp.presscontent.pressrelease',
+                       'pressapp.presscontent.pressinvitation']
+        results = catalog(portal_type=press_types,
                           sort_on='modified',
                           sort_order='reverse',
-                          sort_limit=5)[:5]
+                          sort_limit=limit)[:limit]
         return results

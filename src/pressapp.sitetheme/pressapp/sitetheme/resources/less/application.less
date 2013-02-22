@@ -90,13 +90,23 @@ input.destructive {
   }
   #section-nav,
   #subnavbar {
+      li {
+        margin-left: @line-height-base / 2;
+      }
         li > a {
         color: @table-background-hover;
         font-weight: bold;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        text-shadow: none;
+        //border: 1px solid @app-color;
+        background: lighten(@app-color, 10%);
+        .counter {
+          background: #fff;
+          color: @app-color;
+          }
         }
         li > a:hover {
             background: @app-color;
+            //border-color: @app-color;
         }
     }
   #customer-logo {

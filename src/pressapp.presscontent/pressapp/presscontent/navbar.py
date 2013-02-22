@@ -1,4 +1,5 @@
 from five import grok
+from plone import api
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from AccessControl import getSecurityManager
@@ -7,6 +8,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.interfaces import IContentish
 
 from plone.app.layout.viewlets.interfaces import IPortalTop
+
+from plone.app.contentlisting.interfaces import IContentListing
 
 from pressapp.presscontent.interfaces import IPressAppPolicy
 
@@ -26,6 +29,31 @@ class NavBarViewlet(grok.Viewlet):
         self.portal_url = self.portal_state.portal_url
         self.context_url = context.absolute_url()
         self.parent_url = aq_parent(context).absolute_url()
+
+    def pr_index(self):
+        items = self.get_data(ptype='pressapp.presscontent.pressrelease')
+        return len(items)
+
+    def pi_index(self):
+        items = self.get_data(ptype='pressapp.presscontent.pressinvitation')
+        return len(items)
+
+    def get_data(self, ptype=None):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        query = self.base_query()
+        presstypes = ['pressapp.presscontent.pressrelease',
+                      'pressapp.presscontent.pressinvitation']
+        if ptype is not None:
+            query['portal_type'] = ptype
+        else:
+            query['portal_type'] = presstypes
+        brains = catalog.searchResults(**query)
+        results = IContentListing(brains)
+        return results
+
+    def base_query(self):
+        return dict(sort_on='modified',
+                    sort_order='reverse')
 
     def is_administrator(self):
         context = aq_inner(self.context)

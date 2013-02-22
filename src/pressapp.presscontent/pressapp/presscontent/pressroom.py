@@ -60,7 +60,8 @@ class View(grok.View):
 
     def get_history(self):
         context = aq_inner(self.context)
-        history = context.restrictedTraverse('@@changes').jobtool_history()
+        history = context.restrictedTraverse('@@changes').pressapp_history(
+            limit=10)
         return history
 
 

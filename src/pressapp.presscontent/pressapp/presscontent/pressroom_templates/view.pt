@@ -43,6 +43,22 @@
           <div class="row">
               <div class="span9">
                   <div class="window-column">
+
+                  <div class="history-listing" tal:define="history view/get_history">
+                    <tal:items tal:repeat="entry history">
+                      <h6><span tal:replace="entry/title" /></h6>
+                      <p class="discreet">
+                        <span tal:content="entry/action" i18n:translate="">
+                          Action</span>
+                        <span tal:define="time entry/timestamp"
+                            tal:content="time"
+                            tal:attributes="data-appui string:prettydate;
+                                            title time" />
+                          <span>by <span tal:replace="entry/actorname" /></span>
+                      </p>
+                    </tal:items>
+                  </div>
+
                   <div class="page-header">
                       <p class="pull-right">
                             <a class="btn btn-primary btn-small"
@@ -138,7 +154,7 @@
               <div class="span3">
                   <div class="window-column">
                     <div class="stats widget">
-                      <div class="stat info">
+                      <div class="stat inverse">
                         <h2 tal:content="view/presscontent_index">72</h2>
                         <h6>Presseinhalte</h6>
                       </div>
