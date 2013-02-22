@@ -84,13 +84,13 @@
                                         value pr_idx">
                         <hr class="visualClear">
                       <h4>Pressemitteilungen</h4>
-                      <!--<div class="progress progress-success"
-                        tal:define="progress python:view.get_percental_value(active_idx)">
-                        <div class="bar"
+                      <div class="progress"
+                        tal:define="progress python:view.get_percental_value(pr_idx)">
+                        <div class="progress-bar"
                           tal:attributes="style python:'width: ' + progress + '%'"
                           tal:content="string:${progress}%">
                         </div>
-                      </div>-->
+                      </div>
                       <p>
                         <a href="" class="btn"
                           tal:attributes="href python:context_url + '?filter=published'">

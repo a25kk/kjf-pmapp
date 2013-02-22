@@ -137,6 +137,16 @@ class View(grok.View):
             limit=5)
         return history
 
+    def get_percental_value(self, index):
+        pressitems = self.presscontent_index()
+        one_percent = float(pressitems) / 100
+        if index == '0':
+            index_value = index
+        else:
+            index_value = index / one_percent
+        index = round(float(index_value))
+        return str(index)
+
     def statistics(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
