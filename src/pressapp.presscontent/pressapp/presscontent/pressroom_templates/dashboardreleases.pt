@@ -99,7 +99,7 @@
                                     tal:attributes="href item/getURL">
                                     PR Title</a></td>
                               <td><span class="label info">Neu</span></td>
-                              <td tal:define="modified context/modified"
+                              <td tal:define="modified item/modified"
                                 tal:content="python:toLocalizedTime(modified)"></td>
                               <td tal:define="item_url item/getURL">
                                   <div class="btn-group">

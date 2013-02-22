@@ -136,7 +136,7 @@ class ArchiveSnippetJSON(grok.View):
     def getImageTag(self, item):
         obj = item
         scales = getMultiAdapter((obj, self.request), name='images')
-        scale = scales.scale('image',  width=130, height=190, direction='down')
+        scale = scales.scale('image', width=130, height=190, direction='down')
         imageTag = None
         if scale is not None:
             imageTag = scale.tag()
@@ -306,8 +306,10 @@ class PressItemView(grok.View):
 
     def memberdata(self):
         context = aq_inner(self.context)
+        pressitem = self.presscontent
+        creator = pressitem.Creator()
         mtool = getToolByName(context, 'portal_membership')
-        member = mtool.getAuthenticatedMember()
+        member = mtool.getMemberById(creator)
         memberinfo = {}
         memberinfo['org'] = member.getProperty('organization', '')
         memberinfo['link'] = member.getProperty('home_page', '')
