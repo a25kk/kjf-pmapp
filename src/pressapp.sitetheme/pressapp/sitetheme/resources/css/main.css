@@ -203,16 +203,16 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Droid Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
 }
 a {
-  color: #428bca;
+  color: #50a0b0;
   text-decoration: none;
 }
 a:hover {
-  color: #2a6496;
+  color: #38707c;
   text-decoration: underline;
 }
 a:focus {
@@ -352,7 +352,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: inherit;
+  font-family: 'Oswald', inherit;
   font-weight: 500;
   line-height: 20px;
   text-rendering: optimizelegibility;
@@ -1649,13 +1649,13 @@ fieldset[disabled] .btn-link {
   border-color: transparent;
 }
 .btn-link {
-  color: #428bca;
+  color: #50a0b0;
   font-weight: normal;
   cursor: pointer;
   border-radius: 0;
 }
 .btn-link:hover {
-  color: #2a6496;
+  color: #38707c;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -2801,28 +2801,28 @@ ul.icons li [class*=" icon-"] {
 .dropdown-menu li > a:focus {
   text-decoration: none;
   color: #ffffff;
-  background-color: #357ebd;
-  background-image: -moz-linear-gradient(top, #428bca, #357ebd);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#428bca), to(#357ebd));
-  background-image: -webkit-linear-gradient(top, #428bca, #357ebd);
-  background-image: -o-linear-gradient(top, #428bca, #357ebd);
-  background-image: linear-gradient(to bottom, #428bca, #357ebd);
+  background-color: #48909f;
+  background-image: -moz-linear-gradient(top, #50a0b0, #48909f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#50a0b0), to(#48909f));
+  background-image: -webkit-linear-gradient(top, #50a0b0, #48909f);
+  background-image: -o-linear-gradient(top, #50a0b0, #48909f);
+  background-image: linear-gradient(to bottom, #50a0b0, #48909f);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff357ebd', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff50a0b0', endColorstr='#ff48909f', GradientType=0);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #357ebd;
-  background-image: -moz-linear-gradient(top, #428bca, #357ebd);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#428bca), to(#357ebd));
-  background-image: -webkit-linear-gradient(top, #428bca, #357ebd);
-  background-image: -o-linear-gradient(top, #428bca, #357ebd);
-  background-image: linear-gradient(to bottom, #428bca, #357ebd);
+  background-color: #48909f;
+  background-image: -moz-linear-gradient(top, #50a0b0, #48909f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#50a0b0), to(#48909f));
+  background-image: -webkit-linear-gradient(top, #50a0b0, #48909f);
+  background-image: -o-linear-gradient(top, #50a0b0, #48909f);
+  background-image: linear-gradient(to bottom, #50a0b0, #48909f);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff357ebd', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff50a0b0', endColorstr='#ff48909f', GradientType=0);
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover {
@@ -2976,7 +2976,7 @@ button.close {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
   color: #fff;
-  background-color: #428bca;
+  background-color: #50a0b0;
 }
 .nav-stacked > li {
   float: none;
@@ -3010,8 +3010,8 @@ button.close {
 .nav-list > .active > a:hover {
   z-index: 2;
   color: #fff;
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #50a0b0;
+  border-color: #50a0b0;
 }
 .nav > .disabled > a {
   color: #999999;
@@ -4048,7 +4048,7 @@ button.close {
   display: inline-block;
 }
 a.thumbnail:hover {
-  border-color: #428bca;
+  border-color: #50a0b0;
 }
 .thumbnail > img {
   display: block;
@@ -4119,7 +4119,7 @@ a.counter:hover {
 }
 .nav-list > .active > a > .counter,
 .nav-pills > .active > a > .counter {
-  color: #428bca;
+  color: #50a0b0;
   background-color: #fff;
 }
 .nav-pills > li > a > .counter {
@@ -4783,13 +4783,13 @@ input.standalone .counter {
 #category a.link-category,
 #category span.selectedTag {
   padding: 0.25em 0.5em;
-  background: #428bca;
+  background: #50a0b0;
   color: #fff;
   border-radius: 0.5em;
   border-radius: 4px;
 }
 #category a.link-category:hover {
-  background: #2a6496;
+  background: #38707c;
 }
 #category .separator {
   display: none;
@@ -6168,7 +6168,6 @@ fieldset[disabled] input.destructive:active {
 .tile {
   min-height: 20px;
   padding: 19px;
-  margin-bottom: 20px;
   background-color: #f5f5f5;
   border: 1px solid #eee;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -6180,7 +6179,7 @@ fieldset[disabled] input.destructive:active {
   float: left;
   width: 20px;
   height: 50px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Droid Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: bold;
   font-weight: 2em;
   line-height: 1em;
@@ -6262,12 +6261,12 @@ fieldset[disabled] input.destructive:active {
   background: url(../images/bg-white-fabric.png) repeat 0 0 #ffffff;
   color: #555555;
   min-height: 500px;
-  text-shadow: 0 1px 0 #eeeeee;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
 }
 .window .window-content .window-column {
   border-right: 1px solid #555555;
   min-height: 500px;
-  padding: 20px;
+  padding-bottom: 20px;
   background: transparent;
 }
 .window .window-content .window-column .btn {
@@ -6282,16 +6281,66 @@ fieldset[disabled] input.destructive:active {
   border-radius: 0;
   background: transparent !important;
 }
+.window .window-content .tile .btn {
+  text-shadow: none;
+  margin: 10px 25px 0;
+}
 .window .window-content .tile.active,
 .window .window-content .tile:hover {
-  background: #fff !important;
+  background: url(../images/bg-white-fabric.png) repeat #ffffff !important;
   color: #000;
   border-left: 4px solid #555555;
   margin-left: -4px;
 }
-.window .window-content .tile h5 {
+.window .window-content .tile.active .btn,
+.window .window-content .tile:hover .btn {
+  background-color: #428bca;
+  border-color: #428bca;
+  background-color: #50a0b0;
+  border-color: #50a0b0;
+}
+.window .window-content .tile.active .btn:hover,
+.window .window-content .tile:hover .btn:hover,
+.window .window-content .tile.active .btn:focus,
+.window .window-content .tile:hover .btn:focus,
+.window .window-content .tile.active .btn:active,
+.window .window-content .tile:hover .btn:active {
+  background-color: #357ebd;
+  border-color: #3071a9;
+}
+.window .window-content .tile.active .btn.disabled:hover,
+.window .window-content .tile:hover .btn.disabled:hover,
+.window .window-content .tile.active .btn[disabled]:hover,
+.window .window-content .tile:hover .btn[disabled]:hover,
+fieldset[disabled] .window .window-content .tile.active .btn:hover,
+fieldset[disabled] .window .window-content .tile:hover .btn:hover,
+.window .window-content .tile.active .btn.disabled:focus,
+.window .window-content .tile:hover .btn.disabled:focus,
+.window .window-content .tile.active .btn[disabled]:focus,
+.window .window-content .tile:hover .btn[disabled]:focus,
+fieldset[disabled] .window .window-content .tile.active .btn:focus,
+fieldset[disabled] .window .window-content .tile:hover .btn:focus,
+.window .window-content .tile.active .btn.disabled:active,
+.window .window-content .tile:hover .btn.disabled:active,
+.window .window-content .tile.active .btn[disabled]:active,
+.window .window-content .tile:hover .btn[disabled]:active,
+fieldset[disabled] .window .window-content .tile.active .btn:active,
+fieldset[disabled] .window .window-content .tile:hover .btn:active {
+  background-color: #428bca;
+  border-color: #428bca;
+}
+.window .window-content .tile.active .btn:hover,
+.window .window-content .tile:hover .btn:hover,
+.window .window-content .tile.active .btn:focus,
+.window .window-content .tile:hover .btn:focus,
+.window .window-content .tile.active .btn:active,
+.window .window-content .tile:hover .btn:active {
+  background-color: #202630;
+  border-color: #161a20;
+}
+.window .window-content .tile h4 {
   font-size: 14px;
-  margin: 0px;
+  margin-bottom: 0px;
 }
 .window .window-content #content-core {
   border-right: 1px solid #555555;

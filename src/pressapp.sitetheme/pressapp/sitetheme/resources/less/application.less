@@ -151,7 +151,6 @@ input.destructive {
 .tile {
   min-height: @line-height-base;
   padding: 19px;
-  margin-bottom: 20px;
   background-color: #f5f5f5;
   border: 1px solid #eee;
   border: 1px solid rgba(0,0,0,.05);
@@ -247,11 +246,11 @@ input.destructive {
     background: url(../images/bg-white-fabric.png) repeat 0 0 #fff;
     color: @gray;
     min-height: 500px;
-    text-shadow: 0 1px 0 @navbar-bg;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
     .window-column {
       border-right: 1px solid @gray;
       min-height: 500px;
-      padding: @line-height-base;
+      padding-bottom: @line-height-base;
       background: transparent;
       .btn {
         text-shadow: none;
@@ -264,16 +263,24 @@ input.destructive {
         border-bottom: 1px solid @grayLight;
         border-radius: 0;
         background: transparent !important;
+        .btn {
+          //.btn-primary();
+          text-shadow: none;
+          margin: @line-height-base / 2 @line-height-base * 1.25 0;
+        }
         &.active,
         &:hover {
-            background: #fff !important;
+            background: url(../images/bg-white-fabric.png) repeat #fff !important;
             color: #000;
             border-left: 4px solid @gray;
             margin-left: -4px;
+            .btn {
+              .btn-primary();
+            }
         }
-        h5 {
+        h4 {
           font-size: @font-size-base;
-          margin: 0px;
+          margin-bottom: 0px;
         }
     }
     #content-core {

@@ -42,58 +42,36 @@
         tal:define="context_url context/absolute_url">
           <div class="row">
               <div class="span9">
-                  <div class="window-column">
-
-                  <div class="history-listing" tal:define="history view/get_history">
-                    <tal:items tal:repeat="entry history">
-                      <h6><span tal:replace="entry/title" /></h6>
-                      <p class="discreet">
-                        <span tal:content="entry/action" i18n:translate="">
-                          Action</span>
-                        <span tal:define="time entry/timestamp"
-                            tal:content="time"
-                            tal:attributes="data-appui string:prettydate;
-                                            title time" />
-                          <span>by <span tal:replace="entry/actorname" /></span>
-                      </p>
-                    </tal:items>
-                  </div>
-
-                  <div class="page-header">
-                      <p class="pull-right">
-                            <a class="btn btn-primary btn-small"
-                                rel="loading-indicator"
-                                data-loading-text="Wird geladen..."
-                              tal:attributes="href python:context_url+'/@@add-press-release'">
-                                  <i class="icon-plus-sign icon-white" />
-                                Neu anlegen</a>
-                        </p>
-                  <h2><a href=""
-                        tal:attributes="href python:context_url+'/@@dashboard-releases'">
-                      Pressemitteilungen</a>
-                  </h2>
-                  </div>
+                <div class="window-column">
                   <tal:pms tal:condition="view/has_releases">
                     <div class="tile" tal:repeat="item view/pressreleases">
                       <div class="row">
-                        <div class="span9"
+                        <div class="span2">
+                          <h4 tal:define="item_type item/portal_type">
+                            <span tal:content="python:view.get_type_info(item_type)"
+                              i18n:translate="">Item Type</span>
+                          </h4>
+                          <p><small tal:define="state item/review_state"
+                                tal:content="python:view.get_state_info(state)"
+                                i18n:translate="">Unpublished</small></p>
+                        </div>
+                        <div class="span6"
                           tal:define="state item/review_state">
-                          <h5 tal:define="state item/review_state">
-                            <i class="icon-file icon-large"></i>
-                            <a tal:attributes="href item/getURL"
-                              tal:content="item/Title">Document 23-07-2012, Revision-003</a>
-                          </h5>
-                          <p class="muted">
+                          <h4 tal:define="state item/review_state">
+                            <span tal:content="item/Title" />
+                          </h4>
+                          <p>
                             <small tal:define="modified item/modified">
                               Zuletzt verändert:
+                              <span tal:content="modified"
+                                tal:attributes="data-appui string:prettydate;
+                                                title modified" />
                               <span tal:content="python:toLocalizedTime(modified)">
-                              Release Info</span></small>
-                            <small tal:define="state item/review_state"
-                                tal:content="python:view.get_state_info(state)"
-                                i18n:translate="">Unpublished</small>
+                              Release Info</span>
+                            </small>
                           </p>
                         </div>
-                        <div class="span3">
+                        <div class="span4">
                             <a class="btn btn-mini pull-right"
                                 tal:attributes="href item/getURL">
                                 Bearbeiten</a>
@@ -152,13 +130,43 @@
                   </div>
               </div>
               <div class="span3">
-                  <div class="window-column">
+                <div id="sidebar">
                     <div class="stats widget">
                       <div class="stat inverse">
                         <h2 tal:content="view/presscontent_index">72</h2>
                         <h6>Presseinhalte</h6>
                       </div>
                     </div>
+
+                    <hr>
+
+                    <div class="history-listing" tal:define="history view/get_history">
+                    <tal:items tal:repeat="entry history">
+                      <h6><span tal:replace="entry/title" /></h6>
+                      <p class="discreet">
+                        <span tal:content="entry/action" i18n:translate="">
+                          Action</span>
+                        <span tal:define="time entry/timestamp"
+                            tal:content="time"
+                            tal:attributes="data-appui string:prettydate;
+                                            title time" />
+                          <span>by <span tal:replace="entry/actorname" /></span>
+                      </p>
+                    </tal:items>
+                    </div>
+
+                   <p class="pull-right">
+                            <a class="btn btn-primary btn-small"
+                                rel="loading-indicator"
+                                data-loading-text="Wird geladen..."
+                              tal:attributes="href python:context_url+'/@@add-press-release'">
+                                  <i class="icon-plus-sign icon-white" />
+                                Neu anlegen</a>
+                        </p>
+                  <h2><a href=""
+                        tal:attributes="href python:context_url+'/@@dashboard-releases'">
+                      Pressemitteilungen</a>
+                  </h2>
                   <div class="page-header">
                       <p class="pull-right">
                             <a class="btn btn-primary btn-small"
@@ -220,7 +228,7 @@
                       </tbody>
                   </table>
                   </div>
-              </div>
+            </div>
               <div class="visualClear"><!-- --></div>
           </div>
           <div class="visualClear"><!-- --></div>

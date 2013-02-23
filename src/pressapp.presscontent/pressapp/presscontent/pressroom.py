@@ -58,6 +58,12 @@ class View(grok.View):
             info = _(u"sent")
         return info
 
+    def get_type_info(self, itemtype):
+        info = _(u"Pressrelease")
+        if itemtype == 'pressapp.presscontent.pressinvitation':
+            info = _(u"Pressinvitation")
+        return info
+
     def get_history(self):
         context = aq_inner(self.context)
         history = context.restrictedTraverse('@@changes').pressapp_history(
