@@ -155,12 +155,17 @@
           <tbody>
             <tr tal:define="filename context/image/filename;">
               <td>
-                  <strong tal:content="filename" />
-                  <p tal:content="context/caption" class="discreet">Caption</p>
+                  <h6 tal:content="context/imagename">Caption</h6>
+                  <p class="muted">
+                    The main image is editable via the main edit form
+                  </p>
               </td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
               <td>
+                <img tal:define="scale context/@@images"
+                    tal:replace="structure python: scale.scale('image',
+                                 scale='tile').tag()" />
+              </td>
+              <td tal:content="nothing">
                 <div class="btn-toolbar">
                   <div class="btn-group">
                     <a href=""
@@ -175,11 +180,24 @@
             <tal:block tal:condition="view/has_files">
               <tal:items tal:repeat="item view/contained_attachments">
                 <tr tal:define="type item/portal_type">
-                  <td><a href="" tal:attributes="href item/getURL">
-                    <strong tal:condition="item/Description"
+                  <td>
+                    <h6 tal:condition="item/Description"
                       tal:content="item/Description" />
-                    <strong tal:condition="not:item/Description"
-                      tal:content="item/Title" /></a>
+                    <h6 tal:condition="not:item/Description"
+                      tal:content="item/Title" />
+                    <p tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
+                      class="discreet">
+                      <a href=""
+                          class="xxbtn"
+                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
+                          <i class="icon-edit" />
+                          Bearbeiten</a>
+                      <a href=""
+                          class="xxbtn popoverLink link-overlay"
+                          tal:attributes="href string:${item/getURL}/delete_confirmation">
+                          <i class="icon-remove-sign" />
+                          L&ouml;schen</a>
+                    </p>
                   </td>
                   <td tal:define="item_obj item/getObject">
                     <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
@@ -188,51 +206,7 @@
                         tal:replace="structure python: scale.scale('image',
                                      scale='tile').tag()" />
                   </td>
-                  <td>
-                  <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
-                    <div class="btn-group">
-                    <a href=""
-                        class="btn btn-small"
-                        tal:attributes="href string:${item/getURL}/@@edit-file-attachment">
-                        <i class="icon-edit" />
-                        Bearbeiten</a>
-                    <a href=""
-                        class="btn btn-small popoverLink link-overlay"
-                        tal:attributes="href string:${item/getURL}/delete_confirmation">
-                        <i class="icon-remove-sign" />
-                        L&ouml;schen</a>
-                      </div>
-                  </div>
-                  <div class="btn-toolbar" tal:condition="python:type == 'Image'">
-                    <div class="btn-group">
-                      <a href=""
-                          class="btn btn-small"
-                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
-                          <i class="icon-edit" />
-                          Bearbeiten</a>
-                      <a href=""
-                          class="btn btn-small popoverLink link-overlay"
-                          tal:attributes="href string:${item/getURL}/delete_confirmation">
-                          <i class="icon-remove-sign" />
-                          L&ouml;schen</a>
-                      </div>
-                  </div>
-                  <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
-                    <div class="btn-group">
-                      <a href=""
-                          class="btn btn-small"
-                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
-                          <i class="icon-edit" />
-                          Bearbeiten</a>
-                      <a href=""
-                          class="btn btn-small popoverLink link-overlay"
-                          tal:attributes="href string:${item/getURL}/delete_confirmation">
-                          <i class="icon-remove-sign" />
-                          L&ouml;schen</a>
-                      </div>
-                  </div>
-                  </td>
-                  <td>
+                  <td tal:content="nothing">
                     <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
                       <div class="btn-group">
                     <a href="" class="btn btn-small btn-inverse"
