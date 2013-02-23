@@ -17,7 +17,7 @@
                 <div class="btn-group">
                     <a class="btn btn-inverse" href="#"
                     tal:attributes="href python:context_url+'/@@member-information'">
-                    <i class="icon-cog icon-white" />
+                    <i class="icon-cog icon-white"></i>
                     Profildaten bearbeiten</a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="btn-group">
                 <a href="" class="btn btn-danger"
                     tal:attributes="href python:portal_url+'/logout'">
-                    <i class="icon-ban-circle icon-white" />
+                    <i class="icon-ban-circle icon-white"></i>
                     Abmelden</a>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <div class="btn-group">
                     <a class="btn" href="#"
                     tal:attributes="href python:context_url+'/@@member-information'">
-                    <i class="icon-cog" />
+                    <i class="icon-cog"></i>
                     Profildaten bearbeiten</a>
                 </div>
             </div>

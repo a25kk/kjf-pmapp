@@ -18,13 +18,13 @@
                   rel="loading-indicator"
                   data-loading-text="Wird geladen..."
                   tal:attributes="href python:context_url+'/@@add-press-release'">
-                      <i class="icon-plus-sign icon-white" />
+                      <i class="icon-plus-sign icon-white"></i>
                     Pressemitteilung</a>
                 <a class="btn"
                   rel="loading-indicator"
                   data-loading-text="Wird geladen..."
                   tal:attributes="href python:context_url+'/@@add-press-invitation'">
-                  <i class="icon-plus-sign icon-white" />
+                  <i class="icon-plus-sign icon-white"></i>
                   Presseeinladung</a>
             </div>
         </div>
@@ -44,14 +44,22 @@
               <div class="span9">
                 <div class="window-column">
                   <tal:pms tal:condition="view/has_releases">
-                    <div class="tile" tal:repeat="item view/pressreleases">
+                    <div class="tile-wrapper"
+                      tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                              b_size python:int(request.get('b_size', 20));
+                              b_start python:int(request.get('b_start', 0));
+                              items view/contained_presscontent;
+                              items_count python:len(items);
+                              batch python:Batch(items, b_size, b_start);">
+                      <div class="tile" tal:repeat="item batch">
                       <div class="row">
                         <div class="span2">
-                          <h4 tal:define="item_type item/portal_type">
-                            <span tal:content="python:view.get_type_info(item_type)"
-                              i18n:translate="">Item Type</span>
-                          </h4>
-                          <p><small tal:define="state item/review_state"
+                          <h6 tal:define="item_type item/portal_type"
+                            tal:content="python:view.get_type_info(item_type)"
+                            i18n:translate="">Item Type
+                          </h6>
+                          <p>
+                            <small tal:define="state item/review_state"
                                 tal:content="python:view.get_state_info(state)"
                                 i18n:translate="">Unpublished</small></p>
                         </div>
@@ -66,8 +74,6 @@
                               <span tal:content="modified"
                                 tal:attributes="data-appui string:prettydate;
                                                 title modified" />
-                              <span tal:content="python:toLocalizedTime(modified)">
-                              Release Info</span>
                             </small>
                           </p>
                         </div>
@@ -77,56 +83,44 @@
                                 Bearbeiten</a>
                         </div>
                       </div>
-                    </div>
+                      </div><!-- /tile -->
+                      <div metal:use-macro="context/batch_macros/macros/navigation" />
+                    </div><!-- /tile-wrapper -->
                   </tal:pms>
-                  <table class="table table-striped" tal:content="nothing">
-                      <thead>
-                          <tr>
-                              <th>#</th>
-                              <th>Pressemitteilung</th>
-                              <th>Status</th>
-                              <th>Aktionen</th>
-                          </tr>
-                      </thead>
-                      <tbody tal:condition="view/has_releases">
-                          <tal:block tal:repeat="item view/pressreleases">
-                            <tr tal:define="rowcount repeat/item/number;">
-                                <td tal:content="rowcount">1</td>
-                                <td><a href="" tal:attributes="href item/getURL"
-                                        tal:content="item/Title" /></td>
-                                <td tal:define="state item/review_state">
-                                    <span class="label info"
-                                        i18n:translate=""
-                                        i18n:domain="plone"
-                                        tal:content="state">State</span>
-                                </td>
-                                <td tal:define="item_url item/getURL">
-                                    <div class="btn-group">
-                                    <a class="btn btn-small"
-                                        tal:attributes="href python:item_url+'/@@edit-press-release'">
-                                        <i class="icon-edit" />
-                                        Bearbeiten</a>
-                                    <a class="btn btn-small"
-                                        tal:attributes="href python:item_url+'/view'">
-                                        <i class="icon-eye-open" />
-                                        Anzeigen</a>
-                                    </div>
-                                </td>
-                            </tr>
-                          </tal:block>
-                      </tbody>
-                      <tbody tal:condition="not:view/has_releases">
-                            <tr>
-                                <td colspan="4">
-                                    <div class="alert alert-block alert-error">
-                                          <a class="close" href="#">×</a>
-                                          <p><strong i18n:translate="">
-                                              No press releases available!</strong></p>
-                                    </div>
-                                </td>
-                            </tr>
-                      </tbody>
-                  </table>
+
+                  <section class="window-column-content"
+                     tal:condition="not:view/has_presscontent">
+                    <div class="featurette dim-in two">
+                      <div class="row">
+                        <div class="span9">
+                          <h2 i18n:translate="">Welcome to your personal workspace</h2>
+                          <p class="lead" i18n:translate="">
+                            Your workspace is the central editing unit providing
+                            an overview of available press releases and invitations.
+                          </p>
+                          <p class="lead" i18n:translate="">
+                            In order to get started add your first press content.
+                          </p>
+                        </div>
+                        <div class="span3">
+                          <a class="stats widget"
+                            tal:attributes="href python:context_url + '/@@add-press-release'">
+                            <span class="stat primary">
+                              <span class="stat-header"><i class="icon-file-alt icon-2x"></i></span>
+                              <span class="stat-subheader" i18n:translate="">Add pressrelease</span>
+                            </span>
+                          </a>
+                          <a class="stats widget"
+                            tal:attributes="href python:context_url + '/@@add-press-invitation'">
+                            <span class="stat primary">
+                              <span class="stat-header"><i class="icon-calendar icon-2x"></i></span>
+                              <span class="stat-subheader" i18n:translate="">Add pressinvitation</span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
                   </div>
               </div>
               <div class="span3">
@@ -140,93 +134,24 @@
 
                     <hr>
 
-                    <div class="history-listing" tal:define="history view/get_history">
-                    <tal:items tal:repeat="entry history">
-                      <h6><span tal:replace="entry/title" /></h6>
-                      <p class="discreet">
-                        <span tal:content="entry/action" i18n:translate="">
-                          Action</span>
-                        <span tal:define="time entry/timestamp"
-                            tal:content="time"
-                            tal:attributes="data-appui string:prettydate;
-                                            title time" />
-                          <span>by <span tal:replace="entry/actorname" /></span>
-                      </p>
-                    </tal:items>
-                    </div>
+                    <p class="stats">
+                      <a href="" class="btn btn-block"
+                        rel="loading-indicator"
+                        data-loading-text="Wird geladen..."
+                        tal:attributes="href python:context_url+'/@@add-press-release'">
+                        Pressemitteilung erstellen
+                      </a>
+                    </p>
+                    <p class="stats">
+                      <a href="" class="btn btn-block"
+                        rel="loading-indicator"
+                        data-loading-text="Wird geladen..."
+                        tal:attributes="href python:context_url+'/@@add-press-invitation'">
+                        Presseeinladung erstellen
+                      </a>
+                    </p>
 
-                   <p class="pull-right">
-                            <a class="btn btn-primary btn-small"
-                                rel="loading-indicator"
-                                data-loading-text="Wird geladen..."
-                              tal:attributes="href python:context_url+'/@@add-press-release'">
-                                  <i class="icon-plus-sign icon-white" />
-                                Neu anlegen</a>
-                        </p>
-                  <h2><a href=""
-                        tal:attributes="href python:context_url+'/@@dashboard-releases'">
-                      Pressemitteilungen</a>
-                  </h2>
-                  <div class="page-header">
-                      <p class="pull-right">
-                            <a class="btn btn-primary btn-small"
-                                rel="loading-indicator"
-                                data-loading-text="Wird geladen..."
-                              tal:attributes="href python:context_url+'/@@add-press-invitation'">
-                              <i class="icon-plus-sign icon-white" />
-                              Neu anlegen</a></p>
-                      <h2><a href=""
-                                tal:attributes="href python:context_url+'/@@dashboard-invitations'">
-                          Presseeinladungen</a></h2>
-                  </div>
-                  <table class="table table-striped" tal:content="nothing">
-                      <thead>
-                          <tr>
-                              <th>#</th>
-                              <th>Pressemitteilung</th>
-                              <th>Status</th>
-                              <th>Aktionen</th>
-                          </tr>
-                      </thead>
-                      <tbody tal:condition="view/has_invitations">
-                            <tal:block tal:repeat="item view/contained_invitations">
-                              <tr tal:define="rowcount repeat/item/number;">
-                                  <td tal:content="rowcount">1</td>
-                                  <td><a href="" tal:attributes="href item/getURL"
-                                          tal:content="item/Title" /></td>
-                                  <td tal:define="state item/review_state">
-                                      <span class="label info"
-                                          i18n:translate=""
-                                          i18n:domain="plone"
-                                          tal:content="state">State</span>
-                                  </td>
-                                  <td tal:define="item_url item/getURL">
-                                      <div class="btn-group">
-                                      <a class="btn btn-small"
-                                          tal:attributes="href python:item_url+'/@@edit-press-invitation'">
-                                          <i class="icon-edit" />
-                                          Bearbeiten</a>
-                                      <a class="btn btn-small"
-                                          tal:attributes="href python:item_url+'/view'">
-                                          <i class="icon-eye-open" />
-                                          Anzeigen</a>
-                                      </div>
-                                  </td>
-                              </tr>
-                            </tal:block>
-                      </tbody>
-                      <tbody tal:condition="not:view/has_invitations">
-                          <tr>
-                              <td colspan="4">
-                                  <div class="alert alert-block alert-error">
-                                        <a class="close" href="#">×</a>
-                                        <p><strong i18n:translate="">
-                                            No press invitations available!</strong></p>
-                                  </div>
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
+                    <hr>
                   </div>
             </div>
               <div class="visualClear"><!-- --></div>

@@ -108,10 +108,11 @@
     <div class="span9">
      
       <div class="window-column">
-        <h6 tal:condition="context/kicker"
+      <div class="window-column-content">
+        <h5 tal:condition="context/kicker"
           tal:content="context/kicker" />
-        <h1 class="documentFirstHeading" tal:content="context/Title">Title inserted here</h1>
-        <h2 tal:condition="context/subtitle" tal:content="context/subtitle" />
+        <h3 class="documentFirstHeading" tal:content="context/Title">Title inserted here</h3>
+        <h4 tal:condition="context/subtitle" tal:content="context/subtitle" />
     
     
         <div class="alert alert-block alert-error"
@@ -130,14 +131,23 @@
     
         <div tal:condition="context/text"
           tal:content="structure context/text/output" />
-    
-        <div tal:condition="context/image">
-          <h3>Bild</h3>
-          <img tal:define="scale context/@@images"
-            tal:replace="structure python: scale.scale('image',
-                         scale='preview').tag()" />
-          <p><small tal:content="context/caption" /></p>
+        
+        <hr>
+
+        <div tal:condition="context/image"
+          class="row">
+          <div class="span8">
+            <h3>Bild</h3>
+            <p tal:content="context/imagename">Caption</p>
+          </div>
+          <div class="span4">
+              <img tal:define="scale context/@@images"
+                tal:replace="structure python: scale.scale('image',
+                             scale='thumb').tag()" />
+          </div>
         </div>
+
+        <hr class="visualClear">
 
         <div class="xwell" tal:condition="context/image">
         <h3>Attachments</h3>
@@ -146,6 +156,7 @@
             <tr tal:define="filename context/image/filename;">
               <td>
                   <strong tal:content="filename" />
+                  <p tal:content="context/caption" class="discreet">Caption</p>
               </td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
@@ -276,6 +287,7 @@
           </div>
           <div class="visualClear">&nbsp;</div>
         </div>
+      </div>
       </div>
     </div>
     

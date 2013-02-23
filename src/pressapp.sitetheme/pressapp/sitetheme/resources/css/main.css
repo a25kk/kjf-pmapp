@@ -1525,14 +1525,14 @@ fieldset[disabled] .btn:active {
   border-color: #a7a9aa;
 }
 .btn-primary {
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #607080;
+  border-color: #607080;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-  background-color: #357ebd;
-  border-color: #3071a9;
+  background-color: #556371;
+  border-color: #4a5663;
 }
 .btn-primary.disabled:hover,
 .btn-primary[disabled]:hover,
@@ -1543,8 +1543,8 @@ fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled:active,
 .btn-primary[disabled]:active,
 fieldset[disabled] .btn-primary:active {
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #607080;
+  border-color: #607080;
 }
 .btn-warning {
   background-color: #f0ad4e;
@@ -4182,7 +4182,7 @@ a.counter:hover {
   color: #fff;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #428bca;
+  background-color: #607080;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -webkit-box-sizing: border-box;
@@ -4194,7 +4194,7 @@ a.counter:hover {
   transition: width 0.6s ease;
 }
 .progress-striped .progress-bar {
-  background-color: #428bca;
+  background-color: #607080;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -6272,6 +6272,38 @@ fieldset[disabled] input.destructive:active {
 .window .window-content .window-column .btn {
   text-shadow: none;
 }
+.window .window-content .window-column .window-column-content {
+  padding: 20px;
+}
+.window .window-content .window-column .featurette {
+  margin: 50px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid #999999;
+}
+.window .window-content .window-column .featurette .stats {
+  display: block;
+}
+.window .window-content .window-column .featurette .stats .stat {
+  display: block;
+  background: #607080;
+}
+.window .window-content .window-column .featurette .stats .stat .stat-header {
+  margin: 10px 0;
+  font-family: 'Oswald', inherit;
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 31.5px;
+}
+.window .window-content .window-column .featurette .stats .stat .stat-subheader {
+  display: block;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+.window .window-content .window-column div.formControls {
+  background: transparent;
+  border-top: 1px solid #999999;
+}
 .window .window-content .tile {
   padding: 2px 10px;
   -webkit-box-shadow: none;
@@ -6294,8 +6326,8 @@ fieldset[disabled] input.destructive:active {
 }
 .window .window-content .tile.active .btn,
 .window .window-content .tile:hover .btn {
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #607080;
+  border-color: #607080;
   background-color: #50a0b0;
   border-color: #50a0b0;
 }
@@ -6305,8 +6337,8 @@ fieldset[disabled] input.destructive:active {
 .window .window-content .tile:hover .btn:focus,
 .window .window-content .tile.active .btn:active,
 .window .window-content .tile:hover .btn:active {
-  background-color: #357ebd;
-  border-color: #3071a9;
+  background-color: #556371;
+  border-color: #4a5663;
 }
 .window .window-content .tile.active .btn.disabled:hover,
 .window .window-content .tile:hover .btn.disabled:hover,
@@ -6326,8 +6358,8 @@ fieldset[disabled] .window .window-content .tile:hover .btn:focus,
 .window .window-content .tile:hover .btn[disabled]:active,
 fieldset[disabled] .window .window-content .tile.active .btn:active,
 fieldset[disabled] .window .window-content .tile:hover .btn:active {
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #607080;
+  border-color: #607080;
 }
 .window .window-content .tile.active .btn:hover,
 .window .window-content .tile:hover .btn:hover,
@@ -6342,13 +6374,20 @@ fieldset[disabled] .window .window-content .tile:hover .btn:active {
   font-size: 14px;
   margin-bottom: 0px;
 }
+.window .window-content .tile h6 {
+  margin-bottom: 0px;
+  font-weight: 100;
+}
 .window .window-content #content-core {
   border-right: 1px solid #555555;
 }
 .window .window-content #sidebar {
   padding-top: 20px;
   padding-right: 30px;
-  text-shadow: 0 1px 0 #eeeeee;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+.window .window-content #sidebar .btn {
+  text-shadow: none;
 }
 .window .window-content #sidebar .tile {
   padding: 2px 10px;
@@ -6543,8 +6582,8 @@ form.overlayForm {
   padding: 11px 14px;
   font-size: 17.5px;
   border-radius: 6px;
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #607080;
+  border-color: #607080;
   background-color: #50a0b0;
   border-color: #50a0b0;
   border-radius: 0px;
@@ -6552,8 +6591,8 @@ form.overlayForm {
 #login_form #login-action input.context:hover,
 #login_form #login-action input.context:focus,
 #login_form #login-action input.context:active {
-  background-color: #357ebd;
-  border-color: #3071a9;
+  background-color: #556371;
+  border-color: #4a5663;
 }
 #login_form #login-action input.context.disabled:hover,
 #login_form #login-action input.context[disabled]:hover,
@@ -6564,8 +6603,8 @@ fieldset[disabled] #login_form #login-action input.context:focus,
 #login_form #login-action input.context.disabled:active,
 #login_form #login-action input.context[disabled]:active,
 fieldset[disabled] #login_form #login-action input.context:active {
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #607080;
+  border-color: #607080;
 }
 #login_form #login-action input.context:hover,
 #login_form #login-action input.context:focus,

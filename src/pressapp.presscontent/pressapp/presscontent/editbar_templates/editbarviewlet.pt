@@ -6,26 +6,26 @@
         <div class="container-fluid">
             <a href="" tal:attributes="href context_state/canonical_object_url"
                         class="brand">
-                        <i class="icon-home icon-white" />
+                        <i class="icon-home icon-white"></i>
                         Arbeitsplatz
                     </a>
             <ul class="nav pull-right">
                 <li>
                     <a 
                         tal:attributes="href python:context_url+'/@@dashboard-statistics'">
-                        <i class="icon-share-alt" />
+                        <i class="icon-share-alt"></i>
                         Statistik</a>
                 </li>
                 <li>
                     <a href=""
                                 tal:attributes="href python:context_url + '/@@add-press-release'">
-                            <i class="icon-file" />
+                            <i class="icon-file"></i>
                                 Pressmitteilung hinzuf&uuml;gen</a>
                 </li>
                 <li>
                     <a href=""
                                 tal:attributes="href python:context_url + '/@@add-press-invitation'">
-                            <i class="icon-calendar" />
+                            <i class="icon-calendar"></i>
                                 Presseeinladung hinzuf&uuml;gen</a>
                 </li>
             </ul>

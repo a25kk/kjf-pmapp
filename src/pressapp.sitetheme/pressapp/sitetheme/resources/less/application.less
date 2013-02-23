@@ -255,6 +255,40 @@ input.destructive {
       .btn {
         text-shadow: none;
       }
+      .window-column-content {
+        padding: @line-height-base;
+      }
+      .featurette {
+          margin: @navbar-height;
+          padding: @line-height-base;
+          background-color: rgba(255, 255, 255, 0.35);
+          border: 1px solid @grayLight;
+          .stats {
+            display: block;
+            .stat {
+              display: block;
+              background: @btn-background-primary;
+              .stat-header {
+                margin: (@line-height-base / 2) 0;
+                font-family: @headings-font-family;
+                font-weight: @headings-font-weight;
+                line-height: @line-height-base;
+                font-size: @font-size-base * 2.25;
+              }
+              .stat-subheader {
+                display: block;
+                text-transform: uppercase;
+                text-shadow: none;
+              }
+            }
+          }
+        }
+        div.formControls {
+          //background-color: rgba(255, 255, 255, 0.5);
+          background: transparent;
+          border-top: 1px solid @grayLight;
+          //background: url(../assets/img/bg-white-fabric.png) repeat #fff;
+        }
     }
     .tile {
         padding: @padding-small;
@@ -282,6 +316,10 @@ input.destructive {
           font-size: @font-size-base;
           margin-bottom: 0px;
         }
+        h6 {
+          margin-bottom: 0px;
+          font-weight: 100;
+        }
     }
     #content-core {
       border-right: 1px solid @gray;
@@ -289,7 +327,10 @@ input.destructive {
     #sidebar {
       padding-top: @line-height-base;
       padding-right: @line-height-base * 1.5;
-      text-shadow: 0 1px 0 @navbar-bg;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+      .btn {
+        text-shadow: none;
+      }
       .tile {
         padding: @padding-small;
         //margin-right: @line-height-base;

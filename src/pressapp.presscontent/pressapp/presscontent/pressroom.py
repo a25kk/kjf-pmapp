@@ -27,10 +27,23 @@ class View(grok.View):
         self.has_releases = len(self.contained_pressreleases()) > 0
         self.pressreleases = self.contained_pressreleases()
         self.has_invitations = len(self.contained_invitations()) > 0
+        self.has_presscontent = len(self.contained_presscontent()) > 0
 
     def presscontent_index(self):
         context = aq_inner(self.context)
         return len(context.items())
+
+    def contained_presscontent(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        presstypes = ['pressapp.presscontent.pressrelease',
+                      'pressapp.presscontent.pressinvitation']
+        results = catalog(portal_type=presstypes,
+                          path='/'.join(context.getPhysicalPath()),
+                          sort_on='modified',
+                          sort_order='reverse')
+        items = IContentListing(results)
+        return items
 
     def contained_pressreleases(self):
         context = aq_inner(self.context)

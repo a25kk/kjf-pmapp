@@ -5,26 +5,26 @@
         <div class="container-fluid">
             <a class="brand"
                 tal:attributes="href viewlet/homefolder_url">
-                <i class="icon-file icon-white" />
+                <i class="icon-file icon-white"></i>
                 Pressemitteilung
             </a>
                 <ul class="nav pull-right">
                     <li>
                     <a
                         tal:attributes="href python:context_url+'/view'">
-                        <i class="icon-eye-open" />
+                        <i class="icon-eye-open"></i>
                         Anzeigen</a>
                     </li>
                     <li>
                     <a
                         tal:attributes="href python:context_url+'/@@edit-press-release'">
-                        <i class="icon-edit" />
+                        <i class="icon-edit"></i>
                         Bearbeiten</a>
                     </li>
                     <li>
                     <a class="popoverLink"
                         tal:attributes="href python:context_url+'/delete_confirmation'">
-                        <i class="icon-remove-sign" />
+                        <i class="icon-remove-sign"></i>
                         Entfernen</a>
                     </li>
                 </ul>

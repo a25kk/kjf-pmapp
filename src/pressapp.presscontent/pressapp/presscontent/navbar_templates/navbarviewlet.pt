@@ -52,32 +52,32 @@
                         <a href="/" class="dropdown-toggle"
                             data-toggle="dropdown"
                             tal:attributes="href python:portal_url+'/press-center'">
-                            <i class="icon-cog icon-white" />
+                            <i class="icon-cog icon-white"></i>
                             Administration
-                            <b class="caret" />
+                            <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/presscenter/'">
-                                <i class="icon-list" />
+                                <i class="icon-list"></i>
                                 &Uuml;bersicht
                                 </a>
                             </li>
                             <li><a href=""
                                     tal:attributes="href python:portal_url+'/presscenter/kontakte'">
-                                <i class="icon-list-alt" />
+                                <i class="icon-list-alt"></i>
                                 Adressen
                                 </a>
                             </li>
                             <li><a href=""
                                     tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
-                                <i class="icon-user" />
+                                <i class="icon-user"></i>
                                 Redakteure
                                 </a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
-                                <i class="icon-align-justify" />
+                                <i class="icon-align-justify"></i>
                                     Einstellungen
                                 </a>
                             </li>
@@ -93,9 +93,9 @@
                             tal:attributes="href home_folder"
                             class="dropdown-toggle"
                             data-toggle="dropdown">
-                            <i class="icon-user icon-white" />
+                            <i class="icon-user icon-white"></i>
                             <span tal:content="memberinfo/username">John Doe</span>
-                            <b class="caret" />
+                            <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu xnav-list">
                             <li class="nav-header">
@@ -116,17 +116,17 @@
                             <li class="divider"></li>
                             <li><a href=""
                                 tal:attributes="href python:home_folder + '/@@member-information'">
-                                <i class="icon-cog" />
+                                <i class="icon-cog"></i>
                                 Profil bearbeiten</a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href home_folder">
-                                <i class="icon-home" />
+                                <i class="icon-home"></i>
                                 Mein Arbeitsplatz</a>
                             </li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">
-                                <i class="icon-remove-sign" />
+                                <i class="icon-remove-sign"></i>
                                 Abmelden</a>
                             </li>
                         </ul>
@@ -160,7 +160,7 @@
             <li>
                 <a href=""
                     tal:attributes="href python:home_folder+'/@@dashboard-statistics'">
-                <i class="icon-bar-chart" />
+                <i class="icon-bar-chart"></i>
                     Statistik
                 </a>
             </li>
