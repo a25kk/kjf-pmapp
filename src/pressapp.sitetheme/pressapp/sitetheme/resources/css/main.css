@@ -6630,6 +6630,58 @@ fieldset[disabled] #login_form #login-action input.context:active {
 #login-forgotten-password a {
   color: #fff;
 }
+div.dataTables_length label {
+  float: left;
+  text-align: left;
+}
+div.dataTables_length select {
+  width: 75px;
+}
+div.dataTables_filter label {
+  float: right;
+}
+div.dataTables_info {
+  padding-top: 8px;
+}
+div.dataTables_paginate {
+  float: right;
+  margin: 0;
+}
+table.table {
+  clear: both;
+  margin-bottom: 6px !important;
+}
+table.table thead .sorting,
+table.table thead .sorting_asc,
+table.table thead .sorting_desc,
+table.table thead .sorting_asc_disabled,
+table.table thead .sorting_desc_disabled {
+  cursor: pointer;
+  *cursor: hand;
+}
+table.table thead .sorting {
+  background: url('../images/sort_both.png') no-repeat center right;
+}
+table.table thead .sorting_asc {
+  background: url('../images/sort_asc.png') no-repeat center right;
+}
+table.table thead .sorting_desc {
+  background: url('../images/sort_desc.png') no-repeat center right;
+}
+table.table thead .sorting_asc_disabled {
+  background: url('../images/sort_asc_disabled.png') no-repeat center right;
+}
+table.table thead .sorting_desc_disabled {
+  background: url('../images/sort_desc_disabled.png') no-repeat center right;
+}
+table.dataTable th:active {
+  outline: none;
+}
+table.dataTable tr.row_selected td {
+  border: 1px solid #b94a48;
+  border-width: 1px 0px;
+  background-color: #f2dede;
+}
 footer {
   position: fixed;
   bottom: 0;

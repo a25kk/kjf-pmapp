@@ -16,22 +16,26 @@
   
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
     class="container-fluid">
-        
         <div class="page-header" id="page-header">
-            <h1>Adressen <small>Zugewiesene Empf&auml;nger</small></h1>
+          <div class="pull-right">
+            <h4><i class="icon-cogs icon-2x"></i></h4>
+          </div>
+          <h1>Pressemitteilung</h1>
+          <p class="discreet">
+            Zugewiesene Empf&auml;nger bereinigen
+          </p>
         </div>
     <div id="content-core">
-      <div class="window-column">     
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="alert alert-block alert-info">
-                    <h4 class="alert-heading">Information</h4>
-                    <p>Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
-                        auf eine Tabellenzeile, um diese zu markieren. Verwenden Sie den Button
-                        <strong>Adresse entfernen</strong>, um diese Zeile zu l&ouml;schen</p>
-                </div>
+      <div class="window-column">
+      <div class="window-column-content">     
+        <div class="row">
+            <div class="span9">
+              <p class="lead"> Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
+                  auf eine Tabellenzeile, um diese zu markieren. Verwenden Sie den Button
+                  <strong>Adresse entfernen</strong>, um diese Zeile zu l&ouml;schen
+              </p>
             </div>
-            <div class="span6">
+            <div class="span3">
                 <a href="javascript:void(0)" id="delete"
                     class="btn btn-large btn-danger">
                     <i class="icon-remove icon-white" />
@@ -76,6 +80,7 @@
                   Abbrechen</a>
             </div>
         </form>
+      </div>
       </div>
     </div>
   </section>

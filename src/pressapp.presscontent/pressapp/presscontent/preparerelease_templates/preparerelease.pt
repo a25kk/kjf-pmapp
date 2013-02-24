@@ -20,117 +20,115 @@
             <div class="btn-group">
                 <a href="" class="btn"
                     tal:attributes="href python:context_url+'/@@select-channel'">
-                    <i class="icon-list-alt" />
                     Verteiler w&auml;hlen</a>
                 <a href="" class="btn"
                     tal:attributes="href python:context_url+'/@@recipient-list'">
-                    <i class="icon-edit" />
                     Empf&auml;nger bereinigen</a>
                 <a href="" class="btn"
                     tal:attributes="href python:context_url+'/@@prepare-release'">
-                    <i class="icon-share" />
                     Versand planen</a>
             </div>
         </div>
         
         <h1>Versand vorbereiten</h1>
+        <p class="discreet">Zusammenfassung</p>
     </div>
     <div id="content-core">
     <div class="window-column">
-    <h2>Zusammenfassung</h2>
-    <div class="row-fluid">
-    <div class="span6">
-        <div class="box" tal:condition="view/has_recipients">
-        <h3>Empf&auml;nger aus Verteilern:
-            <span class="badge badge-info" tal:content="view/recipient_count">Count</span>
-        </h3>
-        <div class="alert alert-info">
-            <strong>Information:</strong> alle Empf&auml;nger aus den
-            ausgew&auml;hlten Verteilern
-        </div>
-        <a class="btn  btn-small btn-info show-details">
-            <i class="icon-arrow-down icon-white" />
-            Adressen anzeigen</a>
-        <div class="xbox details visualClear">
-            <div class="visualClear">&nbsp;</div>
-            <div class="tile stats">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th>E-Mail-Adresse</th>
-                            <th>Titel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+    <div class="window-column-content">
+        <div class="row">
+            <div class="span6">
+                <section tal:condition="view/has_recipients">
+                <div class="featurette dim-in two">
+                  <div class="row">
+                    <div class="span9">
+                      <h2 i18n:translate="">Empf&auml;nger aus Verteilern</h2>
+                      <p class="lead" i18n:translate="">
+                        List of recipients asigned from available channels
+                      </p>
+                    </div>
+                    <div class="span3">
+                      <div class="stats widget">
+                        <span class="stat primary">
+                          <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
+                          <span class="stat-subheader" tal:content="view/recipient_count">Recipients</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn"
+                        href="#recipients"
+                        data-toggle="collapse"
+                        data-target="#recipients">Details</button>
+                    <div class="collapse" id="recipients">
                         <tal:block tal:repeat="item view/recipient_list">
-                        <tr tal:define="item_details python:view.reformat_recipients(item)">
-                            <td tal:content="python:item_details[0]" />
-                            <td tal:content="python:item_details[1]" />
-                        </tr>
+                        <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                            <h6 tal:content="python:item_details[1]" />
+                            <small class="muted" tal:content="python:item_details[0]" />
+                        </div>
                         </tal:block>
-                    </tbody>
-                </table>
+                    </div>
+                </div>
+                </section>
             </div>
-        </div>
-        </div>
-    </div>
-    <div class="span6">
-        <div class="box" tal:condition="view/has_subscribers">
-        <h3>Newsletter Abonnenten:
-            <span class="badge badge-info" tal:content="view/subscriber_count">Count</span>
-        </h3>
-        <div class="alert">
-            <strong>Hinweis:</strong> diese Liste wird nur f&uuml;r den Versand
-            von Pressemitteilungen verwendet.
-        </div>
-        <a class="btn  btn-small btn-info show-details">
-            <i class="icon-arrow-down icon-white" />
-            Adressen anzeigen</a>
-        <div class="xbox details visualClear">
-            <div class="visualClear">&nbsp;</div>
-            <div class="tile stats">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>E-Mail-Adresse</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div class="span6">
+                <section tal:condition="view/has_subscribers">
+                <div class="featurette dim-in two">
+                  <div class="row">
+                    <div class="span9">
+                      <h2 i18n:translate="">Newsletter Abonnenten</h2>
+                      <p class="lead">
+                        Newletter Abonnenten, die ebenfalls Pressemitteilungen
+                        erhalten
+                      </p>
+                    </div>
+                    <div class="span3">
+                      <a class="stats widget"
+                        tal:attributes="href python:context_url + '/@@add-press-invitation'">
+                        <span class="stat primary">
+                          <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
+                          <span class="stat-subheader" tal:content="view/subscriber_count">Recipients</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                  <button type="button" class="btn"
+                        href="#subscribers"
+                        data-toggle="collapse"
+                        data-target="#subscribers">Details</button>
+                    <div class="collapse" id="subscribers">
                         <tal:block tal:repeat="item view/subscriber_list">
-                        <tr>
-                            <td tal:content="repeat/item/number" />
-                            <td tal:content="item" />
-                        </tr>
+                        <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                            <h6><small tal:content="repeat/item/number" />
+                            <span tal:content="item" /></h6>
+                        </div>
                         </tal:block>
-                    </tbody>
-                </table>
+                    </div>
+                </div>
+                </section>
             </div>
         </div>
-        </div>
-    </div>
-    </div>
-    
     <div class="visualClear">&nbsp;</div>
-    <div class="form-actions">
-        <a href="" class="btn btn-large btn-success"
+    <div class="formControls dim-in three">
+        <a href="" class="btn btn-large btn-primary pull-right"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
             tal:attributes="href python:context_url+'/@@dispatcher?type=send_now'">
             <i class="icon-share-alt icon-white" />
             Jetzt versenden</a>
-        <a href="" class="btn btn-large btn-info"
+        <a href="" class="btn btn-large"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
             tal:attributes="href python:context_url+'/@@dispatcher?type=send_now_recipients_only'">
             <i class="icon-share-alt icon-white" />
             Nur an Verteiler versenden</a>
-        <a href="" class="btn btn-large btn-warning"
+        <a href="" class="btn btn-large"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
             tal:attributes="href python:context_url+'/@@dispatcher?type=test'">
             <i class="icon-share-alt icon-white" />
             Testversand durchf&uuml;hren</a>
+    </div>
     </div>
     </div>
     </div>
