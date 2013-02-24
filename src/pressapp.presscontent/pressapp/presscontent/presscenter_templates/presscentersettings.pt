@@ -18,97 +18,131 @@
     
     <div class="container-fluid">
         <div class="page-header" id="page-header">
-            <h1>Einstellungen</h1>
+          <div class="pull-right">
+            <h4>Einstellungen</h4>
+          </div>
+            <h1>Presscenter</h1>
+            <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+            </p>
         </div>
         
         <section id="content-core">
-          <div class="window-column">
-          <div class="window-column-content">
-          <a class="btn btn-primary pull-right"
-                    tal:attributes="href python:context_url+'/@@update-settings'">
-                    <i class="icon-edit icon-white" />
-                    Bearbeiten</a>
-            <h2>Versand Einstellungen</h2>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td><strong>Absenderadresse:</strong></td>
-                    <td tal:content="context/email">E-Mail</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Absendername:</strong></td>
-                    <td tal:content="context/name" />
-                  </tr>
-                  <tr>
-                    <td><strong>Standard Testempf&auml;nger:</strong></td>
-                    <td tal:content="context/testEmail" />
-                  </tr>
-                  <tr>
-                    <td><strong>Liste Testempf&auml;nger:</strong></td>
-                    <td>
-                      <tal:block tal:repeat="item context/testRecipients">
-                        <span tal:replace="item" /><br />
-                      </tal:block>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div class="btn-group pull-right">
-                <a href="" class="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown">
-                  <i class="icon-pencil icon-white" />
-                  Bearbeiten
-                  <span class="caret"></span>
-                </a>
-                  <ul class="dropdown-menu">
-                    <li><a href=""
-                          tal:attributes="href python:context_url + '/@@update-pr-template'">
-                        <i class="icon-edit" />
-                        Template Pressemitteilung</a></li>
-                    <li><a href=""
-                          tal:attributes="href python:context_url + '/@@update-pi-template'">
-                        <i class="icon-edit" />
-                        Template Presseeinladung</a></li>
-                    <li><a href=""
-                          tal:attributes="href python:context_url + '/@@update-stylesheet'">
-                        <i class="icon-edit" />
-                        CSS Vorlage</a></li>
-                  </ul>
-              </div>
-              <h2>E-Mail Templates / CSS Vorgaben <small>Versandvorlagen</small></h2>
-              <div class="tile">
-                <a class="btn  btn-small btn-info show-details pull-right">
-                    <i class="icon-arrow-down icon-white" />
-                    Details einblenden</a>
-                    <div class="xbox details visualClear">
-                        <div class="visualClear">&nbsp;</div>
-                        <pre tal:content="context/stylesheet" />
+          <div class="row">
+            <div class="span9">
+              <div class="window-column">
+              <div class="window-column-content">
+                <div class="row">
+                  <div class="span3">
+                    <div class="stats widget">
+                      <div class="stat inverse">
+                        <h2><i class="icon-inbox icon-2x"></i></h2>
+                        <h6>Versandvorlagen</h6>
+                      </div>
                     </div>
-              <h4>CSS / Stylesheet</h4>
+                  </div>
+                  <div class="span9">
+                    <h2>E-Mail Templates / CSS Vorgaben</h2>
+                    <p class="lead" i18n:translate="">
+                      Manage the layout of dispatched pressreleases and pressinvitations by
+                      adjusting the attached stylesheet (css) or by editing
+                      the email templates.
+                    </p>
+                  </div>
+                </div>
+              <hr>
+              <div class="visualClear">
+                <a href="" class="pull-right"
+                  tal:attributes="href python:context_url + '/@@update-stylesheet'">
+                  <i class="icon-edit"></i>
+                  bearbeiten</a>
+                <h4>CSS / Stylesheet</h4>
+                <p>The cascading stylesheet that will be attached to the head
+                  element of html formatted emails based on the capabilities of
+                  current email clients</p>
+                <button class="btn  btn-small"
+                  href="#recipients"
+                  data-toggle="collapse"
+                  data-target="#settings-css">
+                    Details einblenden
+                </button>
+                <div class="collapse" id="settings-css">
+                    <pre tal:content="context/stylesheet" />
+                </div>
               </div>
-              <div class="tile">
-                <a class="btn  btn-small btn-info show-details pull-right">
-                    <i class="icon-arrow-down icon-white" />
-                    Details einblenden</a>
-                    <div class="xbox details visualClear">
-                        <div class="visualClear">&nbsp;</div>
-                        <pre tal:content="context/mailtemplate" />
-                    </div>
-              <h4>Pressemitteilung</h4>
+              <hr>
+              <div class="visualClear">
+                <a href="" class="pull-right"
+                  tal:attributes="href python:context_url + '/@@update-pr-template'">
+                  <i class="icon-edit"></i>
+                  bearbeiten</a>
+                <h4>E-Mail-Vorlage Pressemitteilungen</h4>
+                <p>This template will be parsed for each press release and details
+                  will be inserted via variable substitution when dispatched.
+                </p>
+                <button class="btn  btn-small"
+                  href="#recipients"
+                  data-toggle="collapse"
+                  data-target="#settings-pr-template">
+                    Details einblenden
+                </button>
+                <div class="collapse" id="settings-pr-template">
+                    <pre tal:content="context/mailtemplate" />
+                </div>
               </div>
-              <div class="tile">
-                <a class="btn  btn-small btn-info show-details pull-right">
-                    <i class="icon-arrow-down icon-white" />
-                    Details einblenden</a>
-                    <div class="xbox details visualClear">
-                        <div class="visualClear">&nbsp;</div>
-                        <pre tal:content="context/mailtemplate_pi" />
-                    </div>
-              <h4>Presseeinladung</h4>
+              <hr>
+              <div class="visualClear">
+                <a href="" class="pull-right"
+                  tal:attributes="href python:context_url + '/@@update-pi-template'">
+                  <i class="icon-edit"></i>
+                  bearbeiten</a>
+                <h4>E-Mail-Vorlage Presseeinladungen</h4>
+                <p>This template will be parsed for each press invititaion and details
+                  will be inserted via variable substitution when dispatched.
+                </p>
+                <button class="btn  btn-small"
+                  href="#recipients"
+                  data-toggle="collapse"
+                  data-target="#settings-pi-template">
+                    Details einblenden
+                </button>
+                <div class="collapse" id="settings-pi-template">
+                    <pre tal:content="context/mailtemplate_pi" />
+                </div>
               </div>
           </div>
           </div>
+          </div>
+          <div class="span3">
+            <aside id="sidebar">
+              <h4>Globale Einstellungen</h4>
+              <hr>
+              <div class="box-editable">
+                <small class="pull-right">
+                    <a href="#" class="link-editable"
+                      tal:attributes="href python:context_url + '/@@update-settings'">
+                      <i class="icon-edit"></i> bearbeiten
+                    </a>
+                </small>
+                <h5>Absenderadresse</h5>
+                <p tal:content="context/email" />
+                <h5>Absendername</h5>
+                <p tal:content="context/name" />
+                <h5>Standard Testempf&auml;nger</h5>
+                <p tal:content="context/testEmail" />
+                <h5>Liste Testempf&auml;nger</h5>
+                <p> <tal:block tal:repeat="item context/testRecipients">
+                      <span tal:replace="item" /><br />
+                    </tal:block>
+                </p>
+              </div>
+              <hr>
+            </aside>
+          </div>
+        </div>
         </section>
         
     </div>
