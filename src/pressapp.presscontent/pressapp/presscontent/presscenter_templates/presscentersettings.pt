@@ -23,6 +23,7 @@
         
         <section id="content-core">
           <div class="window-column">
+          <div class="window-column-content">
           <a class="btn btn-primary pull-right"
                     tal:attributes="href python:context_url+'/@@update-settings'">
                     <i class="icon-edit icon-white" />
@@ -106,6 +107,7 @@
                     </div>
               <h4>Presseeinladung</h4>
               </div>
+          </div>
           </div>
         </section>
         

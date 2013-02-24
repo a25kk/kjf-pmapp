@@ -4640,6 +4640,8 @@ input.standalone {
   color: #ffffff;
   background-color: #a7a9aa;
   border-color: #a7a9aa;
+  border-radius: 0px;
+  text-shadow: none;
 }
 input.context:focus,
 input.destructive:focus,
@@ -4923,6 +4925,8 @@ input.standalone {
   color: #ffffff;
   background-color: #a7a9aa;
   border-color: #a7a9aa;
+  border-radius: 0px;
+  text-shadow: none;
 }
 input.context:focus,
 input.standalone:focus {
@@ -5905,6 +5909,10 @@ body #content-wrapper {
 body.template-login_form #content-wrapper {
   margin-top: 50px;
 }
+.btn {
+  border-radius: 0px;
+  text-shadow: none;
+}
 .btn-primary {
   background-color: #50a0b0;
   border-color: #50a0b0;
@@ -5932,6 +5940,7 @@ input.destructive {
   color: #ffffff;
   background-color: #a7a9aa;
   border-color: #a7a9aa;
+  border-radius: 0px;
   text-shadow: none;
 }
 input.context:focus,
