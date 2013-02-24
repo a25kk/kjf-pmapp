@@ -48,6 +48,12 @@
                 </div>
             </div>
             <h1>Presseeinladung</h1>
+            <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+            </p>
         </div>
         <div class="window-toolbar"
           tal:define="context_url context/absolute_url;">
@@ -88,9 +94,10 @@
           </div>
         </div>
   <section id="content-core">
-    <div class="row-fluid">
+    <div class="row">
     <div class="span9">
       <div class="window-column">
+        <div class="window-column-content">
         <h1 class="documentFirstHeading" tal:content="context/Title" />
         
         <div tal:condition="context/text"
@@ -107,6 +114,7 @@
           <strong>Link: </strong>
           <pre tal:content="context/directions" />
         </div>
+      </div>
       </div>
     </div>
     <div class="span3" tal:define="modified context/modified">
