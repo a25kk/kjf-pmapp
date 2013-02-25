@@ -10,20 +10,25 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
     
-    <p class="pull-right">
+    <header class="page-header" id="page-header">
+        <div class="pull-right">
+            <h4>E-Mail-Adresse</h4>
           <a
             tal:define="context_url context/absolute_url;"
             tal:attributes="href python:context_url+'/@@edit-subscriber'">
             <i class="icon-edit" />
               Bearbeiten</a>
-    </p>
+        </div>
     
-    <h1 class="documentFirstHeading">Kontaktinformationen
-        <small tal:content="context/Title" /></h1>
+        <h1 class="documentFirstHeading">Kontaktinformationen</h1>
+        <p class="discreet" tal:content="context/Title" />
+    </header>
+
+    <section id="content-core">
     
-    <div class="row-fluid">
-        <div class="span6">
-        <section class="box">
+    <div class="row">
+        <div class="span9">
+        <section class="window-column">
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -63,16 +68,16 @@
             </table>
         </section>
         </div>
-        <div class="span6">
-            <div class="box">
-                <h3>Verteiler:
-                    <small>
-                        <tal:block tal:repeat="item view/selected_channels">
-                            <span class="badge badge-success" tal:content="item/channelname" />
-                        </tal:block>
-                    </small>
-                </h3>
-                <div class="visualClear">&nbsp;</div>
+        <div class="span3">
+            <div class="sidebar">
+                <h4>Verteiler:
+                </h4>
+                <p>
+                    <tal:block tal:repeat="item view/selected_channels">
+                        <span class="coutner badge-success" tal:content="item/channelname" />
+                    </tal:block>
+                </p>
+                <hr class="visualClear" />
                 <div class="form-inline"
                      tal:define="channels view/channels">
                     <div class="controls"
@@ -92,7 +97,7 @@
             </div>
         </div>
     </div>
-    
+    </section>
   </metal:content-core>
 </metal:main>
 
