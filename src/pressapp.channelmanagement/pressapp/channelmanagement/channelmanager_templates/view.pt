@@ -18,11 +18,15 @@
                     channel_url channel/getURL">
     
     <div class="page-header" id="page-header">
+      <div class="pull-right">
+        <h4>Übersicht</h4>
         <a class="btn btn-small btn-primary pull-right"
                 tal:attributes="href python:channel_url+'/@@add-subscriber'">
                 <i class="icon-plus-sign icon-white" />
                   Neuen Kontakt anlegen</a>
-        <h1>Administration: Adressen</h1>
+      </div>
+        <h1>Adressen</h1>
+        <p class="discreet">Adminsitration Verteiler und Adressen</p>
     </div>
 
     <section id="content-core">

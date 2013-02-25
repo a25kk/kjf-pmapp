@@ -14,17 +14,16 @@
         tal:define="portal_state context/@@plone_portal_state;
                     portal_url portal_state/portal_url;
                     context_url context/absolute_url;">
-        
-        <p class="pull-right">
-            <a href=""
-                tal:attributes="href context_url">&Uuml;bersicht </a>
-        </p>
-        
-        <div class="page-header">
-          <h1 class="documentFirstHeading">Verteilerinformationen
-              <small tal:content="view/channelname" /></h1>
+        <div class="page-header" id="page-header">
+          <div class="pull-right">
+            <h4>&Uuml;bersicht </h4>
+          </div>
+
+          <h1 class="documentFirstHeading">Verteilerinformationen</h1>
+          <p class="discreet" tal:content="view/channelname" />
         </div>
 
+        <section id="content-core">
         <div class="row">
             <div class="span6">
                 <div class="well">
@@ -126,7 +125,7 @@
                   </table>
             </div>
         </section>
-        
+      </section>
     </div>
     
   </metal:content-core>
