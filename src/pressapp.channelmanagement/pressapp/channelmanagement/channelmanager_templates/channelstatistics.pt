@@ -16,23 +16,22 @@
                     context_url context/absolute_url;">
         
         <div class="page-header" id="page-header">
-            <h1>Statistiken
-                <small>Verteiler und Kontakte</small>
-            </h1>
+            <h1>Verteiler</h1>
+            <p><small>Verteiler und Kontakte</small></p>
         </div>
         <section id="content-core">
         <div class="window-column">
         <div class="row">
             <section tal:define="items view/statistic_data">
                 <tal:block tal:repeat="item items">
-                    <div class="span5 box pull-left">
+                    <div class="span6">
                         <h5 class="pull-left" tal:content="item/name">Test</h5>
-                        <a class="btn  btn-small btn-info show-details pull-right">
+                        <a class="btn btn-small btn-info show-details pull-right">
                             <i class="icon-arrow-down icon-white" />
                             Details einblenden</a>
-                        <div class="xbox details visualClear">
+                        <div class="xbox xdetails visualClear">
                             <div class="visualClear">&nbsp;</div>
-                            <div class="tile stats">
+                            <div class="tile">
                                 <form class="xpull-right"
                                     tal:attributes="action python:context_url+'/@@channel-information'">
                                     <input href="" class="btn btn-small pull-right"
