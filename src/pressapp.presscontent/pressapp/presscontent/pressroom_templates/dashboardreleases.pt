@@ -32,100 +32,91 @@
     </div>
 
     <section id="content-core">
-      <div class="container-fluid"
+    <div class="row">
+      <div class="span9">
+      <div class="window-column"
             tal:define="context_url context/absolute_url;
                         toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
         <tal:block tal:condition="view/has_pressreleases">
-          <div class="tile" tal:repeat="item view/contained_pressreleases">
-            <div class="row-fluid">
-              <div class="span1">
-                <h2><i class="icon-file icon-large"></i></h2>
+          <div class="tile-wrapper"
+                      tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                              b_size python:int(request.get('b_size', 20));
+                              b_start python:int(request.get('b_start', 0));
+                              items view/contained_pressreleases;
+                              items_count python:len(items);
+                              batch python:Batch(items, b_size, b_start);">
+            <div class="tile" tal:repeat="item batch">
+            <div class="row">
+              <div class="span2">
+                 <h6 tal:define="item_type item/portal_type"
+                    tal:content="python:view.get_type_info(item_type)"
+                    i18n:translate="">Item Type
+                  </h6>
+                  <p>
+                    <small tal:define="state item/review_state"
+                        tal:content="python:view.get_state_info(state)"
+                        i18n:translate="">Unpublished</small>
+                  </p>
               </div>
-              <div class="span7">
-                <h3 tal:define="state item/review_state">
-                  <a tal:attributes="href item/getURL"
-                    tal:content="item/Title">Document 23-07-2012, Revision-003</a>
-                    <small tal:content="state"
-                      i18n:domain="plone"
-                      i18n:translate="">Unpublished</small></h3>
-                <!--<p>Internal use only - first draft of final evaluation context</p>-->
-                <p class="muted"><i class="icon-info-sign"></i>
-                  <small tal:define="modified context/modified">
+              <div class="span6">
+                <h4 tal:content="item/Title" />
+                <p>
+                  <small tal:define="modified item/modified">
                     Zuletzt verändert:
-                    <span tal:content="python:toLocalizedTime(modified)">
-                    Release Info</span></small>
+                    <span tal:content="modified"
+                      tal:attributes="data-appui string:prettydate;
+                                      title modified" />
+                  </small>
                 </p>
               </div>
               <div class="span4">
-                <div class="btn-group" tal:define="item_url item/getURL">
-                  <a class="btn btn-small"
-                      tal:attributes="href python:item_url+'/@@edit-press-release'">
-                      Bearbeiten</a>
-                  <a class="btn btn-small"
-                      tal:attributes="href python:item_url+'/view'">
-                      Anzeigen</a>
-                </div>
+                <a href="" class="btn btn-mini pull-right"
+                  tal:attributes="href item/getURL">Bearbeiten</a>
               </div>
+            </div>
             </div>
           </div>
         </tal:block>
 
-          <div class="box">
-                  <p class="pull-right">
-                      <a class="btn btn-primary"
-                        rel="loading-indicator"
-                        data-loading-text="Wird geladen..."
-                          tal:attributes="href python:context_url+'/@@add-press-release'">
-                            <i class="icon-plus-sign icon-white" />
-                            Neu anlegen</a>
-                  </p>
-                  <h2>Pressemitteilungen</h2>
-                  <table class="table table-striped" tal:condition="view/has_pressreleases">
-                      <thead>
-                          <tr>
-                              <th>#</th>
-                              <th>Pressemitteilung</th>
-                              <th>Status</th>
-                              <th>Zuletzt ver&auml;ndert</th>
-                              <th>Aktionen</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tal:block tal:repeat="item view/contained_pressreleases">
-                          <tr tal:define="counter repeat/item/number">
-                              <td tal:content="counter">1.</td>
-                              <td><a href="#" tal:content="item/Title"
-                                    tal:attributes="href item/getURL">
-                                    PR Title</a></td>
-                              <td><span class="label info">Neu</span></td>
-                              <td tal:define="modified item/modified"
-                                tal:content="python:toLocalizedTime(modified)"></td>
-                              <td tal:define="item_url item/getURL">
-                                  <div class="btn-group">
-                                    <a class="btn btn-small"
-                                        tal:attributes="href python:item_url+'/@@edit-press-release'">
-                                        <i class="icon-edit" />
-                                        Bearbeiten</a>
-                                    <a class="btn btn-small"
-                                        tal:attributes="href python:item_url+'/view'">
-                                        <i class="icon-eye-open" />
-                                        Anzeigen</a>
-                                  </div>
-                               </td>
-                          </tr>
-                          </tal:block>
-                      </tbody>
-                  </table>
-                  
-                   <div class="alert alert-block"
-                        tal:condition="not:view/has_pressreleases">
-                        <a class="close" href="#">×</a>
-                        <p><strong>Hinweis:</strong>
-                            Im Augenblick liegen keine Pressemitteilungen vor.</p>
-                   </div>
-         </div>
+        <tal:block tal:condition="not:view/has_pressreleases">
+          <div class="featurette dim-in two">
+            <div class="row">
+              <div class="span9">
+                <h2 i18n:translate="">Pressrelease listing</h2>
+                <p class="lead" i18n:translate="">
+                  This dashboard shows all press releases available for your user.
+                  There are no releases available yet.
+                </p>
+                <p class="lead" i18n:translate="">
+                  Add your first press release to start working with the
+                  press tool.</p>
+              </div>
+              <div class="span3">
+                <a class="stats widget"
+                  tal:attributes="href python:context_url + '/@@add-press-release'">
+                  <span class="stat primary">
+                    <span class="stat-header"><i class="icon-file-alt icon-2x"></i></span>
+                    <span class="stat-subheader" i18n:translate="">Add pressrelease</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </tal:block>
       </div>
+      </div>
+      <div class="span3">
+        <aside id="sidebar" tal:define="context_url context/absolute_url">
+          <h4>Information</h4>
+          <a class="btn btn-primary btn-block"
+            rel="loading-indicator"
+            data-loading-text="Wird geladen..."
+              tal:attributes="href python:context_url+'/@@add-press-release'">
+                Neu anlegen</a>
+        </aside>
+      </div>
+    </div>
     </section>          
     
   </metal:content-core>

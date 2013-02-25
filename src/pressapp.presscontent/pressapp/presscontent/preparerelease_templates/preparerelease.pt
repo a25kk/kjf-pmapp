@@ -15,19 +15,14 @@
     class="container-fluid">
     
     <div class="page-header" id="page-header">
-        <div class="btn-toolbar pull-right"
+        <div class="pull-right"
             tal:define="context_url context/absolute_url;">
-            <div class="btn-group">
-                <a href="" class="btn"
-                    tal:attributes="href python:context_url+'/@@select-channel'">
-                    Verteiler w&auml;hlen</a>
-                <a href="" class="btn"
-                    tal:attributes="href python:context_url+'/@@recipient-list'">
-                    Empf&auml;nger bereinigen</a>
-                <a href="" class="btn"
-                    tal:attributes="href python:context_url+'/@@prepare-release'">
-                    Versand planen</a>
-            </div>
+                <a href=""
+                  rel="twipsy"
+                  data-original-title="Abbrechen"
+                    tal:attributes="href context_url">
+                    <i class="icon-remove-sign icon-2x"></i>
+                </a>
         </div>
         
         <h1>Versand vorbereiten</h1>
@@ -78,18 +73,17 @@
                     <div class="span9">
                       <h2 i18n:translate="">Newsletter Abonnenten</h2>
                       <p class="lead">
-                        Newletter Abonnenten, die ebenfalls Pressemitteilungen
-                        erhalten
+                        Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
+                        und können sich aktiv an- und abmelden
                       </p>
                     </div>
                     <div class="span3">
-                      <a class="stats widget"
-                        tal:attributes="href python:context_url + '/@@add-press-invitation'">
+                      <div class="stats widget">
                         <span class="stat primary">
                           <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
                           <span class="stat-subheader" tal:content="view/subscriber_count">Recipients</span>
                         </span>
-                      </a>
+                      </div>
                     </div>
                   </div>
                   <button type="button" class="btn"

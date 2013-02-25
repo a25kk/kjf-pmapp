@@ -100,6 +100,18 @@ class DashboardReleases(grok.View):
         items = IContentListing(results)
         return items
 
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def get_type_info(self, itemtype):
+        info = _(u"Pressrelease")
+        if itemtype == 'pressapp.presscontent.pressinvitation':
+            info = _(u"Pressinvitation")
+        return info
+
 
 class DashboardInvitations(grok.View):
     grok.context(IPressRoom)

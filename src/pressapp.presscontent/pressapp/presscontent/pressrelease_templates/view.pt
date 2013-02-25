@@ -185,12 +185,12 @@
                       <a href=""
                           class="xxbtn"
                           tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
-                          <i class="icon-edit" />
+                          <i class="icon-edit"></i>
                           Bearbeiten</a>
                       <a href=""
                           class="xxbtn popoverLink link-overlay"
                           tal:attributes="href string:${item/getURL}/delete_confirmation">
-                          <i class="icon-remove-sign" />
+                          <i class="icon-remove-sign"></i>
                           L&ouml;schen</a>
                     </p>
                   </td>
@@ -223,7 +223,7 @@
                       <a href=""
                         class="btn btn-small btn-inverse"
                         tal:attributes="href string:${item/getURL}/at_download/image">
-                        <i class="icon-download icon-white" />
+                        <i class="icon-download icon-white"></i>
                         Download</a>
                       </div>
                     </div>

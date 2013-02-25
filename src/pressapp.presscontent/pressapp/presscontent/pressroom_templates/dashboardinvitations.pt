@@ -14,19 +14,11 @@
                        toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
       
     <header class="page-header" id="page-header">
-        <div class="btn-toolbar pull-right"
+        <div class="pull-right"
             tal:define="context_url context/absolute_url;">
-            <div class="btn-group">
-                <a class="btn"
-                  rel="loading-indicator"
-                  data-loading-text="Wird geladen..."
-                  tal:attributes="href python:context_url+'/@@add-press-invitation'">
-                  <i class="icon-plus-sign icon-white" />
-                    Neu anlegen
-                </a>
-            </div>
+            <h4 tal:content="context/Title" />
         </div>
-        <h1>Presseeinladungen: <small tal:content="context/Title" /></h1>
+        <h1>Presseeinladungen</h1>
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
               <span tal:content="time"
@@ -35,10 +27,13 @@
         </p>
     </header>
     <section id="content-core">
-      <div class="container-fluid">
-          <div class="box">
+    <div class="row">
+      <div class="span9">
+      <div class="window-column">
+        <div class="window-column-content">
+          <div class="box"  tal:condition="view/has_pressinvitations">
                   <h2>Presseeinladungen</h2>
-                  <table class="table table-striped" tal:condition="view/has_pressinvitations">
+                  <table class="table table-striped">
                       <thead>
                           <tr>
                               <th>#</th>
@@ -76,15 +71,52 @@
                           </tal:block>
                       </tbody>
                   </table>
-                  
-                   <div class="alert-message block-message info"
-                        tal:condition="not:view/has_pressinvitations">
-                        <a class="close" href="#">×</a>
-                        <p><strong>Hinweis:</strong>
-                            Im Augenblick liegen keine Presseeinladungen vor.</p>
-                   </div>
          </div>
+         <tal:block tal:condition="not:view/has_pressinvitations">
+              <div class="featurette dim-in two">
+                <div class="row">
+                  <div class="span9">
+                    <h2 i18n:translate="">Pressinvitations</h2>
+                    <p class="lead" i18n:translate="">
+                      This dashboard displays all press invitations associated
+                      with you account.
+                      Add your first pressinvitation to initialize your
+                      workspace.
+                    </p>
+                  </div>
+                  <div class="span3">
+                    <a class="stats widget"
+                      tal:attributes="href python:context_url + '/@@add-press-invitation'">
+                      <span class="stat primary">
+                        <span class="stat-header"><i class="icon-calendar icon-2x"></i></span>
+                        <span class="stat-subheader" i18n:translate="">Add pressinvitation</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </tal:block>
+        </div>
       </div>
+      </div>
+      <div class="span3">
+        <aside id="sidebar">
+          <div class="stats widget">
+            <div class="stat inverse">
+              <h2>0</h2>
+              <h6>Presseeinladungen</h6>
+            </div>
+          </div>
+          <hr>
+          <a class="btn btn-block"
+            rel="loading-indicator"
+            data-loading-text="Wird geladen..."
+              tal:attributes="href python:context_url+'/@@add-press-invitation'">
+                Presseeinladung erstellen
+          </a>
+        </aside>
+      </div>
+    </div>
     </section>       
   </article>
   </metal:content-core>
