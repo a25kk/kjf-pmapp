@@ -12,7 +12,7 @@
     
     <header class="page-header" id="page-header">
         <div class="pull-right">
-            <h4>E-Mail-Adresse</h4>
+            <h4>Kontaktinformationen</h4>
           <a
             tal:define="context_url context/absolute_url;"
             tal:attributes="href python:context_url+'/@@edit-subscriber'">
@@ -20,8 +20,13 @@
               Bearbeiten</a>
         </div>
     
-        <h1 class="documentFirstHeading">Kontaktinformationen</h1>
-        <p class="discreet" tal:content="context/Title" />
+        <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
+        <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
     </header>
 
     <section id="content-core">

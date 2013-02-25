@@ -6,7 +6,6 @@ from zope.schema import getFieldsInOrder
 from zope.lifecycleevent import modified
 from plone.directives import form
 from z3c.form import button
-from plone.namedfile.field import NamedBlobFile
 from plone.dexterity.interfaces import IDexterityFTI
 from Products.CMFPlone.utils import safe_unicode
 
@@ -93,7 +92,7 @@ class SubscriberEditForm(form.SchemaEditForm):
     def getContent(self):
         context = aq_inner(self.context)
         fti = getUtility(IDexterityFTI,
-                name='pressapp.channelmanagement.subscriber')
+                         name='pressapp.channelmanagement.subscriber')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         data = {}
@@ -106,7 +105,7 @@ class SubscriberEditForm(form.SchemaEditForm):
         context = aq_inner(self.context)
         assert ISubscriber.providedBy(context)
         fti = getUtility(IDexterityFTI,
-                name='pressapp.channelmanagement.subscriber')
+                         name='pressapp.channelmanagement.subscriber')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         for key, value in fields:
