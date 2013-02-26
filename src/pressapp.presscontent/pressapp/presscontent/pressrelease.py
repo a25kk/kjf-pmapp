@@ -1,6 +1,7 @@
 import json
 from Acquisition import aq_inner
 from five import grok
+from plone import api
 from plone.directives import form
 
 from zope import schema
@@ -8,7 +9,8 @@ from zope.schema.vocabulary import getVocabularyRegistry
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 
-from zope.app.component.hooks import getSite
+from zope.lifecycleevent import modified
+
 from plone.app.textfield import RichText
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedBlobImage
@@ -175,8 +177,7 @@ class View(grok.View):
 
     def constructPreviewURL(self):
         context = aq_inner(self.context)
-        portal = getSite()
-        portal_url = portal.absolute_url()
+        portal_url = api.portal.get().absolute_url()
         uuid = IUUID(context, None)
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
@@ -281,6 +282,8 @@ class ArchiveSettings(grok.View):
                 'state': 'changed',
                 'transitions': (),
             }
+        modified(context)
+        context.reindexObject(idxs='modified')
         self.results = results
 
     def render(self):
