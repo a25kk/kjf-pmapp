@@ -127,6 +127,12 @@ class View(grok.View):
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
 
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
 
 class Preview(grok.View):
     grok.context(IPressInvitation)
@@ -150,7 +156,7 @@ class AsHtmlView(grok.View):
         data['link'] = member.getProperty('home_page', '')
         data['start'] = context.start
         data['end'] = context.end
-        if context.closed == True:
+        if context.closed is True:
             data['closed'] = _(u"Admittance for invited guests only")
         else:
             data['closed'] = ''

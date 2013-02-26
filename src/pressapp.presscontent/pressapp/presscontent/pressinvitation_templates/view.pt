@@ -11,41 +11,16 @@
   <metal:content-core define-macro="main">
     
     <section class="container-fluid"
-        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    context_state context/@@plone_context_state;
+                    item_state context_state/workflow_state;">
     
         <div class="page-header" id="page-header">
-            <div class="btn-toolbar pull-right"
-                tal:define="context_url context/absolute_url;
-                            has_channels view/has_channel_info;
-                            recipients view/has_recipients_info;">
-                <div class="btn-group">
-                    <a href="" class="btn"
-                        tal:attributes="href python:context_url+'/@@select-channel'">
-                        <i class="icon-list-alt" />
-                        Verteiler w&auml;hlen</a>
-                    <a href="" class="btn disabled"
-                        tal:condition="not: view/has_channel_info"
-                        rel="twipsy"
-                        data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                        <i class="icon-edit" />
-                        Empf&auml;nger bereinigen</a>
-                    <a href="" class="btn"
-                        tal:condition="python:has_channels == True"
-                        tal:attributes="href python:context_url+'/@@recipient-list'">
-                        <i class="icon-edit" />
-                        Empf&auml;nger bereinigen</a>
-                    <a href="" class="btn disabled"
-                        rel="twipsy"
-                        tal:condition="not:view/has_recipients_info"
-                        data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                        <i class="icon-share" />
-                        Versand planen</a>
-                    <a href="" class="btn"
-                        tal:condition="python:recipients == True"
-                        tal:attributes="href python:context_url+'/@@prepare-release'">
-                        <i class="icon-share" />
-                        Versand planen</a>
-                </div>
+            <div class="pull-right">
+              <h4 tal:content="python:view.get_state_info(item_state)">
+                Review State</h4>
+              <h5 tal:content="context/Creator">Test</h5>
+              
             </div>
             <h1>Presseeinladung</h1>
             <p tal:define="time context/modified" class="discreet">
@@ -155,6 +130,40 @@
               <span tal:replace="channel/channelname" />
             </p>
           </tal:block>
+          <hr>
+            <div class="btn-toolbar pull-right"
+                tal:define="context_url context/absolute_url;
+                            has_channels view/has_channel_info;
+                            recipients view/has_recipients_info;">
+                <div class="btn-group">
+                    <a href="" class="btn"
+                        tal:attributes="href python:context_url+'/@@select-channel'">
+                        <i class="icon-list-alt" />
+                        Verteiler w&auml;hlen</a>
+                    <a href="" class="btn disabled"
+                        tal:condition="not: view/has_channel_info"
+                        rel="twipsy"
+                        data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
+                        <i class="icon-edit" />
+                        Empf&auml;nger bereinigen</a>
+                    <a href="" class="btn"
+                        tal:condition="python:has_channels == True"
+                        tal:attributes="href python:context_url+'/@@recipient-list'">
+                        <i class="icon-edit" />
+                        Empf&auml;nger bereinigen</a>
+                    <a href="" class="btn disabled"
+                        rel="twipsy"
+                        tal:condition="not:view/has_recipients_info"
+                        data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
+                        <i class="icon-share" />
+                        Versand planen</a>
+                    <a href="" class="btn"
+                        tal:condition="python:recipients == True"
+                        tal:attributes="href python:context_url+'/@@prepare-release'">
+                        <i class="icon-share" />
+                        Versand planen</a>
+                </div>
+            </div>
           <div class="well" tal:content="nothing" tal:omit-tag="">
             <ul class="nav nav-list">
                 <li class="nav-header">Presseeinladung</li>
@@ -187,6 +196,7 @@
                           Verteiler bearbeiten</a>
                   </li>
             </ul>
+
           </div>
       </div>
       </div>
