@@ -1,11 +1,13 @@
 import datetime
-from Acquisition import aq_inner, aq_parent
+from DateTime import DateTime
+from Acquisition import aq_inner
 from five import grok
 from plone import api
 
+from zope import schema
+
 from plone.directives import form
 
-from zope import schema
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.site.hooks import getSite
@@ -135,16 +137,17 @@ class View(grok.View):
             info = _(u"sent")
         return info
 
+    def dispatched_date(self):
+        context = aq_inner(self.context)
+        date = context.EffectiveDate()
+        if not date or date == 'None':
+            return None
+        return DateTime(date)
+
     def user_details(self):
         context = aq_inner(self.context)
-        parent = aq_parent(context)
-        parent_id = parent.getId()
-        owner = context.getOwner()
-        try:
-            clean_id = parent_id.replace('--', '-')
-            user = api.user.get(username=clean_id)
-        except:
-            user = api.user.get(username=str(owner))
+        creator = context.Creator()
+        user = api.user.get(username=creator)
         fullname = user.getProperty('fullname')
         if fullname:
             return fullname
