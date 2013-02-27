@@ -20,7 +20,7 @@
               <h4 tal:content="python:view.get_state_info(item_state)">
                 Review State</h4>
               <h5 tal:content="context/Creator">Test</h5>
-              
+              <p tal:content="view/user_details" />
             </div>
             <h1>Presseeinladung</h1>
             <p tal:define="time context/modified" class="discreet">

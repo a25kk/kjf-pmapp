@@ -1,6 +1,8 @@
 import datetime
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_parent
 from five import grok
+from plone import api
+
 from plone.directives import form
 
 from zope import schema
@@ -132,6 +134,22 @@ class View(grok.View):
         if state == 'published':
             info = _(u"sent")
         return info
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        parent = aq_parent(context)
+        parent_id = parent.getId()
+        owner = context.getOwner()
+        try:
+            clean_id = parent_id.replace('--', '-')
+            user = api.user.get(username=clean_id)
+        except:
+            user = api.user.get(username=str(owner))
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
 
 
 class Preview(grok.View):
