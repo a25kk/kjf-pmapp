@@ -6068,6 +6068,11 @@ fieldset[disabled] input.destructive:active {
   background-color: #d9534f;
   border-color: #d9534f;
 }
+#main-logo {
+  font-family: 'Roboto Condensed';
+  font-weight: 700;
+  color: #eeeeee;
+}
 .splashbar {
   padding: 50px;
   text-align: center;
@@ -6100,6 +6105,7 @@ fieldset[disabled] input.destructive:active {
 #nav-bar {
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 0;
 }
 #nav-bar .navbar-inner {
   border-radius: 0;
@@ -6510,7 +6516,6 @@ fieldset[disabled] .window .window-content .tile:hover .btn:active {
   background-color: #eeeeee;
   color: #555555;
   padding: 10px;
-  border-radius: 6px;
   margin-bottom: 20px;
   text-align: center;
 }
