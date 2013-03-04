@@ -11,18 +11,10 @@
   <metal:content-core define-macro="main">
 
     <div class="page-header" id="page-header">
-      <div class="btn-toolbar pull-right"
-            tal:define="context_url context/absolute_url;">
-            <div class="btn-group">
-                <a class="btn xbtn-primary"
-                  rel="loading-indicator"
-                  data-loading-text="Wird geladen..."
-                  tal:attributes="href python:context_url+'/@@add-press-release'">
-                    <i class="icon-plus-sign icon-white" />
-                      Neu anlegen</a>
-            </div>
+      <div class="pull-right">
+        <h5 tal:content="context/Title" />
       </div>
-      <h1>Pressemitteilungen bearbeiten <small tal:content="context/Title" /></h1>
+      <h1>Pressemitteilungen</h1>
       <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
               <span tal:content="time"
@@ -37,7 +29,7 @@
       <div class="window-column"
             tal:define="context_url context/absolute_url;
                         toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
-
+        <div class="window-column-content">
         <tal:block tal:condition="view/has_pressreleases">
           <div class="tile-wrapper"
                       tal:define="Batch python:modules['Products.CMFPlone'].Batch;
@@ -104,16 +96,24 @@
             </div>
           </div>
         </tal:block>
+        </div>
       </div>
       </div>
       <div class="span3">
         <aside id="sidebar" tal:define="context_url context/absolute_url">
-          <h4>Information</h4>
+          <div class="stats widget">
+            <div class="stat inverse">
+              <h2 tal:content="view/content_index">0</h2>
+              <h6>Pressemitteilungen</h6>
+            </div>
+          </div>
+          <hr>
           <a class="btn btn-primary btn-block"
             rel="loading-indicator"
             data-loading-text="Wird geladen..."
               tal:attributes="href python:context_url+'/@@add-press-release'">
                 Neu anlegen</a>
+          <hr>
         </aside>
       </div>
     </div>

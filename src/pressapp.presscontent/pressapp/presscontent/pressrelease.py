@@ -1,4 +1,5 @@
 import json
+from DateTime import DateTime
 from Acquisition import aq_inner
 from five import grok
 from plone import api
@@ -181,6 +182,29 @@ class View(grok.View):
         uuid = IUUID(context, None)
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
+
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def dispatched_date(self):
+        context = aq_inner(self.context)
+        date = context.EffectiveDate()
+        if not date or date == 'None':
+            return None
+        return DateTime(date)
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        creator = context.Creator()
+        user = api.user.get(username=creator)
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
 
     def contained_attachments(self):
         context = aq_inner(self.context)

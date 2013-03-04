@@ -6102,15 +6102,15 @@ fieldset[disabled] input.destructive:active {
 .subheader h2 {
   color: #fff;
 }
-#nav-bar {
+#navbar {
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   border-radius: 0;
 }
-#nav-bar .navbar-inner {
+#navbar .navbar-inner {
   border-radius: 0;
 }
-#nav-bar .nav-user p {
+#navbar .nav-user p {
   padding: 10px;
 }
 #actionbar {
@@ -6569,30 +6569,36 @@ a.caltrigger {
 form.overlayForm {
   padding: 20px;
 }
-#login_form {
+#login_form,
+#mail_password {
   width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-#login_form label {
+#login_form label,
+#mail_password label {
   font-weight: bold;
   font-size: 16px;
 }
 #login_form input[type="text"],
-#login_form input[type="password"] {
+#mail_password input[type="text"],
+#login_form input[type="password"],
+#mail_password input[type="password"] {
   width: 245px;
   height: 24px;
   border-color: #333333;
   font-size: 16px;
   line-height: 22px;
 }
-#login_form #login-action {
+#login_form #login-action,
+#mail_password #login-action {
   padding-top: 20px;
   background: transparent;
   text-align: right;
 }
-#login_form #login-action input.context {
+#login_form #login-action input.context,
+#mail_password #login-action input.context {
   padding: 11px 14px;
   font-size: 17.5px;
   border-radius: 6px;
@@ -6603,26 +6609,41 @@ form.overlayForm {
   border-radius: 0px;
 }
 #login_form #login-action input.context:hover,
+#mail_password #login-action input.context:hover,
 #login_form #login-action input.context:focus,
-#login_form #login-action input.context:active {
+#mail_password #login-action input.context:focus,
+#login_form #login-action input.context:active,
+#mail_password #login-action input.context:active {
   background-color: #556371;
   border-color: #4a5663;
 }
 #login_form #login-action input.context.disabled:hover,
+#mail_password #login-action input.context.disabled:hover,
 #login_form #login-action input.context[disabled]:hover,
+#mail_password #login-action input.context[disabled]:hover,
 fieldset[disabled] #login_form #login-action input.context:hover,
+fieldset[disabled] #mail_password #login-action input.context:hover,
 #login_form #login-action input.context.disabled:focus,
+#mail_password #login-action input.context.disabled:focus,
 #login_form #login-action input.context[disabled]:focus,
+#mail_password #login-action input.context[disabled]:focus,
 fieldset[disabled] #login_form #login-action input.context:focus,
+fieldset[disabled] #mail_password #login-action input.context:focus,
 #login_form #login-action input.context.disabled:active,
+#mail_password #login-action input.context.disabled:active,
 #login_form #login-action input.context[disabled]:active,
-fieldset[disabled] #login_form #login-action input.context:active {
+#mail_password #login-action input.context[disabled]:active,
+fieldset[disabled] #login_form #login-action input.context:active,
+fieldset[disabled] #mail_password #login-action input.context:active {
   background-color: #607080;
   border-color: #607080;
 }
 #login_form #login-action input.context:hover,
+#mail_password #login-action input.context:hover,
 #login_form #login-action input.context:focus,
-#login_form #login-action input.context:active {
+#mail_password #login-action input.context:focus,
+#login_form #login-action input.context:active,
+#mail_password #login-action input.context:active {
   background-color: #202630;
   border-color: #161a20;
 }

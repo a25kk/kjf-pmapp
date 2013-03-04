@@ -104,36 +104,34 @@
                             <span tal:content="memberinfo/username">John Doe</span>
                             <b class="caret"></b>
                         </a>
-                        <ul class="dropdown-menu xnav-list">
+                        <ul class="dropdown-menu">
                             <li class="nav-header">
                                 Kontoeinstellungen</li>
                             <li tal:define="login memberinfo/login_time">
-                                <img tal:replace="structure memberinfo/portrait" /><br />
-                                <strong tal:content="memberinfo/organization" /><br />
-                                <span tal:replace="memberinfo/location" /><br />
-                                <span tal:replace="memberinfo/home_page" />
+                                <p>
+                                    <img tal:replace="structure memberinfo/portrait" /><br />
+                                    <strong tal:content="memberinfo/organization" /><br />
+                                    <span tal:replace="memberinfo/location" /><br />
+                                    <span tal:replace="memberinfo/home_page" />
+                                </p>
                             </li>
                             <li class="divider"></li>
                             <li tal:define="login memberinfo/login_time">
-                                Angemeldet:<br />
-                                <small>
-                                <span tal:replace="python:toLocalizedTime(login)" />,
-                                <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr</small>
+                                <p>Angemeldet:<br />
+                                    <small>
+                                    <span tal:replace="python:toLocalizedTime(login)" />,
+                                    <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr</small>
+                                </p>
                             </li>
                             <li class="divider"></li>
                             <li><a href=""
-                                tal:attributes="href python:home_folder + '/@@member-information'">
-                                <i class="icon-cog"></i>
+                                tal:attributes="href python:portal_url + '/@@personal-information'">
+                                <i class="icon-user" />
                                 Profil bearbeiten</a>
                             </li>
                             <li><a href=""
-                                tal:attributes="href home_folder">
-                                <i class="icon-home"></i>
-                                Mein Arbeitsplatz</a>
-                            </li>
-                            <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">
-                                <i class="icon-remove-sign"></i>
+                                <i class="icon-signout" />
                                 Abmelden</a>
                             </li>
                         </ul>

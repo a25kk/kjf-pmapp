@@ -91,6 +91,7 @@ class DashboardReleases(grok.View):
 
     def update(self):
         self.has_pressreleases = len(self.contained_pressreleases()) > 0
+        self.content_index = len(self.contained_pressreleases())
 
     def contained_pressreleases(self):
         context = aq_inner(self.context)
@@ -120,6 +121,7 @@ class DashboardInvitations(grok.View):
 
     def update(self):
         self.has_pressinvitations = len(self.contained_pressinvitations()) > 0
+        self.content_index = len(self.contained_pressinvitations())
 
     def contained_pressinvitations(self):
         context = aq_inner(self.context)

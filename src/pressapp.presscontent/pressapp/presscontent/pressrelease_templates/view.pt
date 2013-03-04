@@ -60,7 +60,7 @@
         </p>
     </div>
 
-  <div class="window-toolbar">
+  <div class="window-toolbar" tal:content="nothing">
       <div class="navbar">
         <ul class="nav">
           <li>
@@ -256,7 +256,16 @@
     
       <div class="span3" tal:define="modified context/modified">
         <aside id="sidebar">
+          <div class="box-editable">
+            <small class="pull-right">
+              <a class="link-editable"
+                tal:attributes="href python:context_url+'/@@edit-press-release'">
+                <i class="icon-edit" />
+                Bearbeiten</a>
+            </small>
+          </div>
           <h4>Informationen</h4>
+          <h5 tal:content="context/Title" />
           <p class="muted">Zuletzt ver&auml;ndert:
             <span tal:replace="python:toLocalizedTime(modified)" />,
             <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
@@ -321,6 +330,15 @@
                 i18n:translate="">Select channels</a>
             </p>
           </div><!-- /channels -->
+          <hr>
+          <p class="discreet">
+            <span i18n:translate="">If you no longer need this item</span>
+            <a href="" class="text-error"
+              i18n:translate=""
+              tal:attributes="href python:context_url + '/delete_confirmation'">
+              you can delete it
+            </a>.
+          </p>
         </aside>
       </div>
     </div>
