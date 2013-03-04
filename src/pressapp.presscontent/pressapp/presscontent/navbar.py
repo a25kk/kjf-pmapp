@@ -30,6 +30,11 @@ class NavBarViewlet(grok.Viewlet):
         self.context_url = context.absolute_url()
         self.parent_url = aq_parent(context).absolute_url()
 
+    def channel_index(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        channels = catalog.uniqueValuesFor('channel')
+        return len(channels)
+
     def pr_index(self):
         items = self.get_data(ptype='pressapp.presscontent.pressrelease')
         return len(items)

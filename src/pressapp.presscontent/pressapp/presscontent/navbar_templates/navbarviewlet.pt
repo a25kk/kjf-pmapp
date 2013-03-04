@@ -39,14 +39,14 @@
                         <i class="icon-calendar icon-white" />
                         Presseeinladungen
                         </a>
-                    </li>
+                    </li>-->
                     <li class="divider-vertical"></li>
                     <li><a href=""
-                            tal:attributes="href python:home_folder+'/@@dashboard-statistics'">
+                            tal:attributes="href python:portal_url+'/@@press-archive'">
                         <i class="icon-share-alt icon-white" />
-                            Statistik
+                            Archiv
                         </a>
-                    </li>-->
+                    </li>
                     <li class="divider-vertical"></li>
                     <li class="dropdown" tal:condition="viewlet/is_administrator">
                         <a href="/" class="dropdown-toggle"
@@ -73,6 +73,13 @@
                                     tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
                                 <i class="icon-user"></i>
                                 Redakteure
+                                </a>
+                            </li>
+                            <li>
+                                <a href=""
+                                    tal:attributes="href python:portal_url+'/presscenter/@@dashboard-statistics'">
+                                <i class="icon-bar-chart"></i>
+                                    Statistik
                                 </a>
                             </li>
                             <li><a href=""
@@ -139,6 +146,7 @@
 <div id="subnavbar">
     <div class="navbar"
         tal:define="memberinfo viewlet/memberinfo;
+                    portal_url viewlet/portal_url;
                     home_folder memberinfo/home_url">
         <ul class="nav xnav-pills pull-right" id="section-nav">
             <li><a href=""
@@ -157,13 +165,21 @@
                     Presseeinladungen
                 </a>
             </li>
-            <li>
+            <li><a href=""
+                    tal:attributes="href python:portal_url+'/presscenter/kontakte'">
+                    <span class="counter"
+                        id="counter-pi"
+                        tal:content="viewlet/channel_index">76</span>
+                    Verteiler
+                </a>
+            </li>
+            <!--<li>
                 <a href=""
                     tal:attributes="href python:home_folder+'/@@dashboard-statistics'">
                 <i class="icon-bar-chart"></i>
                     Statistik
                 </a>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>
