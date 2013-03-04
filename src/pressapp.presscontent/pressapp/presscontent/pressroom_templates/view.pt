@@ -11,24 +11,11 @@
   <metal:content-core define-macro="main"
     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
     <div class="page-header" id="page-header">
-        <div class="btn-toolbar pull-right"
+        <div class="pull-right"
             tal:define="context_url context/absolute_url;">
-            <div class="btn-group">
-                <a class="btn"
-                  rel="loading-indicator"
-                  data-loading-text="Wird geladen..."
-                  tal:attributes="href python:context_url+'/@@add-press-release'">
-                      <i class="icon-plus-sign icon-white"></i>
-                    Pressemitteilung</a>
-                <a class="btn"
-                  rel="loading-indicator"
-                  data-loading-text="Wird geladen..."
-                  tal:attributes="href python:context_url+'/@@add-press-invitation'">
-                  <i class="icon-plus-sign icon-white"></i>
-                  Presseeinladung</a>
-            </div>
+            <h4><span tal:replace="context/Title" /></h4>
         </div>
-        <h1>Arbeitsplatz <span tal:replace="context/Title" /></h1>
+        <h1>Arbeitsplatz</h1>
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
               <span tal:content="time"

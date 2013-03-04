@@ -21,10 +21,47 @@
         </div>
         <section id="content-core">
         <div class="window-column">
-        <div class="row">
             <section tal:define="items view/statistic_data">
+                <div class="row">
                 <tal:block tal:repeat="item items">
                     <div class="span6">
+
+                        <div class="featurette dim-in two">
+                            <div class="row">
+                              <div class="span9">
+                                <h3 tal:content="item/name">Channel</h3>
+                                <p>
+                                  <span class="badge badge-info" tal:content="item/pr_count" />
+                                  Pressemitteilungen
+                                </p>
+                                <p>
+                                    <span class="badge badge-info" tal:content="item/pi_count" />
+                                    Presseeinladungen
+                                </p>
+                              </div>
+                              <div class="span3">
+                                <div class="stats widget">
+                                  <span class="stat primary">
+                                    <span class="stat-header"><i class="icon-envelope-alt"></i></span>
+                                    <span class="stat-subheader"><span class="badge badge-info" tal:content="item/subscriber" /></span>
+                                  </span>
+                                </div>
+                                <form class="xpull-right"
+                                    tal:attributes="action python:context_url+'/@@channel-information'">
+                                    <input href="" class="btn btn-small btn-block"
+                                        type="submit" value="Anzeigen" />
+                                    <input name="channeltrigger" id="channeltrigger" type="hidden"
+                                        class="large uneditable-input"
+                                        value="Kontakte" />
+                                    <input name="channelname" id="channelname" type="hidden"
+                                        class="large uneditable-input"
+                                        tal:attributes="value item/channel" />
+                                </form>
+                              </div>
+                            </div>
+                        </div>
+
+                        <tal:comment tal:content="nothing">
                         <h5 class="pull-left" tal:content="item/name">Test</h5>
                         <a class="btn btn-small btn-info show-details pull-right">
                             <i class="icon-arrow-down icon-white" />
@@ -55,10 +92,12 @@
                                     Presseeinladungen</h5>
                             </div>
                         </div>
+                        </tal:comment>
                     </div>
                 </tal:block>
+                </div>
             </section>
-        </div>
+
         <div class="visualClear"><!-- --></div>
         </div>
         </section>

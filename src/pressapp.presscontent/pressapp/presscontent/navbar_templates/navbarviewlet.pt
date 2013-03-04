@@ -43,7 +43,7 @@
                     <li class="divider-vertical"></li>
                     <li><a href=""
                             tal:attributes="href python:portal_url+'/@@press-archive'">
-                        <i class="icon-share-alt icon-white" />
+                        <i class="icon-list-alt" />
                             Archiv
                         </a>
                     </li>
