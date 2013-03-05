@@ -19,12 +19,14 @@
   cursor: pointer;
   border: 1px solid @btn-border;
   border-radius: @border-radius-base;
+  white-space: nowrap;
 
   &:focus {
     .tab-focus();
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
     text-decoration: none;
   }
@@ -40,7 +42,7 @@
   &[disabled],
   fieldset[disabled] & {
     cursor: default;
-    .opacity(65);
+    .opacity(.65);
     .box-shadow(none);
   }
 
@@ -63,10 +65,6 @@
   font-size: @font-size-small;
   border-radius: @border-radius-small;
 }
-.btn-mini [class^="icon-"],
-.btn-mini [class*=" icon-"] {
-  margin-top: -1px;
-}
 
 // Mini
 .btn-mini {
@@ -79,10 +77,7 @@
 // Icons in buttons
 // -------------------------
 
-.btn [class^="glyphicon-"]::before       { vertical-align: -2px; }
-.btn-small [class^="glyphicon-"]::before,
-.btn-mini [class^="glyphicon-"]::before  { vertical-align: -1px; }
-
+// TODO: figure this shit out
 
 // Block button
 // -------------------------
@@ -152,6 +147,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link,
 .btn-link:hover,
+.btn-link:focus,
 .btn-link:active {
   border-color: transparent;
 }
@@ -161,7 +157,8 @@ fieldset[disabled] .btn-link {
   cursor: pointer;
   border-radius: 0;
 }
-.btn-link:hover {
+.btn-link:hover,
+.btn-link:focus {
   color: @link-color-hover;
   text-decoration: underline;
   background-color: transparent;
@@ -169,7 +166,8 @@ fieldset[disabled] .btn-link {
 .btn-link {
   &[disabled],
   fieldset[disabled] & {
-    &:hover {
+    &:hover,
+    &:focus {
       color: @grayDark;
       text-decoration: none;
     }
