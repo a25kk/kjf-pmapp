@@ -5,7 +5,7 @@
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime">
         <div class="container-fluid">
             <a href="" class="brand pull-right"
-                id="xmain-logo"
+                id="main-logo"
                 tal:attributes="href portal_url">
                 PressHub</a>
             <a class="btn btn-navbar"
