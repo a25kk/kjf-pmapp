@@ -2,7 +2,7 @@ from five import grok
 from Acquisition import aq_inner
 from AccessControl import Unauthorized
 from zope.component import getMultiAdapter
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.app.layout.navigation.interfaces import INavigationRoot
 

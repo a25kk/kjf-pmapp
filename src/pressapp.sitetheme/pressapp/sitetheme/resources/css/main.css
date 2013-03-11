@@ -6296,8 +6296,8 @@ fieldset[disabled] input.destructive:active {
   font-weight: bold;
   text-shadow: none;
 }
-#actionbar #section-nav li > a .counter,
-#actionbar #subnavbar li > a .counter {
+#actionbar #section-nav li > a .badge,
+#actionbar #subnavbar li > a .badge {
   background: #fff;
   color: #50a0b0;
 }

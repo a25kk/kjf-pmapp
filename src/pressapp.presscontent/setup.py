@@ -27,16 +27,10 @@ setup(name='pressapp.presscontent',
       install_requires=[
           'setuptools',
           'Products.CMFPlone',
-          'plone.app.dexterity [grok]',
+          'plone.app.dexterity [grok, relations]',
           'plone.app.referenceablebehavior',
           'plone.app.relationfield',
           'plone.namedfile [blobs]',
-          'plone.formwidget.multifile',
-          'plone.app.registry',
-          'plone.app.z3cform',
-          'plone.app.contentlisting',
-          'zope.annotation',
-          'five.globalrequest',
       ],
       entry_points="""
       # -*- Entry points: -*-
