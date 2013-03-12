@@ -5,11 +5,10 @@ import tempfile
 import zipfile
 
 from zopyx.smartprintng.plone.browser.compatible import InitializeClass
-from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interface.folder import IATFolder
 from ZPublisher.Iterators import filestream_iterator
-from zope.app.pagetemplate.viewpagetemplatefile import (ViewPageTemplateFile
+from zope.browserpage.viewpagetemplatefile import (ViewPageTemplateFile
     as ViewPageTemplateFile2)
 
 from zopyx.smartprintng.plone.logger import LOG
