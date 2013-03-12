@@ -13,7 +13,8 @@
     <section class="container-fluid"
         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                     context_state context/@@plone_context_state;
-                    item_state context_state/workflow_state;">
+                    item_state context_state/workflow_state;
+                    context_url context/absolute_url">
     
         <div class="page-header" id="page-header">
             <div class="pull-right">
@@ -29,7 +30,7 @@
                                  title time" />
             </p>
         </div>
-        <div class="window-toolbar"
+        <div class="window-toolbar" tal:content="nothing"
           tal:define="context_url context/absolute_url;">
           <div class="navbar">
             <ul class="nav">
@@ -93,12 +94,35 @@
     </div>
     <div class="span3" tal:define="modified context/modified">
       <div id="sidebar">
+        <div class="box-editable">
+          <small class="pull-right">
+            <a tal:attributes="href python:context_url+'/@@edit-press-invitation'">
+              <i class="icon-edit"></i>
+              bearbeiten</a>
+          </small>
           <h4>Informationen</h4>
           <p class="muted">
-            Zuletzt ver&auml;ndert:
-            <span tal:replace="python:toLocalizedTime(modified)" />,
-            <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
+            Diese Presseeinladung in der
+            <a href=""
+              rel="twipsy"
+              data-placement="left"
+              data-original-title="Diese Presseeinladung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
+              tal:attributes="href view/constructPreviewURL">
+              Browser Vorschau</a> anzeigen
           </p>
+        </div>
+        <hr>
+        <h5>Geschlossene Veranstaltung</h5>
+          <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
+            data-appui="archive-switch"
+            tal:define="preview context/closed"
+            tal:attributes="data-target string:${context_url}/@@update-archive-settings">
+            <input type="checkbox" value="1" name="previewCheckbox" class="checkbox" checked="checked"
+                tal:attributes="checked python: preview and 'checked' or ''"
+               />
+            <label class="check" for="previewCheckbox"></label>
+          </div>
+        <hr>
           <p tal:define="closed context/closed">
             <span tal:condition="python:closed == False"
               class="label label-info">
@@ -130,7 +154,7 @@
             </p>
           </tal:block>
           <hr>
-            <div class="btn-toolbar pull-right"
+            <div class="btn-toolbar xpull-right"
                 tal:define="context_url context/absolute_url;
                             has_channels view/has_channel_info;
                             recipients view/has_recipients_info;">

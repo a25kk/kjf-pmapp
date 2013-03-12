@@ -263,13 +263,17 @@
                 <i class="icon-edit" />
                 Bearbeiten</a>
             </small>
+            <h4>Informationen</h4>
+            <h5 tal:content="context/Title" />
+            <p class="muted">Diesen Presseinhalt als 
+              <a href=""
+                rel="twipsy"
+                data-placement="top"
+                data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
+                tal:attributes="href view/constructPreviewURL">
+                E-Mail-Vorschau</a> anzeigen.
+            </p>
           </div>
-          <h4>Informationen</h4>
-          <h5 tal:content="context/Title" />
-          <p class="muted">Zuletzt ver&auml;ndert:
-            <span tal:replace="python:toLocalizedTime(modified)" />,
-            <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
-          </p>
           <hr>
           <div class="box-editable">
               <h5 i18n:translate="">Archive</h5>

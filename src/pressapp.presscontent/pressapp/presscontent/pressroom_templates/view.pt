@@ -122,7 +122,7 @@
                     <hr>
 
                     <p class="stats">
-                      <a href="" class="btn btn-block"
+                      <a href="" class="btn btn-primary btn-block"
                         rel="loading-indicator"
                         data-loading-text="Wird geladen..."
                         tal:attributes="href python:context_url+'/@@add-press-release'">
@@ -130,7 +130,7 @@
                       </a>
                     </p>
                     <p class="stats">
-                      <a href="" class="btn btn-block"
+                      <a href="" class="btn btn-primary btn-block"
                         rel="loading-indicator"
                         data-loading-text="Wird geladen..."
                         tal:attributes="href python:context_url+'/@@add-press-invitation'">
