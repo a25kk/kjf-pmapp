@@ -149,7 +149,7 @@
         <ul class="nav xnav-pills pull-right" id="section-nav">
             <li><a href=""
                 tal:attributes="href python:home_folder+'/@@dashboard-releases'">
-                <span class="counter"
+                <span class="badge"
                   id="counter-pr"
                   tal:content="viewlet/pr_index">76</span>
                     Pressemitteilungen</a>
@@ -157,7 +157,7 @@
             <li>
                 <a href=""
                     tal:attributes="href python:home_folder+'/@@dashboard-invitations'">
-                    <span class="counter"
+                    <span class="badge"
                         id="counter-pi"
                         tal:content="viewlet/pi_index">76</span>
                     Presseeinladungen
@@ -165,7 +165,7 @@
             </li>
             <li><a href=""
                     tal:attributes="href python:portal_url+'/presscenter/kontakte'">
-                    <span class="counter"
+                    <span class="badge"
                         id="counter-pi"
                         tal:content="viewlet/channel_index">76</span>
                     Verteiler
