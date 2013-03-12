@@ -25,3 +25,4 @@ etc/**/*
 *.mo
 *-ck.js
 src/sauna.reload
+src/zopyx.smartprintng.plone
