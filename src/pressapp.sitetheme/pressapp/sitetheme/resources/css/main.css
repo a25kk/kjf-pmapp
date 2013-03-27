@@ -6793,6 +6793,9 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
   color: #000;
   border-right: 0px solid #555555;
 }
+.window .window-content #sidebar .box-editable {
+  display: block;
+}
 .window .window-content #sidebar .box-editable a.link-editable {
   opacity: 70;
   filter: alpha(opacity=7000);
@@ -6826,8 +6829,43 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
   margin-left: -30px;
 }
 .window .window-content #sidebar .box-stepper {
-  margin: 0px -20px;
-  border: 1px solid #555555;
+  display: block;
+  text-shadow: none;
+  margin: 0 -30px 0;
+  padding: 40px 30px 40px 20px;
+  border-bottom: 1px solid #555555;
+  color: #555555;
+}
+.window .window-content #sidebar .box-stepper.current {
+  background: #b8aa88;
+  color: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.window .window-content #sidebar .box-stepper.current:hover {
+  color: #fff;
+}
+.window .window-content #sidebar .box-stepper.current strong {
+  font-size: 21px;
+  font-size: 2.1rem;
+}
+.window .window-content #sidebar .box-stepper strong {
+  font-family: 'Oswald', inherit;
+  font-size: 17.5px;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+.window .window-content #sidebar .box-stepper small {
+  line-height: 16px;
+}
+.window .window-content #sidebar .box-stepper:hover {
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  color: #333333;
+  text-decoration: none;
+  border-left: 2px solid #555555;
+  margin-left: -30px;
+  padding-left: 18px;
 }
 .window .window-content #sidebar .widget {
   margin: 0 20px;

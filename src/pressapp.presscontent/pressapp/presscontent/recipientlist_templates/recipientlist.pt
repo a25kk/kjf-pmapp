@@ -14,7 +14,8 @@
       @import "++resource++jquery.datatables/media/css/jquery.dataTables.css";
   </style>-->
   
-  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       context_url context/absolute_url;"
     class="container-fluid">
         <div class="page-header" id="page-header">
           <div class="pull-right">
@@ -86,33 +87,34 @@
           </div>
         </div>
         <div class="span3">
-          <aside id="sidebar">
-            <h4>Informationen</h4>
-            <div class="stats">
-              <div class="stat inverse">
-                <h4>Verteiler wählen</h4>
-              </div>
-              <div class="stat primary">
-                <h4>Empfänger bereinigen</h4>
-              </div>
-              <div class="stat success">
-                <h4>Versand planen</h4>
-              </div>
-            </div>
-            <h5 tal:content="context/Title" />
-            <div class="box-stepper">
-              <h5>First Step</h5>
-              <p>This step is already done</p>
-            </div>
-            <div class="box-stepper">
-              <h5>Second Step</h5>
-              <p>This step is currently active</p>
-            </div>
-            <div class="box-stepper">
-              <h5>Third Step</h5>
-              <p>This step is still pending</p>
-            </div>
-          </aside>
+          <aside id="sidebar" class="stepper-bar"
+              tal:define="has_channels view/has_channel_info;
+                          recipients view/has_recipients_info;">
+              <a href="#" class="box-stepper"
+                tal:attributes="href python:context_url+'/@@select-channel'">
+                <strong>1. Verteiler w&auml;hlen</strong><br />
+                <small>Select recipients by choosing a dispatch channel</small>
+              </a>
+              <a class="box-stepper current"
+                tal:attributes="class python:has_channels and 'box-stepper current' or 'box-stepper current disabled';
+                                href python:context_url + '/@@recipient-list'">
+                <strong>2. Empfänger bereinigen</strong><br />
+                <small>Review email recipients automatically asigned from
+                  the selected channels.
+                </small>
+              </a>
+              <a href="" class="box-stepper"
+                tal:condition="python:recipients == True"
+                tal:attributes="href python:context_url+'/@@prepare-release'">
+                  <strong>3. Versand planen</strong><br />
+                  <small>Review and send press content</small>
+              </a>
+              
+              <hr>
+                <a href="context_url" class="btn btn-block">
+                  Abbrechen
+                </a>
+            </aside>
         </div>
       </div>
     </div>

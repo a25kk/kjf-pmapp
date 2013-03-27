@@ -63,3 +63,9 @@ class RecipientList(grok.View):
         channel = getattr(context, 'channel', None)
         if channel:
             return True
+
+    def has_recipients_info(self):
+        context = aq_inner(self.context)
+        recipients = getattr(context, 'recipients', None)
+        if recipients:
+            return True

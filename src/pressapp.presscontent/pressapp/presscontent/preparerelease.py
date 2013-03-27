@@ -30,3 +30,15 @@ class PrepareRelease(grok.View):
     def reformat_recipients(self, item):
         item = item.split(',', 1)
         return item
+
+    def has_channel_info(self):
+        context = aq_inner(self.context)
+        channel = getattr(context, 'channel', None)
+        if channel:
+            return True
+
+    def has_recipients_info(self):
+        context = aq_inner(self.context)
+        recipients = getattr(context, 'recipients', None)
+        if recipients:
+            return True

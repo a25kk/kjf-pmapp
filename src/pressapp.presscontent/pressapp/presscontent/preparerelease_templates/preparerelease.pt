@@ -29,9 +29,78 @@
         <p class="discreet">Zusammenfassung</p>
     </div>
     <div id="content-core">
+    <div class="row">
+    <div class="span9">
     <div class="window-column">
-    <div class="window-column-content">
-        <div class="row">
+      <div class="window-column-content">
+        <section tal:condition="view/has_recipients">
+          <div class="featurette dim-in two">
+            <div class="row">
+              <div class="span9">
+                <h2 i18n:translate="">Empf&auml;nger aus Verteilern</h2>
+                <!--<p class="lead" i18n:translate="">
+                  List of recipients asigned from available channels
+                </p>-->
+              </div>
+              <div class="span3">
+                <div class="stats widget">
+                  <span class="stat primary">
+                    <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
+                    <span class="stat-subheader" tal:content="view/recipient_count">Recipients</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn"
+                  href="#recipients"
+                  data-toggle="collapse"
+                  data-target="#recipients">Details</button>
+              <div class="collapse" id="recipients">
+                  <tal:block tal:repeat="item view/recipient_list">
+                  <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                      <h6 tal:content="python:item_details[1]" />
+                      <small class="muted" tal:content="python:item_details[0]" />
+                  </div>
+                  </tal:block>
+              </div>
+          </div>
+        </section>
+
+        <section tal:condition="view/has_subscribers">
+          <div class="featurette dim-in two">
+            <div class="row">
+              <div class="span9">
+                <h2 i18n:translate="">Newsletter Abonnenten</h2>
+                <!--<p class="lead">
+                  Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
+                  und können sich aktiv an- und abmelden
+                </p>-->
+              </div>
+              <div class="span3">
+                <div class="stats widget">
+                  <span class="stat primary">
+                    <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
+                    <span class="stat-subheader" tal:content="view/subscriber_count">Recipients</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn"
+                  href="#subscribers"
+                  data-toggle="collapse"
+                  data-target="#subscribers">Details</button>
+              <div class="collapse" id="subscribers">
+                  <tal:block tal:repeat="item view/subscriber_list">
+                  <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                      <h6><small tal:content="repeat/item/number" />
+                      <span tal:content="item" /></h6>
+                  </div>
+                  </tal:block>
+              </div>
+          </div>
+        </section>
+
+        <div class="row" tal:content="nothing">
             <div class="span6">
                 <section tal:condition="view/has_recipients">
                 <div class="featurette dim-in two">
@@ -102,8 +171,8 @@
                 </section>
             </div>
         </div>
-    <div class="visualClear">&nbsp;</div>
-    <div class="formControls dim-in three">
+      <div class="visualClear">&nbsp;</div>
+      <div class="formControls dim-in three">
         <a href="" class="btn btn-large btn-primary pull-right"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
@@ -122,7 +191,40 @@
             tal:attributes="href python:context_url+'/@@dispatcher?type=test'">
             <i class="icon-share-alt icon-white" />
             Testversand durchf&uuml;hren</a>
+      </div>
     </div>
+    </div>
+    </div>
+    <div class="span3">
+      <aside id="sidebar" class="stepper-bar"
+        tal:define="has_channels view/has_channel_info;
+                    recipients view/has_recipients_info;">
+        <a href="#" class="box-stepper"
+          rel="twipsy"
+          data-placement="top"
+          data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
+          tal:attributes="href python:context_url+'/@@select-channel'">
+          <strong>1. Verteiler w&auml;hlen</strong>
+        </a>
+        <a class="box-stepper current"
+          rel="twipsy"
+          data-placement="top"
+          data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
+          tal:attributes="class python:has_channels and 'box-stepper' or 'box-stepper disabled';
+                          href python:context_url + '/@@recipient-list'">
+          <strong>2. Empfänger bereinigen</strong>
+        </a>
+        <a href="" class="box-stepper current"
+          tal:condition="python:recipients == True"
+          tal:attributes="href python:context_url+'/@@prepare-release'">
+            <strong>3. Versand planen</strong>
+        </a>
+        <hr>
+          <p class="lead">
+            Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
+                  und können sich aktiv an- und abmelden
+          </p>
+      </aside>
     </div>
     </div>
     </div>

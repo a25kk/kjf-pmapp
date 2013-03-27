@@ -39,95 +39,30 @@
             <aside id="sidebar" class="stepper-bar"
               tal:define="has_channels view/has_channel_info;
                           recipients view/has_recipients_info;">
-              <div class="box-editable stepper current">
-                <!--<small class="pull-right">
-                    <a href="#" class="link-editable"
-                      tal:attributes="href python:context_url+'/@@select-channel'">
-                      <i class="icon-edit"></i> bearbeiten
-                    </a>
-                </small>-->
-                <h4 i18n:translate=""
-                  data-appui="tooltip"
-                  data-placement="left"
-                  data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung">
-                  1. Verteiler w&auml;hlen
-                </h4>
-
-                <p i18n:translate="">
-                  Select recipients by choosing a dispatch channel.
-                </p>
-              </div>
-              <div class="box-editable stepper"
-                tal:attributes="class python:has_channels and 'box-editable stepper' or 'box-editable stepper disabled'">
-                <small class="pull-right" tal:condition="has_channels">
-                    <a href="#" class="link-editable"
-                      tal:attributes="href python:context_url + '/@@recipient-list'">
-                      <i class="icon-edit"></i> bearbeiten
-                    </a>
-                </small>
-                <h5 i18n:translate="">
-                  <i class="icon-circle"></i>
-                  2. Empfänger bereinigen
-                </h5>
-                <p i18n:translate="" class="discreet">
-                  Review email recipients automatically asigned from
+              <a href="#" class="box-stepper current"
+                tal:attributes="href python:context_url+'/@@select-channel'">
+                <strong>1. Verteiler w&auml;hlen</strong><br />
+                <small>Select recipients by choosing a dispatch channel</small>
+              </a>
+              <a class="box-stepper"
+                tal:attributes="class python:has_channels and 'box-stepper' or 'box-stepper disabled';
+                                href python:context_url + '/@@recipient-list'">
+                <strong>2. Empfänger bereinigen</strong><br />
+                <small>Review email recipients automatically asigned from
                   the selected channels.
-                </p>
-              </div>
-              <div class="box-editable stepper disabled"
-                tal:attributes="class python:recipients and 'box-editable stepper' or 'box-editable stepper disabled'">
-                <small class="pull-right">
-                    <a href="#" class="link-editable"
-                      tal:attributes="href python:context_url">
-                      <i class="icon-edit"></i> bearbeiten
-                    </a>
                 </small>
-                <h5 i18n:translate="">
-                  <i class="icon-circle-blank"></i>
-                  3. Versand vorbereiten
-                </h5>
-                <p i18n:translate="" class="discreet">
-                  Review settings and send the press content to the target
-                  audience.
-                </p>
-                <a href="" class="btn btn-block"
-                    tal:condition="python:recipients == True"
-                    tal:attributes="href python:context_url+'/@@prepare-release'">
-                    Versand planen</a>
-              </div>
+              </a>
+              <a href="" class="box-stepper"
+                tal:condition="python:recipients == True"
+                tal:attributes="href python:context_url+'/@@prepare-release'">
+                  <strong>3. Versand planen</strong><br />
+                  <small>Review and send press content</small>
+              </a>
+              
               <hr>
-              <div class="btn-group" tal:content="nothing"
-                tal:define="context_url context/absolute_url;
-                        has_channels view/has_channel_info;
-                        recipients view/has_recipients_info;">
-                <a href="" class="btn"
-                    rel="twipsy"
-                    data-placement="left"
-                    data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
-                    tal:attributes="href python:context_url+'/@@select-channel'">
-                    Verteiler w&auml;hlen</a>
-                <a href="" class="btn disabled"
-                    tal:condition="not: view/has_channel_info"
-                    rel="twipsy"
-                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                    Empf&auml;nger bereinigen</a>
-                <a href="" class="btn"
-                    rel="twipsy"
-                    data-placement="left"
-                    data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
-                        tal:condition="python:has_channels == True"
-                        tal:attributes="href python:context_url+'/@@recipient-list'">
-                        Empf&auml;nger bereinigen</a>
-                <a href="" class="btn disabled"
-                    rel="twipsy"
-                    tal:condition="not:view/has_recipients_info"
-                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                    Versand planen</a>
-                <a href="" class="btn"
-                    tal:condition="python:recipients == True"
-                    tal:attributes="href python:context_url+'/@@prepare-release'">
-                    Versand planen</a>
-              </div>
+                <a href="context_url" class="btn btn-block">
+                  Abbrechen
+                </a>
             </aside>
           </div>
         </div>
