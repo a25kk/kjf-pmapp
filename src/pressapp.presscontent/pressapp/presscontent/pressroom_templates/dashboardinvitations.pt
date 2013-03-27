@@ -30,48 +30,48 @@
     <div class="row">
       <div class="span9">
       <div class="window-column">
-        <div class="window-column-content">
-          <div class="box"  tal:condition="view/has_pressinvitations">
-                  <h2>Presseeinladungen</h2>
-                  <table class="table table-striped">
-                      <thead>
-                          <tr>
-                              <th>#</th>
-                              <th>Presseeinladung</th>
-                              <th>Status</th>
-                              <th>Zuletzt ver&auml;ndert</th>
-                              <th>Aktionen</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tal:block tal:repeat="item view/contained_pressinvitations">
-                          <tr tal:define="counter repeat/item/number">
-                              <td tal:content="counter">1.</td>
-                              <td><a href="#" tal:content="item/Title"
-                                    tal:attributes="href item/getURL">
-                                    PR Title</a></td>
-                              <td><span class="label info">Neu</span></td>
-                              <td tal:define="modified context/modified"
-                                tal:content="python:toLocalizedTime(modified)"></td>
-                              <td>
-                                  <div class="btn-group"
-                                    tal:define="item_url item/getURL">
-                                      <a class="btn btn-small"
-                                        tal:attributes="href python:item_url+'/@@edit-press-invitation'">
-                                          <i class="icon-edit" />
-                                          Bearbeiten
-                                          </a>
-                                      <a class="btn btn-small"
-                                        tal:attributes="href item_url">
-                                          <i class="icon-eye-open" />
-                                          Anzeigen</a>
-                                  </div>
-                               </td>
-                          </tr>
-                          </tal:block>
-                      </tbody>
-                  </table>
-         </div>
+        <div class="xxwindow-column-content">
+          <tal:block tal:condition="view/has_pressinvitations">
+            <div class="tile-wrapper"
+                        tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                                b_size python:int(request.get('b_size', 20));
+                                b_start python:int(request.get('b_start', 0));
+                                items view/contained_pressinvitations;
+                                items_count python:len(items);
+                                batch python:Batch(items, b_size, b_start);">
+              <div class="tile" tal:repeat="item batch">
+              <div class="row">
+                <div class="span2">
+                   <h6 tal:define="item_type item/portal_type"
+                      tal:content="python:view.get_type_info(item_type)"
+                      i18n:translate="">Item Type
+                    </h6>
+                    <p>
+                      <small tal:define="state item/review_state"
+                          tal:content="python:view.get_state_info(state)"
+                          i18n:translate="">Unpublished</small>
+                    </p>
+                </div>
+                <div class="span6">
+                  <h4 tal:content="item/Title" />
+                  <p>
+                    <small tal:define="modified item/modified">
+                      Zuletzt verändert:
+                      <span tal:content="modified"
+                        tal:attributes="data-appui string:prettydate;
+                                        title modified" />
+                    </small>
+                  </p>
+                </div>
+                <div class="span4">
+                  <a href="" class="btn btn-mini pull-right"
+                    tal:attributes="href item/getURL">Bearbeiten</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </tal:block>
+          
          <tal:block tal:condition="not:view/has_pressinvitations">
               <div class="featurette dim-in two">
                 <div class="row">
