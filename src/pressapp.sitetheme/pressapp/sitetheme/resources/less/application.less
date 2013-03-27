@@ -23,6 +23,13 @@ body.template-login_form {
 .btn {
   border-radius: 0px;
   text-shadow: none;
+  // combat font-size mixin experiment
+  &.btn-small {
+    .font-size(@font-size-small);
+  }
+  &.btn-mini {
+    .font-size(@font-size-mini);
+  }
 }
 
 //.btn-primary {
@@ -175,7 +182,6 @@ input.destructive {
       strong {
           .pull-left();
           .size(20px, 50px);
-          #font > .sans-serif(bold, 2em, 1em);
           text-shadow: 0 -1px 0 rgba(0,0,0,.25);
       }
       p {
@@ -211,7 +217,8 @@ input.destructive {
     margin: 0px;
     color: @gray;
     h1 {
-      font-size: @font-size-base * 1.75;
+      //font-size: @font-size-base * 1.75;
+      .font-size(@font-size-base * 1.75);
       line-height: @line-height-base;
       margin: @line-height-base / 2 0 @line-height-base / 2;
       small {
@@ -231,9 +238,6 @@ input.destructive {
         display: inline-block;
         color: @app-brown;
       }
-    }
-    .btn {
-      //.btn-primary();
     }
   }
   .window-toolbar {
@@ -328,7 +332,8 @@ input.destructive {
             }
         }
         h4 {
-          font-size: @font-size-base;
+          //font-size: @font-size-base;
+          .font-size(@font-size-base);
           margin-bottom: 0px;
         }
         h6 {
