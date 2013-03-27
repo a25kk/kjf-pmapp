@@ -13,7 +13,7 @@
         $('input[data-appui="knob"]').knob();
         $('select.chosen-select').chosen();
         /* Apply to popup forms */
-        $(document).on('loadInsideOverlay', function (e) {
+        $(document).on('loadInsideOverlay', function () {
             $('select.chosen-select', $(this)).chosen();
         });
         $('#form-widgets-selected2').chosen();
@@ -24,6 +24,7 @@
             $('a[rel=twipsy]').tooltip();
             $('span[rel=twipsy]').tooltip();
         });
+        $('h5[data-appui="tooltip"]').tooltip();
         var previewchanger = $('div[data-appui="archive-switch"]');
         var previewchanger_url = $(previewchanger).data('target');
         $(previewchanger).toggleSlide({

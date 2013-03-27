@@ -291,7 +291,7 @@
           <div class="box-editable">
             <small class="pull-right">
                 <a href="#" class="link-editable"
-                  tal:attributes="href python:context_url + '/@@edit-job-distributors'">
+                  tal:attributes="href python:context_url + '/@@archive-settings'">
                   <i class="icon-edit"></i> bearbeiten
                 </a>
             </small>

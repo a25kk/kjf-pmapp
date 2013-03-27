@@ -15,7 +15,7 @@
                   toLocalizedTime nocall:context/@@plone/toLocalizedTime">
       <header id="page-header">
         <div class="pull-right">
-          <h4><i class="icon-share icon-2x"></i></h4>
+          <h4>Versandplanung</h4>
         </div>
 
         <h1 i18n:translate="">Press release</h1>
@@ -36,16 +36,46 @@
             </div>
           </div>
           <div class="span3">
-            <aside id="sidebar">
-              <p i18n:translate="" class="lead">
-                Edit details of this press release
-              </p>
-              <p i18n:translate="">
-                Job openings will be sorted on the start date when listed in
-                the job preview listings.
-              </p>
-              <hr />
-              <div class="box-editable stepper">
+            <aside id="sidebar" class="stepper-bar"
+              tal:define="has_channels view/has_channel_info;
+                          recipients view/has_recipients_info;">
+              <div class="box-editable stepper current">
+                <!--<small class="pull-right">
+                    <a href="#" class="link-editable"
+                      tal:attributes="href python:context_url+'/@@select-channel'">
+                      <i class="icon-edit"></i> bearbeiten
+                    </a>
+                </small>-->
+                <h4 i18n:translate=""
+                  data-appui="tooltip"
+                  data-placement="left"
+                  data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung">
+                  1. Verteiler w&auml;hlen
+                </h4>
+
+                <p i18n:translate="">
+                  Select recipients by choosing a dispatch channel.
+                </p>
+              </div>
+              <div class="box-editable stepper"
+                tal:attributes="class python:has_channels and 'box-editable stepper' or 'box-editable stepper disabled'">
+                <small class="pull-right" tal:condition="has_channels">
+                    <a href="#" class="link-editable"
+                      tal:attributes="href python:context_url + '/@@recipient-list'">
+                      <i class="icon-edit"></i> bearbeiten
+                    </a>
+                </small>
+                <h5 i18n:translate="">
+                  <i class="icon-circle"></i>
+                  2. Empfänger bereinigen
+                </h5>
+                <p i18n:translate="" class="discreet">
+                  Review email recipients automatically asigned from
+                  the selected channels.
+                </p>
+              </div>
+              <div class="box-editable stepper disabled"
+                tal:attributes="class python:recipients and 'box-editable stepper' or 'box-editable stepper disabled'">
                 <small class="pull-right">
                     <a href="#" class="link-editable"
                       tal:attributes="href python:context_url">
@@ -53,10 +83,20 @@
                     </a>
                 </small>
                 <h5 i18n:translate="">
-                  Verteiler w&auml;hlen
+                  <i class="icon-circle-blank"></i>
+                  3. Versand vorbereiten
                 </h5>
+                <p i18n:translate="" class="discreet">
+                  Review settings and send the press content to the target
+                  audience.
+                </p>
+                <a href="" class="btn btn-block"
+                    tal:condition="python:recipients == True"
+                    tal:attributes="href python:context_url+'/@@prepare-release'">
+                    Versand planen</a>
               </div>
-              <div class="btn-group"
+              <hr>
+              <div class="btn-group" tal:content="nothing"
                 tal:define="context_url context/absolute_url;
                         has_channels view/has_channel_info;
                         recipients view/has_recipients_info;">

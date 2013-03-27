@@ -343,6 +343,9 @@ input.destructive {
       padding-top: @line-height-base;
       padding-right: @line-height-base * 1.5;
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+      &.stepper-bar {
+        padding-top: 0px;
+      }
       .btn {
         text-shadow: none;
       }
@@ -370,10 +373,22 @@ input.destructive {
           }
         }
         &.stepper {
-          margin: @line-height-base * 2 -(@line-height-base * 1.5) 0;
-          padding: @line-height-base;
-          border: 1px solid red;
-          background:rgba(255, 255, 255, 0.25);
+          margin: 0 -(@line-height-base * 1.5) 0;
+          padding: @line-height-base / 2 @line-height-base * 1.5 0px;
+          border-bottom: 1px solid @gray;
+          //background:#a7a9aa;
+          &.disabled {
+            .opacity(0.3);
+          }
+          &.current {
+            background: @app-brown;
+            color: #fff;
+            text-shadow: none;
+            padding-top: @line-height-base;
+            padding-bottom: @line-height-base;
+            border-left: 4px solid @gray;
+            margin-left: -(@line-height-base * 1.5);
+          }
         }
       }
       .box-stepper {

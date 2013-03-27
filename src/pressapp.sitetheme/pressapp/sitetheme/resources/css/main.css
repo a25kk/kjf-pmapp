@@ -6539,6 +6539,9 @@ fieldset[disabled] .window .window-content .tile:hover .btn:active {
   padding-right: 30px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
 }
+.window .window-content #sidebar.stepper-bar {
+  padding-top: 0px;
+}
 .window .window-content #sidebar .btn {
   text-shadow: none;
 }
@@ -6566,10 +6569,22 @@ fieldset[disabled] .window .window-content .tile:hover .btn:active {
   color: #555555;
 }
 .window .window-content #sidebar .box-editable.stepper {
-  margin: 40px -30px 0;
-  padding: 20px;
-  border: 1px solid red;
-  background: rgba(255, 255, 255, 0.25);
+  margin: 0 -30px 0;
+  padding: 10px 30px 0px;
+  border-bottom: 1px solid #555555;
+}
+.window .window-content #sidebar .box-editable.stepper.disabled {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+.window .window-content #sidebar .box-editable.stepper.current {
+  background: #b8aa88;
+  color: #fff;
+  text-shadow: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-left: 4px solid #555555;
+  margin-left: -30px;
 }
 .window .window-content #sidebar .box-stepper {
   margin: 0px -20px;
