@@ -6565,6 +6565,16 @@ fieldset[disabled] .window .window-content .tile:hover .btn:active {
   filter: alpha(opacity=10000);
   color: #555555;
 }
+.window .window-content #sidebar .box-editable.stepper {
+  margin: 40px -30px 0;
+  padding: 20px;
+  border: 1px solid red;
+  background: rgba(255, 255, 255, 0.25);
+}
+.window .window-content #sidebar .box-stepper {
+  margin: 0px -20px;
+  border: 1px solid #555555;
+}
 .window .window-content #sidebar .widget {
   margin: 0 20px;
   text-shadow: none;

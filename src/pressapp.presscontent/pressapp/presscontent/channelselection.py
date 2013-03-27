@@ -7,8 +7,6 @@ from zope.lifecycleevent import modified
 
 from plone.directives import form
 from z3c.form import button
-from plone.formwidget.autocomplete import AutocompleteMultiFieldWidget
-from pressapp.channelmanagement.vocabulary import ChannelSourceBinder
 from Products.statusmessages.interfaces import IStatusMessage
 
 from plone.dexterity.interfaces import IDexterityFTI
@@ -104,5 +102,17 @@ class ChannelSelectionForm(form.SchemaEditForm):
         IStatusMessage(self.request).addStatusMessage(
             _(u"A channel was successfully selected"),
             type='info')
-        return self.request.response.redirect(
-                    context.absolute_url() + '/@@recipient-list')
+        next_url = context.absolute_url() + '/@@recipient-list'
+        return self.request.response.redirect(next_url)
+
+    def has_channel_info(self):
+        context = aq_inner(self.context)
+        channel = getattr(context, 'channel', None)
+        if channel:
+            return True
+
+    def has_recipients_info(self):
+        context = aq_inner(self.context)
+        recipients = getattr(context, 'recipients', None)
+        if recipients:
+            return True

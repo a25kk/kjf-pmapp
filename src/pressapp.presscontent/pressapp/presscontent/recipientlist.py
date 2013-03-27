@@ -5,7 +5,6 @@ from Products.CMFCore.utils import getToolByName
 
 from Products.CMFCore.interfaces import IContentish
 from Products.statusmessages.interfaces import IStatusMessage
-from plone.app.contentlisting.interfaces import IContentListing
 from plone.registry.interfaces import IRegistry
 from pressapp.channelmanagement.subscriber import ISubscriber
 from pressapp.presscontent import MessageFactory as _
@@ -31,7 +30,7 @@ class RecipientList(grok.View):
             context.reindexObject(idxs='modified')
             context_url = context.absolute_url()
             IStatusMessage(self.request).addStatusMessage(
-            _(u"Recipient list updated"), type='info')
+                _(u"Recipient list updated"), type='info')
             return self.request.response.redirect(context_url)
 
     def subscriber_listing(self):
@@ -58,3 +57,9 @@ class RecipientList(grok.View):
                 if info not in subscribers:
                     subscribers.append(info)
         return subscribers
+
+    def has_channel_info(self):
+        context = aq_inner(self.context)
+        channel = getattr(context, 'channel', None)
+        if channel:
+            return True

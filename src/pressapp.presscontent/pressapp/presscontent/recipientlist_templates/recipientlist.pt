@@ -26,61 +26,94 @@
           </p>
         </div>
     <div id="content-core">
-      <div class="window-column">
-      <div class="window-column-content">     
-        <div class="row">
-            <div class="span9">
-              <p class="lead"> Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
-                  auf eine Tabellenzeile, um diese zu markieren. Verwenden Sie den Button
-                  <strong>Adresse entfernen</strong>, um diese Zeile zu l&ouml;schen
-              </p>
+      <div class="row">
+        <div class="span9">
+          <div class="window-column">
+          <div class="window-column-content">     
+            <div class="row">
+                <div class="span9">
+                  <p class="lead"> Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
+                      auf eine Tabellenzeile, um diese zu markieren. Verwenden Sie den Button
+                      <strong>Adresse entfernen</strong>, um diese Zeile zu l&ouml;schen
+                  </p>
+                </div>
+                <div class="span3">
+                    <a href="javascript:void(0)" id="delete"
+                        class="btn btn-large btn-danger">
+                        <i class="icon-remove icon-white" />
+                        Adresse entfernen</a>
+                </div>
             </div>
-            <div class="span3">
-                <a href="javascript:void(0)" id="delete"
-                    class="btn btn-large btn-danger">
-                    <i class="icon-remove icon-white" />
-                    Adresse entfernen</a>
-            </div>
+    
+            <form tal:attributes="action request/URL" method="post"
+                id="recipient-cleanup-form">
+            <table tal:condition="view/has_subscribers"
+                class="table table-condensed table-striped table-bordered"
+                id="recipient-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Adresse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="item view/subscriber_listing">
+                        <td tal:content="item/name">Name</td>
+                        <td tal:define="counter repeat/item/number;">
+                            <span tal:content="item/email">E-Mail</span>
+                            <input type="hidden"
+                                tal:attributes="id string:recipient-${counter};
+                                                name string:recipient-${counter};
+                                                value string:${item/email}, ${item/name};" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="visualClear">&nbsp;</div>
+                <div class="form-actions">
+                    <input type="submit"
+                        value="Liste speichern"
+                        name="form.button.Submit"
+                        id="submit-button"
+                        class="btn btn-large btn-primary" />
+                    <a href="" class="btn btn-large btn-danger"
+                      tal:attributes="href context/absolute_url">
+                      Abbrechen</a>
+                </div>
+            </form>
+          </div>
+          </div>
         </div>
-
-        <form tal:attributes="action request/URL" method="post"
-            id="recipient-cleanup-form">
-        <table tal:condition="view/has_subscribers"
-            class="table table-condensed table-striped table-bordered"
-            id="recipient-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Adresse</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr tal:repeat="item view/subscriber_listing">
-                    <td tal:content="item/name">Name</td>
-                    <td tal:define="counter repeat/item/number;">
-                        <span tal:content="item/email">E-Mail</span>
-                        <input type="hidden"
-                            tal:attributes="id string:recipient-${counter};
-                                            name string:recipient-${counter};
-                                            value string:${item/email}, ${item/name};" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="visualClear">&nbsp;</div>
-            <div class="form-actions">
-                <input type="submit"
-                    value="Liste speichern"
-                    name="form.button.Submit"
-                    id="submit-button"
-                    class="btn btn-large btn-primary" />
-                <a href="" class="btn btn-large btn-danger"
-                  tal:attributes="href context/absolute_url">
-                  Abbrechen</a>
+        <div class="span3">
+          <aside id="sidebar">
+            <h4>Informationen</h4>
+            <div class="stats">
+              <div class="stat inverse">
+                <h4>Verteiler wählen</h4>
+              </div>
+              <div class="stat primary">
+                <h4>Empfänger bereinigen</h4>
+              </div>
+              <div class="stat success">
+                <h4>Versand planen</h4>
+              </div>
             </div>
-        </form>
-      </div>
+            <h5 tal:content="context/Title" />
+            <div class="box-stepper">
+              <h5>First Step</h5>
+              <p>This step is already done</p>
+            </div>
+            <div class="box-stepper">
+              <h5>Second Step</h5>
+              <p>This step is currently active</p>
+            </div>
+            <div class="box-stepper">
+              <h5>Third Step</h5>
+              <p>This step is still pending</p>
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
   </section>
