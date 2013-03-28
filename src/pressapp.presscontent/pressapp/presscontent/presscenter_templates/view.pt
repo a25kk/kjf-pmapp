@@ -22,7 +22,7 @@
       <div class="row"
         tal:define="navigation_root_url context_url">
         <div class="span9">
-          <h1>Jobcenter
+          <h1>Pressecenter
             <!--<small tal:condition="view/has_filter"
               tal:define="info view/filter_info">
               <span tal:attributes="class string:label label-${info/klass}"
@@ -59,6 +59,13 @@
             <section class="window-column">
               <div class="window-column-content"
                 tal:define="pressidx view/presscontent_index">
+                <p class="lead">
+                  Finden Sie aktuelle statistische Daten und eine
+                  Übersicht aller Presseinhalte und Benutzerkonten.
+                  Bearbeiten Sie globale
+                  Einstellungen wie E-Mail-Vorlagen und Designvorlagen.
+                </p>
+                <hr>
                 <div class="row">
                   <div class="span6">
                     <h4>Pressemitteilungen</h4>
