@@ -399,19 +399,21 @@ input.destructive {
       }
       .box-stepper {
         display: block;
-        text-shadow: none;
         margin: 0 -(@line-height-base * 1.5) 0;
         padding: @line-height-base * 2 @line-height-base * 1.5 @line-height-base * 2 @line-height-base;
         border-bottom: 1px solid @gray;
         color: @gray;
         //.opacity(0.7);
         &.current {
-          background: @app-brown;
-          color: #fff;
+          //background: @app-brown;
+          background:rgba(255, 255, 255, 0.5);
+          //color: #fff;
+          color: @text-color;
+          text-shadow: none;
           padding-top: @line-height-base * 2;
           padding-bottom: @line-height-base * 2;
           &:hover {
-            color: #fff;
+            color: @text-color;
           }
           strong {
             .font-size(@font-size-base * 1.5);

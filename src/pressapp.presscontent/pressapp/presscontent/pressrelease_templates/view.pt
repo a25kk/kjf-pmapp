@@ -12,44 +12,16 @@
   
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                        portal_state context/@@plone_portal_state;
+                       item_state context_state/workflow_state;
                        portal_url portal_state/portal_url;
                        context_url context/absolute_url;"
     class="xcontainer-fluid window">
     
     <div class="window-header" id="page-header">
-        <div class="btn-toolbar pull-right"
-            tal:define="context_url context/absolute_url;
-                        has_channels view/has_channel_info;
-                        recipients view/has_recipients_info;">
-            <div class="btn-group">
-                <a href="" class="btn"
-                    rel="twipsy"
-                    data-placement="left"
-                    data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
-                    tal:attributes="href python:context_url+'/@@select-channel'">
-                    Verteiler w&auml;hlen</a>
-                <a href="" class="btn disabled"
-                    tal:condition="not: view/has_channel_info"
-                    rel="twipsy"
-                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                    Empf&auml;nger bereinigen</a>
-                <a href="" class="btn"
-                    rel="twipsy"
-                    data-placement="left"
-                    data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
-                        tal:condition="python:has_channels == True"
-                        tal:attributes="href python:context_url+'/@@recipient-list'">
-                        Empf&auml;nger bereinigen</a>
-                <a href="" class="btn disabled"
-                    rel="twipsy"
-                    tal:condition="not:view/has_recipients_info"
-                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                    Versand planen</a>
-                <a href="" class="btn"
-                    tal:condition="python:recipients == True"
-                    tal:attributes="href python:context_url+'/@@prepare-release'">
-                    Versand planen</a>
-            </div>
+        <div class="pull-right">
+          <h4 tal:content="python:view.get_state_info(item_state)">
+            Review State</h4>
+            <h5 tal:content="view/user_details" />
         </div>
         <h1>Pressemitteilung</h1>
          <p tal:define="time context/modified" class="discreet">
@@ -334,6 +306,26 @@
                 i18n:translate="">Select channels</a>
             </p>
           </div><!-- /channels -->
+          <hr>
+          <a href="" class="btn btn-large btn-primary btn-block"
+              tal:condition="python:item_state == 'private'"
+              tal:attributes="href python:context_url + '/@@select-channel'"
+              i18n:translate="">Versand
+          </a>
+          <tal:block  tal:condition="python:item_state == 'published'">
+            <a href="#" class="btn btn-large btn-primary btn-block disabled"
+              rel="twipsy"
+              data-placement="left"
+              data-original-title="Diese Pressemitteilung wurde bereits verschickt"
+              i18n:translate="">Versand
+            </a>
+            <p>
+              <span i18n:translate="">This press release has already been dispatched,
+               but you can</span>
+              <a href=""  tal:attributes="href python:context_url + '/@@prepare-release'"
+                i18n:translate="">review the email recipients here.</a>
+            </p>
+          </tal:block>
           <hr>
           <p class="discreet">
             <span i18n:translate="">If you no longer need this item</span>

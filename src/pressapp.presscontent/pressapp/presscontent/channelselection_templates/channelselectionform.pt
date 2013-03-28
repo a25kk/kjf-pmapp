@@ -40,29 +40,34 @@
               tal:define="has_channels view/has_channel_info;
                           recipients view/has_recipients_info;">
               <a href="#" class="box-stepper current"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
                 tal:attributes="href python:context_url+'/@@select-channel'">
-                <strong>1. Verteiler w&auml;hlen</strong><br />
-                <small>Select recipients by choosing a dispatch channel</small>
+                <strong>1. Verteiler w&auml;hlen</strong>
               </a>
-              <a class="box-stepper"
+              <a class="box-stepper current"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
                 tal:attributes="class python:has_channels and 'box-stepper' or 'box-stepper disabled';
                                 href python:context_url + '/@@recipient-list'">
-                <strong>2. Empfänger bereinigen</strong><br />
-                <small>Review email recipients automatically asigned from
-                  the selected channels.
-                </small>
+                <strong>2. Empf&auml;nger bereinigen</strong>
               </a>
               <a href="" class="box-stepper"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Versandeinstellungen überpr&uuml;fen und Presseinhalt verschicken"
                 tal:condition="python:recipients == True"
                 tal:attributes="href python:context_url+'/@@prepare-release'">
-                  <strong>3. Versand planen</strong><br />
-                  <small>Review and send press content</small>
+                  <strong>3. Presseinhalt verschicken</strong>
               </a>
               
               <hr>
-                <a href="context_url" class="btn btn-block">
+                <a href="context_url" class="btn btn-large btn-block">
                   Abbrechen
                 </a>
+              <hr>
             </aside>
           </div>
         </div>

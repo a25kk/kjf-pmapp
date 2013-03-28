@@ -10,16 +10,12 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <!--<style type="text/css" title="currentStyle">
-      @import "++resource++jquery.datatables/media/css/jquery.dataTables.css";
-  </style>-->
-  
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                        context_url context/absolute_url;"
     class="container-fluid">
         <div class="page-header" id="page-header">
           <div class="pull-right">
-            <h4><i class="icon-cogs icon-2x"></i></h4>
+            <h4>Versandplanung</h4>
           </div>
           <h1>Pressemitteilung</h1>
           <p class="discreet">
@@ -49,7 +45,7 @@
             <form tal:attributes="action request/URL" method="post"
                 id="recipient-cleanup-form">
             <table tal:condition="view/has_subscribers"
-                class="table table-condensed table-striped table-bordered"
+                class="table table-condensed"
                 id="recipient-table">
                 <thead>
                     <tr>
@@ -61,7 +57,8 @@
                     <tr tal:repeat="item view/subscriber_listing">
                         <td tal:content="item/name">Name</td>
                         <td tal:define="counter repeat/item/number;">
-                            <span tal:content="item/email">E-Mail</span>
+                            <span class="muted"
+                              tal:content="item/email">E-Mail</span>
                             <input type="hidden"
                                 tal:attributes="id string:recipient-${counter};
                                                 name string:recipient-${counter};
@@ -91,29 +88,35 @@
               tal:define="has_channels view/has_channel_info;
                           recipients view/has_recipients_info;">
               <a href="#" class="box-stepper"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
                 tal:attributes="href python:context_url+'/@@select-channel'">
-                <strong>1. Verteiler w&auml;hlen</strong><br />
-                <small>Select recipients by choosing a dispatch channel</small>
+                <strong>1. Verteiler w&auml;hlen</strong>
               </a>
               <a class="box-stepper current"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
                 tal:attributes="class python:has_channels and 'box-stepper current' or 'box-stepper current disabled';
                                 href python:context_url + '/@@recipient-list'">
-                <strong>2. Empfänger bereinigen</strong><br />
-                <small>Review email recipients automatically asigned from
-                  the selected channels.
-                </small>
+                <strong>2. Empf&auml;nger bereinigen</strong>
               </a>
               <a href="" class="box-stepper"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Versandeinstellungen überpr&uuml;fen und Presseinhalt verschicken"
                 tal:condition="python:recipients == True"
                 tal:attributes="href python:context_url+'/@@prepare-release'">
-                  <strong>3. Versand planen</strong><br />
-                  <small>Review and send press content</small>
+                  <strong>3. Presseinhalt verschicken</strong>
               </a>
               
               <hr>
-                <a href="context_url" class="btn btn-block">
+                <a href="" class="btn btn-large btn-block"
+                  tal:attributes="href context_url">
                   Abbrechen
                 </a>
+              <hr>
             </aside>
         </div>
       </div>

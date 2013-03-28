@@ -201,29 +201,27 @@
                     recipients view/has_recipients_info;">
         <a href="#" class="box-stepper"
           rel="twipsy"
-          data-placement="top"
+          data-placement="left"
           data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
           tal:attributes="href python:context_url+'/@@select-channel'">
           <strong>1. Verteiler w&auml;hlen</strong>
         </a>
         <a class="box-stepper current"
           rel="twipsy"
-          data-placement="top"
+          data-placement="left"
           data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
           tal:attributes="class python:has_channels and 'box-stepper' or 'box-stepper disabled';
                           href python:context_url + '/@@recipient-list'">
-          <strong>2. Empfänger bereinigen</strong>
+          <strong>2. Empf&auml;nger bereinigen</strong>
         </a>
         <a href="" class="box-stepper current"
+          rel="twipsy"
+          data-placement="left"
+          data-original-title="Versandeinstellungen überpr&uuml;fen und Presseinhalt verschicken"
           tal:condition="python:recipients == True"
           tal:attributes="href python:context_url+'/@@prepare-release'">
-            <strong>3. Versand planen</strong>
+            <strong>3. Presseinhalt verschicken</strong>
         </a>
-        <hr>
-          <p class="lead">
-            Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
-                  und können sich aktiv an- und abmelden
-          </p>
       </aside>
     </div>
     </div>

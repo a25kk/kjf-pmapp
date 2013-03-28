@@ -6830,20 +6830,20 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 }
 .window .window-content #sidebar .box-stepper {
   display: block;
-  text-shadow: none;
   margin: 0 -30px 0;
   padding: 40px 30px 40px 20px;
   border-bottom: 1px solid #555555;
   color: #555555;
 }
 .window .window-content #sidebar .box-stepper.current {
-  background: #b8aa88;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.5);
+  color: #333333;
+  text-shadow: none;
   padding-top: 40px;
   padding-bottom: 40px;
 }
 .window .window-content #sidebar .box-stepper.current:hover {
-  color: #fff;
+  color: #333333;
 }
 .window .window-content #sidebar .box-stepper.current strong {
   font-size: 21px;
