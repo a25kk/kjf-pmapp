@@ -64,22 +64,9 @@
                                 </a>
                             </li>
                             <li><a href=""
-                                    tal:attributes="href python:portal_url+'/presscenter/kontakte'">
-                                <i class="icon-list-alt"></i>
-                                Adressen
-                                </a>
-                            </li>
-                            <li><a href=""
                                     tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
                                 <i class="icon-user"></i>
                                 Redakteure
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    tal:attributes="href python:portal_url+'/presscenter/@@dashboard-statistics'">
-                                <i class="icon-bar-chart"></i>
-                                    Statistik
                                 </a>
                             </li>
                             <li><a href=""

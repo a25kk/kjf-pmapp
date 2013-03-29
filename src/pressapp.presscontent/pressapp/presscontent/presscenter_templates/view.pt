@@ -59,24 +59,9 @@
             <section class="window-column">
               <div class="window-column-content"
                 tal:define="pressidx view/presscontent_index">
-                <p class="lead">
-                  Finden Sie aktuelle statistische Daten und eine
-                  Übersicht aller Presseinhalte und Benutzerkonten.
-                  Bearbeiten Sie globale
-                  Einstellungen wie E-Mail-Vorlagen und Designvorlagen.
-                </p>
-                <hr>
                 <div class="row">
                   <div class="span6">
-                    <h4>Pressemitteilungen</h4>
                     <div class="panel" tal:define="pr_idx view/pr_index">
-                      <div class="progress"
-                        tal:define="progress python:view.get_percental_value(pr_idx)">
-                        <div class="progress-bar"
-                          tal:attributes="style python:'width: ' + progress + '%'"
-                          tal:content="string:${progress}%">
-                        </div>
-                      </div>
                       <div class="statuspanel">
                         <div class="top success">
                           <i class="icon-file-alt icon-4x"></i>
@@ -98,25 +83,24 @@
                         tal:attributes="data-max pressidx;
                                         value pr_idx">
                         <hr class="visualClear">
-                      <p>
-                        <a href="" class="btn"
-                          tal:attributes="href python:context_url + '?filter=published'">
-                          Pressemitteilungen zeigen
-                        </a>
-                      </p>
-                      <hr />
-                    </div>
-                  </div>
-                  <div class="span6">
-                    <h4>Presseeinladungen</h4>
-                    <div class="panel" tal:define="pi_idx view/pi_index">
+                      <h4>Pressemitteilungen</h4>
                       <div class="progress"
-                        tal:define="progress python:view.get_percental_value(pi_idx)">
+                        tal:define="progress python:view.get_percental_value(pr_idx)">
                         <div class="progress-bar"
                           tal:attributes="style python:'width: ' + progress + '%'"
                           tal:content="string:${progress}%">
                         </div>
                       </div>
+                      <!--<p>
+                        <a href="" class="btn btn-primary"
+                          tal:attributes="href python:context_url + '?filter=published'">
+                          Pressemitteilungen zeigen
+                        </a>
+                      </p>-->
+                    </div>
+                  </div>
+                  <div class="span6">
+                    <div class="panel" tal:define="pi_idx view/pi_index">
                       <div class="statuspanel">
                         <div class="top danger">
                           <i class="icon-calendar icon-4x"></i>
@@ -138,51 +122,18 @@
                           tal:attributes="data-max pressidx;
                                           value pi_idx">
                           <hr class="visualClear">
+                      <h4>Presseeinladungen</h4>
+                      <div class="progress"
+                        tal:define="progress python:view.get_percental_value(pi_idx)">
+                        <div class="progress-bar"
+                          tal:attributes="style python:'width: ' + progress + '%'"
+                          tal:content="string:${progress}%">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-                  <div class="page-header">
-                      <h2><a href="" tal:attributes="href python:context_url + '/@@workspaces'"
-                            rel="twipsy"
-                            data-placement="right"
-                            data-original-title="&Uuml;bersicht Redakteure">
-                        Redakteure</a>
-                      </h2>
-                  </div>
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Redakteur</th>
-                                <th>Zuletzt angemeldet</th>
-                            </tr>
-                        </thead>
-                        <tbody tal:condition="view/has_pressrooms">
-                            <tal:block tal:repeat="item view/pressrooms">
-                              <tr tal:define="rowcount repeat/item/number;">
-                                  <td tal:content="rowcount">1</td>
-                                  <td><a href="" tal:attributes="href item/getURL"
-                                          tal:content="item/Title" /></td>
-                                  <td tal:define="owner item/Creator;
-                                                  login_time python:view.memberinfo(owner)">
-                                      <span tal:replace="python:toLocalizedTime(login_time)" />
-                                  </td>
-                              </tr>
-                            </tal:block>
-                        </tbody>
-                        <tbody tal:condition="not:view/has_pressrooms">
-                              <tr>
-                                  <td colspan="4">
-                                      <div class="alert alert-block alert-error">
-                                            <a class="close" href="#">×</a>
-                                            <p><strong i18n:translate="">
-                                                No pressrooms available!</strong></p>
-                                      </div>
-                                  </td>
-                              </tr>
-                        </tbody>
-                    </table>
           </section>
           </div>
         <div class="span3">
@@ -210,32 +161,6 @@
                 </tal:items>
               </div>
             <hr>
-            <h2><a href="" tal:attributes="href python:context_url + '/@@global-settings'"
-                  rel="twipsy"
-                  data-placement="right"
-                  data-original-title="Verwaltung der E-Mail-Vorlagen und der Standard-Einstellungen">
-                Einstellungen</a>
-            </h2>
-          <table class="table table-condensed">
-            <tbody>
-              <tr>
-                <td><strong>Absender:</strong></td>
-                <td tal:content="context/name" />
-              </tr>
-              <tr>
-                <td><strong>E-Mail:</strong></td>
-                <td tal:content="context/email" />
-              </tr>
-              <tr>
-                <td><strong>Test E-Mails:</strong></td>
-                <td tal:define="items context/testRecipients">
-                  <tal:block tal:repeat="item items">
-                    <span tal:replace="item" />
-                  </tal:block>
-                </td>
-              </tr>
-            </tbody>
-          </table>
           </aside>
         </div>
         </div>

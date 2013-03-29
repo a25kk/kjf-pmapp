@@ -13,7 +13,6 @@ from plone.app.layout.viewlets.content import ContentHistoryView
 from Products.CMFCore.interfaces import IContentish
 from plone.app.contentlisting.interfaces import IContentListing
 
-from pressapp.presscontent.interfaces import IPressContent
 from pressapp.channelmanagement.subscriber import ISubscriber
 from pressapp.presscontent.pressroom import IPressRoom
 
@@ -118,6 +117,16 @@ class View(grok.View):
                                     depth=1),
                           sort_on='sortable_title')
         return results
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        creator = context.Creator()
+        user = api.user.get(username=creator)
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
 
     def memberinfo(self, owner):
         context = aq_inner(self.context)
