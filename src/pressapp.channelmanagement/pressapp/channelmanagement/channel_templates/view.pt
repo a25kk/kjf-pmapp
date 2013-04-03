@@ -12,6 +12,20 @@
   <div class="container-fluid">
     
     <div class="page-header" id="page-header">
+      <div class="pull-right">
+        <h4>Übersicht Adressen</h4>
+      </div>
+        <h1>Kontakte</h1>
+        <p tal:define="time context/modified" class="discreet">
+                <span i18n:translate="">Last changed:</span>
+                <span tal:content="time"
+                   tal:attributes="data-appui string:prettydate;
+                                   title time" />
+          </p>
+        <!--<p class="discreet">Verwaltung der Adressen</p>-->
+    </div>
+
+    <div class="page-header" id="page-header">
         <p class="pull-right">
               <a class="btn btn-small popoverForm"
                 tal:define="context_url context/absolute_url;"
@@ -25,8 +39,11 @@
     <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
                          b_size python:50;b_start python:0;b_start request/b_start | b_start;"
       id="content-core">
-        <div class="window-column">
-              <table class="table table-condensed table-striped"
+      <div class="row">
+        <div class="span9">
+          <div class="window-column">
+            <div class="window-column-content">
+              <table class="table table-condensed xtable-striped"
                 id="table-contacts">
                   <thead>
                       <tr>
@@ -43,20 +60,16 @@
                         <tr tal:define="rowcount repeat/item/number;">
                             <td tal:content="rowcount">1</td>
                             <td>
-                                <span tal:content="item/email" />
+                              <h6 tal:content="item/Title" />
+                                
                             </td>
                             <td>
-                                <span tal:content="item/Title" />
+                                <small tal:content="item/email" />
                             </td>
                             <td tal:define="item_url item/getURL">
-                                <a class="btn btn-small"
-                                    tal:attributes="href python:item_url+'/@@edit-susbcriber'">
-                                    <i class="icon-edit" />
-                                    Bearbeiten</a>
-                                <a class="btn btn-small"
+                                <a class="btn btn-mini"
                                     tal:attributes="href item_url">
-                                    <i class="icon-eye-open" />
-                                    Anzeigen</a>
+                                    bearbeiten</a>
                             </td>
                         </tr>
                       </tal:block>
@@ -76,7 +89,9 @@
                         </tr>
                   </tbody>
               </table>
+            </div>
         </div>
+      </div>
     </section>
     
   </div>

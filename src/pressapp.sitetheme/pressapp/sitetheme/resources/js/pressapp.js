@@ -42,7 +42,7 @@
                             alert(error_msg + "\n\nError:\n" + data.messages);
                         }
                     },
-                    error: function (data) {
+                    error: function () {
                         alert(error_msg);
                     }
                 });
@@ -76,12 +76,10 @@
             current.toggle('slow');
         });
         //$('#recipient-table').dataTable();
-        
         /* Default class modification */
         $.extend($.fn.dataTableExt.oStdClasses, {
             "sWrapper": "dataTables_wrapper form-inline"
         });
-        
         /* API method to get paging information */
         $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings)
         {
@@ -107,9 +105,8 @@
                             fnDraw(oSettings);
                         }
                     };
-        
-                    $(nPaging).addClass('pagination').append(
-                        '<ul>' +
+                    $(nPaging).addClass('xpagination').append(
+                        '<ul class="pagination">' +
                             '<li class="prev disabled"><a href="#">&larr; ' + oLang.sPrevious + '</a></li>' +
                             '<li class="next disabled"><a href="#">' + oLang.sNext + ' &rarr; </a></li>' +
                         '</ul>'
@@ -118,13 +115,13 @@
                     $(els[0]).bind('click.DT', { action: "previous" }, fnClickHandler);
                     $(els[1]).bind('click.DT', { action: "next" }, fnClickHandler);
                 },
-        
+
                 "fnUpdate": function (oSettings, fnDraw) {
                     var iListLength = 5;
                     var oPaging = oSettings.oInstance.fnPagingInfo();
                     var an = oSettings.aanFeatures.p;
                     var i, j, sClass, iStart, iEnd, iHalf = Math.floor(iListLength / 2);
-        
+
                     if (oPaging.iTotalPages < iListLength) {
                         iStart = 1;
                         iEnd = oPaging.iTotalPages;
@@ -139,11 +136,9 @@
                         iStart = oPaging.iPage - iHalf + 1;
                         iEnd = iStart + iListLength - 1;
                     }
-        
                     for (i = 0, iLen = an.length ; i < iLen ; i++) {
                         // Remove the middle elements
                         $('li:gt(0)', an[i]).filter(':not(:last)').remove();
-        
                         // Add the new list items and their event handlers
                         for (j = iStart ; j <= iEnd ; j++) {
                             sClass = (j == oPaging.iPage + 1) ? 'class="active"' : '';
@@ -154,14 +149,12 @@
                                     fnDraw(oSettings);
                                 });
                         }
-        
                         // Add / remove disabled classes from the static elements
                         if (oPaging.iPage === 0) {
                             $('li:first', an[i]).addClass('disabled');
                         } else {
                             $('li:first', an[i]).removeClass('disabled');
                         }
-        
                         if (oPaging.iPage === oPaging.iTotalPages - 1 || oPaging.iTotalPages === 0) {
                             $('li:last', an[i]).addClass('disabled');
                         } else {
@@ -176,7 +169,7 @@
             var oTable;
             $(function () {
                 /* Add a click handler to the rows - this could be used as a callback */
-                $("#recipient-table tbody tr").click(function (e) {
+                $("#recipient-table tbody tr").click(function () {
                     if ($(this).hasClass('row_selected')) {
                         $(this).removeClass('row_selected');
                     }

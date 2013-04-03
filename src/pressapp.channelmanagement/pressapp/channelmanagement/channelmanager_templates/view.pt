@@ -20,10 +20,6 @@
     <div class="page-header" id="page-header">
       <div class="pull-right">
         <h4>Übersicht</h4>
-        <a class="btn btn-small btn-primary pull-right"
-                tal:attributes="href python:channel_url+'/@@add-subscriber'">
-                <i class="icon-plus-sign icon-white" />
-                  Neuen Kontakt anlegen</a>
       </div>
         <h1>Verteiler</h1>
         <p class="discreet">Administration Verteiler und Adressen</p>
@@ -114,11 +110,23 @@
         <div class="span3">
           <aside id="sidebar">
             <div class="stats widget">
-              <div class="stat info">
+              <div class="stat inverse">
                 <h2 tal:content="view/subscriber_count">72</h2>
                 <h6>Adressen</h6>
               </div>
             </div>
+            <hr>
+              <a class="btn btn-block btn-primary"
+                tal:attributes="href python:channel_url+'/@@add-subscriber'">
+                  Neuen Kontakt anlegen</a>
+            <hr>
+              <p>Overview of all contact addresses
+              </p>
+              <a href="" class="btn"
+                  rel="twipsy"
+                  data-original-title="Zur &Uuml;bersicht aller Adressen"
+                  tal:attributes="href channel_url">
+                  Adressen</a>
           </aside>
           <div class="page-header">
             <h2><span
