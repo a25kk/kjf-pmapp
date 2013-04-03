@@ -25,14 +25,56 @@
                 <i class="icon-plus-sign icon-white" />
                   Neuen Kontakt anlegen</a>
       </div>
-        <h1>Adressen</h1>
-        <p class="discreet">Adminsitration Verteiler und Adressen</p>
+        <h1>Verteiler</h1>
+        <p class="discreet">Administration Verteiler und Adressen</p>
     </div>
 
     <section id="content-core">
     <div class="row">
         <div class="span9">
           <div class="window-column">
+            <section tal:define="items view/statistic_data">
+              <div class="row">
+                <tal:block tal:repeat="item items">
+                  <div class="span6">
+                  <div class="featurette dim-in two">
+                      <div class="row">
+                        <div class="span9">
+                          <h3 tal:content="item/name">Channel</h3>
+                          <p>
+                            <span class="badge badge-info" tal:content="item/pr_count" />
+                            Pressemitteilungen
+                          </p>
+                          <p>
+                              <span class="badge badge-info" tal:content="item/pi_count" />
+                              Presseeinladungen
+                          </p>
+                        </div>
+                        <div class="span3">
+                          <div class="stats widget">
+                            <span class="stat primary">
+                              <span class="stat-header"><i class="icon-envelope-alt"></i></span>
+                              <span class="stat-subheader"><span class="badge badge-info" tal:content="item/subscriber" /></span>
+                            </span>
+                          </div>
+                          <form class="xpull-right"
+                              tal:attributes="action python:context_url+'/@@channel-information'">
+                              <input href="" class="btn btn-small btn-block"
+                                  type="submit" value="Anzeigen" />
+                              <input name="channeltrigger" id="channeltrigger" type="hidden"
+                                  class="large uneditable-input"
+                                  value="Kontakte" />
+                              <input name="channelname" id="channelname" type="hidden"
+                                  class="large uneditable-input"
+                                  tal:attributes="value item/channel" />
+                          </form>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+                </tal:block>
+              </div>
+            </section>
           <div class="page-header">
             <h2><span tal:content="view/subscriber_count" />
                 <a href=""
@@ -70,6 +112,14 @@
           </div>
         </div>
         <div class="span3">
+          <aside id="sidebar">
+            <div class="stats widget">
+              <div class="stat info">
+                <h2 tal:content="view/subscriber_count">72</h2>
+                <h6>Adressen</h6>
+              </div>
+            </div>
+          </aside>
           <div class="page-header">
             <h2><span
                   tal:content="view/channel_counter" />
