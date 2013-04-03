@@ -7145,6 +7145,12 @@ table.dataTable tr.row_selected td {
   border-width: 1px 0px;
   background-color: #f2dede;
 }
+#table-contacts {
+  margin-top: 20px;
+}
+#table-contacts h6 {
+  margin-top: 0px;
+}
 footer {
   position: fixed;
   bottom: 0;

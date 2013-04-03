@@ -22,18 +22,6 @@
                    tal:attributes="data-appui string:prettydate;
                                    title time" />
           </p>
-        <!--<p class="discreet">Verwaltung der Adressen</p>-->
-    </div>
-
-    <div class="page-header" id="page-header">
-        <p class="pull-right">
-              <a class="btn btn-small popoverForm"
-                tal:define="context_url context/absolute_url;"
-                tal:attributes="href python:context_url+'/@@add-subscriber'">
-                <i class="icon-plus-sign icon-white" />
-                  Neuen Kontakt anlegen</a>
-        </p>
-        <h1 class="documentFirstHeading">Adressen</h1>
     </div>
     
     <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
@@ -90,6 +78,30 @@
                   </tbody>
               </table>
             </div>
+          </div>
+        </div>
+        <div class="span3">
+          <aside id="sidebar">
+            <div class="stats widget">
+              <div class="stat inverse">
+                <h2 tal:content="view/subscriber_index">72</h2>
+                <h6>Adressen</h6>
+              </div>
+            </div>
+            <hr>
+              <a class="btn btn-block btn-primary"
+                tal:define="context_url context/absolute_url;"
+                tal:attributes="href python:context_url+'/@@add-subscriber'">
+                  Neuen Kontakt anlegen</a>
+            <hr>
+            <p i18n:translate="">
+              Use the filter function to find specific addresses or resize
+              the batch size.
+              Manage addresses and configure the corresponding
+              channels. 
+            </p>
+            <hr>
+          </aside>
         </div>
       </div>
     </section>
