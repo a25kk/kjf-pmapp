@@ -6,7 +6,6 @@ from zope.lifecycleevent import modified
 from plone.directives import form
 from z3c.form import button
 from plone.dexterity.utils import createContentInContainer
-from plone.namedfile.field import NamedBlobFile
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.channelmanagement.channel import IChannel
 
@@ -89,7 +88,8 @@ class SubscriberAddForm(form.SchemaEditForm):
     def applyChanges(self, data):
         context = aq_inner(self.context)
         assert IChannel.providedBy(context)
-        item = createContentInContainer(context,
+        item = createContentInContainer(
+            context,
             'pressapp.channelmanagement.subscriber',
             checkConstraints=True, **data)
         setattr(context, 'channel', list(data['channel']))

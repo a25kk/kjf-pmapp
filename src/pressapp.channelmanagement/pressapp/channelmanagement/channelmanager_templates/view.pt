@@ -38,19 +38,22 @@
                         <div class="span9">
                           <h3 tal:content="item/name">Channel</h3>
                           <p>
-                            <span class="badge badge-info" tal:content="item/pr_count" />
+                            <span class="badge" tal:content="item/pr_count" />
                             Pressemitteilungen
                           </p>
                           <p>
-                              <span class="badge badge-info" tal:content="item/pi_count" />
+                              <span class="badge" tal:content="item/pi_count" />
                               Presseeinladungen
                           </p>
                         </div>
                         <div class="span3">
                           <div class="stats widget">
                             <span class="stat primary">
-                              <span class="stat-header"><i class="icon-envelope-alt"></i></span>
-                              <span class="stat-subheader"><span class="badge badge-info" tal:content="item/subscriber" /></span>
+                              <span class="stat-header">
+                                <i class="icon-envelope"></i></span>
+                              <span class="stat-subheader">
+                                <span class="xbadge xbadge-info" tal:content="item/subscriber" />
+                              </span>
                             </span>
                           </div>
                           <form class="xpull-right"
