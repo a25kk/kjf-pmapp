@@ -24,7 +24,7 @@
     <section id="content-core">
       <div class="box">
         <div class="row">
-          <div class="span3">
+          <div class="col col-lg-3">
             <div class="statuspanel">
               <div class="top success">
                 <i class="icon-file-alt icon-4x"></i>
@@ -36,7 +36,7 @@
               </div>
             </div>
           </div>
-          <div class="span3">
+          <div class="col col-lg-3">
             <div class="stats panel" tal:define="pr_idx view/pressrelease_index">
               <h5 i18n:translate="">Pressemitteilungen</h5>
               <input type="text"
@@ -51,7 +51,7 @@
                                 value pr_idx">
             </div>
           </div>
-          <div class="span6">
+          <div class="col col-lg-6">
             <div class="statuspanel">
               <div class="top danger">
                 <i class="icon-calendar icon-4x"></i>

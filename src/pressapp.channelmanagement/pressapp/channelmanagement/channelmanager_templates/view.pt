@@ -27,15 +27,15 @@
 
     <section id="content-core">
     <div class="row">
-        <div class="span9">
+        <div class="col col-lg-9">
           <div class="window-column">
             <section tal:define="items view/statistic_data">
               <div class="row">
                 <tal:block tal:repeat="item items">
-                  <div class="span6">
+                  <div class="col col-lg-6">
                   <div class="featurette dim-in two">
                       <div class="row">
-                        <div class="span9">
+                        <div class="col col-lg-9">
                           <h3 tal:content="item/name">Channel</h3>
                           <p>
                             <span class="badge" tal:content="item/pr_count" />
@@ -46,7 +46,7 @@
                               Presseeinladungen
                           </p>
                         </div>
-                        <div class="span3">
+                        <div class="col col-lg-3">
                           <div class="stats widget">
                             <span class="stat primary">
                               <span class="stat-header">
@@ -110,7 +110,7 @@
             </section>
           </div>
         </div>
-        <div class="span3">
+        <div class="col col-lg-3">
           <aside id="sidebar">
             <div class="stats widget">
               <div class="stat inverse">

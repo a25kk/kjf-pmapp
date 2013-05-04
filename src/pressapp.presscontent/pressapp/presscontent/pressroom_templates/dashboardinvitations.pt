@@ -28,7 +28,7 @@
     </header>
     <section id="content-core">
     <div class="row">
-      <div class="span9">
+      <div class="col col-lg-9">
       <div class="window-column">
         <div class="xxwindow-column-content">
           <tal:block tal:condition="view/has_pressinvitations">
@@ -41,7 +41,7 @@
                                 batch python:Batch(items, b_size, b_start);">
               <div class="tile" tal:repeat="item batch">
               <div class="row">
-                <div class="span2">
+                <div class="col col-lg-2">
                    <h6 tal:define="item_type item/portal_type"
                       tal:content="python:view.get_type_info(item_type)"
                       i18n:translate="">Item Type
@@ -52,7 +52,7 @@
                           i18n:translate="">Unpublished</small>
                     </p>
                 </div>
-                <div class="span6">
+                <div class="col col-lg-6">
                   <h4 tal:content="item/Title" />
                   <p>
                     <small tal:define="modified item/modified">
@@ -63,7 +63,7 @@
                     </small>
                   </p>
                 </div>
-                <div class="span4">
+                <div class="col col-lg-4">
                   <a href="" class="btn btn-mini pull-right"
                     tal:attributes="href item/getURL">Bearbeiten</a>
                 </div>
@@ -75,7 +75,7 @@
          <tal:block tal:condition="not:view/has_pressinvitations">
               <div class="featurette dim-in two">
                 <div class="row">
-                  <div class="span9">
+                  <div class="col col-lg-9">
                     <h2 i18n:translate="">Pressinvitations</h2>
                     <p class="lead" i18n:translate="">
                       This dashboard displays all press invitations associated
@@ -84,7 +84,7 @@
                       workspace.
                     </p>
                   </div>
-                  <div class="span3">
+                  <div class="col col-lg-3">
                     <a class="stats widget"
                       tal:attributes="href python:context_url + '/@@add-press-invitation'">
                       <span class="stat primary">
@@ -99,7 +99,7 @@
         </div>
       </div>
       </div>
-      <div class="span3">
+      <div class="col col-lg-3">
         <aside id="sidebar">
           <div class="stats widget">
             <div class="stat inverse">

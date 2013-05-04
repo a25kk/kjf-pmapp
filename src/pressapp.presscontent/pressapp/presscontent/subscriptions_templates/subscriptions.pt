@@ -28,7 +28,7 @@
                             <div class="input-prepend">
                             <span class="add-on">@</span>
                                 <input id="email"
-                                    class="span3"
+                                    class="col col-lg-3"
                                     type="text"
                                     size="16"
                                     name="email" />

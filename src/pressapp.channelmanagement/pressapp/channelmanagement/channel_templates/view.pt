@@ -28,7 +28,7 @@
                          b_size python:50;b_start python:0;b_start request/b_start | b_start;"
       id="content-core">
       <div class="row">
-        <div class="span9">
+        <div class="col col-lg-9">
           <div class="window-column">
             <div class="window-column-content">
               <table class="table table-condensed xtable-striped"
@@ -80,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="span3">
+        <div class="col col-lg-3">
           <aside id="sidebar">
             <div class="stats widget">
               <div class="stat inverse">

@@ -30,19 +30,19 @@
     </div>
     <div id="content-core">
     <div class="row">
-    <div class="span9">
+    <div class="col col-lg-9">
     <div class="window-column">
       <div class="window-column-content">
         <section tal:condition="view/has_recipients">
           <div class="featurette dim-in two">
             <div class="row">
-              <div class="span9">
+              <div class="col col-lg-9">
                 <h2 i18n:translate="">Empf&auml;nger aus Verteilern</h2>
                 <!--<p class="lead" i18n:translate="">
                   List of recipients asigned from available channels
                 </p>-->
               </div>
-              <div class="span3">
+              <div class="col col-lg-3">
                 <div class="stats widget">
                   <span class="stat primary">
                     <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
@@ -69,14 +69,14 @@
         <section tal:condition="view/has_subscribers">
           <div class="featurette dim-in two">
             <div class="row">
-              <div class="span9">
+              <div class="col col-lg-9">
                 <h2 i18n:translate="">Newsletter Abonnenten</h2>
                 <!--<p class="lead">
                   Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
                   und können sich aktiv an- und abmelden
                 </p>-->
               </div>
-              <div class="span3">
+              <div class="col col-lg-3">
                 <div class="stats widget">
                   <span class="stat primary">
                     <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
@@ -101,17 +101,17 @@
         </section>
 
         <div class="row" tal:content="nothing">
-            <div class="span6">
+            <div class="col col-lg-6">
                 <section tal:condition="view/has_recipients">
                 <div class="featurette dim-in two">
                   <div class="row">
-                    <div class="span9">
+                    <div class="col col-lg-9">
                       <h2 i18n:translate="">Empf&auml;nger aus Verteilern</h2>
                       <p class="lead" i18n:translate="">
                         List of recipients asigned from available channels
                       </p>
                     </div>
-                    <div class="span3">
+                    <div class="col col-lg-3">
                       <div class="stats widget">
                         <span class="stat primary">
                           <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
@@ -135,18 +135,18 @@
                 </div>
                 </section>
             </div>
-            <div class="span6">
+            <div class="col col-lg-6">
                 <section tal:condition="view/has_subscribers">
                 <div class="featurette dim-in two">
                   <div class="row">
-                    <div class="span9">
+                    <div class="col col-lg-9">
                       <h2 i18n:translate="">Newsletter Abonnenten</h2>
                       <p class="lead">
                         Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
                         und können sich aktiv an- und abmelden
                       </p>
                     </div>
-                    <div class="span3">
+                    <div class="col col-lg-3">
                       <div class="stats widget">
                         <span class="stat primary">
                           <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
@@ -195,7 +195,7 @@
     </div>
     </div>
     </div>
-    <div class="span3">
+    <div class="col col-lg-3">
       <aside id="sidebar" class="stepper-bar"
         tal:define="has_channels view/has_channel_info;
                     recipients view/has_recipients_info;">

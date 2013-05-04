@@ -32,7 +32,7 @@
     <section id="content-core">
     
     <div class="row">
-        <div class="span9">
+        <div class="col col-lg-9">
         <section class="window-column">
             <table class="table table-condensed">
                 <thead>
@@ -73,7 +73,7 @@
             </table>
         </section>
         </div>
-        <div class="span3">
+        <div class="col col-lg-3">
             <div class="sidebar">
                 <h4>Verteiler:
                 </h4>

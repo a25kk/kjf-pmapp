@@ -26,7 +26,7 @@
       </header>
       <article id="content-core">
         <div class="row">
-          <div class="span9">
+          <div class="col col-lg-9">
             <div class="window-column">
               <div class="window-column-content">
                 <div id="xxcontent-core">
@@ -35,7 +35,7 @@
               </div>
             </div>
           </div>
-          <div class="span3">
+          <div class="col col-lg-3">
             <aside id="sidebar" class="stepper-bar"
               tal:define="has_channels view/has_channel_info;
                           recipients view/has_recipients_info;">

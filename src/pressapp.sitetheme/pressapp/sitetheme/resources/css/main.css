@@ -6839,7 +6839,13 @@ fieldset[disabled] input.destructive.active {
 }
 .window .window-header {
   padding: 20px 20px;
-  background: #a7a9aa;
+  background-color: #b2b2b2;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e9e9e9), to(#b2b2b2));
+  background-image: -webkit-linear-gradient(top, #e9e9e9, #b2b2b2);
+  background-image: -moz-linear-gradient(top, #e9e9e9, #b2b2b2);
+  background-image: linear-gradient(to bottom, #e9e9e9, #b2b2b2);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe9e9e9', endColorstr='#ffb2b2b2', GradientType=0);
   border-bottom: 1px solid #656565;
   margin: 0px;
   color: #555555;

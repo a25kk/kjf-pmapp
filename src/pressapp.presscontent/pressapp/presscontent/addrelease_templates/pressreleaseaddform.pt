@@ -26,7 +26,7 @@
       </header>
       <article id="content-core">
         <div class="row">
-          <div class="span9">
+          <div class="col col-lg-9">
             <div class="window-column">
               <div class="window-column-content">
                 <div id="xxcontent-core">
@@ -35,7 +35,7 @@
               </div>
             </div>
           </div>
-          <div class="span3">
+          <div class="col col-lg-3">
             <aside id="sidebar">
               <p i18n:translate="" class="lead">
                 Please enter the basic details for this press release

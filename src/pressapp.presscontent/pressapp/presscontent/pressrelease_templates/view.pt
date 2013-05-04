@@ -72,7 +72,7 @@
 
   <section id="content-core">
   <div class="row">
-    <div class="span9">
+    <div class="col col-lg-9">
      
       <div class="window-column">
       <div class="window-column-content">
@@ -103,11 +103,11 @@
 
         <div tal:condition="context/image"
           class="row">
-          <div class="span8">
+          <div class="col col-lg-8">
             <h3>Bild</h3>
             <p tal:content="context/imagename">Caption</p>
           </div>
-          <div class="span4">
+          <div class="col col-lg-4">
               <img tal:define="scale context/@@images"
                 tal:replace="structure python: scale.scale('image',
                              scale='thumb').tag()" />
@@ -226,7 +226,7 @@
       </div>
     </div>
     
-      <div class="span3" tal:define="modified context/modified">
+      <div class="col col-lg-3" tal:define="modified context/modified">
         <aside id="sidebar">
           <div class="box-editable">
             <small class="pull-right">
