@@ -32,19 +32,19 @@
     float: right;
     width: 35%;
     clear: right;
-    color: @grayLight;
+    color: @gray-light;
     font-family: @font-family-monospace;
     line-height: @line-height-base - 3;
     padding: @line-height-base / 2 @line-height-base;
     margin: @line-height-base 0 @line-height-base @line-height-base;
-    border-left: 5px solid @grayLight;
-    background: @grayLighter;
+    border-left: 5px solid @gray-light;
+    background: @gray-lighter;
 }
 .callout {
-    background: @grayLighter;
+    background: @gray-lighter;
     padding: @line-height-base;
     margin: 0 0 @line-height-base;
-    border-left: 5px solid @grayLight;
+    border-left: 5px solid @gray-light;
     font-family: @font-family-monospace;
     font-size: 16px;
     line-height: @line-height-base * 1.25;
@@ -100,7 +100,7 @@ input.standalone {
         border-radius: 4px;
     }
     a.link-category:hover {
-        background: @link-color-hover;
+        background: @link-hover-color;
     }
     .separator {
         display: none;
@@ -115,7 +115,7 @@ input.standalone {
         padding: 4px 12px;
         line-height: @line-height-base;
         text-decoration: none;
-        background-color: @pagination-background;
+        background-color: @pagination-bg;
         border: 1px solid @pagination-border;
         border-left-width: 0;
         &:first-child {
@@ -133,7 +133,7 @@ input.standalone {
     //    display: inline-block;
     //    padding: 5px 14px;
     //    background-color: #fff;
-    //    border: 1px solid @grayLight;
+    //    border: 1px solid @gray-light;
     //    border-radius:4px;
     //    font-size: 11px;
     //    &.next {
@@ -190,7 +190,7 @@ input.datetime-widget,
     .formHelp {
         font-weight: normal;
         display: block;
-        .muted();
+        .text-muted();
         span {
             display: inline-block;
         }
@@ -204,7 +204,7 @@ div.field {
         .formHelp {
             font-weight: normal;
             display: block;
-            .muted();
+            .text-muted();
             span {
                 display: inline-block;
             }
@@ -257,7 +257,7 @@ dl.portalMessage {
         .label();
     }
     .state-private {
-        background-color: @state-error-text;
+        background-color: @state-danger-text;
     }
     .state-published {
         background-color: @state-success-text;
@@ -269,7 +269,7 @@ dl.portalMessage {
         background-color: @state-info-text;
     }
     .state-visible {
-        background-color: @grayDark;
+        background-color: @gray-dark;
     }
 }
 
@@ -473,7 +473,7 @@ ul.formTabs {
         border: 1px solid transparent;
         border-radius: 4px 4px 0 0;
             &:hover {
-                border-color: @grayLighter @grayLighter #ddd;
+                border-color: @gray-lighter @gray-lighter #ddd;
             }
             &.selected {
                 color: @gray;
@@ -603,12 +603,12 @@ div.field span.required:after {
 }
 
 #contentActionMenus dl.actionMenu.activated dd {
-    background-color: @grayLight;
+    background-color: @gray-light;
     color: White;
     z-index: 5;
 }
 #contentActionMenus dl.actionMenu.activated dd {
-    border-bottom: 0.5em solid @grayLight;
+    border-bottom: 0.5em solid @gray-light;
     right: -3px;
 }
 #contentActionMenus dl.actionMenu.activated dd a:hover,
@@ -725,10 +725,10 @@ table.listing .top {
 }
 table.listing th {
     text-align: left;
-    color: @grayLight;
+    color: @gray-light;
     border: 0.1em solid #e7e7e7;
     border-style: solid solid none;
-    background: @grayLighter;
+    background: @gray-lighter;
 }
 table.listing tr.odd th {
     border: 0.1em solid #fff;
