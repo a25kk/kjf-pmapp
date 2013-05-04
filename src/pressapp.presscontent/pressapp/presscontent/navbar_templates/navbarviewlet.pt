@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
             </a>
             <div class="nav-collapse pull-right" tal:condition="not:viewlet/anonymous">
-                <ul class="nav"
+                <ul class="nav navbar-nav"
                     tal:define="memberinfo viewlet/memberinfo;
                                 home_folder memberinfo/home_url">
                     <!--<li id="main-menu">
@@ -78,7 +78,7 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav nav-user pull-right"
+                <ul class="nav navbar-nav nav-user pull-right"
                     tal:define="memberinfo viewlet/memberinfo;
                                 home_folder memberinfo/home_url">
                     <li class="divider-vertical"></li>

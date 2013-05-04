@@ -21,7 +21,7 @@
     <header id="page-header">
       <div class="row"
         tal:define="navigation_root_url context_url">
-        <div class="span9">
+        <div class="col col-lg-9">
           <h1>Pressecenter
             <!--<small tal:condition="view/has_filter"
               tal:define="info view/filter_info">
@@ -36,7 +36,7 @@
                                    title time" />
           </p>
         </div>
-        <div class="span3">
+        <div class="col col-lg-3">
           <form action="."
           tal:attributes="action python:context_url + '/@@search'">
             <div class="input-group span12">
@@ -55,12 +55,12 @@
     <section id="content-core">
       <div class="xxxwindow-column">
         <div class="row">
-          <div class="span9">
+          <div class="col col-lg-9">
             <section class="window-column">
               <div class="window-column-content"
                 tal:define="pressidx view/presscontent_index">
                 <div class="row">
-                  <div class="span6">
+                  <div class="col col-lg-6">
                     <div class="panel" tal:define="pr_idx view/pr_index">
                       <div class="statuspanel">
                         <div class="top success">
@@ -99,7 +99,7 @@
                       </p>-->
                     </div>
                   </div>
-                  <div class="span6">
+                  <div class="col col-lg-6">
                     <div class="panel" tal:define="pi_idx view/pi_index">
                       <div class="statuspanel">
                         <div class="top danger">
@@ -136,7 +136,7 @@
               </div>
           </section>
           </div>
-        <div class="span3">
+        <div class="col col-lg-3">
           <aside id="sidebar">
             <div class="stats widget">
               <div class="stat info">
