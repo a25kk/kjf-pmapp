@@ -5197,18 +5197,6 @@ input.standalone .badge {
   position: relative;
   top: -1px;
 }
-input.context.btn-small,
-input.destructive.btn-small,
-input.standalone.btn-small {
-  font-size: 11.9pxpx;
-  font-size: 1.19pxrem;
-}
-input.context.btn-mini,
-input.destructive.btn-mini,
-input.standalone.btn-mini {
-  font-size: 10.5pxpx;
-  font-size: 1.05pxrem;
-}
 #category {
   font-size: 11px;
   margin: 20px 0px;
@@ -5485,16 +5473,6 @@ input.context .badge,
 input.standalone .badge {
   position: relative;
   top: -1px;
-}
-input.context.btn-small,
-input.standalone.btn-small {
-  font-size: 11.9pxpx;
-  font-size: 1.19pxrem;
-}
-input.context.btn-mini,
-input.standalone.btn-mini {
-  font-size: 10.5pxpx;
-  font-size: 1.05pxrem;
 }
 .fieldRequired,
 span.required {
@@ -6492,14 +6470,6 @@ body.template-login_form #content-wrapper {
   border-radius: 0px;
   text-shadow: none;
 }
-.btn.btn-small {
-  font-size: 11.9pxpx;
-  font-size: 1.19pxrem;
-}
-.btn.btn-mini {
-  font-size: 10.5pxpx;
-  font-size: 1.05pxrem;
-}
 input.context,
 input.destructive {
   margin-right: 10px;
@@ -6634,16 +6604,6 @@ input.context .badge,
 input.destructive .badge {
   position: relative;
   top: -1px;
-}
-input.context.btn-small,
-input.destructive.btn-small {
-  font-size: 11.9pxpx;
-  font-size: 1.19pxrem;
-}
-input.context.btn-mini,
-input.destructive.btn-mini {
-  font-size: 10.5pxpx;
-  font-size: 1.05pxrem;
 }
 input.destructive {
   background-color: #d9534f;
