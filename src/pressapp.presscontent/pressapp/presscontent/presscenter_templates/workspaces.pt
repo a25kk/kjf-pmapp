@@ -70,13 +70,12 @@
                         <span tal:content="item/Title" />
                         <small class="discreet" tal:content="memberinfo/home_page" />
                       </h4>
-                      <p>
-                        <small tal:define="modified memberinfo/last_login_time">
-                          Zuletzt angemeldet:
-                          <span tal:content="modified"
-                            tal:attributes="data-appui string:prettydate;
-                                            title modified" />
-                        </small>
+                      <p tal:define="time memberinfo/last_login_time;
+                                     timestamp python:time.ISO()">
+                          <small><span i18n:translate="">Last changed:</span>
+                          <span tal:attributes="data-livestamp timestamp"
+                              tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+                          </small>
                       </p>
                     </div>
                     <div class="col col-lg-4">

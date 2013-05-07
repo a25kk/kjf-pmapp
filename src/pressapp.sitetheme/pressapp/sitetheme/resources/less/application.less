@@ -11,7 +11,7 @@
 @link-color:            darken(@app-color, 10%);
 
 @font-family-sans-serif:  'Droid Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-@headings-font-family:    'Oswald', inherit;
+@headings-font-family:    'Oswald';
 
 body {
   background: lighten(#50a0b0, 20%);
@@ -217,7 +217,7 @@ input.destructive {
     color: @gray;
     h1 {
       //font-size: @font-size-base * 1.75;
-      .font-size(@font-size-base * 1.75);
+      font-size: @font-size-base * 1.75;
       line-height: @line-height-base;
       margin: @line-height-base / 2 0 @line-height-base / 2;
       small {
@@ -349,6 +349,9 @@ input.destructive {
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
       &.stepper-bar {
         padding-top: 0px;
+      }
+      .tooltip {
+        text-shadow: none;
       }
       .btn {
         text-shadow: none;

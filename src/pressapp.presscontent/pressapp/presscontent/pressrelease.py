@@ -297,10 +297,10 @@ class ArchiveSettings(grok.View):
                    }
         if state:
             if state == 'true':
-                setattr(context, 'archive', False)
+                setattr(context, 'archive', True)
                 results['success'] = True
             else:
-                setattr(context, 'archive', True)
+                setattr(context, 'archive', False)
                 results['success'] = True
             results['results'] = {
                 'state': 'changed',

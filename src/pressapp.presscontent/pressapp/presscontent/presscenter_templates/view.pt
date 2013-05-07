@@ -29,11 +29,12 @@
                 tal:content="info/state" />
             </small>-->
           </h1>
-          <p tal:define="time context/modified" class="discreet">
-                <span i18n:translate="">Last changed:</span>
-                <span tal:content="time"
-                   tal:attributes="data-appui string:prettydate;
-                                   title time" />
+          <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
           </p>
         </div>
         <div class="col col-lg-3">
@@ -152,10 +153,10 @@
                   <p class="discreet">
                     <span tal:content="entry/action" i18n:translate="">
                       Action</span>
-                    <span tal:define="time entry/timestamp"
-                        tal:content="time"
-                        tal:attributes="data-appui string:prettydate;
-                                        title time" />
+                    <span tal:define="time entry/timestamp;
+                                      timestamp entry/timestamp"
+                          tal:attributes="data-livestamp timestamp"
+                          tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
                       <span>by <span tal:replace="entry/actorname" /></span>
                   </p>
                 </tal:items>
