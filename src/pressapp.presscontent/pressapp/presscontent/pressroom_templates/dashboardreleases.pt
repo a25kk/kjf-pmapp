@@ -10,17 +10,20 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
+  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+
     <div class="page-header" id="page-header">
       <div class="pull-right">
         <h5 tal:content="context/Title" />
       </div>
       <h1>Pressemitteilungen</h1>
-      <p tal:define="time context/modified" class="discreet">
-              <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
-      </p>
+      <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+        </p>
     </div>
 
     <section id="content-core">
@@ -54,11 +57,11 @@
               <div class="col col-lg-6">
                 <h4 tal:content="item/Title" />
                 <p>
-                  <small tal:define="modified item/modified">
-                    Zuletzt verändert:
-                    <span tal:content="modified"
-                      tal:attributes="data-appui string:prettydate;
-                                      title modified" />
+                  <small tal:define="modified item/modified;
+                                     timestamp python:modified.ISO()">
+                    Zuletzt ver&auml;ndert:
+                    <span tal:attributes="data-livestamp timestamp"
+                      tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
                   </small>
                 </p>
               </div>
@@ -118,7 +121,7 @@
       </div>
     </div>
     </section>          
-    
+  </section>
   </metal:content-core>
 </metal:main>
 

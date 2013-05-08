@@ -19,11 +19,12 @@
             <h4 tal:content="context/Title" />
         </div>
         <h1>Presseeinladungen</h1>
-        <p tal:define="time context/modified" class="discreet">
-              <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
+        <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
         </p>
     </header>
     <section id="content-core">
@@ -55,11 +56,11 @@
                 <div class="col col-lg-6">
                   <h4 tal:content="item/Title" />
                   <p>
-                    <small tal:define="modified item/modified">
-                      Zuletzt verändert:
-                      <span tal:content="modified"
-                        tal:attributes="data-appui string:prettydate;
-                                        title modified" />
+                    <small tal:define="modified item/modified;
+                                       timestamp python:modified.ISO()">
+                      Zuletzt ver&auml;ndert:
+                      <span tal:attributes="data-livestamp timestamp"
+                        tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
                     </small>
                   </p>
                 </div>

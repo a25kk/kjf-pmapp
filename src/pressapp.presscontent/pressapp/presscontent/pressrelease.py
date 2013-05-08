@@ -223,6 +223,29 @@ class Preview(grok.View):
     grok.require('zope2.View')
     grok.name('pressrelease-preview')
 
+    def constructPreviewURL(self):
+        context = aq_inner(self.context)
+        portal_url = api.portal.get().absolute_url()
+        uuid = IUUID(context, None)
+        url = portal_url + '/@@pressitem-view?uid=' + uuid
+        return url
+
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        creator = context.Creator()
+        user = api.user.get(username=creator)
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
+
 
 class AsHtmlView(grok.View):
     grok.context(IPressRelease)
