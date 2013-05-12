@@ -45,7 +45,7 @@
                 name="SearchableText"
                 type="text">
               <span class="input-group-btn">
-                <button class="btn" type="button">Search</button>
+                <button class="btn btn-default" type="button">Search</button>
               </span>
             </div>
         </form>

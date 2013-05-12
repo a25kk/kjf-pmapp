@@ -19,7 +19,7 @@
     
     <div class="page-header" id="page-header">
       <div class="pull-right">
-        <h4>Übersicht</h4>
+        <h4>&Uuml;bersicht</h4>
       </div>
         <h1>Verteiler</h1>
         <p class="discreet">Administration Verteiler und Adressen</p>
@@ -58,7 +58,7 @@
                           </div>
                           <form class="xpull-right"
                               tal:attributes="action python:context_url+'/@@channel-information'">
-                              <input href="" class="btn btn-small btn-block"
+                              <input href="" class="btn btn-default btn-small btn-block"
                                   type="submit" value="Anzeigen" />
                               <input name="channeltrigger" id="channeltrigger" type="hidden"
                                   class="large uneditable-input"
@@ -123,46 +123,12 @@
                 tal:attributes="href python:channel_url+'/@@add-subscriber'">
                   Neuen Kontakt anlegen</a>
             <hr>
-              <p>Overview of all contact addresses
-              </p>
-              <a href="" class="btn"
+              <a href="" class="btn btn-default btn-block"
                   rel="twipsy"
                   data-original-title="Zur &Uuml;bersicht aller Adressen"
                   tal:attributes="href channel_url">
-                  Adressen</a>
+                  Adressen anzeigen</a>
           </aside>
-          <div class="page-header">
-            <h2><span
-                  tal:content="view/channel_counter" />
-              <a href=""
-                rel="twipsy"
-                data-original-title="Zur &Uuml;bersicht aller Verteiler"
-                tal:attributes="href python:context_url+'/@@channel-statistics'">
-              Verteiler</a></h2>
-          </div>
-            <div tal:define="channel_list view/channel_names">
-                <table class="table table-condensed xtable-bordered" id="xtable-channels">
-                    <thead>
-                        <tr>
-                            <th>Verteiler</th>
-                            <th>#</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr tal:repeat="item channel_list">
-                            <td tal:define="channel item/channel">
-                              <a href=""
-                                  tal:attributes="href python:context_url+'/@@channel-information?channelname='+channel"
-                                  tal:content="item/channelname">
-                                  Anzeigen</a>
-                            </td>
-                            <td>
-                                <span class="badge badge-info" tal:content="item/count" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
     </section>

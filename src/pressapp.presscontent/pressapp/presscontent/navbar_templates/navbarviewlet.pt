@@ -3,19 +3,16 @@
         tal:define="context_url viewlet/context_url;
                     portal_url viewlet/portal_url;
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime">
-        <div class="container-fluid">
             <a href="" class="navbar-brand"
                 id="main-logo"
                 tal:attributes="href portal_url">
                 PressHub</a>
-            <a class="navbar-toggle"
-                data-toggle="collapse"
-                data-target=".nav-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse pull-right" tal:condition="not:viewlet/anonymous">
+            </button>
+            <div class="nav-collapse collapse navbar-responsive-collapse pull-right" tal:condition="not:viewlet/anonymous">
                 <ul class="nav navbar-nav"
                     tal:define="memberinfo viewlet/memberinfo;
                                 home_folder memberinfo/home_url">
@@ -40,7 +37,7 @@
                         Presseeinladungen
                         </a>
                     </li>-->
-                    <li class="divider-vertical"></li>
+                    <li class="divider"></li>
                     <li><a href=""
                             tal:attributes="href python:portal_url+'/@@press-archive'">
                         <i class="icon-list-alt" />
@@ -125,7 +122,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
     </div>
 </div>
 <div id="subnavbar">

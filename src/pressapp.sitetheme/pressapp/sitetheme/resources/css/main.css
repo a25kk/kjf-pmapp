@@ -6908,14 +6908,15 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 }
 .statuspanel .bottom {
   padding-top: 20px;
+  padding-bottom: 20px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  background: #eeeeee;
+  background: #fff;
   text-align: center;
   border-top: none;
 }
 .statuspanel .bottom h2 {
-  font-weight: 600;
+  font-weight: 500;
   margin: 0;
 }
 .statuspanel .bottom h6 {

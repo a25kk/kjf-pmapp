@@ -46,8 +46,8 @@ class ImageAttachmentEditForm(form.SchemaEditForm):
 
     def updateActions(self):
         super(ImageAttachmentEditForm, self).updateActions()
-        self.actions['save'].addClass("btn")
-        self.actions['cancel'].addClass("btn")
+        self.actions['save'].addClass("btn btn-primary")
+        self.actions['cancel'].addClass("btn btn-default")
 
     @button.buttonAndHandler(_(u"Update image attachment"), name="save")
     def handleApply(self, action):
@@ -69,7 +69,7 @@ class ImageAttachmentEditForm(form.SchemaEditForm):
     def getContent(self):
         context = aq_inner(self.context)
         fti = getUtility(IDexterityFTI,
-                name='pressapp.presscontent.imageattachment')
+                         name='pressapp.presscontent.imageattachment')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         data = {}
@@ -83,7 +83,7 @@ class ImageAttachmentEditForm(form.SchemaEditForm):
         parent = aq_parent(context)
         assert IImageAttachment.providedBy(context)
         fti = getUtility(IDexterityFTI,
-                name='pressapp.presscontent.imageattachment')
+                         name='pressapp.presscontent.imageattachment')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         for key, value in fields:

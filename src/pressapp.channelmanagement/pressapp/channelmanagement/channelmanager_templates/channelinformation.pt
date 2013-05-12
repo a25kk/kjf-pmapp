@@ -45,7 +45,7 @@
                           <p><small tal:content="item/email" /></p>
                         </div>
                         <div class="col col-lg-2">
-                          <a class="btn btn-mini pull-right" tal:define="item_url item/getURL"
+                          <a class="btn btn-default btn-mini pull-right" tal:define="item_url item/getURL"
                             tal:attributes="href python:item_url+'/edit'">
                             Bearbeiten</a>
                         </div>
