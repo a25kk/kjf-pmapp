@@ -64,7 +64,7 @@
                           </p>
                         </div>
                         <div class="col col-lg-4">
-                            <a class="btn btn-mini pull-right"
+                            <a class="btn btn-default btn-mini pull-right"
                                 tal:attributes="href item/getURL">
                                 Bearbeiten</a>
                         </div>

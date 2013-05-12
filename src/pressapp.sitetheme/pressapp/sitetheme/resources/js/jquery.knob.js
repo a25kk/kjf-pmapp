@@ -92,12 +92,15 @@
                                 || this.$.data('cursor')
                                 || 0,
                     thickness : this.$.data('thickness') || 0.35,
+                    lineCap : this.$.data('linecap') || 'butt',
                     width : this.$.data('width') || 200,
                     height : this.$.data('height') || 200,
                     displayInput : this.$.data('displayinput') == null || this.$.data('displayinput'),
                     displayPrevious : this.$.data('displayprevious'),
                     fgColor : this.$.data('fgcolor') || '#87CEEB',
+                    inputColor: this.$.data('inputcolor') || this.$.data('fgcolor') || '#87CEEB',
                     inline : false,
+                    step : this.$.data('step') || 1,
 
                     // Hooks
                     draw : null, // function () {}
@@ -138,7 +141,7 @@
                 this.$.bind(
                     'change'
                     , function () {
-                        s.val(s.$.val());
+                        s.val(s._validate(s.$.val()));
                     }
                 );
             }
@@ -218,7 +221,7 @@
                 ) return;
 
 
-                s.change(v);
+                s.change(s._validate(v));
                 s._draw();
             };
 
@@ -259,7 +262,7 @@
                     && (s.cH(v) === false)
                 ) return;
 
-                s.change(v);
+                s.change(s._validate(v));
                 s._draw();
             };
 
@@ -357,6 +360,10 @@
             this.$c[0].width = this.$c[0].width;
         };
 
+        this._validate = function(v) {
+            return (~~ (((v < 0) ? -0.5 : 0.5) + (v/this.o.step))) * this.o.step;
+        };
+
         // Abstract methods
         this.listen = function () {}; // on start, one time
         this.extend = function () {}; // each time configure triggered
@@ -448,11 +455,10 @@
             var s = this,
                 mw = function (e) {
                             e.preventDefault();
-
                             var ori = e.originalEvent
                                 ,deltaX = ori.detail || ori.wheelDeltaX
                                 ,deltaY = ori.detail || ori.wheelDeltaY
-                                ,v = parseInt(s.$.val()) + (deltaX>0 || deltaY>0 ? 1 : deltaX<0 || deltaY<0 ? -1 : 0);
+                                ,v = parseInt(s.$.val()) + (deltaX>0 || deltaY>0 ? s.o.step : deltaX<0 || deltaY<0 ? -s.o.step : 0);
 
                             if (
                                 s.cH
@@ -461,7 +467,7 @@
 
                             s.val(v);
                         }
-                , kval, to, m = 1, kv = {37:-1, 38:1, 39:1, 40:-1};
+                , kval, to, m = 1, kv = {37:-s.o.step, 38:s.o.step, 39:s.o.step, 40:-s.o.step};
 
             this.$
                 .bind(
@@ -540,6 +546,7 @@
             this.cursorExt = this.o.cursor / 100;
             this.xy = this.w2;
             this.lineWidth = this.xy * this.o.thickness;
+            this.lineCap = this.o.lineCap;
             this.radius = this.xy - this.lineWidth / 2;
 
             this.o.angleOffset
@@ -574,7 +581,7 @@
                         ,'background' : 'none'
                         ,'font' : 'bold ' + ((this.o.width / s) >> 0) + 'px Arial'
                         ,'text-align' : 'center'
-                        ,'color' : this.o.fgColor
+                        ,'color' : this.o.inputColor || this.o.fgColor
                         ,'padding' : '0px'
                         ,'-webkit-appearance': 'none'
                         })
@@ -603,6 +610,8 @@
                 , r = 1;
 
             c.lineWidth = this.lineWidth;
+
+            c.lineCap = this.lineCap;
 
             this.o.cursor
                 && (sat = eat - this.cursorExt)

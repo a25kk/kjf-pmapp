@@ -16,7 +16,7 @@
 body {
   background: lighten(#50a0b0, 20%);
   #content-wrapper {
-    margin-top: @line-height-base * 2;
+    margin-top: @line-height-computed * 2;
   }
 }
 
@@ -31,21 +31,11 @@ body.template-login_form {
   text-shadow: none;
 }
 
-//.btn-primary {
-//  background-color: @app-color;
-//      border-color: @app-color;
-//  &:hover,
-//  &:focus,
-//  &:active {
-//    background-color: darken(@app-darker, 5%);
-//        border-color: darken(@app-darker, 10%);
-//  }
-//}
-
 input.context,
 input.destructive {
   margin-right: 10px;
   .btn();
+  .btn-default();
   text-shadow: none;
 }
 input.destructive {
@@ -75,7 +65,7 @@ input.destructive {
 
 .subheader {
   background: @app-brown;
-  padding: @line-height-base;
+  padding: @line-height-computed;
   text-align: center;
   border-bottom: 1px solid @app-dark;
   h2 {
@@ -90,12 +80,12 @@ input.destructive {
     border-radius: 0;
   }
   .nav-user p {
-    padding: @line-height-base / 2;
+    padding: @line-height-computed / 2;
   }
 }
 
 #actionbar {
-  margin: @line-height-base @line-height-base * 2;
+  margin: @line-height-computed @line-height-computed 0 @line-height-computed * 2;
   .brandname {
     color: #fff;
     margin: @font-size-base 0 0;
@@ -110,7 +100,7 @@ input.destructive {
   #section-nav,
   #subnavbar {
       li {
-        margin-left: @line-height-base / 2;
+        margin-left: @line-height-computed / 2;
       }
         li > a {
         color: @table-bg-hover;
@@ -136,7 +126,7 @@ input.destructive {
     width: 180px;
     height: 31px;
     background:url(../images/logo-small.png) no-repeat 32px 0px white;
-    margin: @font-size-base / 2 @line-height-base 0px @line-height-base / 2;
+    margin: @font-size-base / 2 @line-height-computed 0px @line-height-computed / 2;
   }
 }
 
@@ -145,7 +135,7 @@ input.destructive {
 }
 
 #main-wrapper {
-  padding: @line-height-base 0;
+  padding: @line-height-computed 0;
 }
 
 #navbar + #main-wrapper {
@@ -170,7 +160,7 @@ input.destructive {
 }
 
 .tile {
-  min-height: @line-height-base;
+  min-height: @line-height-computed;
   padding: 19px;
   background-color: #f5f5f5;
   border: 1px solid #eee;
@@ -201,13 +191,13 @@ input.destructive {
 .window {
   display: block;
   .clearfix();
-  margin: @line-height-base;
+  margin: 0 @line-height-computed * 2 @line-height-computed;
   //border: 2px solid @gray-light;
   //.box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.6));
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
   background: #ededed;
   .window-header {
-    padding: @line-height-base @line-height-base;
+    padding: @line-height-computed @line-height-computed;
     //min-height: @navbarHeight;
     #gradient > .vertical(#e9e9e9, #b2b2b2);
     //#gradient > .vertical(lighten(@appBrown, 10%), @appBrown);
@@ -218,8 +208,8 @@ input.destructive {
     h1 {
       //font-size: @font-size-base * 1.75;
       font-size: @font-size-base * 1.75;
-      line-height: @line-height-base;
-      margin: @line-height-base / 2 0 @line-height-base / 2;
+      line-height: @line-height-computed;
+      margin: @line-height-computed / 2 0 @line-height-computed / 2;
       small {
         font-size: @font-size-base;
         .label {
@@ -242,7 +232,7 @@ input.destructive {
   .window-toolbar {
       //min-height: @navbar-height;
       margin:0px 0px 0px;
-      padding: 0px @line-height-base 0 0;
+      padding: 0px @line-height-computed 0 0;
       border-bottom: 1px solid #656565;
       .nav {
         font-size: @font-size-base;
@@ -252,7 +242,7 @@ input.destructive {
       .nav a {
           //color: @grayDark;
           //font-size: @font-size-base;
-          //padding: @line-height-base / 2;
+          //padding: @line-height-computed / 2;
           //line-height:@font-size-base;
       }
       .nav li.active a {
@@ -268,17 +258,17 @@ input.destructive {
     .window-column {
       border-right: 1px solid @gray;
       min-height: 500px;
-      padding-bottom: @line-height-base;
+      padding-bottom: @line-height-computed;
       background: transparent;
       .btn {
         text-shadow: none;
       }
       .window-column-content {
-        padding: @line-height-base;
+        padding: @line-height-computed;
       }
       .featurette {
           margin: @navbar-height;
-          padding: @line-height-base;
+          padding: @line-height-computed;
           background-color: rgba(255, 255, 255, 0.35);
           border: 1px solid @gray-light;
           .stats {
@@ -287,10 +277,10 @@ input.destructive {
               display: block;
               background: @btn-primary-bg;
               .stat-header {
-                margin: (@line-height-base / 2) 0;
+                margin: (@line-height-computed / 2) 0;
                 font-family: @headings-font-family;
                 font-weight: @headings-font-weight;
-                line-height: @line-height-base;
+                line-height: @line-height-computed;
                 font-size: @font-size-base * 2.25;
               }
               .stat-subheader {
@@ -318,7 +308,7 @@ input.destructive {
         .btn {
           //.btn-primary();
           text-shadow: none;
-          margin: @line-height-base / 2 @line-height-base * 1.25 0;
+          margin: @line-height-computed / 2 @line-height-computed * 1.25 0;
         }
         &.active,
         &:hover {
@@ -344,8 +334,8 @@ input.destructive {
       border-right: 1px solid @gray;
     }
     #sidebar {
-      padding-top: @line-height-base;
-      padding-right: @line-height-base * 1.5;
+      padding-top: @line-height-computed;
+      padding-right: @line-height-computed * 1.5;
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
       &.stepper-bar {
         padding-top: 0px;
@@ -358,7 +348,7 @@ input.destructive {
       }
       .tile {
         padding: @padding-small;
-        //margin-right: @line-height-base;
+        //margin-right: @line-height-computed;
         &.active,
         &:hover {
             background: #f5f5f5;
@@ -381,8 +371,8 @@ input.destructive {
           }
         }
         &.stepper {
-          margin: 0 -(@line-height-base * 1.5) 0;
-          padding: @line-height-base / 2 @line-height-base * 1.5 0px;
+          margin: 0 -(@line-height-computed * 1.5) 0;
+          padding: @line-height-computed / 2 @line-height-computed * 1.5 0px;
           border-bottom: 1px solid @gray;
           //background:#a7a9aa;
           &.disabled {
@@ -392,17 +382,17 @@ input.destructive {
             background: @app-brown;
             color: #fff;
             text-shadow: none;
-            padding-top: @line-height-base;
-            padding-bottom: @line-height-base;
+            padding-top: @line-height-computed;
+            padding-bottom: @line-height-computed;
             border-left: 4px solid @gray;
-            margin-left: -(@line-height-base * 1.5);
+            margin-left: -(@line-height-computed * 1.5);
           }
         }
       }
       .box-stepper {
         display: block;
-        margin: 0 -(@line-height-base * 1.5) 0;
-        padding: @line-height-base * 2 @line-height-base * 1.5 @line-height-base * 2 @line-height-base;
+        margin: 0 -(@line-height-computed * 1.5) 0;
+        padding: @line-height-computed * 2 @line-height-computed * 1.5 @line-height-computed * 2 @line-height-computed;
         border-bottom: 1px solid @gray;
         color: @gray;
         //.opacity(0.7);
@@ -412,8 +402,8 @@ input.destructive {
           //color: #fff;
           color: @text-color;
           text-shadow: none;
-          padding-top: @line-height-base * 2;
-          padding-bottom: @line-height-base * 2;
+          padding-top: @line-height-computed * 2;
+          padding-bottom: @line-height-computed * 2;
           &:hover {
             color: @text-color;
           }
@@ -434,12 +424,12 @@ input.destructive {
           color: @text-color;
           text-decoration: none;
           border-left: 2px solid @gray;
-          margin-left: -(@line-height-base * 1.5);
-          padding-left: @line-height-base - 2px;
+          margin-left: -(@line-height-computed * 1.5);
+          padding-left: @line-height-computed - 2px;
         }
       }
       .widget {
-        margin: 0 @line-height-base;
+        margin: 0 @line-height-computed;
         text-shadow: none;
       }
       .history-listing {
@@ -598,7 +588,7 @@ a.caltrigger {
 }
 
 form.overlayForm {
-    padding: @line-height-base;
+    padding: @line-height-computed;
 }
 
 
@@ -615,15 +605,15 @@ form.overlayForm {
   input[type="text"],
   input[type="password"] {
     width: 245px;
-    height: @line-height-base + 4;
+    height: @line-height-computed + 4;
     border-color: @gray-dark;
     font-size: @font-size-base + 2;
-    line-height: @line-height-base + 2;
+    line-height: @line-height-computed + 2;
     //width: 95%;
     //.box-shadow(inset -1px 0px 10px rgba(0,0,0, .5));
   }
   #login-action {
-    padding-top: @line-height-base;
+    padding-top: @line-height-computed;
     background: transparent;
     text-align:right;
     input.context {
@@ -703,7 +693,7 @@ table.dataTable {
 }
 
 #table-contacts {
-  margin-top: @line-height-base;
+  margin-top: @line-height-computed;
   h6 {
     margin-top: 0px;
   }
@@ -722,7 +712,7 @@ footer {
     z-index: @zindex-navbar-fixed;
     margin-bottom: 0; // remove 18px margin for static navbar
     #footer-content {
-      padding: @line-height-base;
+      padding: @line-height-computed;
       color: @gray-lighter;
     }
 }
