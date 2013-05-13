@@ -31,7 +31,7 @@
     <div class="row">
       <div class="col col-lg-9">
       <div class="window-column">
-        <div class="window-column-content">
+        <div class="xxwindow-column-content">
           <tal:block tal:condition="view/has_pressinvitations">
             <div class="tile-wrapper"
                         tal:define="Batch python:modules['Products.CMFPlone'].Batch;
@@ -65,7 +65,7 @@
                   </p>
                 </div>
                 <div class="col col-lg-4">
-                  <a href="" class="btn btn-mini pull-right"
+                  <a href="" class="btn btn-default btn-mini pull-right"
                     tal:attributes="href item/getURL">Bearbeiten</a>
                 </div>
               </div>

@@ -78,6 +78,7 @@
         <div tal:condition="context/text"
             tal:content="structure context/text/output" />
         <div tal:condition="context/schedule">
+          <hr>
           <h4>Geplanter Ablauf:</h4>
           <div tal:content="structure context/schedule/output" />
         </div>
@@ -101,6 +102,7 @@
               bearbeiten</a>
           </small>
           <h4>Informationen</h4>
+          <h5 tal:content="context/Title" />
           <p class="muted">
             Diese Presseeinladung in der
             <a href=""
@@ -154,39 +156,34 @@
             </p>
           </tal:block>
           <hr>
-            <div class="btn-toolbar xpull-right"
-                tal:define="context_url context/absolute_url;
-                            has_channels view/has_channel_info;
-                            recipients view/has_recipients_info;">
-                <div class="btn-group">
-                    <a href="" class="btn"
-                        tal:attributes="href python:context_url+'/@@select-channel'">
-                        <i class="icon-list-alt" />
-                        Verteiler w&auml;hlen</a>
-                    <a href="" class="btn disabled"
-                        tal:condition="not: view/has_channel_info"
-                        rel="twipsy"
-                        data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                        <i class="icon-edit" />
-                        Empf&auml;nger bereinigen</a>
-                    <a href="" class="btn"
-                        tal:condition="python:has_channels == True"
-                        tal:attributes="href python:context_url+'/@@recipient-list'">
-                        <i class="icon-edit" />
-                        Empf&auml;nger bereinigen</a>
-                    <a href="" class="btn disabled"
-                        rel="twipsy"
-                        tal:condition="not:view/has_recipients_info"
-                        data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                        <i class="icon-share" />
-                        Versand planen</a>
-                    <a href="" class="btn"
-                        tal:condition="python:recipients == True"
-                        tal:attributes="href python:context_url+'/@@prepare-release'">
-                        <i class="icon-share" />
-                        Versand planen</a>
-                </div>
-            </div>
+          <a href="" class="btn btn-large btn-primary btn-block"
+              tal:condition="python:item_state == 'private'"
+              tal:attributes="href python:context_url + '/@@select-channel'"
+              i18n:translate="">Versand
+          </a>
+          <tal:block  tal:condition="python:item_state == 'published'">
+            <a href="#" class="btn btn-large btn-primary btn-block disabled"
+              rel="twipsy"
+              data-placement="left"
+              data-original-title="Diese Pressemitteilung wurde bereits verschickt"
+              i18n:translate="">Versand
+            </a>
+            <p>
+              <span i18n:translate="">This press release has already been dispatched,
+               but you can</span>
+              <a href=""  tal:attributes="href python:context_url + '/@@prepare-release'"
+                i18n:translate="">review the email recipients here.</a>
+            </p>
+          </tal:block>
+          <hr>
+          <p class="discreet">
+            <span i18n:translate="">If you no longer need this item</span>
+            <a href="" class="text-error"
+              i18n:translate=""
+              tal:attributes="href python:context_url + '/delete_confirmation'">
+              you can delete it
+            </a>.
+          </p>
           <div class="well" tal:content="nothing" tal:omit-tag="">
             <ul class="nav nav-list">
                 <li class="nav-header">Presseeinladung</li>

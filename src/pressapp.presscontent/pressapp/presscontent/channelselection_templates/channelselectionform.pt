@@ -64,7 +64,8 @@
               </a>
               
               <hr>
-                <a href="context_url" class="btn btn-large btn-block">
+                <a href="context_url" class="btn btn-default btn-large btn-block"
+                  tal:attributes="href context_url">
                   Abbrechen
                 </a>
               <hr>
