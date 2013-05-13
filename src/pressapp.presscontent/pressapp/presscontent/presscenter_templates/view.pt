@@ -62,7 +62,7 @@
                 tal:define="pressidx view/presscontent_index">
                 <div class="row">
                   <div class="col col-lg-6">
-                    <div class="panel" tal:define="pr_idx view/pr_index">
+                    <div class="xwell" tal:define="pr_idx view/pr_index">
                       <div class="statuspanel">
                         <div class="top success">
                           <i class="icon-file-alt icon-4x"></i>
@@ -101,7 +101,7 @@
                     </div>
                   </div>
                   <div class="col col-lg-6">
-                    <div class="panel" tal:define="pi_idx view/pi_index">
+                    <div class="xxpanel" tal:define="pi_idx view/pi_index">
                       <div class="statuspanel">
                         <div class="top danger">
                           <i class="icon-calendar icon-4x"></i>
