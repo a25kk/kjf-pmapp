@@ -4844,7 +4844,7 @@ a.list-group-item.active > .badge,
 }
 .avatar {
   margin-right: 2px;
-  line-height: 1.428;
+  line-height: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
@@ -4867,36 +4867,36 @@ a.list-group-item.active > .badge,
   background-color: #c09853;
 }
 .pullquote {
-  line-height: 1.428;
+  line-height: 20px;
   float: right;
   width: 35%;
   clear: right;
   color: #999999;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  line-height: -1.572;
-  padding: 0.714 1.428;
-  margin: 1.428 0 1.428 1.428;
+  line-height: 17px;
+  padding: 10px 20px;
+  margin: 20px 0 20px 20px;
   border-left: 5px solid #999999;
   background: #eeeeee;
 }
 .callout {
   background: #eeeeee;
-  padding: 1.428;
-  margin: 0 0 1.428;
+  padding: 20px;
+  margin: 0 0 20px;
   border-left: 5px solid #999999;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size: 16px;
-  line-height: 1.785;
+  line-height: 25px;
   clear: both;
 }
 /* @group Image alignment classes */
 .image-left {
   float: left;
-  margin: 0.714 1.428 1.428 0;
+  margin: 10px 20px 20px 0;
 }
 .image-right {
   float: right;
-  margin: 0.714 0 1.428 1.428;
+  margin: 10px 0 20px 20px;
 }
 .image-inline {
   float: none;
@@ -5044,7 +5044,7 @@ input.standalone .badge {
 }
 #category {
   font-size: 11px;
-  margin: 1.428 0px;
+  margin: 20px 0px;
 }
 #category a.link-category,
 #category span.selectedTag {
@@ -5069,7 +5069,7 @@ input.standalone .badge {
 .listingBar > a {
   float: left;
   padding: 4px 12px;
-  line-height: 1.428;
+  line-height: 20px;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -5097,7 +5097,7 @@ input.standalone .badge {
 input[type="checkbox"] + label,
 .ArchetypesBooleanWidget label {
   display: inline-block;
-  margin-left: 0.357;
+  margin-left: 5px;
 }
 input.datetime-widget,
 .plone_jscalendar select,
@@ -5108,9 +5108,9 @@ input.datetime-widget,
 #content .field input[type="text"][name$=".title"],
 #form-widgets-IBasic-title,
 #archetypes-fieldname-title input {
-  height: 2.142;
-  line-height: 2.142;
-  font-size: 1.785;
+  height: 30px;
+  line-height: 30px;
+  font-size: 25px;
   font-weight: bold;
   width: 100%;
   color: #555555;
@@ -5136,7 +5136,7 @@ input.datetime-widget,
   display: inline-block;
 }
 div.field {
-  padding-top: 0.714;
+  padding-top: 10px;
 }
 div.field label {
   font-weight: bold;
@@ -5291,7 +5291,7 @@ dl.portalMessage {
   background-color: #fcf8e3;
   border: 1px solid #fbeed5;
   border-radius: 4px;
-  margin: 0px 0px 1.428;
+  margin: 0px 0px 20px;
   border-radius: 0px;
 }
 dl.portalMessage h4 {
@@ -5668,7 +5668,7 @@ ul.formTabs li {
 ul.formTabs li a {
   padding: 8px 12px;
   display: block;
-  line-height: -4.572;
+  line-height: 14px;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
 }
@@ -5794,7 +5794,7 @@ div.field span.required:after {
   color: #666;
 }
 #contentActionMenus dl.actionMenu {
-  line-height: 1.428;
+  line-height: 20px;
 }
 #folderHeader,
 #contextHeader {
@@ -5860,7 +5860,7 @@ dl.actionMenu.activated dd div {
 /* @group Data tables */
 table.listing,
 table.plain {
-  margin-bottom: 1.428;
+  margin-bottom: 20px;
 }
 table.invisible td,
 table.invisible th,

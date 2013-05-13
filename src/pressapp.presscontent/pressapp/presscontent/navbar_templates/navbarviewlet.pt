@@ -1,5 +1,5 @@
 <div class="navbar navbar-fixed-top navbar-inverse" id="navbar">
-    <div class="navbar-inner"
+    <div class="xxnavbar-inner"
         tal:define="context_url viewlet/context_url;
                     portal_url viewlet/portal_url;
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime">

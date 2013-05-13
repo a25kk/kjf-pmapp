@@ -4,7 +4,7 @@
 
 .avatar {
     margin-right: 2px;
-    line-height: @line-height-base;
+    line-height: @line-height-computed;
     border: 1px solid #ddd;
     border-radius: 4px;
     .box-shadow(0 1px 3px rgba(0,0,0,.055));
@@ -28,26 +28,26 @@
 
 .pullquote {
     //margin: 0 1em 0.5em 0.5em;
-    line-height: @line-height-base;
+    line-height: @line-height-computed;
     float: right;
     width: 35%;
     clear: right;
     color: @gray-light;
     font-family: @font-family-monospace;
-    line-height: @line-height-base - 3;
-    padding: @line-height-base / 2 @line-height-base;
-    margin: @line-height-base 0 @line-height-base @line-height-base;
+    line-height: @line-height-computed - 3;
+    padding: @line-height-computed / 2 @line-height-computed;
+    margin: @line-height-computed 0 @line-height-computed @line-height-computed;
     border-left: 5px solid @gray-light;
     background: @gray-lighter;
 }
 .callout {
     background: @gray-lighter;
-    padding: @line-height-base;
-    margin: 0 0 @line-height-base;
+    padding: @line-height-computed;
+    margin: 0 0 @line-height-computed;
     border-left: 5px solid @gray-light;
     font-family: @font-family-monospace;
     font-size: 16px;
-    line-height: @line-height-base * 1.25;
+    line-height: @line-height-computed * 1.25;
     clear: both;
 }
 
@@ -55,11 +55,11 @@
 
 .image-left {
    float: left;
-   margin: @line-height-base / 2 @line-height-base @line-height-base 0;
+   margin: @line-height-computed / 2 @line-height-computed @line-height-computed 0;
 }
 .image-right {
    float: right;
-   margin: @line-height-base / 2 0 @line-height-base @line-height-base;
+   margin: @line-height-computed / 2 0 @line-height-computed @line-height-computed;
 }
 .image-inline {
    float: none;
@@ -90,7 +90,7 @@ input.standalone {
 
 #category {
     font-size: 11px;
-    margin: @line-height-base 0px;
+    margin: @line-height-computed 0px;
     a.link-category,
     span.selectedTag {
         padding: 0.25em 0.5em;
@@ -113,7 +113,7 @@ input.standalone {
     > a {
         float: left; // Collapse white-space
         padding: 4px 12px;
-        line-height: @line-height-base;
+        line-height: @line-height-computed;
         text-decoration: none;
         background-color: @pagination-bg;
         border: 1px solid @pagination-border;
@@ -154,7 +154,7 @@ input.standalone {
 input[type="checkbox"] + label,
 .ArchetypesBooleanWidget label {
     display: inline-block;
-    margin-left: @line-height-base / 4;
+    margin-left: @line-height-computed / 4;
 }
 
 input.datetime-widget,
@@ -167,9 +167,9 @@ input.datetime-widget,
 #content .field input[type="text"][name$=".title"],
 #form-widgets-IBasic-title,
 #archetypes-fieldname-title input {
-    height: @line-height-base * 1.5;
-    line-height: @line-height-base * 1.5;
-    font-size: @line-height-base * 1.25;
+    height: @line-height-computed * 1.5;
+    line-height: @line-height-computed * 1.5;
+    font-size: @line-height-computed * 1.25;
     font-weight: bold;
     width: 100%;
     color: @gray;
@@ -198,7 +198,7 @@ input.datetime-widget,
 }
 
 div.field {
-    padding-top: @line-height-base / 2;
+    padding-top: @line-height-computed / 2;
     label {
     font-weight: bold;
         .formHelp {
@@ -234,7 +234,7 @@ span.required {
 
 dl.portalMessage {
     .alert();
-    margin: 0px 0px @line-height-base;
+    margin: 0px 0px @line-height-computed;
     border-radius: 0px;
     dt {
         margin: 0;
@@ -469,7 +469,7 @@ ul.formTabs {
         a {
         padding: 8px 12px;
         display: block;
-        line-height: @line-height-base - 6;
+        line-height: @line-height-computed - 6;
         border: 1px solid transparent;
         border-radius: 4px 4px 0 0;
             &:hover {
@@ -617,7 +617,7 @@ div.field span.required:after {
     color: #666;
 }
 #contentActionMenus dl.actionMenu {
-    line-height: @line-height-base;
+    line-height: @line-height-computed;
 }
 
 #folderHeader, #contextHeader {
@@ -691,7 +691,7 @@ dl.actionMenu.activated dd div {
 
 table.listing,
 table.plain {
-    margin-bottom: @line-height-base;
+    margin-bottom: @line-height-computed;
 }
 
 table.invisible td,
