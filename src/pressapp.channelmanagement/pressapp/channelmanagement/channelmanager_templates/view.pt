@@ -30,6 +30,57 @@
         <div class="col col-lg-9">
           <div class="window-column">
             <section tal:define="items view/statistic_data">
+              <div class="tile-wrapper"
+                      tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                              b_size python:int(request.get('b_size', 20));
+                              b_start python:int(request.get('b_start', 0));
+                              items view/statistic_data;
+                              items_count python:len(items);
+                              batch python:Batch(items, b_size, b_start);">
+                <div class="tile" tal:repeat="item batch">
+                  <div class="row">
+                    <div class="col col-lg-2">
+                      <h6 tal:content="item/subscriber" />
+                      <p>
+                        <small i18n:translate="">Addressen</small></p>
+                    </div>
+                    <div class="col col-lg-4">
+                      <h4>
+                        <span tal:content="item/name" />
+                      </h4>
+                      <p>
+                        <small>
+                          Make this work with details
+                        </small>
+                      </p>
+                    </div>
+                    <div class="col col-lg-4">
+                      <p>
+                        <span class="badge" tal:content="item/pr_count" />
+                        Pressemitteilungen
+                      </p>
+                      <p>
+                          <span class="badge" tal:content="item/pi_count" />
+                          Presseeinladungen
+                      </p>
+                    </div>
+                    <div class="col col-lg-2">
+                      <form class="xpull-right"
+                          tal:attributes="action python:context_url+'/@@channel-information'">
+                          <input href="" class="btn btn-default btn-small"
+                              type="submit" value="Anzeigen" />
+                          <input name="channeltrigger" id="channeltrigger" type="hidden"
+                              class="large uneditable-input"
+                              value="Kontakte" />
+                          <input name="channelname" id="channelname" type="hidden"
+                              class="large uneditable-input"
+                              tal:attributes="value item/channel" />
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
               <div class="row">
                 <tal:block tal:repeat="item items">
                   <div class="col col-lg-6">

@@ -89,33 +89,13 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="nav-header">
-                                Kontoeinstellungen</li>
-                            <li tal:define="login memberinfo/login_time">
-                                <p>
-                                    <img tal:replace="structure memberinfo/portrait" /><br />
-                                    <strong tal:content="memberinfo/organization" /><br />
-                                    <span tal:replace="memberinfo/location" /><br />
-                                    <span tal:replace="memberinfo/home_page" />
-                                </p>
-                            </li>
-                            <li class="divider"></li>
-                            <li tal:define="login memberinfo/login_time">
-                                <p>Angemeldet:<br />
-                                    <small>
-                                    <span tal:replace="python:toLocalizedTime(login)" />,
-                                    <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr</small>
-                                </p>
-                            </li>
-                            <li class="divider"></li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/@@personal-information'">
-                                <i class="icon-user" />
-                                Profil bearbeiten</a>
+                                Einstellungen</a>
                             </li>
+                            <li class="divider"></li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">
-                                <i class="icon-signout" />
                                 Abmelden</a>
                             </li>
                         </ul>
