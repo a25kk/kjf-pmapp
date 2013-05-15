@@ -115,7 +115,12 @@
         </div>
         <hr>
         <h5>Geschlossene Veranstaltung</h5>
-          <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
+          <div class="switch" data-off-label="nein"
+              data-on-label="<i class='icon-ban-circle'></i>"
+              data-on="danger" data-off="neutral">
+            <input type="checkbox" checked />
+          </div>
+          <!--<div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
             data-appui="archive-switch"
             tal:define="preview context/closed"
             tal:attributes="data-target string:${context_url}/@@update-archive-settings">
@@ -123,7 +128,7 @@
                 tal:attributes="checked python: preview and 'checked' or ''"
                />
             <label class="check" for="previewCheckbox"></label>
-          </div>
+          </div>-->
         <hr>
           <p tal:define="closed context/closed">
             <span tal:condition="python:closed == False"
