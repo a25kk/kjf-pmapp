@@ -37,7 +37,7 @@
                         Presseeinladungen
                         </a>
                     </li>-->
-                    <li class="divider"></li>
+                    <li class="nav-divider"></li>
                     <li><a href=""
                             tal:attributes="href python:portal_url+'/@@press-archive'">
                         <i class="icon-list-alt" />
@@ -93,7 +93,7 @@
                                 tal:attributes="href python:portal_url + '/@@personal-information'">
                                 Einstellungen</a>
                             </li>
-                            <li class="divider"></li>
+                            <li class="nav-divider"></li>
                             <li><a href=""
                                 tal:attributes="href python:portal_url + '/logout'">
                                 Abmelden</a>
