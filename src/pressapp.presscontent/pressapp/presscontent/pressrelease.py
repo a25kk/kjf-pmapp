@@ -7,7 +7,7 @@ from zope.schema.vocabulary import getVocabularyRegistry
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from plone.app.textfield import RichText
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedBlobImage

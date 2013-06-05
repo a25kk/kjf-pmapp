@@ -4,7 +4,7 @@ from DateTime import DateTime
 from AccessControl import getSecurityManager
 from zope.interface import Interface
 from zope.component import getUtility
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from Products.PlonePAS.events import IUserLoggedInEvent

@@ -5,7 +5,7 @@ from five import grok
 from App.config import getConfiguration
 from zope.i18n import translate
 from zope.component import getMultiAdapter
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope.schema.vocabulary import getVocabularyRegistry
 
 from plone.app.uuid.utils import uuidToObject
