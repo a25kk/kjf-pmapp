@@ -115,8 +115,9 @@ class JobListingSnippetJSON(grok.View):
                                            target_language='de')
         job_start = api.portal.get_localized_time(datetime=obj.start,
                                                   long_format=False)
-        if hasattr(obj, 'locationOverride'):
-            job_location = getattr(obj, 'locationOverrride', '')
+        location_alt = getattr(obj, 'locationOverride', None)
+        if location_alt and location_alt is not None:
+            job_location = location_alt
         else:
             job_location = self.pretty_term('jobLocations', obj.location)
         item = {}
