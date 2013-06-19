@@ -6,6 +6,7 @@ from fabric.api import task
 from fabric.api import roles
 
 from ade25.fabfiles import project
+from ade25.fabfiles.server import controls
 
 env.use_ssh_config = True
 env.forward_agent = True
