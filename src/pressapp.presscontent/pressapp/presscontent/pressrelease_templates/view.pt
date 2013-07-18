@@ -109,9 +109,11 @@
             <p tal:content="context/imagename">Caption</p>
           </div>
           <div class="col col-lg-4">
+            <div class="img-thumbnail">
               <img tal:define="scale context/@@images"
                 tal:replace="structure python: scale.scale('image',
                              scale='thumb').tag()" />
+            </div>
           </div>
         </div>
 
@@ -168,11 +170,13 @@
                     </p>
                   </td>
                   <td tal:define="item_obj item/getObject">
-                    <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
-                        class="thumbnail" 
-                        tal:define="scale item_obj/@@images"
-                        tal:replace="structure python: scale.scale('image',
-                                     scale='tile').tag()" />
+                    <div class="img-thumbnail">
+                        <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
+                            class="thumbnail" 
+                            tal:define="scale item_obj/@@images"
+                            tal:replace="structure python: scale.scale('image',
+                                         scale='tile').tag()" />
+                    </div>
                   </td>
                   <td tal:content="nothing">
                     <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
