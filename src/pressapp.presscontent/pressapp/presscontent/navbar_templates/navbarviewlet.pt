@@ -85,12 +85,12 @@
         </div>
     </div>
 </div>
-<div id="subnavbar">
-    <div class="navbar"
+<div class="actionbar" id="subnavbar">
+    <div class="actionbar-nav navbar"
         tal:define="memberinfo viewlet/memberinfo;
                     portal_url viewlet/portal_url;
                     home_folder memberinfo/home_url">
-        <ul class="nav xnav-pills pull-right" id="section-nav">
+        <ul class="nav nav-pills pull-right" id="section-nav">
             <li><a href=""
                 tal:attributes="href python:home_folder+'/@@dashboard-releases'">
                 <span class="badge"

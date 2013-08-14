@@ -15,20 +15,22 @@ body.template-login_form {
   }
 }
 
+
 .btn {
   border-radius: 0px;
   text-shadow: none;
 }
 
-input.context,
-input.destructive {
-  margin-right: 10px;
-  .btn();
-  .btn-default();
-  text-shadow: none;
-}
-input.destructive {
-  .btn-danger();
+/* Portal messages are styled like alerts */
+
+dl.portalMessage {
+    .alert();
+    dt {
+        margin: 0;
+    }
+    dd {
+        margin-left: 0px;
+    }
 }
 
 #main-logo {
@@ -41,7 +43,8 @@ input.destructive {
 .splashbar {
   padding: @navbar-height;
   text-align: center;
-  // #gradient > .vertical(@app-dark, @app-darker);
+  //#gradient > .vertical(@app-dark, @app-darker, 0%, 100%);
+  background: @app-darker;
   border-bottom: 1px solid #000;
   h1 {
     font-size: @navbar-height;
@@ -62,7 +65,7 @@ input.destructive {
   }
 }
 
-#nav-bar {
+.toolbar {
   .box-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
   border-radius: 0;
   .navbar-inner {
@@ -111,11 +114,11 @@ form.overlayForm {
   }
   input[type="text"],
   input[type="password"] {
-    width: 245px;
-    height: @line-height-computed + 4;
+    //width: 245px;
+    //height: @line-height-computed + 4;
     border-color: @gray-dark;
-    font-size: @font-size-base + 2;
-    line-height: @line-height-computed + 2;
+    //font-size: @font-size-base + 2;
+    //line-height: @line-height-computed + 2;
     //width: 95%;
     //.box-shadow(inset -1px 0px 10px rgba(0,0,0, .5));
   }
@@ -211,13 +214,8 @@ table.dataTable {
 // Footer styles
 // -----------------------------
 
-footer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: @zindex-navbar-fixed;
-    margin-bottom: 0; // remove 18px margin for static navbar
+.footer-frontpage {
+    margin-top: @navbar-height;
     #footer-content {
       padding: @line-height-computed;
       color: @gray-lighter;

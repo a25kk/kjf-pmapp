@@ -77,9 +77,7 @@
                   <section class="window-column-content"
                      tal:condition="not:view/has_presscontent">
                     <div class="featurette dim-in two">
-                      <div class="row">
-                        <div class="col col-lg-9">
-                          <h2 i18n:translate="">Welcome to your personal workspace</h2>
+                        <h2 i18n:translate="">Welcome to your personal workspace</h2>
                           <p class="lead" i18n:translate="">
                             Your workspace is the central editing unit providing
                             an overview of available press releases and invitations.
@@ -87,8 +85,8 @@
                           <p class="lead" i18n:translate="">
                             In order to get started add your first press content.
                           </p>
-                        </div>
-                        <div class="col col-lg-3">
+                      <div class="row">
+                        <div class="col-sm-12 col-lg-6">
                           <a class="stats widget"
                             tal:attributes="href python:context_url + '/@@add-press-release'">
                             <span class="stat primary">
@@ -96,6 +94,8 @@
                               <span class="stat-subheader" i18n:translate="">Add pressrelease</span>
                             </span>
                           </a>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
                           <a class="stats widget"
                             tal:attributes="href python:context_url + '/@@add-press-invitation'">
                             <span class="stat primary">
