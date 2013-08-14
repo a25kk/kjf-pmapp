@@ -1,107 +1,88 @@
-<div class="navbar navbar-fixed-top navbar-inverse" id="navbar">
+<div class="toolbar navbar xnavbar-fixed-top navbar-inverse" id="navbar" role="navigation">
     <div class="xxnavbar-inner"
         tal:define="context_url viewlet/context_url;
                     portal_url viewlet/portal_url;
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime">
-            <a href="" class="navbar-brand"
-                id="main-logo"
-                tal:attributes="href portal_url">
-                PressHub</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
-            <div class="nav-collapse collapse navbar-responsive-collapse pull-right" tal:condition="not:viewlet/anonymous">
-                <ul class="nav navbar-nav"
-                    tal:define="memberinfo viewlet/memberinfo;
+            <a class="navbar-brand toolbar-brand" id="main-logo" href="#"
+                tal:attributes="href portal_url">PressHub</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse" tal:condition="not:viewlet/anonymous">
+            <ul class="nav navbar-nav nav-user navbar-right"
+                tal:define="memberinfo viewlet/memberinfo;
+                            home_folder memberinfo/home_url">
+                <li class="divider-vertical"></li>
+                <li class="dropdown">
+                    <a href=""
+                        tal:attributes="href home_folder"
+                        class="dropdown-toggle"
+                        data-toggle="dropdown">
+                        <i class="icon-user icon-white"></i>
+                        <span tal:content="memberinfo/username">John Doe</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href=""
+                            tal:attributes="href python:portal_url + '/@@personal-information'">
+                            Einstellungen</a>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li><a href=""
+                            tal:attributes="href python:portal_url + '/logout'">
+                            Abmelden</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right"
+                tal:define="memberinfo viewlet/memberinfo;
                                 home_folder memberinfo/home_url">
-                    <!--<li id="main-menu">
-                        <a href="/"
-                            data-traget="#main-menu"
-                            tal:attributes="href home_folder">
-                            <i class="icon-home icon-white" />
-                            Arbeitsplatz
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li><a href=""
-                            tal:attributes="href python:home_folder+'/@@dashboard-releases'">
-                        <i class="icon-file icon-white" />
-                        Pressemitteilungen</a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li><a href=""
-                            tal:attributes="href python:home_folder+'/@@dashboard-invitations'">
-                        <i class="icon-calendar icon-white" />
-                        Presseeinladungen
-                        </a>
-                    </li>-->
-                    <li class="nav-divider"></li>
-                    <li><a href=""
-                            tal:attributes="href python:portal_url+'/@@press-archive'">
-                        <i class="icon-list-alt" />
-                            Archiv
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li class="dropdown" tal:condition="viewlet/is_administrator">
-                        <a href="/" class="dropdown-toggle"
-                            data-toggle="dropdown"
-                            tal:attributes="href python:portal_url+'/press-center'">
-                            <i class="icon-cog icon-white"></i>
-                            Administration
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""
-                                tal:attributes="href python:portal_url+'/presscenter/'">
-                                <i class="icon-list"></i>
-                                &Uuml;bersicht
-                                </a>
-                            </li>
-                            <li><a href=""
-                                    tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
-                                <i class="icon-user"></i>
-                                Redakteure
-                                </a>
-                            </li>
-                            <li><a href=""
-                                tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
-                                <i class="icon-align-justify"></i>
-                                    Einstellungen
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav nav-user pull-right"
-                    tal:define="memberinfo viewlet/memberinfo;
-                                home_folder memberinfo/home_url">
-                    <li class="divider-vertical"></li>
-                    <li class="dropdown">
-                        <a href=""
-                            tal:attributes="href home_folder"
-                            class="dropdown-toggle"
-                            data-toggle="dropdown">
-                            <i class="icon-user icon-white"></i>
-                            <span tal:content="memberinfo/username">John Doe</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href=""
-                                tal:attributes="href python:portal_url + '/@@personal-information'">
-                                Einstellungen</a>
-                            </li>
-                            <li class="nav-divider"></li>
-                            <li><a href=""
-                                tal:attributes="href python:portal_url + '/logout'">
-                                Abmelden</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-divider"></li>
+                <li><a href=""
+                        tal:attributes="href python:portal_url+'/@@press-archive'">
+                    <i class="icon-list-alt" />
+                        Archiv
+                    </a>
+                </li>
+                <li class="divider-vertical"></li>
+                <li class="dropdown" tal:condition="viewlet/is_administrator">
+                    <a href="/" class="dropdown-toggle"
+                        data-toggle="dropdown"
+                        tal:attributes="href python:portal_url+'/press-center'">
+                        <i class="icon-cog icon-white"></i>
+                        Administration
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href=""
+                            tal:attributes="href python:portal_url+'/presscenter/'">
+                            <i class="icon-list"></i>
+                            &Uuml;bersicht
+                            </a>
+                        </li>
+                        <li><a href=""
+                                tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
+                            <i class="icon-user"></i>
+                            Redakteure
+                            </a>
+                        </li>
+                        <li><a href=""
+                            tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
+                            <i class="icon-align-justify"></i>
+                                Einstellungen
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <div id="subnavbar">
