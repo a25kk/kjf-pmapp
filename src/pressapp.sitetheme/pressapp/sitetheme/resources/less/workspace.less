@@ -7,9 +7,8 @@
 }
 
 .workspace-header {
-    //background:@app-dark;
-    background: @app-brown;
-    padding: @line-height-computed 0 @navbar-height * 1.75;
+    background: @app-dark;
+    padding: @line-height-computed 0 @navbar-height * 1.9;
     color: @gray-lighter;
     .box-shadow(0 2px 5px rgba(0,0,0,.25));
     //text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
@@ -21,12 +20,15 @@
     }
     .nav-pills > li > a {
         color: @gray-lighter;
-        text-shadow: 0 1px 0 darken(@app-dark, 10%);
+        text-shadow: 0 1px 0 darken(@app-darker, 10%);
+        .badge {
+            text-shadow: none;
+        }
     }
     .nav-pills > li > a:hover {
-        color: @app-dark;
+        color: @app-darker;
         text-shadow: none;
-        background: #fff;
+        background: @gray-lighter;
         border-radius: 0px;
     }
 }
@@ -35,7 +37,7 @@
    .workspace-window {
         z-index: 1;
         background: @gray-lighter;
-        margin: -@navbar-height * 1.6 0 @line-height-computed 0;
+        margin: -@navbar-height * 1.9 0 @line-height-computed 0;
         border: 0px solid @gray-light;
         .box-shadow(0 2px 5px rgba(0,0,0,.25));
         .workspace-window-header {
@@ -55,9 +57,10 @@
             border-bottom: 1px solid @gray-lighter;
         }
         .workspace-window-body {
-            padding: @line-height-computed;
+            padding: 0;
             background: #fff;
             //background: url(../images/bg-white-fabric.png) repeat 0 0 #fff;
+            border-top: 1px solid #fff;
         }
    }
 }
@@ -67,8 +70,11 @@
 
 .workspace-window-header {
     h1 {
+        margin: 0 0 @line-height-computed / 2;
+        font-size: @font-size-base * 1.75;
+    }
+    h4 {
         margin: 0;
-        font-size: @font-size-base * 1.5;
     }
     .discreet {
         margin: 0;

@@ -37,7 +37,7 @@
                               items view/contained_presscontent;
                               items_count python:len(items);
                               batch python:Batch(items, b_size, b_start);">
-                      <div class="tile" tal:repeat="item batch">
+                      <div class="list-tile" tal:repeat="item batch">
                       <div class="row">
                         <div class="col col-lg-2">
                           <h6 tal:define="item_type item/portal_type"
@@ -64,7 +64,7 @@
                           </p>
                         </div>
                         <div class="col col-lg-4">
-                            <a class="btn btn-default btn-mini pull-right"
+                            <a class="btn btn-default btn-xs pull-right"
                                 tal:attributes="href item/getURL">
                                 Bearbeiten</a>
                         </div>
@@ -121,7 +121,7 @@
                     <hr>
 
                     <p class="stats">
-                      <a href="" class="btn btn-primary btn-large btn-block"
+                      <a href="" class="btn btn-primary btn-block"
                         rel="loading-indicator"
                         data-loading-text="Wird geladen..."
                         tal:attributes="href python:context_url+'/@@add-press-release'">
@@ -129,7 +129,7 @@
                       </a>
                     </p>
                     <p class="stats">
-                      <a href="" class="btn btn-primary btn-large btn-block"
+                      <a href="" class="btn btn-primary btn-block"
                         rel="loading-indicator"
                         data-loading-text="Wird geladen..."
                         tal:attributes="href python:context_url+'/@@add-press-invitation'">

@@ -81,7 +81,7 @@ dl.portalMessage {
 // Item Listings
 
 .list-tile {
-    padding: @padding-small-vertical;
+    padding: @line-height-computed / 2 @line-height-computed;
     .box-shadow(none);
     border: 0px;
     border-bottom: 1px solid @gray-light;
@@ -113,9 +113,10 @@ dl.portalMessage {
 }
 
 .featurette {
-  margin: @navbar-height;
+  margin: @line-height-computed / 2;
   padding: @line-height-computed;
   background-color: rgba(255, 255, 255, 0.35);
+  background: url(../images/bg-white-fabric.png) repeat 0 0 #fff;
   border: 1px solid @gray-light;
   .stats {
     display: block;
@@ -138,6 +139,13 @@ dl.portalMessage {
   }
 }
 
+// the featurette gets a little more spaced out on larger devices
+
+@media (min-width: @screen-tablet) {
+  .featurette {
+    margin: @navbar-height;
+  }
+}
 
 // Customizations + overrides
 // -----------------------------

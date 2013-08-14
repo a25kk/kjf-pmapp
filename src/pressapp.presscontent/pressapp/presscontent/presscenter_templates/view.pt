@@ -40,8 +40,9 @@
         <div class="col col-lg-3">
           <form action="."
           tal:attributes="action python:context_url + '/@@search'">
-            <div class="input-group span12">
-              <input id="SearchableText"
+            <div class="input-group">
+              <input class="form-control"
+                id="SearchableText"
                 name="SearchableText"
                 type="text">
               <span class="input-group-btn">
@@ -79,7 +80,7 @@
                         data-appui="knob"
                         data-thickness=".4"
                         data-fgColor="#999"
-                        data-bgColor="#ffffff"
+                        data-bgColor="#eee"
                         data-readOnly="true"
                         tal:attributes="data-max pressidx;
                                         value pr_idx">
@@ -118,7 +119,7 @@
                           data-appui="knob"
                           data-thickness=".4"
                           data-fgColor="#999"
-                          data-bgColor="#ffffff"
+                          data-bgColor="#eee"
                           data-readOnly="true"
                           tal:attributes="data-max pressidx;
                                           value pi_idx">

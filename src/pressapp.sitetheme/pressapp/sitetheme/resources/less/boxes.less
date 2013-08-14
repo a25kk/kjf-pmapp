@@ -15,6 +15,22 @@
   }
 }
 
+.box-editable {
+    display: block;
+    a.link-editable {
+      .opacity(70);
+      z-index: 1;
+    }
+    &:hover {
+      color: #000;
+      a.link-editable {
+        display: inline-block;
+        .opacity(100);
+        color: @gray;
+      }
+    }
+}
+
 .box-stepper {
   display: block;
   margin: 0 -(@line-height-computed * 1.5) 0;
