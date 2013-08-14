@@ -1,17 +1,6 @@
+//
 // Application styles
 // -----------------------
-
-@app-color:              #50a0b0;
-@app-brown:              #b8aa88;
-@app-dark:               #607080;
-@app-darker:             #2A323F;
-
-@brand-primary:         @app-dark;
-
-@link-color:            darken(@app-color, 10%);
-
-@font-family-sans-serif:  'Droid Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-@headings-font-family:    'Oswald';
 
 body {
   background: lighten(#50a0b0, 20%);
@@ -52,7 +41,7 @@ input.destructive {
 .splashbar {
   padding: @navbar-height;
   text-align: center;
-  #gradient > .vertical(@app-dark, @app-darker);
+  // #gradient > .vertical(@app-dark, @app-darker);
   border-bottom: 1px solid #000;
   h1 {
     font-size: @navbar-height;
@@ -84,113 +73,11 @@ input.destructive {
   }
 }
 
-#actionbar {
-  margin: @line-height-computed @line-height-computed 0 @line-height-computed * 2;
-  .brandname {
-    color: #fff;
-    margin: @font-size-base 0 0;
-    line-height: 100%;
-    a {
-      color: white;
-    }
-  }
-  .navbar {
-    background:transparent;
-  }
-  #section-nav,
-  #subnavbar {
-      li {
-        margin-left: @line-height-computed / 2;
-      }
-        li > a {
-        color: @table-bg-hover;
-        font-weight: bold;
-        text-shadow: none;
-        //border: 1px solid @app-color;
-        // background: lighten(@app-color, 10%);
-        .badge {
-          background: #fff;
-          color: @app-color;
-          }
-        }
-        li > a:hover {
-            background: @app-color;
-            //border-color: @app-color;
-        }
-    }
-  #customer-logo {
-    display: block;
-    border: 1px solid white;
-    border-radius: 4px;
-    text-indent: -9999px;
-    width: 180px;
-    height: 31px;
-    background:url(../images/logo-small.png) no-repeat 32px 0px white;
-    margin: @font-size-base / 2 @line-height-computed 0px @line-height-computed / 2;
-  }
-}
-
-#actionbar + #content-wrapper {
-  margin-top: 0px;
-}
-
-#main-wrapper {
-  padding: @line-height-computed 0;
-}
-
-#navbar + #main-wrapper {
-    padding-top: @navbar-height;
-}
-
-.box {
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: #fff;
-  border: 1px solid #eee;
-  border: 1px solid rgba(0,0,0,.05);
-  border-radius: 4px;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
-  //background:url(../images/bg-grain-dark.png) 0 0 transparent;
-  //color: #fff;
-  blockquote {
-    border-color: #ddd;
-    border-color: rgba(0,0,0,.15);
-  }
-}
-
-.tile {
-  min-height: @line-height-computed;
-  padding: 19px;
-  background-color: #f5f5f5;
-  border: 1px solid #eee;
-  border: 1px solid rgba(0,0,0,.05);
-  border-radius:4px;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
-  &.stats {
-      strong {
-          .pull-left();
-          .size(20px, 50px);
-          text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-      }
-      p {
-          margin-top: 0.5em;
-      }
-      form {
-          margin-bottom:0px;
-      }
-  }
-  h5 > a {
-    color:@gray;
-  }
-}
-
-
 // Customizations + overrides
 // -----------------------------
 
 .mceIframeContainer {
-  padding: @padding-large !important;
+  padding: @padding-large-vertical !important;
 }
 
 input.dial {
@@ -237,7 +124,7 @@ form.overlayForm {
     background: transparent;
     text-align:right;
     input.context {
-      .btn-large();
+      .btn-lg();
       .btn-primary();
       border-radius:0px;
     }

@@ -18,92 +18,87 @@
 <script data-ui="development" type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js"></script>
 <script data-ui="development" type="text/javascript" src="assets/js/less-1.4.1.min.js"></script>
 <script data-ui="development" src="assets/js/bootstrap.min.js"></script>
+<script data-ui="development" src="js/jquery.knob.js"></script>
 <script data-ui="development" src="js/pressapp.js"></script>  </head>
   <body>
     <body>
-  <div id="outer-wrapper">
-
-      <div class="navbar navbar-inverse" id="nav-bar">
-          <div class="xcontainer">
-             <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-              <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </a>
-            <a class="navbar-brand" href="#" id="main-logo">
-              PressHub
-            </a>
-              <!--<form class="navbar-form pull-left">
-              <input type="text" class="span8">
-              <button type="submit" class="btn">Suche</button>
-              </form>-->
-            <div class="nav-collapse collapse">
-              <!--<ul class="nav">
-                <li><a href="#">Arbeitsplatz</a></li>
-                <li class="divider-vertical"></li>
-                <li><a href="#">Adressen</a></li>
-              </ul>-->
-            <ul class="nav navbar-nav pull-right">
-              <li><a href="#">Archiv</a></li>
-              <li class="divider-vertical"></li>
-              <li class="dropdown">
-                <a href="#contact" class="dropdown-toggle">
-                <i class="icon-cog"></i>
-                Administration <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Einstellungen Verstand</a></li>
-                    <li><a href="#">Benutzerverwaltung</a></li>
-                  </ul>
-              </li>
-              <li class="divider-vertical"></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle">
-                  <i class="icon-user"></i>
-                  Jacob van Hesselberger IV <b class="caret"></b></a>
-              </li>
-              </ul>
-            </div>
-          </div>
-      </div>
-  <section id="main-wrapper">
-  <section id="actionbar">
-    <div class="row">
-      <div class="col col-lg-2">
-        <h4 class="brandname">
-          <a href="/" id="brandname">
-            Arbeitsplatz</a>
-        </h4>
-      </div>
-      <div class="col col-lg-10" id="subnavbar">
-        <div class="navbar">
-            <ul class="nav xnav-pills pull-right" id="section-nav">
-              <li><a href="#contact">
-                <span class="badge">212</span>
-                Pressemitteilungen</a></li>
-              <li><a href="#">
-                <span class="badge">143</span>
-                Presseeinladungen</a></li>
-              <li><a href="#">
-                <span class="badge">74</span>
-                Verteiler</a></li>
-            </ul>
-            </div>
-      </div>
-      <!--<div class="span2">
-        <a href="#" id="customer-logo">KJF PressApp</a>
-      </div>-->
+  <header class="ph-header" id="header">
+    <nav class="toolbar navbar navbar-inverse" id="toolbar" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand toolbar-brand" id="main-logo" href="#">PressHub</a>
     </div>
-  </section>
-
-    <div class="xcontainer" id="content-wrapper">
-
-      <div class="window clearfix">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li id="plone-personal-actions" class="dropdown dropdown-userinfo">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="/author/123456789">
+              <span>John Doe</span>
+              <b class="caret">
+            </b></a>
+            <ul class="dropdown-menu"><li id="plone-personal-actions-dashboard">
+                <a href="/dashboard">Persönliche Seite</a>
+              </li>
+              <li id="plone-personal-actions-preferences">
+                <a href="/preferences">Meine Einstellungen</a>
+              </li>
+              <li id="plone-personal-actions-plone_setup">
+                <a href="/controlpanel">Konfiguration</a>
+              </li>
+              <li id="plone-personal-actions-logout">
+                <a href="/logout">Abmelden</a>
+              </li>
+            </ul></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="#">Archiv</a></li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Übersicht</a></li>
+                <li><a href="#">Einstellungen</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Redakteure</a></li>
+              </ul>
+          </li>
+        </ul>
+    </div>
+</nav>    <section class="actionbar" id="actionbar">
+  <div class="row">
+    <div class="col col-lg-2">
+      <h4 class="brandname">
+        <a href="/" id="brandname">
+          Arbeitsplatz</a>
+      </h4>
+    </div>
+    <div class="col col-lg-10" id="subnavbar">
+      <div class="xxnavbar">
+          <ul class="nav nav-pills pull-right" id="section-nav">
+            <li><a href="#contact">
+              <span class="badge">212</span>
+              Pressemitteilungen</a></li>
+            <li><a href="#">
+              <span class="badge">143</span>
+              Presseeinladungen</a></li>
+            <li><a href="#">
+              <span class="badge">74</span>
+              Verteiler</a></li>
+          </ul>
+          </div>
+    </div>
+  </div>
+</section></header>
+     
+    <section class="window clearfix">
         <div class="window-header">
           <div class="pull-right">
             <h4><i class="icon-info-sign icon-2x"></i></h4>
           </div>
-
           <h1>Pressecenter</h1>
           <p class="discreet">Globale Einstellungen / Informationen</p>
         </div>
@@ -155,7 +150,7 @@
                         <p><small>Last changed: a minute ago</small></p>
                       </div>
                       <div class="col col-lg-4">
-                        <a class="btn btn-mini pull-right">
+                        <a class="btn btn-default btn-mini pull-right">
                           bearbeiten</a>
                       </div>
                     </div>
@@ -181,16 +176,12 @@
                   </div>
                   <hr>
                   <h5>Versand</h5>
-                  <a href="#" class="btn btn-block btn-large">
+                  <a href="#" class="btn btn-primary btn-block btn-lg">
                     Versand planen</a>
                 </aside>
               </div>
             </div>
         </div>
-      </div>
-
-    </div>
-    </div>
   </section>
   <script type="text/javascript">
   WebFontConfig = {

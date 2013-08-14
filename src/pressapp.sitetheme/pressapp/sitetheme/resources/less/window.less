@@ -113,7 +113,7 @@
         }
     }
     .tile {
-        padding: @padding-small;
+        padding: @padding-small-vertical;
         .box-shadow(none);
         border: 0px;
         border-bottom: 1px solid @gray-light;
@@ -135,8 +135,7 @@
             }
         }
         h4 {
-          //font-size: @font-size-base;
-          .font-size(@font-size-base);
+          font-size: @font-size-base;
           margin-bottom: 0px;
         }
         h6 {
@@ -161,7 +160,7 @@
         text-shadow: none;
       }
       .tile {
-        padding: @padding-small;
+        padding: @padding-small-horizontal;
         //margin-right: @line-height-computed;
         &.active,
         &:hover {
@@ -222,12 +221,12 @@
             color: @text-color;
           }
           strong {
-            .font-size(@font-size-base * 1.5);
+            font-size: @font-size-base * 1.5;
           }
         }
         strong {
           font-family: @headings-font-family;
-          .font-size(@font-size-base * 1.25);
+          font-size: @font-size-base * 1.25;
           font-weight: 500;
         }
         small {
