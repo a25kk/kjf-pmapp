@@ -22,7 +22,7 @@
     <theme href="archive.html" css:if-content="body.template-press-subscription-success" />
     <theme href="default.html" css:if-content="body.portaltype-plone-site" />
     <!-- The default theme, used for standard Plone web pages -->
-    <theme href="theme.html" css:if-content="#visual-portal-wrapper" />
+    <theme href="workspace.html" css:if-content="#visual-portal-wrapper" />
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
@@ -85,6 +85,14 @@
         <replace css:content-children="#member-infobox" css:theme-children="#member-box"
             css:if-content="#user-name" />
         
+        <replace css:content="#section-nav"
+            css:theme="#section-nav"
+            css:if-content="#section-nav" />
+        
+        <replace css:content-children="#page-header"
+            css:theme-children="#ws-header"
+            css:if-content="#page-header" />
+
         <replace css:content-children="#page-header"
             css:theme-children=".window-header"
             css:if-content="#page-header" />
@@ -93,6 +101,7 @@
             css:theme-children=".window-toolbar" />
 
         <!-- Document Content -->
+        <replace css:content-children="#content-core" css:theme-children="#ws-content" />
         <replace css:content-children="#content-core" css:theme-children="#document-content" />
 
         <!--<before css:content="#edit-bar" css:theme="#document-content" />-->

@@ -53,7 +53,7 @@
                           items view/workspaces;
                           items_count python:len(items);
                           batch python:Batch(items, b_size, b_start);">
-                  <div class="tile" tal:repeat="item batch">
+                  <div class="list-tile" tal:repeat="item batch">
                   <div class="row"
                     tal:define="member_id item/Creator;
                                 memberinfo python:view.memberdetails(member_id);">

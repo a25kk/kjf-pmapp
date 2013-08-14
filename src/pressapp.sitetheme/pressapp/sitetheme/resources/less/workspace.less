@@ -1,0 +1,109 @@
+//
+// Workspace scaffolding
+// ---------------------
+
+
+.workspace {
+}
+
+.workspace-header {
+    //background:@app-dark;
+    background: @app-brown;
+    padding: @line-height-computed 0 @navbar-height * 1.75;
+    color: @gray-lighter;
+    .box-shadow(0 2px 5px rgba(0,0,0,.25));
+    //text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+    h1 {
+        font-size: @font-size-base * 1.25;
+    }
+    .infobox {
+        //.box-shadow(0 2px 5px darken(@app-darker, 10%));
+    }
+    .nav-pills > li > a {
+        color: @gray-lighter;
+        text-shadow: 0 1px 0 darken(@app-dark, 10%);
+    }
+    .nav-pills > li > a:hover {
+        color: @app-dark;
+        text-shadow: none;
+        background: #fff;
+        border-radius: 0px;
+    }
+}
+
+.workspace-body {
+   .workspace-window {
+        z-index: 1;
+        background: @gray-lighter;
+        margin: -@navbar-height * 1.6 0 @line-height-computed 0;
+        border: 0px solid @gray-light;
+        .box-shadow(0 2px 5px rgba(0,0,0,.25));
+        .workspace-window-header {
+            background: @gray-lighter;
+            border-bottom: 1px solid @gray-light;
+            padding: @line-height-computed;
+            h2 {
+                font-weight: 700;
+                margin: 0px;
+                color: @app-dark;
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+            }
+        }
+        .workspace-window-subheader {
+            background: #fff;
+            padding: @line-height-computed / 2 @line-height-computed;
+            border-bottom: 1px solid @gray-lighter;
+        }
+        .workspace-window-body {
+            //padding: @line-height-computed;
+            background: #fff;
+            //background: url(../images/bg-white-fabric.png) repeat 0 0 #fff;
+        }
+   }
+}
+
+// Workspace styles
+// --------------------
+
+.workspace-window-header {
+    h1 {
+        margin: 0;
+        font-size: @font-size-base * 1.5;
+    }
+    .discreet {
+        margin: 0;
+    }
+}
+
+.workspace-window-body {
+    .window-column {
+        border-right: 1px solid @gray;
+        min-height: 500px;
+        padding-bottom: @line-height-computed;
+    }
+    .window-column-content {
+        padding: @line-height-computed;
+    }
+    #sidebar,
+    .window-sidebar {
+        padding: @line-height-computed @line-height-computed @line-height-computed 0;
+    }
+}
+
+.sqa-workspace {
+    padding-top: 0;
+}
+
+.ws-content {
+    padding: @line-height-computed * 2.5 @line-height-computed @line-height-computed 280px;
+}
+
+.ws-link-top {
+    margin-right: @line-height-computed;
+    padding: 7px 15px;
+    font-weight: 500;
+    color: #999;
+    background-color: #eee;
+    border-radius: 4px;
+}
+

@@ -8087,6 +8087,86 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 .window .window-content #sidebar .history-listing h6 {
   margin-bottom: 0px;
 }
+.workspace-header {
+  background: #b8aa88;
+  padding: 20px 0 87.5px;
+  color: #eeeeee;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+.workspace-header h1 {
+  font-size: 17.5px;
+}
+.workspace-header .nav-pills > li > a {
+  color: #eeeeee;
+  text-shadow: 0 1px 0 #4a5663;
+}
+.workspace-header .nav-pills > li > a:hover {
+  color: #607080;
+  text-shadow: none;
+  background: #fff;
+  border-radius: 0px;
+}
+.workspace-body .workspace-window {
+  z-index: 1;
+  background: #eeeeee;
+  margin: -80px 0 20px 0;
+  border: 0px solid #999999;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+.workspace-body .workspace-window .workspace-window-header {
+  background: #eeeeee;
+  border-bottom: 1px solid #999999;
+  padding: 20px;
+}
+.workspace-body .workspace-window .workspace-window-header h2 {
+  font-weight: 700;
+  margin: 0px;
+  color: #607080;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+.workspace-body .workspace-window .workspace-window-subheader {
+  background: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.workspace-body .workspace-window .workspace-window-body {
+  background: #fff;
+}
+.workspace-window-header h1 {
+  margin: 0;
+  font-size: 21px;
+}
+.workspace-window-header .discreet {
+  margin: 0;
+}
+.workspace-window-body .window-column {
+  border-right: 1px solid #555555;
+  min-height: 500px;
+  padding-bottom: 20px;
+}
+.workspace-window-body .window-column-content {
+  padding: 20px;
+}
+.workspace-window-body #sidebar,
+.workspace-window-body .window-sidebar {
+  padding: 20px 20px 20px 0;
+}
+.sqa-workspace {
+  padding-top: 0;
+}
+.ws-content {
+  padding: 50px 20px 20px 280px;
+}
+.ws-link-top {
+  margin-right: 20px;
+  padding: 7px 15px;
+  font-weight: 500;
+  color: #999;
+  background-color: #eee;
+  border-radius: 4px;
+}
 .actionbar {
   margin: 20px 20px 0 40px;
   padding-bottom: 20px;
@@ -8152,6 +8232,43 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 .box blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
+}
+.box-stepper {
+  display: block;
+  margin: 0 -30px 0;
+  padding: 40px 30px 40px 20px;
+  border-bottom: 1px solid #555555;
+  color: #555555;
+}
+.box-stepper.current {
+  background: rgba(255, 255, 255, 0.5);
+  color: #333333;
+  text-shadow: none;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.box-stepper.current:hover {
+  color: #333333;
+}
+.box-stepper.current strong {
+  font-size: 21px;
+}
+.box-stepper strong {
+  font-family: 'Oswald';
+  font-size: 17.5px;
+  font-weight: 500;
+}
+.box-stepper small {
+  line-height: 16px;
+}
+.box-stepper:hover {
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  color: #333333;
+  text-decoration: none;
+  border-left: 2px solid #555555;
+  margin-left: -30px;
+  padding-left: 18px;
 }
 .tile {
   min-height: 20px;
@@ -9026,6 +9143,7 @@ dl.portalMessage dd {
 .toolbar {
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
   border-radius: 0;
 }
 .toolbar .navbar-inner {
@@ -9033,6 +9151,110 @@ dl.portalMessage dd {
 }
 .toolbar .nav-user p {
   padding: 10px;
+}
+.list-tile {
+  padding: 5px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0px;
+  border-bottom: 1px solid #999999;
+  border-radius: 0;
+  background: transparent !important;
+}
+.list-tile .btn {
+  text-shadow: none;
+  margin: 10px 25px 0;
+}
+.list-tile.active,
+.list-tile:hover {
+  background: url(../images/bg-white-fabric.png) repeat #ffffff !important;
+  color: #000;
+  border-left: 4px solid #555555;
+  margin-left: -4px;
+}
+.list-tile.active .btn,
+.list-tile:hover .btn {
+  color: #ffffff;
+  background-color: #607080;
+  border-color: #556371;
+}
+.list-tile.active .btn:hover,
+.list-tile:hover .btn:hover,
+.list-tile.active .btn:focus,
+.list-tile:hover .btn:focus,
+.list-tile.active .btn:active,
+.list-tile:hover .btn:active,
+.list-tile.active .btn.active,
+.list-tile:hover .btn.active {
+  color: #ffffff;
+  background-color: #4f5c69;
+  border-color: #3b454e;
+}
+.list-tile.active .btn.disabled,
+.list-tile:hover .btn.disabled,
+.list-tile.active .btn[disabled],
+.list-tile:hover .btn[disabled],
+fieldset[disabled] .list-tile.active .btn,
+fieldset[disabled] .list-tile:hover .btn,
+.list-tile.active .btn.disabled:hover,
+.list-tile:hover .btn.disabled:hover,
+.list-tile.active .btn[disabled]:hover,
+.list-tile:hover .btn[disabled]:hover,
+fieldset[disabled] .list-tile.active .btn:hover,
+fieldset[disabled] .list-tile:hover .btn:hover,
+.list-tile.active .btn.disabled:focus,
+.list-tile:hover .btn.disabled:focus,
+.list-tile.active .btn[disabled]:focus,
+.list-tile:hover .btn[disabled]:focus,
+fieldset[disabled] .list-tile.active .btn:focus,
+fieldset[disabled] .list-tile:hover .btn:focus,
+.list-tile.active .btn.disabled:active,
+.list-tile:hover .btn.disabled:active,
+.list-tile.active .btn[disabled]:active,
+.list-tile:hover .btn[disabled]:active,
+fieldset[disabled] .list-tile.active .btn:active,
+fieldset[disabled] .list-tile:hover .btn:active,
+.list-tile.active .btn.disabled.active,
+.list-tile:hover .btn.disabled.active,
+.list-tile.active .btn[disabled].active,
+.list-tile:hover .btn[disabled].active,
+fieldset[disabled] .list-tile.active .btn.active,
+fieldset[disabled] .list-tile:hover .btn.active {
+  background-color: #607080;
+  border-color: #556371;
+}
+.list-tile h4 {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+.list-tile h6 {
+  margin-bottom: 0px;
+  font-weight: 100;
+}
+.featurette {
+  margin: 50px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid #999999;
+}
+.featurette .stats {
+  display: block;
+}
+.featurette .stats .stat {
+  display: block;
+  background: #607080;
+}
+.featurette .stats .stat .stat-header {
+  margin: 10px 0;
+  font-family: 'Oswald';
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 31.5px;
+}
+.featurette .stats .stat .stat-subheader {
+  display: block;
+  text-transform: uppercase;
+  text-shadow: none;
 }
 .mceIframeContainer {
   padding: 10px !important;
