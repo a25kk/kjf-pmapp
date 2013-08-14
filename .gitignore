@@ -24,5 +24,6 @@ var
 etc/**/*
 *.mo
 *-ck.js
+src/ade25.fabfiles
 src/sauna.reload
 src/zopyx.smartprintng.plone
