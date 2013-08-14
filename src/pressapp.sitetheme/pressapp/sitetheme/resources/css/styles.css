@@ -8153,9 +8153,6 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.tile-wrapper {
-  margin-left: -10px;
-}
 .tile {
   min-height: 20px;
   padding: 19px;
