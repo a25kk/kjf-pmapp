@@ -8132,6 +8132,7 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
   border-bottom: 1px solid #eeeeee;
 }
 .workspace-body .workspace-window .workspace-window-body {
+  padding: 20px;
   background: #fff;
 }
 .workspace-window-header h1 {
