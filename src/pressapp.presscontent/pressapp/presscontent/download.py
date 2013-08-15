@@ -76,8 +76,8 @@ class DownloadFileVersion(grok.View):
         if IPressRelease.providedBy(item):
             attachment = item.unrestrictedTraverse(
                 '@@asPlainPDFCustom')(converter='pdf-pisa',
-                                resource='pressapp_resource',
-                                template='pdf_template_standalone')
+                                      resource='pressapp_resource',
+                                      template='pdf_template_standalone')
         if IPressInvitation.providedBy(item):
             attachment = item.unrestrictedTraverse(
                 '@@asPlainPDFCustom')(converter='pdf-pisa',

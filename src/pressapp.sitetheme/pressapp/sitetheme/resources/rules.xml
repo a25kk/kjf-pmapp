@@ -22,7 +22,7 @@
     <theme href="archive.html" css:if-content="body.template-press-subscription-success" />
     <theme href="default.html" css:if-content="body.portaltype-plone-site" />
     <!-- The default theme, used for standard Plone web pages -->
-    <theme href="workspace.html" css:if-content="#visual-portal-wrapper" />
+    <theme href="theme.html" css:if-content="#visual-portal-wrapper" />
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">

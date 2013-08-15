@@ -383,7 +383,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Roboto Condensed';
+  font-family: 'Oswald';
   font-weight: 500;
   line-height: 1.1;
 }
@@ -7785,7 +7785,7 @@ dd.image-caption {
 }
 .window {
   display: block;
-  margin: 0 40px 20px;
+  margin: 0 0 20px;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
   background: #ededed;
 }
@@ -7889,7 +7889,7 @@ dd.image-caption {
 }
 .window .window-content .window-column .featurette .stats .stat .stat-header {
   margin: 10px 0;
-  font-family: 'Roboto Condensed';
+  font-family: 'Oswald';
   font-weight: 500;
   line-height: 20px;
   font-size: 31.5px;
@@ -8064,7 +8064,7 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
   font-size: 21px;
 }
 .window .window-content #sidebar .box-stepper strong {
-  font-family: 'Roboto Condensed';
+  font-family: 'Oswald';
   font-size: 17.5px;
   font-weight: 500;
 }
@@ -8209,6 +8209,7 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 .actionbar #section-nav li > a:hover,
 .actionbar #subnavbar li > a:hover {
   background: #50a0b0;
+  border-radius: 0;
 }
 .actionbar #customer-logo {
   display: block;
@@ -8279,7 +8280,7 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
   font-size: 21px;
 }
 .box-stepper strong {
-  font-family: 'Roboto Condensed';
+  font-family: 'Oswald';
   font-size: 17.5px;
   font-weight: 500;
 }
@@ -9268,7 +9269,7 @@ fieldset[disabled] .list-tile:hover .btn.active {
 }
 .featurette .stats .stat .stat-header {
   margin: 10px 0;
-  font-family: 'Roboto Condensed';
+  font-family: 'Oswald';
   font-weight: 500;
   line-height: 20px;
   font-size: 31.5px;
