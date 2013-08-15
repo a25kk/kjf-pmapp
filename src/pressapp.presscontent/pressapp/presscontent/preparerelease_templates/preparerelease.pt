@@ -38,9 +38,9 @@
             <div class="row">
               <div class="col col-lg-9">
                 <h2 i18n:translate="">Empf&auml;nger aus Verteilern</h2>
-                <!--<p class="lead" i18n:translate="">
-                  List of recipients asigned from available channels
-                </p>-->
+                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#recipientModal">
+                    Adressen zeigen
+                </button>
               </div>
               <div class="col col-lg-3">
                 <div class="stats widget">
@@ -51,18 +51,6 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="btn"
-                  href="#recipients"
-                  data-toggle="collapse"
-                  data-target="#recipients">Details</button>
-              <div class="collapse" id="recipients">
-                  <tal:block tal:repeat="item view/recipient_list">
-                  <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
-                      <h6 tal:content="python:item_details[1]" />
-                      <small class="muted" tal:content="python:item_details[0]" />
-                  </div>
-                  </tal:block>
-              </div>
           </div>
         </section>
 
@@ -71,6 +59,9 @@
             <div class="row">
               <div class="col col-lg-9">
                 <h2 i18n:translate="">Newsletter Abonnenten</h2>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#subscriberModal">
+                    Adressen zeigen
+                </button>
                 <!--<p class="lead">
                   Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
                   und können sich aktiv an- und abmelden
@@ -85,92 +76,9 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="btn"
-                  href="#subscribers"
-                  data-toggle="collapse"
-                  data-target="#subscribers">Details</button>
-              <div class="collapse" id="subscribers">
-                  <tal:block tal:repeat="item view/subscriber_list">
-                  <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
-                      <h6><small tal:content="repeat/item/number" />
-                      <span tal:content="item" /></h6>
-                  </div>
-                  </tal:block>
-              </div>
           </div>
         </section>
 
-        <div class="row" tal:content="nothing">
-            <div class="col col-lg-6">
-                <section tal:condition="view/has_recipients">
-                <div class="featurette dim-in two">
-                  <div class="row">
-                    <div class="col col-lg-9">
-                      <h2 i18n:translate="">Empf&auml;nger aus Verteilern</h2>
-                      <p class="lead" i18n:translate="">
-                        List of recipients asigned from available channels
-                      </p>
-                    </div>
-                    <div class="col col-lg-3">
-                      <div class="stats widget">
-                        <span class="stat primary">
-                          <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
-                          <span class="stat-subheader" tal:content="view/recipient_count">Recipients</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <button type="button" class="btn"
-                        href="#recipients"
-                        data-toggle="collapse"
-                        data-target="#recipients">Details</button>
-                    <div class="collapse" id="recipients">
-                        <tal:block tal:repeat="item view/recipient_list">
-                        <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
-                            <h6 tal:content="python:item_details[1]" />
-                            <small class="muted" tal:content="python:item_details[0]" />
-                        </div>
-                        </tal:block>
-                    </div>
-                </div>
-                </section>
-            </div>
-            <div class="col col-lg-6">
-                <section tal:condition="view/has_subscribers">
-                <div class="featurette dim-in two">
-                  <div class="row">
-                    <div class="col col-lg-9">
-                      <h2 i18n:translate="">Newsletter Abonnenten</h2>
-                      <p class="lead">
-                        Newletter Abonnenten erhalten ebenfalls Pressemitteilungen
-                        und können sich aktiv an- und abmelden
-                      </p>
-                    </div>
-                    <div class="col col-lg-3">
-                      <div class="stats widget">
-                        <span class="stat primary">
-                          <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
-                          <span class="stat-subheader" tal:content="view/subscriber_count">Recipients</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <button type="button" class="btn"
-                        href="#subscribers"
-                        data-toggle="collapse"
-                        data-target="#subscribers">Details</button>
-                    <div class="collapse" id="subscribers">
-                        <tal:block tal:repeat="item view/subscriber_list">
-                        <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
-                            <h6><small tal:content="repeat/item/number" />
-                            <span tal:content="item" /></h6>
-                        </div>
-                        </tal:block>
-                    </div>
-                </div>
-                </section>
-            </div>
-        </div>
       <div class="visualClear">&nbsp;</div>
       <div class="formControls dim-in three">
         <a href="" class="btn btn-large btn-primary pull-right"
@@ -225,7 +133,52 @@
       </aside>
     </div>
     </div>
+        <div class="modal fade" id="recipientModal" tabindex="-1" role="dialog" aria-labelledby="recipientModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Adressen aus Verteilern</h4>
+              </div>
+              <div class="modal-body">
+                    <tal:block tal:repeat="item view/recipient_list">
+                        <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                            <h6 tal:content="python:item_details[1]" />
+                            <small class="muted" tal:content="python:item_details[0]" />
+                        </div>
+                    </tal:block>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" id="subscriberModal" tabindex="-1" role="dialog" aria-labelledby="subscriberModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Abonnenten</h4>
+              </div>
+              <div class="modal-body">
+                    <tal:block tal:repeat="item view/subscriber_list">
+                    <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                        <h6><small tal:content="repeat/item/number" />
+                        <span tal:content="item" /></h6>
+                    </div>
+                    </tal:block>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
     </div>
+
   </section>
   </metal:content-core>
 </metal:main>
