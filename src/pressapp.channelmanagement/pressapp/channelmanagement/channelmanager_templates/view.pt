@@ -37,7 +37,7 @@
                               items view/statistic_data;
                               items_count python:len(items);
                               batch python:Batch(items, b_size, b_start);">
-                <div class="tile" tal:repeat="item batch">
+                <div class="list-tile" tal:repeat="item batch">
                   <div class="row">
                     <div class="col col-lg-2">
                       <h6 tal:content="item/subscriber" />
