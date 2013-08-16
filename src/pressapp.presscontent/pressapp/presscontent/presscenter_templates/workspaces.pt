@@ -22,11 +22,6 @@
             tal:define="navigation_root_url context_url">
             <div class="col col-lg-9">
               <h1>Redakteure
-                <!--<small tal:condition="view/has_filter"
-                  tal:define="info view/filter_info">
-                  <span tal:attributes="class string:label label-${info/klass}"
-                    tal:content="info/state" />
-                </small>-->
               </h1>
               <p class="discreet">
                 Liste der vorhandenen Benutzerkonten
@@ -79,7 +74,7 @@
                       </p>
                     </div>
                     <div class="col col-lg-4">
-                        <a class="btn btn-default btn-mini pull-right"
+                        <a class="btn btn-default btn-sm pull-right"
                             tal:attributes="href item/getURL">
                             Anzeigen</a>
                     </div>

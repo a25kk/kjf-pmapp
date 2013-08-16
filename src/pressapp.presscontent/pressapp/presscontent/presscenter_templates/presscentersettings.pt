@@ -60,10 +60,10 @@
                   <i class="icon-edit"></i>
                   bearbeiten</a>
                 <h4>CSS / Stylesheet</h4>
-                <p>The cascading stylesheet that will be attached to the head
+                <p i18n:translate="">The cascading stylesheet that will be attached to the head
                   element of html formatted emails based on the capabilities of
                   current email clients</p>
-                <button class="btn btn-default btn-small"
+                <button class="btn btn-default btn-sm"
                   href="#recipients"
                   data-toggle="collapse"
                   data-target="#settings-css">
@@ -80,10 +80,10 @@
                   <i class="icon-edit"></i>
                   bearbeiten</a>
                 <h4>E-Mail-Vorlage Pressemitteilungen</h4>
-                <p>This template will be parsed for each press release and details
+                <p i18n:translate="">This template will be parsed for each press release and details
                   will be inserted via variable substitution when dispatched.
                 </p>
-                <button class="btn btn-default btn-small"
+                <button class="btn btn-default btn-sm"
                   href="#recipients"
                   data-toggle="collapse"
                   data-target="#settings-pr-template">
@@ -100,10 +100,10 @@
                   <i class="icon-edit"></i>
                   bearbeiten</a>
                 <h4>E-Mail-Vorlage Presseeinladungen</h4>
-                <p>This template will be parsed for each press invititaion and details
+                <p i18n:translate="">This template will be parsed for each press invititaion and details
                   will be inserted via variable substitution when dispatched.
                 </p>
-                <button class="btn btn-default btn-small"
+                <button class="btn btn-default btn-sm"
                   href="#recipients"
                   data-toggle="collapse"
                   data-target="#settings-pi-template">

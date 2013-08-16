@@ -8234,7 +8234,6 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 }
 .actionbar {
   margin: 20px 20px 0 40px;
-  padding-bottom: 20px;
 }
 .actionbar .brandname {
   color: #fff;
@@ -8774,7 +8773,7 @@ select.chzn-select {
 .statuspanel .bottom {
   padding-top: 20px;
   padding-bottom: 20px;
-  background: #eeeeee;
+  background: #fff;
   text-align: center;
   border-top: none;
 }
