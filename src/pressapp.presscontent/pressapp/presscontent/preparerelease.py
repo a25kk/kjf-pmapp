@@ -7,7 +7,7 @@ from pressapp.presscontent.interfaces import IPressContent
 
 class PrepareRelease(grok.View):
     grok.context(IPressContent)
-    grok.require('zope2.View')
+    grok.require('cmf.ModifyPortalContent')
     grok.name('prepare-release')
 
     def update(self):

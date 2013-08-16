@@ -39,7 +39,7 @@ from pressapp.dispatcher import MessageFactory as _
 
 class Dispatcher(grok.View):
     grok.context(IContentish)
-    grok.require('zope2.View')
+    grok.require('cms.ModifyPortalContent')
     grok.name('dispatcher')
 
     def update(self):

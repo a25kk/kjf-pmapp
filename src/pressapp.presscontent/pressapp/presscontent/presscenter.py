@@ -88,6 +88,8 @@ class View(grok.View):
         context = aq_inner(self.context)
         mtool = getToolByName(context, 'portal_membership')
         member = mtool.getMemberById(owner)
+        if member is None:
+            member = mtool.getAuthenticatedMember()
         login_time = member.getProperty('last_login_time', '2011/01/01')
         return login_time
 
