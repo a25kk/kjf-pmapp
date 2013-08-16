@@ -11,7 +11,7 @@ env.use_ssh_config = True
 env.forward_agent = True
 env.port = '22222'
 env.user = 'root'
-env.sitename = 'tophotel'
+env.sitename = 'pressapp'
 env.code_user = 'root'
 env.prod_user = 'www'
 env.webserver = '/opt/webserver/buildout.webserver'
@@ -20,10 +20,8 @@ env.stage_root = '/opt/sites/mth-staging/buildout.mth'
 
 env.hosts = ['4zu1', '4zu2', '4zu3', '6zu4']
 env.roledefs = {
-    'production': ['4zu1', '4zu2'],
-    'public': ['4zu1'],
-    'private': ['4zu2'],
-    'webserver': ['4zu3'],
+    'production': ['pm-app'],
+    'webserver': ['pm-app'],
     'staging': ['6zu4']
 }
 
@@ -41,6 +39,7 @@ def restart_cluster():
         run('nice bin/supervisorctl restart instance2')
         run('nice bin/supervisorctl restart instance3')
         run('nice bin/supervisorctl restart instance4')
+
 
 @task
 def supervisorctl(*cmd):
@@ -108,6 +107,7 @@ def buildout_private():
         run('nice bin/supervisorctl restart instance3')
         run('nice bin/supervisorctl restart instance4')
 
+
 @task
 @roles('public')
 def buildout_public():
@@ -143,4 +143,3 @@ def rebuild():
     project.site.update()
     project.site.build_full()
     project.cluster.restart()
-fabfile.
