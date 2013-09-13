@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "POT-Creation-Date: 2013-09-13 21:13+0000\n"
-"PO-Revision-Date: 2013-09-13 23:10+0100\n"
+"PO-Revision-Date: 2013-09-14 00:22+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Eine Liste von E-Mail-Adressen/Emfängern - eine Adresse pro Zeile durch
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:53
 msgid "A lot of email clients will display the first view lines of the mail's body as a preview in the email listing (not unlike the description displayed next to search results). Since according to usage statistics providing a dedicated short summary can dramatically increase the opening rate of newsletters. Take advantage of this fact by adding a short summary as a teaser to press releases as well."
-msgstr ""
+msgstr "Viele E-Mail-Programme und Webmail Anwendungen zeigen die ersten Zeilen des E-Mail Inhaltes als Vorschau in Auflistungen wie z.b. im Posteingang (vergleichbar mit den Kurzbeschreibungen bei Suchtreffern). Da alle Studien zum Nutzerverhalten belegen, dass die Verwendung einer kurzen Zusammenfassung oder Einleitung die Öffnungsraten von Newslettern deutlich erhöhen, sollten Sie sich diese Tatsache zu Nutze machen und für Pressemitteilungen ebenfalls verwenden."
 
 #: ./../addfile.py:76
 msgid "A new attachment was successfully added"
@@ -131,7 +131,7 @@ msgstr "Die Anzeigeeinstellungen Archiv wurden erfolgreich aktualisiert"
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:43
 msgid "Beside the title and the main body text we also require a preview image for each press release. This is necesary since handling the preview image requires a bit more computation than adding files as attachments."
-msgstr ""
+msgstr "Neben dem Titel und dem Haupttext einer Pressemittelung ist auch ein Hauptbild oder Vorschaubild erforderlich. Dieses wird in den Text der Mitteilung eingebunden und muss folglich sorgfältiger berechnet werden, als Dateien im Anhang (Downloads)."
 
 #: ./../presscenter.py:61
 msgid "CSS used for the HTML Email"
@@ -441,11 +441,11 @@ msgstr "Geben Sie hier eine Standard E-Mail-Adresse als Absenderadresse für Pre
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:40
 msgid "Please enter the basic details for this press release"
-msgstr ""
+msgstr "Bitte geben Sie hier die Details dieser Pressemittelung ein."
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:23
 msgid "Please fill out the form below to add a new press release"
-msgstr ""
+msgstr "Bitte füllen Sie das nachstehende Formular sorgfäfftig aus, um eine neue Pressemitteilung zu erzeugen."
 
 #: ./../addinvitation.py:57
 #: ./../editinvitation.py:59
@@ -463,7 +463,7 @@ msgstr "E-Mail-Vorlage: Presseeinladungen"
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:21
 msgid "Press Release"
-msgstr ""
+msgstr "Pressemitteilung"
 
 #: ./../settings.py:58
 msgid "Press Release E-Mail Template"
@@ -717,7 +717,7 @@ msgstr "Diese Vorlage wird für jede Pressemitteilung ausgeführt und die entspr
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:50
 msgid "Tip"
-msgstr ""
+msgstr "Tipp"
 
 #: ./../addfile.py:19
 #: ./../addinvitation.py:20
@@ -805,7 +805,7 @@ msgstr "Laden Sie ein Bild zu dieser Pressemittelung hoch. Das Bild sollte berei
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:51
 msgid "Use the field summary to add a short teaser."
-msgstr ""
+msgstr "Verwenden Sie das Feld zur Zusammenfassung um einen kurzen Anreisser zu verfassen."
 
 #: ./../presscenter_templates/workspaces.pt:93
 msgid "Users are redirected to their personal workspaces after signing in to the press application, where they create and manage their press contents"

@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         // Metadata.
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*!\n' +
-                  '* <%= _.slugify(themeName) %> v<%= pkg.version %> by Ade25\n' +
+                  '* PressHub v<%= pkg.version %> by Ade25\n' +
                   '* Copyright <%= pkg.author %>\n' +
                   '* Licensed under <%= pkg.licenses %>.\n' +
                   '*\n' +
@@ -47,12 +47,17 @@ module.exports = function (grunt) {
             bootstrap: {
                 src: [
                     'bower_components/jquery/jquery.js',
+                    'bower_components/modernizr/modernizr.js',
                     'bower_components/jquery-knob/jquery.knob.js',
+                    'bower_components/chosen-sass-bootstrap/chosen.jquery.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
                     'bower_components/bootstrap-toggle/js/bootstrap-toggle.js',
+                    'bower_components/momentjs/moment.js',
+                    'bower_components/momentjs/lang/de.js',
+                    'bower_components/livestampjs/livestamp.js',
                     'js/pressapp.js'
                 ],
-                dest: 'dist/js/<%= pkg.name %>.js'
+                dest: 'dist/js/presshub.js'
             }
         },
 
@@ -62,7 +67,7 @@ module.exports = function (grunt) {
             },
             bootstrap: {
                 src: ['<%= concat.bootstrap.dest %>'],
-                dest: 'dist/js/<%= pkg.name %>.min.js'
+                dest: 'dist/js/presshub.min.js'
             }
         },
 
@@ -72,14 +77,14 @@ module.exports = function (grunt) {
             },
             theme: {
                 src: ['less/styles.less'],
-                dest: 'dist/css/<%= pkg.name %>.css'
+                dest: 'dist/css/styles.css'
             },
             min: {
                 options: {
                     compress: true
                 },
                 src: ['less/styles.less'],
-                dest: 'dist/css/<%= pkg.name %>.min.css'
+                dest: 'dist/css/styles.min.css'
             }
         },
 
@@ -90,7 +95,10 @@ module.exports = function (grunt) {
                 dest: 'assets/fonts/'
             },
             styles: {
-                src: ['bower_components/chosen-sass-bootstrap/chosen/chosen.css'],
+                expand: true,
+                flatten: true,
+                cwd: 'bower_components/',
+                src: ['chosen-sass-bootstrap/chosen/chosen.css'],
                 dest: 'assets/css/'
             },
             images: {
@@ -180,10 +188,10 @@ module.exports = function (grunt) {
     grunt.registerTask('dist-css', ['recess']);
 
     // Fonts distribution task.
-    grunt.registerTask('dist-fonts', ['copy']);
+    grunt.registerTask('dist-assets', ['copy']);
 
     // Full distribution task.
-    grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
+    grunt.registerTask('dist', ['clean', 'dist-css', 'dist-assets', 'dist-js']);
 
     // Default task.
     grunt.registerTask('default', ['test', 'dist']);
