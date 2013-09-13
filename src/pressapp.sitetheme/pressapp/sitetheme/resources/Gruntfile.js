@@ -91,7 +91,9 @@ module.exports = function (grunt) {
         copy: {
             fonts: {
                 expand: true,
-                src: ['bower_components/font-awesome/font/*'],
+                flatten: true,
+                cwd: 'bower_components/',
+                src: ['font-awesome/font/*'],
                 dest: 'assets/fonts/'
             },
             styles: {
@@ -102,7 +104,10 @@ module.exports = function (grunt) {
                 dest: 'assets/css/'
             },
             images: {
-                src: ['bower_components/chosen-sass-bootstrap/chosen/chosen-sprite.png'],
+                expand: true,
+                flatten: true,
+                cwd: 'bower_components/',
+                src: ['chosen-sass-bootstrap/chosen/chosen-sprite.png'],
                 dest: 'assets/img/'
             }
         },
