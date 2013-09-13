@@ -90,7 +90,7 @@
               <p class="lead" i18n:translate="">
                 Overview of registered members and their workspaces</p>
               <hr>
-              <p>Users are redirected to their personal workspaces after signing
+              <p i18n:translate="">Users are redirected to their personal workspaces after signing
                 in to the press application, where they create and manage their
                 press contents
               </p>

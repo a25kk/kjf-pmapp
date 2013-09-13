@@ -12,19 +12,20 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand toolbar-brand" id="main-logo" href="#"
-                tal:attributes="href portal_url">PressHub</a>
+                tal:attributes="href portal_url">
+                          <i class="icon-expand"></i>
+                PressHub</a>
         </div>
+        <p class="navbar-text visible-lg">Katholische Jugendf&uuml;rsorge der Dioz&ouml;se Augsburg e.V.</p>
         <div class="collapse navbar-collapse navbar-ex1-collapse" tal:condition="not:viewlet/anonymous">
             <ul class="nav navbar-nav nav-user navbar-right"
                 tal:define="memberinfo viewlet/memberinfo;
                             home_folder memberinfo/home_url">
-                <li class="divider-vertical"></li>
                 <li class="dropdown">
                     <a href=""
                         tal:attributes="href home_folder"
                         class="dropdown-toggle"
                         data-toggle="dropdown">
-                        <i class="icon-user icon-white"></i>
                         <span tal:content="memberinfo/username">John Doe</span>
                         <b class="caret"></b>
                     </a>
@@ -33,7 +34,7 @@
                             tal:attributes="href python:portal_url + '/@@personal-information'">
                             Einstellungen</a>
                         </li>
-                        <li class="nav-divider"></li>
+                        <li class="divider"></li>
                         <li><a href=""
                             tal:attributes="href python:portal_url + '/logout'">
                             Abmelden</a>
@@ -47,7 +48,6 @@
                 <li class="nav-divider"></li>
                 <li><a href=""
                         tal:attributes="href python:portal_url+'/@@press-archive'">
-                    <i class="icon-list-alt" />
                         Archiv
                     </a>
                 </li>
@@ -56,26 +56,22 @@
                     <a href="/" class="dropdown-toggle"
                         data-toggle="dropdown"
                         tal:attributes="href python:portal_url+'/press-center'">
-                        <i class="icon-cog icon-white"></i>
                         Administration
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href=""
                             tal:attributes="href python:portal_url+'/presscenter/'">
-                            <i class="icon-list"></i>
                             &Uuml;bersicht
                             </a>
                         </li>
                         <li><a href=""
                                 tal:attributes="href python:portal_url+'/presscenter/@@workspaces'">
-                            <i class="icon-user"></i>
                             Redakteure
                             </a>
                         </li>
                         <li><a href=""
                             tal:attributes="href python:portal_url+'/presscenter/@@global-settings'">
-                            <i class="icon-align-justify"></i>
                                 Einstellungen
                             </a>
                         </li>
