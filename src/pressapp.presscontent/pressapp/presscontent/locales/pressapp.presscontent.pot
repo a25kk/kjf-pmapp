@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-16 08:48+0000\n"
+"POT-Creation-Date: 2013-09-13 21:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,10 @@ msgstr ""
 #: ./../presscenter.py:43
 #: ./../settings.py:37
 msgid "A list of test recipients - one address per line comma seperated in the format: E-mail, Name"
+msgstr ""
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:53
+msgid "A lot of email clients will display the first view lines of the mail's body as a preview in the email listing (not unlike the description displayed next to search results). Since according to usage statistics providing a dedicated short summary can dramatically increase the opening rate of newsletters. Take advantage of this fact by adding a short summary as a teaser to press releases as well."
 msgstr ""
 
 #: ./../addfile.py:76
@@ -126,6 +130,10 @@ msgstr ""
 
 #: ./../archivesettings.py:103
 msgid "Archive settings successfully updated"
+msgstr ""
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:43
+msgid "Beside the title and the main body text we also require a preview image for each press release. This is necesary since handling the preview image requires a bit more computation than adding files as attachments."
 msgstr ""
 
 #: ./../presscenter.py:61
@@ -434,6 +442,14 @@ msgstr ""
 msgid "Please enter default send from E-mail address"
 msgstr ""
 
+#: ./../addrelease_templates/pressreleaseaddform.pt:40
+msgid "Please enter the basic details for this press release"
+msgstr ""
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:23
+msgid "Please fill out the form below to add a new press release"
+msgstr ""
+
 #: ./../addinvitation.py:57
 #: ./../editinvitation.py:59
 #: ./../pressinvitation.py:66
@@ -446,6 +462,10 @@ msgstr ""
 
 #: ./../settings.py:66
 msgid "Press Invitation E-Mail Template"
+msgstr ""
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:21
+msgid "Press Release"
 msgstr ""
 
 #: ./../settings.py:58
@@ -698,6 +718,10 @@ msgstr ""
 msgid "This template will be parsed for each press release and details will be inserted via variable substitution when dispatched."
 msgstr ""
 
+#: ./../addrelease_templates/pressreleaseaddform.pt:50
+msgid "Tip"
+msgstr ""
+
 #: ./../addfile.py:19
 #: ./../addinvitation.py:20
 #: ./../addrelease.py:25
@@ -780,6 +804,10 @@ msgstr ""
 #: ./../editrelease.py:48
 #: ./../pressrelease.py:61
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
+msgstr ""
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:51
+msgid "Use the field summary to add a short teaser."
 msgstr ""
 
 #: ./../presscenter_templates/workspaces.pt:93

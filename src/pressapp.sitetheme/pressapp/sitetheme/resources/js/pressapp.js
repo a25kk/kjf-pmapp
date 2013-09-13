@@ -1,5 +1,6 @@
 /*jslint white:false, onevar:true, undef:true, nomen:true, eqeqeq:true, plusplus:true, bitwise:true, regexp:true, newcap:true, immed:true, strict:false, browser:true */
 /*global jQuery:false, document:false, window:false, location:false */
+'use strict';
 
 (function ($) {
     $(document).ready(function () {
@@ -26,24 +27,24 @@
         });
         $('h5[data-appui="tooltip"]').tooltip();
         var previewchanger = $('div[data-appui="archive-switch"]');
-        var previewchanger_url = $(previewchanger).data('target');
+        var previewchangerUrl = $(previewchanger).data('target');
         $(previewchanger).toggleSlide({
             onClick: function (evt, status) {
-                var error_msg = "There was an error updating this item - please try again!";
-                var ajax_url = previewchanger_url + '?state=' + status;
+                var errorMsg = 'There was an error updating this item - please try again!';
+                var ajaxUrl = previewchangerUrl + '?state=' + status;
                 $.ajax({
-                    url: ajax_url,
-                    method: "GET",
+                    url: ajaxUrl,
+                    method: 'GET',
                     success: function (data) {
                         var state;
                         if (data.success) {
                             state = data.results.state;
                         } else {
-                            alert(error_msg + "\n\nError:\n" + data.messages);
+                            alert(errorMsg + '\n\nError:\n' + data.messages);
                         }
                     },
                     error: function () {
-                        alert(error_msg);
+                        alert(errorMsg);
                     }
                 });
                 console.log('.alternative changed to: ' + status, 'the reverse of: ' + !status);
