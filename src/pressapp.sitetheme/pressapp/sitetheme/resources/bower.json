@@ -10,7 +10,12 @@
     "backbone": "1.0.0",
     "bootstrap": "git@github.com:twbs/bootstrap.git",
     "font-awesome": "3.2.1",
-    "diazo-plone": "git@github.com:ade25/diazo-plone.git"
+    "diazo-plone": "git@github.com:ade25/diazo-plone.git",
+    "momentjs": "~2.2.1",
+    "livestampjs": "~1.1.2",
+    "boostrap-toggle": "~1.0.0",
+    "chosen-sass-bootstrap": "~0.9.8",
+    "modernizr": "~2.6.2"
   },
   "devDependencies": {
     "chai": "1.7.2"
