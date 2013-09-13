@@ -1,0 +1,21 @@
+{
+  "name": "a25-diazo-blueprint",
+  "version": "1.0.0",
+  "description": "Ade25 diazo blueprint",
+  "dependencies": {
+    "requirejs": "2.1.8",
+    "jquery": "1.8.3",
+    "jquery-knob": "1.2.2",
+    "underscore": "1.4.4",
+    "backbone": "1.0.0",
+    "bootstrap": "git@github.com:twbs/bootstrap.git",
+    "font-awesome": "3.2.1",
+    "diazo-plone": "git@github.com:ade25/diazo-plone.git"
+  },
+  "devDependencies": {
+    "chai": "1.7.2"
+  },
+  "resolutions": {
+    "jquery": ">= 1.9.0"
+  }
+}
