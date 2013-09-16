@@ -82,7 +82,7 @@
     </div>
 </div>
 <div class="actionbar" id="subnavbar">
-    <div class="actionbar-nav navbar"
+    <div class="actionbar-nav xnavbar"
         tal:define="memberinfo viewlet/memberinfo;
                     portal_url viewlet/portal_url;
                     home_folder memberinfo/home_url">
