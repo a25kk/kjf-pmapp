@@ -15,14 +15,13 @@ env.sitename = 'pressapp'
 env.code_user = 'root'
 env.prod_user = 'www'
 env.webserver = '/opt/webserver/buildout.webserver'
-env.code_root = '/opt/mth/buildout.mth'
-env.stage_root = '/opt/sites/mth-staging/buildout.mth'
+env.code_root = '/opt/sites/buildout.pmapp/'
+env.stage_root = '/opt/sites/presshub/buildout.presshub'
 
-env.hosts = ['4zu1', '4zu2', '4zu3', '6zu4']
+env.hosts = ['pm-app', 'noah']
 env.roledefs = {
     'production': ['pm-app'],
-    'webserver': ['pm-app'],
-    'staging': ['6zu4']
+    'staging': ['noah']
 }
 
 
@@ -63,20 +62,8 @@ def deploy_staging():
 
 
 @task
-@roles('private')
-def deploy_private():
-    """ Deploy current development head to staging server """
-    with cd(env.code_root):
-        run('nice git pull')
-        run('nice bin/supervisorctl restart instance1')
-        run('nice bin/supervisorctl restart instance2')
-        run('nice bin/supervisorctl restart instance3')
-        run('nice bin/supervisorctl restart instance4')
-
-
-@task
-@roles('public')
-def deploy_public():
+@roles('production')
+def deploy_production():
     """ Deploy current development head to staging server """
     with cd(env.code_root):
         run('nice git pull')
@@ -96,21 +83,8 @@ def buildout_staging():
 
 
 @task
-@roles('private')
-def buildout_private():
-    """ Deploy current development head to staging server """
-    with cd(env.code_root):
-        run('nice git pull')
-        run('nice bin/buildout -Nc deployment-server2.cfg')
-        run('nice bin/supervisorctl restart instance1')
-        run('nice bin/supervisorctl restart instance2')
-        run('nice bin/supervisorctl restart instance3')
-        run('nice bin/supervisorctl restart instance4')
-
-
-@task
-@roles('public')
-def buildout_public():
+@roles('production')
+def buildout_production():
     """ Deploy current development head to staging server """
     with cd(env.code_root):
         run('nice git pull')
@@ -130,6 +104,7 @@ def deploy():
 
 
 @task
+@roles('production')
 def deploy_full():
     """ Deploy current master to production and run buildout """
     project.site.update()
@@ -138,6 +113,7 @@ def deploy_full():
 
 
 @task
+@roles('production')
 def rebuild():
     """ Deploy current master and run full buildout """
     project.site.update()
