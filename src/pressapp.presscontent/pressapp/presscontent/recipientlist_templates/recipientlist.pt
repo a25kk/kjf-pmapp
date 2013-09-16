@@ -45,7 +45,7 @@
             <form tal:attributes="action request/URL" method="post"
                 id="recipient-cleanup-form">
             <table tal:condition="view/has_subscribers"
-                class="table table-condensed"
+                class="table table-condensed table-responsive table-hover table-recipients-list"
                 id="recipient-table">
                 <thead>
                     <tr>
@@ -55,10 +55,17 @@
                 </thead>
                 <tbody>
                     <tr tal:repeat="item view/subscriber_listing">
-                        <td tal:content="item/name">Name</td>
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="" checked>
+                                    <strong tal:content="item/name" />
+                                </label>
+                            </div>
+                        </td>
                         <td tal:define="counter repeat/item/number;">
-                            <span class="muted"
-                              tal:content="item/email">E-Mail</span>
+                            <p class="xtext-muted"
+                              tal:content="item/email">E-Mail</p>
                             <input type="hidden"
                                 tal:attributes="id string:recipient-${counter};
                                                 name string:recipient-${counter};
@@ -74,8 +81,8 @@
                         value="Liste speichern"
                         name="form.button.Submit"
                         id="submit-button"
-                        class="btn btn-large btn-primary" />
-                    <a href="" class="btn btn-large btn-danger"
+                        class="btn btn-primary btn-lg" />
+                    <a href="" class="btn btn-danger btn-lg"
                       tal:attributes="href context/absolute_url">
                       Abbrechen</a>
                 </div>
@@ -112,7 +119,7 @@
               </a>
               
               <hr>
-                <a href="" class="btn btn-large btn-block"
+                <a href="" class="btn btn-default btn-lg btn-block"
                   tal:attributes="href context_url">
                   Abbrechen
                 </a>

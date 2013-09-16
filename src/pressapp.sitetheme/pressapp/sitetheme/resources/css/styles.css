@@ -10551,6 +10551,10 @@ table.dataTable tr.row_selected td {
 #table-contacts h6 {
   margin-top: 0px;
 }
+.table-recipients-list .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .footer-frontpage {
   margin-top: 50px;
 }
