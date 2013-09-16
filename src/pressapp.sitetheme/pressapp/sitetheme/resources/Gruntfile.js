@@ -112,6 +112,16 @@ module.exports = function (grunt) {
             }
         },
 
+        rev: {
+            options:  {
+                algorithm: 'sha256',
+                length: 8
+            },
+            files: {
+                src: ['dist/**/*.{js,css,png,jpg}']
+            }
+        },
+
         qunit: {
             options: {
                 inject: 'js/tests/unit/phantom.js'
@@ -170,6 +180,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-html-validation');
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-recess');
+    grunt.loadNpmTasks('grunt-rev');
     grunt.loadNpmTasks('browserstack-runner');
 
     // Docs HTML validation task
@@ -192,8 +203,11 @@ module.exports = function (grunt) {
     // CSS distribution task.
     grunt.registerTask('dist-css', ['recess']);
 
-    // Fonts distribution task.
+    // Fonts and image assets distribution task.
     grunt.registerTask('dist-assets', ['copy']);
+
+    // Cache buster distribution task.
+    grunt.registerTask('dist-cb', ['rev']);
 
     // Full distribution task.
     grunt.registerTask('dist', ['clean', 'dist-css', 'dist-assets', 'dist-js']);
