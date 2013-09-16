@@ -79,6 +79,7 @@ def buildout_staging():
     """ Deploy current development head to staging server """
     with cd(env.stage_root):
         run('nice git pull')
+        run('nice bin/buildout -c staging.cfg')
     project.site.restart()
 
 
