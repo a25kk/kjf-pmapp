@@ -1,102 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <base />
-    <title>PressHub by Kreativkombinat</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-<!--<link href="less/styles.less" rel="stylesheet/less" type="text/css">-->
-<link href="dist/css/styles.css" rel="stylesheet">    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-<script data-ui="development" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
-<script data-ui="development" type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js"></script>
-<script data-ui="development" type="text/javascript" src="assets/js/less-1.4.1.min.js"></script>
-<script data-ui="development" src="assets/js/bootstrap.min.js"></script>
-<script data-ui="development" src="js/jquery.knob.js"></script>
-<script data-ui="development" src="js/pressapp.js"></script>  </head>
+<!-- @import "_includes/head.kit" -->
   <body>
-    <body>
-  <header class="ph-header" id="header">
-    <nav class="toolbar navbar navbar-inverse navbar-static-top" id="toolbar" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand toolbar-brand" id="main-logo" href="#">PressHub</a>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav pull-right">
-          <li id="plone-personal-actions" class="dropdown dropdown-userinfo">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="/author/123456789">
-              <span>John Doe</span>
-              <b class="caret">
-            </b></a>
-            <ul class="dropdown-menu"><li id="plone-personal-actions-dashboard">
-                <a href="/dashboard">Persönliche Seite</a>
-              </li>
-              <li id="plone-personal-actions-preferences">
-                <a href="/preferences">Meine Einstellungen</a>
-              </li>
-              <li id="plone-personal-actions-plone_setup">
-                <a href="/controlpanel">Konfiguration</a>
-              </li>
-              <li id="plone-personal-actions-logout">
-                <a href="/logout">Abmelden</a>
-              </li>
-            </ul></li>
-        </ul>
-        <ul class="nav navbar-nav pull-right">
-          <li><a href="#">Archiv</a></li>
-          <li class="divider-vertical"></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Übersicht</a></li>
-                <li><a href="#">Einstellungen</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Redakteure</a></li>
-              </ul>
-          </li>
-        </ul>
-    </div>
-</nav>    <section class="container" id="actionbar">
-<div class="actionbar">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-2">
-        <h4 class="brandname">
-          <a href="/" id="brandname">
-            Arbeitsplatz</a>
-        </h4>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" id="subnavbar">
-        <div class="text-right">
-            <ul class="nav nav-pills" id="section-nav">
-              <li><a href="#contact">
-                <span class="badge">212</span>
-                Pressemitteilungen</a></li>
-              <li><a href="#">
-                <span class="badge">143</span>
-                Presseeinladungen</a></li>
-              <li><a href="#">
-                <span class="badge">74</span>
-                Verteiler</a></li>
-            </ul>
-            </div>
-      </div>
-    </div>
-</div>
-</section></header>
- 
+  <!-- @import "_includes/header.kit" --> 
   <div class="app-content container">    
     <section class="window clearfix">
         <div class="window-header">
@@ -202,7 +106,7 @@
     s.parentNode.insertBefore(wf, s);
   })();
   </script>
-  <script type="text/javascript" src="js/pressapp.js"></script>
+  <script type="text/javascript" src="dist/js/pressapp.js"></script>
     
     <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
            mathiasbynens.be/notes/async-analytics-snippet -->
