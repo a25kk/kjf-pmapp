@@ -12,9 +12,9 @@ module.exports = function (grunt) {
         // Metadata.
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*!\n' +
-                  '* PressHub v<%= pkg.version %> by Ade25\n' +
-                  '* Copyright <%= pkg.author %>\n' +
-                  '* Licensed under <%= pkg.licenses %>.\n' +
+                  '* PressHub v1.0.0 by Ade25\n' +
+                  '* Copyright Kreativkombinat GbR\n' +
+                  '* Licensed under MIT.\n' +
                   '*\n' +
                   '* Designed and built by ade25\n' +
                   '*/\n',
@@ -58,6 +58,19 @@ module.exports = function (grunt) {
                     'js/pressapp.js'
                 ],
                 dest: 'dist/js/presshub.js'
+            },
+            theme: {
+                src: [
+                    'bower_components/jquery-knob/js/jquery.knob.js',
+                    'bower_components/chosen-sass-bootstrap/chosen/chosen.jquery.js',
+                    'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'bower_components/bootstrap-toggle/js/bootstrap-toggle.js',
+                    'bower_components/momentjs/moment.js',
+                    'bower_components/momentjs/lang/de.js',
+                    'bower_components/livestampjs/livestamp.js',
+                    'js/pressapp.js'
+                ],
+                dest: 'dist/js/application.js'
             }
         },
 
