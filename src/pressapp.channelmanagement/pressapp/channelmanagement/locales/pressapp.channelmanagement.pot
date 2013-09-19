@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-07-02 12:50+0000\n"
+"POT-Creation-Date: 2013-09-19 22:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,12 +29,16 @@ msgstr ""
 msgid "A specific channel holding subscriber objects"
 msgstr ""
 
-#: ./../addsubscriber.py:66
+#: ./../addsubscriber.py:65
 msgid "Add new subscriber address"
 msgstr ""
 
 #: ./../subscriberimport.py:56
 msgid "Address Import Form"
+msgstr ""
+
+#: ./../channelmanager_templates/view.pt:45
+msgid "Addressen"
 msgstr ""
 
 #: ./../channelmanager.py:25
@@ -45,8 +49,8 @@ msgstr ""
 msgid "Central managing unit for subscriber channels"
 msgstr ""
 
-#: ./../addsubscriber.py:51
-#: ./../editsubscriber.py:54
+#: ./../addsubscriber.py:50
+#: ./../editsubscriber.py:53
 #: ./../profiles/default/types/pressapp.channelmanagement.channel.xml
 msgid "Channel"
 msgstr ""
@@ -59,46 +63,46 @@ msgstr ""
 msgid "ChannelManager"
 msgstr ""
 
-#: ./../addsubscriber.py:47
-#: ./../editsubscriber.py:50
+#: ./../addsubscriber.py:46
+#: ./../editsubscriber.py:49
 #: ./../subscriber.py:53
 msgid "Channels"
 msgstr ""
 
-#: ./../addsubscriber.py:43
-#: ./../editsubscriber.py:46
+#: ./../addsubscriber.py:42
+#: ./../editsubscriber.py:45
 #: ./../subscriber.py:48
 msgid "Comment"
 msgstr ""
 
-#: ./../addsubscriber.py:27
-#: ./../editsubscriber.py:30
+#: ./../addsubscriber.py:26
+#: ./../editsubscriber.py:29
 #: ./../subscriber.py:32
 msgid "Contact Person"
 msgstr ""
 
-#: ./../addsubscriber.py:19
-#: ./../editsubscriber.py:22
+#: ./../addsubscriber.py:18
+#: ./../editsubscriber.py:21
 #: ./../subscriber.py:24
 msgid "Contact Title"
 msgstr ""
 
-#: ./../addsubscriber.py:73
+#: ./../addsubscriber.py:72
 msgid "Create subscriber"
 msgstr ""
 
-#: ./../editsubscriber.py:69
+#: ./../editsubscriber.py:68
 msgid "Edit subscriber"
 msgstr ""
 
-#: ./../addsubscriber.py:23
-#: ./../editsubscriber.py:26
+#: ./../addsubscriber.py:22
+#: ./../editsubscriber.py:25
 #: ./../subscriber.py:28
 msgid "Email"
 msgstr ""
 
-#: ./../addsubscriber.py:39
-#: ./../editsubscriber.py:42
+#: ./../addsubscriber.py:38
+#: ./../editsubscriber.py:41
 #: ./../subscriber.py:44
 msgid "Fax"
 msgstr ""
@@ -115,20 +119,25 @@ msgstr ""
 msgid "Imported records: "
 msgstr ""
 
-#: ./../addsubscriber.py:35
-#: ./../editsubscriber.py:38
+#: ./../channel_templates/view.pt:23
+#: ./../subscriber_templates/view.pt:28
+msgid "Last changed:"
+msgstr ""
+
+#: ./../addsubscriber.py:34
+#: ./../editsubscriber.py:37
 #: ./../subscriber.py:40
 msgid "Mobile Phone"
 msgstr ""
 
-#: ./../addsubscriber.py:31
-#: ./../editsubscriber.py:34
+#: ./../addsubscriber.py:30
+#: ./../editsubscriber.py:33
 #: ./../subscriber.py:36
 msgid "Phone"
 msgstr ""
 
-#: ./../addsubscriber.py:48
-#: ./../editsubscriber.py:51
+#: ./../addsubscriber.py:47
+#: ./../editsubscriber.py:50
 #: ./../subscriber.py:54
 msgid "Please select the channels this recipient is subscribed to."
 msgstr ""
@@ -137,7 +146,7 @@ msgstr ""
 msgid "Please upload a file in csv format containing the user information to be imported."
 msgstr ""
 
-#: ./../editsubscriber.py:122
+#: ./../editsubscriber.py:121
 msgid "SUbscriber has successfully been updated"
 msgstr ""
 
@@ -145,12 +154,12 @@ msgstr ""
 msgid "Subscriber"
 msgstr ""
 
-#: ./../addsubscriber.py:85
+#: ./../addsubscriber.py:84
 msgid "The creation of a new subscriber has been cancelled."
 msgstr ""
 
-#: ./../channel_templates/view.pt:71
-#: ./../channelmanager_templates/channelinformation.pt:120
+#: ./../channel_templates/view.pt:75
+#: ./../channelmanager_templates/channelinformation.pt:97
 msgid "There are no subscribers yet"
 msgstr ""
 
@@ -158,11 +167,11 @@ msgstr ""
 msgid "Update available channels. One entry per line"
 msgstr ""
 
-#: ./../editsubscriber.py:76
+#: ./../editsubscriber.py:75
 msgid "Update subscriber"
 msgstr ""
 
-#: ./../editsubscriber.py:89
+#: ./../editsubscriber.py:88
 msgid "Updating susbcriber has been cancelled."
 msgstr ""
 
@@ -170,23 +179,12 @@ msgstr ""
 msgid "Upload existing address information by supplying a csv file."
 msgstr ""
 
-#: ./../addsubscriber.py:81
-#: ./../editsubscriber.py:84
+#: ./../channel_templates/view.pt:99
+msgid "Use the filter function to find specific addresses or resize the batch size. Manage addresses and configure the corresponding channels."
+msgstr ""
+
+#: ./../addsubscriber.py:80
+#: ./../editsubscriber.py:83
 msgid "cancel"
-msgstr ""
-
-#. Default: "Search"
-#: ./../channelmanager_templates/channelinformation.pt:52
-msgid "label_search"
-msgstr ""
-
-#. Default: "Search Subscriber"
-#: ./../channelmanager_templates/channelinformation.pt:37
-msgid "text_search"
-msgstr ""
-
-#. Default: "..."
-#: ./../channelmanager_templates/channelinformation.pt:41
-msgid "title_search_site"
 msgstr ""
 
