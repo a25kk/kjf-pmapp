@@ -10,7 +10,8 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
     
-    <header class="page-header" id="page-header">
+    <header class="page-header" id="page-header"
+        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
         <div class="pull-right">
             <h4>Kontaktinformationen</h4>
           <a
@@ -21,11 +22,12 @@
         </div>
     
         <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
-        <p tal:define="time context/modified" class="discreet">
-              <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
+        <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
         </p>
     </header>
 
@@ -34,6 +36,7 @@
     <div class="row">
         <div class="col col-lg-9">
         <section class="window-column">
+            <div class="window-column-content">
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -71,6 +74,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         </div>
         <div class="col col-lg-3">
@@ -79,25 +83,9 @@
                 </h4>
                 <p>
                     <tal:block tal:repeat="item view/selected_channels">
-                        <span class="coutner badge-success" tal:content="item/channelname" />
+                        <span class="xbadge xbadge-success" tal:content="item/channelname" /><br />
                     </tal:block>
                 </p>
-                <hr class="visualClear" />
-                <div class="form-inline"
-                     tal:define="channels view/channels">
-                    <div class="controls"
-                        tal:repeat="channel channels">
-                        <div class="input-prepend pull-left"
-                            tal:define="used channel/active">
-                            <tal:block tal:condition="python:used == False">
-                                <span class="add-on"><i class="icon-check" /></span> <span class="input-large uneditable-input" tal:content="channel/channelname">Some value here</span>
-                            </tal:block>
-                            <tal:block tal:condition="python:used == True">
-                                <span class="add-on"><i class="icon-check-empty" /></span> <input class="input-large disabled" id="disabledInput" type="text" disabled tal:attributes="placeholder channel/channelname" />
-                            </tal:block>
-                        </div>
-                    </div>
-                </div>
                 <div class="visualClear"><!-- --></div>
             </div>
         </div>

@@ -68,7 +68,7 @@ class NavBarViewlet(grok.Viewlet):
                     'Portlets: Manage own portlets', context))
 
     def memberinfo(self):
-        mtool = api.portal.get_tool(name='portal_memberdata')
+        mtool = api.portal.get_tool(name='portal_membership')
         member = api.user.get_current()
         if member:
             info = {}

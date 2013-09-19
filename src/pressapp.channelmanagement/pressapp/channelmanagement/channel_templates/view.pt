@@ -9,19 +9,21 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-  <div class="container-fluid">
+  <div class="container-fluid"
+    tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
     
     <div class="page-header" id="page-header">
       <div class="pull-right">
         <h4>Übersicht Adressen</h4>
       </div>
         <h1>Kontakte</h1>
-        <p tal:define="time context/modified" class="discreet">
-                <span i18n:translate="">Last changed:</span>
-                <span tal:content="time"
-                   tal:attributes="data-appui string:prettydate;
-                                   title time" />
-          </p>
+        <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+        </p>
     </div>
     
     <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
@@ -56,7 +58,7 @@
                             </td>
                             <td tal:define="item_url item/getURL">
                                 <a class="btn btn-mini"
-                                    tal:attributes="href item_url">
+                                    tal:attributes="href string:${item_url}/@@edit-subscriber">
                                     bearbeiten</a>
                             </td>
                         </tr>
