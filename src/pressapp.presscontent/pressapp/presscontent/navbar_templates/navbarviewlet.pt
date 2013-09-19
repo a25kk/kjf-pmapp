@@ -13,7 +13,7 @@
             </button>
             <a class="navbar-brand toolbar-brand" id="main-logo" href="#"
                 tal:attributes="href portal_url">
-                          <i class="icon-expand"></i>
+                <i class="icon-expand"></i>
                 PressHub</a>
         </div>
         <p class="navbar-text visible-lg">Katholische Jugendf&uuml;rsorge der Dioz&ouml;se Augsburg e.V.</p>
