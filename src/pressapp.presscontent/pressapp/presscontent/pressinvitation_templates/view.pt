@@ -136,12 +136,10 @@
         <h5>Art der Veranstaltung</h5>
           <p tal:define="closed context/closed">
             <span tal:condition="python:closed == False"
-              class="label label-success">
-              <i class='icon-circle'></i>
+              class="xlabel xlabel-success">
                 &Ouml;ffentlich.</span>
             <span tal:condition="python:closed == True"
-              class="label label-warning">
-              <i class='icon-ban-circle'></i>
+              class="xlabel xlabel-warning">
                 Geschlossen</span>
           </p>
           <hr>

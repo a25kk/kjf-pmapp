@@ -22,11 +22,12 @@
             <h4>Einstellungen</h4>
           </div>
             <h1>Presscenter</h1>
-            <p tal:define="time context/modified" class="discreet">
+            <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+              class="discreet">
               <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
+              <span tal:attributes="data-livestamp timestamp"
+                  tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
             </p>
         </div>
         

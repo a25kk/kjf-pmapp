@@ -5967,8 +5967,8 @@ td.visible-print {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  src: url('../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -10340,6 +10340,28 @@ select.chzn-select {
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
 }
+.presshub-archive {
+  background: #fff;
+}
+.press-archive-content {
+  width: 480px;
+  background: url(../images/bg-white-fabric.png) repeat 0 0 #ffffff;
+}
+.archive-box {
+  margin: 0;
+  padding: 10px;
+}
+.archive-box .archive-box-header {
+  padding: 0 20px 10px;
+  border-bottom: 1px solid #999999;
+}
+.archive-box .archive-box-header h1 {
+  font-size: 21px;
+}
+.archive-box .archive-box-text {
+  margin: 10px 0 0;
+  text-align: right;
+}
 body {
   background: #96c6d0;
 }
@@ -10417,6 +10439,7 @@ dl.portalMessage dd {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 0px;
+  border-top: 1px solid #fff;
   border-bottom: 1px solid #999999;
   border-radius: 0;
   background: transparent !important;

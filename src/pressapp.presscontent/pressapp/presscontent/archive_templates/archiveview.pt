@@ -7,11 +7,11 @@
       i18n:domain="pressapp.presscontent">
 <body>
 
-<metal:main fill-slot="body">
-  <metal:content-core define-macro="body">
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
   <div id="content-core">
-    <div id="archive-view" class="box">
-    <div class="page-header">
+    <div id="archive-view" class="archive-box">
+    <div class="archive-box-header">
         <h1>Pressemitteilungen</h1>
     </div>
     <section id="archive-listing" tal:condition="view/has_items">
@@ -21,47 +21,33 @@
                                b_size python:30; b_start python:0;
                                b_start request/b_start|b_start;
                                batch python:Batch(items, b_size, int(b_start), orphan=1);">
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th>Titel</th>
-                        <th>Datum</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tal:block tal:repeat="item batch">
-                    <tr tal:define="item_uid item/UID;
-                                    type item/portal_type">
-                        <td>
-                            <span tal:condition="python:type == 'pressapp.presscontent.pressrelease'"
-                                rel="twipsy"
-                                data-original-title="Pressemitteilung"
-                                class="badge badge-info">PM</span>
-                            <span tal:condition="python:type == 'pressapp.presscontent.pressinvitation'"
-                                rel="twipsy"
-                                data-original-title="Presseeinladung"
-                                class="badge badge-warning">PE</span>
-                        </td>
-                        <td>
-                            <h4><a href=""
-                                tal:attributes="href python:portal_url + '/@@pressitem-view?uid=' + item_uid"
-                                tal:content="item/Title">
-                                PC Title
-                            </a><br />
-                            <small class="discreet" tal:content="item/subtitle" />
-                            </h4>
-                        </td>
-                        <td tal:define="effective_date item/Date">
-                            <span tal:content="python:toLocalizedTime(effective_date)"
-                                class="label label-inverse">
-                            </span>
-                        </td>
-                    </tr>
-                    </tal:block>
-                </tbody>
-            </table>
-          <div class="visualClear">&nbsp;</div>
+
+        <div class="list-tile" tal:repeat="item batch">
+        <div class="row"
+            tal:define="item_uid item/UID;
+                        type item/portal_type">
+          <div class="col-xs-12 col-lg-2">
+            <h6 tal:define="effective_date item/Date">
+                    <span tal:content="python:toLocalizedTime(effective_date)" />
+            </h6>
+          </div>
+          <div class="col col-lg-6"
+            tal:define="state item/review_state">
+            <h4>
+              <span tal:content="item/Title" />
+            </h4>
+            <p><small class="discreet" tal:content="item/subtitle" /></p>
+          </div>
+          <div class="col col-lg-4">
+            <p class="archive-box-text">
+                <a href=""
+                    tal:attributes="href python:portal_url + '/@@pressitem-view?uid=' + item_uid">
+                    anzeigen
+                </a>
+            </p>
+          </div>
+        </div>
+        </div><!-- /tile -->
           <div metal:use-macro="context/batch_macros/macros/navigation" />
         </tal:block>
     </section>
