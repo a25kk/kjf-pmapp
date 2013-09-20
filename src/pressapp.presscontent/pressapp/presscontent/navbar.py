@@ -52,8 +52,7 @@ class NavBarViewlet(grok.Viewlet):
             query['portal_type'] = ptype
         else:
             query['portal_type'] = presstypes
-        if not self.is_administrator():
-            query['Owner'] = api.user.get_current()
+        query['Creator'] = api.user.get_current().getId()
         brains = catalog.searchResults(**query)
         results = IContentListing(brains)
         return results
@@ -64,8 +63,13 @@ class NavBarViewlet(grok.Viewlet):
 
     def is_administrator(self):
         context = aq_inner(self.context)
-        return bool(getSecurityManager().checkPermission(
-                    'Portlets: Manage own portlets', context))
+        is_admin = False
+        admin_role = 'SiteAdministrator'
+        user = api.user.get_current()
+        roles = api.user.get_roles(username=user.getId(), obj=context)
+        if admin_role in roles:
+            is_admin = True
+        return is_admin
 
     def memberinfo(self):
         mtool = api.portal.get_tool(name='portal_membership')

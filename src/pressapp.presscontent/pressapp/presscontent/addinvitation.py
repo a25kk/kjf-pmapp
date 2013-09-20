@@ -38,7 +38,7 @@ class IPressInvitationAdd(form.Schema):
         required=True,
     )
     schedule = RichText(
-        title=_(u"Schedule"),
+        title=_(u"Event Schedule"),
         description=_(u"Enter optional schedule information."),
         required=False,
     )

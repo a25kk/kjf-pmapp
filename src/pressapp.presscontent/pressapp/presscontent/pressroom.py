@@ -1,4 +1,5 @@
 from five import grok
+from plone import api
 from plone.directives import form
 
 from Acquisition import aq_inner
@@ -28,6 +29,16 @@ class View(grok.View):
         self.pressreleases = self.contained_pressreleases()
         self.has_invitations = len(self.contained_invitations()) > 0
         self.has_presscontent = len(self.contained_presscontent()) > 0
+
+    def is_administrator(self):
+        context = aq_inner(self.context)
+        is_admin = False
+        admin_role = 'SiteAdministrator'
+        user = api.user.get_current()
+        roles = api.user.get_roles(username=user.getId(), obj=context)
+        if admin_role in roles:
+            is_admin = True
+        return is_admin
 
     def presscontent_index(self):
         context = aq_inner(self.context)
