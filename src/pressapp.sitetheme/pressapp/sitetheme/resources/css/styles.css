@@ -10344,7 +10344,7 @@ body #content-wrapper {
   margin-top: 40px;
 }
 body.template-login_form #content-wrapper {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 .btn {
   border-radius: 0;
@@ -10368,6 +10368,9 @@ dl.portalMessage dt {
 }
 dl.portalMessage dd {
   margin-left: 0px;
+}
+.modal-dialog {
+  padding-top: 50px;
 }
 #main-logo {
   color: #eeeeee;
