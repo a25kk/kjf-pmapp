@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-13 21:13+0000\n"
+"POT-Creation-Date: 2013-09-20 10:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -315,6 +315,10 @@ msgstr ""
 msgid "Event Location"
 msgstr ""
 
+#: ./../addinvitation.py:41
+msgid "Event Schedule"
+msgstr ""
+
 #: ./../archivesettings_templates/archivesettingseditform.pt:21
 #: ./../pressrelease_templates/view.pt:275
 msgid "Externe Zielseiten"
@@ -346,7 +350,7 @@ msgstr ""
 msgid "Hinweis:"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:185
+#: ./../pressinvitation_templates/view.pt:176
 #: ./../pressrelease_templates/preview.pt:97
 #: ./../pressrelease_templates/view.pt:336
 msgid "If you no longer need this item"
@@ -500,7 +504,7 @@ msgstr ""
 msgid "Pressemitteilungen"
 msgstr ""
 
-#: ./../pressroom.py:77
+#: ./../pressroom.py:89
 msgid "Pressinvitation"
 msgstr ""
 
@@ -508,7 +512,7 @@ msgstr ""
 msgid "Pressinvitations"
 msgstr ""
 
-#: ./../pressroom.py:75
+#: ./../pressroom.py:87
 msgid "Pressrelease"
 msgstr ""
 
@@ -558,7 +562,6 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: ./../addinvitation.py:41
 #: ./../editinvitation.py:43
 #: ./../pressinvitation.py:50
 msgid "Schedule"
@@ -704,7 +707,7 @@ msgstr ""
 msgid "This dashboard shows all press releases available for your user. There are no releases available yet."
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:177
+#: ./../pressinvitation_templates/view.pt:168
 #: ./../pressrelease_templates/preview.pt:89
 #: ./../pressrelease_templates/view.pt:328
 msgid "This press release has already been dispatched, but you can"
@@ -814,7 +817,7 @@ msgstr ""
 msgid "Users are redirected to their personal workspaces after signing in to the press application, where they create and manage their press contents"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:164
+#: ./../pressinvitation_templates/view.pt:155
 #: ./../pressrelease_templates/preview.pt:76
 #: ./../pressrelease_templates/view.pt:315
 msgid "Versand"
@@ -850,7 +853,7 @@ msgstr ""
 
 #: ./../pressinvitation.py:135
 #: ./../pressrelease.py:187
-#: ./../pressroom.py:69
+#: ./../pressroom.py:81
 msgid "draft"
 msgstr ""
 
@@ -882,7 +885,7 @@ msgstr ""
 msgid "kjf-augsburg.de"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:179
+#: ./../pressinvitation_templates/view.pt:170
 #: ./../pressrelease_templates/preview.pt:91
 #: ./../pressrelease_templates/view.pt:330
 msgid "review the email recipients here."
@@ -898,11 +901,11 @@ msgstr ""
 
 #: ./../pressinvitation.py:137
 #: ./../pressrelease.py:189
-#: ./../pressroom.py:71
+#: ./../pressroom.py:83
 msgid "sent"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:186
+#: ./../pressinvitation_templates/view.pt:177
 #: ./../pressrelease_templates/preview.pt:98
 #: ./../pressrelease_templates/view.pt:337
 msgid "you can delete it"

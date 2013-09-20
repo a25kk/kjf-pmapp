@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2013-09-13 21:13+0000\n"
-"PO-Revision-Date: 2013-09-14 00:22+0100\n"
+"POT-Creation-Date: 2013-09-20 10:48+0000\n"
+"PO-Revision-Date: 2013-09-20 13:00+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -293,7 +293,7 @@ msgstr "Tragen Sie hier eine optionale Dachzeile ein."
 #: ./../editinvitation.py:44
 #: ./../pressinvitation.py:51
 msgid "Enter optional schedule information."
-msgstr "Geben Sie hier optionale Informationen zum zeitlichen Ablauf dieser Veranstalung ein"
+msgstr "Geben Sie hier optionale Informationen zum zeitlichen Ablauf dieser Veranstaltung ein"
 
 #: ./../addinvitation.py:47
 #: ./../editinvitation.py:49
@@ -311,6 +311,10 @@ msgstr "Geben Sie hier den Titel der Presseeinladung an."
 #: ./../pressinvitation.py:46
 msgid "Event Location"
 msgstr "Veranstaltungsort"
+
+#: ./../addinvitation.py:41
+msgid "Event Schedule"
+msgstr "Ablauf der Veranstaltung"
 
 #: ./../archivesettings_templates/archivesettingseditform.pt:21
 #: ./../pressrelease_templates/view.pt:275
@@ -343,7 +347,7 @@ msgstr "Einstellungen wurden erfolgreich aktualisiert"
 msgid "Hinweis:"
 msgstr "Hinweis:"
 
-#: ./../pressinvitation_templates/view.pt:185
+#: ./../pressinvitation_templates/view.pt:176
 #: ./../pressrelease_templates/preview.pt:97
 #: ./../pressrelease_templates/view.pt:336
 msgid "If you no longer need this item"
@@ -497,7 +501,7 @@ msgstr "Pressestelle"
 msgid "Pressemitteilungen"
 msgstr "Pressemitteilungen"
 
-#: ./../pressroom.py:77
+#: ./../pressroom.py:89
 msgid "Pressinvitation"
 msgstr "Presseeinladungen"
 
@@ -505,7 +509,7 @@ msgstr "Presseeinladungen"
 msgid "Pressinvitations"
 msgstr "Presseeinladungen"
 
-#: ./../pressroom.py:75
+#: ./../pressroom.py:87
 msgid "Pressrelease"
 msgstr "Pressemitteilung"
 
@@ -555,7 +559,6 @@ msgstr "Auswahl speichern"
 msgid "Save Settings"
 msgstr "Einstellungen speichern"
 
-#: ./../addinvitation.py:41
 #: ./../editinvitation.py:43
 #: ./../pressinvitation.py:50
 msgid "Schedule"
@@ -701,7 +704,7 @@ msgstr "Auf Ihrem Arbeitsplatz werden alle von Ihnen angelegten Presseeinladunge
 msgid "This dashboard shows all press releases available for your user. There are no releases available yet."
 msgstr "Diese Ansicht zeigt alle Pressemittelungen dieses Benutzerkontos. Im Moment liegen noch keine Mitteilungen vor,"
 
-#: ./../pressinvitation_templates/view.pt:177
+#: ./../pressinvitation_templates/view.pt:168
 #: ./../pressrelease_templates/preview.pt:89
 #: ./../pressrelease_templates/view.pt:328
 msgid "This press release has already been dispatched, but you can"
@@ -811,7 +814,7 @@ msgstr "Verwenden Sie das Feld zur Zusammenfassung um einen kurzen Anreisser zu 
 msgid "Users are redirected to their personal workspaces after signing in to the press application, where they create and manage their press contents"
 msgstr "Benutzer werden nach der Anmeldung in die Presseanwendung zu Ihrem persönlichen Arbeitsplatz weitergeleitet, wo Sie Ihre Presseinhalte verwalten können."
 
-#: ./../pressinvitation_templates/view.pt:164
+#: ./../pressinvitation_templates/view.pt:155
 #: ./../pressrelease_templates/preview.pt:76
 #: ./../pressrelease_templates/view.pt:315
 msgid "Versand"
@@ -847,7 +850,7 @@ msgstr "Abbrechen"
 
 #: ./../pressinvitation.py:135
 #: ./../pressrelease.py:187
-#: ./../pressroom.py:69
+#: ./../pressroom.py:81
 msgid "draft"
 msgstr "Entwurf"
 
@@ -879,7 +882,7 @@ msgstr "kinderzentrum-augsburg.de"
 msgid "kjf-augsburg.de"
 msgstr "kjf-augsburg.de"
 
-#: ./../pressinvitation_templates/view.pt:179
+#: ./../pressinvitation_templates/view.pt:170
 #: ./../pressrelease_templates/preview.pt:91
 #: ./../pressrelease_templates/view.pt:330
 msgid "review the email recipients here."
@@ -895,11 +898,11 @@ msgstr "sanktelisabeth.de"
 
 #: ./../pressinvitation.py:137
 #: ./../pressrelease.py:189
-#: ./../pressroom.py:71
+#: ./../pressroom.py:83
 msgid "sent"
 msgstr "Versand"
 
-#: ./../pressinvitation_templates/view.pt:186
+#: ./../pressinvitation_templates/view.pt:177
 #: ./../pressrelease_templates/preview.pt:98
 #: ./../pressrelease_templates/view.pt:337
 msgid "you can delete it"
