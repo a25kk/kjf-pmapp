@@ -27,7 +27,7 @@
         color: @table-bg-hover;
         font-weight: bold;
         text-shadow: none;
-        //border: 1px solid @app-color;
+        //border: 1px solid lighten(#50a0b0, 20%);
         // background: lighten(@app-color, 10%);
         .badge {
           background: #fff;
@@ -35,8 +35,11 @@
           }
         }
         li > a:hover {
-            background: @app-color;
+            background: @gray-lighter;
+            color: @text-color;
+            border: 1px solid #656565;
             border-radius: 0;
+            padding:((@line-height-computed  / 2) - 1) 15px;
             //border-color: @app-color;
         }
     }

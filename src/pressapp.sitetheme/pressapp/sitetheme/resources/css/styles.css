@@ -9374,8 +9374,11 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 }
 .actionbar #section-nav li > a:hover,
 .actionbar #subnavbar li > a:hover {
-  background: #50a0b0;
+  background: #eeeeee;
+  color: #333333;
+  border: 1px solid #656565;
   border-radius: 0;
+  padding: 9px 15px;
 }
 .actionbar #customer-logo {
   display: block;
