@@ -146,6 +146,17 @@ class ChannelInformation(grok.View):
         subscribers = IContentListing(results)
         return subscribers
 
+    def channel_title(self):
+        channel = self.channelname
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
+        try:
+            channelname = records[channel]
+        except KeyError:
+            channelname = channel
+        return channelname
+
     def usage_statistics(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')

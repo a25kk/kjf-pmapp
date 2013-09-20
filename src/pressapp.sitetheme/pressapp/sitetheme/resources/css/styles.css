@@ -9149,6 +9149,9 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
   margin-bottom: 0px;
   font-weight: 100;
 }
+.window .window-content .tile .list-tile-info {
+  margin: 10px 0 0;
+}
 .window .window-content #content-core {
   border-right: 1px solid #555555;
 }
@@ -10344,7 +10347,7 @@ body #content-wrapper {
   margin-top: 40px;
 }
 body.template-login_form #content-wrapper {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 .btn {
   border-radius: 0;
@@ -10370,7 +10373,7 @@ dl.portalMessage dd {
   margin-left: 0px;
 }
 .modal-dialog {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 #main-logo {
   color: #eeeeee;
@@ -10497,6 +10500,9 @@ fieldset[disabled] .list-tile:hover .btn.active {
 .list-tile h6 {
   margin-bottom: 0px;
   font-weight: 100;
+}
+.list-tile .list-tile-info {
+  margin: 10px 0 0;
 }
 .featurette {
   margin: 10px;

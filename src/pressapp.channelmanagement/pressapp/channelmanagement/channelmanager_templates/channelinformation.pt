@@ -20,7 +20,7 @@
           </div>
 
           <h1 class="documentFirstHeading">Verteiler</h1>
-          <p class="discreet" tal:content="view/channelname" />
+          <p class="text-discreet" tal:content="view/channel_title" />
         </div>
 
         <section id="content-core">
@@ -45,70 +45,19 @@
                           <p><small tal:content="item/email" /></p>
                         </div>
                         <div class="col col-lg-2">
-                          <a class="btn btn-default btn-mini pull-right" tal:define="item_url item/getURL"
-                            tal:attributes="href python:item_url+'/edit'">
-                            Bearbeiten</a>
+                          <a class="btn btn-default btn-xs pull-right" tal:define="item_url item/getURL"
+                            tal:attributes="href python:item_url+'/@@edit-subscriber'">
+                            bearbeiten</a>
                         </div>
                       </div>
                     </div>
                   </div>
-                     <section tal:define="Batch python:modules['Products.CMFPlone'].Batch;
-                                           b_size python:25;b_start python:0;b_start request/b_start | b_start;">
-                          <div class="window-column-content">
-                              <h3>Kontakte <small tal:content="view/channelname">Channel Name</small></h3>
-                                <table class="table table-condensed table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>E-Mail-Adresse</th>
-                                            <th>Kontaktname</th>
-                                            <th>Aktionen</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody tal:condition="view/has_info">
-                                        <tal:subscribers tal:define="items view/channel_info;
-                                                                     batch python:Batch(items, b_size, int(b_start), orphan=1)">
-                                        <tal:block tal:repeat="item batch">
-                                          <tr tal:define="rowcount repeat/item/number;">
-                                              <td tal:content="rowcount">1</td>
-                                              <td>
-                                                  <span tal:content="item/email" />
-                                              </td>
-                                              <td>
-                                                  <span tal:content="item/Title" />
-                                              </td>
-                                              <td tal:define="item_url item/getURL">
-                                                  <a class=""
-                                                      tal:attributes="href python:item_url+'/edit'">
-                                                      <i class="icon-edit"></i>
-                                                      Bearbeiten</a>
-                                              </td>
-                                          </tr>
-                                        </tal:block>
-                                        <div metal:use-macro="context/batch_macros/macros/navigation" />
-                                        </tal:subscribers>
-                                    </tbody>
-                                    <tbody tal:condition="not:view/has_info">
-                                          <tr>
-                                              <td>&nbsp;</td>
-                                              <td colspan="3">
-                                                  <div class="alert alert-block alert-error">
-                                                        <a class="close" href="#">×</a>
-                                                        <p><strong i18n:translate="">
-                                                            There are no subscribers yet</strong></p>
-                                                  </div>
-                                              </td>
-                                          </tr>
-                                    </tbody>
-                                </table>
-                          </div>
-                      </section>
                 </div>
             </div>
             <div class="col col-lg-3">
                 <div id="sidebar" tal:define="stats view/usage_statistics">
                     <h4>Information</h4>
-                    <h5 tal:content="view/channelname" />
+                    <h5 tal:content="view/channel_title" />
                     <hr>
                     <div class="stats widget">
                       <div class="stat inverse">
