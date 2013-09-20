@@ -10,6 +10,7 @@ downloads
 eggs
 fake-eggs
 parts
+dist
 versions
 .installed.cfg
 .mr.developer.cfg
