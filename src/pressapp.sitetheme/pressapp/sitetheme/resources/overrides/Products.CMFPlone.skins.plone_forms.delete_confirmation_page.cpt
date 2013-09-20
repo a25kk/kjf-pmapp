@@ -13,7 +13,8 @@
     <metal:main fill-slot="main"
          tal:define="useSelf python:context_state.is_structural_folder() and not context_state.is_default_page();
                      folder_warning python:useSelf and context.portal_type != 'Topic';
-                     number_of_objects_to_delete python:folder_warning and len(context.portal_catalog.searchResults(dict(path='/'.join(context.getPhysicalPath()), portal_type=context.plone_utils.getUserFriendlyTypes())))">
+                     number_of_objects_to_delete python:folder_warning and len(context.portal_catalog.searchResults(dict(path='/'.join(context.getPhysicalPath()), portal_type=context.plone_utils.getUserFriendlyTypes())));
+                     toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
       <header id="page-header">
         <div class="pull-right">
@@ -34,12 +35,13 @@
           tal:condition="not:folder_warning">
         Do you really want to delete this item?
       </h1>
-        <p tal:define="time context/modified" class="discreet"
-          i18n:domain="jobtool.jobcontent">
-          <span i18n:translate="">Last changed:</span>
-          <span tal:content="time"
-             tal:attributes="data-appui string:prettydate;
-                             title time" />
+        <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            i18n:domain="jobtool.jobcontent"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
         </p>
       </header>
 
@@ -68,7 +70,7 @@
                      value="Delete"
                      i18n:attributes="value;"
                      />
-              <input class="standalone"
+              <input class="btn btn-default"
                      type="submit"
                      value="Cancel"
                      name="form.button.Cancel"

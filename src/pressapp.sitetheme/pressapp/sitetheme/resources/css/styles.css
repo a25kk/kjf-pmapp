@@ -5967,8 +5967,8 @@ td.visible-print {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  src: url('../../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -8415,6 +8415,7 @@ div.field label span.formHelp {
   color: #999999;
 }
 div.field div.label,
+div.field span.label,
 div.field label {
   background: transparent;
   color: #333333;
@@ -8425,6 +8426,7 @@ div.field label {
   text-align: left;
 }
 div.field div.label span.formHelp,
+div.field span.label span.formHelp,
 div.field label span.formHelp {
   display: block;
   margin-top: 5px;
@@ -8695,6 +8697,75 @@ table.grid th {
 }
 #category .separator {
   display: none;
+}
+dl.portalMessage {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #fcf8e3;
+  border-color: #fbeed5;
+  color: #c09853;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+dl.portalMessage h4 {
+  margin-top: 0;
+  color: inherit;
+}
+dl.portalMessage .alert-link {
+  font-weight: bold;
+}
+dl.portalMessage > p,
+dl.portalMessage > ul {
+  margin-bottom: 0;
+}
+dl.portalMessage > p + p {
+  margin-top: 5px;
+}
+dl.portalMessage hr {
+  border-top-color: #f8e5be;
+}
+dl.portalMessage .alert-link {
+  color: #a47e3c;
+}
+dl.portalMessage dt {
+  margin: 0;
+}
+dl.portalMessage dd {
+  margin-left: 0px;
+}
+dl.portalMessage.note,
+dl.portalMessage.tip {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+}
+dl.portalMessage.note hr,
+dl.portalMessage.tip hr {
+  border-top-color: #a6e1ec;
+}
+dl.portalMessage.note .alert-link,
+dl.portalMessage.tip .alert-link {
+  color: #2d6987;
+}
+dl.portalMessage.danger,
+dl.portalMessage.error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+dl.portalMessage.danger hr,
+dl.portalMessage.error hr {
+  border-top-color: #e6c1c7;
+}
+dl.portalMessage.danger .alert-link,
+dl.portalMessage.error .alert-link {
+  color: #953b39;
+}
+body > .portalMessage {
+  padding-top: 60px;
 }
 .listingBar {
   padding-left: 0;
@@ -10181,6 +10252,80 @@ select.chzn-select {
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease-in;
 }
+.onoffswitch {
+  position: relative;
+  width: 100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  display: block !important;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #2A323F;
+  border-radius: 20px;
+  font-weight: 300;
+}
+.onoffswitch-inner {
+  width: 200%;
+  margin-left: -100%;
+  -moz-transition: margin 0.3s ease-in 0s;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  -o-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: white;
+  font-weight: 400;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "Aktiv";
+  padding-left: 10px;
+  background-color: #607080;
+  color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+  content: "Inaktiv";
+  padding-right: 10px;
+  background-color: #EEEEEE;
+  color: #999999;
+  text-align: right;
+}
+.onoffswitch-switch {
+  width: 16px;
+  margin: 7px;
+  background: #FFFFFF;
+  border: 2px solid #2A323F;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 66px;
+  -moz-transition: all 0.3s ease-in 0s;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
 body {
   background: #96c6d0;
 }
@@ -10193,27 +10338,19 @@ body.template-login_form #content-wrapper {
 .btn {
   border-radius: 0;
   text-shadow: none;
+  margin-right: 10px;
 }
 /* Portal messages are styled like alerts */
 dl.portalMessage {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  background-color: #fcf8e3;
+  border-color: #fbeed5;
+  color: #c09853;
 }
-dl.portalMessage h4 {
-  margin-top: 0;
-  color: inherit;
+dl.portalMessage hr {
+  border-top-color: #f8e5be;
 }
 dl.portalMessage .alert-link {
-  font-weight: bold;
-}
-dl.portalMessage > p,
-dl.portalMessage > ul {
-  margin-bottom: 0;
-}
-dl.portalMessage > p + p {
-  margin-top: 5px;
+  color: #a47e3c;
 }
 dl.portalMessage dt {
   margin: 0;
