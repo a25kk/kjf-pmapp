@@ -64,11 +64,12 @@ class NavBarViewlet(grok.Viewlet):
     def is_administrator(self):
         context = aq_inner(self.context)
         is_admin = False
-        admin_role = 'SiteAdministrator'
+        admin_roles = ('SiteAdministrator', 'Manager')
         user = api.user.get_current()
         roles = api.user.get_roles(username=user.getId(), obj=context)
-        if admin_role in roles:
-            is_admin = True
+        for role in roles:
+            if role in admin_roles:
+                is_admin = True
         return is_admin
 
     def memberinfo(self):
