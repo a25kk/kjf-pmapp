@@ -23,11 +23,12 @@
                 <h5 tal:content="view/user_details" />
             </div>
             <h1>Presseeinladung</h1>
-            <p tal:define="time context/modified" class="discreet">
-              <span i18n:translate="">Last changed:</span>
-              <span tal:content="time"
-                 tal:attributes="data-appui string:prettydate;
-                                 title time" />
+            <p tal:define="time context/modified;
+                            timestamp python:context.modified().ISO()"
+                class="discreet">
+                <span i18n:translate="">Last changed:</span>
+                <span tal:attributes="data-livestamp timestamp"
+                    tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
             </p>
         </div>
         <div class="window-toolbar" tal:content="nothing"
@@ -114,53 +115,43 @@
           </p>
         </div>
         <hr>
-        <h5>Geschlossene Veranstaltung</h5>
-          <div class="switch" data-off-label="nein"
-              data-on-label="<i class='icon-ban-circle'></i>"
-              data-on="danger" data-off="neutral">
-            <input type="checkbox" checked />
-          </div>
-          <!--<div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
-            data-appui="archive-switch"
-            tal:define="preview context/closed"
-            tal:attributes="data-target string:${context_url}/@@update-archive-settings">
-            <input type="checkbox" value="1" name="previewCheckbox" class="checkbox" checked="checked"
-                tal:attributes="checked python: preview and 'checked' or ''"
-               />
-            <label class="check" for="previewCheckbox"></label>
-          </div>-->
-        <hr>
-          <p tal:define="closed context/closed">
-            <span tal:condition="python:closed == False"
-              class="label label-info">
-                Diese Veranstaltung ist &ouml;ffentlich.</span>
-            <span tal:condition="python:closed == True"
-              class="label label-warning">
-                Diese Veranstaltung ist nur f&uuml;r geladene G&auml;ste</span>
-          </p>
+        <h5>Beginn:
+            <small class="text-muted"
+              tal:define="start_date context/start">
+              <span tal:replace="python:toLocalizedTime(start_date)" />
+              <span tal:replace="python:toLocalizedTime(start_date, time_only=True)" /> Uhr
+            </small>
+          </h5>
+          <h5>Ende:
+            <small class="muted"
+              tal:define="end_date context/end">
+              <span tal:replace="python:toLocalizedTime(end_date)" />
+              <span tal:replace="python:toLocalizedTime(end_date, time_only=True)" /> Uhr
+            </small>
+          </h5>
           <hr>
-          <h5>Beginn</h5>
-          <p class="muted"
-            tal:define="start_date context/start">
-            <span tal:replace="python:toLocalizedTime(start_date)" />
-            <span tal:replace="python:toLocalizedTime(start_date, time_only=True)" /> Uhr
-          </p>
-          <h5>Ende</h5>
-          <p class="muted"
-            tal:define="end_date context/end">
-            <span tal:replace="python:toLocalizedTime(end_date)" />
-            <span tal:replace="python:toLocalizedTime(end_date, time_only=True)" /> Uhr
-          </p>
           <h5>Veranstaltungsort</h5>
           <p class="muted"   tal:content="context/location" />
+          <hr>
+        <h5>Art der Veranstaltung</h5>
+          <p tal:define="closed context/closed">
+            <span tal:condition="python:closed == False"
+              class="label label-success">
+              <i class='icon-circle'></i>
+                &Ouml;ffentlich.</span>
+            <span tal:condition="python:closed == True"
+              class="label label-warning">
+              <i class='icon-ban-circle'></i>
+                Geschlossen</span>
+          </p>
           <hr>
           <tal:block tal:condition="view/has_channel_info">
             <h5>Zugewiesene Verteiler</h5>
             <p tal:repeat="channel view/channel_names">
               <span tal:replace="channel/channelname" />
             </p>
+            <hr>
           </tal:block>
-          <hr>
           <a href="" class="btn btn-large btn-primary btn-block"
               tal:condition="python:item_state == 'private'"
               tal:attributes="href python:context_url + '/@@select-channel'"
