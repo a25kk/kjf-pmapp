@@ -102,49 +102,25 @@
         
         <hr>
 
-        <div tal:condition="context/image"
-          class="row">
-          <div class="col col-lg-8">
-            <h3>Bild</h3>
-            <p tal:content="context/imagename">Caption</p>
-          </div>
-          <div class="col col-lg-4">
-            <div class="img-thumbnail">
-              <img tal:define="scale context/@@images"
-                tal:replace="structure python: scale.scale('image',
-                             scale='thumb').tag()" />
-            </div>
-          </div>
-        </div>
-
-        <hr class="visualClear">
-
         <div class="xwell" tal:condition="context/image">
-        <h3>Attachments</h3>
+        <h3 i18n:translate="">Attachments</h3>
         <table class="table table-condensed">
           <tbody>
             <tr tal:define="filename context/image/filename;">
               <td>
                   <h6 tal:content="context/imagename">Caption</h6>
-                  <p class="muted">
-                    The main image is editable via the main edit form
+                  <p class="text-muted">
+                    <small i18n:translate="">The main image is editable via the main edit form</small>
+                    <a class="link-editable"
+                        tal:attributes="href python:context_url+'/@@edit-press-release'">
+                        <small>bearbeiten</small></a>
                   </p>
               </td>
               <td>
+                <span class="img-thumbnail">
                 <img tal:define="scale context/@@images"
                     tal:replace="structure python: scale.scale('image',
-                                 scale='tile').tag()" />
-              </td>
-              <td tal:content="nothing">
-                <div class="btn-toolbar">
-                  <div class="btn-group">
-                    <a href=""
-                      class="btn btn-small btn-inverse"
-                      tal:attributes="href string:${context/absolute_url}/@@download/attachment/${filename}">
-                      <i class="icon-download icon-white" />
-                      Download</a>
-                  </div>
-                </div>
+                                 scale='tile').tag()" /></span>
               </td>
             </tr>
             <tal:block tal:condition="view/has_files">
@@ -161,12 +137,12 @@
                           class="xxbtn"
                           tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
                           <i class="icon-edit"></i>
-                          Bearbeiten</a>
+                          bearbeiten</a>
                       <a href=""
                           class="xxbtn popoverLink link-overlay"
                           tal:attributes="href string:${item/getURL}/delete_confirmation">
                           <i class="icon-remove-sign"></i>
-                          L&ouml;schen</a>
+                          l&ouml;schen</a>
                     </p>
                   </td>
                   <td tal:define="item_obj item/getObject">
@@ -178,47 +154,20 @@
                                          scale='tile').tag()" />
                     </div>
                   </td>
-                  <td tal:content="nothing">
-                    <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
-                      <div class="btn-group">
-                    <a href="" class="btn btn-small btn-inverse"
-                        tal:attributes="href string:${item/getURL}/@@download/attachment/${item/attachment/filename}">
-                        <i class="icon-download icon-white" />
-                        Download</a>
-                      </div>
-                    </div>
-                    <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
-                      <div class="btn-group">
-                    <a href="" class="btn btn-small btn-inverse"
-                        tal:attributes="href string:${item/getURL}/@@download/image/${item/image/filename}">
-                        <i class="icon-download icon-white" />
-                        Download</a>
-                      </div>
-                    </div>
-                    <div class="btn-toolbar" tal:condition="python:type == 'Image'">
-                      <div class="btn-group">
-                      <a href=""
-                        class="btn btn-small btn-inverse"
-                        tal:attributes="href string:${item/getURL}/at_download/image">
-                        <i class="icon-download icon-white"></i>
-                        Download</a>
-                      </div>
-                    </div>
-                  </td>
                 </tr>
               </tal:items>
             </tal:block>
           </tbody>
         </table>
-          <div class="formControls xbox details visualClear">
+          <div class="formControls xbox visualClear">
               <div class="visualClear">&nbsp;</div>
-              <a href="" class="btn btn-inverse"
+              <a href="" class="btn btn-primary btn-sm"
                 rel="twipsy"
                 data-original-title="Bilder werden als Thumbnails in E-Mails dargestellt"
                 tal:define="context_url context/absolute_url"
                 tal:attributes="href python:context_url + '/@@add-image-attachment'">
                 Bild hinzuf&uuml;gen</a>
-              <a href="" class="btn btn-inverse"
+              <a href="" class="btn btn-primary btn-sm"
                 rel="twipsy"
                 data-original-title="Verwenden Sie Dateien, um Inhalte zum Download in E-Mails einzuf&uuml;gen"
                 tal:define="context_url context/absolute_url"
@@ -252,17 +201,19 @@
             </p>
           </div>
           <hr>
-          <div class="box-editable">
+          <div class="box-editable"
+            tal:define="preview context/archive">
+            <small class="pull-right">
+                <a href="#" class="link-editable"
+                  tal:attributes="href python:context_url + '/@@archive-settings'">
+                  <i class="icon-edit"></i> bearbeiten
+                </a>
+            </small>
               <h5 i18n:translate="">Archive</h5>
-              <div class='toggle alternative' data-enabled="ON" data-disabled="OFF" data-toggle="toggle"
-                data-appui="archive-switch"
-                tal:define="preview context/archive"
-                tal:attributes="data-target string:${context_url}/@@update-archive-settings">
-                <input type="checkbox" value="1" name="previewCheckbox" class="checkbox" checked="checked"
-                    tal:attributes="checked python: preview and 'checked' or ''"
-                   />
-                <label class="check" for="previewCheckbox"></label>
-              </div>
+              <p tal:condition="python:preview == True"
+                i18n:translate="">Listed</p>
+              <p tal:condition="python:preview == False"
+                i18n:translate="">Not listed</p>
             </div><!-- / Job preview -->
           <hr>
           <div class="box-editable">

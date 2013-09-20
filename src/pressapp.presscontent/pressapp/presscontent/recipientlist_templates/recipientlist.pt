@@ -27,20 +27,10 @@
         <div class="col col-lg-9">
           <div class="window-column">
           <div class="window-column-content">     
-            <div class="row">
-                <div class="col col-lg-9">
-                  <p class="lead"> Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
-                      auf eine Tabellenzeile, um diese zu markieren. Verwenden Sie den Button
-                      <strong>Adresse entfernen</strong>, um diese Zeile zu l&ouml;schen
-                  </p>
-                </div>
-                <div class="col col-lg-3">
-                    <a href="javascript:void(0)" id="delete"
-                        class="btn btn-large btn-danger">
-                        <i class="icon-remove icon-white" />
-                        Adresse entfernen</a>
-                </div>
-            </div>
+            <p class="lead">
+                Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, entfernen Sie
+                die jeweilige Markierung.
+            </p>
     
             <form tal:attributes="action request/URL" method="post"
                 id="recipient-cleanup-form">
@@ -55,10 +45,15 @@
                 </thead>
                 <tbody>
                     <tr tal:repeat="item view/subscriber_listing">
-                        <td>
+                        <td tal:define="counter repeat/item/number;">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="" checked>
+                                    <input type="checkbox"
+                                        value=""
+                                        checked="checked"
+                                        tal:attributes="id string:cb-${item/email};
+                                                        name string:cb-${counter};
+                                                        value string:${item/email}, ${item/name};">
                                     <strong tal:content="item/name" />
                                 </label>
                             </div>
@@ -66,10 +61,10 @@
                         <td tal:define="counter repeat/item/number;">
                             <p class="xtext-muted"
                               tal:content="item/email">E-Mail</p>
-                            <input type="hidden"
+                            <!--<input type="hidden"
                                 tal:attributes="id string:recipient-${counter};
                                                 name string:recipient-${counter};
-                                                value string:${item/email}, ${item/name};" />
+                                                value string:${item/email}, ${item/name};" />-->
                         </td>
                     </tr>
                 </tbody>
