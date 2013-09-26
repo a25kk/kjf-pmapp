@@ -1,0 +1,4 @@
+# Override parent aka buildout gitignore settings in order to be a bit more
+# flexible with the self-contained theme directory
+# Note: \! does in fact reverse a ignore entry
+!dist
