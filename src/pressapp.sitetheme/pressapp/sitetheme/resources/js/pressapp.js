@@ -26,38 +26,6 @@
             $('span[rel=twipsy]').tooltip();
         });
         $('h5[data-appui="tooltip"]').tooltip();
-        var previewchanger = $('div[data-appui="archive-switch"]');
-        var previewchangerUrl = $(previewchanger).data('target');
-        $(previewchanger).toggleSlide({
-            onClick: function (evt, status) {
-                var errorMsg = 'There was an error updating this item - please try again!';
-                var ajaxUrl = previewchangerUrl + '?state=' + status;
-                $.ajax({
-                    url: ajaxUrl,
-                    method: 'GET',
-                    success: function (data) {
-                        var state;
-                        if (data.success) {
-                            state = data.results.state;
-                        } else {
-                            alert(errorMsg + '\n\nError:\n' + data.messages);
-                        }
-                    },
-                    error: function () {
-                        alert(errorMsg);
-                    }
-                });
-                console.log('.alternative changed to: ' + status, 'the reverse of: ' + !status);
-            },
-            text: {
-                enabled: 'An',
-                disabled: 'Aus'
-            },
-            style: {
-                enabled: 'success',
-                disabled: 'danger'
-            }
-        });
         $(function () {
             $('a[rel=loading-indicator], input[rel=loading-indicator]').on('click', function () {
                 $(this).button('loading');
