@@ -29,9 +29,10 @@ class RecipientList(grok.View):
             setattr(context, 'recipients', data)
             context.reindexObject(idxs='modified')
             context_url = context.absolute_url()
+            next_url = context_url + '/@@prepare-release'
             IStatusMessage(self.request).addStatusMessage(
                 _(u"Recipient list updated"), type='info')
-            return self.request.response.redirect(context_url)
+            return self.request.response.redirect(next_url)
 
     def subscriber_listing(self):
         context = aq_inner(self.context)
