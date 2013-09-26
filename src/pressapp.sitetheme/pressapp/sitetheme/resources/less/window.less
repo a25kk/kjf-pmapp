@@ -150,6 +150,10 @@
     #sidebar {
       padding-top: @line-height-computed;
       padding-right: @line-height-computed * 1.5;
+      padding-left: @line-height-computed;
+      @media (min-width: @screen-desktop)  {
+        padding-left: 0;
+      }
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
       &.stepper-bar {
         padding-top: 0px;

@@ -5967,8 +5967,8 @@ td.visible-print {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  src: url('../../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -9367,7 +9367,7 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 .actionbar #section-nav li > a,
 .actionbar #subnavbar li > a {
   color: #f5f5f5;
-  font-weight: bold;
+  font-weight: 600;
   text-shadow: none;
 }
 .actionbar #section-nav li > a .badge,
@@ -9379,9 +9379,9 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 .actionbar #subnavbar li > a:hover {
   background: #eeeeee;
   color: #333333;
-  border: 1px solid #656565;
+  border: 0px solid #656565;
   border-radius: 0;
-  padding: 9px 15px;
+  padding: 10px 15px;
 }
 .actionbar #customer-logo {
   display: block;
@@ -9939,6 +9939,7 @@ select.chzn-select {
   padding: 10px;
   margin-bottom: 20px;
   text-align: center;
+  text-shadow: none;
 }
 .stats .stat h2 {
   font-weight: 1;
@@ -10394,6 +10395,12 @@ dl.portalMessage dt {
 dl.portalMessage dd {
   margin-left: 0px;
 }
+.listingBar {
+  padding: 20px;
+}
+.listingBar a {
+  border-radius: 0;
+}
 .modal-dialog {
   padding-top: 70px;
 }
@@ -10733,6 +10740,10 @@ table.dataTable tr.row_selected td {
 .table-recipients-list .checkbox {
   margin-top: 0;
   margin-bottom: 0;
+}
+.search-results-wrapper {
+  margin-right: -40px;
+  margin-left: -40px;
 }
 .footer-frontpage {
   margin-top: 50px;

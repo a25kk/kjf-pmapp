@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-20 10:48+0000\n"
+"POT-Creation-Date: 2013-09-26 15:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,7 +76,7 @@ msgstr ""
 msgid "A single press room that will be the workspace for members."
 msgstr ""
 
-#: ./../pressrelease_templates/view.pt:290
+#: ./../pressrelease_templates/view.pt:241
 msgid "Add distributors"
 msgstr ""
 
@@ -124,12 +124,16 @@ msgstr ""
 msgid "All presscontent will be visible in the press archive by default. Remove the marker to completetly hide it."
 msgstr ""
 
-#: ./../pressrelease_templates/view.pt:256
+#: ./../pressrelease_templates/view.pt:212
 msgid "Archive"
 msgstr ""
 
 #: ./../archivesettings.py:103
 msgid "Archive settings successfully updated"
+msgstr ""
+
+#: ./../pressrelease_templates/view.pt:106
+msgid "Attachments"
 msgstr ""
 
 #: ./../addrelease_templates/pressreleaseaddform.pt:43
@@ -320,7 +324,7 @@ msgid "Event Schedule"
 msgstr ""
 
 #: ./../archivesettings_templates/archivesettingseditform.pt:21
-#: ./../pressrelease_templates/view.pt:275
+#: ./../pressrelease_templates/view.pt:226
 msgid "Externe Zielseiten"
 msgstr ""
 
@@ -350,9 +354,9 @@ msgstr ""
 msgid "Hinweis:"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:176
+#: ./../pressinvitation_templates/view.pt:174
 #: ./../pressrelease_templates/preview.pt:97
-#: ./../pressrelease_templates/view.pt:336
+#: ./../pressrelease_templates/view.pt:287
 msgid "If you no longer need this item"
 msgstr ""
 
@@ -397,8 +401,12 @@ msgstr ""
 
 #: ./../editimage_templates/imageattachmenteditform.pt:24
 #: ./../editrelease_templates/pressreleaseeditform.pt:24
-#: ./../presscenter_templates/presscentersettings.pt:26
+#: ./../presscenter_templates/presscentersettings.pt:28
 msgid "Last changed:"
+msgstr ""
+
+#: ./../pressrelease_templates/view.pt:213
+msgid "Listed"
 msgstr ""
 
 #: ./../addrelease.py:34
@@ -411,7 +419,7 @@ msgstr ""
 msgid "Manage external distributor sites that implement a press archive preview window"
 msgstr ""
 
-#: ./../presscenter_templates/presscentersettings.pt:49
+#: ./../presscenter_templates/presscentersettings.pt:50
 msgid "Manage the layout of dispatched pressreleases and pressinvitations by adjusting the attached stylesheet (css) or by editing the email templates."
 msgstr ""
 
@@ -423,6 +431,10 @@ msgstr ""
 #: ./../archivesettings.py:21
 #: ./../pressrelease.py:83
 msgid "Mark this press release as visible in the archive."
+msgstr ""
+
+#: ./../pressrelease_templates/view.pt:215
+msgid "Not listed"
 msgstr ""
 
 #: ./../addinvitation.py:62
@@ -544,7 +556,7 @@ msgstr ""
 msgid "Recipient List"
 msgstr ""
 
-#: ./../recipientlist.py:33
+#: ./../recipientlist.py:34
 msgid "Recipient list updated"
 msgstr ""
 
@@ -567,7 +579,7 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-#: ./../pressrelease_templates/view.pt:310
+#: ./../pressrelease_templates/view.pt:261
 msgid "Select channels"
 msgstr ""
 
@@ -654,7 +666,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ./../presscenter_templates/presscentersettings.pt:63
+#: ./../presscenter_templates/presscentersettings.pt:64
 msgid "The cascading stylesheet that will be attached to the head element of html formatted emails based on the capabilities of current email clients"
 msgstr ""
 
@@ -682,6 +694,10 @@ msgstr ""
 msgid "The entered email address is not subscribed"
 msgstr ""
 
+#: ./../pressrelease_templates/view.pt:113
+msgid "The main image is editable via the main edit form"
+msgstr ""
+
 #: ./../editrelease.py:126
 msgid "The press release was successfully updated"
 msgstr ""
@@ -691,11 +707,11 @@ msgstr ""
 msgid "The requested item was not found"
 msgstr ""
 
-#: ./../pressrelease_templates/view.pt:309
+#: ./../pressrelease_templates/view.pt:260
 msgid "There are no channels asigned yet."
 msgstr ""
 
-#: ./../pressrelease_templates/view.pt:288
+#: ./../pressrelease_templates/view.pt:239
 msgid "There are no external distributors/sites asigned yet."
 msgstr ""
 
@@ -707,17 +723,17 @@ msgstr ""
 msgid "This dashboard shows all press releases available for your user. There are no releases available yet."
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:168
+#: ./../pressinvitation_templates/view.pt:166
 #: ./../pressrelease_templates/preview.pt:89
-#: ./../pressrelease_templates/view.pt:328
+#: ./../pressrelease_templates/view.pt:279
 msgid "This press release has already been dispatched, but you can"
 msgstr ""
 
-#: ./../presscenter_templates/presscentersettings.pt:103
+#: ./../presscenter_templates/presscentersettings.pt:104
 msgid "This template will be parsed for each press invititaion and details will be inserted via variable substitution when dispatched."
 msgstr ""
 
-#: ./../presscenter_templates/presscentersettings.pt:83
+#: ./../presscenter_templates/presscentersettings.pt:84
 msgid "This template will be parsed for each press release and details will be inserted via variable substitution when dispatched."
 msgstr ""
 
@@ -817,9 +833,9 @@ msgstr ""
 msgid "Users are redirected to their personal workspaces after signing in to the press application, where they create and manage their press contents"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:155
+#: ./../pressinvitation_templates/view.pt:153
 #: ./../pressrelease_templates/preview.pt:76
-#: ./../pressrelease_templates/view.pt:315
+#: ./../pressrelease_templates/view.pt:266
 msgid "Versand"
 msgstr ""
 
@@ -885,9 +901,9 @@ msgstr ""
 msgid "kjf-augsburg.de"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:170
+#: ./../pressinvitation_templates/view.pt:168
 #: ./../pressrelease_templates/preview.pt:91
-#: ./../pressrelease_templates/view.pt:330
+#: ./../pressrelease_templates/view.pt:281
 msgid "review the email recipients here."
 msgstr ""
 
@@ -905,9 +921,9 @@ msgstr ""
 msgid "sent"
 msgstr ""
 
-#: ./../pressinvitation_templates/view.pt:177
+#: ./../pressinvitation_templates/view.pt:175
 #: ./../pressrelease_templates/preview.pt:98
-#: ./../pressrelease_templates/view.pt:337
+#: ./../pressrelease_templates/view.pt:288
 msgid "you can delete it"
 msgstr ""
 

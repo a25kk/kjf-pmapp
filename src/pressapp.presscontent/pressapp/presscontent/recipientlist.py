@@ -59,14 +59,27 @@ class RecipientList(grok.View):
                     subscribers.append(info)
         return subscribers
 
+    def has_recipients_info(self):
+        return len(self.stored_recipients()) > 0
+
+    def stored_recipients(self):
+        context = aq_inner(self.context)
+        data = []
+        recipients = getattr(context, 'recipients', None)
+        for address in recipients:
+            recipient = {}
+            try:
+                email, name = address.split(',')
+            except:
+                email = address
+                name = address
+            recipient['email'] = email
+            recipient['name'] = name
+            data.append(recipient)
+        return data
+
     def has_channel_info(self):
         context = aq_inner(self.context)
         channel = getattr(context, 'channel', None)
         if channel:
-            return True
-
-    def has_recipients_info(self):
-        context = aq_inner(self.context)
-        recipients = getattr(context, 'recipients', None)
-        if recipients:
             return True

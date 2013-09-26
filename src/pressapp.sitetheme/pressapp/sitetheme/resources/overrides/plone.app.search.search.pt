@@ -56,7 +56,7 @@
 
         <div id="search-field" i18n:domain="plone"
           class="noborder input-group">
-            <input class="form-controlsearchPage span5"
+            <input class="form-control searchPage input-lg"
                    name="SearchableText"
                    type="text"
                    size="25"
@@ -91,14 +91,14 @@
 
             </div>
             <div class="visualClear"><!-- --></div>
-            <div id="search-results-wrapper"
-                 class="container"
+            <div class="container search-results-wrapper"
+                 id="search-results-wrapper"
                  tal:define="b_start python:0;
                              b_start request/b_start | b_start;
                              batch python: view.results(b_start=b_start);
                              normalizeString nocall:context/@@plone/normalizeString;">
 
-                <div id="search-results-bar">
+                <div class="search-results-bar" id="search-results-bar">
                     <span i18n:translate="batch_x_items_matching_your_criteria" i18n:domain="plone">
                         <strong i18n:name="number" id="search-results-number"
                                 tal:content="batch/sequence_length|string:0">234</strong>
@@ -258,7 +258,7 @@
                           </span>
                     </span>
                 </div>
-
+                <hr>
                 <div class="visualClear"><!-- --></div>
 
                 <metal:searchresults define-macro="search_results">

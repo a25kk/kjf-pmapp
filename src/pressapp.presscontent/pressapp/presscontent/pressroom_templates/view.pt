@@ -27,7 +27,7 @@
       <div class="xxxcontainer-fluid"
         tal:define="context_url context/absolute_url">
           <div class="row">
-              <div class="col col-lg-9">
+              <div class="col-xs-12 col-lg-9">
                 <div class="window-column">
                   <tal:pms tal:condition="view/has_presscontent">
                     <div class="tile-wrapper"
@@ -109,7 +109,7 @@
                   </section>
                   </div>
               </div>
-              <div class="col col-lg-3">
+              <div class="col-xs-12 col-lg-3">
                 <div id="sidebar">
                     <div class="stats widget">
                       <div class="stat inverse">
@@ -117,7 +117,7 @@
                         <h6>Presseinhalte</h6>
                       </div>
                     </div>
-
+                    
                     <hr>
 
                     <p class="stats">

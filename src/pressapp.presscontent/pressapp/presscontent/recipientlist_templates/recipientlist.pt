@@ -27,15 +27,28 @@
         <div class="col col-lg-9">
           <div class="window-column">
           <div class="window-column-content">     
-            <p class="lead">
+            <p class="lead" tal:condition="not:view/has_recipients_info">
                 Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, entfernen Sie
                 die jeweilige Markierung.
             </p>
+
+            <tal:block tal:condition="view/has_recipients_info">
+                <div class="alert alert-danger">
+                    <strong>Warnung:</strong>
+                        Diese Liste wurde bereits bereinigt
+                </div>
+            </tal:block>
+            <div tal:condition="not:view/has_subscribers" class="alert alert-warning">
+                <h4 i18n:translate="">Warning</h4>
+                <p i18n:translate="">
+                    You need to select at least one channel to dispatch this
+                    press content. Come back here when you are done.</p>
+            </div>
     
-            <form tal:attributes="action request/URL" method="post"
-                id="recipient-cleanup-form">
-            <table tal:condition="view/has_subscribers"
-                class="table table-condensed table-responsive table-hover table-recipients-list"
+            <form method="post" id="recipient-cleanup-form"
+                tal:attributes="action request/URL" 
+                tal:condition="view/has_subscribers">
+            <table  class="table table-condensed table-responsive table-hover table-recipients-list"
                 id="recipient-table">
                 <thead>
                     <tr>
@@ -43,7 +56,7 @@
                         <th>Adresse</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody tal:condition="not:view/has_recipients_info">
                     <tr tal:repeat="item view/subscriber_listing">
                         <td tal:define="counter repeat/item/number;">
                             <div class="checkbox">
@@ -61,10 +74,27 @@
                         <td tal:define="counter repeat/item/number;">
                             <p class="xtext-muted"
                               tal:content="item/email">E-Mail</p>
-                            <!--<input type="hidden"
-                                tal:attributes="id string:recipient-${counter};
-                                                name string:recipient-${counter};
-                                                value string:${item/email}, ${item/name};" />-->
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody tal:condition="view/has_recipients_info">
+                    <tr tal:repeat="item view/stored_recipients">
+                        <td tal:define="counter repeat/item/number;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                        value=""
+                                        checked="checked"
+                                        tal:attributes="id string:cb-${item/email};
+                                                        name string:cb-${counter};
+                                                        value string:${item/email}, ${item/name};">
+                                    <strong tal:content="item/name" />
+                                </label>
+                            </div>
+                        </td>
+                        <td tal:define="counter repeat/item/number;">
+                            <p class="xtext-muted"
+                              tal:content="item/email">E-Mail</p>
                         </td>
                     </tr>
                 </tbody>

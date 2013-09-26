@@ -6874,8 +6874,8 @@ td.visible-print {
   font-family: 'FontAwesome';
   font-style: normal;
   font-weight: normal;
-  src: url('../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  src: url('../../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
 }
 
 /* FONT AWESOME CORE
@@ -10748,7 +10748,14 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 .window .window-content #sidebar {
   padding-top: 20px;
   padding-right: 30px;
+  padding-left: 20px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+@media (min-width: 992px) {
+  .window .window-content #sidebar {
+    padding-left: 0;
+  }
 }
 
 .window .window-content #sidebar.stepper-bar {
@@ -11002,7 +11009,7 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 
 .actionbar #section-nav li > a,
 .actionbar #subnavbar li > a {
-  font-weight: bold;
+  font-weight: 600;
   color: #f5f5f5;
   text-shadow: none;
 }
@@ -11015,10 +11022,10 @@ fieldset[disabled] .window .window-content .tile:hover .btn.active {
 
 .actionbar #section-nav li > a:hover,
 .actionbar #subnavbar li > a:hover {
-  padding: 9px 15px;
+  padding: 10px 15px;
   color: #333333;
   background: #eeeeee;
-  border: 1px solid #656565;
+  border: 0px solid #656565;
   border-radius: 0;
 }
 
@@ -11674,6 +11681,7 @@ select.chzn-select {
   margin-bottom: 20px;
   color: #555555;
   text-align: center;
+  text-shadow: none;
   background-color: #eeeeee;
 }
 
@@ -12197,6 +12205,14 @@ dl.portalMessage dd {
   margin-left: 0;
 }
 
+.listingBar {
+  padding: 20px;
+}
+
+.listingBar a {
+  border-radius: 0;
+}
+
 .modal-dialog {
   padding-top: 70px;
 }
@@ -12593,6 +12609,10 @@ table.dataTable tr.row_selected td {
 .table-recipients-list .checkbox {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.search-results-bar {
+  padding: 20px 0;
 }
 
 .footer-frontpage {
