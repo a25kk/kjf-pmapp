@@ -19,16 +19,6 @@ from pressapp.presscontent import MessageFactory as _
 
 class IChannelSelection(form.Schema):
 
-    #form.widget(channel=AutocompleteMultiFieldWidget)
-    #channel = schema.List(
-    #    title=_(u"Channels"),
-    #    description=_(u"Please select the channels this recipient "
-    #                  u"is subscribed to."),
-    #    value_type=schema.Choice(
-    #        title=_(u"Channel"),
-    #        source=ChannelSourceBinder(),
-    #    )
-    #)
     channel = schema.Set(
         title=_(u"Selected Channels"),
         description=_(u"Select the appropriate channels"),
@@ -97,6 +87,8 @@ class ChannelSelectionForm(form.SchemaEditForm):
             except KeyError:
                 continue
         setattr(context, 'channel', list(data['channel']))
+        if self.has_recipients_info():
+            setattr(context, 'recipients', list())
         modified(context)
         context.reindexObject(idxs='modified')
         IStatusMessage(self.request).addStatusMessage(

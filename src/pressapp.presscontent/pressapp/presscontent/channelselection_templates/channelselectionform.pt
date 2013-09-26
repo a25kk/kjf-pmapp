@@ -29,9 +29,21 @@
           <div class="col col-lg-9">
             <div class="window-column">
               <div class="window-column-content">
+                <tal:block tal:condition="view/has_recipients_info">
+                    <div class="alert alert-danger">
+                        <strong>Warnung:</strong>
+                            Diese Liste wurde bereits bereinigt
+                    </div>
+                </tal:block>
                 <div id="xxcontent-core">
                   <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
                 </div>
+                <tal:block tal:condition="view/has_recipients_info">
+                    <hr>
+                    <p>Falls Sie eine erneute Auswahl vornehmen wollen und eine
+                     die Verteilerzuweisung speichern, gehen alle gemachten
+                     Änderungen an der bereits vorhandenen Liste verloren.</p>
+                </tal:block>
               </div>
             </div>
           </div>
