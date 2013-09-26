@@ -6874,8 +6874,8 @@ td.visible-print {
   font-family: 'FontAwesome';
   font-style: normal;
   font-weight: normal;
-  src: url('../../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  src: url('../assets/fonts/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../assets/fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../assets/fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../assets/fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
 }
 
 /* FONT AWESOME CORE
@@ -10586,7 +10586,7 @@ hr {
   color: #555555;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
   background: #fff;
-  background: url(../images/bg-white-fabric.png) repeat 0 0 #ffffff;
+  background: url(../assets/img/bg-white-fabric.png) repeat 0 0 #ffffff;
 }
 
 .window .window-content .window-column {
@@ -12127,6 +12127,34 @@ select.chzn-select {
   right: 0;
 }
 
+.presshub-archive {
+  background: #fff;
+}
+
+.press-archive-content {
+  width: 480px;
+  background: url(../images/bg-white-fabric.png) repeat 0 0 #ffffff;
+}
+
+.archive-box {
+  padding: 10px;
+  margin: 0;
+}
+
+.archive-box .archive-box-header {
+  padding: 0 20px 10px;
+  border-bottom: 1px solid #999999;
+}
+
+.archive-box .archive-box-header h1 {
+  font-size: 21px;
+}
+
+.archive-box .archive-box-text {
+  margin: 10px 0 0;
+  text-align: right;
+}
+
 body {
   background: #96c6d0;
 }
@@ -12223,6 +12251,7 @@ dl.portalMessage dd {
   padding: 10px 20px;
   background: transparent !important;
   border: 0;
+  border-top: 1px solid #fff;
   border-bottom: 1px solid #999999;
   border-radius: 0;
   -webkit-box-shadow: none;
@@ -12324,7 +12353,6 @@ fieldset[disabled] .list-tile:hover .btn.active {
 .featurette {
   padding: 20px;
   margin: 10px;
-  background: url(../images/bg-white-fabric.png) repeat 0 0 #ffffff;
   background-color: rgba(255, 255, 255, 0.35);
   border: 1px solid #999999;
 }
