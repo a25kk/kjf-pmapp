@@ -9014,7 +9014,7 @@ hr {
 }
 .window .window-content {
   background: #fff;
-  background: url(../images/bg-white-fabric.png) repeat 0 0 #ffffff;
+  background: url(../assets/img/bg-white-fabric.png) repeat 0 0 #ffffff;
   color: #555555;
   min-height: 500px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
