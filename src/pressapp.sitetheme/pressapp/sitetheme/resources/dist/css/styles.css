@@ -5029,7 +5029,7 @@ a.thumbnail:focus {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .alert h4 {
@@ -10234,7 +10234,6 @@ dl.portalMessage {
   background-color: #fcf8e3;
   border: 1px solid transparent;
   border-color: #fbeed5;
-  border-radius: 4px;
   border-radius: 0;
 }
 

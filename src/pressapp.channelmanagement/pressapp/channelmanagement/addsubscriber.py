@@ -9,7 +9,7 @@ from plone.dexterity.utils import createContentInContainer
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.channelmanagement.channel import IChannel
 
-from pressapp.presscontent import MessageFactory as _
+from pressapp.channelmanagement import MessageFactory as _
 
 
 class ISubscriberAdd(form.Schema):

@@ -18,10 +18,10 @@
           <h4>Versandplanung</h4>
         </div>
 
-        <h1 i18n:translate="">Press release</h1>
+        <h1 i18n:translate="">Pressemitteilung</h1>
 
         <p class="discreet" i18n:translate="">
-          Prepare email dispatchment
+          Auswahl Verteiler
         </p>
       </header>
       <article id="content-core">

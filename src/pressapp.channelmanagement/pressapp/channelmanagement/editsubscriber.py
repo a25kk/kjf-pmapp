@@ -12,7 +12,7 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
 from pressapp.channelmanagement.subscriber import ISubscriber
 
-from pressapp.presscontent import MessageFactory as _
+from pressapp.channelmanagement import MessageFactory as _
 
 
 class ISubscriberEdit(form.Schema):
