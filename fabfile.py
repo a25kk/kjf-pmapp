@@ -11,17 +11,20 @@ env.use_ssh_config = True
 env.forward_agent = True
 env.port = '22222'
 env.user = 'root'
-env.sitename = 'pressapp'
+env.sitename = 'tophotel'
 env.code_user = 'root'
 env.prod_user = 'www'
 env.webserver = '/opt/webserver/buildout.webserver'
-env.code_root = '/opt/sites/buildout.pmapp/'
-env.stage_root = '/opt/sites/presshub/buildout.presshub'
+env.code_root = '/opt/mth/buildout.mth'
+env.stage_root = '/opt/sites/mth-staging/buildout.mth'
 
-env.hosts = ['pm-app', 'noah']
+env.hosts = ['4zu1', '4zu2', '4zu3', '6zu4']
 env.roledefs = {
-    'production': ['pm-app'],
-    'staging': ['noah']
+    'production': ['4zu1', '4zu2'],
+    'public': ['4zu1'],
+    'private': ['4zu2'],
+    'webserver': ['4zu3'],
+    'staging': ['6zu4']
 }
 
 
@@ -38,7 +41,6 @@ def restart_cluster():
         run('nice bin/supervisorctl restart instance2')
         run('nice bin/supervisorctl restart instance3')
         run('nice bin/supervisorctl restart instance4')
-
 
 @task
 def supervisorctl(*cmd):
@@ -62,8 +64,20 @@ def deploy_staging():
 
 
 @task
-@roles('production')
-def deploy_production():
+@roles('private')
+def deploy_private():
+    """ Deploy current development head to staging server """
+    with cd(env.code_root):
+        run('nice git pull')
+        run('nice bin/supervisorctl restart instance1')
+        run('nice bin/supervisorctl restart instance2')
+        run('nice bin/supervisorctl restart instance3')
+        run('nice bin/supervisorctl restart instance4')
+
+
+@task
+@roles('public')
+def deploy_public():
     """ Deploy current development head to staging server """
     with cd(env.code_root):
         run('nice git pull')
@@ -79,13 +93,24 @@ def buildout_staging():
     """ Deploy current development head to staging server """
     with cd(env.stage_root):
         run('nice git pull')
-        run('nice bin/buildout -c staging.cfg')
     project.site.restart()
 
 
 @task
-@roles('production')
-def buildout_production():
+@roles('private')
+def buildout_private():
+    """ Deploy current development head to staging server """
+    with cd(env.code_root):
+        run('nice git pull')
+        run('nice bin/buildout -Nc deployment-server2.cfg')
+        run('nice bin/supervisorctl restart instance1')
+        run('nice bin/supervisorctl restart instance2')
+        run('nice bin/supervisorctl restart instance3')
+        run('nice bin/supervisorctl restart instance4')
+
+@task
+@roles('public')
+def buildout_public():
     """ Deploy current development head to staging server """
     with cd(env.code_root):
         run('nice git pull')
@@ -105,7 +130,6 @@ def deploy():
 
 
 @task
-@roles('production')
 def deploy_full():
     """ Deploy current master to production and run buildout """
     project.site.update()
@@ -114,9 +138,9 @@ def deploy_full():
 
 
 @task
-@roles('production')
 def rebuild():
     """ Deploy current master and run full buildout """
     project.site.update()
     project.site.build_full()
     project.cluster.restart()
+fabfile.
