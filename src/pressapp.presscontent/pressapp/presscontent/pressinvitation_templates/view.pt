@@ -61,7 +61,7 @@
                   rel="twipsy"
                   data-placement="top"
                   data-original-title="Diese Presseeinladung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
-                  tal:attributes="href view/constructPreviewURL">
+                  tal:attributes="href python:context_url+'/@@pressinvitation-preview'">
                   <i class="icon-eye-open" />
                   E-Mail-Vorschau</a>
               </li>
@@ -110,7 +110,7 @@
               rel="twipsy"
               data-placement="left"
               data-original-title="Diese Presseeinladung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
-              tal:attributes="href view/constructPreviewURL">
+              tal:attributes="href python:context_url+'/@@pressinvitation-preview'">
               Browser Vorschau</a> anzeigen
           </p>
         </div>
