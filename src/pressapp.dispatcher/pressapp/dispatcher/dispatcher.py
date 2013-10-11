@@ -107,7 +107,7 @@ class Dispatcher(grok.View):
                 mailhost.send(outer.as_string())
                 log.info("Sent newsletter to \"%s\"" % recipient['mail'])
                 send_counter += 1
-            except Exception, e:
+            except Exception as e:
                 log.info("Sending to \"%s\" failed: %s" % (
                          recipient['mail'], e))
                 send_error_counter += 1
