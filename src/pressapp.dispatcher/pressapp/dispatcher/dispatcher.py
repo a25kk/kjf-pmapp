@@ -258,7 +258,7 @@ class Dispatcher(grok.View):
         text_raw = parser_output_zpt.html
         text_raw_clean = text_raw.replace('\r', '')
         text = postprocess_emailtemplate(text_raw_clean)
-        text_plain = self.create_plaintext_message(text_raw_clean)
+        text_plain = self.create_plaintext_message(text)
         image_urls = parser_output_zpt.image_urls
         return dict(html=text, plain=text_plain, images=image_urls)
 
