@@ -75,7 +75,7 @@ def buildout_staging():
 def deploy():
     """ Deploy current master to production server """
     project.site.update()
-    project.cluster.restart()
+    restart()
 
 
 @task
@@ -84,7 +84,7 @@ def deploy_full():
     """ Deploy current master to production and run buildout """
     project.site.update()
     project.site.build()
-    project.cluster.restart()
+    restart()
 
 
 @task
@@ -93,4 +93,4 @@ def rebuild():
     """ Deploy current master and run full buildout """
     project.site.update()
     project.site.build_full()
-    project.cluster.restart()
+    project.cluster.restart_clients()

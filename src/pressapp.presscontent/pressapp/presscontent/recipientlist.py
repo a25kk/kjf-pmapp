@@ -66,16 +66,17 @@ class RecipientList(grok.View):
         context = aq_inner(self.context)
         data = []
         recipients = getattr(context, 'recipients', None)
-        for address in recipients:
-            recipient = {}
-            try:
-                email, name = address.split(',')
-            except:
-                email = address
-                name = address
-            recipient['email'] = email
-            recipient['name'] = name
-            data.append(recipient)
+        if recipients:
+            for address in recipients:
+                recipient = {}
+                try:
+                    email, name = address.split(',')
+                except:
+                    email = address
+                    name = address
+                recipient['email'] = email
+                recipient['name'] = name
+                data.append(recipient)
         return data
 
     def has_channel_info(self):
