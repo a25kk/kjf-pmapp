@@ -33,7 +33,7 @@ class View(grok.View):
     def is_administrator(self):
         context = aq_inner(self.context)
         is_admin = False
-        admin_roles = ('SiteAdministrator', 'Manager')
+        admin_roles = ('Site Administrator', 'Manager')
         user = api.user.get_current()
         roles = api.user.get_roles(username=user.getId(), obj=context)
         for role in roles:
