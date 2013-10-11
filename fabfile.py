@@ -75,7 +75,7 @@ def buildout_staging():
 def deploy():
     """ Deploy current master to production server """
     project.site.update()
-    restart()
+    restart_cluster()
 
 
 @task
