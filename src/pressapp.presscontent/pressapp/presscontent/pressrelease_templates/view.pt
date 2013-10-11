@@ -196,7 +196,7 @@
                 rel="twipsy"
                 data-placement="top"
                 data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
-                tal:attributes="href view/constructPreviewURL">
+                tal:attributes="href python:context_url+'/@@pressrelease-preview'">
                 E-Mail-Vorschau</a> anzeigen.
             </p>
           </div>
