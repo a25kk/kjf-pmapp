@@ -83,12 +83,41 @@
                 tal:attributes="href python:context_url+'/@@add-subscriber'">
                   Neuen Kontakt anlegen</a>
             <hr>
-            <p i18n:translate="">
-              Use the filter function to find specific addresses or resize
-              the batch size.
-              Manage addresses and configure the corresponding
-              channels. 
+            <h5>Filter</h5>
+            <p i18n:translate="" class="text-discreet">
+              Use the filter function to find specific contact or addresses.
             </p>
+            <form role="form" method="post"
+                tal:attributes="action request/URL" >
+                <div class="form-group">
+                    <select class="form-control chosen-select"
+                        id="channel-address-select"
+                        name="channel-address-select"
+                        data-placeholder="Bitte wählen...">
+                        <option value="" id="empty-option"></option>
+                        <tal:block tal:repeat="item view/subscribers">
+                            <option value="AL"
+                                tal:attributes="value item/getId;"
+                                tal:content="item/Title">
+                                Titel
+                            </option>
+                            <!--<option value="AL"
+                                tal:attributes="value item/getId;
+                                                name item/getId;
+                                                id item/getId;"
+                                tal:content="item/email">
+                                Titel
+                            </option>-->
+                        </tal:block>
+                    </select>
+                </div>
+                <button class="btn btn-default btn-sm"
+                    type="submit"
+                    name="form.button.Submit"
+                    id="submit-button">
+                    Auswahl bearbeiten
+                </button>
+            </form>
             <hr>
           </aside>
         </div>

@@ -16,7 +16,9 @@
     "boostrap-toggle": "~1.0.0",
     "chosen-sass-bootstrap": "~0.9.8",
     "modernizr": "~2.6.2",
-    "datatables-bootstrap3": "*"
+    "datatables-bootstrap3": "*",
+    "select2-bootstrap-css": "~1.2.0",
+    "select2": "~3.4.3"
   },
   "devDependencies": {
     "chai": "1.7.2"

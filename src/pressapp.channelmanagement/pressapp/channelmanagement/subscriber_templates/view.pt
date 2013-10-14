@@ -14,14 +14,9 @@
         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
         <div class="pull-right">
             <h4>Kontaktinformationen</h4>
-          <a
-            tal:define="context_url context/absolute_url;"
-            tal:attributes="href python:context_url+'/@@edit-subscriber'">
-            <i class="icon-edit" />
-              Bearbeiten</a>
         </div>
     
-        <h1 class="documentFirstHeading" tal:content="context/Title">Title</h1>
+        <h1 class="documentFirstHeading" tal:content="context/Title">Adresse</h1>
         <p tal:define="time context/modified;
                         timestamp python:context.modified().ISO()"
             class="discreet">
@@ -34,7 +29,7 @@
     <section id="content-core">
     
     <div class="row">
-        <div class="col col-lg-9">
+        <div class="col-xs-12 col-lg-9">
         <section class="window-column">
             <div class="window-column-content">
             <table class="table table-condensed">
@@ -77,17 +72,29 @@
             </div>
         </section>
         </div>
-        <div class="col col-lg-3">
-            <div class="sidebar">
-                <h4>Verteiler:
-                </h4>
+        <div class="col-xs-12 col-lg-3">
+            <aside class="sidebar" id="sidebar"
+                tal:define="context_url context/absolute_url;">
+                <div class="box-editable">
+                  <small class="pull-right">
+                    <a class="link-editable"
+                      tal:attributes="href python:context_url+'/@@edit-subscriber'">
+                      <i class="icon-edit"></i>
+                      Bearbeiten</a>
+                  </small>
+                  <h4>Informationen</h4>
+                  <h5 tal:content="context/Title" />
+
+                </div>
+                <hr>
+                <h5>Verteiler:</h5>
                 <p>
                     <tal:block tal:repeat="item view/selected_channels">
                         <span class="xbadge xbadge-success" tal:content="item/channelname" /><br />
                     </tal:block>
                 </p>
                 <div class="visualClear"><!-- --></div>
-            </div>
+            </aside>
         </div>
     </div>
     </section>

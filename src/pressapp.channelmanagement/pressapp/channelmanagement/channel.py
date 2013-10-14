@@ -23,8 +23,17 @@ class View(grok.View):
     grok.name('view')
 
     def update(self):
+        context = aq_inner(self.context)
         self.has_subscribers = len(self.subscribers()) > 0
         self.subscriber_index = len(self.subscribers())
+        form = self.request.form
+        self.errors = {}
+        if 'form.button.Submit' in self.request:
+            context = aq_inner(self.context)
+            target_id = form['channel-address-select']
+            context_url = context.absolute_url()
+            next_url = context_url + '/' + target_id
+            return self.request.response.redirect(next_url)
 
     def subscribers(self):
         context = aq_inner(self.context)
