@@ -49,7 +49,7 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
         title=_(u"Location"),
         description=_(u"Provide a location for this press release that will "
                       u"be prepended to the main body text."),
-        required=False,
+        required=True,
     )
     text = RichText(
         title=_(u"Text"),
