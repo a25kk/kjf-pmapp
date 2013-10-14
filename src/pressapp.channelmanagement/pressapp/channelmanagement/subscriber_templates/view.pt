@@ -90,10 +90,15 @@
                 <h5>Verteiler:</h5>
                 <p>
                     <tal:block tal:repeat="item view/selected_channels">
+                        <i class="icon-fixed-width icon-minus"></i>
                         <span class="xbadge xbadge-success" tal:content="item/channelname" /><br />
                     </tal:block>
                 </p>
-                <div class="visualClear"><!-- --></div>
+                <hr>
+                <a href="" class="btn btn-default btn-block"
+                    tal:attributes="href view/parent_url"
+                    i18n:translate="">abbrechen
+                </a>
             </aside>
         </div>
     </div>
