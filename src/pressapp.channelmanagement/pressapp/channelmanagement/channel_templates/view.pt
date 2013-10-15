@@ -101,13 +101,15 @@
                                 tal:content="item/Title">
                                 Titel
                             </option>
-                            <!--<option value="AL"
+                        </tal:block>
+                        <tal:block tal:repeat="item view/subscribers">
+                            <option value="AL"
                                 tal:attributes="value item/getId;
                                                 name item/getId;
                                                 id item/getId;"
                                 tal:content="item/email">
                                 Titel
-                            </option>-->
+                            </option>
                         </tal:block>
                     </select>
                 </div>
