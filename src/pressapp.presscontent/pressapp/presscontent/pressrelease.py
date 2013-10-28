@@ -10,8 +10,12 @@ from zope.schema.vocabulary import getVocabularyRegistry
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 
+<<<<<<< Updated upstream
 from zope.lifecycleevent import modified
 
+=======
+from zope.component.hooks import getSite
+>>>>>>> Stashed changes
 from plone.app.textfield import RichText
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedBlobImage

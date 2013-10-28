@@ -22,13 +22,7 @@
       <div class="row"
         tal:define="navigation_root_url context_url">
         <div class="col col-lg-9">
-          <h1>Pressecenter
-            <!--<small tal:condition="view/has_filter"
-              tal:define="info view/filter_info">
-              <span tal:attributes="class string:label label-${info/klass}"
-                tal:content="info/state" />
-            </small>-->
-          </h1>
+          <h1>Pressecenter</h1>
           <p tal:define="time context/modified;
                         timestamp python:context.modified().ISO()"
             class="discreet">

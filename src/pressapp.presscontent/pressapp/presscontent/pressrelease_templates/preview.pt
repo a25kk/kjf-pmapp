@@ -79,11 +79,12 @@
                 beim Versand zusammengestellt und formatiert wird.
             </p>
           </div>
-          <hr>
+          <hr />
             <a href=""
-                class=="btn btn-default btn-block"
+                class="btn btn-default btn-block"
                 tal:attributes="href context/absolute_url">
-                Bearbeiten</a>
+                bearbeiten
+            </a>
           <hr>
           <a href="" class="btn btn-large btn-primary btn-block"
               tal:condition="python:item_state == 'private'"
