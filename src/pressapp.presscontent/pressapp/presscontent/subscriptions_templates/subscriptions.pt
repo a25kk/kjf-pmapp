@@ -15,7 +15,7 @@
             <h1>Newsletter</h1>
         </div>
 
-        <div class="box"
+        <div class="archive-box"
             tal:define="email_error view/errors/email | nothing">
             <form class="form-inline"
                 tal:attributes="action request/URL" method="post">
@@ -26,10 +26,10 @@
                         tal:attributes="class python:email_error and 'control-group error' or 'control-group'">
                         <label class="control-label" for="input01">Ihre E-Mail-Adresse</label>
                         <div class="controls">
-                            <div class="input-prepend">
-                            <span class="add-on">@</span>
+                            <div class="input-group">
+                                <span class="input-group-addon">@</span>
                                 <input id="email"
-                                    class="col col-lg-3"
+                                    class="form-control"
                                     type="text"
                                     size="16"
                                     name="email" />
@@ -46,14 +46,14 @@
                     </div>
                     <div class="form-actions">
                         <div class="btn-group">
-                        <input class="btn btn-success"
+                        <input class="btn btn-primary"
                             type="submit"
                             rel="loading-indicator"
                             data-loading-text="Newsletteranmeldung wird durchgef&uuml;hrt..."
                             name="form.button.Subscribe"
                             id="submit-button"
                             value="Anmelden" />
-                        <input class="btn btn-danger"
+                        <input class="btn btn-default"
                             type="submit"
                             rel="loading-indicator"
                             data-loading-text="Abonnement wird beendet..."
@@ -68,7 +68,6 @@
         </div>
     </div>    
 
-    </section>
     </metal:content-core>
 </metal:main>
 </body>

@@ -9,16 +9,16 @@
 
 <metal:main fill-slot="body">
     <metal:content-core define-macro="body">
-    <div id="content">
+    <div id="content-core">
     <section tal:define="type view/action_type;
                          address view/address;
                          portal_url view/portal_url"
-        id="archive-view">
-        <div class="page-header">
+        id="archive-view" class="archive-box">
+        <div class="archive-box-header">
             <h1>Newsletter</h1>
         </div>
 
-        <div class="box">
+        <div class="archive-box">
             <div class="alert alert-box alert-success">
                 <h4 class="alert-heading"
                      tal:condition="python:type == 'subscribe'">
@@ -36,12 +36,12 @@
                     <strong tal:content="address" />
                     wurde erfolgreich abgemeldet.
                 </p>
-                 <a href=""
-                    class="btn btn-mini btn-inverse"
-                    tal:attributes="href python:portal_url + '/@@press-subscription'">
-                    <i class="icon-arrow-left icon-white" />
-                    Zur&uuml;ck zur Newsletteranmeldung</a>
             </div>
+            <a href=""
+                class="btn btn-default btn-sm"
+                tal:attributes="href python:portal_url + '/@@press-subscription'">
+                <i class="icon-arrow-left icon-white" />
+                Zur&uuml;ck zur Newsletteranmeldung</a>
         </div>    
 
     </section>
