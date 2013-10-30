@@ -5,7 +5,6 @@ from Products.CMFCore.utils import getToolByName
 
 from Products.CMFCore.interfaces import IContentish
 from Products.statusmessages.interfaces import IStatusMessage
-from plone.app.contentlisting.interfaces import IContentListing
 from plone.registry.interfaces import IRegistry
 from pressapp.channelmanagement.subscriber import ISubscriber
 from pressapp.presscontent import MessageFactory as _
@@ -30,9 +29,10 @@ class RecipientList(grok.View):
             setattr(context, 'recipients', data)
             context.reindexObject(idxs='modified')
             context_url = context.absolute_url()
+            next_url = context_url + '/@@prepare-release'
             IStatusMessage(self.request).addStatusMessage(
-            _(u"Recipient list updated"), type='info')
-            return self.request.response.redirect(context_url)
+                _(u"Recipient list updated"), type='info')
+            return self.request.response.redirect(next_url)
 
     def subscriber_listing(self):
         context = aq_inner(self.context)
@@ -58,3 +58,29 @@ class RecipientList(grok.View):
                 if info not in subscribers:
                     subscribers.append(info)
         return subscribers
+
+    def has_recipients_info(self):
+        return len(self.stored_recipients()) > 0
+
+    def stored_recipients(self):
+        context = aq_inner(self.context)
+        data = []
+        recipients = getattr(context, 'recipients', None)
+        if recipients:
+            for address in recipients:
+                recipient = {}
+                try:
+                    email, name = address.split(',')
+                except:
+                    email = address
+                    name = address
+                recipient['email'] = email
+                recipient['name'] = name
+                data.append(recipient)
+        return data
+
+    def has_channel_info(self):
+        context = aq_inner(self.context)
+        channel = getattr(context, 'channel', None)
+        if channel:
+            return True

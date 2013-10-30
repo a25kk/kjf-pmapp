@@ -9,8 +9,9 @@
 
 <metal:main fill-slot="main">
     <metal:content-core define-macro="main">
-    <section id="archive-view">
-        <div class="page-header">
+    <div id="content-core">
+    <div id="archive-view" class="archive-box">
+        <div class="archive-box-header">
             <h1>Newsletter</h1>
         </div>
 
@@ -28,7 +29,7 @@
                             <div class="input-prepend">
                             <span class="add-on">@</span>
                                 <input id="email"
-                                    class="span3"
+                                    class="col col-lg-3"
                                     type="text"
                                     size="16"
                                     name="email" />
@@ -64,7 +65,8 @@
                     </div>
                 </fieldset>
             </form>
-        </div>    
+        </div>
+    </div>    
 
     </section>
     </metal:content-core>

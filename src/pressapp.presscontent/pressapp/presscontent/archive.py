@@ -1,5 +1,8 @@
+import cStringIO
+import formatter
 import hashlib
 import json
+from htmllib import HTMLParser
 from Acquisition import aq_inner
 from five import grok
 from App.config import getConfiguration
@@ -169,15 +172,33 @@ class PressItemView(grok.View):
         self.presscontent = self.resolvePressItem()
         self.default_data = self._getPressCenterData(self.presscontent)
 
+    def preview_type(self):
+        preview_type = self.request.get('pvt', '')
+        preview = 'html'
+        if preview_type == 'plain':
+            preview = 'plain'
+        return preview
+
     def webversion(self):
         obj = self.presscontent
         context_content = self._dynamic_content(obj)
         output_file = self._render_output_html()
         output_html = self._compose_email_content(output_file, context_content)
         rendered = self._exchange_relative_urls(output_html)
-        rendered_email = postprocess_emailtemplate(rendered)
+        html = rendered['html']
+        rendered_email = postprocess_emailtemplate(html)
         css_file = self.default_data['stylesheet']
         text = rendered_email.replace('[[PC_CSS]]', str(css_file))
+        return text
+
+    def plain_preview(self):
+        obj = self.presscontent
+        context_content = self._dynamic_content(obj)
+        output_file = self._render_output_html()
+        output_html = self._compose_email_content(output_file, context_content)
+        rendered = self._exchange_relative_urls(output_html)
+        plaintext = rendered['plain']
+        text = plaintext.replace('[[PC_CSS]]', '')
         return text
 
     def resolvePressItem(self):
@@ -288,7 +309,37 @@ class PressItemView(grok.View):
         """
         parser_output_zpt = SafeHTMLParser(self)
         parser_output_zpt.feed(output_html)
-        text = parser_output_zpt.html
+        text_raw = parser_output_zpt.html
+        text_raw_clean = text_raw.replace('\r', '')
+        text = postprocess_emailtemplate(text_raw_clean)
+        text_plain = self.create_plaintext_message(text)
+        image_urls = parser_output_zpt.image_urls
+        return dict(html=text, plain=text_plain, images=image_urls)
+
+    def create_plaintext_message(self, text):
+        """ Create a plain-text-message by parsing the html
+            and attaching links as endnotes
+        """
+        plain_text_maxcols = 72
+        textout = cStringIO.StringIO()
+        formtext = formatter.AbstractFormatter(formatter.DumbWriter(
+                                               textout, plain_text_maxcols))
+        parser = HTMLParser(formtext)
+        parser.feed(text)
+        parser.close()
+        # append the anchorlist at the bottom of a message
+        # to keep the message readable.
+        counter = 0
+        anchorlist = "\n\n" + ("-" * plain_text_maxcols) + "\n\n"
+        for item in parser.anchorlist:
+            counter += 1
+            if item.startswith('https://'):
+                new_item = item.replace('https://', 'http://')
+            else:
+                new_item = item
+            anchorlist += "[%d] %s\n" % (counter, new_item)
+        text = textout.getvalue() + anchorlist
+        del textout, formtext, parser, anchorlist
         return text
 
     def _construct_webview_link(self, obj):

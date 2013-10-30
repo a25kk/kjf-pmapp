@@ -10,12 +10,61 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
         
-        <div class="page-header">
-            <h1>Statistik <small>&Uuml;bersicht der gesendeten Pressemitteilungen und
-                Presseeinladungen</small>
-            </h1>
+    <div class="page-header" id="page-header">
+      <h1>Statistik <small>&Uuml;bersicht der gesendeten Pressemitteilungen und
+          Presseeinladungen</small>
+      </h1>
+      <p tal:define="time context/modified" class="discreet">
+              <span i18n:translate="">Last changed:</span>
+              <span tal:content="time"
+                 tal:attributes="data-appui string:prettydate;
+                                 title time" />
+        </p>
+    </div>
+    <section id="content-core">
+      <div class="box">
+        <div class="row">
+          <div class="col col-lg-3">
+            <div class="statuspanel">
+              <div class="top success">
+                <i class="icon-file-alt icon-4x"></i>
+                <h6>PM</h6>
+              </div>
+              <div class="bottom">
+                <h2 tal:content="view/pressrelease_index">100</h2>
+                <h6>Pressemitteilungen</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col col-lg-3">
+            <div class="stats panel" tal:define="pr_idx view/pressrelease_index">
+              <h5 i18n:translate="">Pressemitteilungen</h5>
+              <input type="text"
+                value="75"
+                class="dial"
+                data-appui="knob"
+                data-thickness=".4"
+                data-fgColor="#50A0B0"
+                data-bgColor="#EEEEEE"
+                data-readOnly="true"
+                tal:attributes="data-max view/presscontent_index;
+                                value pr_idx">
+            </div>
+          </div>
+          <div class="col col-lg-6">
+            <div class="statuspanel">
+              <div class="top danger">
+                <i class="icon-calendar icon-4x"></i>
+                <h6>PE</h6>
+              </div>
+              <div class="bottom">
+                <h2 tal:content="view/pressinvitations_index">100</h2>
+                <h6>Presseeinladung</h6>
+              </div>
+            </div>
+          </div>
         </div>
-
+      </div>
       <div class="container-fluid"
           tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                       Batch python:modules['Products.CMFPlone'].Batch;
@@ -81,7 +130,7 @@
             </div>     
          </div>
       </div>
-              
+    </section>          
     
   </metal:content-core>
 </metal:main>

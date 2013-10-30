@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.channelmanagement">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <section id="pressapp-dashboard"
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+      <header id="page-header">
+        <div class="pull-right">
+          <h4><i class="icon-edit icon-2x"></i></h4>
+        </div>
+
+        <h1 i18n:translate="">Add Subscriber</h1>
+
+        <p class="discreet" i18n:translate="">
+          Enter the address details below
+        </p>
+      </header>
+      <article id="content-core">
+        <div class="row">
+          <div class="col col-lg-9">
+            <div class="window-column">
+              <div class="window-column-content">
+                <div id="xxcontent-core">
+                  <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col-lg-3">
+            <aside id="sidebar">
+              <p i18n:translate="" class="lead">
+                Please provide basic subscriber details
+              </p>
+              <p i18n:translate="">
+                Beside the actual email address we also require a title.
+              </p>
+              <hr />
+              <h5 i18n:translate="">Information</h5>
+              <p i18n:translate="">
+                Select the channels this subscriber form the predefined list.
+              </p>
+              <p class="discreet" i18n:translate="">
+                In order to make working with subscribers easier you can include
+                further details in the comments field. This information will not
+                be public and only be visible for logged in users.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

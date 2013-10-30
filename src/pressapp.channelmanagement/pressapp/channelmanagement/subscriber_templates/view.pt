@@ -10,20 +10,28 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
     
-    <p class="pull-right">
-          <a
-            tal:define="context_url context/absolute_url;"
-            tal:attributes="href python:context_url+'/@@edit-subscriber'">
-            <i class="icon-edit" />
-              Bearbeiten</a>
-    </p>
+    <header class="page-header" id="page-header"
+        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+        <div class="pull-right">
+            <h4>Kontaktinformationen</h4>
+        </div>
     
-    <h1 class="documentFirstHeading">Kontaktinformationen
-        <small tal:content="context/Title" /></h1>
+        <h1 class="documentFirstHeading" tal:content="context/Title">Adresse</h1>
+        <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+        </p>
+    </header>
+
+    <section id="content-core">
     
-    <div class="row-fluid">
-        <div class="span6">
-        <section class="box">
+    <div class="row">
+        <div class="col-xs-12 col-lg-9">
+        <section class="window-column">
+            <div class="window-column-content">
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -61,38 +69,40 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
         </div>
-        <div class="span6">
-            <div class="box">
-                <h3>Verteiler:
-                    <small>
-                        <tal:block tal:repeat="item view/selected_channels">
-                            <span class="badge badge-success" tal:content="item/channelname" />
-                        </tal:block>
-                    </small>
-                </h3>
-                <div class="visualClear">&nbsp;</div>
-                <div class="form-inline"
-                     tal:define="channels view/channels">
-                    <div class="controls"
-                        tal:repeat="channel channels">
-                        <div class="input-prepend pull-left"
-                            tal:define="used channel/active">
-                            <tal:block tal:condition="python:used == False">
-                                <span class="add-on"><i class="icon-check" /></span> <span class="input-large uneditable-input" tal:content="channel/channelname">Some value here</span>
-                            </tal:block>
-                            <tal:block tal:condition="python:used == True">
-                                <span class="add-on"><i class="icon-check-empty" /></span> <input class="input-large disabled" id="disabledInput" type="text" disabled tal:attributes="placeholder channel/channelname" />
-                            </tal:block>
-                        </div>
-                    </div>
+        <div class="col-xs-12 col-lg-3">
+            <aside class="sidebar" id="sidebar"
+                tal:define="context_url context/absolute_url;">
+                <div class="box-editable">
+                  <small class="pull-right">
+                    <a class="link-editable"
+                      tal:attributes="href python:context_url+'/@@edit-subscriber'">
+                      <i class="icon-edit"></i>
+                      Bearbeiten</a>
+                  </small>
+                  <h4>Informationen</h4>
+                  <h5 tal:content="context/Title" />
+
                 </div>
-                <div class="visualClear"><!-- --></div>
-            </div>
+                <hr>
+                <h5>Verteiler:</h5>
+                <p>
+                    <tal:block tal:repeat="item view/selected_channels">
+                        <i class="icon-fixed-width icon-minus"></i>
+                        <span class="xbadge xbadge-success" tal:content="item/channelname" /><br />
+                    </tal:block>
+                </p>
+                <hr>
+                <a href="" class="btn btn-default btn-block"
+                    tal:attributes="href view/parent_url"
+                    i18n:translate="">abbrechen
+                </a>
+            </aside>
         </div>
     </div>
-    
+    </section>
   </metal:content-core>
 </metal:main>
 

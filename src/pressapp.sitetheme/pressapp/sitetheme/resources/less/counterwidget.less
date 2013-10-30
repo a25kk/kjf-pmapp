@@ -1,0 +1,52 @@
+//
+// Statistical counter widget
+// -------------------------------------------
+
+
+
+.stats {
+  text-align: center;
+  .stat {
+    background-color: #eeeeee;
+    color: #555555;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: none;
+    h2 {
+      font-weight: 1;
+    }
+    h6 {
+      margin-top: -10px;
+    }
+  }
+  .warning,
+  .important {
+    background-color: lighten(@state-danger-text, 5%);
+    color: #FFF;
+  }
+  .success {
+    background-color: @app-dark;
+    color: #FFF;
+  }
+  .danger {
+    background-color: @app-darker;
+    color: #FFF;
+  }
+  .info {
+    background-color: @app-dark;
+    color: #FFF;
+  }
+  .primary {
+    background-color: @app-color;
+    color: #FFF;
+  }
+  .purple {
+    background-color: #7932ea;
+    color: #FFF;
+  }
+  .inverse {
+    background-color: @app-brown;
+    color: #FFF;
+  }
+}

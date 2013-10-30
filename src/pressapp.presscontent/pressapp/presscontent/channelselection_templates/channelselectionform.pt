@@ -1,0 +1,94 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <section id="jobcenter-dashboard"
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+      <header id="page-header">
+        <div class="pull-right">
+          <h4>Versandplanung</h4>
+        </div>
+
+        <h1 i18n:translate="">Pressemitteilung</h1>
+
+        <p class="discreet" i18n:translate="">
+          Auswahl Verteiler
+        </p>
+      </header>
+      <article id="content-core">
+        <div class="row">
+          <div class="col col-lg-9">
+            <div class="window-column">
+              <div class="window-column-content">
+                <tal:block tal:condition="view/has_recipients_info">
+                    <div class="alert alert-danger">
+                        <strong>Warnung:</strong>
+                            Diese Liste wurde bereits bereinigt
+                    </div>
+                </tal:block>
+                <div id="xxcontent-core">
+                  <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+                </div>
+                <tal:block tal:condition="view/has_recipients_info">
+                    <hr>
+                    <p>Falls Sie eine erneute Auswahl vornehmen wollen und eine
+                     die Verteilerzuweisung speichern, gehen alle gemachten
+                     Änderungen an der bereits vorhandenen Liste verloren.</p>
+                </tal:block>
+              </div>
+            </div>
+          </div>
+          <div class="col col-lg-3">
+            <aside id="sidebar" class="stepper-bar"
+              tal:define="has_channels view/has_channel_info;
+                          recipients view/has_recipients_info;">
+              <a href="#" class="box-stepper current"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
+                tal:attributes="href python:context_url+'/@@select-channel'">
+                <strong>1. Verteiler w&auml;hlen</strong>
+              </a>
+              <a class="box-stepper current"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
+                tal:attributes="class python:has_channels and 'box-stepper' or 'box-stepper disabled';
+                                href python:context_url + '/@@recipient-list'">
+                <strong>2. Empf&auml;nger bereinigen</strong>
+              </a>
+              <a href="" class="box-stepper"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Versandeinstellungen überpr&uuml;fen und Presseinhalt verschicken"
+                tal:condition="python:recipients == True"
+                tal:attributes="href python:context_url+'/@@prepare-release'">
+                  <strong>3. Presseinhalt verschicken</strong>
+              </a>
+              
+              <hr>
+                <a href="context_url" class="btn btn-default btn-large btn-block"
+                  tal:attributes="href context_url">
+                  Abbrechen
+                </a>
+              <hr>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

@@ -1,9 +1,13 @@
 import datetime
+from DateTime import DateTime
 from Acquisition import aq_inner
 from five import grok
-from plone.directives import form
+from plone import api
 
 from zope import schema
+
+from plone.directives import form
+
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.site.hooks import getSite
@@ -127,11 +131,57 @@ class View(grok.View):
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
 
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def dispatched_date(self):
+        context = aq_inner(self.context)
+        date = context.EffectiveDate()
+        if not date or date == 'None':
+            return None
+        return DateTime(date)
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        creator = context.Creator()
+        user = api.user.get(username=creator)
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
+
 
 class Preview(grok.View):
     grok.context(IPressInvitation)
     grok.require('zope2.View')
     grok.name('pressinvitation-preview')
+
+    def constructPreviewURL(self):
+        context = aq_inner(self.context)
+        portal_url = api.portal.get().absolute_url()
+        uuid = IUUID(context, None)
+        url = portal_url + '/@@pressitem-view?uid=' + uuid
+        return url
+
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        creator = context.Creator()
+        user = api.user.get(username=creator)
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
 
 
 class AsHtmlView(grok.View):
@@ -150,7 +200,7 @@ class AsHtmlView(grok.View):
         data['link'] = member.getProperty('home_page', '')
         data['start'] = context.start
         data['end'] = context.end
-        if context.closed == True:
+        if context.closed is True:
             data['closed'] = _(u"Admittance for invited guests only")
         else:
             data['closed'] = ''

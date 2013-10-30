@@ -107,7 +107,7 @@ class Dispatcher(grok.View):
                 mailhost.send(outer.as_string())
                 log.info("Sent newsletter to \"%s\"" % recipient['mail'])
                 send_counter += 1
-            except Exception, e:
+            except Exception as e:
                 log.info("Sending to \"%s\" failed: %s" % (
                          recipient['mail'], e))
                 send_error_counter += 1
@@ -258,7 +258,7 @@ class Dispatcher(grok.View):
         text_raw = parser_output_zpt.html
         text_raw_clean = text_raw.replace('\r', '')
         text = postprocess_emailtemplate(text_raw_clean)
-        text_plain = self.create_plaintext_message(text_raw_clean)
+        text_plain = self.create_plaintext_message(text)
         image_urls = parser_output_zpt.image_urls
         return dict(html=text, plain=text_plain, images=image_urls)
 
@@ -350,5 +350,5 @@ class Dispatcher(grok.View):
 
 class DispatchSuccess(grok.View):
     grok.context(IContentish)
-    grok.require('zope2.View')
+    grok.require('cmf.ModifyPortalContent')
     grok.name('dispatch-success')

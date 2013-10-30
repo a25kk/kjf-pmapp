@@ -14,18 +14,31 @@
                        portal_state context/@@plone_portal_state;
                        portal_url portal_state/portal_url"
     class="container-fluid">
-        
-        <div class="page-header">
+        <div class="page-header" id="page-header">
             <h1>Versand <small tal:content="context/Title">Title</small></h1>
         </div>
-        
-        <div class="alert alert-block alert-success">
-            <h4 class="alert-heading">Herzlichen Gl&uuml;ckwunsch</h4>
-            <p><em tal:replace="context/Title" /> wurde erfolgreich versandt</p>
-            <a href="" class="btn btn-success"
-              tal:attributes="href portal_url">
-              <i class="icon-home icon-white" />
-              Zum Arbeitsplatz</a>
+        <div id="content-core">
+            <div class="row">
+                <div class="col-xs-12 col-lg-9">
+                    <div class="window-column">
+                        <div class="window-column-content">
+                             <div class="alert alert-block alert-success">
+                                <h4 class="alert-heading">
+                                    <i class="icon-check"></i>
+                                    Herzlichen Gl&uuml;ckwunsch
+                                </h4>
+                                <p>Der Presseinhalt 
+                                    <em tal:content="context/Title" />
+                                    wurde erfolgreich versandt</p>
+                            </div>
+                            <hr>
+                                <a href="" class="btn btn-default"
+                                  tal:attributes="href portal_url">
+                                  Zum Arbeitsplatz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
   </section>

@@ -1,0 +1,72 @@
+// 
+// Status panels
+// ---------------------------------------------
+
+.statuspanel {
+  width: 150px !important;
+  background-color: #fff;
+  border-radius: 0;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  .top {
+    //border-top-left-radius: 6px;
+    //border-top-right-radius: 6px;
+    background-color: #555555;
+    color: #fff;
+    padding-top: 20px;
+    i {
+      display: block;
+      margin: 0px auto 20px;
+    }
+    h6 {
+      display: inline;
+      background-color: #555555;
+      position: relative;
+      top: 5px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      color: #FFF;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: @font-size-base - 2;
+    }
+  }
+  .bottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #fff;
+    text-align: center;
+    border-top: none;
+    h2 {
+      font-weight: 500;
+      margin: 0;
+    }
+    h6 {
+      font-size: 0.7em;
+      font-weight: 1;
+      position: relative;
+      bottom: 10px;
+      color: #555555;
+    }
+  }
+}
+.statuspanel .warning, .statuspanel .warning h6 {
+  background-color: #ffa93c;
+}
+.statuspanel .success, .statuspanel .success h6 {
+  background: @app-color;
+}
+.statuspanel .danger, .statuspanel .danger h6 {
+  background: lighten(@app-brown, 5%);
+}
+.statuspanel .info, .statuspanel .info h6 {
+  background-color: #14b8d4;
+}
+.statuspanel .primary, .statuspanel .primary h6 {
+  background-color: #007ccd;
+}
+.statuspanel .purple, .statuspanel .purple h6 {
+  background-color: #7932ea;
+}

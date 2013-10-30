@@ -1,0 +1,37 @@
+// Basic content formatting
+
+.text-discreet,
+.discreet {
+    color: @gray-light;
+    font-size: @font-size-small;
+    font-weight: 1;
+}
+
+.text-highlight,
+.visualHighlight {
+    background-color: @state-warning-bg;
+}
+
+.text-pullquote,
+.pullquote {
+    line-height: @line-height-computed;
+    float: right;
+    width: 35%;
+    clear: right;
+    color: @gray-light;
+    line-height: @line-height-computed - 3;
+    padding: @line-height-computed / 2 @line-height-computed;
+    margin: @line-height-computed 0 @line-height-computed @line-height-computed;
+    border-left: 5px solid @gray-light;
+    background: @gray-lighter;
+}
+
+.text-callout,
+.callout {
+    background: @gray-lighter;
+    padding: @line-height-computed;
+    margin: 0 0 @line-height-computed;
+    border-left: 5px solid @gray-light;
+    clear: both;
+}
+

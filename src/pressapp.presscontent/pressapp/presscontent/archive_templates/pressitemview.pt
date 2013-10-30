@@ -1,2 +1,7 @@
+<tal:block tal:define="requested view/preview_type">
+    <div tal:condition="python:requested == 'html'" 
+        tal:replace="structure view/webversion" />
 
-<div tal:replace="structure view/webversion" />
+    <pre tal:condition="python:requested == 'plain'" 
+        tal:content="structure view/plain_preview" />
+</tal:block>

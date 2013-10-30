@@ -33,16 +33,16 @@
           </div>
           <div class="span3">
             <form action="."
-              tal:attributes="action python:context_url + '/@@search'">
-                <div class="input-group span12">
-                  <input id="SearchableText"
-                    name="SearchableText"
-                    type="text">
-                  <span class="input-group-btn">
-                    <button class="btn" type="button">Search</button>
-                  </span>
-                </div>
-            </form>
+            tal:attributes="action python:context_url + '/@@search'">
+              <div class="input-group span12">
+                <input id="SearchableText"
+                  name="SearchableText"
+                  type="text">
+                <span class="input-group-btn">
+                  <button class="btn" type="button">Search</button>
+                </span>
+              </div>
+          </form>
           </div>
         </div>
       </header>

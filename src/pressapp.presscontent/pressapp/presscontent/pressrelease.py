@@ -1,5 +1,8 @@
+import json
+from DateTime import DateTime
 from Acquisition import aq_inner
 from five import grok
+from plone import api
 from plone.directives import form
 
 from zope import schema
@@ -7,7 +10,10 @@ from zope.schema.vocabulary import getVocabularyRegistry
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 
+from zope.lifecycleevent import modified
+
 from zope.component.hooks import getSite
+
 from plone.app.textfield import RichText
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedBlobImage
@@ -45,7 +51,7 @@ class IPressRelease(form.Schema, IImageScaleTraversable):
         title=_(u"Location"),
         description=_(u"Provide a location for this press release that will "
                       u"be prepended to the main body text."),
-        required=False,
+        required=True,
     )
     text = RichText(
         title=_(u"Text"),
@@ -174,11 +180,33 @@ class View(grok.View):
 
     def constructPreviewURL(self):
         context = aq_inner(self.context)
-        portal = getSite()
-        portal_url = portal.absolute_url()
+        portal_url = api.portal.get().absolute_url()
         uuid = IUUID(context, None)
         url = portal_url + '/@@pressitem-view?uid=' + uuid
         return url
+
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def dispatched_date(self):
+        context = aq_inner(self.context)
+        date = context.EffectiveDate()
+        if not date or date == 'None':
+            return None
+        return DateTime(date)
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        creator = context.Creator()
+        user = api.user.get(username=creator)
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
 
     def contained_attachments(self):
         context = aq_inner(self.context)
@@ -196,6 +224,29 @@ class Preview(grok.View):
     grok.context(IPressRelease)
     grok.require('zope2.View')
     grok.name('pressrelease-preview')
+
+    def constructPreviewURL(self):
+        context = aq_inner(self.context)
+        portal_url = api.portal.get().absolute_url()
+        uuid = IUUID(context, None)
+        url = portal_url + '/@@pressitem-view?uid=' + uuid
+        return url
+
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def user_details(self):
+        context = aq_inner(self.context)
+        creator = context.Creator()
+        user = api.user.get(username=creator)
+        fullname = user.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
 
 
 class AsHtmlView(grok.View):
@@ -255,3 +306,37 @@ class PressReleaseActions(grok.Viewlet):
             member = mtool.getAuthenticatedMember()
             home_folder = member.getHomeFolder().absolute_url()
             return home_folder
+
+
+class ArchiveSettings(grok.View):
+    grok.context(IPressRelease)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('update-archive-settings')
+
+    def update(self):
+        context = aq_inner(self.context)
+        state = self.request.form.get('state', '')
+        results = {'results': None,
+                   'success': False,
+                   'message': ''
+                   }
+        if state:
+            if state == 'true':
+                setattr(context, 'archive', True)
+                results['success'] = True
+            else:
+                setattr(context, 'archive', False)
+                results['success'] = True
+            results['results'] = {
+                'state': 'changed',
+                'transitions': (),
+            }
+        modified(context)
+        context.reindexObject(idxs='modified')
+        self.results = results
+
+    def render(self):
+        results = self.results
+        self.request.response.setHeader('Content-Type',
+                                        'application/json; charset=utf-8')
+        return json.dumps(results)

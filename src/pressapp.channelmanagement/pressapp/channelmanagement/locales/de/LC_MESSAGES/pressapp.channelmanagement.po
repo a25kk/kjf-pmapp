@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-07-02 12:50+0000\n"
-"PO-Revision-Date: 2012-07-02 14:54+0100\n"
+"POT-Creation-Date: 2013-09-26 12:18+0000\n"
+"PO-Revision-Date: 2013-09-26 15:54+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,11 @@ msgstr "Ein Kontakt/Empfänger"
 msgid "A specific channel holding subscriber objects"
 msgstr "Eine Kontaktliste, die Abonnenten/Kontaktadressen beinhaltet"
 
-#: ./../addsubscriber.py:66
+#: ./../addsubscriber_templates/subscriberaddform.pt:21
+msgid "Add Subscriber"
+msgstr "Empfänger hinzufügen"
+
+#: ./../addsubscriber.py:65
 msgid "Add new subscriber address"
 msgstr "Presskontakt hinzufügen"
 
@@ -34,16 +38,29 @@ msgstr "Presskontakt hinzufügen"
 msgid "Address Import Form"
 msgstr "Pressekontakt Import"
 
+#: ./../channelmanager_templates/view.pt:46
+msgid "Addressen"
+msgstr "Addressen"
+
 #: ./../channelmanager.py:25
 msgid "Available Channels"
 msgstr "Verfügbare Verteiler"
+
+#: ./../addsubscriber_templates/subscriberaddform.pt:43
+#: ./../editsubscriber_templates/subscribereditform.pt:43
+msgid "Beside the actual email address we also require a title."
+msgstr "Neben der E-Mail-Adresse ist auch ein Titel zwingend erforderlich."
 
 #: ./../profiles/default/types/pressapp.channelmanagement.channelmanager.xml
 msgid "Central managing unit for subscriber channels"
 msgstr "Zentrale Verwaltungseinheit für Verteilerlisten."
 
-#: ./../addsubscriber.py:51
-#: ./../editsubscriber.py:54
+#: ./../editsubscriber_templates/subscribereditform.pt:23
+msgid "Change subsciber details"
+msgstr "Empfängerdetails anpassen"
+
+#: ./../addsubscriber.py:50
+#: ./../editsubscriber.py:53
 #: ./../profiles/default/types/pressapp.channelmanagement.channel.xml
 msgid "Channel"
 msgstr "Verteiler"
@@ -56,46 +73,54 @@ msgstr "Verteiler Bezeichnung"
 msgid "ChannelManager"
 msgstr "Adressverwaltung"
 
-#: ./../addsubscriber.py:47
-#: ./../editsubscriber.py:50
+#: ./../addsubscriber.py:46
+#: ./../editsubscriber.py:49
 #: ./../subscriber.py:53
 msgid "Channels"
 msgstr "Verteiler"
 
-#: ./../addsubscriber.py:43
-#: ./../editsubscriber.py:46
+#: ./../addsubscriber.py:42
+#: ./../editsubscriber.py:45
 #: ./../subscriber.py:48
 msgid "Comment"
 msgstr "Kommentare"
 
-#: ./../addsubscriber.py:27
-#: ./../editsubscriber.py:30
+#: ./../addsubscriber.py:26
+#: ./../editsubscriber.py:29
 #: ./../subscriber.py:32
 msgid "Contact Person"
 msgstr "Kontaktperson"
 
-#: ./../addsubscriber.py:19
-#: ./../editsubscriber.py:22
+#: ./../addsubscriber.py:18
+#: ./../editsubscriber.py:21
 #: ./../subscriber.py:24
 msgid "Contact Title"
 msgstr "Kontakt Titel"
 
-#: ./../addsubscriber.py:73
+#: ./../addsubscriber.py:72
 msgid "Create subscriber"
 msgstr "Pressekontakt erstellen"
 
-#: ./../editsubscriber.py:69
+#: ./../editsubscriber_templates/subscribereditform.pt:21
+msgid "Edit Subscriber"
+msgstr "Empfänger bearbeiten"
+
+#: ./../editsubscriber.py:68
 msgid "Edit subscriber"
 msgstr "Pressekontakt bearbeiten"
 
-#: ./../addsubscriber.py:23
-#: ./../editsubscriber.py:26
+#: ./../addsubscriber.py:22
+#: ./../editsubscriber.py:25
 #: ./../subscriber.py:28
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#: ./../addsubscriber.py:39
-#: ./../editsubscriber.py:42
+#: ./../addsubscriber_templates/subscriberaddform.pt:23
+msgid "Enter the address details below"
+msgstr "Geben Sie hier die Details zu dieser Adresse ein."
+
+#: ./../addsubscriber.py:38
+#: ./../editsubscriber.py:41
 #: ./../subscriber.py:44
 msgid "Fax"
 msgstr "Fax"
@@ -112,20 +137,42 @@ msgstr "Import"
 msgid "Imported records: "
 msgstr "Importierte Daten:"
 
-#: ./../addsubscriber.py:35
-#: ./../editsubscriber.py:38
+#: ./../addsubscriber_templates/subscriberaddform.pt:51
+#: ./../editsubscriber_templates/subscribereditform.pt:52
+msgid "In order to make working with subscribers easier you can include further details in the comments field. This information will not be public and only be visible for logged in users."
+msgstr "Um die Verwaltung von Empfängern/Abonnenten zu erleichtern, können zusätzliche Anmerkungen im Kommentarfeld hinterlegt werden. Diese Informationen sind nicht öffentlich und können nur von angemeldeten Benutzern eingesehen werden."
+
+#: ./../addsubscriber_templates/subscriberaddform.pt:47
+msgid "Information"
+msgstr "Information"
+
+#: ./../channel_templates/view.pt:23
+#: ./../subscriber_templates/view.pt:28
+msgid "Last changed:"
+msgstr "Zuletzt verändert:"
+
+#: ./../addsubscriber.py:34
+#: ./../editsubscriber.py:37
 #: ./../subscriber.py:40
 msgid "Mobile Phone"
 msgstr "Mobil"
 
-#: ./../addsubscriber.py:31
-#: ./../editsubscriber.py:34
+#: ./../addsubscriber.py:30
+#: ./../editsubscriber.py:33
 #: ./../subscriber.py:36
 msgid "Phone"
 msgstr "Telefon"
 
-#: ./../addsubscriber.py:48
-#: ./../editsubscriber.py:51
+#: ./../editsubscriber_templates/subscribereditform.pt:40
+msgid "Please enter the basic details for this subscriber"
+msgstr "Bitte tragen Sie hier die Basisinformationen zu einem Emfänger ein."
+
+#: ./../addsubscriber_templates/subscriberaddform.pt:40
+msgid "Please provide basic subscriber details"
+msgstr "Bitte tragen Sie hier die Basisinformationen zu einem Emfänger ein."
+
+#: ./../addsubscriber.py:47
+#: ./../editsubscriber.py:50
 #: ./../subscriber.py:54
 msgid "Please select the channels this recipient is subscribed to."
 msgstr "Bitte wählen Sie die Verteilerlisten, in denen dieser Kontakt gelistet werden soll, durch Eingabe in das Suchfeld."
@@ -134,32 +181,39 @@ msgstr "Bitte wählen Sie die Verteilerlisten, in denen dieser Kontakt gelistet 
 msgid "Please upload a file in csv format containing the user information to be imported."
 msgstr "Bitte laden Sie hier eine csv-Datei hoch, die Kontaktinformationen beinhaltet."
 
-#: ./../editsubscriber.py:122
+#: ./../editsubscriber.py:121
 msgid "SUbscriber has successfully been updated"
 msgstr "Dieser Pressekontakt wurde erfolgreich aktualisiert."
+
+#: ./../addsubscriber_templates/subscriberaddform.pt:48
+msgid "Select the channels this subscriber form the predefined list."
+msgstr "Wählen Sie einen oder mehrere Verteiler für diesen Abonnenten aus der Liste aus."
 
 #: ./../profiles/default/types/pressapp.channelmanagement.subscriber.xml
 msgid "Subscriber"
 msgstr "Abbonent/Kontakt"
 
-#: ./../addsubscriber.py:85
+#: ./../addsubscriber.py:84
 msgid "The creation of a new subscriber has been cancelled."
 msgstr "Das Anlegen eines Pressekontakts wurde abgebrochen"
 
-#: ./../channel_templates/view.pt:71
-#: ./../channelmanager_templates/channelinformation.pt:120
+#: ./../channel_templates/view.pt:75
 msgid "There are no subscribers yet"
 msgstr "Es wurden noch keine Kontakte angelegt."
+
+#: ./../editsubscriber_templates/subscribereditform.pt:47
+msgid "Tip"
+msgstr "Tipp"
 
 #: ./../channelmanager.py:26
 msgid "Update available channels. One entry per line"
 msgstr "Aktualisieren Sie die verfügbaren Verteiler. Ein Eintrag pro Zeile"
 
-#: ./../editsubscriber.py:76
+#: ./../editsubscriber.py:75
 msgid "Update subscriber"
 msgstr "Pressekontakt aktualisieren"
 
-#: ./../editsubscriber.py:89
+#: ./../editsubscriber.py:88
 msgid "Updating susbcriber has been cancelled."
 msgstr "Die Aktualisierung des Pressekontaktes wurde abgebrochen"
 
@@ -167,23 +221,16 @@ msgstr "Die Aktualisierung des Pressekontaktes wurde abgebrochen"
 msgid "Upload existing address information by supplying a csv file."
 msgstr "Bestehende Adressen als csv-Datei hochladen."
 
-#: ./../addsubscriber.py:81
-#: ./../editsubscriber.py:84
+#: ./../editsubscriber_templates/subscribereditform.pt:48
+msgid "Use the comment field to add additional information on the subscriber"
+msgstr "Verwenden Sie das Kommentarfeld für Zusatzinformationen zu diesem Abonnenten"
+
+#: ./../channel_templates/view.pt:99
+msgid "Use the filter function to find specific addresses or resize the batch size. Manage addresses and configure the corresponding channels."
+msgstr "Verwenden Sie die Filterfunktion, um eine spezielle Addresse zu finden oder die Auflistungsoptionen anzupassen. Verwalten Sie Adressen und die dazugehörigen Verteiler."
+
+#: ./../addsubscriber.py:80
+#: ./../editsubscriber.py:83
 msgid "cancel"
 msgstr "Abbrechen"
-
-#. Default: "Search"
-#: ./../channelmanager_templates/channelinformation.pt:52
-msgid "label_search"
-msgstr "Suche"
-
-#. Default: "Search Subscriber"
-#: ./../channelmanager_templates/channelinformation.pt:37
-msgid "text_search"
-msgstr "Suchbegriff"
-
-#. Default: "..."
-#: ./../channelmanager_templates/channelinformation.pt:41
-msgid "title_search_site"
-msgstr "Suchen"
 

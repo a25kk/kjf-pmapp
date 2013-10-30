@@ -1,0 +1,105 @@
+<!-- @import "_includes/head.kit" -->
+
+  <body class="app-workspace">
+  <!-- @import "_includes/toolbar.html" --> 
+
+    <section class="workspace">
+      <header class="workspace-header">
+        <div class="container">
+          <div class="row">
+            <div class="col col-lg-3">
+            </div>
+            <div class="col col-lg-9">
+                <ul class="nav nav-pills pull-right" id="section-nav">
+                  <li><a href="#contact">
+                    Pressemitteilungen <span class="badge">212</span></a></li>
+                  <li><a href="#">
+                    Presseeinladungen <span class="badge">143</span></a></li>
+                  <li><a href="#">
+                    Verteiler <span class="badge">74</span></a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="workspace-body">
+        <div class="container" id="content">
+          <div class="workspace-window">
+            <div class="workspace-window-header" id="ws-header">
+                <div class="pull-right">
+                    <h4><i class="icon-info-sign icon-2x"></i></h4>
+                </div>
+                <h1>Pressecenter</h1>
+                <p class="discreet">Globale Einstellungen / Informationen</p>
+            </div>
+            <div class="workspace-window-body" id="ws-content">
+                <div class="window-column-content">
+                    <div class="featurette dim-in two">
+                        <div class="row">
+                          <div class="col-12 col-lg-9">
+                            <h2>Welcome to your personal workspace</h2>
+                            <p class="lead">
+                              Your workspace is the central editing unit providing
+                              an overview of available press releases and invitations.
+                            </p>
+                            <p class="lead">
+                              In order to get started add your first press content.
+                            </p>
+                          </div>
+                          <div class="col-12 col-lg-3">
+                            <a class="stats widget" href="#">
+                              <span class="stat primary">
+                                <span class="stat-header"><i class="icon-file-alt icon-2x"></i></span>
+                                <span class="stat-subheader">Add pressrelease</span>
+                              </span>
+                            </a>
+                            <a class="stats widget" href="#">
+                              <span class="stat primary">
+                                <span class="stat-header"><i class="icon-calendar icon-2x"></i></span>
+                                <span class="stat-subheader">Add pressinvitation</span>
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Oswald::latin', 'Droid+Sans::latin', 'Roboto+Condensed:400,700:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+  </script>
+  <script type="text/javascript" src="js/pressapp.js"></script>
+    
+    <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+           mathiasbynens.be/notes/async-analytics-snippet -->
+      <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+    chromium.org/developers/how-tos/chrome-frame-getting-started -->
+      <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+    <![endif]-->
+    
+  </body>
+</html>

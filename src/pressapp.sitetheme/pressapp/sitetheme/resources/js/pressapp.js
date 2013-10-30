@@ -1,5 +1,6 @@
-/*jslint white:false, onevar:true, undef:true, nomen:true, eqeqeq:true, plusplus:true, bitwise:true, regexp:true, newcap:true, immed:true, strict:false, browser:true */
-/*global jQuery:false, document:false, window:false, location:false */
+/*jslint devel:true, white:false, onevar:true, undef:true, nomen:true, eqeqeq:true, plusplus:true, bitwise:true, regexp:true, newcap:true, immed:true, strict:false, browser:true */
+/*global jQuery:false, document:false */
+'use strict';
 
 (function ($) {
     $(document).ready(function () {
@@ -9,9 +10,11 @@
             // enhancement.
             return;
         }
+        //$('span[data-appui="prettydate"]').timeago();
+        $('input[data-appui="knob"]').knob();
         $('select.chosen-select').chosen();
         /* Apply to popup forms */
-        $(document).on('loadInsideOverlay', function (e) {
+        $(document).on('loadInsideOverlay', function () {
             $('select.chosen-select', $(this)).chosen();
         });
         $('#form-widgets-selected2').chosen();
@@ -22,49 +25,48 @@
             $('a[rel=twipsy]').tooltip();
             $('span[rel=twipsy]').tooltip();
         });
+        $('h5[data-appui="tooltip"]').tooltip();
         $(function () {
             $('a[rel=loading-indicator], input[rel=loading-indicator]').on('click', function () {
                 $(this).button('loading');
             });
         });
-        var statusURL = $("#status-placeholder a").attr("href");
+        var statusURL = $('#status-placeholder a').attr('href');
         if (statusURL) {
             $('#status-placeholder').load(statusURL);
-            var refreshId = setInterval(function () {
+            setInterval(function () {
                 $('#status-placeholder').load(statusURL).fadeIn('slow');
             }, 10000);
         }
-        var current, toggleBoxes = $('.details').hide();
-        $('a.show-details').on("click", function () {
+        var current = $('.details').hide();
+        $('a.show-details').on('click', function () {
             current = $(this).next('div.details');
             $('.details').not(current).slideUp('slow');
             current.toggle('slow');
         });
         //$('#recipient-table').dataTable();
-        
         /* Default class modification */
         $.extend($.fn.dataTableExt.oStdClasses, {
-            "sWrapper": "dataTables_wrapper form-inline"
+            'sWrapper': 'dataTables_wrapper form-inline'
         });
-        
         /* API method to get paging information */
         $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings)
         {
             return {
-                "iStart":         oSettings._iDisplayStart,
-                "iEnd":           oSettings.fnDisplayEnd(),
-                "iLength":        oSettings._iDisplayLength,
-                "iTotal":         oSettings.fnRecordsTotal(),
-                "iFilteredTotal": oSettings.fnRecordsDisplay(),
-                "iPage":          Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
-                "iTotalPages":    Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+                'iStart':         oSettings._iDisplayStart,
+                'iEnd':           oSettings.fnDisplayEnd(),
+                'iLength':        oSettings._iDisplayLength,
+                'iTotal':         oSettings.fnRecordsTotal(),
+                'iFilteredTotal': oSettings.fnRecordsDisplay(),
+                'iPage':          Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                'iTotalPages':    Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
             };
         };
-        
+
         /* Bootstrap style pagination control */
         $.extend($.fn.dataTableExt.oPagination, {
-            "bootstrap": {
-                "fnInit": function (oSettings, nPaging, fnDraw) {
+            'bootstrap': {
+                'fnInit': function (oSettings, nPaging, fnDraw) {
                     var oLang = oSettings.oLanguage.oPaginate;
                     var fnClickHandler = function (e) {
                         e.preventDefault();
@@ -72,24 +74,23 @@
                             fnDraw(oSettings);
                         }
                     };
-        
-                    $(nPaging).addClass('pagination').append(
-                        '<ul>' +
+                    $(nPaging).addClass('xpagination').append(
+                        '<ul class="pagination">' +
                             '<li class="prev disabled"><a href="#">&larr; ' + oLang.sPrevious + '</a></li>' +
                             '<li class="next disabled"><a href="#">' + oLang.sNext + ' &rarr; </a></li>' +
                         '</ul>'
                     );
                     var els = $('a', nPaging);
-                    $(els[0]).bind('click.DT', { action: "previous" }, fnClickHandler);
-                    $(els[1]).bind('click.DT', { action: "next" }, fnClickHandler);
+                    $(els[0]).bind('click.DT', { action: 'previous' }, fnClickHandler);
+                    $(els[1]).bind('click.DT', { action: 'next' }, fnClickHandler);
                 },
-        
-                "fnUpdate": function (oSettings, fnDraw) {
+
+                'fnUpdate': function (oSettings, fnDraw) {
                     var iListLength = 5;
                     var oPaging = oSettings.oInstance.fnPagingInfo();
                     var an = oSettings.aanFeatures.p;
                     var i, j, sClass, iStart, iEnd, iHalf = Math.floor(iListLength / 2);
-        
+
                     if (oPaging.iTotalPages < iListLength) {
                         iStart = 1;
                         iEnd = oPaging.iTotalPages;
@@ -104,29 +105,26 @@
                         iStart = oPaging.iPage - iHalf + 1;
                         iEnd = iStart + iListLength - 1;
                     }
-        
+                    var iLen = an.length;
                     for (i = 0, iLen = an.length ; i < iLen ; i++) {
                         // Remove the middle elements
                         $('li:gt(0)', an[i]).filter(':not(:last)').remove();
-        
                         // Add the new list items and their event handlers
                         for (j = iStart ; j <= iEnd ; j++) {
                             sClass = (j == oPaging.iPage + 1) ? 'class="active"' : '';
                             $('<li ' + sClass + '><a href="#">' + j + '</a></li>')
                                 .insertBefore($('li:last', an[i])[0])
-                                .bind('click', function () {
+                                .on('click', function () {
                                     oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
                                     fnDraw(oSettings);
                                 });
                         }
-        
                         // Add / remove disabled classes from the static elements
                         if (oPaging.iPage === 0) {
                             $('li:first', an[i]).addClass('disabled');
                         } else {
                             $('li:first', an[i]).removeClass('disabled');
                         }
-        
                         if (oPaging.iPage === oPaging.iTotalPages - 1 || oPaging.iTotalPages === 0) {
                             $('li:last', an[i]).addClass('disabled');
                         } else {
@@ -141,7 +139,7 @@
             var oTable;
             $(function () {
                 /* Add a click handler to the rows - this could be used as a callback */
-                $("#recipient-table tbody tr").click(function (e) {
+                $('#recipient-table tbody tr').click(function () {
                     if ($(this).hasClass('row_selected')) {
                         $(this).removeClass('row_selected');
                     }
@@ -151,44 +149,46 @@
                     }
                 });
                 /* Add a click handler for the delete row */
-                $('#delete').on("click", function (e) {
+                $('#delete').on('#click', function (e) {
                     e.preventDefault();
                     var anSelected = fnGetSelected(oTable);
                     oTable.fnDeleteRow(anSelected[0]);
                 });
-                $('#recipient-cleanup-form').on("submit", function () {
-                    var sData = $('input', oTable.fnGetNodes()).serialize();
-                    $('input', otable.fnGetNodes()).appendTo('#recipient-cleanup-form');
+                $('#recipient-cleanup-form').on('submit', function () {
+                    $('input', oTable.fnGetNodes()).serialize();
+                    $('input', oTable.fnGetNodes()).appendTo('#recipient-cleanup-form');
                 });
                 /* Init the table */
                 oTable = $('#recipient-table').dataTable({
-                    "bPaginate": false,
-                    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-                    "sPaginationType": "bootstrap",
-                    "oLanguage": {
-                        "sLengthMenu": "_MENU_ records per page"
+                    'bPaginate': false,
+                    'bRetrieve': true,
+                    'sDom': '<"row"<"col-md-6"l><"col-md-6"f>r>t<"row"<"col-md-6"i><"col-md-6"p>>',
+                    'sPaginationType': 'bootstrap',
+                    'oLanguage': {
+                        'sLengthMenu': '_MENU_ records per page'
                     }
                 });
             });
-            /* Get the rows which are currently selected */
-            function fnGetSelected(oTableLocal)
+        }
+        /* Get the rows which are currently selected */
+        function fnGetSelected(oTableLocal)
             {
                 return oTableLocal.$('tr.row_selected');
             }
-        }
         $('#table-contacts, #table-channels').dataTable({
-            "bPaginate": true,
-            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span3'i><'span9'p>>",
-            "sPaginationType": "bootstrap",
-            "iDisplayLength": 50,
-            "oLanguage": {
-                "sLengthMenu": "_MENU_ pro Seite",
-                "sInfo": "_START_ bis _END_ von _TOTAL_",
-                "oPaginate": {
-                    "sPrevious": "Letzte Seite",
-                    "sNext": "Nächste Seite"
+            'bPaginate': true,
+            'bRetrieve': true,
+            'sDom': '<"row"<"span6"l><"span6"f>r>t<"row"<"span3"i><"span9"p>>',
+            'sPaginationType': 'bootstrap',
+            'iDisplayLength': 50,
+            'oLanguage': {
+                'sLengthMenu': '_MENU_ pro Seite',
+                'sInfo': '_START_ bis _END_ von _TOTAL_',
+                'oPaginate': {
+                    'sPrevious': 'Letzte Seite',
+                    'sNext': 'Nächste Seite'
                 },
-                "sSearch": "Filter:"
+                'sSearch': 'Filter:'
             }
         });
     });

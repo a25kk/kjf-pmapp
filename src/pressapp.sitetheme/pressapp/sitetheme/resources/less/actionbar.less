@@ -1,0 +1,69 @@
+//
+// Action bar
+// ----------------------------
+
+
+.actionbar {
+  margin: @line-height-computed @line-height-computed 0 @line-height-computed * 2;
+  //padding-bottom: @line-height-computed;
+  .brandname {
+    color: #fff;
+    margin: @font-size-base 0 0;
+    line-height: 100%;
+    a {
+      color: white;
+    }
+  }
+  .actionbar-nav {
+    background:transparent;
+    border: none;
+  }
+  #section-nav,
+  #subnavbar {
+      li {
+        margin-left: @line-height-computed / 2;
+      }
+        li > a {
+        color: @table-bg-hover;
+        font-weight: 600;
+        text-shadow: none;
+        //border: 1px solid lighten(#50a0b0, 20%);
+        // background: lighten(@app-color, 10%);
+        .badge {
+          background: #fff;
+          color: @app-color;
+          }
+        }
+        li > a:hover {
+            // background: @app-color;
+            background: @gray-lighter;
+            color: @text-color;
+            border: 0px solid #656565;
+            border-radius: 0;
+            padding:(@line-height-computed  / 2) 15px;
+            //border-color: @app-color;
+        }
+    }
+  #customer-logo {
+    display: block;
+    border: 1px solid white;
+    border-radius: 4px;
+    text-indent: -9999px;
+    width: 180px;
+    height: 31px;
+    background:url(../images/logo-small.png) no-repeat 32px 0px white;
+    margin: @font-size-base / 2 @line-height-computed 0px @line-height-computed / 2;
+  }
+}
+
+#actionbar + #content-wrapper {
+  margin-top: 0px;
+}
+
+#main-wrapper {
+  padding: @line-height-computed 0;
+}
+
+#navbar + #main-wrapper {
+    padding-top: @navbar-height;
+}

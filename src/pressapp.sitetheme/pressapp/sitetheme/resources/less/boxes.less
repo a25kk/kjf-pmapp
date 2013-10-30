@@ -1,0 +1,99 @@
+//
+// Boxes & tiles
+// ------------------------------------------
+
+.box {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid @gray;
+  border: 1px solid rgba(0,0,0,.05);
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+
+.box-editable {
+    display: block;
+    a.link-editable {
+      .opacity(70);
+      z-index: 1;
+    }
+    &:hover {
+      color: #000;
+      a.link-editable {
+        display: inline-block;
+        .opacity(100);
+        color: @gray;
+      }
+    }
+}
+
+.box-stepper {
+  display: block;
+  margin: 0 -(@line-height-computed * 1.5) 0;
+  padding: @line-height-computed * 2 @line-height-computed * 1.5 @line-height-computed * 2 @line-height-computed;
+  border-bottom: 1px solid @gray;
+  color: @gray;
+  //.opacity(0.7);
+  &.current {
+    //background: @app-brown;
+    background:rgba(255, 255, 255, 0.5);
+    //color: #fff;
+    color: @text-color;
+    text-shadow: none;
+    padding-top: @line-height-computed * 2;
+    padding-bottom: @line-height-computed * 2;
+    &:hover {
+      color: @text-color;
+    }
+    strong {
+      font-size: @font-size-base * 1.5;
+    }
+  }
+  strong {
+    font-family: @headings-font-family;
+    font-size: @font-size-base * 1.25;
+    font-weight: 500;
+  }
+  small {
+    line-height: 16px;
+  }
+  &:hover {
+    .opacity(100);
+    color: @text-color;
+    text-decoration: none;
+    border-left: 2px solid @gray;
+    margin-left: -(@line-height-computed * 1.5);
+    padding-left: @line-height-computed - 2px;
+  }
+}
+
+
+.tile {
+  min-height: @line-height-computed;
+  padding: 19px;
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius:4px;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  &.stats {
+      strong {
+          .pull-left();
+          .size(20px, 50px);
+          text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+      }
+      p {
+          margin-top: 0.5em;
+      }
+      form {
+          margin-bottom:0px;
+      }
+  }
+  h5 > a {
+    color:@gray;
+  }
+}

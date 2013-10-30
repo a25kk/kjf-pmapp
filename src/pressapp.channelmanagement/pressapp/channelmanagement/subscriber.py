@@ -1,4 +1,5 @@
 from Acquisition import aq_inner
+from Acquisition import aq_parent
 from five import grok
 from plone.directives import form
 
@@ -67,6 +68,11 @@ class View(grok.View):
 
     def update(self):
         self.key = 'pressapp.channelmanagement.channelList'
+
+    def parent_url(self):
+        context = aq_inner(self.context)
+        parent = aq_parent(context)
+        return parent.absolute_url()
 
     def channels(self):
         records = self.channel_records()

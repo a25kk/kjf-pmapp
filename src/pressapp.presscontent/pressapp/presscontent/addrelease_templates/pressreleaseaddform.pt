@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <section id="pressapp-dashboard"
+      tal:define="context_url context/absolute_url;
+                  toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+      <header id="page-header">
+        <div class="pull-right">
+          <h4><i class="icon-edit icon-2x"></i></h4>
+        </div>
+
+        <h1 i18n:translate="">Press Release</h1>
+
+        <p class="discreet" i18n:translate="">
+          Please fill out the form below to add a new press release
+        </p>
+      </header>
+      <article id="content-core">
+        <div class="row">
+          <div class="col col-lg-9">
+            <div class="window-column">
+              <div class="window-column-content">
+                <div id="xxcontent-core">
+                  <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col-lg-3">
+            <aside id="sidebar">
+              <p i18n:translate="" class="lead">
+                Please enter the basic details for this press release
+              </p>
+              <p i18n:translate="">
+                Beside the title and the main body text we also require a preview
+                image for each press release. This is necesary since handling
+                the preview image requires a bit more computation than adding
+                files as attachments.
+              </p>
+              <hr />
+              <h5 i18n:translate="">Tip</h5>
+              <p i18n:translate="">
+                Use the field summary to add a short teaser.</p>
+              <p class="discreet" i18n:translate="">
+                A lot of email clients will display the first view lines of the
+                mail's body as a preview in the email listing (not unlike the description
+                displayed next to search results). Since according to usage statistics
+                providing a dedicated short summary can dramatically increase
+                the opening rate of newsletters. Take advantage of this fact by
+                adding a short summary as a teaser to press releases as well.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </section>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

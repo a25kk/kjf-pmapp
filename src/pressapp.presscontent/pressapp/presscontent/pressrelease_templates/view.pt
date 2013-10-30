@@ -12,64 +12,79 @@
   
   <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                        portal_state context/@@plone_portal_state;
-                       portal_url portal_state/portal_url"
-    class="container-fluid">
+                       item_state context_state/workflow_state;
+                       portal_url portal_state/portal_url;
+                       context_url context/absolute_url;"
+    class="xcontainer-fluid window">
     
-    <div class="page-header">
-        <div class="btn-toolbar pull-right"
-            tal:define="context_url context/absolute_url;
-                        has_channels view/has_channel_info;
-                        recipients view/has_recipients_info;">
-            <div class="btn-group">
-                <a href="" class="btn"
-                    rel="twipsy"
-                    data-placement="left"
-                    data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
-                    tal:attributes="href python:context_url+'/@@select-channel'">
-                    <i class="icon-list-alt" />
-                    Verteiler w&auml;hlen</a>
-                <a href="" class="btn disabled"
-                    tal:condition="not: view/has_channel_info"
-                    rel="twipsy"
-                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                    <i class="icon-edit" />
-                    Empf&auml;nger bereinigen</a>
-                <a href="" class="btn"
-                    rel="twipsy"
-                    data-placement="left"
-                    data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
-                        tal:condition="python:has_channels == True"
-                        tal:attributes="href python:context_url+'/@@recipient-list'">
-                        <i class="icon-edit" />
-                        Empf&auml;nger bereinigen</a>
-                <a href="" class="btn disabled"
-                    rel="twipsy"
-                    tal:condition="not:view/has_recipients_info"
-                    data-original-title="Bitte w&auml;hlen Sie zun&auml;chst einen Verteiler">
-                    <i class="icon-share" />
-                    Versand planen</a>
-                <a href="" class="btn"
-                    tal:condition="python:recipients == True"
-                    tal:attributes="href python:context_url+'/@@prepare-release'">
-                    <i class="icon-share" />
-                    Versand planen</a>
-            </div>
+    <div class="window-header" id="page-header">
+        <div class="pull-right">
+          <h4 tal:content="python:view.get_state_info(item_state)">
+            Review State</h4>
+            <h5 tal:content="view/user_details" />
         </div>
         <h1>Pressemitteilung</h1>
+         <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+        </p>
     </div>
 
-  <div class="row-fluid">
-  <div class="span8">
+  <div class="window-toolbar" tal:content="nothing">
+      <div class="navbar">
+        <ul class="nav">
+          <li>
+            <a
+              tal:attributes="href python:context_url+'/view'">
+              <i class="icon-eye-open" />
+              Anzeigen</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li>
+          <a
+            tal:attributes="href python:context_url+'/@@edit-press-release'">
+              <i class="icon-edit" />
+              Bearbeiten</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li>
+            <a class="popoverLink"
+              tal:attributes="href python:context_url+'/delete_confirmation'">
+              <i class="icon-remove-sign" />
+              Entfernen</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li>
+            <a href=""
+              rel="twipsy"
+              data-placement="top"
+              data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
+              tal:attributes="href view/constructPreviewURL">
+              <i class="icon-eye-open" />
+              E-Mail-Vorschau</a>
+          </li>
+          <li class="divider-vertical"></li>
+        </ul>
+      </div>
+  </div>
+
+  <section id="content-core">
+  <div class="row">
+    <div class="col-xs-12 col-lg-9">
      
-      <div class="box">
-    <h6 tal:condition="context/kicker"
-        tal:content="context/kicker" />
-    <h1 class="documentFirstHeading" tal:content="context/Title">Title inserted here</h1>
-    <h2 tal:condition="context/subtitle" tal:content="context/subtitle" />
+      <div class="window-column">
+      <div class="window-column-content">
+        <h5 tal:condition="context/kicker"
+          tal:content="context/kicker" />
+        <h3 class="documentFirstHeading" tal:content="context/Title">Title inserted here</h3>
+        <h4 tal:condition="context/subtitle" tal:content="context/subtitle" />
     
     
-    <div class="alert alert-block alert-error"
-        tal:condition="not:context/text">
+        <div class="alert alert-block alert-error"
+          tal:condition="not:context/text">
             <a class="close" href="#">×</a>
             <h4 class="alert-heading" i18n:translate="">Hinweis:</h4>
             <p>Diese Pressemitteilung hat noch keinen Inhalt.
@@ -80,126 +95,63 @@
                 <i class="icon-edit" />
                   Bearbeiten</a>
             </p>
-    </div>
+        </div>
     
-    <div tal:condition="context/text"
-        tal:content="structure context/text/output" />
-    
-    <div tal:condition="context/image">
-      <h3>Bild</h3>
-      <img tal:define="scale context/@@images"
-          tal:replace="structure python: scale.scale('image',
-                       scale='preview').tag()" />
-      <p><small tal:content="context/caption" /></p>
-    </div>
+        <div tal:condition="context/text"
+          tal:content="structure context/text/output" />
+        
+        <hr>
 
-    <div class="xwell" tal:condition="context/image">
-        <h3>Attachments</h3>
+        <div class="xwell" tal:condition="context/image">
+        <h3 i18n:translate="">Attachments</h3>
         <table class="table table-condensed">
           <tbody>
             <tr tal:define="filename context/image/filename;">
               <td>
-                  <strong tal:content="filename" />
+                  <h6 tal:content="context/imagename">Caption</h6>
+                  <p class="text-muted">
+                    <small i18n:translate="">The main image is editable via the main edit form</small>
+                    <a class="link-editable"
+                        tal:attributes="href python:context_url+'/@@edit-press-release'">
+                        <small>bearbeiten</small></a>
+                  </p>
               </td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
               <td>
-                <div class="btn-toolbar">
-                  <div class="btn-group">
-                    <a href=""
-                      class="btn btn-small btn-inverse"
-                      tal:attributes="href string:${context/absolute_url}/@@download/attachment/${filename}">
-                      <i class="icon-download icon-white" />
-                      Download</a>
-                  </div>
-                </div>
+                <span class="img-thumbnail">
+                <img tal:define="scale context/@@images"
+                    tal:replace="structure python: scale.scale('image',
+                                 scale='tile').tag()" /></span>
               </td>
             </tr>
             <tal:block tal:condition="view/has_files">
               <tal:items tal:repeat="item view/contained_attachments">
                 <tr tal:define="type item/portal_type">
-                  <td><a href="" tal:attributes="href item/getURL">
-                    <strong tal:condition="item/Description"
+                  <td>
+                    <h6 tal:condition="item/Description"
                       tal:content="item/Description" />
-                    <strong tal:condition="not:item/Description"
-                      tal:content="item/Title" /></a>
+                    <h6 tal:condition="not:item/Description"
+                      tal:content="item/Title" />
+                    <p tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
+                      class="discreet">
+                      <a href=""
+                          class="xxbtn"
+                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
+                          <i class="icon-edit"></i>
+                          bearbeiten</a>
+                      <a href=""
+                          class="xxbtn popoverLink link-overlay"
+                          tal:attributes="href string:${item/getURL}/delete_confirmation">
+                          <i class="icon-remove-sign"></i>
+                          l&ouml;schen</a>
+                    </p>
                   </td>
                   <td tal:define="item_obj item/getObject">
-                    <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
-                        class="thumbnail" 
-                        tal:define="scale item_obj/@@images"
-                        tal:replace="structure python: scale.scale('image',
-                                     scale='tile').tag()" />
-                  </td>
-                  <td>
-                  <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
-                    <div class="btn-group">
-                    <a href=""
-                        class="btn btn-small"
-                        tal:attributes="href string:${item/getURL}/@@edit-file-attachment">
-                        <i class="icon-edit" />
-                        Bearbeiten</a>
-                    <a href=""
-                        class="btn btn-small popoverLink link-overlay"
-                        tal:attributes="href string:${item/getURL}/delete_confirmation">
-                        <i class="icon-remove-sign" />
-                        L&ouml;schen</a>
-                      </div>
-                  </div>
-                  <div class="btn-toolbar" tal:condition="python:type == 'Image'">
-                    <div class="btn-group">
-                      <a href=""
-                          class="btn btn-small"
-                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
-                          <i class="icon-edit" />
-                          Bearbeiten</a>
-                      <a href=""
-                          class="btn btn-small popoverLink link-overlay"
-                          tal:attributes="href string:${item/getURL}/delete_confirmation">
-                          <i class="icon-remove-sign" />
-                          L&ouml;schen</a>
-                      </div>
-                  </div>
-                  <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
-                    <div class="btn-group">
-                      <a href=""
-                          class="btn btn-small"
-                          tal:attributes="href string:${item/getURL}/@@edit-image-attachment">
-                          <i class="icon-edit" />
-                          Bearbeiten</a>
-                      <a href=""
-                          class="btn btn-small popoverLink link-overlay"
-                          tal:attributes="href string:${item/getURL}/delete_confirmation">
-                          <i class="icon-remove-sign" />
-                          L&ouml;schen</a>
-                      </div>
-                  </div>
-                  </td>
-                  <td>
-                    <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.fileattachment'">
-                      <div class="btn-group">
-                    <a href="" class="btn btn-small btn-inverse"
-                        tal:attributes="href string:${item/getURL}/@@download/attachment/${item/attachment/filename}">
-                        <i class="icon-download icon-white" />
-                        Download</a>
-                      </div>
-                    </div>
-                    <div class="btn-toolbar" tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
-                      <div class="btn-group">
-                    <a href="" class="btn btn-small btn-inverse"
-                        tal:attributes="href string:${item/getURL}/@@download/image/${item/image/filename}">
-                        <i class="icon-download icon-white" />
-                        Download</a>
-                      </div>
-                    </div>
-                    <div class="btn-toolbar" tal:condition="python:type == 'Image'">
-                      <div class="btn-group">
-                      <a href=""
-                        class="btn btn-small btn-inverse"
-                        tal:attributes="href string:${item/getURL}/at_download/image">
-                        <i class="icon-download icon-white" />
-                        Download</a>
-                      </div>
+                    <div class="img-thumbnail">
+                        <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
+                            class="thumbnail" 
+                            tal:define="scale item_obj/@@images"
+                            tal:replace="structure python: scale.scale('image',
+                                         scale='tile').tag()" />
                     </div>
                   </td>
                 </tr>
@@ -207,108 +159,146 @@
             </tal:block>
           </tbody>
         </table>
-        <hr />
-        <a class="btn  btn-primary show-details">
-                                <i class="icon-arrow-down icon-white" />
-                                Weitere Dateien hinzuf&uuml;gen</a>
-          <div class="xbox details visualClear">
+          <div class="formControls xbox visualClear">
               <div class="visualClear">&nbsp;</div>
-              <a href="" class="btn btn-inverse"
+              <a href="" class="btn btn-primary btn-sm"
                 rel="twipsy"
                 data-original-title="Bilder werden als Thumbnails in E-Mails dargestellt"
                 tal:define="context_url context/absolute_url"
                 tal:attributes="href python:context_url + '/@@add-image-attachment'">
-                <i class="icon-picture icon-white" />
                 Bild hinzuf&uuml;gen</a>
-              <a href="" class="btn btn-inverse"
+              <a href="" class="btn btn-primary btn-sm"
                 rel="twipsy"
                 data-original-title="Verwenden Sie Dateien, um Inhalte zum Download in E-Mails einzuf&uuml;gen"
                 tal:define="context_url context/absolute_url"
                 tal:attributes="href python:context_url + '/@@add-file-attachment'">
-                <i class="icon-file icon-white" />
                 Datei hinzuf&uuml;gen</a>
           </div>
           <div class="visualClear">&nbsp;</div>
-    </div>
-    </div>
-  </div>
-  
-  <div class="span3" tal:define="modified context/modified">
-      
-      <div class="well">
-      <ul class="nav nav-list">
-          <li class="nav-header">Pressemitteilung</li>
-          <li>Zuletzt ver&auml;ndert:
-            <span tal:replace="python:toLocalizedTime(modified)" />,
-            <span tal:replace="python:toLocalizedTime(modified, time_only=1)" />
-          </li>
-          <li><a href=""
-              tal:attributes="href string:${context/absolute_url}/@@edit-press-release">
-              <i class="icon-edit" />
-                Bearbeiten</a>
-          </li>
-          <li>
-                <a href=""
-                  rel="twipsy"
-                  data-placement="left"
-                  data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
-                  tal:attributes="href view/constructPreviewURL">
-                  <i class="icon-eye-open" />
-                  Browser Vorschau</a>
-          </li>
-          <li class="nav-header">Archiv</li>
-          <li>
-            <tal:archive tal:define="visible context/archive">
-              <span class="label label-success"
-                rel="twipsy"
-                data-placement="left"
-                data-original-title="Diese Pressemittelung wir im Archiv angezeigt"
-                tal:condition="python:visible == True">
-                Im Archiv angezeigt</span>
-              <span class="label label-important"
-                rel="twipsy"
-                data-placement="left"
-                data-original-title="Diese Pressemittelung ist als intern markiert und wird nicht im Archiv angezeigt"
-                tal:condition="python:visible == False">
-                Nicht im Archiv angezeigt</span>
-             </tal:archive>
-          </li>
-          <li>
-            <tal:block  tal:condition="view/distributors"
-                tal:repeat="target view/distributors">
-                <a href=""
-                  tal:define="hash target/value"
-                  tal:attributes="href python:portal_url + '/@@press-archive?distid=' + hash">
-                  <i class="icon-eye-open" />
-                  <span tal:content="target/title" />
-                  </a>
-            </tal:block>
-          </li>
-          <li><a href=""
-                rel="twipsy"
-                data-placement="left"
-                data-original-title="Anzeigeoptionen Archiv und Zielseiten bearbeiten"
-                tal:attributes="href string:${context/absolute_url}/@@archive-settings">
-              <i class="icon-edit" />
-                Einstellungen bearbeiten</a>
-          </li>
-          <li class="nav-header">Zugewiesene Verteiler</li>
-           <li tal:condition="view/has_channel_info" 
-               tal:repeat="channel view/channel_names">
-               <span tal:replace="channel/channelname" /></li>
-           <li><a href=""
-                    tal:attributes="href string:${context/absolute_url}/@@select-channel">
-                    <i class="icon-edit" />
-                    Verteiler bearbeiten</a>
-            </li>
-      </ul>
+        </div>
       </div>
-  </div>
-  </div>
-  </section>
-  </metal:content-core>
-</metal:main>
+      </div>
+    </div>
+    
+      <div class="col-xs-12 col-lg-3" tal:define="modified context/modified">
+        <aside id="sidebar">
+          <div class="box-editable">
+            <small class="pull-right">
+              <a class="link-editable"
+                tal:attributes="href python:context_url+'/@@edit-press-release'">
+                <i class="icon-edit" />
+                Bearbeiten</a>
+            </small>
+            <h4>Informationen</h4>
+            <h5 tal:content="context/Title" />
+            <p class="muted">Diesen Presseinhalt als 
+              <a href=""
+                rel="twipsy"
+                data-placement="top"
+                data-original-title="Diese Pressemitteilung als Einzelansicht, wie in der E-Mail verlinkt, anzeigen"
+                tal:attributes="href python:context_url+'/@@pressrelease-preview'">
+                E-Mail-Vorschau</a> anzeigen.
+            </p>
+          </div>
+          <hr>
+          <div class="box-editable"
+            tal:define="preview context/archive">
+            <small class="pull-right">
+                <a href="#" class="link-editable"
+                  tal:attributes="href python:context_url + '/@@archive-settings'">
+                  <i class="icon-edit"></i> bearbeiten
+                </a>
+            </small>
+              <h5 i18n:translate="">Archive</h5>
+              <p tal:condition="python:preview == True"
+                i18n:translate="">Listed</p>
+              <p tal:condition="python:preview == False"
+                i18n:translate="">Not listed</p>
+            </div><!-- / Job preview -->
+          <hr>
+          <div class="box-editable">
+            <small class="pull-right">
+                <a href="#" class="link-editable"
+                  tal:attributes="href python:context_url + '/@@archive-settings'">
+                  <i class="icon-edit"></i> bearbeiten
+                </a>
+            </small>
+            <h5 i18n:translate="">
+              Externe Zielseiten
+            </h5>
+            <ul tal:condition="view/distributors">
+              <li tal:repeat="target view/distributors">
+                <a href=""
+                      tal:define="hash target/value"
+                      tal:attributes="href python:portal_url + '/@@press-archive?distid=' + hash">
+                      <span tal:content="target/title" />
+                </a>
+              </li>
+            </ul>
+            <p class="text-warning" tal:condition="not:view/distributors">
+              <small i18n:translate="">There are no external distributors/sites
+                asigned yet.</small><br />
+              <a href="" tal:attributes="href python:context_url + '/@@archive-settings'"
+                i18n:translate="">Add distributors</a>
+            </p>
+          </div><!-- / external distributors -->
+          <hr>
+          <div class="box-editable">
+            <small class="pull-right">
+              <a href="" class="link-editable"
+                tal:attributes="href string:${context/absolute_url}/@@select-channel">
+                <i class="icon-edit"></i> bearbeiten
+              </a>
+            </small>
+            <h5>Zugewiesene Verteiler</h5>
+            <tal:channels tal:condition="view/has_channel_info">
+              <p tal:repeat="channel view/channel_names">
+                <span tal:replace="channel/channelname" />
+              </p>
+            </tal:channels>
+            <p class="text-warning" tal:condition="not:view/has_channel_info">
+              <small i18n:translate="">There are no channels asigned yet.</small><br />
+              <a href="" tal:attributes="href python:context_url + '/@@select-channel'"
+                i18n:translate="">Select channels</a>
+            </p>
+          </div><!-- /channels -->
+          <hr>
+          <a href="" class="btn btn-large btn-primary btn-block"
+              tal:condition="python:item_state == 'private'"
+              tal:attributes="href python:context_url + '/@@select-channel'"
+              i18n:translate="">Versand
+          </a>
+          <tal:block  tal:condition="python:item_state == 'published'">
+            <a href="#" class="btn btn-large btn-primary btn-block disabled"
+              rel="twipsy"
+              data-placement="left"
+              data-original-title="Diese Pressemitteilung wurde bereits verschickt"
+              i18n:translate="">Versand
+            </a>
+            <p>
+              <span i18n:translate="">This press release has already been dispatched,
+               but you can</span>
+              <a href=""  tal:attributes="href python:context_url + '/@@prepare-release'"
+                i18n:translate="">review the email recipients here.</a>
+            </p>
+          </tal:block>
+          <hr>
+          <p class="discreet">
+            <span i18n:translate="">If you no longer need this item</span>
+            <a href="" class="text-error"
+              i18n:translate=""
+              tal:attributes="href python:context_url + '/delete_confirmation'">
+              you can delete it
+            </a>.
+          </p>
+        </aside>
+      </div>
+    </div>
+    </section>
+    </section>
+    </metal:content-core>
+  </metal:main>
 
-</body>
-</html>
+  </body>
+  </html>
 

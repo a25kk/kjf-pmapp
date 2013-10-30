@@ -81,6 +81,7 @@ dd.image-caption {
 
 
 input.context,
+input.destructive,
 input.standalone {
     .btn();
 }
@@ -167,11 +168,29 @@ input.datetime-widget,
     font-weight: bold;
     .formHelp {
         font-weight: normal;
+        display: block;
+        .muted();
+        span {
+            display: inline-block;
+            .ie7-inline-block();
+        }
     }
 }
 
 div.field {
     .control-group();
+    label {
+    font-weight: bold;
+        .formHelp {
+            font-weight: normal;
+            display: block;
+            .muted();
+            span {
+                display: inline-block;
+                .ie7-inline-block();
+            }
+        }
+    }
 }
 
 div.formHelp {

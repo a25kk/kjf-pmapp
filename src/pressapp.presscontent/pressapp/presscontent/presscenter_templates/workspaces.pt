@@ -17,54 +17,87 @@
                     context_url context/absolute_url">
     
     <div class="container-fluid">
-        <div class="page-header">
-            <h1>Redakteure</h1>
+        <div class="page-header" id="page-header">
+          <div class="row"
+            tal:define="navigation_root_url context_url">
+            <div class="col col-lg-9">
+              <h1>Redakteure
+              </h1>
+              <p class="discreet">
+                Liste der vorhandenen Benutzerkonten
+              </p>
+            </div>
+            <div class="col col-lg-3">
+              <div class="pull-right">
+                <h4>Benutzerkonten</h4>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <section>
-              <table class="table table-condensed">
-                <thead>
-                  <tr>
-                    <th>Benutzerkonto</th>
-                    <th>Organisation</th>
-                    <th>Ort</th>
-                    <th>URL</th>
-                    <th>Zuletzt angemeldet</th>
-                    <th>Aktionen</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tal:block tal:condition="view/has_workspaces">
-                    <tr tal:repeat="item view/workspaces">
-                      <tal:block tal:define="member_id item/Creator;
-                                             memberinfo python:view.memberdetails(member_id);">
-                      <td><a href=""
+        <section id="content-core">
+        <div class="row">
+          <div class="col col-lg-9">
+            <div class="window-column">
+
+              <tal:pms tal:condition="view/has_workspaces">
+                <div class="tile-wrapper"
+                  tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                          b_size python:int(request.get('b_size', 20));
+                          b_start python:int(request.get('b_start', 0));
+                          items view/workspaces;
+                          items_count python:len(items);
+                          batch python:Batch(items, b_size, b_start);">
+                  <div class="list-tile" tal:repeat="item batch">
+                  <div class="row"
+                    tal:define="member_id item/Creator;
+                                memberinfo python:view.memberdetails(member_id);">
+                    <div class="col col-lg-2">
+                      <h6 tal:content="memberinfo/location">Item Type
+                      </h6>
+                      <p>
+                        <small tal:content="memberinfo/organization">Unpublished</small>
+                      </p>
+                    </div>
+                    <div class="col col-lg-6"
+                      tal:define="state item/review_state">
+                      <h4>
+                        <span tal:content="item/Title" />
+                        <small class="discreet" tal:content="memberinfo/home_page" />
+                      </h4>
+                      <p tal:define="time memberinfo/last_login_time;
+                                     timestamp python:time.ISO()">
+                          <small><span i18n:translate="">Last changed:</span>
+                          <span tal:attributes="data-livestamp timestamp"
+                              tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+                          </small>
+                      </p>
+                    </div>
+                    <div class="col col-lg-4">
+                        <a class="btn btn-default btn-sm pull-right"
                             tal:attributes="href item/getURL">
-                            <strong tal:content="item/Title">
-                            Title</strong></a>
-                      </td>
-                      <td tal:content="memberinfo/organization"></td>
-                      <td tal:content="memberinfo/location"></td>
-                      <td tal:content="memberinfo/home_page"></td>
-                      <td tal:define="login memberinfo/last_login_time">
-                        <span tal:replace="python:toLocalizedTime(login)" />,
-                        <span tal:replace="python:toLocalizedTime(login, time_only=1)" /> Uhr
-                      </td>
-                      <td><a href="" tal:attributes="href item/getURL">
-                          Anzeigen</a></td>
-                      </tal:block>
-                    </tr>
-                  </tal:block>
-                  <tr tal:condition="not:view/has_workspaces">
-                    <td>
-                      <div class="alert alert-block alert-error">
-                        <h4 class="alert-heading">Hinweis</h4>
-                        Leider konnten keine Benutzerkonten gefunden werden
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                            Anzeigen</a>
+                    </div>
+                  </div>
+                  </div><!-- /tile -->
+                  <div metal:use-macro="context/batch_macros/macros/navigation" />
+                </div><!-- /tile-wrapper -->
+              </tal:pms>
+            </div>
+          </div>
+          <div class="col col-lg-3">
+            <aside id="sidebar">
+              <p class="lead" i18n:translate="">
+                Overview of registered members and their workspaces</p>
+              <hr>
+              <p i18n:translate="">Users are redirected to their personal workspaces after signing
+                in to the press application, where they create and manage their
+                press contents
+              </p>
+              <hr>
+            </aside>
+          </div>
+        </div>
         </section>
         
     </div>

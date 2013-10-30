@@ -84,10 +84,38 @@ class View(grok.View):
                 channelname = channel
             info['channelname'] = channelname
             info['count'] = len(catalog.searchResults(
-                                    object_provides=ISubscriber.__identifier__,
-                                    channel=[channel]))
+                                object_provides=ISubscriber.__identifier__,
+                                channel=[channel]))
             names.append(info)
         return names
+
+    def statistic_data(self):
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        channels = catalog.uniqueValuesFor('channel')
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
+        stats = []
+        for channel in channels:
+            channel_info = {}
+            prs = catalog(object_provides=IPressRelease.__identifier__,
+                          channel=[channel])
+            pis = catalog(object_provides=IPressInvitation.__identifier__,
+                          channel=[channel])
+            subs = catalog(object_provides=ISubscriber.__identifier__,
+                           channel=[channel])
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            channel_info['name'] = channelname
+            channel_info['channel'] = channel
+            channel_info['pr_count'] = len(prs)
+            channel_info['pi_count'] = len(pis)
+            channel_info['subscriber'] = len(subs)
+            stats.append(channel_info)
+        return stats
 
 
 class ChannelInformation(grok.View):
@@ -117,6 +145,17 @@ class ChannelInformation(grok.View):
                           sort_on='sortable_title')
         subscribers = IContentListing(results)
         return subscribers
+
+    def channel_title(self):
+        channel = self.channelname
+        registry = queryUtility(IRegistry)
+        if registry:
+            records = registry['pressapp.channelmanagement.channelList']
+        try:
+            channelname = records[channel]
+        except KeyError:
+            channelname = channel
+        return channelname
 
     def usage_statistics(self):
         context = aq_inner(self.context)

@@ -14,123 +14,168 @@
                        context_url context/absolute_url"
     class="container-fluid">
     
-    <div class="page-header">
-        <div class="btn-toolbar pull-right"
+    <div class="page-header" id="page-header">
+        <div class="pull-right"
             tal:define="context_url context/absolute_url;">
-            <div class="btn-group">
-                <a href="" class="btn"
-                    tal:attributes="href python:context_url+'/@@select-channel'">
-                    <i class="icon-list-alt" />
-                    Verteiler w&auml;hlen</a>
-                <a href="" class="btn"
-                    tal:attributes="href python:context_url+'/@@recipient-list'">
-                    <i class="icon-edit" />
-                    Empf&auml;nger bereinigen</a>
-                <a href="" class="btn"
-                    tal:attributes="href python:context_url+'/@@prepare-release'">
-                    <i class="icon-share" />
-                    Versand planen</a>
-            </div>
+                <a href=""
+                  rel="twipsy"
+                  data-original-title="Abbrechen"
+                    tal:attributes="href context_url">
+                    <i class="icon-remove-sign icon-2x"></i>
+                </a>
         </div>
         
         <h1>Versand vorbereiten</h1>
+        <p class="discreet">Zusammenfassung</p>
     </div>
-    <h2>Zusammenfassung</h2>
-    <div class="row-fluid">
-    <div class="span6">
-        <div class="box" tal:condition="view/has_recipients">
-        <h3>Empf&auml;nger aus Verteilern:
-            <span class="badge badge-info" tal:content="view/recipient_count">Count</span>
-        </h3>
-        <div class="alert alert-info">
-            <strong>Information:</strong> alle Empf&auml;nger aus den
-            ausgew&auml;hlten Verteilern
-        </div>
-        <a class="btn  btn-small btn-info show-details">
-            <i class="icon-arrow-down icon-white" />
-            Adressen anzeigen</a>
-        <div class="xbox details visualClear">
-            <div class="visualClear">&nbsp;</div>
-            <div class="tile stats">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th>E-Mail-Adresse</th>
-                            <th>Titel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tal:block tal:repeat="item view/recipient_list">
-                        <tr tal:define="item_details python:view.reformat_recipients(item)">
-                            <td tal:content="python:item_details[0]" />
-                            <td tal:content="python:item_details[1]" />
-                        </tr>
-                        </tal:block>
-                    </tbody>
-                </table>
+    <div id="content-core">
+    <div class="row">
+    <div class="col-xs-12 col-lg-9">
+    <div class="window-column">
+      <div class="window-column-content">
+        <section tal:condition="view/has_recipients">
+          <div class="featurette dim-in two">
+            <div class="row">
+              <div class="col-xs-12 col-lg-9">
+                <h2 i18n:translate="">Empf&auml;nger aus Verteilern</h2>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-backdrop="false" data-target="#recipientModal">
+                    Adressen zeigen
+                </button>
+              </div>
+              <div class="col-xs-12 col-lg-3">
+                <div class="stats widget">
+                  <span class="stat primary">
+                    <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
+                    <span class="stat-subheader" tal:content="view/recipient_count">Recipients</span>
+                  </span>
+                </div>
+              </div>
             </div>
-        </div>
-        </div>
-    </div>
-    <div class="span6">
-        <div class="box" tal:condition="view/has_subscribers">
-        <h3>Newsletter Abonnenten:
-            <span class="badge badge-info" tal:content="view/subscriber_count">Count</span>
-        </h3>
-        <div class="alert">
-            <strong>Hinweis:</strong> diese Liste wird nur f&uuml;r den Versand
-            von Pressemitteilungen verwendet.
-        </div>
-        <a class="btn  btn-small btn-info show-details">
-            <i class="icon-arrow-down icon-white" />
-            Adressen anzeigen</a>
-        <div class="xbox details visualClear">
-            <div class="visualClear">&nbsp;</div>
-            <div class="tile stats">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>E-Mail-Adresse</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tal:block tal:repeat="item view/subscriber_list">
-                        <tr>
-                            <td tal:content="repeat/item/number" />
-                            <td tal:content="item" />
-                        </tr>
-                        </tal:block>
-                    </tbody>
-                </table>
+          </div>
+        </section>
+
+        <div class="modal fade" id="recipientModal" tabindex="-1" role="dialog" aria-labelledby="recipientModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Adressen aus Verteilern</h4>
+              </div>
+              <div class="modal-body">
+                    <tal:block tal:repeat="item view/recipient_list">
+                        <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                            <h6 tal:content="python:item_details[1]" />
+                            <small class="muted" tal:content="python:item_details[0]" />
+                        </div>
+                    </tal:block>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <section tal:condition="view/has_subscribers">
+          <div class="featurette dim-in two">
+            <div class="row">
+              <div class="col col-lg-9">
+                <h2 i18n:translate="">Newsletter Abonnenten</h2>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-backdrop="false" data-target="#subscriberModal">
+                    Adressen zeigen
+                </button>
+              </div>
+              <div class="col col-lg-3">
+                <div class="stats widget">
+                  <span class="stat primary">
+                    <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
+                    <span class="stat-subheader" tal:content="view/subscriber_count">Recipients</span>
+                  </span>
+                </div>
+              </div>
             </div>
-        </div>
-        </div>
-    </div>
-    </div>
-    
-    <div class="visualClear">&nbsp;</div>
-    <div class="form-actions">
-        <a href="" class="btn btn-xlarge btn-success"
+          </div>
+        </section>
+
+      <div class="visualClear">&nbsp;</div>
+      <div class="formControls dim-in three">
+        <a href="" class="btn btn-large btn-primary pull-right"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
             tal:attributes="href python:context_url+'/@@dispatcher?type=send_now'">
             <i class="icon-share-alt icon-white" />
             Jetzt versenden</a>
-        <a href="" class="btn btn-large btn-info"
+        <a href="" class="btn btn-large"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
             tal:attributes="href python:context_url+'/@@dispatcher?type=send_now_recipients_only'">
             <i class="icon-share-alt icon-white" />
             Nur an Verteiler versenden</a>
-        <a href="" class="btn btn-large btn-warning"
+        <a href="" class="btn btn-large"
             rel="loading-indicator"
             data-loading-text="Ihre Nachricht wird verschickt..."
             tal:attributes="href python:context_url+'/@@dispatcher?type=test'">
             <i class="icon-share-alt icon-white" />
             Testversand durchf&uuml;hren</a>
+      </div>
     </div>
-    
+    </div>
+    </div>
+    <div class="col col-lg-3">
+      <aside id="sidebar" class="stepper-bar"
+        tal:define="has_channels view/has_channel_info;
+                    recipients view/has_recipients_info;">
+        <a href="#" class="box-stepper"
+          rel="twipsy"
+          data-placement="left"
+          data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
+          tal:attributes="href python:context_url+'/@@select-channel'">
+          <strong>1. Verteiler w&auml;hlen</strong>
+        </a>
+        <a class="box-stepper current"
+          rel="twipsy"
+          data-placement="left"
+          data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
+          tal:attributes="class python:has_channels and 'box-stepper' or 'box-stepper disabled';
+                          href python:context_url + '/@@recipient-list'">
+          <strong>2. Empf&auml;nger bereinigen</strong>
+        </a>
+        <a href="" class="box-stepper current"
+          rel="twipsy"
+          data-placement="left"
+          data-original-title="Versandeinstellungen überpr&uuml;fen und Presseinhalt verschicken"
+          tal:condition="python:recipients == True"
+          tal:attributes="href python:context_url+'/@@prepare-release'">
+            <strong>3. Presseinhalt verschicken</strong>
+        </a>
+      </aside>
+    </div>
+    </div>
+
+        <div class="modal fade" id="subscriberModal" tabindex="-1" role="dialog" aria-labelledby="subscriberModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Abonnenten</h4>
+              </div>
+              <div class="modal-body">
+                    <tal:block tal:repeat="item view/subscriber_list">
+                    <div class="tile" tal:define="item_details python:view.reformat_recipients(item)">
+                        <h6><small tal:content="repeat/item/number" />
+                        <span tal:content="item" /></h6>
+                    </div>
+                    </tal:block>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </div>
+
   </section>
   </metal:content-core>
 </metal:main>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2012-10-10 15:36+0000\n"
-"PO-Revision-Date: 2012-10-10 17:40+0100\n"
+"POT-Creation-Date: 2013-10-28 10:52+0000\n"
+"PO-Revision-Date: 2013-10-30 17:05+0100\n"
 "Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
 "Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 msgid "A basic file attachment for presscontents"
 msgstr "Dateianhang für Presseinhalte"
 
-#: ./../channelselection.py:105
+#: ./../channelselection.py:95
 msgid "A channel was successfully selected"
 msgstr "Presseverteiler wurden erfolgreich ausgewählt"
 
@@ -26,15 +26,19 @@ msgstr "Presseverteiler wurden erfolgreich ausgewählt"
 msgid "A customized channel/recipient list used for this single press content. Note: If you don't require any changes, it is faster to just keep the channels."
 msgstr "Eine bereinigte Liste von E-Mail-Adressen für diesen Presseinhalt. Hinweis: falls Sie keine Änderungen vornehmen wollen, können Sie auch einfach die zugewiesenen Verteiler beibehalten oder an zentraler Stelle anpassen."
 
-#: ./../presscenter.py:47
+#: ./../presscenter.py:52
 #: ./../settings.py:46
 msgid "A list of subscribers - one address per line - these are available as default list"
 msgstr "Liste von Newsletter Abonnenten - eine E-Mail-Adresse pro Ziele - die als Standard Empfänger mit eingefügt werden"
 
-#: ./../presscenter.py:38
+#: ./../presscenter.py:43
 #: ./../settings.py:37
 msgid "A list of test recipients - one address per line comma seperated in the format: E-mail, Name"
 msgstr "Eine Liste von E-Mail-Adressen/Emfängern - eine Adresse pro Zeile durch Komma getrennt, wie z.B: info@mustermann.de, Max Mustermann"
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:53
+msgid "A lot of email clients will display the first view lines of the mail's body as a preview in the email listing (not unlike the description displayed next to search results). Since according to usage statistics providing a dedicated short summary can dramatically increase the opening rate of newsletters. Take advantage of this fact by adding a short summary as a teaser to press releases as well."
+msgstr "Viele E-Mail-Programme und Webmail Anwendungen zeigen die ersten Zeilen des E-Mail Inhaltes als Vorschau in Auflistungen wie z.b. im Posteingang (vergleichbar mit den Kurzbeschreibungen bei Suchtreffern). Da alle Studien zum Nutzerverhalten belegen, dass die Verwendung einer kurzen Zusammenfassung oder Einleitung die Öffnungsraten von Newslettern deutlich erhöhen, sollten Sie sich diese Tatsache zu Nutze machen und für Pressemitteilungen ebenfalls verwenden."
 
 #: ./../addfile.py:76
 msgid "A new attachment was successfully added"
@@ -69,6 +73,10 @@ msgstr "Kurze Beschreibung die als Bildunterschrift oder Dateiinformation verwen
 msgid "A single press room that will be the workspace for members."
 msgstr "Ein persönlicher Ordner für registrierte Benutzer (Presszimmer)."
 
+#: ./../pressrelease_templates/view.pt:241
+msgid "Add distributors"
+msgstr "Verteiler anlegen"
+
 #: ./../addfile.py:44
 msgid "Add new file attachment"
 msgstr "Dateianhang hinzufügen"
@@ -85,19 +93,60 @@ msgstr "Pressemitteilung hinzufügen"
 msgid "Add press invitation"
 msgstr "Presseeinladung hinzufügen"
 
-#: ./../pressinvitation.py:154
+#: ./../pressroom_templates/dashboardinvitations.pt:93
+#: ./../pressroom_templates/view.pt:104
+msgid "Add pressinvitation"
+msgstr "Presseeinladung hinzufügen"
+
+#: ./../pressroom_templates/dashboardreleases.pt:95
+#: ./../pressroom_templates/view.pt:95
+msgid "Add pressrelease"
+msgstr "Pressemitteilung hinzufügen"
+
+#: ./../pressroom_templates/dashboardreleases.pt:86
+msgid "Add your first press release to start working with the press tool."
+msgstr "Starten Sie Ihre Arbeit mit dem Pressetool indem Sie Ihre erste Pressemitteilung erstellen."
+
+#: ./../presscenter.py:129
+#: ./../pressinvitation.py:155
+#: ./../pressrelease.py:209
+msgid "Administrator"
+msgstr "Administrator"
+
+#: ./../pressinvitation.py:204
 msgid "Admittance for invited guests only"
 msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung als Terminankündigung abzusehen."
+
+#: ./../archivesettings_templates/archivesettingseditform.pt:45
+msgid "All presscontent will be visible in the press archive by default. Remove the marker to completetly hide it."
+msgstr "Jede Pressemitteilung wird automatisch auch im Pressearchiv angezeigt Entfernen Sie den Haken, um die Archivierung abzustellen."
+
+#: ./../pressrelease_templates/view.pt:212
+msgid "Archive"
+msgstr "Archiv"
 
 #: ./../archivesettings.py:103
 msgid "Archive settings successfully updated"
 msgstr "Die Anzeigeeinstellungen Archiv wurden erfolgreich aktualisiert"
 
-#: ./../presscenter.py:56
+#: ./../pressrelease_templates/view.pt:106
+msgid "Attachments"
+msgstr "Anhänge"
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:43
+msgid "Beside the title and the main body text we also require a preview image for each press release. This is necesary since handling the preview image requires a bit more computation than adding files as attachments."
+msgstr "Neben dem Titel und dem Haupttext einer Pressemittelung ist auch ein Hauptbild oder Vorschaubild erforderlich. Dieses wird in den Text der Mitteilung eingebunden und muss folglich sorgfältiger berechnet werden, als Dateien im Anhang (Downloads)."
+
+#: ./../presscenter.py:61
 msgid "CSS used for the HTML Email"
 msgstr "CSS Datei, die in E-Mails im HTML Format verwendet wird"
 
-#: ./../channelselection.py:38
+#: ./../editimage_templates/imageattachmenteditform.pt:44
+#: ./../editrelease_templates/pressreleaseeditform.pt:46
+msgid "Change details of this press release."
+msgstr "Bearbeiten Sie die Details dieser Pressemitteilung"
+
+#: ./../channelselection.py:26
 #: ./../recipients.py:25
 msgid "Channel"
 msgstr "Verteiler"
@@ -108,9 +157,13 @@ msgstr "Verteiler"
 
 #: ./../addinvitation.py:56
 #: ./../editinvitation.py:58
-#: ./../pressinvitation.py:61
+#: ./../pressinvitation.py:65
 msgid "Closed Event"
 msgstr "Geschlossene Veranstaltung"
+
+#: ./../archivesettings_templates/archivesettingseditform.pt:23
+msgid "Configure external distributors"
+msgstr "Externe Verteiler konfigurieren"
 
 #: ./../addfile.py:51
 msgid "Create file attachment"
@@ -132,7 +185,7 @@ msgstr "Pressemitteilung erstellen"
 msgid "Custom image attachment type"
 msgstr "Bildanhang"
 
-#: ./../presscenter.py:33
+#: ./../presscenter.py:38
 #: ./../settings.py:32
 msgid "Default email address used in test despatches"
 msgstr "Standard E-Mail-Adresse die in den E-Mail HEADER Zeilen verwendet wird"
@@ -142,37 +195,42 @@ msgstr "Standard E-Mail-Adresse die in den E-Mail HEADER Zeilen verwendet wird"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ./../archive.py:222
+#: ./../archive.py:274
 msgid "Diese Veranstaltung kann nur auf Einladung besucht werden. Von einer Publikation bitten wir daher abzusehen."
 msgstr "Diese Veranstaltung ist nur für geladene Gäste. Daher bitten wir Sie, von einer Veröffentlichung als Terminankündigung abzusehen."
 
 #: ./../addinvitation.py:51
 #: ./../editinvitation.py:53
-#: ./../pressinvitation.py:56
+#: ./../pressinvitation.py:60
 msgid "Directions Link"
 msgstr "Link Anfahrtsbeschreibung"
 
 #: ./../archivesettings.py:37
-#: ./../pressrelease.py:95
+#: ./../pressrelease.py:101
 msgid "Distributor"
 msgstr "Zielseiten"
 
-#: ./../presscenter.py:32
+#: ./../presscenter.py:37
 #: ./../settings.py:31
 msgid "E-Mail Address for Tests"
 msgstr "E-Mail-Adresse für Tests"
 
-#: ./../presscenter.py:64
+#: ./../presscenter.py:69
 msgid "E-Mail Template Press Invitation"
 msgstr "E-Mail-Vorlage für Presseeinladungen"
 
-#: ./../presscenter.py:60
+#: ./../presscenter.py:65
 msgid "E-Mail Template Press Release"
 msgstr "E-Mail-Vorlage für Pressemitteilungen"
 
 #: ./../editimage.py:45
 msgid "Edit Image attachment"
 msgstr "Bildanhang bearbeiten"
+
+#: ./../editimage_templates/imageattachmenteditform.pt:21
+#: ./../editrelease_templates/pressreleaseeditform.pt:21
+msgid "Edit Press Release"
+msgstr "Pressemitteilung bearbeiten"
 
 #: ./../archivesettings.py:53
 msgid "Edit archive setting"
@@ -182,11 +240,16 @@ msgstr "Einstellungen Archiv bearbeiten"
 msgid "Edit file attachment"
 msgstr "Dateianhang bearbeiten"
 
+#: ./../editimage_templates/imageattachmenteditform.pt:41
+msgid "Edit image attachement"
+msgstr "Bildanhang bearbeiten"
+
 #: ./../editinvitation.py:79
 msgid "Edit press invitation"
 msgstr "Presseeinladung bearbeiten"
 
 #: ./../editrelease.py:74
+#: ./../editrelease_templates/pressreleaseeditform.pt:43
 msgid "Edit press release"
 msgstr "Pressemitteilung bearbeiten"
 
@@ -205,7 +268,7 @@ msgstr "E-Mail-Adresse ist eine Pflichtangabe"
 
 #: ./../addinvitation.py:33
 #: ./../editinvitation.py:35
-#: ./../pressinvitation.py:38
+#: ./../pressinvitation.py:42
 msgid "End Date"
 msgstr "Veranstaltungsende"
 
@@ -216,29 +279,29 @@ msgstr "Bitte beschreiben Sie kurz den Bildinhalt."
 
 #: ./../addinvitation.py:52
 #: ./../editinvitation.py:54
-#: ./../pressinvitation.py:57
+#: ./../pressinvitation.py:61
 msgid "Enter link to Google Map for directions"
 msgstr "Geben Sie hier einen Link zu einer Anfahrtsbeschreibung (z.B. bei Google Maps) ein."
 
-#: ./../pressrelease.py:68
+#: ./../pressrelease.py:74
 msgid "Enter optional caption describing the image"
 msgstr "Tragen Sie hier eine optionale Bildunterschrift ein."
 
 #: ./../addrelease.py:21
 #: ./../editrelease.py:24
-#: ./../pressrelease.py:32
+#: ./../pressrelease.py:38
 msgid "Enter optional kicker / teaser line."
 msgstr "Tragen Sie hier eine optionale Dachzeile ein."
 
 #: ./../addinvitation.py:42
 #: ./../editinvitation.py:44
-#: ./../pressinvitation.py:47
+#: ./../pressinvitation.py:51
 msgid "Enter optional schedule information."
-msgstr "Geben Sie hier optionale Informationen zum zeitlichen Ablauf dieser Veranstalung ein"
+msgstr "Geben Sie hier optionale Informationen zum zeitlichen Ablauf dieser Veranstaltung ein"
 
 #: ./../addinvitation.py:47
 #: ./../editinvitation.py:49
-#: ./../pressinvitation.py:52
+#: ./../pressinvitation.py:56
 msgid "Enter optional travel information."
 msgstr "Optionale Anfahrtsbeschreibung / Informationen zur Anreise"
 
@@ -249,9 +312,18 @@ msgstr "Geben Sie hier den Titel der Presseeinladung an."
 
 #: ./../addinvitation.py:37
 #: ./../editinvitation.py:39
-#: ./../pressinvitation.py:42
+#: ./../pressinvitation.py:46
 msgid "Event Location"
 msgstr "Veranstaltungsort"
+
+#: ./../addinvitation.py:41
+msgid "Event Schedule"
+msgstr "Ablauf der Veranstaltung"
+
+#: ./../archivesettings_templates/archivesettingseditform.pt:21
+#: ./../pressrelease_templates/view.pt:226
+msgid "Externe Zielseiten"
+msgstr "Externe Zielseiten"
 
 #: ./../addfile.py:28
 #: ./../editfile.py:31
@@ -275,13 +347,23 @@ msgstr "Die globalen Einstellungen für das verwendete CSS wurden aktualisiert."
 msgid "Global settings successfully updated"
 msgstr "Einstellungen wurden erfolgreich aktualisiert"
 
+#: ./../pressrelease_templates/view.pt:89
+msgid "Hinweis:"
+msgstr "Hinweis:"
+
+#: ./../pressinvitation_templates/preview.pt:109
+#: ./../pressinvitation_templates/view.pt:174
+#: ./../pressrelease_templates/preview.pt:110
+msgid "If you no longer need this item"
+msgstr "Falls Sie diesen Inhalt nicht mehr benötigen"
+
 #: ./../addimage.py:27
 #: ./../addrelease.py:44
 #: ./../editimage.py:28
 msgid "Image Attachment"
 msgstr "Bildanhang"
 
-#: ./../pressrelease.py:67
+#: ./../pressrelease.py:73
 msgid "Image Attachment Caption"
 msgstr "Bildunterschrift zum Bildanhang"
 
@@ -292,7 +374,7 @@ msgstr "Bildunterschrift"
 
 #: ./../addrelease.py:51
 #: ./../editrelease.py:54
-#: ./../pressrelease.py:63
+#: ./../pressrelease.py:69
 msgid "Image Title"
 msgstr "Bildname"
 
@@ -304,39 +386,53 @@ msgstr "Der Bildanhang wurde erfolgreich aktualisiert"
 msgid "ImageAttachment"
 msgstr "Bildanhang"
 
+#: ./../pressroom_templates/view.pt:86
+msgid "In order to get started add your first press content."
+msgstr "Erstellen Sie Ihren ersten Presseinhalt, um mit der Arbeit mit dem Pressetool zu beginnen."
+
 #: ./../addrelease.py:20
 #: ./../editrelease.py:23
-#: ./../pressrelease.py:31
+#: ./../pressrelease.py:37
 msgid "Kicker"
 msgstr "Dachzeile"
 
+#: ./../editimage_templates/imageattachmenteditform.pt:24
+#: ./../editrelease_templates/pressreleaseeditform.pt:24
+#: ./../presscenter_templates/presscentersettings.pt:28
+msgid "Last changed:"
+msgstr "Zuletzt verändert:"
+
+#: ./../pressrelease_templates/view.pt:213
+msgid "Listed"
+msgstr "angezeigt"
+
 #: ./../addrelease.py:34
 #: ./../editrelease.py:37
-#: ./../pressrelease.py:45
+#: ./../pressrelease.py:51
 msgid "Location"
 msgstr "Ort"
 
+#: ./../archivesettings_templates/archivesettingseditform.pt:40
+msgid "Manage external distributor sites that implement a press archive preview window"
+msgstr "Verwalten Sie externe Verteilerseiten, die das Pressearchiv als Vorschaufenster einblenden"
+
+#: ./../presscenter_templates/presscentersettings.pt:50
+msgid "Manage the layout of dispatched pressreleases and pressinvitations by adjusting the attached stylesheet (css) or by editing the email templates."
+msgstr "Verwalten Sie das Erscheinungsbild verschickter Pressemittelungen und Presseinladungen, indem Sie die an die E-Mail angehängten Designvorlagen (CSS) anpassen oder die Inhalte der E-Mail-Vorlagen bearbeiten."
+
 #: ./../archivesettings.py:27
-#: ./../pressrelease.py:85
+#: ./../pressrelease.py:91
 msgid "Mark this press release as suitable for displaying as snippet on the main site."
 msgstr "Markieren Sie diese Pressemitteilung als für die Vorschaubox auf kjf-augsburg.de geeignet."
 
 #: ./../archivesettings.py:21
-#: ./../pressrelease.py:79
+#: ./../pressrelease.py:85
 msgid "Mark this press release as visible in the archive."
 msgstr "Markieren Sie dieses Pressemitteilung als vertraulich, um diese aus der Auflistung im öffentlichen Archiv auszuschliessen."
 
-#: ./../pressroom_templates/view.pt:141
-msgid "No press invitations available!"
-msgstr "Im Augenblick gibt es keine Presseeinladung"
-
-#: ./../pressroom_templates/view.pt:77
-msgid "No press releases available!"
-msgstr "Im Augenblick gibt es noch keine Pressemitteilungen."
-
-#: ./../presscenter_templates/view.pt:123
-msgid "No pressrooms available!"
-msgstr "Es gibt keine verfügbaren Benutzerordner/Pressezimmer"
+#: ./../pressrelease_templates/view.pt:215
+msgid "Not listed"
+msgstr "nicht angezeigt"
 
 #: ./../addinvitation.py:62
 #: ./../addrelease.py:56
@@ -344,20 +440,32 @@ msgstr "Es gibt keine verfügbaren Benutzerordner/Pressezimmer"
 msgid "Optional summary that is useful as a preview text in email clients that support this feature."
 msgstr "Geben Sie hier optional eine kurze Zusammenfassung des Inhalt ein. Diese Zusammenfassung kann von den meisten E-Mail-Programmen als Voransicht der Nachricht im Posteingang angezeigt werden."
 
+#: ./../presscenter_templates/workspaces.pt:90
+msgid "Overview of registered members and their workspaces"
+msgstr "Übersicht aller registrierter Benutzer und Arbietsplätze"
+
 #: ./../addrelease.py:30
 #: ./../editrelease.py:33
-#: ./../pressrelease.py:41
+#: ./../pressrelease.py:47
 msgid "Please enter an optional subtitle here."
 msgstr "Bitte tragen Sie hier einen optionalen Subtitel ein."
 
-#: ./../presscenter.py:23
+#: ./../presscenter.py:28
 #: ./../settings.py:22
 msgid "Please enter default send from E-mail address"
 msgstr "Geben Sie hier eine Standard E-Mail-Adresse als Absenderadresse für Presseinhalte ein."
 
+#: ./../addrelease_templates/pressreleaseaddform.pt:40
+msgid "Please enter the basic details for this press release"
+msgstr "Bitte geben Sie hier die Details dieser Pressemittelung ein."
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:23
+msgid "Please fill out the form below to add a new press release"
+msgstr "Bitte füllen Sie das nachstehende Formular sorgfäfftig aus, um eine neue Pressemitteilung zu erzeugen."
+
 #: ./../addinvitation.py:57
 #: ./../editinvitation.py:59
-#: ./../pressinvitation.py:62
+#: ./../pressinvitation.py:66
 msgid "Please select if the event is public."
 msgstr "Bitte wählen Sie, ob diese Veranstaltung nur für geladene Gäste ist."
 
@@ -368,6 +476,10 @@ msgstr "Wählen Sie aus der Liste die Verteiler für den Versand. Hinweis: Sie h
 #: ./../settings.py:66
 msgid "Press Invitation E-Mail Template"
 msgstr "E-Mail-Vorlage: Presseeinladungen"
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:21
+msgid "Press Release"
+msgstr "Pressemitteilung"
 
 #: ./../settings.py:58
 msgid "Press Release E-Mail Template"
@@ -397,18 +509,38 @@ msgstr "Pressemitteilung"
 msgid "PressRoom"
 msgstr "Pressestelle"
 
-#: ./../presscenter.py:28
+#: ./../pressroom_templates/dashboardstats.pt:41
+msgid "Pressemitteilungen"
+msgstr "Pressemitteilungen"
+
+#: ./../pressroom.py:89
+msgid "Pressinvitation"
+msgstr "Presseeinladungen"
+
+#: ./../pressroom_templates/dashboardinvitations.pt:80
+msgid "Pressinvitations"
+msgstr "Presseeinladungen"
+
+#: ./../pressroom.py:87
+msgid "Pressrelease"
+msgstr "Pressemitteilung"
+
+#: ./../pressroom_templates/dashboardreleases.pt:81
+msgid "Pressrelease listing"
+msgstr "Liste Pressemitteilungen"
+
+#: ./../presscenter.py:33
 #: ./../settings.py:27
 msgid "Provide a default sender name to be included"
 msgstr "Bitte tragen Sie eine Standard Absendernamen für Presseinhalte ein."
 
 #: ./../addrelease.py:35
 #: ./../editrelease.py:38
-#: ./../pressrelease.py:46
+#: ./../pressrelease.py:52
 msgid "Provide a location for this press release that will be prepended to the main body text."
 msgstr "Bitte geben Sie für diese Pressemitteilung einen Ort an, der dem Text vorangestellt wird."
 
-#: ./../presscenter.py:41
+#: ./../presscenter.py:46
 #: ./../settings.py:40
 msgid "Recipient"
 msgstr "Empfänger"
@@ -431,7 +563,7 @@ msgstr "Die Liste der Empfänger für diesen Presseinhalt wurde aktualisiert"
 msgid "Save"
 msgstr "Speichern"
 
-#: ./../channelselection.py:60
+#: ./../channelselection.py:48
 msgid "Save Selection"
 msgstr "Auswahl speichern"
 
@@ -439,55 +571,58 @@ msgstr "Auswahl speichern"
 msgid "Save Settings"
 msgstr "Einstellungen speichern"
 
-#: ./../addinvitation.py:41
 #: ./../editinvitation.py:43
-#: ./../pressinvitation.py:46
+#: ./../pressinvitation.py:50
 msgid "Schedule"
 msgstr "Versandplanung"
 
+#: ./../pressrelease_templates/view.pt:261
+msgid "Select channels"
+msgstr "Verteiler auswählen"
+
 #: ./../archivesettings.py:34
-#: ./../pressrelease.py:92
+#: ./../pressrelease.py:98
 msgid "Select external distributors to filter display in the press archive listing"
 msgstr "Wählen Sie die externen Seiten aus, auf denen diese Pressemitteilung im Archiv erscheinen soll"
 
-#: ./../channelselection.py:36
+#: ./../channelselection.py:24
 msgid "Select the appropriate channels"
 msgstr "Bitte wählen Sie die zutreffenden Verteiler aus der Liste"
 
-#: ./../channelselection.py:53
+#: ./../channelselection.py:41
 msgid "Select the channel for dispatch"
 msgstr "Verteilerauswahl für den Versand"
 
-#: ./../channelselection.py:35
+#: ./../channelselection.py:23
 msgid "Selected Channels"
 msgstr "Ausgewählte und zugewiesene Verteiler"
 
 #: ./../archivesettings.py:33
-#: ./../pressrelease.py:91
+#: ./../pressrelease.py:97
 msgid "Selected Dsitributors"
 msgstr "Ausgewählte Zielseiten"
 
-#: ./../channelselection.py:72
+#: ./../channelselection.py:60
 msgid "Selection of dispatch channel has been cancelled."
 msgstr "Die Auswahl der Verteilerlisten wurde abgebrochen."
 
-#: ./../presscenter.py:22
+#: ./../presscenter.py:27
 #: ./../settings.py:21
 msgid "Sender E-Mail-Address"
 msgstr "Absender E-Mail-Adresse"
 
-#: ./../presscenter.py:27
+#: ./../presscenter.py:32
 #: ./../settings.py:26
 msgid "Sender Name"
 msgstr "Absendername"
 
 #: ./../addinvitation.py:29
 #: ./../editinvitation.py:31
-#: ./../pressinvitation.py:34
+#: ./../pressinvitation.py:38
 msgid "Start Date"
 msgstr "Veranstaltungsbeginn"
 
-#: ./../presscenter.py:55
+#: ./../presscenter.py:60
 msgid "Stylesheet"
 msgstr "Stylesheet / Designvorgaben"
 
@@ -495,19 +630,19 @@ msgstr "Stylesheet / Designvorgaben"
 msgid "Stylesheet for HTML E-Mails"
 msgstr "Designvorlage für den Versand von E-Mails im HTML Format. Hinweis: Die Unterstützung für CSS ist in E-Mail-Programmen unterschiedlich valide. Die vorliegenden CSS-Angaben entsprechen dem Standard, der von allen Programmen weitestgehend unterstützt wird."
 
-#: ./../presscenter.py:50
+#: ./../presscenter.py:55
 #: ./../settings.py:49
 msgid "Subscriber"
 msgstr "Abonnent"
 
-#: ./../presscenter.py:46
+#: ./../presscenter.py:51
 #: ./../settings.py:45
 msgid "Subscribers"
 msgstr "Abonnenten"
 
 #: ./../addrelease.py:29
 #: ./../editrelease.py:32
-#: ./../pressrelease.py:40
+#: ./../pressrelease.py:46
 msgid "Subtitle"
 msgstr "Subtitel"
 
@@ -517,7 +652,7 @@ msgstr "Subtitel"
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: ./../presscenter.py:37
+#: ./../presscenter.py:42
 #: ./../settings.py:36
 msgid "Test Recipients"
 msgstr "Empfänger für den Testversand"
@@ -527,6 +662,10 @@ msgstr "Empfänger für den Testversand"
 #: ./../editinvitation.py:27
 msgid "Text"
 msgstr "Haupttext"
+
+#: ./../presscenter_templates/presscentersettings.pt:64
+msgid "The cascading stylesheet that will be attached to the head element of html formatted emails based on the capabilities of current email clients"
+msgstr "Das Cascading Stylesheet wird dem HEAD Element der formatiertern E-Mail hinzugefügt und beinhaltet die Designvorgaben, die alle aktuellen E-Mail-Programme interpretieren können."
 
 #: ./../addfile.py:63
 msgid "The creation of a new attachment has been cancelled."
@@ -552,14 +691,56 @@ msgstr "Für die angegebene E-Mail-Adresse existiert bereits ein Abonnement"
 msgid "The entered email address is not subscribed"
 msgstr "Die eingegebene E-Mail-Addresse konnte nicht in der Liste der Abonnenten gefunden werden"
 
+#: ./../pressrelease_templates/view.pt:113
+msgid "The main image is editable via the main edit form"
+msgstr "Das Hauptbild der Pressemitteilung ist über die Standardbearbeitungsoberfläche veränderbar."
+
 #: ./../editrelease.py:126
 msgid "The press release was successfully updated"
 msgstr "Die Pressemitteilung wurde erfolgreich aktualisiert"
 
-#: ./../archive.py:158
+#: ./../archive.py:210
 #: ./../download.py:58
 msgid "The requested item was not found"
 msgstr "Das gewünschte Objekt konnte nicht gefunden werden."
+
+#: ./../pressrelease_templates/view.pt:260
+msgid "There are no channels asigned yet."
+msgstr "Es wurden noch keine Verteiler zugewiesen"
+
+#: ./../pressrelease_templates/view.pt:239
+msgid "There are no external distributors/sites asigned yet."
+msgstr "Es wurden noch keine externen Verteilerseiten ausgewählt."
+
+#: ./../pressroom_templates/dashboardinvitations.pt:81
+msgid "This dashboard displays all press invitations associated with you account. Add your first pressinvitation to initialize your workspace."
+msgstr "Auf Ihrem Arbeitsplatz werden alle von Ihnen angelegten Presseeinladungen gelistet. Fügen Sie Ihre erste Einladung hinzu, um mit der Arbeit zu beginnen."
+
+#: ./../pressroom_templates/dashboardreleases.pt:82
+msgid "This dashboard shows all press releases available for your user. There are no releases available yet."
+msgstr "Diese Ansicht zeigt alle Pressemittelungen dieses Benutzerkontos. Im Moment liegen noch keine Mitteilungen vor,"
+
+#: ./../pressinvitation_templates/view.pt:166
+msgid "This press content has already been dispatched, but you can"
+msgstr "Dieser Pressinhalt wurde bereits verschickt, aber Sie können"
+
+#: ./../pressinvitation_templates/preview.pt:101
+#: ./../pressrelease_templates/preview.pt:102
+#: ./../pressrelease_templates/view.pt:279
+msgid "This press release has already been dispatched, but you can"
+msgstr "Diese Pressemitteilung wurde bereits verschickt, Sie können aber"
+
+#: ./../presscenter_templates/presscentersettings.pt:104
+msgid "This template will be parsed for each press invititaion and details will be inserted via variable substitution when dispatched."
+msgstr "Diese Vorlage wird für jede Presseeinladung ausgeführt und die entsprechenden Details werden durch Ersetzen der entsprechenden Variablen automatisch eingefügt."
+
+#: ./../presscenter_templates/presscentersettings.pt:84
+msgid "This template will be parsed for each press release and details will be inserted via variable substitution when dispatched."
+msgstr "Diese Vorlage wird für jede Pressemitteilung ausgeführt und die entsprechenden Details werden durch Ersetzen der entsprechenden Variablen beim Versand automatisch eingefügt."
+
+#: ./../addrelease_templates/pressreleaseaddform.pt:50
+msgid "Tip"
+msgstr "Tipp"
 
 #: ./../addfile.py:19
 #: ./../addinvitation.py:20
@@ -569,7 +750,7 @@ msgstr "Titel"
 
 #: ./../addinvitation.py:46
 #: ./../editinvitation.py:48
-#: ./../pressinvitation.py:51
+#: ./../pressinvitation.py:55
 msgid "Travel information"
 msgstr "Anreiseinformationen"
 
@@ -641,29 +822,57 @@ msgstr "Laden Sie hier einen Bildanhang zu dieser Pressemitteilung hoch"
 
 #: ./../addrelease.py:45
 #: ./../editrelease.py:48
-#: ./../pressrelease.py:57
+#: ./../pressrelease.py:63
 msgid "Upload an image for this press release. The image should be already optimized since sending a large image file via E-mail is not recommended"
 msgstr "Laden Sie ein Bild zu dieser Pressemittelung hoch. Das Bild sollte bereit optimiert und verkleinert sein, da E-Mails nicht für den Versand grosser Dateimengen vorgesehen sind."
 
+#: ./../addrelease_templates/pressreleaseaddform.pt:51
+msgid "Use the field summary to add a short teaser."
+msgstr "Verwenden Sie das Feld zur Zusammenfassung um einen kurzen Anreisser zu verfassen."
+
+#: ./../presscenter_templates/workspaces.pt:93
+msgid "Users are redirected to their personal workspaces after signing in to the press application, where they create and manage their press contents"
+msgstr "Benutzer werden nach der Anmeldung in die Presseanwendung zu Ihrem persönlichen Arbeitsplatz weitergeleitet, wo Sie Ihre Presseinhalte verwalten können."
+
+#: ./../pressinvitation_templates/preview.pt:88
+#: ./../pressinvitation_templates/view.pt:153
+#: ./../pressrelease_templates/preview.pt:89
+msgid "Versand"
+msgstr "Versand"
+
 #: ./../archivesettings.py:20
-#: ./../pressrelease.py:78
+#: ./../pressrelease.py:84
 msgid "Visible in Archive?"
 msgstr "Im Archiv angezeigt?"
 
 #: ./../archivesettings.py:26
-#: ./../pressrelease.py:84
+#: ./../pressrelease.py:90
 msgid "Visible on main site?"
 msgstr "Freigeben für die Vorschau?"
+
+#: ./../pressroom_templates/view.pt:81
+msgid "Welcome to your personal workspace"
+msgstr "Willkommen in Ihrem Arbeitsplatz"
 
 #: ./../subscriptions.py:44
 msgid "Your subscription settings have been updated"
 msgstr "Ihr Newsletter Abonnement wurde aktualisiert."
+
+#: ./../pressroom_templates/view.pt:82
+msgid "Your workspace is the central editing unit providing an overview of available press releases and invitations."
+msgstr "Ihr Arbeitsplatz ist die zentrale Stelle zur Arbeit an Presseinhalten. Hier finden Sie eine Übersicht vorhandener Pressemitteilungen und Presseeinladungen."
 
 #: ./../addfile.py:59
 #: ./../addimage.py:59
 #: ./../addinvitation.py:102
 msgid "cancel"
 msgstr "Abbrechen"
+
+#: ./../pressinvitation.py:135
+#: ./../pressrelease.py:189
+#: ./../pressroom.py:81
+msgid "draft"
+msgstr "Entwurf"
 
 #: ./../vocabulary.py:24
 msgid "ejv-aichach-friedberg.de"
@@ -693,10 +902,11 @@ msgstr "kinderzentrum-augsburg.de"
 msgid "kjf-augsburg.de"
 msgstr "kjf-augsburg.de"
 
-#. Default: "Suchen"
-#: ./../presscenter_templates/view.pt:53
-msgid "label_search"
-msgstr "Seite durchsuchen"
+#: ./../pressinvitation_templates/preview.pt:103
+#: ./../pressinvitation_templates/view.pt:168
+#: ./../pressrelease_templates/preview.pt:104
+msgid "review the email recipients here."
+msgstr "die Empfänger hier einsehen."
 
 #: ./../vocabulary.py:22
 msgid "sankt-georg-kempten.de"
@@ -706,8 +916,15 @@ msgstr "sankt-georg-kempten.de"
 msgid "sanktelisabeth.de"
 msgstr "sanktelisabeth.de"
 
-#. Default: "..."
-#: ./../presscenter_templates/view.pt:42
-msgid "title_search_site"
-msgstr "Suche"
+#: ./../pressinvitation.py:137
+#: ./../pressrelease.py:191
+#: ./../pressroom.py:83
+msgid "sent"
+msgstr "Versand"
+
+#: ./../pressinvitation_templates/preview.pt:110
+#: ./../pressinvitation_templates/view.pt:175
+#: ./../pressrelease_templates/preview.pt:111
+msgid "you can delete it"
+msgstr "können Sie diese entfernen"
 

@@ -16,150 +16,152 @@
                     toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                     context_url context/absolute_url">
     
-    <div class="container-fluid">
+  <div class="container-fluid">
         
-        <div class="page-header">
-            <h1>Administration</h1>
+    <header id="page-header">
+      <div class="row"
+        tal:define="navigation_root_url context_url">
+        <div class="col col-lg-9">
+          <h1>Pressecenter</h1>
+          <p tal:define="time context/modified;
+                        timestamp python:context.modified().ISO()"
+            class="discreet">
+            <span i18n:translate="">Last changed:</span>
+            <span tal:attributes="data-livestamp timestamp"
+                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+          </p>
         </div>
-
-    <div class="box row-fluid">
-      <div class="btn-group pull-right">
-                <a href="" class="btn"
-                    rel="twipsy"
-                    data-original-title="&Uuml;bersicht &uuml;ber die Verwendung von Verteilern in Presseinhalten"
-                    tal:attributes="href python:portal_url + '/presscenter/kontakte/@@channel-statistics'">
-                    <i class="icon-signal" />
-                    Statistik</a>
+        <div class="col col-lg-3">
+          <form action="."
+          tal:attributes="action python:context_url + '/@@search'">
+            <div class="input-group">
+              <input class="form-control"
+                id="SearchableText"
+                name="SearchableText"
+                type="text">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search</button>
+              </span>
             </div>
-        <h3><i class="icon-search" />
-        Sofortsuche</h3>
-          <form name="searchform" id="searchGadget_form" 
-                action="search"
-                tal:attributes="action string:${portal_url}/search;
-                                id string:search_form">
+        </form>
+        </div>
+      </div>
+    </header>
 
-              <div class="LSBox">
-              <input name="SearchableText"
-                     type="text"
-                     size="18"
-                     value=""
-                     title="..."
-                     accesskey="4"
-                     i18n:attributes="title title_search_site;"
-                     tal:attributes="value request/form/SearchableText|nothing;
-                                     id string:searchGadget"
-                     class="searchField inputLabel" />
-
-              <input class="searchButton btn primary small"
-                     type="submit"
-                     value="Suchen"
-                     i18n:attributes="value label_search;" />
-
-              <div class="LSResult" id="LSResult" style=""><div class="LSShadow" id="LSShadow"></div></div>
-              </div>
-          </form>
-    </div>
-
-        <div class="row-fluid">
-          <div class="span4">
-            <div class="page-header">
-                <h2>
-                  <a tal:attributes="href python:context_url+'/kontakte'"
-                    rel="twipsy"
-                    data-placement="right"
-                    data-original-title="Verwaltung von E-Mail-Adressen und Verteilerlisten">
-                    Adressen</a>
-                </h2>
-            </div>
-            <tal:block tal:define="stats view/statistics">
-              <div class="tile stats">
-                <h4><span class="badge badge-info" tal:content="stats/channels" />
-                  Verteiler
-                </h4>
-              </div>
-              <div class="tile stats">
-                <h4><span class="badge badge-info" tal:content="stats/recipients" />
-                  Adressen 
-                </h4>
-              </div>
-            </tal:block>
-          </div>
-          <div class="span4">
-            <section>
-                  <div class="page-header">
-                      <h2><a href="" tal:attributes="href python:context_url + '/@@workspaces'"
-                            rel="twipsy"
-                            data-placement="right"
-                            data-original-title="&Uuml;bersicht Redakteure">
-                        Redakteure</a>
-                      </h2>
+    <section id="content-core">
+      <div class="xxxwindow-column">
+        <div class="row">
+          <div class="col col-lg-9">
+            <section class="window-column">
+              <div class="window-column-content"
+                tal:define="pressidx view/presscontent_index">
+                <div class="row">
+                  <div class="col col-lg-6">
+                    <div class="xwell" tal:define="pr_idx view/pr_index">
+                      <div class="statuspanel">
+                        <div class="top success">
+                          <i class="icon-file-alt icon-4x"></i>
+                          <h6>PM</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/pr_index">100</h2>
+                          <h6>Pressemitteilungen</h6>
+                        </div>
+                      </div>
+                      <input type="text"
+                        value="75"
+                        class="dial"
+                        data-appui="knob"
+                        data-thickness=".4"
+                        data-fgColor="#999"
+                        data-bgColor="#fff"
+                        data-readOnly="true"
+                        tal:attributes="data-max pressidx;
+                                        value pr_idx">
+                        <hr class="visualClear">
+                      <h4>Pressemitteilungen</h4>
+                      <div class="progress"
+                        tal:define="progress python:view.get_percental_value(pr_idx)">
+                        <div class="progress-bar"
+                          tal:attributes="style python:'width: ' + progress + '%'"
+                          tal:content="string:${progress}%">
+                        </div>
+                      </div>
+                      <!--<p>
+                        <a href="" class="btn btn-primary"
+                          tal:attributes="href python:context_url + '?filter=published'">
+                          Pressemitteilungen zeigen
+                        </a>
+                      </p>-->
+                    </div>
                   </div>
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Redakteur</th>
-                                <th>Zuletzt angemeldet</th>
-                            </tr>
-                        </thead>
-                        <tbody tal:condition="view/has_pressrooms">
-                            <tal:block tal:repeat="item view/pressrooms">
-                              <tr tal:define="rowcount repeat/item/number;">
-                                  <td tal:content="rowcount">1</td>
-                                  <td><a href="" tal:attributes="href item/getURL"
-                                          tal:content="item/Title" /></td>
-                                  <td tal:define="owner item/Creator;
-                                                  login_time python:view.memberinfo(owner)">
-                                      <span tal:replace="python:toLocalizedTime(login_time)" />
-                                  </td>
-                              </tr>
-                            </tal:block>
-                        </tbody>
-                        <tbody tal:condition="not:view/has_pressrooms">
-                              <tr>
-                                  <td colspan="4">
-                                      <div class="alert alert-block alert-error">
-                                            <a class="close" href="#">×</a>
-                                            <p><strong i18n:translate="">
-                                                No pressrooms available!</strong></p>
-                                      </div>
-                                  </td>
-                              </tr>
-                        </tbody>
-                    </table>
+                  <div class="col col-lg-6">
+                    <div class="xxpanel" tal:define="pi_idx view/pi_index">
+                      <div class="statuspanel">
+                        <div class="top danger">
+                          <i class="icon-calendar icon-4x"></i>
+                          <h6>PE</h6>
+                        </div>
+                        <div class="bottom">
+                          <h2 tal:content="view/pi_index">100</h2>
+                          <h6>Presseeinladung</h6>
+                        </div>
+                      </div>
+                      <input type="text"
+                          value="75"
+                          class="dial"
+                          data-appui="knob"
+                          data-thickness=".4"
+                          data-fgColor="#999"
+                          data-bgColor="#fff"
+                          data-readOnly="true"
+                          tal:attributes="data-max pressidx;
+                                          value pi_idx">
+                          <hr class="visualClear">
+                      <h4>Presseeinladungen</h4>
+                      <div class="progress"
+                        tal:define="progress python:view.get_percental_value(pi_idx)">
+                        <div class="progress-bar"
+                          tal:attributes="style python:'width: ' + progress + '%'"
+                          tal:content="string:${progress}%">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </section>
           </div>
-        <div class="span4">
-          <div class="page-header">
-            <h2><a href="" tal:attributes="href python:context_url + '/@@global-settings'"
-                  rel="twipsy"
-                  data-placement="right"
-                  data-original-title="Verwaltung der E-Mail-Vorlagen und der Standard-Einstellungen">
-                Einstellungen</a>
-            </h2>
-          </div>
-          <table class="table table-condensed">
-            <tbody>
-              <tr>
-                <td><strong>Absender:</strong></td>
-                <td tal:content="context/name" />
-              </tr>
-              <tr>
-                <td><strong>E-Mail:</strong></td>
-                <td tal:content="context/email" />
-              </tr>
-              <tr>
-                <td><strong>Test E-Mails:</strong></td>
-                <td tal:define="items context/testRecipients">
-                  <tal:block tal:repeat="item items">
-                    <span tal:replace="item" />
-                  </tal:block>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="col col-lg-3">
+          <aside id="sidebar">
+            <div class="stats widget">
+              <div class="stat info">
+                <h2 tal:content="view/presscontent_index">72</h2>
+                <h6>Presseinhalte</h6>
+              </div>
+            </div>
+            <hr>
+              <h3>Zuletzt ver&auml;ndert</h3>
+              <div class="history-listing" tal:define="history view/get_history">
+                <tal:items tal:repeat="entry history">
+                  <h6><span tal:replace="entry/title" /></h6>
+                  <p class="discreet">
+                    <span tal:content="entry/action" i18n:translate="">
+                      Action</span>
+                    <span tal:define="time entry/timestamp;
+                                      timestamp entry/timestamp"
+                          tal:attributes="data-livestamp timestamp"
+                          tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+                      <span>by <span tal:replace="entry/actorname" /></span>
+                  </p>
+                </tal:items>
+              </div>
+            <hr>
+          </aside>
         </div>
         </div>
+      </div>
+    </section>
     </div>
   </metal:content-core>
 </metal:main>

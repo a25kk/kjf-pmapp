@@ -10,71 +10,149 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
   
-  <!--<style type="text/css" title="currentStyle">
-      @import "++resource++jquery.datatables/media/css/jquery.dataTables.css";
-  </style>-->
-  
-  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+  <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       context_url context/absolute_url;"
     class="container-fluid">
-        
-        <div class="page-header">
-            <h1>Adressen <small>Zugewiesene Empf&auml;nger</small></h1>
+        <div class="page-header" id="page-header">
+          <div class="pull-right">
+            <h4>Versandplanung</h4>
+          </div>
+          <h1>Pressemitteilung</h1>
+          <p class="discreet">
+            Zugewiesene Empf&auml;nger bereinigen
+          </p>
         </div>
-        
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="alert alert-block alert-info">
-                    <h4 class="alert-heading">Information</h4>
-                    <p>Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, klicken Sie bitte
-                        auf eine Tabellenzeile, um diese zu markieren. Verwenden Sie den Button
-                        <strong>Adresse entfernen</strong>, um diese Zeile zu l&ouml;schen</p>
-                </div>
-            </div>
-            <div class="span6">
-                <a href="javascript:void(0)" id="delete"
-                    class="btn btn-large btn-danger">
-                    <i class="icon-remove icon-white" />
-                    Adresse entfernen</a>
-            </div>
-        </div>
+    <div id="content-core">
+      <div class="row">
+        <div class="col col-lg-9">
+          <div class="window-column">
+          <div class="window-column-content">     
+            <p class="lead" tal:condition="not:view/has_recipients_info">
+                Um die Liste der E-Mail-Empf&auml;nger zu bereinigen, entfernen Sie
+                die jeweilige Markierung.
+            </p>
 
-        <form tal:attributes="action request/URL" method="post"
-            id="recipient-cleanup-form">
-        <table tal:condition="view/has_subscribers"
-            class="table table-condensed table-striped table-bordered"
-            id="recipient-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Adresse</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr tal:repeat="item view/subscriber_listing">
-                    <td tal:content="item/name">Name</td>
-                    <td tal:define="counter repeat/item/number;">
-                        <span tal:content="item/email">E-Mail</span>
-                        <input type="hidden"
-                            tal:attributes="id string:recipient-${counter};
-                                            name string:recipient-${counter};
-                                            value string:${item/email}, ${item/name};" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="visualClear">&nbsp;</div>
-            <div class="form-actions">
-                <input type="submit"
-                    value="Liste speichern"
-                    name="form.button.Submit"
-                    id="submit-button"
-                    class="btn btn-large btn-primary" />
-                <a href="" class="btn btn-large btn-danger"
-                  tal:attributes="href context/absolute_url">
-                  Abbrechen</a>
+            <tal:block tal:condition="view/has_recipients_info">
+                <div class="alert alert-danger">
+                    <strong>Warnung:</strong>
+                        Diese Liste wurde bereits bereinigt
+                </div>
+            </tal:block>
+            <div tal:condition="not:view/has_subscribers" class="alert alert-warning">
+                <h4 i18n:translate="">Warning</h4>
+                <p i18n:translate="">
+                    You need to select at least one channel to dispatch this
+                    press content. Come back here when you are done.</p>
             </div>
-        </form>
+    
+            <form method="post" id="recipient-cleanup-form"
+                tal:attributes="action request/URL" 
+                tal:condition="view/has_subscribers">
+            <table  class="table table-condensed table-responsive table-hover table-recipients-list"
+                id="recipient-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Adresse</th>
+                    </tr>
+                </thead>
+                <tbody tal:condition="not:view/has_recipients_info">
+                    <tr tal:repeat="item view/subscriber_listing">
+                        <td tal:define="counter repeat/item/number;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                        value=""
+                                        checked="checked"
+                                        tal:attributes="id string:cb-${item/email};
+                                                        name string:cb-${counter};
+                                                        value string:${item/email}, ${item/name};">
+                                    <strong tal:content="item/name" />
+                                </label>
+                            </div>
+                        </td>
+                        <td tal:define="counter repeat/item/number;">
+                            <p class="xtext-muted"
+                              tal:content="item/email">E-Mail</p>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody tal:condition="view/has_recipients_info">
+                    <tr tal:repeat="item view/stored_recipients">
+                        <td tal:define="counter repeat/item/number;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"
+                                        value=""
+                                        checked="checked"
+                                        tal:attributes="id string:cb-${item/email};
+                                                        name string:cb-${counter};
+                                                        value string:${item/email}, ${item/name};">
+                                    <strong tal:content="item/name" />
+                                </label>
+                            </div>
+                        </td>
+                        <td tal:define="counter repeat/item/number;">
+                            <p class="xtext-muted"
+                              tal:content="item/email">E-Mail</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="visualClear">&nbsp;</div>
+                <div class="form-actions">
+                    <input type="submit"
+                        value="Liste speichern"
+                        name="form.button.Submit"
+                        id="submit-button"
+                        class="btn btn-primary btn-lg" />
+                    <a href="" class="btn btn-danger btn-lg"
+                      tal:attributes="href context/absolute_url">
+                      Abbrechen</a>
+                </div>
+            </form>
+          </div>
+          </div>
+        </div>
+        <div class="col col-lg-3">
+          <aside id="sidebar" class="stepper-bar"
+              tal:define="has_channels view/has_channel_info;
+                          recipients view/has_recipients_info;">
+              <a href="#" class="box-stepper"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="W&auml;hlen Sie einen oder mehrere Verteiler für diese Pressemitteilung"
+                tal:attributes="href python:context_url+'/@@select-channel'">
+                <strong>1. Verteiler w&auml;hlen</strong>
+              </a>
+              <a class="box-stepper current"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Bearbeiten Sie die Rezipienten in der &Uuml;bersicht alles Empf&auml;nger"
+                tal:attributes="class python:has_channels and 'box-stepper current' or 'box-stepper current disabled';
+                                href python:context_url + '/@@recipient-list'">
+                <strong>2. Empf&auml;nger bereinigen</strong>
+              </a>
+              <a href="" class="box-stepper"
+                rel="twipsy"
+                data-placement="left"
+                data-original-title="Versandeinstellungen überpr&uuml;fen und Presseinhalt verschicken"
+                tal:condition="python:recipients == True"
+                tal:attributes="href python:context_url+'/@@prepare-release'">
+                  <strong>3. Presseinhalt verschicken</strong>
+              </a>
+              
+              <hr>
+                <a href="" class="btn btn-default btn-lg btn-block"
+                  tal:attributes="href context_url">
+                  Abbrechen
+                </a>
+              <hr>
+            </aside>
+        </div>
+      </div>
+    </div>
   </section>
   </metal:content-core>
 </metal:main>

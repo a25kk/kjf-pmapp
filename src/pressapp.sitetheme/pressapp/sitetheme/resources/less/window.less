@@ -1,0 +1,260 @@
+//
+// Main app content window
+// ---------------------
+
+.window {
+  display: block;
+  .clearfix();
+  margin: 0 0 @line-height-computed;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 22px 70px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  background: #ededed;
+  .window-header {
+    padding: @line-height-computed @line-height-computed;
+    //min-height: @navbarHeight;
+    #gradient > .vertical(#e9e9e9, #b2b2b2);
+    //#gradient > .vertical(lighten(@appBrown, 10%), @appBrown);
+    border-bottom: 1px solid #656565;
+    //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+    margin: 0px;
+    color: @gray;
+    h1 {
+      //font-size: @font-size-base * 1.75;
+      font-size: @font-size-base * 1.75;
+      line-height: @line-height-computed;
+      margin: @line-height-computed / 2 0 @line-height-computed / 2;
+      small {
+        font-size: @font-size-base;
+        .label {
+          font-weight: normal;
+        }
+        a {
+          color: #fff;
+          font-weight: normal;
+        }
+      }
+    }
+    p.discreet {
+      color: @gray;
+      a.link-clear-filter {
+        display: inline-block;
+        color: @app-brown;
+      }
+    }
+  }
+  .window-toolbar {
+      //min-height: @navbar-height;
+      margin:0px 0px 0px;
+      padding: 0px @line-height-computed 0 0;
+      border-bottom: 1px solid #656565;
+      .nav {
+        font-size: @font-size-base;
+      }
+      //#gradient > .vertical(#bbb, @gray-light);
+      //.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+      .nav a {
+          //color: @grayDark;
+          //font-size: @font-size-base;
+          //padding: @line-height-computed / 2;
+          //line-height:@font-size-base;
+      }
+      .nav li.active a {
+          //color: #fff;
+      }
+  }
+  .window-content {
+    background: #fff;
+    background: url(../../assets/img/bg-white-fabric.png) repeat 0 0 #fff;
+    color: @gray;
+    min-height: 500px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+    .window-column {
+      border-right: 1px solid @gray;
+      min-height: 500px;
+      padding-bottom: @line-height-computed;
+      background: transparent;
+      .btn {
+        text-shadow: none;
+      }
+      .window-column-content {
+        padding: @line-height-computed;
+      }
+      .featurette {
+          margin: @navbar-height;
+          padding: @line-height-computed;
+          background-color: rgba(255, 255, 255, 0.35);
+          border: 1px solid @gray-light;
+          .stats {
+            display: block;
+            .stat {
+              display: block;
+              background: @btn-primary-bg;
+              .stat-header {
+                margin: (@line-height-computed / 2) 0;
+                font-family: @headings-font-family;
+                font-weight: @headings-font-weight;
+                line-height: @line-height-computed;
+                font-size: @font-size-base * 2.25;
+              }
+              .stat-subheader {
+                display: block;
+                text-transform: uppercase;
+                text-shadow: none;
+              }
+            }
+          }
+        }
+        div.formControls {
+          //background-color: rgba(255, 255, 255, 0.5);
+          background: transparent;
+          border-top: 1px solid @gray-light;
+          //background: url(../assets/img/bg-white-fabric.png) repeat #fff;
+        }
+    }
+    .tile {
+        padding: @padding-small-vertical;
+        .box-shadow(none);
+        border: 0px;
+        border-bottom: 1px solid @gray-light;
+        border-radius: 0;
+        background: transparent !important;
+        .btn {
+          //.btn-primary();
+          text-shadow: none;
+          margin: @line-height-computed / 2 @line-height-computed * 1.25 0;
+        }
+        &.active,
+        &:hover {
+            background: url(../../assets/img/bg-white-fabric.png) repeat #fff !important;
+            color: #000;
+            border-left: 4px solid @gray;
+            margin-left: -4px;
+            .btn {
+              .btn-primary();
+            }
+        }
+        h4 {
+          font-size: @font-size-base;
+          margin-bottom: 0px;
+        }
+        h6 {
+          margin-bottom: 0px;
+          font-weight: 100;
+        }
+        .list-tile-info {
+            margin: (@line-height-computed / 2) 0 0;
+        }
+    }
+    #content-core {
+      border-right: 1px solid @gray;
+    }
+    #sidebar {
+      padding-top: @line-height-computed;
+      padding-right: @line-height-computed * 1.5;
+      padding-left: @line-height-computed;
+      @media (min-width: @screen-desktop)  {
+        padding-left: 0;
+      }
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+      &.stepper-bar {
+        padding-top: 0px;
+      }
+      .tooltip {
+        text-shadow: none;
+      }
+      .btn {
+        text-shadow: none;
+      }
+      .tile {
+        padding: @padding-small-horizontal;
+        //margin-right: @line-height-computed;
+        &.active,
+        &:hover {
+            background: #f5f5f5;
+            color: #000;
+            border-right: 0px solid @gray;
+        }
+      }
+      .box-editable {
+        display: block;
+        a.link-editable {
+          .opacity(70);
+          z-index: 1;
+        }
+        &:hover {
+          color: #000;
+          a.link-editable {
+            display: inline-block;
+            .opacity(100);
+            color: @gray;
+          }
+        }
+        &.stepper {
+          margin: 0 -(@line-height-computed * 1.5) 0;
+          padding: @line-height-computed / 2 @line-height-computed * 1.5 0px;
+          border-bottom: 1px solid @gray;
+          //background:#a7a9aa;
+          &.disabled {
+            .opacity(0.3);
+          }
+          &.current {
+            background: @app-brown;
+            color: #fff;
+            text-shadow: none;
+            padding-top: @line-height-computed;
+            padding-bottom: @line-height-computed;
+            border-left: 4px solid @gray;
+            margin-left: -(@line-height-computed * 1.5);
+          }
+        }
+      }
+      .box-stepper {
+        display: block;
+        margin: 0 -(@line-height-computed * 1.5) 0;
+        padding: @line-height-computed * 2 @line-height-computed * 1.5 @line-height-computed * 2 @line-height-computed;
+        border-bottom: 1px solid @gray;
+        color: @gray;
+        //.opacity(0.7);
+        &.current {
+          //background: @app-brown;
+          background:rgba(255, 255, 255, 0.5);
+          //color: #fff;
+          color: @text-color;
+          text-shadow: none;
+          padding-top: @line-height-computed * 2;
+          padding-bottom: @line-height-computed * 2;
+          &:hover {
+            color: @text-color;
+          }
+          strong {
+            font-size: @font-size-base * 1.5;
+          }
+        }
+        strong {
+          font-family: @headings-font-family;
+          font-size: @font-size-base * 1.25;
+          font-weight: 500;
+        }
+        small {
+          line-height: 16px;
+        }
+        &:hover {
+          .opacity(100);
+          color: @text-color;
+          text-decoration: none;
+          border-left: 2px solid @gray;
+          margin-left: -(@line-height-computed * 1.5);
+          padding-left: @line-height-computed - 2px;
+        }
+      }
+      .widget {
+        margin: 0 @line-height-computed;
+        text-shadow: none;
+      }
+      .history-listing {
+        h6 {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}
