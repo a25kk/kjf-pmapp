@@ -163,7 +163,7 @@
               i18n:translate="">Versand
             </a>
             <p>
-              <span i18n:translate="">This press release has already been dispatched,
+              <span i18n:translate="">This press content has already been dispatched,
                but you can</span>
               <a href=""  tal:attributes="href python:context_url + '/@@prepare-release'"
                 i18n:translate="">review the email recipients here.</a>
