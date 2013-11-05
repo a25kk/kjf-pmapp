@@ -76,7 +76,6 @@ class NavBarViewlet(grok.Viewlet):
         mtool = api.portal.get_tool(name='portal_membership')
         member = api.user.get_current()
         if member:
-            import pdb; pdb.set_trace( )
             info = {}
             info['home_url'] = member.getHomeFolder().absolute_url()
             fullname = member.getProperty('fullname', None)
