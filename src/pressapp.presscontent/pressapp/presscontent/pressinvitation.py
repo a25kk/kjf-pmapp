@@ -86,7 +86,7 @@ def endDefaultValue(data):
 
 class View(grok.View):
     grok.context(IPressInvitation)
-    grok.require('zope2.View')
+    grok.require('cms.ModifyPortalContent')
     grok.name('view')
 
     def has_channel_info(self):
