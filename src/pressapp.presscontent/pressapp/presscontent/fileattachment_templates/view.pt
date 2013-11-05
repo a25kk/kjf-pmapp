@@ -9,21 +9,26 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
+    <div class="page-header" id="page-header">
+        <h1>Image Attchment</h1>
+        <p class="text-discreet" tal:content="context/Title">Zusammenfassung</p>
+    </div>
 
-  <div class="page-header">
-    <h1 tal:content="context/Title" />
-  </div>
-
-  <p class="document-description"
-    tal:condition="context/Description"
-    tal:content="context/Description" />
-  
-  <div class="btn-group">
-    <a href="" class="btn"
-      tal:attributes="href string:${context/absolute_url}/@@download/attachment/${context/attachment/filename}">
-      <i class="icon-download" />
-      Download</a>
-  </div>
+    <div id="content-core">
+    <div class="row">
+    <div class="col-xs-12 col-lg-9">
+    <div class="window-column">
+      <div class="window-column-content">
+        <div class="btn-group">
+          <a href="" class="btn"
+            tal:attributes="href string:${context/absolute_url}/@@download/attachment/${context/attachment/filename}">
+            <i class="icon-download" />
+            Download</a>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
 
   </metal:content-core>
 </metal:main>

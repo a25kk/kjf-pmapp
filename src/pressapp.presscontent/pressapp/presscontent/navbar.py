@@ -25,7 +25,7 @@ class NavBarViewlet(grok.Viewlet):
         context = aq_inner(self.context)
         self.portal_state = getMultiAdapter((context, self.request),
                                             name='plone_portal_state')
-        self.anonymous = self.portal_state.anonymous()
+        self.anonymous = api.user.is_anonymous()
         self.portal_url = self.portal_state.portal_url
         self.context_url = context.absolute_url()
         self.parent_url = aq_parent(context).absolute_url()
@@ -76,6 +76,7 @@ class NavBarViewlet(grok.Viewlet):
         mtool = api.portal.get_tool(name='portal_membership')
         member = api.user.get_current()
         if member:
+            import pdb; pdb.set_trace( )
             info = {}
             info['home_url'] = member.getHomeFolder().absolute_url()
             fullname = member.getProperty('fullname', None)
