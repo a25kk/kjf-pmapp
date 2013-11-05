@@ -126,7 +126,7 @@ def distributorIndexer(context):
 class View(grok.View):
     grok.context(IPressRelease)
     grok.implements(IViewView)
-    grok.require('cms.ModifyPortalContent')
+    grok.require('cmf.ModifyPortalContent')
     grok.name('view')
 
     def update(self):
