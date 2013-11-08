@@ -9,6 +9,12 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
+    <section tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       portal_state context/@@plone_portal_state;
+                       item_state context_state/workflow_state;
+                       portal_url portal_state/portal_url;
+                       context_url context/absolute_url;"
+    class="xcontainer-fluid window">
     <div class="page-header" id="page-header">
         <h1>Image Attachment</h1>
         <p tal:define="time context/modified;
@@ -46,7 +52,7 @@
             </div>
         </div>
     </div>
-
+    </section>
   </metal:content-core>
 </metal:main>
 
