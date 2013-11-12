@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main"
+        tal:define="memberinfo context/portal_membership/getMemberInfo;
+                    member context/@@plone_portal_state/member;
+                    name python:memberinfo['fullname'] or member.getId() or member.getId();
+                    portal_url context/portal_url;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    context_url context/absolute_url">
+    
+    <div class="container-fluid">
+        <div class="page-header" id="page-header">
+          <div class="row"
+            tal:define="navigation_root_url context_url">
+            <div class="col col-lg-9">
+              <h1>Presseinhalte</h1>
+              <p class="discreet">
+                Liste der letzten &Auml;nderungen
+              </p>
+            </div>
+            <div class="col col-lg-3">
+              <div class="pull-right">
+                <form action="."
+                  tal:attributes="action python:context_url + '/@@search'">
+                    <div class="input-group">
+                      <input class="form-control"
+                        id="SearchableText"
+                        name="SearchableText"
+                        type="text">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Search</button>
+                      </span>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <section id="content-core">
+        <div class="row">
+          <div class="col col-lg-9">
+            <div class="window-column">
+
+              <tal:pms tal:condition="view/has_presscontent">
+                <div class="tile-wrapper"
+                  tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                          b_size python:int(request.get('b_size', 20));
+                          b_start python:int(request.get('b_start', 0));
+                          items view/presscontent;
+                          items_count python:len(items);
+                          batch python:Batch(items, b_size, b_start);">
+                  <div class="list-tile" tal:repeat="item batch">
+                    <div class="row">
+                        <div class="col col-lg-2">
+                          <h6 tal:define="item_type item/portal_type"
+                            tal:content="python:view.get_type_info(item_type)"
+                            i18n:translate="">Item Type
+                          </h6>
+                          <p>
+                            <small tal:define="state item/review_state"
+                                tal:content="python:view.get_state_info(state)"
+                                i18n:translate="">Unpublished</small></p>
+                        </div>
+                        <div class="col col-lg-6"
+                          tal:define="state item/review_state">
+                          <h4>
+                            <span tal:content="item/Title" />
+                          </h4>
+                          <p>
+                            <small tal:define="modified item/modified;
+                                               timestamp python:modified.ISO();
+                                               creator item/Creator">
+                                <span tal:replace="python:view.get_user_info(creator)" />
+                              <span tal:attributes="data-livestamp timestamp"
+                                tal:content="python:toLocalizedTime(timestamp, long_format=True)" />
+                            </small>
+                          </p>
+                        </div>
+                        <div class="col col-lg-4">
+                            <a class="btn btn-default btn-xs pull-right"
+                                tal:attributes="href item/getURL">
+                                Bearbeiten</a>
+                        </div>
+                      </div>
+                  </div><!-- /tile -->
+                  <div metal:use-macro="context/batch_macros/macros/navigation" />
+                </div><!-- /tile-wrapper -->
+              </tal:pms>
+            </div>
+          </div>
+          <div class="col col-lg-3">
+            <aside id="sidebar">
+              <p class="lead" i18n:translate="">
+                Overview of recent changes by all members inside their workspaces</p>
+              <hr>
+              <p i18n:translate="">
+                Users are redirected to their personal workspaces after signing
+                in to the press application, where they create and manage their
+                press contents
+              </p>
+              <p i18n:translate="">This page collects all content added in 
+                chronological order</p>
+              <hr>
+            </aside>
+          </div>
+        </div>
+        </section>
+        
+    </div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

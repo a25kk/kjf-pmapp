@@ -156,6 +156,9 @@
                   </p>
                 </tal:items>
               </div>
+              <a class="btn btn-default btn-block"
+                tal:attributes="href python:context_url + '/@@recent-changes'">
+                Alle anzeigen</a>
             <hr>
           </aside>
         </div>

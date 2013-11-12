@@ -169,6 +169,45 @@ class View(grok.View):
         return stats
 
 
+class RecentChanges(grok.View):
+    grok.context(IPressCenter)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('recent-changes')
+
+    def update(self):
+        self.has_presscontent = len(self.presscontent()) > 0
+
+    def get_user_info(self, user):
+        member = api.user.get(username=user)
+        fullname = member.getProperty('fullname')
+        if fullname:
+            return fullname
+        else:
+            return _(u"Administrator")
+
+    def get_state_info(self, state):
+        info = _(u"draft")
+        if state == 'published':
+            info = _(u"sent")
+        return info
+
+    def get_type_info(self, itemtype):
+        info = _(u"Pressrelease")
+        if itemtype == 'pressapp.presscontent.pressinvitation':
+            info = _(u"Pressinvitation")
+        return info
+
+    def presscontent(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        press_types = ['pressapp.presscontent.pressrelease',
+                       'pressapp.presscontent.pressinvitation']
+        results = catalog(portal_type=press_types,
+                          sort_on='modified',
+                          sort_order='reverse')
+        items = IContentListing(results)
+        return items
+
+
 class PressCenterSettings(grok.View):
     grok.context(IPressCenter)
     grok.require('zope2.View')
