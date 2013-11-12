@@ -14,7 +14,26 @@
     
     <div class="page-header" id="page-header">
       <div class="pull-right">
-        <h4>Übersicht Adressen</h4>
+        <form action="."
+          tal:attributes="action python:context_url + '/@@search'">
+            <div class="input-group">
+              <input class="form-control"
+                id="SearchableText"
+                name="SearchableText"
+                type="text">
+                <input type="hidden" name="advanced_search" value="True" />
+                <input type="hidden" name="portal_type:list" value="pressapp.channelmanagement.subscriber" />
+                <input class="hidden"
+                       type="checkbox"
+                       checked="checked"
+                       name="path"
+                       tal:attributes="value python:'/'.join(context.getPhysicalPath())"
+                       />
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search</button>
+              </span>
+            </div>
+        </form>
       </div>
         <h1>Kontakte</h1>
         <p tal:define="time context/modified;

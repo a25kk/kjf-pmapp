@@ -20,7 +20,6 @@
         <p class="navbar-text visible-lg">Katholische Jugendf&uuml;rsorge der Dioz&ouml;se Augsburg e.V.</p>
         <div class="collapse navbar-collapse navbar-ex1-collapse" tal:condition="not:viewlet/anonymous">
             <ul class="nav navbar-nav nav-user navbar-right"
-                tal:condition="viewlet/is_administrator"
                 tal:define="memberinfo viewlet/memberinfo;
                             home_folder memberinfo/home_url">
                 <li class="dropdown">
@@ -104,7 +103,8 @@
                     Presseeinladungen
                 </a>
             </li>
-            <li><a href=""
+            <li tal:condition="viewlet/is_administrator">
+                <a href=""
                     tal:attributes="href python:portal_url+'/presscenter/kontakte'">
                     <span class="badge"
                         id="counter-pi"
