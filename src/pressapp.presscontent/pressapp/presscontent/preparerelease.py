@@ -1,7 +1,9 @@
 from Acquisition import aq_inner
 from five import grok
+from plone import api
 from zope.component.hooks import getSite
 
+from pressapp.presscontent.pressinvitation import IPressInvitation
 from pressapp.presscontent.interfaces import IPressContent
 
 
@@ -15,6 +17,21 @@ class PrepareRelease(grok.View):
         self.has_recipients = self.recipient_count > 0
         self.subscriber_count = len(self.subscriber_list())
         self.has_subscribers = self.subscriber_count > 0
+
+    def is_administrator(self):
+        context = aq_inner(self.context)
+        is_admin = False
+        admin_roles = ('Site Administrator', 'Manager')
+        user = api.user.get_current()
+        roles = api.user.get_roles(username=user.getId(), obj=context)
+        for role in roles:
+            if role in admin_roles:
+                is_admin = True
+        return is_admin
+
+    def is_pressinvitation(self):
+        context = aq_inner(self.context)
+        return IPressInvitation.providedBy(context)
 
     def recipient_list(self):
         context = aq_inner(self.context)

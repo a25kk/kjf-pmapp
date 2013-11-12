@@ -76,26 +76,28 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-        <section tal:condition="view/has_subscribers">
-          <div class="featurette dim-in two">
-            <div class="row">
-              <div class="col col-lg-9">
-                <h2 i18n:translate="">Newsletter Abonnenten</h2>
-                <button class="btn btn-link" type="button" data-toggle="modal" data-backdrop="false" data-target="#subscriberModal">
-                    Adressen zeigen
-                </button>
-              </div>
-              <div class="col col-lg-3">
-                <div class="stats widget">
-                  <span class="stat primary">
-                    <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
-                    <span class="stat-subheader" tal:content="view/subscriber_count">Recipients</span>
-                  </span>
+        <tal:block tal:condition="not:view/is_pressinvitation">
+            <section tal:condition="view/has_subscribers">
+              <div class="featurette dim-in two">
+                <div class="row">
+                  <div class="col col-lg-9">
+                    <h2 i18n:translate="">Newsletter Abonnenten</h2>
+                    <button class="btn btn-link" type="button" data-toggle="modal" data-backdrop="false" data-target="#subscriberModal">
+                        Adressen zeigen
+                    </button>
+                  </div>
+                  <div class="col col-lg-3">
+                    <div class="stats widget">
+                      <span class="stat primary">
+                        <span class="stat-header"><i class="icon-envelope-alt icon-2x"></i></span>
+                        <span class="stat-subheader" tal:content="view/subscriber_count">Recipients</span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
+        </tal:block>
 
       <div class="visualClear">&nbsp;</div>
       <div class="formControls dim-in three">
