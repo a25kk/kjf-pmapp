@@ -21,6 +21,7 @@
     <theme href="archive.html" css:if-content="body.template-press-subscription" />
     <theme href="archive.html" css:if-content="body.template-press-subscription-success" />
     <theme href="default.html" css:if-content="body.portaltype-plone-site" />
+    <theme href="archive.html" css:if-content="body.section-impressum" />
     <!-- The default theme, used for standard Plone web pages -->
     <theme href="theme.html" css:if-content="#visual-portal-wrapper" />
     
