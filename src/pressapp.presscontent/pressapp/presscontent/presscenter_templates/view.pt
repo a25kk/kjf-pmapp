@@ -40,7 +40,10 @@
                 name="SearchableText"
                 type="text">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Search</button>
+                <button class="btn btn-default"
+                    type="submit"
+                    value="Search"
+                    i18n:attributes="value label_search;">Search</button>
               </span>
             </div>
         </form>

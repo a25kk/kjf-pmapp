@@ -11,6 +11,7 @@ from Acquisition import aq_inner
 from AccessControl import getSecurityManager
 from AccessControl.SecurityManagement import newSecurityManager
 from AccessControl.SecurityManagement import setSecurityManager
+from plone import api
 from five import grok
 from zope.i18n import translate
 from zope.site.hooks import getSite
@@ -105,27 +106,24 @@ class Dispatcher(grok.View):
             outer.attach(html_text)
             try:
                 mailhost.send(outer.as_string())
-                log.info("Sent newsletter to \"%s\"" % recipient['mail'])
+                msg = "Sent newsletter to \"{0}\"".format(recipient['mail'])
+                log.info(msg)
                 send_counter += 1
             except Exception as e:
                 log.info("Sending to \"%s\" failed: %s" % (
                          recipient['mail'], e))
                 send_error_counter += 1
-        log.info("Dipatched to %s recipients with %s errors." % (send_counter,
-                 send_error_counter))
+        log_msg = "Dipatched to {0} recipients with {1} errors.".format(
+            send_counter, send_error_counter)
+        log.info(log_msg)
         if self.request.get('type') != 'test':
-            wftool = getToolByName(context, 'portal_workflow')
-            if wftool.getInfoFor(context, 'review_state') == 'private':
+            wf_state = api.content.get_state(context)
+            if wf_state == 'private':
                 owner = context.getWrappedOwner()
-                sm = getSecurityManager()
-                # create a new context, as the owner of the folder
-                newSecurityManager(self.request, owner)
-                try:
-                    wftool.doActionFor(context, 'publish')
+                with api.env.adopt_user(username=owner.getId()):
+                    api.content.transition(obj=context, transition='publish')
                     modified(context)
                     context.reindexObject(idxs='modified')
-                finally:
-                    setSecurityManager(sm)
 
     def _getRecievers(self, type):
         context = aq_inner(self.context)
