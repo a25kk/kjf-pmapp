@@ -8,9 +8,6 @@ from email.header import Header
 
 from datetime import datetime
 from Acquisition import aq_inner
-from AccessControl import getSecurityManager
-from AccessControl.SecurityManagement import newSecurityManager
-from AccessControl.SecurityManagement import setSecurityManager
 from plone import api
 from five import grok
 from zope.i18n import translate
@@ -87,21 +84,19 @@ class Dispatcher(grok.View):
                                          str(recipient_name))
             personal_text_plain = plain_text.replace('[[SUBSCRIBER]]',
                                                      str(recipient_name))
-
             outer = MIMEMultipart('alternative')
-            outer['To'] = Header('<%s>' % safe_unicode(recipient['mail']))
+            safe_sendto = safe_unicode(recipient['mail'])
+            outer['To'] = Header('<{0}>'.format(safe_sendto))
             outer['From'] = self.default_data['email']
             outer['Subject'] = subject_header
             outer.epilogue = ''
             outer.preamble = 'This is a multi-part message in MIME format.'
-            # cs_utf = Charset('utf-8')
-            # plain_part = personal_text_plain.encode(body_charset)
             text_part = MIMEText(personal_text_plain,
                                  'plain',
-                                 'UTF-8')
+                                 _charset='utf-8')
             html_text = MIMEText(personal_text,
                                  'html',
-                                 'UTF-8')
+                                 _charset='utf-8')
             outer.attach(text_part)
             outer.attach(html_text)
             try:
