@@ -119,8 +119,7 @@ class Dispatcher(grok.View):
         if self.request.get('type') != 'test':
             wf_state = api.content.get_state(context)
             if wf_state == 'private':
-                owner = context.getWrappedOwner()
-                with api.env.adopt_user(username=owner.getId()):
+                with api.env.adopt_roles(['Member', 'Manager']):
                     api.content.transition(obj=context, transition='publish')
                     modified(context)
                     context.reindexObject(idxs='modified')
