@@ -51,6 +51,7 @@
                         </div>
                       </div>
                     </div>
+                    <div metal:use-macro="context/batch_macros/macros/navigation" />
                   </div>
                 </div>
             </div>

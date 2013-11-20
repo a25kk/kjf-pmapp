@@ -27,7 +27,6 @@
                 name="SearchableText"
                 type="text">
                 <input type="hidden" name="advanced_search" value="True" />
-                <input type="hidden" name="portal_type:list" value="pressapp.channelmanagement.channel" />
                 <input class="hidden"
                        type="checkbox"
                        checked="checked"
@@ -35,7 +34,10 @@
                        tal:attributes="value python:'/'.join(context.getPhysicalPath())"
                        />
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Search</button>
+                <button class="btn btn-default"
+                    type="submit"
+                    value="Search"
+                    i18n:attributes="value label_search;">Search</button>
               </span>
             </div>
         </form>
