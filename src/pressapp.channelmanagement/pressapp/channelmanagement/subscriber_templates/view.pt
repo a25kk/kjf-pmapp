@@ -99,6 +99,19 @@
                     tal:attributes="href view/parent_url"
                     i18n:translate="">abbrechen
                 </a>
+                <hr>
+                <p class="discreet">
+                  <span i18n:translate="">If you no longer need this item</span>
+                  <a href="" class="text-error"
+                    i18n:translate=""
+                    tal:attributes="href python:context_url + '/delete_confirmation'">
+                    you can delete it
+                  </a>.
+                </p>
+                <p class="text-discreet text-danger" i18n:translate="">
+                    Please make sure this contact is no longer active e.g.
+                    asigned to a channel
+                </p>
             </aside>
         </div>
     </div>

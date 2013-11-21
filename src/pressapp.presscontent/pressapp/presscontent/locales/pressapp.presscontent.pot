@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-10-28 10:52+0000\n"
+"POT-Creation-Date: 2013-11-21 13:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,12 +97,12 @@ msgid "Add press invitation"
 msgstr ""
 
 #: ./../pressroom_templates/dashboardinvitations.pt:93
-#: ./../pressroom_templates/view.pt:104
+#: ./../pressroom_templates/view.pt:103
 msgid "Add pressinvitation"
 msgstr ""
 
 #: ./../pressroom_templates/dashboardreleases.pt:95
-#: ./../pressroom_templates/view.pt:95
+#: ./../pressroom_templates/view.pt:94
 msgid "Add pressrelease"
 msgstr ""
 
@@ -354,7 +354,7 @@ msgstr ""
 msgid "Hinweis:"
 msgstr ""
 
-#: ./../pressinvitation_templates/preview.pt:109
+#: ./../pressinvitation_templates/preview.pt:108
 #: ./../pressinvitation_templates/view.pt:174
 #: ./../pressrelease_templates/preview.pt:110
 msgid "If you no longer need this item"
@@ -389,7 +389,7 @@ msgstr ""
 msgid "ImageAttachment"
 msgstr ""
 
-#: ./../pressroom_templates/view.pt:86
+#: ./../pressroom_templates/view.pt:85
 msgid "In order to get started add your first press content."
 msgstr ""
 
@@ -401,7 +401,7 @@ msgstr ""
 
 #: ./../editimage_templates/imageattachmenteditform.pt:24
 #: ./../editrelease_templates/pressreleaseeditform.pt:24
-#: ./../presscenter_templates/presscentersettings.pt:28
+#: ./../imageattachment_templates/view.pt:23
 msgid "Last changed:"
 msgstr ""
 
@@ -441,6 +441,10 @@ msgstr ""
 #: ./../addrelease.py:56
 #: ./../editinvitation.py:64
 msgid "Optional summary that is useful as a preview text in email clients that support this feature."
+msgstr ""
+
+#: ./../presscenter_templates/recentchanges.pt:102
+msgid "Overview of recent changes by all members inside their workspaces"
 msgstr ""
 
 #: ./../presscenter_templates/workspaces.pt:90
@@ -516,6 +520,7 @@ msgstr ""
 msgid "Pressemitteilungen"
 msgstr ""
 
+#: ./../presscenter.py:197
 #: ./../pressroom.py:89
 msgid "Pressinvitation"
 msgstr ""
@@ -524,6 +529,7 @@ msgstr ""
 msgid "Pressinvitations"
 msgstr ""
 
+#: ./../presscenter.py:195
 #: ./../pressroom.py:87
 msgid "Pressrelease"
 msgstr ""
@@ -723,11 +729,15 @@ msgstr ""
 msgid "This dashboard shows all press releases available for your user. There are no releases available yet."
 msgstr ""
 
+#: ./../presscenter_templates/recentchanges.pt:110
+msgid "This page collects all content added in chronological order"
+msgstr ""
+
 #: ./../pressinvitation_templates/view.pt:166
 msgid "This press content has already been dispatched, but you can"
 msgstr ""
 
-#: ./../pressinvitation_templates/preview.pt:101
+#: ./../pressinvitation_templates/preview.pt:100
 #: ./../pressrelease_templates/preview.pt:102
 #: ./../pressrelease_templates/view.pt:279
 msgid "This press release has already been dispatched, but you can"
@@ -833,11 +843,12 @@ msgstr ""
 msgid "Use the field summary to add a short teaser."
 msgstr ""
 
+#: ./../presscenter_templates/recentchanges.pt:105
 #: ./../presscenter_templates/workspaces.pt:93
 msgid "Users are redirected to their personal workspaces after signing in to the press application, where they create and manage their press contents"
 msgstr ""
 
-#: ./../pressinvitation_templates/preview.pt:88
+#: ./../pressinvitation_templates/preview.pt:87
 #: ./../pressinvitation_templates/view.pt:153
 #: ./../pressrelease_templates/preview.pt:89
 msgid "Versand"
@@ -853,7 +864,7 @@ msgstr ""
 msgid "Visible on main site?"
 msgstr ""
 
-#: ./../pressroom_templates/view.pt:81
+#: ./../pressroom_templates/view.pt:80
 msgid "Welcome to your personal workspace"
 msgstr ""
 
@@ -861,7 +872,7 @@ msgstr ""
 msgid "Your subscription settings have been updated"
 msgstr ""
 
-#: ./../pressroom_templates/view.pt:82
+#: ./../pressroom_templates/view.pt:81
 msgid "Your workspace is the central editing unit providing an overview of available press releases and invitations."
 msgstr ""
 
@@ -871,9 +882,9 @@ msgstr ""
 msgid "cancel"
 msgstr ""
 
+#: ./../presscenter.py:189
 #: ./../pressinvitation.py:135
 #: ./../pressrelease.py:189
-#: ./../pressroom.py:81
 msgid "draft"
 msgstr ""
 
@@ -905,7 +916,12 @@ msgstr ""
 msgid "kjf-augsburg.de"
 msgstr ""
 
-#: ./../pressinvitation_templates/preview.pt:103
+#. Default: "Search"
+#: ./../presscenter_templates/view.pt:43
+msgid "label_search"
+msgstr ""
+
+#: ./../pressinvitation_templates/preview.pt:102
 #: ./../pressinvitation_templates/view.pt:168
 #: ./../pressrelease_templates/preview.pt:104
 msgid "review the email recipients here."
@@ -919,13 +935,13 @@ msgstr ""
 msgid "sanktelisabeth.de"
 msgstr ""
 
+#: ./../presscenter.py:191
 #: ./../pressinvitation.py:137
 #: ./../pressrelease.py:191
-#: ./../pressroom.py:83
 msgid "sent"
 msgstr ""
 
-#: ./../pressinvitation_templates/preview.pt:110
+#: ./../pressinvitation_templates/preview.pt:109
 #: ./../pressinvitation_templates/view.pt:175
 #: ./../pressrelease_templates/preview.pt:111
 msgid "you can delete it"

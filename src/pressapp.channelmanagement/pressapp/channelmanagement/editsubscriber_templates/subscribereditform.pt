@@ -54,6 +54,19 @@
                 further details in the comments field. This information will not
                 be public and only be visible for logged in users.
               </p>
+              <hr>
+              <p>
+                  <span i18n:translate="">If you no longer need this item</span>
+                  <a href="" class="text-error"
+                    i18n:translate=""
+                    tal:attributes="href python:context_url + '/delete_confirmation'">
+                    you can delete it
+                  </a>.
+                </p>
+                <p class="text-discreet text-danger" i18n:translate="">
+                    Please make sure this contact is no longer active e.g.
+                    asigned to a channel
+                </p>
             </aside>
           </div>
         </div>
