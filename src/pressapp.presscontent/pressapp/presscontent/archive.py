@@ -361,7 +361,7 @@ class PressItemView(grok.View):
         pressitem = self.presscontent
         creator = pressitem.getOwner()
         mtool = getToolByName(context, 'portal_membership')
-        member = mtool.getMemberById(creator)
+        member = mtool.getMemberById(creator.getId())
         memberinfo = {}
         memberinfo['org'] = member.getProperty('organization', '')
         memberinfo['link'] = member.getProperty('home_page', '')
