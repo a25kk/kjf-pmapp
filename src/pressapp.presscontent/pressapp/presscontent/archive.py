@@ -5,6 +5,7 @@ import json
 from htmllib import HTMLParser
 from Acquisition import aq_inner
 from five import grok
+from plone import api
 from App.config import getConfiguration
 from zope.i18n import translate
 from zope.component import getMultiAdapter
@@ -358,7 +359,7 @@ class PressItemView(grok.View):
     def memberdata(self):
         context = aq_inner(self.context)
         pressitem = self.presscontent
-        creator = pressitem.Creator()
+        creator = pressitem.getOwner()
         mtool = getToolByName(context, 'portal_membership')
         member = mtool.getMemberById(creator)
         memberinfo = {}
