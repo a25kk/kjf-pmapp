@@ -1,4 +1,5 @@
 from five import grok
+from plone import api
 
 from plone.namedfile.utils import set_headers, stream_data
 
@@ -69,7 +70,15 @@ class DownloadFileVersion(grok.View):
         self.target_item = self.resolveItemByID()
 
     def render(self):
-        return self.generate_pdf()
+        next_url = self.redirection_target()
+        # return self.generate_pdf()
+        return self.request.response.redirect(next_url)
+
+    def redirection_target(self):
+        uid = self.request.get('uid', '')
+        portal_url = api.portal.get().absolute_url()
+        target_url = portal_url + '/@@pressitem-view?uid={0}'.format(uid)
+        return target_url
 
     def generate_pdf(self):
         item = self.target_item
