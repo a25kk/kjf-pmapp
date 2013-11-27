@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.channelmanagement">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <div class="container-fluid"
+        tal:define="portal_state context/@@plone_portal_state;
+                    portal_url portal_state/portal_url;
+                    context_url context/absolute_url;">
+    
+    <div class="page-header" id="page-header">
+      <div class="pull-right">
+        <form action="."
+          tal:attributes="action python:context_url + '/@@search'">
+            <div class="input-group">
+              <input class="form-control"
+                id="SearchableText"
+                name="SearchableText"
+                type="text">
+                <input type="hidden" name="advanced_search" value="True" />
+                <input class="hidden"
+                       type="checkbox"
+                       checked="checked"
+                       name="path"
+                       tal:attributes="value python:'/'.join(context.getPhysicalPath())"
+                       />
+              <span class="input-group-btn">
+                <button class="btn btn-default"
+                    type="submit"
+                    value="Search"
+                    i18n:attributes="value label_search;">Search</button>
+              </span>
+            </div>
+        </form>
+      </div>
+        <h1>Verteiler</h1>
+        <p class="discreet">Neuen Verteiler anlegen</p>
+
+    </div>
+
+    <section id="content-core">
+    <form method="post" tal:attributes="action request/URL">
+    <div class="row">
+        <div class="col-xs-12 col-lg-9">
+          <div class="window-column">
+            <div class="window-column-content">
+                <h2>Neuen Verteiler anlegen</h2>
+                <p i18n:translate="">Add a new channel and start asigning subscribers.
+            Any channel added will be available for selection in all presscontents
+            immediately</p>
+                <hr>
+                <div class="input-group">
+                  <input type="text" class="form-control"
+                    name="channelname" id="channelname">
+                  <span class="input-group-btn">
+                  <span tal:replace="structure context/@@authenticator/authenticator"/>
+                    <button type="submit" class="btn btn-primary"
+                        name="form.button.Submit">Submit</button>
+                  </span>
+                </div><!-- /input-group -->
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-lg-3">
+          <aside id="sidebar">
+            <div class="stats widget">
+              <div class="stat inverse">
+                <h2 tal:content="view/channel_counter">Update</h2>
+                <h6>Verteiler</h6>
+              </div>
+            </div>
+          </aside>
+        </div>
+    </div>
+    </form>
+    </section>
+        
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

@@ -1,14 +1,20 @@
 from Acquisition import aq_inner
 from Acquisition import aq_parent
+from AccessControl import Unauthorized
 from five import grok
 from plone import api
 from zope import schema
 from zope.component import queryUtility
+from zope.component import getMultiAdapter
 
 from plone.directives import form
 from zope.lifecycleevent import modified
 
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode
+
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+
 from plone.app.contentlisting.interfaces import IContentListing
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.registry.interfaces import IRegistry
@@ -211,6 +217,37 @@ class ChannelStatistics(grok.View):
         return stats
 
 
+class ChannelCreate(grok.View):
+    grok.context(IChannelManager)
+    grok.require('cmf.ReviewPortalContent')
+    grok.name('channel-create')
+
+    def update(self):
+        self.key = 'pressapp.channelmanagement.channelList'
+        context = aq_inner(self.context)
+        if 'form.button.Submit' in self.request:
+            authenticator = getMultiAdapter((context, self.request),
+                                            name=u"authenticator")
+            if not authenticator.verify():
+                raise Unauthorized
+            form = self.request.form
+            cname = form['channelname']
+            newkey = queryUtility(IIDNormalizer).normalize(cname)
+            clean_key = unicode(safe_unicode(newkey))
+            records = api.portal.get_registry_record(self.key)
+            records[clean_key] = safe_unicode(cname)
+            api.portal.set_registry_record(self.key, records)
+            IStatusMessage(self.request).addStatusMessage(
+                _(u"New channel has been added to the registry"),
+                type='info')
+            return self.request.response.redirect(context.absolute_url())
+
+    def channel_counter(self):
+        key = 'pressapp.channelmanagement.channelList'
+        records = api.portal.get_registry_record(key)
+        return len(records)
+
+
 class ChannelUpdate(grok.View):
     grok.context(IChannelManager)
     grok.require('cmf.ReviewPortalContent')
@@ -221,6 +258,10 @@ class ChannelUpdate(grok.View):
         context = aq_inner(self.context)
         unwanted = ('_authenticator', 'form.button.Submit')
         if 'form.button.Submit' in self.request:
+            authenticator = getMultiAdapter((context, self.request),
+                                            name=u"authenticator")
+            if not authenticator.verify():
+                raise Unauthorized
             form = self.request.form
             data = {}
             for field in form:
@@ -258,7 +299,7 @@ class ChannelUpdate(grok.View):
         return self.request.response.redirect(context.absolute_url())
 
     def update_subscribers(self, items, channelname):
-        sidx = 0
+        cidx = 0
         for i in items:
             channels = getattr(i, 'channel', '')
             updated = list()
@@ -266,33 +307,38 @@ class ChannelUpdate(grok.View):
                 if channel != channelname:
                     updated.append(channel)
                 else:
-                    sidx += 1
+                    cidx += 1
             obj = i.getObject()
-            setattr(obj, updated)
+            setattr(obj, 'channel', updated)
             modified(obj)
             obj.reindexObject(idxs='modified')
-        return sidx
+        return cidx
 
     def channel_counter(self):
         return len(self.channel_names())
 
     def channel_names(self):
-        context = aq_inner(self.context)
         key = 'pressapp.channelmanagement.channelList'
         records = api.portal.get_registry_record(key)
-        catalog = getToolByName(context, 'portal_catalog')
+        catalog = api.portal.get_tool(name="portal_catalog")
         channels = catalog.uniqueValuesFor('channel')
-        names = []
+        stats = []
         for channel in channels:
-            info = {}
-            info['channel'] = channel
+            channel_info = {}
+            prs = catalog(object_provides=IPressRelease.__identifier__,
+                          channel=[channel])
+            pis = catalog(object_provides=IPressInvitation.__identifier__,
+                          channel=[channel])
+            subs = catalog(object_provides=ISubscriber.__identifier__,
+                           channel=[channel])
             try:
                 channelname = records[channel]
             except KeyError:
                 channelname = channel
-            info['channelname'] = channelname
-            info['count'] = len(catalog.searchResults(
-                                object_provides=ISubscriber.__identifier__,
-                                channel=[channel]))
-            names.append(info)
-        return names
+            channel_info['channelname'] = channelname
+            channel_info['channel'] = channel
+            channel_info['pr_count'] = len(prs)
+            channel_info['pi_count'] = len(pis)
+            channel_info['sub_count'] = len(subs)
+            stats.append(channel_info)
+        return stats
