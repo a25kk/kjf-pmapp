@@ -233,7 +233,10 @@ class ChannelCreate(grok.View):
             form = self.request.form
             cname = form['channelname']
             newkey = queryUtility(IIDNormalizer).normalize(cname)
-            clean_key = unicode(safe_unicode(newkey))
+            if type(newkey) == str:
+                clean_key = unicode(newkey, "utf-8", errors="ignore")
+            else:
+                clean_key = unicode(newkey)
             records = api.portal.get_registry_record(self.key)
             records[clean_key] = safe_unicode(cname)
             api.portal.set_registry_record(self.key, records)
