@@ -115,11 +115,22 @@
                 tal:attributes="href python:channel_url+'/@@add-subscriber'">
                   Neuen Kontakt anlegen</a>
             <hr>
-              <a href="" class="btn btn-default btn-block"
+              <a href="" class="btn btn-primary btn-block"
                   rel="twipsy"
                   data-original-title="Zur &Uuml;bersicht aller Adressen"
                   tal:attributes="href channel_url">
                   Adressen anzeigen</a>
+            <hr>
+            <div class="stats widget">
+              <div class="stat inverse">
+                <h2 tal:content="view/channel_counter">72</h2>
+                <h6>Verteiler</h6>
+              </div>
+            </div>
+            <hr>
+              <a class="btn btn-block btn-primary"
+                tal:attributes="href python:context_url+'/@@channel-update'">
+                  Verteiler bearbeiten</a>
           </aside>
         </div>
     </div>

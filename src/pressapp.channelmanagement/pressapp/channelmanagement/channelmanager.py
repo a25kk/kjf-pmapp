@@ -1,4 +1,5 @@
 from five import grok
+from plone import api
 from Acquisition import aq_inner, aq_parent
 from plone.directives import form
 
@@ -7,6 +8,7 @@ from zope.component import queryUtility
 
 from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
+from Products.statusmessages.interfaces import IStatusMessage
 from plone.registry.interfaces import IRegistry
 from pressapp.presscontent.pressrelease import IPressRelease
 from pressapp.presscontent.pressinvitation import IPressInvitation
@@ -205,3 +207,56 @@ class ChannelStatistics(grok.View):
             channel_info['subscriber'] = len(subs)
             stats.append(channel_info)
         return stats
+
+
+class ChannelUpdate(grok.View):
+    grok.context(IChannelManager)
+    grok.require('cmf.ReviewPortalContent')
+    grok.name('channel-update')
+
+    def update(self):
+        context = aq_inner(self.context)
+        unwanted = ('_authenticator', 'form.button.Submit')
+        if 'form.button.Submit' in self.request:
+            form = self.request.form
+            data = {}
+            for field in form:
+                if field not in unwanted:
+                    data[field] = field
+            cl = api.portal.get_registry_record(
+                'pressapp.channelmanagement.channelList')
+            cleaned = dict()
+            for key in cl:
+                if key in data:
+                    cleaned[key] = cl[key]
+            if len(cleaned) > 0:
+                return self.process_channel_update(cleaned)
+            else:
+                IStatusMessage(self.request).addStatusMessage(
+                    _(u"The creation of a new subscriber has been cancelled."),
+                    type='info')
+                return self.request.response.redirect(context.absolute_url())
+
+    def channel_counter(self):
+        return len(self.channel_names())
+
+    def channel_names(self):
+        context = aq_inner(self.context)
+        key = 'pressapp.channelmanagement.channelList'
+        records = api.portal.get_registry_record(key)
+        catalog = getToolByName(context, 'portal_catalog')
+        channels = catalog.uniqueValuesFor('channel')
+        names = []
+        for channel in channels:
+            info = {}
+            info['channel'] = channel
+            try:
+                channelname = records[channel]
+            except KeyError:
+                channelname = channel
+            info['channelname'] = channelname
+            info['count'] = len(catalog.searchResults(
+                                object_provides=ISubscriber.__identifier__,
+                                channel=[channel]))
+            names.append(info)
+        return names
