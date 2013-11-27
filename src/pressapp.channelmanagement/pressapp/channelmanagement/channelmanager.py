@@ -1,10 +1,12 @@
+from Acquisition import aq_inner
+from Acquisition import aq_parent
 from five import grok
 from plone import api
-from Acquisition import aq_inner, aq_parent
-from plone.directives import form
-
 from zope import schema
 from zope.component import queryUtility
+
+from plone.directives import form
+from zope.lifecycleevent import modified
 
 from Products.CMFCore.utils import getToolByName
 from plone.app.contentlisting.interfaces import IContentListing
@@ -215,6 +217,7 @@ class ChannelUpdate(grok.View):
     grok.name('channel-update')
 
     def update(self):
+        self.key = 'pressapp.channelmanagement.channelList'
         context = aq_inner(self.context)
         unwanted = ('_authenticator', 'form.button.Submit')
         if 'form.button.Submit' in self.request:
@@ -223,19 +226,52 @@ class ChannelUpdate(grok.View):
             for field in form:
                 if field not in unwanted:
                     data[field] = field
-            cl = api.portal.get_registry_record(
-                'pressapp.channelmanagement.channelList')
+            cl = api.portal.get_registry_record(self.key)
+            obsolete = list()
             cleaned = dict()
             for key in cl:
                 if key in data:
                     cleaned[key] = cl[key]
+                else:
+                    obsolete.append(key)
             if len(cleaned) > 0:
-                return self.process_channel_update(cleaned)
+                return self.process_channel_update(cleaned, obsolete)
             else:
                 IStatusMessage(self.request).addStatusMessage(
-                    _(u"The creation of a new subscriber has been cancelled."),
-                    type='info')
+                    _(u"Removal of selected channels was not possible"),
+                    type='error')
                 return self.request.response.redirect(context.absolute_url())
+
+    def process_channel_update(self, cleaned, obsolete):
+        context = aq_inner(self.context)
+        catalog = api.portal.get_tool(name="portal_catalog")
+        idx = 0
+        for cn in obsolete:
+            brains = catalog(object_provides=ISubscriber.__identifier__,
+                             channel=[cn])
+            if len(brains) > 0:
+                sidx = self.update_subscribers(brains, cn)
+                idx += sidx
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"%s Subscriber objects have been updated" % idx),
+            type='info')
+        return self.request.response.redirect(context.absolute_url())
+
+    def update_subscribers(self, items, channelname):
+        sidx = 0
+        for i in items:
+            channels = getattr(i, 'channel', '')
+            updated = list()
+            for channel in channels:
+                if channel != channelname:
+                    updated.append(channel)
+                else:
+                    sidx += 1
+            obj = i.getObject()
+            setattr(obj, updated)
+            modified(obj)
+            obj.reindexObject(idxs='modified')
+        return sidx
 
     def channel_counter(self):
         return len(self.channel_names())
