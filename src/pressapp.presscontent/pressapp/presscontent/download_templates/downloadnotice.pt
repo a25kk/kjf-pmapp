@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="pressapp.presscontent">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+  <div id="content-core" class="text-center">
+    <div id="archive-view" class="archive-box center-block">
+    <div class="archive-box-header">
+        <h1>Pressemitteilungen</h1>
+    </div>
+
+    <div class="archive-box-content">
+        <p>Die Funktion zum Download spezifischer Presseinhalte in pdf Version
+            wurde deaktiviert. Sie haben aber jederzeit die M&ouml;glichkeit, die
+            Browservorschau/Webversion zu öffnen und diese auszudrucken.
+        </p>
+        <p><a class="btn btn-primary"
+            tal:attributes="href view/redirection_target">
+            Browservorschau anzeigen</a></p>
+        <hr>
+        <p class="text-discreet">F&uuml;r weiter Informationen wenden Sie sich bitte am
+           presse@kjf-augsburg.de</p>
+    </div>
+    </div>
+  </div>
+  </metal:content-core>
+</metal:main>
+</body>
+</html>

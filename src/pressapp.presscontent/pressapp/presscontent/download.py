@@ -77,7 +77,7 @@ class DownloadFileVersion(grok.View):
     def redirection_target(self):
         uid = self.request.get('uid', '')
         portal_url = api.portal.get().absolute_url()
-        target_url = portal_url + '/@@pressitem-view?uid={0}'.format(uid)
+        target_url = portal_url + '/@@download-notice?uid={0}'.format(uid)
         return target_url
 
     def generate_pdf(self):
@@ -103,3 +103,18 @@ class DownloadFileVersion(grok.View):
                     _(u"The requested item was not found"), type='error')
             else:
                 return obj
+
+
+class DownloadNotice(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('zope2.View')
+    grok.name('download-notice')
+
+    def update(self):
+        self.next_url = self.redirection_target()
+
+    def redirection_target(self):
+        uid = self.request.get('uid', '')
+        portal_url = api.portal.get().absolute_url()
+        target_url = portal_url + '/@@pressitem-view?uid={0}'.format(uid)
+        return target_url

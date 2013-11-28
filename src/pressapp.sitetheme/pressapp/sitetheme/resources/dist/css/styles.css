@@ -11970,6 +11970,12 @@ select.chzn-select {
   background: url(../../assets/img/bg-white-fabric.png) repeat 0 0 #ffffff;
 }
 
+.template-download-notice .press-archive-content {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .archive-box {
   padding: 10px;
   margin: 0;
@@ -11987,6 +11993,10 @@ select.chzn-select {
 .archive-box .archive-box-text {
   margin: 10px 0 0;
   text-align: right;
+}
+
+.archive-box .archive-box-content {
+  padding: 10px 20px;
 }
 
 body {

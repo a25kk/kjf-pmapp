@@ -11,6 +11,12 @@
     background: url(../../assets/img/bg-white-fabric.png) repeat 0 0 #fff;
 }
 
+// Move download notice to the screen center
+
+.template-download-notice .press-archive-content {
+    .center-block();
+}
+
 .archive-box {
     margin: 0;
     padding: (@line-height-computed / 2);
@@ -24,5 +30,8 @@
     .archive-box-text {
         margin: (@line-height-computed / 2) 0 0;
         text-align: right;
+    }
+    .archive-box-content {
+        padding: (@line-height-computed / 2) @line-height-computed;
     }
 }
