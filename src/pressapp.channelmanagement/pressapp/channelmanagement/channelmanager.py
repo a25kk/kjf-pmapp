@@ -243,7 +243,8 @@ class ChannelCreate(grok.View):
             IStatusMessage(self.request).addStatusMessage(
                 _(u"New channel has been added to the registry"),
                 type='info')
-            return self.request.response.redirect(context.absolute_url())
+            next_url = context.absolute_url() + '/@@channel-update'
+            return self.request.response.redirect(next_url)
 
     def channel_counter(self):
         key = 'pressapp.channelmanagement.channelList'
