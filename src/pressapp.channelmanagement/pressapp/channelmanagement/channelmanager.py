@@ -326,7 +326,7 @@ class ChannelUpdate(grok.View):
         catalog = api.portal.get_tool(name="portal_catalog")
         channels = catalog.uniqueValuesFor('channel')
         stats = []
-        for channel in channels:
+        for channel in records:
             channel_info = {}
             prs = catalog(object_provides=IPressRelease.__identifier__,
                           channel=[channel])
