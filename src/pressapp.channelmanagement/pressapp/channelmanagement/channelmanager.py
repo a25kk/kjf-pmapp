@@ -297,6 +297,7 @@ class ChannelUpdate(grok.View):
             if len(brains) > 0:
                 sidx = self.update_subscribers(brains, cn)
                 idx += sidx
+        api.portal.set_registry_record(self.key, cleaned)
         IStatusMessage(self.request).addStatusMessage(
             _(u"%s Subscriber objects have been updated" % idx),
             type='info')
