@@ -52,7 +52,7 @@ def restart_haproxy():
 
 
 @task
-def supervisorctl(*cmd):
+def ctl(*cmd):
     """Runs an arbitrary supervisorctl command."""
     with cd(env.webserver):
         run('nice bin/supervisorctl ' + ' '.join(cmd))
@@ -69,4 +69,12 @@ def deploy():
     """ Deploy current master to production server """
     project.site.update()
     project.site.build()
+    project.cluster.restart_clients()
+
+
+@task
+def deploy_full():
+    """ Deploy current master to production and run buildout """
+    project.site.update()
+    project.site.build_full()
     project.cluster.restart_clients()
