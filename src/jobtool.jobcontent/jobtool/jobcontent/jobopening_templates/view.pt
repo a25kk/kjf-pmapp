@@ -82,15 +82,17 @@
                     </a>
                   </small>
                 <h4 i18n:translate="">Informationen</h4>
-                  <h5 tal:define="term context/institution;
-                                  pretty_term python:view.pretty_term('jobInstitutions', term)"
+                <tal:block tal:condition="context/institution">
+                    <h5 tal:define="term context/institution;
+                                    pretty_term python:view.pretty_term('jobInstitutions', term)"
+                        tal:content="pretty_term" />
+                    <p tal:condition="context/locationOverride"
+                      tal:content="context/locationOverride" />
+                    <p tal:condition="not:context/locationOverride"
+                      tal:define="term context/location;
+                                  pretty_term python:view.pretty_term('jobLocations', term)"
                       tal:content="pretty_term" />
-                  <p tal:condition="context/locationOverride"
-                    tal:content="context/locationOverride" />
-                  <p tal:condition="not:context/locationOverride"
-                    tal:define="term context/location;
-                                pretty_term python:view.pretty_term('jobLocations', term)"
-                    tal:content="pretty_term" />
+                </tal:block>
               </div><!-- / base settings -->
                
               <hr />
@@ -131,7 +133,7 @@
                   <h5 i18n:translate="">
                     External Distributors
                   </h5>
-                  <ul>
+                  <ul tal:condition="context/distributor">
                     <li tal:repeat="dist context/distributor">
                       <span tal:content="python:view.pretty_distributor(dist)" />
                     </li>
@@ -152,19 +154,21 @@
                       </a>
                   </small>
                   <h5 i18n:translate="">Category</h5>
-                  <tal:cats tal:repeat="cat context/category">
-                    <a href="" class=""
-                      data-appui="tooltip"
-                      data-placement="top"
-                      data-original-title="Kategorien bearbeiten"
-                      tal:attributes="href python:context_url + '/@@edit-job-categorization'">
-                      <span tal:define="categoryname python:view.pretty_category(cat)"
-                        tal:content="categoryname"
-                        i18n:translate=""
-                        class="label"
-                        />
-                    </a>
-                  </tal:cats>
+                    <tal:block tal:condition="context/category">
+                        <tal:cats tal:repeat="cat context/category">
+                          <a href="" class=""
+                            data-appui="tooltip"
+                            data-placement="top"
+                            data-original-title="Kategorien bearbeiten"
+                            tal:attributes="href python:context_url + '/@@edit-job-categorization'">
+                            <span tal:define="categoryname python:view.pretty_category(cat)"
+                              tal:content="categoryname"
+                              i18n:translate=""
+                              class="label"
+                              />
+                          </a>
+                        </tal:cats>
+                    </tal:block>
                   <p class="text-warning" tal:condition="not:context/category">
                     <small i18n:translate="">There are no categories asigned yet.</small><br />
                     <a href="" tal:attributes="href python:context_url + '/@@edit-job-categorization'"
