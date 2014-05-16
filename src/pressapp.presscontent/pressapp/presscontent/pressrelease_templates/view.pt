@@ -144,10 +144,23 @@
                           <i class="icon-remove-sign"></i>
                           l&ouml;schen</a>
                     </p>
+                    <p tal:condition="python:type == 'pressapp.presscontent.fileattachment'"
+                      class="discreet">
+                      <a href=""
+                          class="xxbtn"
+                          tal:attributes="href string:${item/getURL}/@@edit-file-attachment">
+                          <i class="icon-edit"></i>
+                          bearbeiten</a>
+                      <a href=""
+                          class="xxbtn popoverLink link-overlay"
+                          tal:attributes="href string:${item/getURL}/delete_confirmation">
+                          <i class="icon-remove-sign"></i>
+                          l&ouml;schen</a>
+                    </p>
                   </td>
                   <td tal:define="item_obj item/getObject">
-                    <div class="img-thumbnail">
-                        <img tal:condition="python:type == 'pressapp.presscontent.imageattachment'"
+                    <div class="img-thumbnail" tal:condition="python:type == 'pressapp.presscontent.imageattachment'">
+                        <img
                             class="thumbnail" 
                             tal:define="scale item_obj/@@images"
                             tal:replace="structure python: scale.scale('image',
