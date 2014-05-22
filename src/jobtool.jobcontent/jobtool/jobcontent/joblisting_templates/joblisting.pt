@@ -35,7 +35,7 @@
                       Augsburg
                     </span>
                     <span tal:condition="item/locationOverride"
-                      tal:replace="item/locationOverride" />,
+                      tal:content="item/locationOverride" />,
                     <span tal:define="term item/institution;
                                       pretty_term python:view.pretty_term('jobInstitutions', term)"
                       tal:content="pretty_term">Klinik Josefinum</span>
