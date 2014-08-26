@@ -28,6 +28,8 @@ setup(name='jobtool.jobcontent',
           'setuptools',
           'plone.app.dexterity',
           'plone.namedfile [blobs]',
+          'plone.jsonapi.core',
+          'plone.jsonapi.routes',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
