@@ -27,6 +27,7 @@ setup(name='pressapp.channelmanagement',
       install_requires=[
           'setuptools',
           'plone.app.dexterity',
+          'plone.formwidget.autocomplete',
           'plone.namedfile [blobs]',
           'collective.js.datatables',
           # -*- Extra requirements: -*-
