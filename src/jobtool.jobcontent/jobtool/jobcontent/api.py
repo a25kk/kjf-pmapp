@@ -4,7 +4,6 @@
 import json
 import time
 from Acquisition import aq_inner
-from ZTUtils import make_query
 from five import grok
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -48,15 +47,27 @@ class JobOpeningsAPI(grok.View):
         self.subpath.append(name)
         return self
 
-    def _make_query(self):
-        q = {}
-        q.update(self.request.form)
-        return make_query(q)
+    def is_equal(self, a, b):
+        """ Constant time comparison """
+        if len(a) != len(b):
+            return False
+        result = 0
+        for x, y in zip(a, b):
+            result |= ord(x) ^ ord(y)
+        return result == 0
+
+    def get_stored_records(self, token):
+        key_base = 'jobtool.jobcontent.interfaces.IJobToolSettings'
+        key = key_base + '.' + token
+        return api.portal.get_registry_record(key)
 
     def valid_token(self):
-        token = self.subpath[0]
-        key = 'jobtool.jobcontent'
-        return True
+        if self.subpath:
+            token = self.subpath[0]
+            keys = self.get_stored_records('api_access_keys')
+            if token in keys:
+                return True
+        return False
 
     def active_jobs(self):
         catalog = api.portal.get_tool(name='portal_catalog')
@@ -106,7 +117,7 @@ class JobOpeningsAPI(grok.View):
         info['location'] = job_location
         info['type'] = translated_jobtype
         info['date'] = item.start.isoformat()
-        info['summary'] = obj.text.raw
+        info['summary'] = obj.text.output
         return info
 
     def get_items(self):
