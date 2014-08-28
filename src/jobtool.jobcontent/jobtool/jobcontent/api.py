@@ -54,6 +54,8 @@ class JobOpeningsAPI(grok.View):
         return make_query(q)
 
     def valid_token(self):
+        token = self.subpath[0]
+        key = 'jobtool.jobcontent'
         return True
 
     def active_jobs(self):
@@ -104,6 +106,7 @@ class JobOpeningsAPI(grok.View):
         info['location'] = job_location
         info['type'] = translated_jobtype
         info['date'] = item.start.isoformat()
+        info['summary'] = obj.text.raw
         return info
 
     def get_items(self):

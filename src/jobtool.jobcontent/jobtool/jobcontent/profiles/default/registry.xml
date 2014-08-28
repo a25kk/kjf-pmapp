@@ -1,0 +1,3 @@
+<registry>
+    <records interface="jobtool.jobcontent.interfaces.IJobToolSettings" />
+</registry>
