@@ -195,10 +195,10 @@ class JobOpeningsAPISettings(grok.View):
         idx = int(data['tokenidx'])
         keys = self._get_records()
         if keys is None:
-            keys = []
+            keys = ()
         for x in range(int(idx)):
             token = django_random.get_random_string(length=40)
-            keys.append(token)
+            keys.add(str(token))
         self._set_records(keys)
         msg = _(u"Successfully generated API access tokens")
         api.portal.show_message(msg, request=self.request)

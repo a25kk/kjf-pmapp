@@ -16,11 +16,11 @@ class IJobTool(Interface):
 
 class IJobToolSettings(Interface):
     """ Job tool settings stored in the registry """
-    api_access_keys = schema.Set(
+    api_access_keys = schema.Tuple(
         title=_(u"API Access Keys"),
         value_type=schema.TextLine(
             title=_(u"Access key")
         ),
         required=False,
-        missing_value=(),
+        missing_value=[],
     )
