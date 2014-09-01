@@ -149,3 +149,14 @@ class JobOpeningsAPI(grok.View):
         data.update(dict(_runtime=end-start))
         self.request.response.setHeader("Content-Type", "application/json")
         return json.dumps(data)
+
+
+class JobOpeningsAPISettings(grok.View):
+    grok.context(INavigationRoot)
+    grok.layer(IJobTool)
+    grok.require('zope2.View')
+    grok.name('api-settings')
+
+    def stored_records(self):
+        key = 'jobtool.jobcontent.interfaces.IJobToolSettings.api_access_keys'
+        return api.portal.get_registry_record(key)
