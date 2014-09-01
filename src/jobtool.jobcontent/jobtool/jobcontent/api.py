@@ -8,9 +8,7 @@ from AccessControl import Unauthorized
 from five import grok
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
-from plone.jsonapi.core import router
-from plone.jsonapi.routes.api import get_items
-from plone.jsonapi.routes.api import url_for
+from plone.keyring import django_random
 from zope.component import getMultiAdapter
 from zope.schema.vocabulary import getVocabularyRegistry
 
@@ -188,3 +186,11 @@ class JobOpeningsAPISettings(grok.View):
 
     def stored_records(self):
         return self._get_records()
+
+    def _create_token(self, data):
+        context = aq_inner(self.context)
+        import ipdb; ipdb.set_trace()
+        msg = _(u"Successfully generated API access tokens")
+        api.portal.show_message(msg, request=self.request)
+        url = '{0}/@@api-settings'.format(context.absolute_url())
+        return self.request.response.redirect(url)
