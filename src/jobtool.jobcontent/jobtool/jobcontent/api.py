@@ -3,8 +3,9 @@
 
 import json
 import time
-from Acquisition import aq_inner
 from AccessControl import Unauthorized
+from Acquisition import aq_inner
+from Products.CMFPlone.utils import safe_unicode
 from five import grok
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -14,6 +15,8 @@ from zope.schema.vocabulary import getVocabularyRegistry
 
 from jobtool.jobcontent.interfaces import IJobTool
 from jobtool.jobcontent.jobopening import IJobOpening
+
+from jobtool.jobcontent import MessageFactory as _
 
 
 class JobOpeningsAPI(grok.View):
@@ -189,6 +192,7 @@ class JobOpeningsAPISettings(grok.View):
 
     def _create_token(self, data):
         context = aq_inner(self.context)
+        idx = int(data['tokenids'])
         import ipdb; ipdb.set_trace()
         msg = _(u"Successfully generated API access tokens")
         api.portal.show_message(msg, request=self.request)

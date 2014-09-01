@@ -7,14 +7,14 @@ setup(name='jobtool.jobcontent',
       version=version,
       description="Contenttypes and E Editor UI for the KJF jobcenter",
       long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          ],
       keywords='',
       author='Vorwaerts Werbung GbR',
       author_email='cb@vorwaerts-werbung.de',
@@ -28,8 +28,6 @@ setup(name='jobtool.jobcontent',
           'setuptools',
           'plone.app.dexterity',
           'plone.namedfile [blobs]',
-          'plone.jsonapi.core',
-          'plone.jsonapi.routes',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
