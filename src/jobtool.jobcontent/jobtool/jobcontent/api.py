@@ -4,32 +4,18 @@
 import json
 import time
 from Acquisition import aq_inner
+from AccessControl import Unauthorized
 from five import grok
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.jsonapi.core import router
 from plone.jsonapi.routes.api import get_items
 from plone.jsonapi.routes.api import url_for
+from zope.component import getMultiAdapter
 from zope.schema.vocabulary import getVocabularyRegistry
 
 from jobtool.jobcontent.interfaces import IJobTool
 from jobtool.jobcontent.jobopening import IJobOpening
-
-
-# GET JOBPOSTINGS
-@router.add_route('/jobpostings', 'jobpostings', methods=['GET'])
-@router.add_route('/jobpostings/<string:uid>', 'jobpostings', methods=['GET'])
-def get(context, request, token=None, uid=None):
-    """ get job postings """
-    items = get_items('jobtool.jobcontent.jobopening',
-                      request,
-                      uid=uid,
-                      endpoint='jobpostings')
-    return {
-        'url': url_for('jobpostings'),
-        'count': len(items),
-        'items': items,
-    }
 
 
 class JobOpeningsAPI(grok.View):
@@ -154,9 +140,51 @@ class JobOpeningsAPI(grok.View):
 class JobOpeningsAPISettings(grok.View):
     grok.context(INavigationRoot)
     grok.layer(IJobTool)
-    grok.require('zope2.View')
+    grok.require('cmf.ManagePortal')
     grok.name('api-settings')
 
-    def stored_records(self):
+    def update(self):
+        self.errors = {}
+        unwanted = ('_authenticator', 'form.button.Submit')
+        required = ('tokenidx')
+        if 'form.button.Submit' in self.request:
+            authenticator = getMultiAdapter((self.context, self.request),
+                                            name=u"authenticator")
+            if not authenticator.verify():
+                raise Unauthorized
+            form = self.request.form
+            form_data = {}
+            form_errors = {}
+            errorIdx = 0
+            for value in form:
+                if value not in unwanted:
+                    form_data[value] = safe_unicode(form[value])
+                    if not form[value] and value in required:
+                        error = {}
+                        error['active'] = True
+                        error['msg'] = _(u"This field is required")
+                        form_errors[value] = error
+                        errorIdx += 1
+                    else:
+                        error = {}
+                        error['active'] = False
+                        error['msg'] = form[value]
+                        form_errors[value] = error
+            if errorIdx > 0:
+                self.errors = form_errors
+            else:
+                self._create_token(form)
+
+    def _get_records(self):
         key = 'jobtool.jobcontent.interfaces.IJobToolSettings.api_access_keys'
         return api.portal.get_registry_record(key)
+
+    def _set_records(self, data):
+        context = aq_inner(self.context)
+        key = 'jobtool.jobcontent.interfaces.IJobToolSettings.api_access_keys'
+        api.portal.set_registry_record(key, data)
+        url = '{0}/@@api-settings'.format(context.absolute_url())
+        return self.request.response.redirect(url)
+
+    def stored_records(self):
+        return self._get_records()

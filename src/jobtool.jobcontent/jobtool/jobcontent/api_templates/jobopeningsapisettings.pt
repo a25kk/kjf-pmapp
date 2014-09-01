@@ -21,7 +21,7 @@
               tal:content="python:toLocalizedTime(date, long_format=False)" />
         </div>
 
-        <h1 i18n:translate="">API Settings</h1>
+        <h1 i18n:translate="">Settings</h1>
 
         <p tal:define="time context/modified" class="discreet">
               <span i18n:translate="">Last changed:</span>
@@ -35,7 +35,36 @@
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
-                <h5>Stored access keys</h5>
+                <h3 i18n:translate="">JSON API</h3>
+                <p i18n:translate="">
+                  External sites can implement a job listing by using the job API.
+                  In order to query the database a valid access token must be passed to
+                  the system
+                </p>
+                <h4>API URL</h4>
+                <p>
+                  The API is accessible via the follwing URL:
+                </p>
+                <div class="well well-default">
+                  <strong>http://jobs.kjf-presse.de/@@api/{{string:access-token}}/jobs</strong>
+                </div>
+                <hr>
+                <h3>Generate Access Tokens</h3>
+                <form tal:attributes="actions request/URL"
+                  method="post">
+                  <div class="input-group">
+                    <input type="text" class="form-control"
+                      name="tokenidx"
+                      value="1"
+                      placeholder="Number of tokens to create">
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button"
+                        name="form.button.Submit">Generate!</button>
+                    </span>
+                  </div><!-- /input-group -->
+                </form>
+                <hr>
+                <h3>Stored access keys</h3>
                 <div class="panel panel-default">
                   <ul class="list-group"
                     tal:define="records view/stored_records">
@@ -49,11 +78,13 @@
           </div>
           <div class="span3">
             <aside id="sidebar">
-              <h4>Settings</h4>
-                <hr />
-              <p>The job API is protected by access tokens to verify external
-                users and track potential performance hits.
-              </p>
+              <div class="stats widget">
+                <div class="stat inverse">
+                  <h2>API</h2>
+                  <h6>Jobs</h6>
+                </div>
+              </div>
+              <hr />
             </aside>
           </div>
         </div>
