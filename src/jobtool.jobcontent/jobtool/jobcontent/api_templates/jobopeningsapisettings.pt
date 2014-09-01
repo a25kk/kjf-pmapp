@@ -50,16 +50,22 @@
                 </div>
                 <hr>
                 <h3>Generate Access Tokens</h3>
-                <form tal:attributes="actions request/URL"
-                  method="post">
+                <form class="app-form app-create-form"
+                  method="post" role="form"
+                  tal:define="errors view/errors"
+                  tal:attributes="action request/URL">
+                  <span tal:replace="structure context/@@authenticator/authenticator"/>
                   <div class="input-group">
                     <input type="text" class="form-control"
                       name="tokenidx"
+                      id="tokenidx"
                       value="1"
-                      placeholder="Number of tokens to create">
+                      tal:attributes="value request/tokenidx | string:1">
                     <span class="input-group-btn">
-                      <button class="btn btn-primary" type="button"
-                        name="form.button.Submit">Generate!</button>
+                      <button class="btn btn-primary"
+                        type="submit"
+                        name="form.button.Submit"
+                        id="form.button.Submit">Generate!</button>
                     </span>
                   </div><!-- /input-group -->
                 </form>

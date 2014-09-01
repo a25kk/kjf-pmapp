@@ -192,8 +192,14 @@ class JobOpeningsAPISettings(grok.View):
 
     def _create_token(self, data):
         context = aq_inner(self.context)
-        idx = int(data['tokenids'])
-        import ipdb; ipdb.set_trace()
+        idx = int(data['tokenidx'])
+        keys = self._get_records()
+        if keys is None:
+            keys = []
+        for x in range(int(idx)):
+            token = django_random.get_random_string(length=40)
+            keys.append(token)
+        self._set_records(keys)
         msg = _(u"Successfully generated API access tokens")
         api.portal.show_message(msg, request=self.request)
         url = '{0}/@@api-settings'.format(context.absolute_url())
