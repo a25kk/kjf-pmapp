@@ -31,20 +31,11 @@
         </p>
       </header>
       <article id="content-core">
-        <div class="row-fluid">
+        <div class="row">
           <div class="span9">
             <div class="window-column">
               <div class="window-column-content">
                 <h3 i18n:translate="">JSON API</h3>
-                <p i18n:translate="">
-                  External sites can implement a job listing by using the job API.
-                  In order to query the database a valid access token must be passed to
-                  the system
-                </p>
-                <h4>API URL</h4>
-                <p>
-                  The API is accessible via the follwing URL:
-                </p>
                 <div class="well well-default">
                   <strong>http://jobs.kjf-presse.de/@@api/{{string:access-token}}/jobs</strong>
                 </div>
@@ -71,14 +62,21 @@
                 </form>
                 <hr>
                 <h3>Stored access keys</h3>
-                <div class="panel panel-default">
-                  <ul class="list-group"
-                    tal:define="records view/stored_records">
-                    <li class="list-group-item"
-                      tal:repeat="record records"
-                      tal:content="record">Cras justo odio</li>
-                  </ul>
-                </div>
+                <table class="table table-condensed">
+                  <tbody tal:define="records view/stored_records">
+                    <tr class="list-group-item"
+                      tal:repeat="record records">
+                      <td tal:content="repeat/record/number" />
+                      <td tal:content="record" />
+                      <td class="text-right">
+                        <a tal:attributes="href string:${context/absolute_url}/@@api/${record}/jobs">
+                          Make API call
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="visualClear">&nbsp;</div>
               </div>
             </div>
           </div>
@@ -91,6 +89,11 @@
                 </div>
               </div>
               <hr />
+              <p i18n:translate="">
+                  External sites can implement a job listing by using the job API.
+                  In order to query the database a valid access token must be passed to
+                  the system
+                </p>
             </aside>
           </div>
         </div>

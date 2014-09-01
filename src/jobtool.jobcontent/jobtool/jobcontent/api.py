@@ -28,11 +28,15 @@ class JobOpeningsAPI(grok.View):
     def update(self):
         self.subpath = []
 
+    @property
+    def traverse_subpath(self):
+        return self.subpath
+
     def publishTraverse(self, request, name):
         if not hasattr(self, 'subpath'):
             self.subpath = []
-        self.subpath.append(name)
-        return self
+            self.subpath.append(name)
+        return
 
     def is_equal(self, a, b):
         """ Constant time comparison """
@@ -49,8 +53,8 @@ class JobOpeningsAPI(grok.View):
         return api.portal.get_registry_record(key)
 
     def valid_token(self):
-        if self.subpath:
-            token = self.subpath[0]
+        if self.traverse_subpath[0]:
+            token = self.traverse_subpath[0]
             keys = self.get_stored_records('api_access_keys')
             if token in keys:
                 return True
@@ -193,13 +197,14 @@ class JobOpeningsAPISettings(grok.View):
     def _create_token(self, data):
         context = aq_inner(self.context)
         idx = int(data['tokenidx'])
-        keys = self._get_records()
-        if keys is None:
-            keys = ()
+        records = self._get_records()
+        keys = []
+        if records is not None:
+            keys = list(records)
         for x in range(int(idx)):
             token = django_random.get_random_string(length=40)
-            keys.add(str(token))
-        self._set_records(keys)
+            keys.append(safe_unicode(token))
+        self._set_records(tuple(keys))
         msg = _(u"Successfully generated API access tokens")
         api.portal.show_message(msg, request=self.request)
         url = '{0}/@@api-settings'.format(context.absolute_url())

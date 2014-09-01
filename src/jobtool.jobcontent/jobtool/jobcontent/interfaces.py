@@ -22,5 +22,5 @@ class IJobToolSettings(Interface):
             title=_(u"Access key")
         ),
         required=False,
-        missing_value=[],
+        missing_value=(),
     )
