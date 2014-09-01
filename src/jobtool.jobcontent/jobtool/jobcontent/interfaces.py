@@ -16,7 +16,7 @@ class IJobTool(Interface):
 
 class IJobToolSettings(Interface):
     """ Job tool settings stored in the registry """
-    api_access_keys = schema.Tuple(
+    api_access_keys = schema.Set(
         title=_(u"API Access Keys"),
         value_type=schema.TextLine(
             title=_(u"Access key")
