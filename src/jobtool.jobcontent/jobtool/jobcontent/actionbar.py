@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Module prividing a custom action bar for tool users"""
+
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from five import grok
