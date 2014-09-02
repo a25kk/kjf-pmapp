@@ -37,7 +37,7 @@
               <div class="window-column-content">
                 <h3 i18n:translate="">JSON API</h3>
                 <div class="well well-default">
-                  <strong>http://jobs.kjf-presse.de/@@api/{{string:access-token}}/jobs</strong>
+                  <strong>http://jobs.kjf-presse.de/@@api?token=secret-access-token-goes-here</strong>
                 </div>
                 <hr>
                 <h3>Generate Access Tokens</h3>
