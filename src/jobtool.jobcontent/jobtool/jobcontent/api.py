@@ -26,7 +26,7 @@ class JobOpeningsAPI(grok.View):
     grok.name('api')
 
     def update(self):
-        self.subpath = []
+        self.user_token = self.request.get('token', None)
 
     @property
     def traverse_subpath(self):
@@ -53,8 +53,8 @@ class JobOpeningsAPI(grok.View):
         return api.portal.get_registry_record(key)
 
     def valid_token(self):
-        if self.subpath is not None and len(self.traverse_subpath) > 0:
-            token = self.traverse_subpath[0]
+        if self.user_token:
+            token = self.user_token
             keys = self.get_stored_records('api_access_keys')
             if token in keys:
                 return True

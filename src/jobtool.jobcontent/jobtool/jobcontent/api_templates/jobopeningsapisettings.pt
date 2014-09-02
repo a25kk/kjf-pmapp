@@ -70,7 +70,7 @@
                       <td tal:content="repeat/record/number" />
                       <td tal:content="record" />
                       <td class="text-right">
-                        <a tal:attributes="href string:${context/absolute_url}/@@api/${record}/jobs">
+                        <a tal:attributes="href string:${context/absolute_url}/@@api?token=${record}">
                           Make API call
                         </a>
                       </td>
