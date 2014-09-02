@@ -149,7 +149,7 @@ class JobOpeningsAPISettings(grok.View):
     grok.name('api-settings')
 
     def update(self):
-        self.has_records = len(self.stored_records()) > 0
+        self.has_records = self._has_records()
         self.errors = {}
         unwanted = ('_authenticator', 'form.button.Submit')
         required = ('tokenidx')
@@ -194,6 +194,12 @@ class JobOpeningsAPISettings(grok.View):
 
     def stored_records(self):
         return self._get_records()
+
+    def _has_records(self):
+        records = False
+        if self.stored_records() is not None:
+            records = True
+        return records
 
     def _create_token(self, data):
         context = aq_inner(self.context)
