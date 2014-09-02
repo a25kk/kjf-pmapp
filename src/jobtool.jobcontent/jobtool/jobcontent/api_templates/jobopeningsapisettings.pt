@@ -62,7 +62,8 @@
                 </form>
                 <hr>
                 <h3>Stored access keys</h3>
-                <table class="table table-condensed">
+                <table class="table table-condensed"
+                    tal:condition="view/has_records">
                   <tbody tal:define="records view/stored_records">
                     <tr class="list-group-item"
                       tal:repeat="record records">
