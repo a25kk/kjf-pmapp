@@ -53,7 +53,7 @@ class JobOpeningsAPI(grok.View):
         return api.portal.get_registry_record(key)
 
     def valid_token(self):
-        if self.traverse_subpath[0]:
+        if len(self.traverse_subpath) > 0:
             token = self.traverse_subpath[0]
             keys = self.get_stored_records('api_access_keys')
             if token in keys:
@@ -149,6 +149,7 @@ class JobOpeningsAPISettings(grok.View):
     grok.name('api-settings')
 
     def update(self):
+        self.has_records = len(self.stored_records()) > 0
         self.errors = {}
         unwanted = ('_authenticator', 'form.button.Submit')
         required = ('tokenidx')

@@ -3,7 +3,6 @@ from fabric.api import env
 from fabric.api import local
 from fabric.api import run
 from fabric.api import task
-from fabric.api import roles
 
 from ade25.fabfiles import project
 from ade25.fabfiles.server import controls
@@ -19,10 +18,10 @@ env.webserver = '/opt/sites/buildout.pmapp'
 env.code_root = '/opt/sites/buildout.pmapp'
 env.stage_root = '/opt/sites/presshub/buildout.presshub'
 
-env.hosts = ['pm-app']
+env.hosts = ['d1']
 env.roledefs = {
-    'production': ['pm-app'],
-    'staging': ['6zu4']
+    'production': ['d1'],
+    'staging': ['z12']
 }
 
 
