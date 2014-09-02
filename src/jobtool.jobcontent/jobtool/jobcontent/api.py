@@ -197,7 +197,7 @@ class JobOpeningsAPISettings(grok.View):
 
     def _has_records(self):
         records = False
-        if self.stored_records() is not None:
+        if self.stored_records() is not None and len(self.stored_records()):
             records = True
         return records
 
