@@ -65,6 +65,8 @@
                 detailed job description
               </p>
             </div>
+            <a class="btn btn-default" href="javascript:window.print()">
+              Drucken</a>
           </div>
         </tal:items>
         <div class="alert alert-error" tal:condition="not:view/has_jobinfo">
@@ -81,4 +83,3 @@
 
 </body>
 </html>
-
