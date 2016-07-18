@@ -21,7 +21,8 @@ var
 *.pyc
 *.pyo
 .codeintel
-etc/**/*
+etc/*.conf
+etc/vhosts/*.conf
 *.mo
 *-ck.js
 bower_components
@@ -29,3 +30,5 @@ node_modules
 src/ade25.fabfiles
 src/sauna.reload
 src/zopyx.smartprintng.plone
+# Allow cache control settings
+!cache_control_assets.conf
