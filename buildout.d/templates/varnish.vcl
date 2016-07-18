@@ -26,7 +26,7 @@ acl purge {
 sub vcl_recv {
     set req.grace = 10m;
     set req.backend = balancer;
-    
+
     if (req.request == "PURGE") {
         if (!client.ip ~ purge) {
                 error 405 "Not allowed.";
