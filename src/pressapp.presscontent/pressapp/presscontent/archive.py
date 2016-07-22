@@ -334,8 +334,8 @@ class PressItemView(grok.View):
         anchorlist = "\n\n" + ("-" * plain_text_maxcols) + "\n\n"
         for item in parser.anchorlist:
             counter += 1
-            if item.startswith('https://'):
-                new_item = item.replace('https://', 'http://')
+            if item.startswith('http://'):
+                new_item = item.replace('http://', 'https://')
             else:
                 new_item = item
             anchorlist += "[%d] %s\n" % (counter, new_item)
@@ -388,7 +388,7 @@ class PressItemView(grok.View):
     def clean_portal_url(self):
         portal = getSite()
         portal_url = portal.absolute_url()
-        static_url = 'http://kjf-presse.de'
+        static_url = 'https://kjf-presse.de'
         if getConfiguration().debug_mode:
             return portal_url
         else:
