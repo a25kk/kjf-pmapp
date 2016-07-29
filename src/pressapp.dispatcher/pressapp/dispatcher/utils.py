@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import re
 from lxml import etree
 from lxml import html
 
@@ -14,15 +13,16 @@ def postprocess_emailtemplate(content):
     """
     content = content.strip()
     tree = html.document_fromstring(content)
-    regex = '^(https?|ftp)://'
     for node in tree.xpath('//*[@src]'):
         src = node.get('src')
-        url = re.sub(regex, '//', src)
-        node.set('src', url)
+        if src.startswith('http://kjf-presse.de'):
+            url = src.replace('http://', 'https://')
+            node.set('src', url)
     for node in tree.xpath('//*[@href]'):
         href = node.get('href')
-        url = re.sub(regex, '//', href)
-        node.set('href', url)
+        if href.startswith('http://kjf-presse.de'):
+            url = href.replace('http://', 'https://')
+            node.set('href', url)
     data = etree.tostring(tree,
                           pretty_print=True,
                           encoding="utf-8",
